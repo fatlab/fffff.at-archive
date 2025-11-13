@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /o2service/ - servisní sekce
+Disallow: /osobni/ccc/ - redirect na chat s online Guru
+Disallow: /*force=*
+Disallow: /*p=*
+Disallow: /*why=*
+Disallow: /*similarOrd=*
+Disallow: /*word=*
+Disallow: /*.awf$
+Disallow: /*reply_to_id=*
+Disallow: /*add_topic=*
+Sitemap: https://www.o2.cz/sitemap/business.xml
+Sitemap: https://www.o2.cz/sitemap/internet.xml
+Sitemap: https://www.o2.cz/sitemap/prodejny.xml
+Sitemap: https://www.o2.cz/sitemap/roaming.xml

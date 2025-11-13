@@ -1,0 +1,15 @@
+
+jQuery(document).ready(function($) {
+
+	"use strict";
+
+	// Mobile Menu
+    $('#nav').slicknav({
+    	prependTo: 'body',
+    	label: '',
+    	allowParentLinks: 'true',
+		closedSymbol: '<i class="fa fa-caret-down"></i>',
+		openedSymbol: '<i class="fa fa-caret-up"></i>'
+    });
+
+});

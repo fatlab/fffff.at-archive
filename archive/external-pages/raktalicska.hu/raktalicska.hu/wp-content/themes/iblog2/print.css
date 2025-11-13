@@ -1,0 +1,46 @@
+/*  
+Theme Name: iBlog2
+Description:  The iBlog2 theme by <a href="http://www.pagelines.com">Pagelines</a>, inspired by Apple. Change header image and favicon in admin > iBlog options. We appreciate your feedback; Contact us at <a href="http://www.pagelines.com/about">Pagelines &raquo;</a>.
+Theme URI: http://www.pagelines.com/themes/
+Version: 2.6.1
+Author: Andrew Powers
+Author URI: http://www.pagelines.com
+Tags: theme-options, white, silver, light, two-columns, fixed-width, threaded-comments, translation-ready
+	
+	*Notes - Not titling your widgets in the sidebar can break the markup (and design)
+	- change the header image and site favicon in Iblog options in the admin
+	
+*/
+
+body {
+	background: #ffffff url(https://raktalicska.hu/wp-content/themes/iblog2/none);
+	padding: 0 40px;
+	margin: 0px;
+	color: #000000;
+}
+#page {
+	background: none;
+}
+#wrapper {
+	width: 100%;
+	margin: 0px;
+}
+
+
+h1 {
+	color: #000000;
+}
+h1 a, h1 a:visited {
+	color: #000000;
+}
+
+
+#left-col {
+	width: 100%;
+}
+
+#content {
+	padding: 0;
+	background: #ffffff;
+	width: 100%;
+}

@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Colloquy</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="../../../colloquy.app/icon-small.png">
+    <link rel="apple-touch-icon" href="../../../colloquy.app/icon.png">
+
+    <style>
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 70%;
+        }
+
+        main > * {
+            margin: 20px 0;
+        }
+
+        div {
+            text-align: center;
+        }
+    
+        div > * {
+            margin: 0 10px;
+        }
+
+        .icon {
+            border-radius: 15%;
+            box-shadow: rgba(0, 0, 0, 0.5) 0 5px 30px;
+            background-color: rgb(148, 96, 255);
+            background: linear-gradient(to bottom, rgb(191, 112, 255) 0%, rgb(71, 61, 255) 100%);
+            max-width: 100%;
+            max-height: auto;
+        }
+
+        .services {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .service {
+            max-width: 100%;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            @supports not (color-scheme: dark) {
+                body {
+                    background-color: rgb(30, 30, 30);
+                    color: white;
+                }
+            }
+
+            img:not(.icon) {
+                filter: invert();
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <a href="https://apps.apple.com/us/app/colloquy-irc-client/id302000478"><img class="icon" src="../../../colloquy.app/icon.png" width="512"></a>
+        <div class="services">
+            <a href="https://apps.apple.com/us/app/colloquy-irc-client/id302000478"><img class="app-store service" src="../../../colloquy.app/app-store.svg" width="200" height="68"></a>
+            <a href="https://github.com/colloquy/colloquy"><img class="github service" src="../../../colloquy.app/github.svg" width="200" height="68"></a>
+        </div>
+    </main>
+</body>
+</html>

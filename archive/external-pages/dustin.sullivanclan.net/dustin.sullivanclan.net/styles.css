@@ -1,0 +1,50 @@
+h1, h3
+{
+	text-align: center;
+}
+
+fieldset
+{
+	margin-top: 5px;
+}
+
+.main
+{
+	text-align: center;
+	background-color: #3D7B96;
+}
+
+.main h1
+{
+	margin-top: 15px;
+	width: 65%;
+	margin-left:auto;
+	margin-right:auto;
+	border: solid 1px #CCC;
+	background-color: #EEE;
+	font-size: 300%;
+}
+
+.mainContent
+{
+	width: 65%;
+	margin-left:auto;
+	margin-right:auto;
+	border: solid 1px #000;
+	background-color: #FFF;
+}
+
+.mainNav
+{
+	font-size: 200%;
+}
+
+.jobTitle
+{
+	font-style: italic;
+}
+
+.companyName
+{
+	font-weight: bold;
+}

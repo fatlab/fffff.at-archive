@@ -1,0 +1,808 @@
+
+
+
+
+
+
+
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dash for macOS - API Documentation Browser, Snippet Manager - Kapeli</title>
+    <meta name="description" content="Dash is an API Documentation Browser and Code Snippet Manager for macOS. Dash provides instant offline access to 200+ API documentation sets, code snippets, and cheat sheets. Features MCP support for AI integration with Claude and other AI agents. Generate custom docsets and integrate with your favorite editor.">
+
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicon and app icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/dash-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/dash-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kapeli.com/img/dash-180.png">
+    <link href="favicon.ico" rel="shortcut icon">  
+
+    <!-- Fonts and CSS -->
+    <link href='../../../fonts.googleapis.com/css@family=Open+Sans%253A400,300,700&amp;display=swap.css' rel='stylesheet' type='text/css'>
+    <link href="scss/build/screen.css@cache_token=41313.css" rel="stylesheet" type="text/css">
+
+    <!-- JavaScript -->
+    <script>if((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1) { document.cookie='HTTP_IS_RETINA=true;path=/;domain=kapeli.com'; } else { document.cookie='HTTP_IS_RETINA=false;path=/;domain=kapeli.com'; }</script>
+    <script src="bower_components/foundation/js/vendor/modernizr.js"></script>
+
+    <!-- SEO and social media tags -->
+    <link rel="canonical" href="dash.html">
+<meta property="og:title" content="Dash for macOS - API Documentation Browser">
+<meta property="og:description" content="Dash provides instant offline access to 200+ API documentation sets, code snippets, and cheat sheets. Features MCP support for AI integration with Claude and other AI agents.">
+<meta property="og:image" content="https://kapeli.com/img/screen.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kapeli.com/dash">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dash for macOS - API Documentation Browser">
+<meta name="twitter:description" content="Instant offline access to 200+ API documentation sets, code snippets, and cheat sheets. Features MCP support for AI integration.">
+<meta name="twitter:image" content="https://kapeli.com/img/screen.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dash",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "macOS",
+  "description": "API Documentation Browser and Code Snippet Manager with offline access to 200+ documentation sets",
+  "url": "https://kapeli.com/dash",
+  "downloadUrl": "https://kapeli.com/downloads/v8/Dash.zip",
+  "softwareVersion": "8.0",
+  "author": {
+    "@type": "Organization",
+    "name": "Kapeli",
+    "url": "https://kapeli.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "14.99",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  },
+  "screenshot": "https://kapeli.com/img/screen.png",
+  "featureList": [
+    "200+ offline documentation sets",
+    "Instant fuzzy search",
+    "Code snippet manager",
+    "AI integration with MCP",
+    "Integration with 30+ editors and tools"
+  ],
+  "requirements": "macOS 10.15 or later",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "1163"
+  }
+}
+</script>  </head>
+  <body class="regular">
+    <div id="container">
+      <div class="contain-to-grid top-bar-area dash-topbar-bg" data-top-color="#8c6ba5" data-bottom-color="#6c89c3">
+        <nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="https://kapeli.com/">Kapeli</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="dash.html#"><span></span></a></li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="left">
+      <li class="active"><a href="dash.html">Dash for macOS</a></li>
+    </ul>
+    <ul class="right">
+      <li class="notactive"><a href="https://blog.kapeli.com/">Blog</a></li>
+      <li><a target="_blank" href="https://twitter.com/kapeli">Twitter</a></li>
+      <li class="notactive"><a href="https://kapeli.com/contact">Contact</a></li>
+    </ul>
+  </section>
+</nav>
+      <div class="prevent" style="display:none"></div>
+
+
+<div class="row">
+    <div class="large-4 columns hide-for-medium-down quote large-text-center">
+        <p class="quote-text">“Indispensable<br>masterpiece<br>for developers.”</p>
+        <p class="quote-author">Stefan Fürst, Media Atelier<br>Maker of GrandTotal</p>
+    </div>
+    <div class="small-12 medium-6 large-4 columns app-icon small-text-center medium-text-right large-text-center">
+        <img src="img/dash-256.png" srcset="img/dash-256@2x.png 2x" width="256" height="256">
+    </div>
+    <div class="small-12 medium-6 large-4 columns download-buttons small-text-center medium-text-left large-text-center">
+        <a href="https://kapeli.com/downloads/v8/Dash.zip" class="button download"><span>Download</span></a><br>
+        <a href="https://kapeli.com/subscribe" class="button purchase">
+            <span class="purchase-price-hover" id='purchase-price'>$€£</span>
+            <span>Purchase</span>
+        </a><br>
+        <!-- <setapp-badge appId=152 vendorId=85></setapp-badge> -->
+        <!-- <script type="text/javascript" src="https://developer.setapp.com/setapp-badge/index.js" async></script> -->
+    </div>
+</div>
+<div class="row text-center">
+    <div class="small-12 medium-12 large-12 columns headline">
+        <p>Dash gives your Mac instant offline access to 200+ API documentation sets.</p>
+    </div>
+</div>
+</div>
+
+<div class="contain-to-grid row body-section" id="overview">
+    <h2 class="text-center">Overview</h2>
+    <p class="body-text">Dash is an API Documentation Browser and Code Snippet Manager. Dash instantly searches offline documentation sets for <a href="dash.html#docsets">200+ APIs</a>, <a href="https://kapeli.com/cheatsheets" target="_blank">100+ cheat sheets</a> and <a href="dash.html#thirdparty">more</a>. You can even <a href="https://kapeli.com/docsets" target="_blank">generate your own docsets</a> or <a href="https://kapeli.com/contact" target="_blank">request docsets</a> to be included.</p>
+    <img src="img/screen.png" alt="Dash documentation browser interface showing Swift API documentation with instant search" style="width:600px; height:auto; display:block; margin:0 auto;">
+    <hr class="dash">
+</div>
+<div class="contain-to-grid row body-section" id="docsets">
+    <h2 class="text-center">Supported Documentation Sets</h2>
+    <p class="body-text">Dash comes with 200+ offline documentation sets. You can choose which documentation sets to download and Dash will take care of the rest, making sure they are kept up to date. You can also <a href="https://kapeli.com/docsets" target="_blank">generate your own docsets</a>, <a href="https://kapeli.com/contact" target="_blank">request docsets</a> or download docsets from <a href="dash.html#thirdparty">third-party sources</a>.</p>
+    <p class="body-text">Listed below are all the various documentation sets Dash comes with. The <span class="highlighted">most popular</span> ones are highlighted. All documentation sets have been generated and are maintained with the utmost care.</p>
+    <div class="platforms-table">
+      <ul class="sprite-table responsive-table">
+        <li><ul><li class="platform-iphone"></li></ul><span class="highlighted">iOS</span></li>
+        <li><ul><li class="platform-Mac"></li></ul><span class="highlighted">macOS</span></li>
+        <li><ul><li class="platform-watchos"></li></ul><span class="highlighted">watchOS</span></li>
+        <li><ul><li class="platform-tvos"></li></ul><span class="highlighted">tvOS</span></li>
+        <li><ul><li class="platform-swift"></li></ul><span class="highlighted">Swift</span></li>
+        <li><ul><li class="platform-manPages"></li></ul><span class="highlighted">Man Pages</span></li>
+        <!-- <li><ul><li class="platform-net"></li></ul><span class="highlighted">.NET Framework</span></li> -->
+        <li><ul><li class="platform-actionscript"></li></ul><span class="highlighted">ActionScript</span></li>
+        <li><ul><li class="platform-akka"></li></ul><span>Akka</span></li>
+        <!-- <li><ul><li class="platform-android"></li></ul><span class="highlighted">Android</span></li> -->
+        <li><ul><li class="platform-angularjs"></li></ul><span class="highlighted">Angular</span></li>
+        <li><ul><li class="platform-ansible"></li></ul><span>Ansible</span></li>
+        <li><ul><li class="platform-apache"></li></ul><span>Apache</span></li>
+        <!-- <li><ul><li class="platform-titanium"></li></ul><span>Appcelerator Titanium</span></li> -->
+        <li><ul><li class="platform-applescript"></li></ul><span>AppleScript</span></li>
+        <li><ul><li class="platform-arduino"></li></ul><span>Arduino</span></li>
+        <li><ul><li class="platform-backbone"></li></ul><span class="highlighted">Backbone</span></li>
+        <li><ul><li class="platform-bash"></li></ul><span>Bash</span></li>
+        <li><ul><li class="platform-boost"></li></ul><span>Boost</span></li>
+        <li><ul><li class="platform-bootstrap"></li></ul><span class="highlighted">Bootstrap</span></li>
+        <li><ul><li class="platform-bourbon"></li></ul><span>Bourbon</span></li>
+        <li><ul><li class="platform-neat"></li></ul><span>Bourbon Neat</span></li>
+        <li><ul><li class="platform-c"></li></ul><span class="highlighted">C</span></li>
+        <li><ul><li class="platform-cpp"></li></ul><span class="highlighted">C++</span></li>
+        <!-- <li><ul><li class="platform-cakephp"></li></ul><span>CakePHP</span></li> -->
+        <li><ul><li class="platform-cappuccino"></li></ul><span>Cappuccino</span></li>
+        <li><ul><li class="platform-chai"></li></ul><span>Chai</span></li>
+        <!-- <li><ul><li class="platform-chef"></li></ul><span>Chef</span></li> -->
+        <li><ul><li class="platform-clojure"></li></ul><span>Clojure</span></li>
+        <li><ul><li class="platform-cmake"></li></ul><span>CMake</span></li>
+        <li><ul><li class="platform-cocos2d"></li></ul><span>Cocos2D</span></li>
+        <li><ul><li class="platform-cocos2dx"></li></ul><span>Cocos2D-X</span></li>
+        <li><ul><li class="platform-codeigniter"></li></ul><span>CodeIgniter</span></li>
+        <li><ul><li class="platform-coffee"></li></ul><span class="highlighted">CoffeeScript</span></li>
+        <li><ul><li class="platform-cf"></li></ul><span>ColdFusion</span></li>
+        <li><ul><li class="platform-lisp"></li></ul><span>Common Lisp</span></li>
+        <li><ul><li class="platform-compass"></li></ul><span>Compass</span></li>
+        <!-- <li><ul><li class="platform-cordova"></li></ul><span>Cordova</span></li> -->
+        <!-- <li><ul><li class="platform-corona"></li></ul><span>Corona</span></li> -->
+        <li><ul><li class="platform-couchdb"></li></ul><span>CouchDB</span></li>
+        <!-- <li><ul><li class="platform-craft"></li></ul><span>Craft</span></li> -->
+        <li><ul><li class="platform-css"></li></ul><span class="highlighted">CSS</span></li>
+        <li><ul><li class="platform-d3"></li></ul><span>D3.js</span></li>
+        <li><ul><li class="platform-dartlang"></li></ul><span class="highlighted">Dart</span></li>
+        <li><ul><li class="platform-django"></li></ul><span class="highlighted">Django</span></li>
+        <li><ul><li class="platform-docker"></li></ul><span class="highlighted">Docker</span></li>
+        <li><ul><li class="platform-doctrine"></li></ul><span>Doctrine ORM</span></li>
+        <li><ul><li class="platform-dojo"></li></ul><span>Dojo Toolkit</span></li>
+        <li><ul><li class="platform-drupal"></li></ul><span class="highlighted">Drupal</span></li>
+        <li><ul><li class="platform-elasticsearch"></li></ul><span>Elasticsearch</span></li>
+        <li><ul><li class="platform-elixir"></li></ul><span>Elixir</span></li>
+        <li><ul><li class="platform-elisp"></li></ul><span>Emacs Lisp</span></li>
+        <li><ul><li class="platform-ember"></li></ul><span>Ember.js</span></li>
+        <li><ul><li class="platform-emmet"></li></ul><span>Emmet.io</span></li>
+        <li><ul><li class="platform-erlang"></li></ul><span>Erlang</span></li>
+        <li><ul><li class="platform-express"></li></ul><span>Express.js</span></li>
+        <!-- <li><ul><li class="platform-ee"></li></ul><span>ExpressionEngine</span></li> -->
+        <li><ul><li class="platform-extjs"></li></ul><span>ExtJS</span></li>
+        <li><ul><li class="platform-flask"></li></ul><span>Flask</span></li>
+        <li><ul><li class="platform-awesome"></li></ul><span>Font Awesome</span></li>
+        <li><ul><li class="platform-foundation"></li></ul><span>Foundation</span></li>
+        <!-- <li><ul><li class="platform-glib"></li></ul><span>GLib</span></li> -->
+        <li><ul><li class="platform-go"></li></ul><span class="highlighted">Go</span></li>
+        <li><ul><li class="platform-gradle"></li></ul><span>Gradle</span></li>
+        <!-- <li><ul><li class="platform-grails"></li></ul><span>Grails</span></li> -->
+        <li><ul><li class="platform-groovy"></li></ul><span>Groovy</span></li>
+        <li><ul><li class="platform-grunt"></li></ul><span>Grunt</span></li>
+        <li><ul><li class="platform-gulp"></li></ul><span>Gulp</span></li>
+        <li><ul><li class="platform-haml"></li></ul><span>Haml</span></li>
+        <!-- <li><ul><li class="platform-handlebars"></li></ul><span>Handlebars</span></li> -->
+        <li><ul><li class="platform-haskell"></li></ul><span class="highlighted">Haskell</span></li>
+        <li><ul><li class="platform-html"></li></ul><span class="highlighted">HTML</span></li>
+        <!-- <li><ul><li class="platform-ionic"></li></ul><span class="highlighted">Ionic</span></li> -->
+        <li><ul><li class="platform-jasmine"></li></ul><span>Jasmine</span></li>
+        <li><ul><li class="platform-java"></li></ul><span class="highlighted">Java SE</span></li>
+        <li><ul><li class="platform-jee7"></li></ul><span>Java EE</span></li>
+        <li><ul><li class="platform-javascript"></li></ul><span class="highlighted">JavaScript</span></li>
+        <li><ul><li class="platform-jekyll"></li></ul><span>Jekyll</span></li>
+        <li><ul><li class="platform-jinja"></li></ul><span>Jinja</span></li>
+        <li><ul><li class="platform-joomla"></li></ul><span>Joomla</span></li>
+        <li><ul><li class="platform-jQuery"></li></ul><span class="highlighted">jQuery</span></li>
+        <li><ul><li class="platform-jquerym"></li></ul><span>jQuery Mobile</span></li>
+        <li><ul><li class="platform-jqueryui"></li></ul><span>jQuery UI</span></li>
+        <li><ul><li class="platform-julia"></li></ul><span>Julia</span></li>
+        <li><ul><li class="platform-knockout"></li></ul><span>Knockout.js</span></li>
+        <li><ul><li class="platform-kobold2d"></li></ul><span>Kobold2D</span></li>
+        <li><ul><li class="platform-laravel"></li></ul><span>Laravel</span></li>
+        <li><ul><li class="platform-latex"></li></ul><span>LaTeX</span></li>
+        <li><ul><li class="platform-less"></li></ul><span>Less</span></li>
+        <li><ul><li class="platform-lodash"></li></ul><span>lodash</span></li>
+        <li><ul><li class="platform-lua"></li></ul><span class="highlighted">Lua</span></li>
+        <li><ul><li class="platform-marionette"></li></ul><span>Marionette.js</span></li>
+        <li><ul><li class="platform-matplotlib"></li></ul><span>Matplotlib</span></li>
+        <li><ul><li class="platform-meteor"></li></ul><span>Meteor</span></li>
+        <li><ul><li class="platform-mocha"></li></ul><span>Mocha</span></li>
+        <li><ul><li class="platform-moment"></li></ul><span>MomentJS</span></li>
+        <li><ul><li class="platform-mongodb"></li></ul><span class="highlighted">MongoDB</span></li>
+        <li><ul><li class="platform-mongoose"></li></ul><span>Mongoose</span></li>
+        <!-- <li><ul><li class="platform-mono"></li></ul><span class="highlighted">Mono</span></li> -->
+        <li><ul><li class="platform-moo"></li></ul><span>MooTools</span></li>
+        <li><ul><li class="platform-mysql"></li></ul><span class="highlighted">MySQL</span></li>
+        <li><ul><li class="platform-nginx"></li></ul><span>Nginx</span></li>
+        <li><ul><li class="platform-nodejs"></li></ul><span class="highlighted">Node.js</span></li>
+        <li><ul><li class="platform-numpy"></li></ul><span>NumPy</span></li>
+        <li><ul><li class="platform-ocaml"></li></ul><span>OCaml</span></li>
+        <li><ul><li class="platform-cvc"></li></ul><span>OpenCV</span></li>
+        <li><ul><li class="platform-gl4"></li></ul><span>OpenGL</span></li>
+        <li><ul><li class="platform-pandas"></li></ul><span class="highlighted">Pandas</span></li>
+        <li><ul><li class="platform-perl"></li></ul><span class="highlighted">Perl</span></li>
+        <!-- <li><ul><li class="platform-phalcon"></li></ul><span>Phalcon</span></li> -->
+        <li><ul><li class="platform-phonegap"></li></ul><span>PhoneGap</span></li>
+        <li><ul><li class="platform-php"></li></ul><span class="highlighted">PHP</span></li>
+        <li><ul><li class="platform-phpunit"></li></ul><span>PHPUnit</span></li>
+        <li><ul><li class="platform-playjava"></li></ul><span>Play Framework</span></li>
+        <li><ul><li class="platform-polymerdart"></li></ul><span>Polymer.dart</span></li>
+        <li><ul><li class="platform-psql"></li></ul><span class="highlighted">PostgreSQL</span></li>
+        <li><ul><li class="platform-processing"></li></ul><span>Processing.org</span></li>
+        <li><ul><li class="platform-prototype"></li></ul><span>Prototype</span></li>
+        <li><ul><li class="platform-pug"></li></ul><span>Pug</span></li>
+        <!-- <li><ul><li class="platform-puppet"></li></ul><span>Puppet</span></li> -->
+        <li><ul><li class="platform-python"></li></ul><span class="highlighted">Python</span></li>
+        <li><ul><li class="platform-qt"></li></ul><span class="highlighted">Qt</span></li>
+        <li><ul><li class="platform-r"></li></ul><span>R</span></li>
+        <li><ul><li class="platform-racket"></li></ul><span>Racket</span></li>
+        <li><ul><li class="platform-react"></li></ul><span class="highlighted">React</span></li>
+        <li><ul><li class="platform-redis"></li></ul><span class="highlighted">Redis</span></li>
+        <li><ul><li class="platform-require"></li></ul><span>RequireJS</span></li>
+        <li><ul><li class="platform-ruby"></li></ul><span class="highlighted">Ruby</span></li>
+        <li><ul><li class="platform-rails"></li></ul><span class="highlighted">Ruby on Rails</span></li>
+        <li><ul><li class="platform-rust"></li></ul><span>Rust</span></li>
+        <li><ul><li class="platform-sails"></li></ul><span>Sails.js</span></li>
+        <li><ul><li class="platform-sass"></li></ul><span>Sass</span></li>
+        <li><ul><li class="platform-salt"></li></ul><span>SaltStack</span></li>
+        <li><ul><li class="platform-scala"></li></ul><span class="highlighted">Scala</span></li>
+        <li><ul><li class="platform-scipy"></li></ul><span>SciPy</span></li>
+        <li><ul><li class="platform-semantic"></li></ul><span>Semantic UI</span></li>
+        <li><ul><li class="platform-sencha"></li></ul><span>Sencha Touch</span></li>
+        <li><ul><li class="platform-sinon"></li></ul><span>Sinon</span></li>
+        <li><ul><li class="platform-smarty"></li></ul><span>Smarty</span></li>
+        <li><ul><li class="platform-sparrow"></li></ul><span>Sparrow</span></li>
+        <li><ul><li class="platform-spring"></li></ul><span>Spring Framework</span></li>
+        <li><ul><li class="platform-SproutCore"></li></ul><span>SproutCore</span></li>
+        <li><ul><li class="platform-sqlalchemy"></li></ul><span>SQLAlchemy</span></li>
+        <li><ul><li class="platform-sqlite"></li></ul><span class="highlighted">SQLite</span></li>
+        <!-- <li><ul><li class="platform-statamic"></li></ul><span>Statamic</span></li> -->
+        <!-- <li><ul><li class="platform-stylus"></li></ul><span>Stylus</span></li> -->
+        <li><ul><li class="platform-susy"></li></ul><span>Susy</span></li>
+        <li><ul><li class="platform-svg"></li></ul><span>SVG</span></li>
+        <li><ul><li class="platform-symfony"></li></ul><span>Symfony</span></li>
+        <!-- <li><ul><li class="platform-tcl"></li></ul><span>Tcl</span></li> -->
+        <li><ul><li class="platform-tornado"></li></ul><span>Tornado</span></li>
+        <li><ul><li class="platform-twig"></li></ul><span>Twig</span></li>
+        <li><ul><li class="platform-twisted"></li></ul><span>Twisted</span></li>
+        <li><ul><li class="platform-typescript"></li></ul><span>TypeScript</span></li>
+        <!-- <li><ul><li class="platform-typo3"></li></ul><span>TYPO3</span></li> -->
+        <li><ul><li class="platform-underscore"></li></ul><span class="highlighted">Underscore.js</span></li>
+        <li><ul><li class="platform-unity3d"></li></ul><span class="highlighted">Unity 3D</span></li>
+        <li><ul><li class="platform-vagrant"></li></ul><span>Vagrant</span></li>
+        <li><ul><li class="platform-vim"></li></ul><span>Vim</span></li>
+        <!-- <li><ul><li class="platform-vsphere"></li></ul><span>VMware vSphere</span></li> -->
+        <li><ul><li class="platform-vue"></li></ul><span>Vue.js</span></li>
+        <li><ul><li class="platform-wordpress"></li></ul><span class="highlighted">WordPress</span></li>
+        <!-- <li><ul><li class="platform-xamarin"></li></ul><span>Xamarin</span></li> -->
+        <!-- <li><ul><li class="platform-xojo"></li></ul><span>Xojo</span></li> -->
+        <li><ul><li class="platform-xslt"></li></ul><span>XSLT</span></li>
+        <li><ul><li class="platform-yii"></li></ul><span class="highlighted">Yii</span></li>
+        <li><ul><li class="platform-yui"></li></ul><span>YUI</span></li>
+        <li><ul><li class="platform-zend"></li></ul><span>Zend Framework</span></li>
+        <li><ul><li class="platform-zepto"></li></ul><span>Zepto.js</span></li>
+      </ul>
+    </div>
+    <hr class="dash">
+</div>
+<div class="contain-to-grid row body-section" id="thirdparty">
+    <h2 class="text-center">Third-Party Documentation Sources</h2>
+    <p class="body-text">Dash integrates with package managers to generate documentation sets for anything you might need, as well as provide custom documentation sources of its own.</p>
+    <div class="plugins-table repos-table text-center">
+      <ul class="sprite-table">
+        <li><ul><li class="plugin-swiftRepo"></li></ul><br/><span class="repo-title">Swift Packages</span><br><span class="repo-subtitle"><a target="_blank" href="https://swiftpackageindex.com?utm_source=dash">swiftpackageindex.com</a></span></li>
+        <li><ul><li class="plugin-rubygems"></li></ul><br/><span class="repo-title">Ruby Gems</span><br><span class="repo-subtitle"><a target="_blank" href="https://rubygems.org">rubygems.org</a></span></li>
+        <li><ul><li class="plugin-pyrepo"></li></ul><br/><span class="repo-title">Python Packages</span><br><span class="repo-subtitle">Any Sphinx docs</span></li>
+        <li><ul><li class="plugin-phpRepo"></li></ul><br/><span class="repo-title">PHP Packages</span><br><span class="repo-subtitle"><a target="_blank" href="https://packagist.org">packagist.org</a></span></li>
+        <li><ul><li class="plugin-java"></li></ul><br/><span class="repo-title">Java Packages</span><br><span class="repo-subtitle"><a target="_blank" href="http://maven.org">maven.org</a></span></li>
+        <li><ul><li class="plugin-goRepo"></li></ul><br/><span class="repo-title">Go Packages</span><br><span class="repo-subtitle"><a target="_blank" href="https://pkg.go.dev">pkg.go.dev</a></span></li>
+        <li><ul><li class="plugin-rustRepo"></li></ul><br/><span class="repo-title">Rust Crates</span><br><span class="repo-subtitle"><a target="_blank" href="https://docs.rs">docs.rs</a></span></li>
+        <li><ul><li class="plugin-scala"></li></ul><br/><span class="repo-title">Scala Packages</span><br><span class="repo-subtitle"><a target="_blank" href="http://maven.org">maven.org</a></span></li>
+        <li><ul><li class="plugin-dartRepo"></li></ul><br/><span class="repo-title">Dart Packages</span><br><span class="repo-subtitle"><a target="_blank" href="https://pub.dev/">pub.dev</a></span></li>
+        <li><ul><li class="plugin-haskellRepo"></li></ul><br/><span class="repo-title">Haskell Packages</span><br><span class="repo-subtitle"><a target="_blank" href="https://hackage.haskell.org/">hackage.haskell.org</a></span></li>
+        <li><ul><li class="plugin-hexRepo"></li></ul><br/><span class="repo-title">Hex Packages</span><br><span class="repo-subtitle"><a target="_blank" href="https://hexdocs.pm/">hexdocs.pm</a></span></li>
+        <li><ul><li class="plugin-clojureRepo"></li></ul><br/><span class="repo-title">Clojure Libraries</span><br><span class="repo-subtitle"><a target="_blank" href="https://cljdoc.org">cljdoc.org</a></span></li>
+        <li><ul><li class="plugin-github"></li></ul><br/><span class="repo-title">GitHub</span><br><span class="repo-subtitle"><a target="_blank" href="https://github.com">github.com</a></span></li>
+        <li><ul><li class="plugin-stackRepo"></li></ul><br/><span class="repo-title">Stack Overflow</span><br><span class="repo-subtitle"><a target="_blank" href="https://stackoverflow.com">stackoverflow.com</a></span></li>
+        <li><ul><li class="plugin-cheatRepo"></li></ul><br/><span class="repo-title">Cheat Sheets</span><br><span class="repo-subtitle"><a target="_blank" href="http://cheat.kapeli.com">cheat.kapeli.com</a></span></li>
+        <li><ul><li class="plugin-userRepo"></li></ul><br/><span class="repo-title">User Contributed</span><br><span class="repo-subtitle"><a target="_blank" href="http://contrib.kapeli.com">contrib.kapeli.com</a></span></li>
+      </ul>
+    </div>
+    <hr class="dash">
+</div>
+<div class="contain-to-grid row body-section" id="docset-generator">
+    <h2 class="text-center">Docset Generator</h2>
+    <p class="body-text">The built-in Docset Generator lets you scrape websites or index local HTML files to build fully searchable, offline docsets.</p>
+    <p class="body-text">Perfect for internal documentation, open source projects, or any docs you want searchable in Dash.</p>
+    <hr class="dash">
+</div>
+<div class="contain-to-grid row body-section" id="ai">
+    <h2 class="text-center">AI Integration</h2>
+    <p class="body-text">Dash supports MCP (Model Context Protocol), integrating with AI assistants like Claude or ChatGPT. Give your AI tools access to up-to-date documentation for the newest frameworks and packages.</p>
+    <hr class="dash">
+</div>
+<div class="contain-to-grid row body-section" id="snippets">
+    <h2 class="text-center">Snippets</h2>
+    <p class="body-text">Powerful text expansion that works everywhere on your Mac. Save code templates, boilerplate, and frequently-typed text with smart placeholders. Type a short abbreviation in any app and watch it expand instantly into the full snippet.</p>
+    <p class="body-text">Features interactive placeholders, syntax highlighting for 150+ languages, tag-based organization, and system-wide expansion in every application.</p>
+    <hr class="dash">
+</div>
+<div class="contain-to-grid row body-section" id="integration">
+    <h2 class="text-center">Amazing Integration Plugins</h2>
+    <div class="plugins-table integration-table text-center">
+      <ul class="sprite-table">
+        <li><ul><li class="plugin-xcode"></li></ul><br/>Xcode</li>
+        <li><ul><li class="plugin-alfred"></li></ul><br/>Alfred</li>
+        <li><ul><li class="plugin-quicksilver"></li></ul><br/>Quicksilver</li>
+        <li><ul><li class="plugin-launchbar"></li></ul><br/>LaunchBar</li>
+        <li><ul><li class="plugin-raycast"></li></ul><br/>Raycast</li>
+        <li><ul><li class="plugin-popclip"></li></ul><br/>PopClip</li>
+        <li><ul><li class="plugin-espresso"></li></ul><br/>Espresso</li>
+        <li><ul><li class="plugin-nova"></li></ul><br/>Nova</li>
+        <li><ul><li class="plugin-emacsLarge"></li></ul><br/>Emacs</li>
+        <li><ul><li class="plugin-vimLarge"></li></ul><br/>Vim</li>
+        <li><ul><li class="plugin-neovim"></li></ul><br/>Neovim</li>
+        <li><ul><li class="plugin-bbedit"></li></ul><br/>BBEdit</li>
+        <li><ul><li class="plugin-textwrangler"></li></ul><br/>TextWrangler</li>
+        <li><ul><li class="plugin-textmate"></li></ul><br/>TextMate</li>
+        <li><ul><li class="plugin-sublime"></li></ul><br/>Sublime Text</li>
+        <li><ul><li class="plugin-coteditor"></li></ul><br/>CotEditor</li>
+        <li><ul><li class="plugin-chocolat"></li></ul><br/>Chocolat</li>
+        <li><ul><li class="plugin-atom"></li></ul><br/>Atom</li>
+        <li><ul><li class="plugin-brackets"></li></ul><br/>Brackets</li>
+        <li><ul><li class="plugin-eclipse"></li></ul><br/>Eclipse</li>
+        <li><ul><li class="plugin-androidstudio"></li></ul><br/>Android Studio</li>
+        <li><ul><li class="plugin-visualstudiocode"></li></ul><br/>Visual Studio Code</li>
+        <li><ul><li class="plugin-appcode"></li></ul><br/>AppCode</li>
+        <li><ul><li class="plugin-intellij"></li></ul><br/>IntelliJ IDEA</li>
+        <li><ul><li class="plugin-rubymine"></li></ul><br/>RubyMine</li>
+        <li><ul><li class="plugin-webstorm"></li></ul><br/>WebStorm</li>
+        <li><ul><li class="plugin-phpstorm"></li></ul><br/>PhpStorm</li>
+        <li><ul><li class="plugin-pycharm"></li></ul><br/>PyCharm</li>
+        <li><ul><li class="plugin-clion"></li></ul><br/>CLion</li>
+        <li><ul><li class="plugin-datagrip"></li></ul><br/>DataGrip</li>
+        <li><ul><li class="plugin-goland"></li></ul><br/>GoLand</li>
+        <li><ul><li class="plugin-rider"></li></ul><br/>Rider</li>
+        <li><ul><li class="plugin-terminal"></li></ul><br/>Terminal</li>
+        <li><ul><li class="plugin-applescript"></li></ul><br/>AppleScript</li>
+        <li><ul><li class="plugin-anyapp"></li></ul><br/>Any App</li>
+      </ul>
+    </div>
+    <hr class="dash">
+</div>
+<div class="contain-to-grid row body-section" id="features">
+    <h2 class="text-center">Loaded With Features</h2>
+    <div class="features-table">
+        <ul class="features-grid">
+            <li class="first-column">
+                <span class="highlighted">Documentation Browser</span>
+                <ul class="disc">
+                    <li>200+ <a href="dash.html#docsets">offline docsets</a></li>
+                    <li>Instant, <strong>fuzzy</strong> search</li>
+                    <li>Great <a href="dash.html#integration">integration</a> with other apps</li>
+                    <li>Easily <strong>download</strong> docsets</li>
+                    <li>Easily <strong>generate</strong> docsets:</li>
+                    <ul class="disc">
+                        <li>Supports <a href="https://kapeli.com/docsets#swift" target="_blank">Swift DocC</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#doxygen" target="_blank">Doxygen</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#python" target="_blank">Python / Sphinx</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#rdoc" target="_blank">Ruby / Yard</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#javadoc" target="_blank">Javadoc</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#scaladoc" target="_blank">Scaladoc</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#godoc" target="_blank">GoDoc</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#rustcargo" target="_blank">Rust Cargo</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#exdoc" target="_blank">Elixir / HexDoc</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#dartdoc" target="_blank">DartDoc</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#haddock" target="_blank">Haskell / Haddock</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#jsdoc" target="_blank">JSDoc</a> docsets</li>
+                        <li>Supports <a href="https://kapeli.com/docsets#dashDocset" target="_blank">Any HTML</a> docsets</li>
+                    </ul>
+                    <li>Easily <strong>switch</strong> between docsets:</li>
+                    <ul class="disc">
+                        <li>Smart <a href="https://kapeli.com/dash_guide#searchProfiles" target="_blank">search profiles</a></li>
+                        <li><a href="https://kapeli.com/dash_guide#docsetKeywords" target="_blank">Docset keywords</a></li>
+                    </ul>
+                    <li>Documentation bookmarks</li>
+                    <li>Convenient, filterable <a href="https://kapeli.com/dash_guide#tableOfContents" target="_blank">table of contents</a></li>
+                    <li>Highlighted in-page search</li>
+                </ul>
+            </li>
+            <li class="second-column">
+                <span class="highlighted">Snippet Manager</span>
+                <ul class="disc">
+                    <li>Store <a href="https://kapeli.com/dash_guide#introductionToSnippets" target="_blank">snippets</a> of code</li>
+                    <li>Easily reuse snippets</li>
+                    <li><strong>Expand</strong> snippets in any app</li>
+                    <li>Organize snippets with <strong>tags</strong></li>
+                    <li>Syntax highlighting</li>
+                    <li>Variable <a href="https://kapeli.com/dash_guide#introductionToSnippets" target="_blank">placeholders</a></li>
+                    <li>Special placeholders:</li>
+                    <ul class="disc">
+                        <li><strong>@clipboard</strong></li>
+                        <li><strong>@cursor</strong></li>
+                        <li><strong>@date</strong></li>
+                        <li><strong>@time</strong></li>
+                    </ul>
+                </ul>
+                <span class="highlighted inline">Other Features</span>
+                <ul class="disc">
+                    <li>Full-text search</li>
+                    <li>Keyboard shortcuts</li>
+                    <li>Tab restoration</li>
+                    <li>Docset playgrounds</li>
+                    <li>Show/hide dock icon</li>
+                    <li>Show/hide menu icon</li>
+                    <li>Dark mode</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- The blog doesn't use this footer file. It uses ./.themes/kapeli/source/_includes/footer.html instead -->
+    <div id="footer-margin"></div>
+    <div id="footer-layout"></div>
+</div>
+<footer id="footer" class="text-center">
+    <span><a href="https://kapeli.com/license_agreement">License Agreement</a></span><span style='margin-left:70px'><a href="https://kapeli.com/privacy_policy">Privacy Policy</a></span>
+</footer>
+<script src="js/app.min.js"></script>
+<script>
+    beginsWith = function(needle, haystack) {
+        return (haystack.substr(0, needle.length) == needle);
+    }
+    function getPrice() {
+        return $.ajax({
+            url: "//kapeli.com/price?subscription=1&condensed=1",
+            cache: true,
+            success: function(content){
+                if(beginsWith("PRICE: ", content))
+                {
+                    var price = content.substr(7);
+                    var priceElement = document.getElementById('purchase-price');
+                    priceElement.innerText = price;
+                }
+            }
+        });
+    }
+    function latencyTest(url) {
+        return $.ajax({
+            url: "//"+url+".kapeli.com/feeds/latencyTest_v2.txt",
+            cache: false,
+            success: function(content){
+                if(beginsWith("Just a latency test. Move along.", content))
+                {
+                    var link = document.getElementsByClassName("download")[0];
+                    if(link.getAttribute("href") == "downloads/v8/Dash.zip")
+                    {
+                        link.href = "//"+url+".kapeli.com/downloads/v8/Dash.zip";
+                        for(var i = 0; i < window.loadingFeeds.length; i++)
+                        {
+                            window.loadingFeeds[i].abort();
+                        }
+                    }
+                }
+            }
+        });
+    }
+    $(window).load(function() {
+        getPrice();
+        window.loadingFeeds = [];
+        window.loadingFeeds[window.loadingFeeds.length] = latencyTest('frankfurt');
+        window.loadingFeeds[window.loadingFeeds.length] = latencyTest('newyork');
+        window.loadingFeeds[window.loadingFeeds.length] = latencyTest('tokyo');
+    });     
+</script>
+<script>
+    var split = location.search.replace('?', '').split('&').map(function(val){
+        return val.split('=');
+    }); 
+    if(split.length > 0 && split[0][0].toUpperCase() === "COUPON" && split[0][1].length > 0)
+    {
+        var purchaseLink = document.getElementsByClassName("purchase")[0];
+        var discount = split[0][1];
+        purchaseLink.href = purchaseLink.href + "?coupon="+discount;
+    }
+</script> 
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+$(function() {
+    var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+        // parse slide data (url, title, size ...) from DOM elements 
+        // (children of gallerySelector)
+        var parseThumbnailElements = function(el) {
+            var thumbElements = el.childNodes,
+                numNodes = thumbElements.length,
+                items = [],
+                figureEl,
+                linkEl,
+                size,
+                item;
+
+            for(var i = 0; i < numNodes; i++) {
+
+                figureEl = thumbElements[i]; // <figure> element
+
+                // include only element nodes 
+                if(figureEl.nodeType !== 1) {
+                    continue;
+                }
+
+                linkEl = figureEl.children[0]; // <a> element
+
+                size = linkEl.getAttribute('data-size').split('x');
+
+                // create slide object
+                item = {
+                    src: linkEl.getAttribute('href'),
+                    w: parseInt(size[0], 10),
+                    h: parseInt(size[1], 10)
+                };
+
+
+
+                if(figureEl.children.length > 1) {
+                    // <figcaption> content
+                    item.title = figureEl.children[1].innerHTML; 
+                }
+
+                if(linkEl.children.length > 0) {
+                    // <img> thumbnail element, retrieving thumbnail url
+                    item.msrc = linkEl.children[0].getAttribute('src');
+                } 
+
+                item.el = figureEl; // save link to element for getThumbBoundsFn
+                items.push(item);
+            }
+
+            return items;
+        };
+
+        // find nearest parent element
+        var closest = function closest(el, fn) {
+            return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+        };
+
+        // triggers when user clicks on thumbnail
+        var onThumbnailsClick = function(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+
+            // find root element of slide
+            var clickedListItem = closest(eTarget, function(el) {
+                return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+            });
+
+            if(!clickedListItem) {
+                return;
+            }
+
+            // find index of clicked item by looping through all child nodes
+            // alternatively, you may define index via data- attribute
+            var clickedGallery = clickedListItem.parentNode,
+                childNodes = clickedListItem.parentNode.childNodes,
+                numChildNodes = childNodes.length,
+                nodeIndex = 0,
+                index;
+
+            for (var i = 0; i < numChildNodes; i++) {
+                if(childNodes[i].nodeType !== 1) { 
+                    continue; 
+                }
+
+                if(childNodes[i] === clickedListItem) {
+                    index = nodeIndex;
+                    break;
+                }
+                nodeIndex++;
+            }
+
+
+
+            if(index >= 0) {
+                // open PhotoSwipe if valid index found
+                openPhotoSwipe( index, clickedGallery );
+            }
+            return false;
+        };
+
+        // parse picture index and gallery index from URL (#&pid=1&gid=2)
+        var photoswipeParseHash = function() {
+            var hash = window.location.hash.substring(1),
+            params = {};
+
+            if(hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if(!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');  
+                if(pair.length < 2) {
+                    continue;
+                }           
+                params[pair[0]] = pair[1];
+            }
+
+            if(params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            if(!params.hasOwnProperty('pid')) {
+                return params;
+            }
+            params.pid = parseInt(params.pid, 10);
+            return params;
+        };
+
+        var openPhotoSwipe = function(index, galleryElement, disableAnimation) {
+            var pswpElement = document.querySelectorAll('.pswp')[0],
+                gallery,
+                options,
+                items;
+
+            items = parseThumbnailElements(galleryElement);
+
+            // define options (if needed)
+            options = {
+                index: index,
+
+                // define gallery index (for URL)
+                galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+                history: false,
+                tapToClose: true,
+                clickToCloseNonZoomable: true,
+                zoomEl: false,
+                captionEl: false,
+                timeToIdle: 0,
+                closeEl: false,
+                fullscreenEl: false,
+                shareEl: false,
+                counterEl: false,
+
+                getThumbBoundsFn: function(index) {
+                    // See Options -> getThumbBoundsFn section of documentation for more info
+                    var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                        rect = thumbnail.getBoundingClientRect(); 
+
+                    return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+                }
+
+            };
+
+            if(disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            // Pass data to PhotoSwipe and initialize it
+            gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+            gallery.init();
+            gallery.listen('initialZoomIn', function() { 
+                window.scrollBy( 1, 1 );
+                window.scrollBy( -1, -1 ); 
+            });
+        };
+
+        // loop through all gallery elements and bind events
+        var galleryElements = document.querySelectorAll( gallerySelector );
+
+        for(var i = 0, l = galleryElements.length; i < l; i++) {
+            galleryElements[i].setAttribute('data-pswp-uid', i+1);
+            galleryElements[i].onclick = onThumbnailsClick;
+        }
+
+        // Parse URL and open gallery if it contains #&pid=3&gid=1
+        var hashData = photoswipeParseHash();
+        if(hashData.pid > 0 && hashData.gid > 0) {
+            openPhotoSwipe( hashData.pid - 1 ,  galleryElements[ hashData.gid - 1 ], true );
+        }
+    };
+
+    // execute above function
+    initPhotoSwipeFromDOM('.screenshot-gallery');
+});
+</script>  </body>
+</html>

@@ -1,0 +1,12 @@
+#container {
+	background:#f0f0f0 url(images/bodybg-black.jpg) repeat-x;
+}
+
+#mainmenu a:hover {
+	background:#f0f0f0 url(images/menuhover-black.jpg) top left repeat-x;
+}
+
+#mainmenu li.current_page_item {
+	background:#f0f0f0 url(images/menuhover-black.jpg) top left repeat-x;
+}
+

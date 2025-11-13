@@ -1,0 +1,8 @@
+Sitemap: https://beckystern.com/sitemap.xml
+Sitemap: https://beckystern.com/news-sitemap.xml
+User-agent: *
+Allow: /wp-content/uploads/
+Disallow: /wp-content/plugins/
+Disallow: /wp-admin/
+Disallow: /readme.html
+Allow: /wp-admin/admin-ajax.php

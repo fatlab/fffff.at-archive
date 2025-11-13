@@ -1,0 +1,202 @@
+/* Search Modal functions. */
+
+// eslint-disable-next-line no-unused-vars
+function openSearchModal() {
+  const searchWrapper = document.querySelector('.search-wrapper');
+  searchWrapper.classList.toggle('show');
+  document.documentElement.classList.toggle('modal-open');
+  document.body.classList.toggle('modal-open');
+  requestAnimationFrame(() => {
+    searchWrapper.style.opacity = searchWrapper.classList.contains('show') ? '1' : '0';
+    searchWrapper.style.pointerEvents = searchWrapper.classList.contains('show') ? 'all' : 'none';
+  });
+}
+
+// eslint-disable-next-line no-unused-vars
+function closeSearchModal() {
+  const searchWrapper = document.querySelector('.search-wrapper');
+  searchWrapper.classList.toggle('show');
+  document.body.classList.toggle('modal-open');
+  document.documentElement.classList.toggle('modal-open');
+  requestAnimationFrame(() => {
+    searchWrapper.style.opacity = searchWrapper.classList.contains('show') ? '1' : '0';
+    searchWrapper.style.pointerEvents = searchWrapper.classList.contains('show') ? 'all' : 'none';
+  });
+}
+
+/* Replace subscription forms. */
+
+function replaceSubscriptionForms(isOld) {
+  const topSnippet = document.getElementById('archive-item-top-newsletter');
+  const bottomBarTextarea = document.getElementById('bottombar-textarea');
+
+  if (bottomBarTextarea) {
+    if (isOld && window.innerWidth < 564) {
+      bottomBarTextarea.style.display = 'none';
+    } else if (typeof bottomBarFormSuccess !== 'undefined') {
+      /* eslint-disable no-undef */
+      bottomBarTextarea.innerHTML = bottomBarFormSuccess;
+    } else {
+      bottomBarTextarea.innerHTML = '<p><a href="/latest/">See the latest on the Daily Dot.</a></p>';
+    }
+  }
+
+  if (topSnippet) {
+    topSnippet.className += ' t-show-top-snippet';
+  }
+}
+
+/* Get posts using AJAX. */
+
+(() => {
+  if (!ajaxUrl || !fpMorePostsAction) return;
+
+  const latestPostsRow = document.getElementById('articles');
+  let page = 2;
+  let morePostsLoading = false;
+
+  function renderBlogArchiveItems(html) {
+    const newDocument = new DOMParser().parseFromString(html, 'text/html');
+    const newLatestPostsRow = newDocument.getElementById('articles');
+    const newLatestPostsRowChildren = Array.from(newLatestPostsRow.children);
+    const latestPostsRowElement = document.getElementById('articles'); // Renamed variable
+    const archiveItemTopNewsletter = newDocument.getElementById('archive-item-top-newsletter');
+
+    if (archiveItemTopNewsletter) {
+      archiveItemTopNewsletter.remove();
+    }
+
+    if (newLatestPostsRowChildren.length > 0) {
+      const firstCard = newLatestPostsRowChildren[0]; // this is featured, so we need to clean it up
+      firstCard.className = 'articles__card';
+      firstCard.innerHTML = firstCard.innerHTML.replace(/featured-article-img/g, 'tile-article-img');
+      firstCard.querySelector('.articles__card__text__categories')?.classList.remove('d-none');
+      firstCard.querySelector('.articles__card__text__desc')?.classList.remove('d-none');
+
+      for (let i = 0; i < newLatestPostsRowChildren.length; i += 1) {
+        if (
+          !(newLatestPostsRowChildren[i].id === 'archive-item-top-newsletter')
+        ) {
+          latestPostsRowElement.appendChild(newLatestPostsRowChildren[i]); // Updated variable usage
+        }
+      }
+    }
+  }
+
+  async function getMorePosts() {
+    morePostsLoading = true;
+    if (typeof window.infinityScrollEnabled !== 'undefined' && !window.infinityScrollEnabled) return;
+
+    const loadingMoreIndicator = document.querySelector('#loading-more-indicator');
+    if (loadingMoreIndicator) loadingMoreIndicator.style.opacity = 1;
+
+    const response = await fetch(`${window.location.origin}${window.location.pathname}page/${page}/${window.location.search}`);
+
+    if (response.ok) {
+      const data = await response.text();
+      page += 1;
+      renderBlogArchiveItems(data);
+    }
+
+    morePostsLoading = false;
+    if (loadingMoreIndicator) loadingMoreIndicator.style.opacity = 0;
+  }
+
+  if (latestPostsRow) {
+    window.addEventListener('scroll', () => {
+      if (
+        latestPostsRow.getBoundingClientRect().bottom - window.innerHeight
+        < 350 && !morePostsLoading
+      ) {
+        getMorePosts();
+      }
+    });
+  }
+})();
+
+(() => {
+  const { isHome, isCategory } = wpData;
+  if (isHome || isCategory) {
+    const latestPostsRow = document.getElementById('articles');
+    const blankSlots = [document.createElement('div'), document.createElement('div'), document.createElement('div')];
+
+    const homeAdUnit = '/14713236/DailyDot_HP_InContent';
+    const categoryAdUnit = '/14713236/DailyDot_Category_InContent';
+    const adUnitToShow = isHome ? homeAdUnit : categoryAdUnit;
+
+    for (let i = 0; i < blankSlots.length; i += 1) {
+      blankSlots[i].className = 'articles__card';
+      blankSlots[i].id = `DD_Desktop_HP_Content${i + 1}`;
+      blankSlots[i].innerHTML = `
+        <div class="ad-wrapper">
+          <span class="ad-wrapper__text">Advertisement</span>
+          <div
+            data-aaad="true"
+            data-aa-adunit="${adUnitToShow}"
+            id="hp-ad-${i + 1}"
+            class="article-ad__content"
+          ></div>
+        </div>`;
+
+      if (i === 0) latestPostsRow.insertBefore(blankSlots[i], latestPostsRow.children[5]);
+      if (i === 1) latestPostsRow.insertBefore(blankSlots[i], latestPostsRow.children[13]);
+      if (i === 2) latestPostsRow.insertBefore(blankSlots[i], latestPostsRow.children[17]);
+    }
+  }
+})();
+
+/* Main menu more items toggle.  */
+
+function toggleMoreItemsMenu(e) {
+  e.preventDefault();
+
+  if (e.target.className.match('menu-active')) {
+    e.target.className = e.target.className.replace(' menu-active', '');
+  } else {
+    e.target.className = `${e.target.className} menu-active`;
+  }
+}
+
+(() => {
+  const primaryMenu = document.getElementById('primary-menu');
+
+  if (primaryMenu.children.length > 0) {
+    for (let i = 0; i < primaryMenu.children.length; i += 1) {
+      if (primaryMenu.children[i].className.match('menu-item-has-children')) {
+        primaryMenu.children[i].getElementsByTagName('a')[0].onclick = toggleMoreItemsMenu;
+      }
+    }
+  }
+})();
+
+window.addEventListener('load', () => {
+  /* Remove classes to hide these elements. */
+
+  const topSnippet = document.getElementById('archive-item-top-newsletter');
+
+  if (topSnippet) {
+    topSnippet.children[0].className = topSnippet.children[0].className.replace(
+      'd-none',
+      '',
+    );
+  }
+});
+
+/* Check if MailChimp subscription form is submitted. */
+
+(() => {
+  const isMCSubmitted = window.localStorage.getItem('mc_form_submitted');
+
+  if (isMCSubmitted === 'true') {
+    replaceSubscriptionForms(true);
+  }
+})();
+
+/* Social sharing click handler. */
+
+window.addEventListener('click', (e) => {
+  if (e.target.className.match('social-sharing-link-open')) {
+    e.preventDefault();
+    window.open(e.target.href);
+  }
+});

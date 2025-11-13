@@ -1,0 +1,275 @@
+(function ($) {
+    "use strict";
+
+    function progressBar($scope, $) {
+        const bgGlobalProgress = {
+            index: 58,
+            speed: 100,
+            round: true,
+            strokeBottom: 5,
+            colorSlice: "#FF6D00",
+            colorCircle: "#f1f1f1",
+        }
+        const bgCircle = new CircularProgressBar("business_growth", bgGlobalProgress);
+        bgCircle.initial();
+    }
+    function clientLogo($scope, $) {
+        var swiperClientLogo = new Swiper(".client_logo_carousel", {
+            loop: true,
+            speed: 2000,
+            freeMode: true,
+            centeredSlides: true,
+            allowTouchMove: true,
+            autoplay: {
+                delay: 1,
+                disableOnInteraction: true,
+            },
+            breakpoints: {
+                376: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 4,
+                },
+                1025: {
+                    slidesPerView: 7,
+                },
+            },
+        });
+    }
+    function odometerActive($scope, $) {
+        jQuery('.odometer').appear(function (e) {
+            var odo = jQuery(".odometer");
+            odo.each(function () {
+                var countNumber = jQuery(this).attr("data-count");
+                jQuery(this).html(countNumber);
+            });
+        });
+    }
+    function projectActive($scope, $) {
+        var swiperPortfolio = new Swiper(".portfolio_carousel", {
+            loop: true,
+            speed: 400,
+            spaceBetween: 30,
+            allowTouchMove: true,
+            centeredSlides: true,
+            pagination: {
+                el: ".portfolio-swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                1025: {
+                    slidesPerView: 2,
+                },
+            },
+        });
+    }
+    function teamCarousel($scope, $) {
+        var swiperTeam = new Swiper(".team_carousel", {
+            loop: true,
+            speed: 800,
+            spaceBetween: 30,
+            allowTouchMove: true,
+            centeredSlides: true,
+            pagination: {
+                el: ".team-swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                },
+                1025: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+    }
+    function footerServiceCarousel($scope, $) {
+        var servicePillCarousel = new Swiper(".service_pill_carousel", {
+            loop: true,
+            speed: 4000,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: ".spc-swiper-button-next",
+                prevEl: ".spc-swiper-button-prev",
+            },
+            autoplay: {
+                delay: 1,
+                disableOnInteraction: true,
+            },
+            breakpoints: {
+                321: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+                1025: {
+                    slidesPerView: 4,
+                },
+                1200: {
+                    slidesPerView: 5,
+                },
+            },
+        });
+    }
+    function testimonialActive($scope, $) {
+        var reviewOneColCarousel = new Swiper(".review_onecol_carousel", {
+            loop: true,
+            speed: 1000,
+            slidesPerView: 1,
+            spaceBetween: 50,
+            navigation: {
+                nextEl: ".r1cc-swiper-button-next",
+                prevEl: ".r1cc-swiper-button-prev",
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: true,
+            },
+        });
+    }
+    function testimonialActiveV3($scope, $) {
+        var review4ColCarousel = new Swiper(".review_4col_carousel", {
+            loop: true,
+            speed: 1000,
+            spaceBetween: 20,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: true,
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 4,
+                },
+            },
+        });
+    }
+    function marquee($scope, $) {
+        $('.marquee-left').marquee({
+            speed: 50,
+            gap: 0,
+            delayBeforeStart: 0,
+            direction: 'left',
+            duplicated: true,
+            pauseOnHover: false,
+            startVisible: true,
+        });
+    }
+    function awardSlider($scope, $) {
+        var slider = new Swiper(".awards_slider", {
+            loop: true,
+            spaceBetween: 30,
+            speed: 400,
+            slidesPerView: 6,
+            autoplay: {
+                enabled: true,
+                delay: 6000
+            },
+            breakpoints: {
+                '1600': {
+                    slidesPerView: 6,
+                },
+                '1200': {
+                    slidesPerView: 4,
+                },
+                '992': {
+                    slidesPerView: 4,
+                },
+                '768': {
+                    slidesPerView: 3,
+                },
+                '576': {
+                    slidesPerView: 3,
+                },
+                '0': {
+                    slidesPerView: 2,
+                },
+            },
+        });
+    }
+    function csMarqueeLeft($scope, $) {
+        $('.cs_brand_marquee_left').marquee({
+            speed: 50,
+            gap: 0,
+            delayBeforeStart: 0,
+            direction: 'left',
+            duplicated: true,
+            pauseOnHover: true,
+            startVisible: true,
+        });
+    }
+    function csMarqueeRight($scope, $) {
+        $('.cs_brand_marquee_right').marquee({
+            speed: 50,
+            gap: 0,
+            delayBeforeStart: 0,
+            direction: 'right',
+            duplicated: true,
+            pauseOnHover: true,
+            startVisible: true,
+        });
+    }
+    function mlTestimonialSlider($scope, $) {
+        var mlTestimonialSlider = new Swiper(".ml_testimonial_slider", {
+            loop: true,
+            spaceBetween: 0,
+            speed: 400,
+            slidesPerView: 5,
+            autoplay: {
+                enabled: true,
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".ml-swiper-button-next",
+                prevEl: ".ml-swiper-button-prev",
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 4,
+                },
+                1200: {
+                    slidesPerView: 5,
+                },
+            },
+        });
+    }
+
+    $(window).on('elementor/frontend/init', function () {
+        if (elementorFrontend.isEditMode()) {
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-hero-one.default', progressBar)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-brand.default', clientLogo)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-funfact.default', odometerActive)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-hero-three.default', odometerActive)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-funfact-v2.default', odometerActive)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-about.default', odometerActive)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-funfact-v3.default', odometerActive)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-funfact-v4.default', odometerActive)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-project.default', projectActive)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-team.default', teamCarousel)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-testimonial-v2.default', testimonialActive)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-testimonial-v3.default', testimonialActiveV3)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-brand-v2.default', marquee)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-footer-service.default', marquee)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-brand-v3.default', marquee)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-marquee.default', marquee)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-title-marquee.default', marquee)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-awards.default', awardSlider)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-brand-marquee.default', csMarqueeLeft)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-brand-marquee-v2.default', csMarqueeRight)
+            elementorFrontend.hooks.addAction('frontend/element_ready/int-testimonial-v4.default', mlTestimonialSlider)
+        }
+    });
+
+})(jQuery);

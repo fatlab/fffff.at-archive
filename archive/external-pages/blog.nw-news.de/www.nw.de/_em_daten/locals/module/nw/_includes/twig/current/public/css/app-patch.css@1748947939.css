@@ -1,0 +1,17 @@
+html, body{
+    overflow-x: unset!important;
+}
+.nw-big-privacy-box{
+    margin-bottom: 20px;
+}
+@media(max-width:767px){
+    #appEgy .drawer-header #closeEngagently.close{
+        top: 70px;
+    }
+    #appEgy{
+        top: 64px;
+    }
+    egy-discussion::part(commentary-rows__actions--level-0){
+        margin-bottom: 80px;
+    }
+}

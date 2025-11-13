@@ -1,0 +1,35 @@
+(function ($) {
+  console.log("Running breadcrumbs submenu script");
+  function adaptSubmenu() {
+    const menu = $(".ae-breadcrumbs-submenu");
+    const menuWidth = menu.width();
+    const dropdown = $(menu).find(".submenu");
+    const dropdownMenu = dropdown.find(".dropdown-menu");
+    if (window.innerWidth < 992) {
+      dropdownMenu.addClass("dropdown-menu-right");
+    } else dropdownMenu.removeClass("dropdown-menu-right");
+    /* Dropdown padding-left = 100px */
+    let overlineWidth = menu.find(".root").width();
+    const children = menu.find(".children");
+    const items = children.find(".nav-item");
+
+    $(items).prependTo(children);
+    dropdownMenu.children().insertBefore(dropdown);
+
+    items.each(function () {
+      const childWidth = $(this).width();
+      if (overlineWidth + childWidth * 1.5 < menuWidth - childWidth) {
+        overlineWidth += childWidth;
+      } else {
+        $(this).appendTo(dropdownMenu);
+
+        if (dropdown.hasClass("d-none")) {
+          dropdown.removeClass("d-none");
+        }
+      }
+    });
+  }
+
+  adaptSubmenu();
+  window.addEventListener("resize", adaptSubmenu);
+})(jQuery);

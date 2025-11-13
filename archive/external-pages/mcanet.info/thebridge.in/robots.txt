@@ -1,0 +1,19 @@
+# robots.txt for 
+User-agent: *
+Allow: /
+Disallow: /admin/*
+Disallow: /partnercontent/*
+Disallow: /xhr/*
+Disallow: /app-lite/*
+Disallow: /refer-*
+Disallow: /search/*
+Disallow: /search?*
+Disallow: /xhr/*
+Disallow: /preview/story-*
+Disallow: /amp/preview/story-*
+Disallow: /staging/* 
+Disallow: /xhr/getNewsMixin*
+
+Sitemap: https://thebridge.in/sitemap/sitemap-index.xml
+Sitemap: https://thebridge.in/news-sitemap-daily.xml
+Sitemap: https://thebridge.in/sitemap-daily.xml

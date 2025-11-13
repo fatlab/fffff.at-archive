@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>occupyinter.net &ndash; animated GIF army &ndash; embeds, browser addons, website hijacks</title>
+  <link href='stylesheets/frontpage.css' media='screen' rel='stylesheet' type='text/css' />
+</head>
+<body>
+  <div id='container'>
+    <div style='background: #fff3cd; border: 2px solid #ffc107; padding: 12px 20px; margin: 0 0 20px 0; text-align: center; font-size: 14px;'>
+      This site is an archive of a <a href='https://fffff.at' style='font-weight: bold; color: #000;'>F.A.T. Lab</a> project from October 2011. <a href='https://fffff.at/occupy-the-internet/' style='font-weight: bold; color: #000;'>Read more</a>
+    </div>
+    <div id='header'>
+      <h1>
+        <a href='http://occupyinter.net/index.html'>Occupy The Internet</a>
+      </h1>
+      <div id='navigation'>
+        <ul>
+          <li><a href="http://occupyinter.net/index.html#embeddable-protest">Embeddable Protest</a></li>
+          <li><a href="http://occupyinter.net/index.html#browser-addons">Browser Addons</a></li>
+          <li><a href="http://occupyinter.net/index.html#site-hijack">Site Hijack</a></li>
+          <li><a href="http://occupyinter.net/stats.html">Stats</a></li>
+          <li><a href="http://occupyinter.net/sites.html">Full Site List</a></li>
+          <li><a href="http://occupyinter.net/index.html#about">About</a></li>
+        </ul>
+      </div>
+      <!-- Social sharing widgets disabled for offline archive
+      <section class="social-sharing">
+       <div class="soc-button" id="facebook-button"><iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Foccupyinter.net&amp;send=false&amp;layout=button_count&amp;width=95&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=225633787500723" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:95px; height:21px;" allowTransparency="true"></iframe></div>
+       <div class="soc-button" id="twitter-button"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://occupyinter.net" data-text="Occupy The Internet! #occupy #ows" data-count="horizontal" data-via="FFFFFAT">Tweet</a><script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script></div>
+       <div style="clear: both;"></div>
+      </section>
+      -->
+    </div>
+    <div id='body'>
+      <script type='text/javascript'>
+        //<![CDATA[
+          var prev_size;
+          function update_embed_code(size){
+            var el = document.getElementById('embed_code');
+            var script_src = "http://occupyinter.net/embed.js";
+            var orderly = document.getElementById('orderly').checked;
+            el.innerHTML = script_src+"?size="+size+"&orderly="+avatar_orderly;
+            if(size == undefined) size = '200'; // FIXME not resetting properly. Just add jquery, yeesh
+          
+            var url = '';
+            if(orderly == false) {
+              url = 'http://occupyinter.net/embed.js?orderly='+orderly;
+              el.innerHTML = '<sc'+'ript src="'+url+'"></sc'+'ript>';
+            }
+            else {
+              url = 'http://occupyinter.net/embed.js?size='+size;
+              el.innerHTML = '<sc'+'ript src="'+url+'"></sc'+'ript>';
+            }
+          
+            // Unload old protest script, then create <script> and inject
+            var widget = document.getElementById('occupy-widget');
+            if(widget) {
+              widget.parentNode.removeChild(widget);
+            }
+            var old_skript = document.getElementById('embed_demo');
+            if(old_skript){
+              old_skript.parentNode.removeChild(old_skript);
+            }
+          
+            var skript = document.createElement('script');
+            skript.id = "embed_demo";
+            skript.type = 'text/javascript';
+            skript.src = url;
+            document.body.appendChild(skript);
+          }
+        //]]>
+      </script>
+      <div id='demo'>
+        <a name='embeddable-protest'></a>
+        <p>
+          Are you a "webmaster", admin, blog owner or someone with access to index.html files? Are you interested in taking part in the recent global wave of revolution from the comfort of your home computer?
+          <em>Occupy the Internet!</em>
+        </p>
+        <p>
+          Add the animated GIF army to websites you control (or can get control of) by pasting the following code into any HTML file:
+        </p>
+        <textarea id='embed_code' onclick='this.select()' readonly='readonly' rows='2'><script src="embed.js"></script></textarea>
+        <p>
+          For the full list of occupied websites visit <a href="http://fffff.at/occupy-the-internet">fffff.at/occupy-the-internet</a>
+        </p>
+        <p>
+          To add your occupied website to this list send an email to <script>document.write('<a href="mailto:info@fffff.at">info[at]fffff.at</a>')</script>
+          or tweet us <a href="https://twitter.com/fffffat">@FFFFFAT</a>
+        </p>
+        <hr />
+        <a name='browser-addons'></a>
+        <h2>Browser Addons</h2>
+        <p>
+          Take over the computers of the 1% by installing <a href="http://fffff.at/occupy-internet-extensions/">Occupy Internet browser addons</a> on their computers:
+        </p>
+        <p class='install-addons'>
+          <a class="addon-button" href="http://addons.gleuch.com/occupy-internet/downloads/chrome">Chrome</a>
+          <a class="addon-button" href="http://addons.gleuch.com/occupy-internet/downloads/firefox">Firefox</a>
+          <a class="addon-button" href="http://fffff.at/occupy/occupy.safariextz.zip">Safari</a>
+        </p>
+        <hr />
+        <a name='site-hijack'></a>
+        <h2>Webpage Hijack</h2>
+        <p>
+          Use the <a href="http://fffff.at/occupy-the-internet-phase-2/">Occupy the Internet - The Service</a> tool, which
+          lets you enter a URL and protest any website, e.g.:
+          <ul>
+            <li><a href="http://fffff.at/occupy/jpmorganchase.com">jpmorganchase.com</a></li>
+            <li><a href="http://fffff.at/occupy/barclays.co.uk">barclays.co.uk</a></li>
+          </ul>
+        </p>
+        <hr />
+        <h2>GIFs</h2>
+        <p>
+          If you would like to contribute animated GIF occupation soldiers please leave URLs in the comment thread of <a href="http://fffff.at/enlist-today/">this post</a> where they will be called up for duty. Note: images should have transparent backgrounds.
+        </p>
+        <hr />
+        <h2>Source Code</h2>
+        <p>
+          <a href="https://github.com/jamiew/occupy-internet-widget">http://github.com/jamiew/occupy-internet-widget</a> <br />
+          MIT Licensed
+        </p>
+        <hr />
+        <a name='about'></a>
+        <h2>About</h2>
+        <p>
+          A <strong><a href="http://fffff.at">F.A.T. Lab</a></strong> Production
+          <br />
+          Concept development by <a href="http://www.theowatson.com/">Theo</a>, <a href="http://www.simple-mechanisms.com/">Jerry</a>, <a href="http://jamiedubs.com/">Jamie</a>, <a href="http://gleuch.com/">Greg</a>, <a href="http://evan-roth.com">Evan</a>, <a href="http://datenform.de/">Aram</a>, and <a href="http://tobi-x.com">Tobi</a>
+          <br />
+          Code development by <a href="http://jamiedubs.com/">Jamie</a>, <a href="http://gleuch.com">Greg</a>, <a href="http://theowatson.com">Theo</a>, and <a href="http://tobi-x.com">Tobi</a>.
+        </p>
+        <script id='embed_demo' src='embed.js'></script>
+        <script src='archive-counter.js'></script>
+      </div>
+    </div>
+    <div id='footer'>
+      <!-- Google Analytics tracking disabled for offline archive
+      <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-96220-25']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+      </script>
+      -->
+    </div>
+  </div>
+</body>

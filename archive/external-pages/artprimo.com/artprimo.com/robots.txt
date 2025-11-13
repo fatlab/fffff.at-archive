@@ -1,0 +1,49 @@
+# IF YOU DO NOT WISH TO HAVE THE GOOGLE IMAGE BOT SCAN YOUR DOMAIN FOR IMAGES
+# THEN YOU CAN INCLUDE THE FOLLOWING IN YOUR ROBOTS FILE.
+# I FOUND THAT MY BANDWIDTH USAGE DROPPED BY A MASSIVE AMOUNT AFTER I GOT RID
+# OF THE GOOGLE IMAGE BOT. ALL I HAD WAS IMAGE HUNTERS STEALING PRODUCT SHOTS
+# AND NOT EVEN BROWSING THE SITE.
+#
+# 1-3-2014 User-agent: Googlebot-Image
+# 1-3-2014 Disallow: /
+
+User-agent: SemrushBot
+Disallow: https://artprimo.com/forums/*
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: Googlebot-image
+Disallow:
+
+# This says to apply these settings to ALL search engine spiders/crawlers
+User-agent: *
+Crawl-delay: 60
+
+
+# These settings will keep spiders from indexing your unwanted pages 
+Disallow: /catalog/account.php
+Disallow: /catalog/advanced_search.php
+Disallow: /catalog/checkout_shipping.php
+Disallow: /catalog/create_account.php
+Disallow: /catalog/login.php
+Disallow: /catalog/password_forgotten.php
+Disallow: /catalog/popup_image.php
+Disallow: /catalog/shopping_cart.php
+#Disallow: /catalog/image
+
+Sitemap:  https://artprimo.com/catalog/sitemap.php
+Sitemap:  https://artprimo.com/forums/sitemap-artprimo.php
+Sitemap:  https://artprimo.com/forums/sitemap-artprimo_forums.php
+Sitemap:  https://artprimo.com/forums/sitemap-artprimo_topics_pages.php
+
+
+# Feel free to add any other pages on your site that you don't want to be indexed by 
+#  the search engines.  
+# PLEASE NOTE: Any pages that you list here should be secured by other means if you 
+#  don't want people to be able to view them, as some malicious users will look at a
+#  robots.txt file to try to find "hidden" or "secret" areas of web sites to find 
+#  confidential information.
+# Just Uncomment a line or add new ones as you see fit.
+# Disallow: /private
+# Disallow: /hidden

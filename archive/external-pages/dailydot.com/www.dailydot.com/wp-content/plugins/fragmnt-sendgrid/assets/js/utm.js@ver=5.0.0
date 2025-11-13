@@ -1,0 +1,22 @@
+(($) => {
+  $(document).ready(() => {
+    const queryVariables = new URLSearchParams(window.location.search);
+    // utm_id
+    $('input[type="hidden"][id^="field_js_utm_id"]').val(queryVariables.get('utm_id'));
+
+    // utm_source
+    $('input[type="hidden"][id^="field_js_utm_source"]').val(queryVariables.get('utm_source'));
+
+    // utm_medium
+    $('input[type="hidden"][id^="field_js_utm_medium"]').val(queryVariables.get('utm_medium'));
+
+    // utm_campaign
+    $('input[type="hidden"][id^="field_js_utm_campaign"]').val(queryVariables.get('utm_campaign'));
+
+    // utm_term
+    $('input[type="hidden"][id^="field_js_utm_term"]').val(queryVariables.get('utm_term'));
+
+    // utm_content
+    $('input[type="hidden"][id^="field_js_utm_content"]').val(queryVariables.get('utm_content'));
+  });
+})(jQuery);

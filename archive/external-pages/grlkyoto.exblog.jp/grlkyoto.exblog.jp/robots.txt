@@ -1,0 +1,23 @@
+User-agent: *
+Disallow: /tb/
+Disallow: /iv/
+Disallow: /blog.asp
+Disallow: /tag/
+Disallow: /tags/
+
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: GrapeshotCrawler
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: proximic
+Disallow: /
+
+Sitemap: https://grlkyoto.exblog.jp/sitemap.xml

@@ -1,0 +1,109 @@
+function traffic(traffic_ID, traffic_same)
+{
+    var params = new Array();
+
+    // unique code
+    params.push('uc=' + traffic_ID);
+
+    // screen width x height
+    params.push('sd=' + screen.width + 'x' + screen.height);
+
+    // color depth
+    if (screen.colorDepth != 'undefined') {
+        params.push('cd=' + screen.colorDepth);
+    }
+
+    // refering page
+    var referrer = (encodeURIComponent ? encodeURIComponent(document.referrer) : escape(document.referrer));
+    if (referrer != '') {
+        params.push('rp=' + referrer);
+    }
+
+    // current page
+    var currenturl = (encodeURIComponent ? encodeURIComponent(document.location) : escape(document.location));
+    if (currenturl != '') {
+        params.push('cu=' + currenturl);
+    }
+
+    // unique id against cache
+    params.push('ui=' + traffic_same);
+    if ((typeof traffic_ef != 'undefined') && (traffic_ef.length > 0)) {
+        params.push('ef=' + traffic_ef.join('|'));
+    }
+
+    // blog post_id
+    if ((typeof Blog != 'undefined') && (typeof Blog.post_id != 'undefined') && (Blog.post_id > 0)) {
+        params.push('bpid=' + Blog.post_id);
+    }
+
+    document.write('<img class="meropixel-hide" style="position: absolute; top: -10px; left: -10px; width: 1px; height: 1px;" src="https://px.blog.hu/12g?' + params.join('&amp;') + '" alt="" />');
+}
+
+var felbontas    = "";
+var traffic_same = Math.floor(Math.random()*1000000);
+
+if (screen) {
+    felbontas   = '@s=' + screen.width + 'x' + screen.height;
+}
+
+/*
+* Az url parameterkent megkapott linket
+* ha van, xmlhttprequest helyett
+* XDomainRequest-t hasznal.
+* Thanks To IE8/IE9
+*/
+function xDomaincallPostCounter(url)
+{
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+        xhr.open("get", url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+        xhr = new XDomainRequest();
+        xhr.CacheControl = "no-cache";
+        xhr.open("get", url);
+    } else {
+        xhr = null;
+    }
+
+
+    if (xhr){
+        xhr.onload = function(){
+
+            /*
+            * ha jo valasz erkezett a servertol es van bejelentkezett felhasznalo,
+            * es meg szuperadmin is az illeto, eval fuggvennyel megfelelo formara
+            * alakitjuk a kapott valaszt, majd a buildPCdesign()-el es az ExtJs segitsegevel
+            * megjelenitjuk az oldalon.
+            */
+            x = document.getElementById("post_id_counter");
+
+            if (x !== null) {
+                var response = eval('(' + xhr.responseText + ')');
+                x.innerHTML  = response.msg;
+            }
+        };
+        xhr.send();
+    }
+}
+
+jQuery(document).ready(function()
+{
+    if (typeof Blog != 'undefined'
+        && typeof Blog.post_id != 'undefined'
+        && Blog.post_id > 0
+        && Blog.post_visibility == 'public'
+        && Blog.post_status !== 'draft'
+        && Blog.post_rsc != 1
+        && typeof Blog.nopostcounter == 'undefined') {
+
+        var urlparams = new Array();
+        urlparams.push('https://pc.blog.hu/blhpc.php?');
+        urlparams.push('bpid=' + Blog.post_id);
+        urlparams.push('&bid=' + Blog.id);
+        if (typeof Blog.isPreview != 'undefined') {
+            urlparams.push('&prev=' + Blog.isPreview);
+        }
+
+        xDomaincallPostCounter(urlparams.join(''));
+    }
+});

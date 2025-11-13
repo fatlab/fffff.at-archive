@@ -1,0 +1,20 @@
+# robots : last updated Bob 150728
+
+User-agent: *
+Disallow: /_thumbs/
+Disallow: /api/
+Disallow: /cgi-bin/
+#Disallow: /css/
+Disallow: /ckeditor/
+Disallow: /ckfinder/
+Disallow: /db-backups/
+Disallow: /ht-backups/
+Disallow: /galleria/
+#Disallow: /images/
+Disallow: /includes/
+#Disallow: /js/ 
+Disallow: /old/
+Disallow: /index.php*
+
+# http://www.robotstxt.org/wc/exclusion.html#robotstxt
+# http://tool.motoricerca.info/robots-checker.phtml

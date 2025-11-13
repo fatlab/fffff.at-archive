@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Eviction, or the Coming Datapocalypse &laquo; ASCII by Jason Scott</title>
+		<link rel="stylesheet" href="../../../../wp-content/themes/terminally/style.css" type="text/css" media="screen" />
+		<link rel="pingback" href="https://ascii.textfiles.com/xmlrpc.php" />
+				<!--[if lt IE 9]>
+		  <script data-jetpack-boost="ignore" src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+		<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel='dns-prefetch' href='https://secure.gravatar.com/' />
+<link rel='dns-prefetch' href='https://stats.wp.com/' />
+<link rel='dns-prefetch' href='https://v0.wordpress.com/' />
+<link rel='dns-prefetch' href='https://jetpack.wordpress.com/' />
+<link rel='dns-prefetch' href='https://s0.wp.com/' />
+<link rel='dns-prefetch' href='https://public-api.wordpress.com/' />
+<link rel='dns-prefetch' href='https://0.gravatar.com/' />
+<link rel='dns-prefetch' href='https://1.gravatar.com/' />
+<link rel='dns-prefetch' href='https://2.gravatar.com/' />
+<link rel="alternate" type="application/rss+xml" title="ASCII by Jason Scott &raquo; Feed" href="https://ascii.textfiles.com/feed" />
+<link rel="alternate" type="application/rss+xml" title="ASCII by Jason Scott &raquo; Comments Feed" href="https://ascii.textfiles.com/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="ASCII by Jason Scott &raquo; Eviction, or the Coming Datapocalypse Comments Feed" href="https://ascii.textfiles.com/archives/1617/feed" />
+
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='../../../../wp-includes/css/dist/block-library/style.min.css@ver=6.8.3.css' type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link rel='stylesheet' id='mediaelement-css' href='../../../../wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css@ver=4.2.17.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css' href='../../../../wp-includes/js/mediaelement/wp-mediaelement.min.css@ver=6.8.3.css' type='text/css' media='all' />
+<style id='jetpack-sharing-buttons-style-inline-css' type='text/css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='sharedaddy-css' href='../../../../wp-content/plugins/jetpack/modules/sharedaddy/sharing.css@ver=15.1.1.css' type='text/css' media='all' />
+<link rel='stylesheet' id='social-logos-css' href='../../../../wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css@ver=15.1.1.css' type='text/css' media='all' />
+
+<link rel="https://api.w.org/" href="https://ascii.textfiles.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://ascii.textfiles.com/wp-json/wp/v2/posts/1617" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://ascii.textfiles.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.8.3" />
+<link rel="canonical" href="1617.html" />
+<link rel='shortlink' href='https://wp.me/poroN-q5' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://ascii.textfiles.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fascii.textfiles.com%2Farchives%2F1617" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://ascii.textfiles.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fascii.textfiles.com%2Farchives%2F1617&#038;format=xml" />
+<STYLE TYPE="text/css">
+ .herpderp { float: right; text-transform: uppercase;
+             font-size: 7pt; font-weight: bold; }
+</STYLE>
+	<style>img#wpstats{display:none}</style>
+		
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Eviction, or the Coming Datapocalypse" />
+<meta property="og:url" content="https://ascii.textfiles.com/archives/1617" />
+<meta property="og:description" content="A terrible thing happened recently. You might have missed it. AOL Hometown, which itself was actually a combination of a bunch of previously acquired websites, shut down. It shut down on October 31…" />
+<meta property="article:published_time" content="2008-12-21T19:08:21+00:00" />
+<meta property="article:modified_time" content="2011-04-01T05:30:13+00:00" />
+<meta property="og:site_name" content="ASCII by Jason Scott" />
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg" />
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="Eviction, or the Coming Datapocalypse" />
+<meta name="twitter:card" content="summary" />
+
+<!-- End Jetpack Open Graph Tags -->
+	</head>
+
+	<body class="wp-singular post-template-default single single-post postid-1617 single-format-standard wp-theme-terminally has_sidebar">
+	
+  		<header class="header">
+  			<h1><a href="https://ascii.textfiles.com/">ASCII by Jason Scott</a></h1>
+  			<p>Jason Scott&#039;s Weblog</p>
+  		</header>
+  		
+	  <div id="wrapper">
+
+  		<section class="content">
+	
+			<article class="post-1617 post type-post status-publish format-standard hentry category-housecleaning" id="post-1617">
+				
+				<header>
+				  <h1>Eviction, or the Coming Datapocalypse &mdash; <time>December 21, 2008</time></h1>
+		    	</header>
+		
+				<section>
+		
+				<p>A terrible thing happened recently. You might have missed it.</p>
+<p>AOL Hometown, which itself was actually a combination of a bunch of previously acquired websites, shut down. It shut down on October 31 of this year. If you try to go to a site that used to be hosted there, you are forwarded to a weblog entry by &#8220;The AOL Hometown Team&#8221;, that says this, in total:</p>
+<blockquote><p><strong>Hometown Has Been Shutdown</strong><br />
+Posted on Nov 6th 2008 1:30PM by Kelly Wilson<br />
+Dear AOL Hometown user,<br />
+We&#8217;re sorry to inform you that as of Oct. 31, 2008, AOLÂ® Hometown was shut down permanently. We sincerely apologize for any inconvenience this may cause.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">Sincerely, The AOL Hometown Team</p>
+</blockquote>
+<p class="MsoNormal" style="margin: 5pt 0in;">And that, my friends, is it.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">There was a <a href="http://www.peopleconnectionblog.com/2008/08/04/attention-aol-hometown-users-united-states/">weblog posting</a> on this same site, informally, on August 4th, letting people know AOL Hometown was being shut down, and maybe you should make an effort to get it. Officially, though, notification was sent out (how? In what way?) on September 30th, giving people essentially 4 weeks to figure out how to get their data off the servers, find a new place to send the data, get that arranged, and then do the transfer.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">Of course, many people may not have been checking their e-mail. Some people might have had un-working e-mail and not been notified. Some people might have not understood how to make things run.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">Go ahead and read these comments. They&#8217;re heartbreaking.</p>
+<blockquote>
+<p class="MsoNormal" style="margin: 5pt 0in;">2.  Is there not a way to obtain the blogs anymore. I was unable to transfer them before oct 31. Please let me know if there is anyway to get them. Thank you Sandra</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">5.  My question is like those above. Is there anyway still to retrieve my hournals and homepages? I tried before the deadline but nothing happened. These are my memories. Things I wanted to remember about my kids. And when I tried to access them before the deadline I was unable to. Otherwise I would have printed it all out. Please help.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">12. WHERE IS THE HOME PAGE IT TOOK MONTHS FOR ME TO BILL. I DID NOT RECEIVE ANY NOTICE VIA THE MAIL OR E-MAIL. PLEASE HELP ME FIND MY WEB PAGE SO I CAN COPY IT AND MOVE IT SOME WHERE ELSE.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">17. What happened to my web page on my husband, Bob Champine, that took me many years to put together on his career and which meant a lot to me and to the aviation community. I noticed with 9.0 I lost the left margin and the picture of him exiting the X-1. I need to restore it to the internet as it is history. Please tell me what to do. I will be glad to retype it, I just don&#8217;t want it lost to the world. I need help. Gloria Champine</p>
+</blockquote>
+<p class="MsoNormal" style="margin: 5pt 0in;">It&#8217;s all fine and good, those readers who sneer and say &#8220;you get what you pay for&#8221; and &#8220;ha ha, losers&#8221;. But the fact is, these people were brought online and given a place for themselves. Like a turkey drawn with a child&#8217;s hand or a collection of snow globes collected from a life well-lived, these sites were hand-made, done by real people, with no agenda or business plan or knowledge, exactly, of how everything under the webservers worked. They were paying for their accounts, make no mistake &#8211; this was often provided to them as a tool combined with their AOL accounts. Some were absorbed from other companies as AOL purchased them. Some of these websites had existed for a decade.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">Some people didn&#8217;t back things up. Some had moved on. The data, however, stayed where it was, for years on end, and if someone happened to not be online for 4 weeks and be prepared on short notice to retrieve their stuff, then they were well and truly fucked.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">Browsing the weblog that represents where these tens of thousands of websites used to go, you end up facing Kelly Wilson. Kelly Wilson is like the fucking Grim Reaper of websites. If you <a href="http://www.peopleconnectionblog.com/bloggers/kelly-wilson">browse this collection of her postings</a>, you can see she&#8217;s primarily doing the same thing: &#8220;These sites will be shut down. You better get your shit off because that&#8217;s it, it&#8217;s gone. You have 3 weeks. GO.&#8221;Â  One of these sites being shut down is Ficlets. Read this <a href="http://lawver.net/archive/2008/12/03/h21_ficlets_est_mort.php">weblog entry</a> from the creator of Ficlets and try not to have an emotional reaction.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">If you&#8217;re going to start composing something at me with a salad of sneering and a dash of cynicism, just <em>fuck off right now</em>. We&#8217;re the failures here. We failed them.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">Our little technorati, our people who cry for open source and beg us for money to Fight For Electronic Freedom and make their rounds at all the right cocktail parties at tech shows.. where the hell are they now? We&#8217;re talking about terabytes, terabytes of data, of hundreds of thousands of man-hours of work, crafted by people, an anthropological bonanza and a critical part of online history, wiped out because someone had to show that they were cutting costs this quarter.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">It&#8217;s an eviction; a mass eviction that happened under our noses and we let it happen.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">I&#8217;ve been evicted before &#8211; I was kicked out of a boarding house I used to live in between 1992 and 1997. Eviction laws were in place and I was sent notification after notification, shoved into my mailbox, left under my door, explaining my rights and how to appeal and how much time I had. It was done during the summer months, because winter would be a hardship. It was handled coldly, nastily, but it was done according to law, and luckily, I had a place to move onto. (They were closing up the building to turn it into professional space, which it is to this day.)</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">When we evict people from their webpages, fuck all is required.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">And before you sneer at AOL people, these people who trusted AOL: how about your Flickr? Your Facebook? Whatever the hot new wig-wag that you&#8217;re dumping hours into without thinking about it? What, you&#8217;re paying for something? Check this recent event out, paying subscriber: <em>you have shit</em>. Because of a cascade of EULA and Best Practices, and most importantly, a complete disregard for the importance of this data, we&#8217;re going to let it happen again. And again. And again.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">Think your site is untouchable? Think again, pokey.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">What am I saying here?</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">I&#8217;m saying that, like a real eviction, there should be practices in place. When you open your doors to hosting user content, you should have rules in action that, unless it&#8217;s a complete and total fire sale and you have no hope of even staying open that long, then you should be required, yes <em>by law, assholes</em>, to make the data available to customers for an extended period of time.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">There&#8217;s business opportunity here, for warehouses of data that can take in, say, AOL Hometown, and hold it for a year or longer, allowing people to acquire their data over the course of that year. With legislation or even <em>the kind of peer pressure you all used to dupe people into Creative Commons</em>, you could have this be the norm from this point forward.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">If you tell people they can upload their content, you should have a clear and distinct way for them to retrieve their content. People do it ad-hoc as they can, but the abilities of most people, the people without an engineering degree or years of experience, to get back what they put up is minimal. It&#8217;s not that important. We should make it important.</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">How many more times will we allow this?</p>
+<p class="MsoNormal" style="margin: 5pt 0in;">How long before someone takes a fucking stand?</p>
+<p class="MsoNormal" style="margin: 5pt 0in;"><strong>Update:</strong> <strong>This page got an awful lot of attention, and so I decided a <a href="https://ascii.textfiles.com/archives/1649">clarification was in order</a>.</strong></p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li><a href="1617.html#" class="sharing-anchor sd-button share-more"><span>Share</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-email"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-email-1617"
+				class="share-email sd-button share-icon"
+				href="mailto:?subject=%5BShared%20Post%5D%20Eviction%2C%20or%20the%20Coming%20Datapocalypse&#038;body=https%3A%2F%2Fascii.textfiles.com%2Farchives%2F1617&#038;share=email"
+				target="_blank"
+				aria-labelledby="sharing-email-1617"
+				data-email-share-error-title="Do you have email set up?" data-email-share-error-text="If you&#039;re having problems sharing via email, you might not have email set up for your browser. You may need to create a new email yourself." data-email-share-nonce="4dfece63de" data-email-share-track-url="https://ascii.textfiles.com/archives/1617?share=email">
+				<span id="sharing-email-1617" hidden>Click to email a link to a friend (Opens in new window)</span>
+				<span>Email</span>
+			</a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-facebook-1617"
+				class="share-facebook sd-button share-icon"
+				href="https://ascii.textfiles.com/archives/1617?share=facebook"
+				target="_blank"
+				aria-labelledby="sharing-facebook-1617"
+				>
+				<span id="sharing-facebook-1617" hidden>Click to share on Facebook (Opens in new window)</span>
+				<span>Facebook</span>
+			</a></li><li class="share-reddit"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-reddit-1617"
+				class="share-reddit sd-button share-icon"
+				href="https://ascii.textfiles.com/archives/1617?share=reddit"
+				target="_blank"
+				aria-labelledby="sharing-reddit-1617"
+				>
+				<span id="sharing-reddit-1617" hidden>Click to share on Reddit (Opens in new window)</span>
+				<span>Reddit</span>
+			</a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-twitter-1617"
+				class="share-twitter sd-button share-icon"
+				href="https://ascii.textfiles.com/archives/1617?share=twitter"
+				target="_blank"
+				aria-labelledby="sharing-twitter-1617"
+				>
+				<span id="sharing-twitter-1617" hidden>Click to share on X (Opens in new window)</span>
+				<span>X</span>
+			</a></li><li class="share-end"></li></ul></div></div></div></div></div>
+					<hr class="clearfix" />
+
+        			</p>
+			        <p class="post_categories"><mark>Categorised as:</mark> <a href="https://ascii.textfiles.com/archives/category/housecleaning" rel="category tag">housecleaning</a> </p>
+					    				                <p>Comments are disabled on this post</p>
+            				
+					<hr class="clearfix" />
+
+			        
+				</section>
+
+			</article>
+
+			
+<!-- You can start editing here. -->
+
+  <section class="comments">
+
+    <header>
+      <h2>76 Comments </h2>
+    </header>
+
+    <ol class="commentlist">
+      		<li class="comment even thread-even depth-1" id="comment-6380">
+				<div id="div-comment-6380" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/6d3b0b323d84519129bf9b639c9fe2c359e8054eb75c499cac2fe3daa224343c@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/6d3b0b323d84519129bf9b639c9fe2c359e8054eb75c499cac2fe3daa224343c@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' decoding='async'/>			<cite class="fn"><a href="http://angiesdesk.blogspot.com/" class="url" rel="ugc external nofollow">Angie</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6380">January 5, 2009 at 12:33 am</a>		</div>
+
+		<span class='herpc'><p>Wow.  o_O  Is it just me, or are there a <i>lot</i> of comments here by people who have no clue who Jason is, and apparently didn&#8217;t even read his post very carefully.  [bemused eyeroll]</p>
+<p>Angie</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-6381">
+				<div id="div-comment-6381" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://blog.bavoderidder.com/?p=65" class="url" rel="ugc external nofollow">Ruminations on Architecture &raquo; Blog Archive &raquo; Online Evictions</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6381">January 5, 2009 at 12:53 am</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] More information can be foundÂ here. [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-6390">
+				<div id="div-comment-6390" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.pcmech.com/article/wake-up-call-back-up-your-external-data/" class="url" rel="ugc external nofollow">Wake-Up Call - Back Up Your External Data | PCMech</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6390">January 5, 2009 at 3:10 am</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] Eviction, or the Coming Datapocalypse [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-6396">
+				<div id="div-comment-6396" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/9fc00dd09a47747dbb2727f067f1261730c39ba5d2011da03bc9ab61516bb949@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/9fc00dd09a47747dbb2727f067f1261730c39ba5d2011da03bc9ab61516bb949@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' loading='lazy' decoding='async'/>			<cite class="fn"><a href="http://betrayedzine.blogspot.com" class="url" rel="ugc external nofollow">ross</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6396">January 5, 2009 at 4:17 am</a>		</div>
+
+		<span class='herpc'><p>everybody loves to shit on peoples&#8217; beds</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-6412">
+				<div id="div-comment-6412" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/325b960c8a25d861c5f04764a2d525af438789a4c66a141cb0a1807f54e2ead1@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/325b960c8a25d861c5f04764a2d525af438789a4c66a141cb0a1807f54e2ead1@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' loading='lazy' decoding='async'/>			<cite class="fn"><a href="http://www.ccil.org/~cowan" class="url" rel="ugc external nofollow">John Cowan</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6412">January 5, 2009 at 7:33 am</a>		</div>
+
+		<span class='herpc'><p>I have to agree that anti-eviction laws don&#8217;t make sense in this domain, but I *emphatically* disagree with the tone, and much of the content, of the &#8220;Fuck you, you loser(s)&#8221; postings.</p>
+<p>I believe that Flavio (#25), Ed Pima (#26), and Anonymous (#35) are unfortunately right on the money, and that the rational response to such regulation would be to turn off free services altogether except for the largest and most deep-pocketed companies, which would make the concentration of cloud data all the worse and any failure all the less survivable.  For myself, I buy backup from Amazon S3, and if I could afford it, I&#8217;d be using permanent second-level backup from Iron Mountain or a similar company.  (Someone needs to retail the service of serious world-class data protection, as in &#8220;tapes in a box underneath the mountain&#8221;, so that individuals can use it.)</p>
+<p>Robert Plante (#33): This is not about taking responsibility for your actions, it&#8217;s about being compelled to assume responsibility for other people&#8217;s actions.  If I lost my house to flooding and complained, you&#8217;d tell me I was whining and should have moved to high ground; for that matter, if I lost my house to bombing and complained, you&#8217;d probably tell me I should have had the common sense to be born in another country.</p>
+<p>As for Kyle (#43), who claims to believe that laws never solve anything: I personally invite him to move to Somalia at once, where there are none.  Land is cheap, cell service is cheap, there are no taxes to pay for anything, and round-the-clock security guards for him and his family are just a cost of doing business.  Of course, it pays to remember that most security breaches are inside jobs&#8230;.</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-6427">
+				<div id="div-comment-6427" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.barrioelectronico.com/2009/01/05/alerta-respalde-sus-archivos-externos/" class="url" rel="ugc external nofollow">Barrio Electronico &raquo; Alerta!! Respalde sus archivos externos</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6427">January 5, 2009 at 12:16 pm</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] Eviction, or the Coming Datapocalypse (Desalojo, o el venidero fin de tus archivos) [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-6428">
+				<div id="div-comment-6428" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/2a16487ae599a3aab76dee59fbc500a69071ef27e947510c26a69daab2cee9a9@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/2a16487ae599a3aab76dee59fbc500a69071ef27e947510c26a69daab2cee9a9@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' loading='lazy' decoding='async'/>			<cite class="fn"><a href="http://blog.pythonaro.com" class="url" rel="ugc external nofollow">Giacomo</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6428">January 5, 2009 at 12:16 pm</a>		</div>
+
+		<span class='herpc'><p>The answer is a webservice that, on receiving a ping, will go out and dump your data to a version-controlled system. Something like $1 or $2 per ping will be charged, and the big guys like AOL can offer it as a premium service. Seems obvious to me, but nobody has done it yet. We keep meddling backup procedures from the early 90s, when storage was expensive and version control was a black art. I guess it might be because most of the &#8216;net is still made up of 20- and 30-something who don&#8217;t really know how to plan for the future.</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-6433">
+				<div id="div-comment-6433" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/7ec5d88335a0a89edd39ba1745e7a6c54672d075d2ffccd1049b5a390a06cfb8@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/7ec5d88335a0a89edd39ba1745e7a6c54672d075d2ffccd1049b5a390a06cfb8@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' loading='lazy' decoding='async'/>			<cite class="fn">Chris Barts</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6433">January 5, 2009 at 1:48 pm</a>		</div>
+
+		<span class='herpc'><p>There isn&#8217;t always a planned eviction: <a href="http://lifehacker.com/5122848/hard-lessons-in-the-importance-of-backups-journalspace-wiped-out" rel="nofollow">JournalSpace was wiped out by accident, and none of the morons who ran it had actually made real backups.</a> RAID isn&#8217;t the same as backups for precisely this reason: JournalSpace was wiped by accident, not random drive failure, and the accident was dutifully propagated across all of the volumes in the RAID. The result is that restoration is (apparently) impossible.</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-6448">
+				<div id="div-comment-6448" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/002f300c10adf962c69ae38accdf779ebe218deaa582bdf84d189046dce5cc6e@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/002f300c10adf962c69ae38accdf779ebe218deaa582bdf84d189046dce5cc6e@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' loading='lazy' decoding='async'/>			<cite class="fn">Mutiny</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6448">January 5, 2009 at 7:51 pm</a>		</div>
+
+		<span class='herpc'><p>I don&#8217;t see any difference between this and a hard drive failure.  Do I feel bad for the people it happened to?  Absolutely.  Do I really really feel bad for the people who lack the technical acumen to back up their own data?  Most definitely.  Could a proverbial ounce of prevention be worth, in this case, more than an ounce of digital cure?  Yes.</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-6478">
+				<div id="div-comment-6478" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/1093356108321ab082554c2e64438223bebb1a1e50cd88ca3895a0866ab6d4b0@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/1093356108321ab082554c2e64438223bebb1a1e50cd88ca3895a0866ab6d4b0@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' loading='lazy' decoding='async'/>			<cite class="fn"><a href="http://www.nitemarecafe.com" class="url" rel="ugc external nofollow">Wintermute</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6478">January 6, 2009 at 7:56 am</a>		</div>
+
+		<span class='herpc'><p>I want to address a couple of issues that have been raised in comments:</p>
+<p>First, for the &#8220;you get what you pay for&#8221; crowd, any FOSS advocate will tell you that there&#8217;s a difference between &#8220;free&#8221; and &#8220;free.&#8221; Did AOL gain a benefit from providing this service at the cost of the end user? I would guess yes. Therefore, the user &#8220;paid&#8221; something for the service, whether it was &#8220;free&#8221; with their AOL subscription, a premium add-on to their subscription, or there was a link back to AOL Hometown on all pages that it hosted. I&#8217;m not familiar enough with the service to say which it may have been, but an educated guess is that over the past decade, that has probably changed with the times. Regardless, all are valid forms of &#8220;payment&#8221; for the service.</p>
+<p>Second, how many of us who preach &#8220;backup, backup, backup&#8221; to our friends and family have also sat down and shown them how, exactly, to do said backups?</p>
+<p>Also, once data resides on someone else&#8217;s servers, people have a tendency to view the responsibility for that data as belonging to that someone else. I&#8217;m not saying this is right or wrong, only observing that this is how many people think. (I worked at an ISP/hosting provider, and I spent way too much time recovering from other people&#8217;s mistakes for them.)</p>
+<p>Finally, it&#8217;s easy to say &#8220;use a provider that you know isn&#8217;t going anywhere.&#8221; That&#8217;s sorta beside the point, but to address it anyhow&#8230; In 1998, who would have predicted that this service was going anywhere? AOL, however badly hated they were, wasn&#8217;t going anywhere. Just like we see Google as being around forever now, we saw AOL has being around forever then. It&#8217;s not the fault of someone who trusted them 10 years ago that they turned off the service now. And really, both bandwidth and storage are supposedly dirt cheap now. What would it hurt AOL to retain the data in a way that would allow the owners to retrieve it but not be browsable on the web? Or even, since they had worked out something with Google to provide a transfer script to Blogger.com, how hard would it have been to do said transfer and provide redirects for the URLs?</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-6485">
+				<div id="div-comment-6485" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.vevz.com/imminent-death-of-livejournal-predicted" class="url" rel="ugc external nofollow">Finance Blog &raquo; Blog Archive &raquo; imminent death of livejournal predicted</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6485">January 6, 2009 at 9:01 am</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] Do you have backups? [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-6492">
+				<div id="div-comment-6492" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/e614ca991b33d206bc0d61f24fe7ee5d5a346def64a951aef4611baea550d94b@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/e614ca991b33d206bc0d61f24fe7ee5d5a346def64a951aef4611baea550d94b@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' loading='lazy' decoding='async'/>			<cite class="fn">westernworld</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6492">January 6, 2009 at 9:46 am</a>		</div>
+
+		<span class='herpc'><p>aol are a bunch of jerks to be sure, but if people don&#8217;t backup anything they&#8217;re loath to lose locally  they got to learn that lesson.</p>
+<p>it&#8217;s the same self people that never listen, insist on their  cornfed ways and then wine when the shit hits the fan.</p>
+<p>the web is not for the stupid or the naive, nor those unwiling to learn and keep up-to-date.</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-6563">
+				<div id="div-comment-6563" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/1093356108321ab082554c2e64438223bebb1a1e50cd88ca3895a0866ab6d4b0@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/1093356108321ab082554c2e64438223bebb1a1e50cd88ca3895a0866ab6d4b0@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' loading='lazy' decoding='async'/>			<cite class="fn"><a href="http://www.nitemarecafe.com" class="url" rel="ugc external nofollow">Wintermute</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6563">January 7, 2009 at 5:59 am</a>		</div>
+
+		<span class='herpc'><p>@westernworld &#8211; Part of the point of my comment was this: Have you done anything to educate the &#8220;stupid or naive&#8221; other than to tell them &#8220;backup, backup, backup.&#8221; Telling someone to backup and actually empowering them by teaching them how are two entirely separate things.</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-6653">
+				<div id="div-comment-6653" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.sitepoint.com/blogs/2009/01/09/sitepoint-podcast-6-what-to-do-about-internet-explorer-6/" class="url" rel="ugc external nofollow">SitePoint &raquo; SitePoint Podcast #6: What to do about Internet Explorer 6</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-6653">January 8, 2009 at 9:41 pm</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] Eviction, or the Coming Datapocalypse (Jason Scott) [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-7011">
+				<div id="div-comment-7011" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://culture11.com/blogs/textpatterns/2009/01/15/evicted/" class="url" rel="ugc external nofollow">Text Patterns &raquo; Blog Archive &raquo; evicted!</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-7011">January 15, 2009 at 5:44 am</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] Died took me to a really interesting rant by Jason Scott about the closing of AOL Hometown. (And thereâ€™s a follow-up rant here.) Jasonâ€™s point is that, [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-7927">
+				<div id="div-comment-7927" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://catoshead.wordpress.com/2009/01/16/doom-of-mayan-proportions/" class="url" rel="ugc external nofollow">Doom of Mayan proportions &laquo; Shakie&#8217;s Journal</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-7927">January 29, 2009 at 5:36 am</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] in Uncategorized at 16:32 0 by gillsmoke I&#8217;ve been thinking ever since I read this in 43Folders Clips . I&#8217;ve been thinking about data, memory, information vs knowledge, and a [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-8095">
+				<div id="div-comment-8095" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://blog.preshweb.co.uk/2009/01/whining-entitlementism/" class="url" rel="ugc external nofollow">Whining entitlementism at PreshBlog</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-8095">January 31, 2009 at 7:02 am</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] read a post likening shutting down websites to eviction (see also the follow-up here).  Iâ€™m saying that, like a real eviction, there should be practices [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-25803">
+				<div id="div-comment-25803" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://brnz.org/hbr/?p=28" class="url" rel="ugc external nofollow">20090114 - hbr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-25803">May 21, 2009 at 8:25 pm</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] No great archive in the sky &#8211; Backup. (note to self: backup). [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-27841">
+				<div id="div-comment-27841" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='../../../../secure.gravatar.com/avatar/25018d8e4ad87bce8d2a00b65c127dd9e4e336900ea87b0b662e6eaaa02c14d6@s=70&amp;d=mm&amp;r=x' srcset='../../secure.gravatar.com/avatar/25018d8e4ad87bce8d2a00b65c127dd9e4e336900ea87b0b662e6eaaa02c14d6@s=140&amp;d=mm&amp;r=xm&#038;r=x 2x' class='avatar avatar-70 photo' height='70' width='70' loading='lazy' decoding='async'/>			<cite class="fn"><a href="http://www.sunoyun.com" class="url" rel="ugc external nofollow">Oyunlar</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-27841">June 1, 2009 at 12:08 am</a>		</div>
+
+		<span class='herpc'><p>What the hell will all our puny thoughts and lives matter then?</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-29062">
+				<div id="div-comment-29062" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.sheer.us/wordpress/?p=2110" class="url" rel="ugc external nofollow">Never been one to let the carrier drop &raquo; Blog Archive &raquo; nostalgia..</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-29062">June 10, 2009 at 8:28 pm</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] the plug with less than a month&#8217;s notice. Jason Scott from textfiles.com did a good job of describing the carnage and also suggesting a solution that may help prevent future [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-54479">
+				<div id="div-comment-54479" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.hornlo.org/isotropic/2009/09/08/back-up-your-stuff/" class="url" rel="ugc external nofollow">Back. Up. Your. Stuff.</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-54479">September 8, 2009 at 4:19 am</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] Scott, in &#8220;Eviction, or the Coming Datapocalypse&#8221; (Dec 2008), discussed the AOL Hometown shutdown (with 4 weeks notice), and the grief it [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-109594">
+				<div id="div-comment-109594" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.pcmech.com/article/yahoo-gives-final-notice-on-geocities-closure/" class="url" rel="ugc external nofollow">Yahoo! Gives Final Notice On Geocities Closure | PCMech</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-109594">June 7, 2010 at 8:39 am</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] at least isn&#8217;t as bad as when AOL Hometown got the axe, because now at least with GeoCities, people have some warning outside of a cold, terse Yahoo! [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-465596">
+				<div id="div-comment-465596" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.robincamille.com/2012-06-18-notes-on-digital-preservation-and-jason-scotts-jcdl-keynote/" class="url" rel="ugc external nofollow">Notes on digital preservation and Jason Scott&#8217;s JCDL keynote</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-465596">June 19, 2012 at 9:52 am</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] Eviction, or the Coming Datapocalypse, by Jason Scott (Dec. 2008) <a href="1617.html" rel="ugc">http://ascii.textfiles.com/archives/1617</a> Mr. Penumbra&#8217;s 24-hour Bookstore, by Robin Sloan <a href="http://www.robinsloan.com/mr-penumbra/" rel="nofollow ugc">http://www.robinsloan.com/mr-penumbra/</a> The [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-472257">
+				<div id="div-comment-472257" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.porganized.com/blog/report-from-the-joint-conference-on-digital-libraries" class="url" rel="ugc external nofollow">peter organisciak &raquo; Blog Archive &raquo; Report from the Joint Conference on Digital Libraries</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://ascii.textfiles.com/archives/1617/comment-page-2#comment-472257">June 26, 2012 at 2:00 pm</a>		</div>
+
+		<span class='herpc'><p>[&#8230;] in the close future, and trying their best to archive the data. Started in response to Scott’s call to arms when AOL Hometown was shut down, the Archive Team is a clever, capable crew, one that Scott claims [&#8230;]</p>
+</span>
+		
+				</div>
+				</li><!-- #comment-## -->
+    </ol>
+
+    <div class="navigation">
+      <div class="alignleft"><a href="https://ascii.textfiles.com/archives/1617/comment-page-1#comments" >&laquo; Older Comments</a></div>
+      <div class="alignright"></div>
+    </div>
+
+</section>
+
+
+	
+
+  		</section>
+
+			<nav>	
+		<ul>
+			<aside id="text-299698551" class="widget widget_text">			<div class="textwidget"><small>Jason Scott's weblog of computer history, punditry and trivia, from the creator of the <a href="http://www.bbsdocumentary.com">BBS Documentary</a>, <a href="http://www.getlamp.com">GET LAMP</a>, and proprietor of the <a href="http://www.textfiles.com">textfiles.com</a> family of sites. Available to chit-chat at <a href="mailto:jason@textfiles.com">jason@textfiles.com</a>.</small>
+<p></div>
+		</aside><aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="https://ascii.textfiles.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></aside><aside id="block-3" class="widget widget_block"><p><center><a href="https://ascii.textfiles.com/about"><img decoding="async" src="../../../../images/sjshot1.jpg" width="150"></a><a href="https://ascii.textfiles.com/speaking"><img decoding="async" src="../../../../wp-content/uploads/2010/11/speaking.png" width="150" alt="Jason's Presentations"></a><a href="http://www.bbsdocumentary.com"><img decoding="async" src="../../../../wp-content/uploads/2010/11/bbsdoc-212x300.jpg" width="150" alt="The BBS Documentary"></a><a href="https://www.archiveteam.org"><img decoding="async" src="../../../../wp-content/uploads/2010/11/archiveteamlogo.jpg" width="150" alt="The Archive Team"></a><a href="http://www.getlamp.com"><img decoding="async" src="../../../../wp-content/uploads/2010/11/package1s.jpg" width="150" alt="GET LAMP"><a/></center></aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<header><h3 class="widgettitle">Recent Posts</h3></header>
+		<ul>
+											<li>
+					<a href="https://ascii.textfiles.com/archives/5774">I No Longer Attend Vintage Computer Festivals. (But You Probably Should.)</a>
+									</li>
+											<li>
+					<a href="https://ascii.textfiles.com/archives/5744">Bodaciously True and Totally Awesome</a>
+									</li>
+											<li>
+					<a href="https://ascii.textfiles.com/archives/5672">The Dying Computer Museum</a>
+									</li>
+											<li>
+					<a href="https://ascii.textfiles.com/archives/5638">The Most Interesting Uninteresting Thing</a>
+									</li>
+											<li>
+					<a href="https://ascii.textfiles.com/archives/5622">A Never-Ending Block Party</a>
+									</li>
+					</ul>
+
+		</aside><aside id="archives-2" class="widget widget_archive"><header><h3 class="widgettitle">Archives</h3></header>
+			<ul>
+					<li><a href='https://ascii.textfiles.com/archives/date/2025/07'>July 2025</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2025/03'>March 2025</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2024/08'>August 2024</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2024/05'>May 2024</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2024/04'>April 2024</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2024/02'>February 2024</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2023/06'>June 2023</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2023/05'>May 2023</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2023/03'>March 2023</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2023/02'>February 2023</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2023/01'>January 2023</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2020/08'>August 2020</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2018/01'>January 2018</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2017/09'>September 2017</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2017/05'>May 2017</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2017/03'>March 2017</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2017/02'>February 2017</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2016/12'>December 2016</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2016/11'>November 2016</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2016/09'>September 2016</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2016/08'>August 2016</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2016/06'>June 2016</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2016/05'>May 2016</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2016/03'>March 2016</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2016/02'>February 2016</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2016/01'>January 2016</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2015/11'>November 2015</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2015/09'>September 2015</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2015/08'>August 2015</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2015/07'>July 2015</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2015/05'>May 2015</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2015/04'>April 2015</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2015/02'>February 2015</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2015/01'>January 2015</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/12'>December 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/11'>November 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/10'>October 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/09'>September 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/08'>August 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/07'>July 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/06'>June 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/05'>May 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/04'>April 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2014/01'>January 2014</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/12'>December 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/11'>November 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/10'>October 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/09'>September 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/08'>August 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/07'>July 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/05'>May 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/04'>April 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/03'>March 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2013/01'>January 2013</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/12'>December 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/11'>November 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/10'>October 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/09'>September 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/07'>July 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/06'>June 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/05'>May 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/04'>April 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/03'>March 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2012/01'>January 2012</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/12'>December 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/11'>November 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/10'>October 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/09'>September 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/08'>August 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/07'>July 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/06'>June 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/05'>May 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/04'>April 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/03'>March 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/02'>February 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2011/01'>January 2011</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/12'>December 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/11'>November 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/10'>October 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/09'>September 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/08'>August 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/07'>July 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/05'>May 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/04'>April 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/02'>February 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2010/01'>January 2010</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/12'>December 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/11'>November 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/10'>October 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/09'>September 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/08'>August 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/07'>July 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/06'>June 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/05'>May 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/04'>April 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/03'>March 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/02'>February 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2009/01'>January 2009</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/12'>December 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/11'>November 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/10'>October 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/09'>September 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/08'>August 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/07'>July 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/06'>June 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/05'>May 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/04'>April 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/03'>March 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/02'>February 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2008/01'>January 2008</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/12'>December 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/11'>November 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/10'>October 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/09'>September 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/08'>August 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/07'>July 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/06'>June 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/05'>May 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/04'>April 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/03'>March 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/02'>February 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2007/01'>January 2007</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/12'>December 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/11'>November 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/10'>October 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/09'>September 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/08'>August 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/07'>July 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/06'>June 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/05'>May 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/04'>April 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/03'>March 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/02'>February 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2006/01'>January 2006</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/12'>December 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/11'>November 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/10'>October 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/09'>September 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/08'>August 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/07'>July 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/06'>June 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/05'>May 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/04'>April 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/03'>March 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/02'>February 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2005/01'>January 2005</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/12'>December 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/11'>November 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/10'>October 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/09'>September 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/08'>August 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/07'>July 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/06'>June 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/05'>May 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/04'>April 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/03'>March 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/02'>February 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2004/01'>January 2004</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2003/12'>December 2003</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2003/11'>November 2003</a></li>
+	<li><a href='https://ascii.textfiles.com/archives/date/2003/10'>October 2003</a></li>
+			</ul>
+
+			</aside>		</ul>
+	</nav>
+	  </div>
+
+  		<footer>
+  			<p>
+  				&copy; 2025 ASCII by Jason Scott | powered by <a href="http://wordpress.org/">WordPress</a><br />
+  				<a href="https://ascii.textfiles.com/feed">Entries (RSS)</a>	and <a href="https://ascii.textfiles.com/comments/feed">Comments (RSS)</a>.
+  			</p>
+  		</footer>
+
+  		
+	<div style="display:none">
+			<div class="grofile-hash-map-4208454167293e9744885098d80caf1f">
+		</div>
+		<div class="grofile-hash-map-45d67b4c7dadd9b159f150fc940d2c99">
+		</div>
+		<div class="grofile-hash-map-5583ee5cd9fc9109043328f4e0fdf7ae">
+		</div>
+		<div class="grofile-hash-map-8d6047e2746cf1c12d0fe8042e07372c">
+		</div>
+		<div class="grofile-hash-map-63d6c7653fdc7f78d813ef4b22a0ad86">
+		</div>
+		<div class="grofile-hash-map-1561a1f5849c935ce1afae360816b1c3">
+		</div>
+		<div class="grofile-hash-map-2bc78136ae299b76e5ca4a711421e58a">
+		</div>
+		<div class="grofile-hash-map-0d9530e848427f5be24a8fd55c436881">
+		</div>
+		<div class="grofile-hash-map-f70674d36cea6f8769d34de735a12344">
+		</div>
+		</div>
+		
+	
+				
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/ascii.textfiles.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.3"}};
+/*! This file is auto-generated */
+!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script><script type='text/javascript' src='../../../../wp-content/plugins/wp-letsencrypt-ssl-pro/admin/js/jsredirect.js@m=1760153648'></script><script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/terminally\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script><script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/ascii.textfiles.com\/archives\/1617":1617};
+	</script><script type="text/javascript" id="herpderp-js-extra">
+/* <![CDATA[ */
+var Derpfault = {"herp":""};
+/* ]]> */
+</script><script type='text/javascript' src='../../../../wp-content/boost-cache/static/66908b3e8e.min.js'></script><script type="text/javascript" src="../../../../secure.gravatar.com/js/gprofiles.js@ver=202546" id="grofiles-cards-js"></script><script type="text/javascript" id="wpgroho-js-extra">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script><script type='text/javascript' src='../../../../wp-content/plugins/jetpack/modules/wpgroho.js@m=1760153618'></script><script type="text/javascript" id="jetpack-stats-js-before">
+/* <![CDATA[ */
+_stq = window._stq || [];
+_stq.push([ "view", JSON.parse("{\"v\":\"ext\",\"blog\":\"5825197\",\"post\":\"1617\",\"tz\":\"0\",\"srv\":\"ascii.textfiles.com\",\"j\":\"1:15.1.1\"}") ]);
+_stq.push([ "clickTrackerInit", "5825197", "1617" ]);
+/* ]]> */
+</script><script type="text/javascript" src="https://stats.wp.com/e-202546.js" id="jetpack-stats-js" defer="defer" data-wp-strategy="defer"></script><script type="text/javascript" id="sharing-js-js-extra">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script><script type="text/javascript" src="../../../../wp-content/plugins/jetpack/_inc/build/sharedaddy/sharing.min.js@ver=15.1.1" id="sharing-js-js"></script><script type="text/javascript" id="sharing-js-js-after">
+/* <![CDATA[ */
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-facebook' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-facebook' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-twitter' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-twitter' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+						return false;
+					}
+				} );
+			} )();
+/* ]]> */
+</script></body>
+</html>

@@ -1,0 +1,73 @@
+User-agent: *
+Disallow: /~/
+Disallow: /index.html
+Disallow: /slideshow/*/lead-form
+Disallow: /*/leads/*/show_form.html
+Disallow: /*/leads/*/jsplayer_show_lead_form.html
+Disallow: /*/followers$
+Disallow: /*/followers/
+Disallow: /*/following$
+Disallow: /*/following/
+Disallow: /business/leads/show_form.html
+Disallow: /business/leads/jsplayer_show_lead_form.html
+Disallow: /account/
+Disallow: /api/
+Disallow: /business/premium/is_payment_pending
+Disallow: /business/adshare
+Disallow: /business/feedback
+Disallow: /business/promotion
+Disallow: /business/adshare/faqs
+Disallow: /comment/
+Disallow: /community/
+Disallow: /event/
+Disallow: /favorite/
+Disallow: /group/
+Disallow: /ia/
+Disallow: /main/
+Disallow: /pingback/
+Disallow: /rss/
+Disallow: /search/
+Disallow: /search?
+Disallow: /share/
+Disallow: /slideshow/embed_code/
+Disallow: /uploads/
+Disallow: /nextjs/
+Disallow: */favorites_list/*
+Disallow: /ab_tests
+Disallow: /frontend-track/
+Disallow: /fullscreen/ReportLinker/
+Disallow: /private/
+Disallow: /language?
+
+User-agent: archive.org_bot
+Disallow: /w/*
+
+User-agent: Archive-It
+Disallow: /w/*
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: AI2Bot
+Disallow: /
+
+
+Sitemap: https://sitemaps.slideshare.net/sitemap.xml

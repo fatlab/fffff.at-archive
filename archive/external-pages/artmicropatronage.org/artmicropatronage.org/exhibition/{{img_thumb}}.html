@@ -1,0 +1,317 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+  <title>Art Micro Patronage</title>
+  <meta name="description" content="Art Micro-Patronage is an experimental online exhibition space featuring monthly curated shows of digital, new media, and intermedia work.  As visitors navigate through the exhibitions, they are encouraged to become micro-patrons of the arts, associating their appreciation of the works with small monetary values.">
+  <meta name="author" content="Oliver Wise">
+
+			<meta property="og:title" content="Art Micro Patronage"/>
+			<meta property="og:site_name" content="Art Micro Patronage"/>
+			<meta property="og:type" content="website"/>
+			<meta property="og:url" content="http://artmicropatronage.org"/>
+			<meta property="og:description" content="Art Micro Patronage is an experimental online exhibition space focused on supporting artwork that is ideally experienced on the internet. As visitors navigate through the exhibitions, they are encouraged to become micro-patrons of the arts, associating their appreciation of the works with small monetary values."/>
+			<meta property="og:image" content="http://artmicropatronage.org/framework/img/art-micro-patronage.png"/>
+			<meta property="fb:admins" content="612663871"/>
+			<meta property="fb:app_id" content="129737647106311"/>
+	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../../../../favicon.ico">
+  <link rel="apple-touch-icon" href="http://artmicropatronage.org/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="../../../../framework/css/style.css@v=2.css">
+</head>
+<body class="color-fff">
+	<div id="overlay_holder" style='display:none'>
+		<div id="overlay_cover"></div>
+		<div id="ribbon">
+				<div id="title"></div>
+				<div id="mainRibbon">
+					<div class="form">
+							<div id="overlay"></div>
+							<a class="close pointer cancel">[cancel]</a>
+					</div>
+				</div>
+				<div id="intro"><div id="left" class="copy"></div></div>
+			</div>
+		</div>
+	</div>
+	<div class="alert" style='display:none'></div>
+  <div id="container">
+    <header class="clearfix" id="main_header">
+		<h1><a href="{{img_thumb}}.html"><img id="main_ribbon" src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/art-micro-patronage.png" class='amp' alt="Art Micro Patronage" width="64" height="79" border="0" /></a></h1>
+		<div id="menubar">
+			<div class="loginfo" data-bind="visible: !is_logged_out()"  style='display:none'>Hello, <a href="http://artmicropatronage.org/myCollection" class="pointer show-user-profile" data-bind="text: first_name"></a>.<a id="logout" title="Logout"  class="pointer"></a></div>
+			<div class="loginfo" data-bind="visible: is_logged_out"  style='display:none'><a class="pointer signup" id="signup">Signup</a> / <a class='pointer login' id="login">Login</a></div>
+			<div class="question" style="top:-1px;left:27px;display:none">?</div>
+			<div class="info" style="top:39px;left:-59px;width:200px;text-align:center;display:none"><p class="pointUp"></p><p class="up">Signup or Login<br>Then click here to access your collection, manage your public profile and join the conversation.</p></div>
+			<div class="cart" data-bind="visible:!is_member()">
+				<div class="pledged">
+					<div class="pledgedLeft"><a href="http://artmicropatronage.org/exhibition#cart" data-bind="text: cart_display"></a></div>
+					<div class="pledgedRight"></div>
+				</div>
+				<span class="banked pointer"><a data-bind="text:bank_display">$0<!--<span class="tip"><span data-bind="text:bank_display">$0</span> remaining in bank</span>--></a></span>
+				<div class="question" style="top:-1px;left:139px;display:none">?</div>
+				<div class="info" style="top:37px;left:53px;width:200px;text-align:center;display:none"><p class="pointUp"></p><p class="up">This is how much you have pledged.<br/><br/>Click it to settle up.</p></div>
+				<div class="question" style="top:-1px;left:181px;display:none">?</div>
+				<div class="info" style="top:37px;left:131px;width:128px;text-align:center;display:none"><p class="pointUp"></p><p class="up">This is how much you have left in your bank account.<br/><br/>Click it to add more.</p></div>
+				
+			</div>
+		</div>
+		<ul id="access" class="sf-menu">
+			<li class='main'><a href="http://artmicropatronage.org/about#" >About</a>
+				<ul class="subWrap about"><ul class="subnav">
+					<li class="first"><a href="http://artmicropatronage.org/about#">Why</a></li>
+					<li><a href="http://artmicropatronage.org/about#how">How It Works</a></li>
+					<li><a href="http://artmicropatronage.org/about#faq">FAQ</a></li>
+					<li><a href="http://artmicropatronage.org/support">Support Us</a></li>
+				</ul></ul>
+			</li>
+			<li class='main'><a href="http://artmicropatronage.org/exhibitions" >Exhibitions</a>
+				<!-- <ul class="subWrap exhibitions"><ul class="subnav">
+					<li class="first"><a href="/exhibition">Current Exhibition</a></li>
+					<li><a href="/exhibitions">Archive</a></li>
+					<li><a href="/talks">Artist Talks</a></li>
+				</ul></ul> -->
+				
+			</li>
+			<li class='main'><a href="http://artmicropatronage.org/patrons"  >Patrons</a>
+				<ul class="subWrap patrons-nav"><ul class="subnav">
+					<li class="first"><a href="http://artmicropatronage.org/patrons">View Patrons</a></li>
+					<li><a href="http://artmicropatronage.org/benefits#">Benefits</a></li>
+					<li><a href="http://artmicropatronage.org/benefits#membership">Become a Member</a></li>
+					<li><a href="http://artmicropatronage.org/benefits#sponsorship">Become a Sponsor</a></li>
+				</ul></ul>
+			</li>
+		</ul>
+    </header>
+    <div id="main" role="main" class="text"><div class="textContent clearfix " style="padding-top:30px">
+	<div id="about" style="position:relative;width:570px;float:left">
+		<div style="height:630px">
+		<div class="red-title" style="left:-45px">Hello There,</div>
+		<p class="intro"><br/>Art Micro Patronage is on hiatus in order to take stock of what we’ve learned during our first 6-month run of shows. During this first round, approximately $1000 was distributed to artists via AMP. Although this isn't nearly enough to make this project or the practices of these artists sustainable, it's not nothing. The artists featured in AMP exhibitions did not have to create a saleable product or write a grant application. We've demonstrated that people are willing to support creators simply for the work that they do. Our current plan is to put on another set of 6 shows with a few tweaks to the system and some partners and sponsors. </p>
+
+		<p> The internet is fertile ground for artists whose approaches offer us new ways of seeing every day. They deserve recognition, critical thought, and financial support in order to continue their creative inquiry. Exactly how that can and should happen is an ongoing conversation that we are glad to be a part of via this project. We’re very grateful to all our artists, curators and patrons who participated in it. And to Southern Exposure, whose Alternative Exposure Grant got this project off the ground in the first place. </p>
+
+		<p>If you have any thoughts on Art Micro Patronage as a platform or if you're interested in sponsoring a show, we’d love to hear from you.  Please get in touch.</p>
+
+		<p>Warmly,<br/>
+		Eleanor Hanson Wise and Oliver Wise
+		<a href="http://artmicropatronage.org/about" class="arrow" style="float:right">Learn more</a></p>
+		<!--
+		<p class="aside bold-aside" style="position:absolute;top:155px;left:610px;">
+			<span class="bold-text red">Our goal is to create a compelling platform for showcasing and supporting artists whose work is ideally experienced online.</span>
+		</p>
+		<p style="position:absolute;top:400px;left:656px;padding-top:20px">
+			<span class="verlag-bold" style="font-size:22px">Ongoing Sponsors</span><br/>
+			<a class="sponsor" href="http://www.soex.org/AltEx.html" target="_blank"><img src="/framework/images/alternativeexposure.png"/></a><br>
+			<a class="sponsor" href="http://thepresentgroup.com/hosting" target="_blank"><img src="/framework/images/hostingwebbanner.jpg"/></a>
+		</p>
+		<h2 style="width:100%">Keep me in the loop!</h2>
+			<div id="form" class="greyBox"><div id="subscribe_form">
+			<form name="subscribeform">
+				<div class="form-left">
+					<label for="firstname">First name:</label>
+			  		<input type=text name=firstname value="" size="40" class="textinput">
+				</div>
+				<div class="form-left">
+					<div class="required"><label for="email">Email:*</label></div>
+			  		<input type=text name=email value="" size="40" class="textinput">
+				</div>
+				<div class='clear'></div>
+		  		<!-- <input type=checkbox name="curator" value="1"  /></span> -->
+		        <!-- <span class="attributename">Please send me info about curating</span>
+		        <input type="hidden" name="list[5]" value="signup">
+				<br/>
+				<br/>
+				<input type=submit name="subscribe" value="Subscribe"  class="submitGray" >
+			</form>
+			</div></div>
+		
+		-->
+		
+	    <!-- <p>In this era of government budget slashing and polarized priorities concerning our taxpayer dollars, we can no longer rely on someone else to support our priorities. We must directly support what we value and actively create our society.</p> -->
+		<!-- <p>&nbsp;</p> -->
+		<!-- <p class="bio">Art Micro-Patronage is a project of <a href="http://www.thepresentgroup.com">The Present Group</a>.</p> -->
+		</div>
+     	<div style="position:relative;margin-top:50px">
+			<div class="red-title" style="left:-45px">Featured In</div>
+			<style type="text/css" media="screen">
+				img.line-1, img.line-2, img.line-3{
+					height:59px;
+				}
+			</style>
+			<p>&nbsp;</p>
+			<p>	<a href="http://www.artfagcity.com/2012/04/27/c-r-e-a-m-review/" target="_blank"><img class="line-1" src="http://assets.thepresentgroup.com/artmicropatronage/site/img/press/afc.png"></a>
+				<a href="http://www.artinfo.com/news/story/753419/get-rich-click-schemes-innovative-funding-strategies-keep-new-media-artists-afloat" target="_blank"><img class="line-1" src="http://assets.thepresentgroup.com/artmicropatronage/site/img/press/artinfo.png" /></a></p>
+			<p>	<a href="http://www.theverge.com/2012/4/23/2961601/0-day-art-digital-art-torrents-piracy" target="_blank"><img class="line-2" src="http://assets.thepresentgroup.com/artmicropatronage/site/img/press/theverge.png"></a>
+				<a href="http://badatsports.com/2012/hyperjunk-observations-on-the-proliferation-of-online-galleries/" target="_blank"><img class="line-2" src="http://assets.thepresentgroup.com/artmicropatronage/site/img/press/bas.png"></a></p>
+			<p>	<a href="http://www.triangulationblog.com/2012/01/10000-pixels-at-art-micro-patronage.html" target="_blank"><img class="line-3" src="http://assets.thepresentgroup.com/artmicropatronage/site/img/press/triangulation.png"></a>
+				<a href="http://domenicoquaranta.com/public/TEXTS/2012_04_FA301_mercato_online.pdf" target="_blank"><img class="line-3" src="http://assets.thepresentgroup.com/artmicropatronage/site/img/press/flashart.png"></a></p>
+			<p>	<a href="http://www.technologyinthearts.org/2011/12/the-website-exhibition-old-and-new/" target="_blank"><img width=570 src="http://assets.thepresentgroup.com/artmicropatronage/site/img/press/tita.png"></a></p>
+				
+     		
+     	</div>
+	</div>
+	<div class="rightColumn home">
+		<div class="clear" style="width:100%;margin-bottom:40px">
+			<!-- <img src="http://assets.thepresentgroup.com/artmicropatronage/site/img/patronofthearts_grycoin.png"/> -->
+			<!-- <input type="text" placeholder="KEEP ME UPDATED!" / name="email" class="textinput email" /> -->
+			<div style="text-align:center;padding-bottom:30px" data-bind="visible:is_logged_out" style='display:none'><input type=submit name="loop" value="Keep Me In the Loop"  class="submitGray" ></div>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class='amp-twitter-icon' href="http://twitter.com/ampatronage"><img src="http://assets.thepresentgroup.com/artmicropatronage/site/img/twitter-AMP.png"/></a>
+			<a class='tpg-twitter-icon' href="http://twitter.com/thepresentgroup"><img src="http://assets.thepresentgroup.com/artmicropatronage/site/img/twitter-TPG.png"/></a>
+			<a class='tpg-fb-icon' href="http://facebook.com/thepresentgroup"><img src="http://assets.thepresentgroup.com/artmicropatronage/site/img/facebook-TPG.png"/></a>
+			<div class="greyBox">
+				<h4>What people are saying:</h4>
+				<p><br/>Curator Lindsay Howard frames her current online-only exhibition at Art Micro-Patronage, "C.R.E.A.M.", by pointing to the elephant in the room: "Over twenty years have passed since net art first appeared on the screen," she writes, "and we still don't have an established system for buying and selling it."</p>
+
+
+				<p>With online storefronts dominating the mobile market, it’s safe to assume that most people who own digital devices have some experience with the concept of micropayments. But now that we’ve grown accustomed to the idea of shelling out tiny nuggets of tribute for things like apps, games and music, are we willing to do the same for art?</p>
+				
+			</div>
+		</div>
+	</div>	
+	
+</div>
+</div>
+  </div> <!--! end of #container -->
+
+
+	<script type='text/html' id="signup_tmpl" charset='utf-8'>
+		<form id="signup_form">
+			<div class="status">{{status}}</div>
+			<!-- <p><label for "first_name">First Name</label> <input type="text" class="req" name="first_name" value="{{first_name}}"></p>
+			<p><label for "last_name">Last Name</label><input type="text" name="last_name" class="req" value="{{last_name}}"></p> -->
+			<p>&nbsp;</p>
+			<p><label for "email">Email</label><input type="email" name="email" class="req" value="{{email}}"></p>
+			<p><label for "password">Password</label><input type="password" class="req" name="password"></p>
+			<!-- <p class="terms" style="overflow:hidden;font-size:11px;margin: 3px 0px 3px 0px;padding-left:165px">I agree to the <a style="color:red;font-size:11px;text-decoration:underline;" onclick="window.open('/terms','terms','height=500,width=400,resizable=1,scrollbars=1')" class="pointer">Terms of Use</a> <input type="checkbox" name='terms' style="width:30px;float:none;" /></p> -->
+			<p class="submitRow">
+				<a href="https://www.facebook.com/dialog/oauth?client_id=129737647106311&redirect_uri=http%3A%2F%2Fartmicropatronage.org%2Ffacebook%2F&state=7dc0fa7fb48327d6ffe91e6b1f658e9b&scope=email" class="facebook" title="Signup Via Facebook"><img src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/facebook-blkborder.png" align="middle"></a>
+				<input type="submit" value="Signup" class="btn submit">
+			</p>
+			<p class='small-bottom'>Already have an account? <a class='pointer login'>Login here</a></p>
+			<input type='hidden' name="payment_id" value="{{payment_id}}" />
+		</form>
+	</script>
+	<script type='text/html' id="login_tmpl" charset='utf-8'>
+		<form id="login_form" >
+			<div class="status"></div>
+			<p><label for "email">Email</label><input type="email" name="email" value=""></p>
+			<div class="forgot-me" style='display:none'>
+				<input type='button' name='forgot' class="btn submit" value="Reset My Password" style="width:180px;margin-left:162px;margin-bottom:7px;" />
+				&nbsp;&nbsp;&nbsp;<a class="forgot pointer">nm</a>
+			</div>
+			<div class='hide-me'>
+				<p>
+					<label for "password">Password</label><input type="password" name="password">
+					&nbsp;&nbsp;&nbsp;<a class="forgot pointer">forgot it?</a>
+				</p>
+				<p class="submitRow">
+					<a href="https://www.facebook.com/dialog/oauth?client_id=129737647106311&redirect_uri=http%3A%2F%2Fartmicropatronage.org%2Ffacebook%2F&state=7dc0fa7fb48327d6ffe91e6b1f658e9b&scope=email" class="facebook" title="Login Via Facebook"><img src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/facebook-blkborder.png" align="middle"></a>
+					<input type="submit" value="Login" class="btn submit">
+				</p>
+				<p class='small-bottom'>Don&#x27;t have any account? <a class='pointer signup'>Sign up now!</a></p>
+			</div>
+		</form>
+	</script>
+	<script type='text/html' id="detail_tmpl" charset='utf-8'>
+		<div class="detail">
+			<p class="smallThumb">
+				{{#img_link}}<a href="http://artmicropatronage.org/{{img_link}}"><img src="http://artmicropatronage.org/{{img_thumb}}" alt="" width="88" height="88" border="0" /></a>{{/img_link}}
+				{{^img_link}}<img src="http://artmicropatronage.org/{{img_thumb}}" alt="" width="88" height="88" border="0" />{{/img_link}}
+			</p>
+			<p class="details">{{{line_1}}}<br> 
+			{{{line_2}}}<br>
+			{{#bold}}
+				<b>{{key}}:</b> {{{value}}}<br>
+			{{/bold}}
+		</div>
+	</script>
+	<script type='text/html' id="bank_form_tmpl" charset='utf-8'>
+		<div id="bank_form">
+			<p class='verlag-lt' style="padding-right:186px;text-align:right;font-size:13pt;">
+				Current balance: {{bank_display}}</a><br/>
+			</p>
+			<p><label for "bank">{{input_label}}</label><input type="text" name="bank"></p>
+			<p class="submitRow">
+			<a href="{{img_thumb}}.html" id="bank_paypal_link" ><img class="clean" src="../../../../www.paypal.com/en_US/i/btn/btn_dg_pay_w_paypal.gif" /></a>
+			</p>
+			
+		</div>
+	</script>		
+	<script type='text/html' id="splash_tmpl" charset='utf-8'>
+		<div class='splash verlag-lt'>
+			Art Micro Patronage is an experimental online
+			exhibition space enabling you to view and support
+			artwork that is	ideally experienced on the internet. Built on the
+			generosity of people like you, AMP is a vehicle for
+			a new generation of art patrons, who are willing
+			to associate their appreciation of great work with
+			actual dollar amounts, no matter how small.
+		</div>
+		<div class='splash-options'>
+			<a class="black-arrow" href="http://artmicropatronage.org/exhibition#tour">Take a tour</a>
+			<a class="black-arrow" href="http://artmicropatronage.org/about#how">How does it work?</a>
+			<a class="black-arrow" href="http://artmicropatronage.org/exhibition">Enter exhibition</a>
+		</div>
+		<div class='clear'></div>
+	</script>
+	<script type='text/html' id="password_tmpl" charset='utf-8'>
+		<form id="password_form">
+			<p>{{right}}</p>
+			<p><label for "password">Password</label><input type="password" name="password"></p>
+			<p class="submitRow">
+				<input type="submit" class="btn submit" name="verify" value="Submit" />
+			</p>
+		</form>
+	</script>
+  <script type="text/javascript" src="../../../../ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <script>window.jQuery || document.write("<script src='http://artmicropatronage.org/framework/js/libs/jquery-1.6.min.js'>\x3C/script>")</script>
+  
+  <script type="text/javascript" src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/hoverIntent.js"></script>
+  <script type="text/javascript" src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/superfish.js"></script>
+
+  <script src="../../../../assets.thepresentgroup.com/artmicropatronage/jwplayer.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/jquery-ui-1.8.16.custom.min.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/mustache.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/knockout-2.0.0.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/jstorage.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/jquery.hashchange.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/json2.js"></script>
+		  <script src="../../../../framework/js/renderer.js"></script>
+	  <script src="../../../../framework/js/amp.js"></script>
+	  <script src="../../../../framework/js/vm.js"></script>
+	  <script src="../../../../framework/js/ready.js"></script>
+	
+	  <script type='text/javascript' charset='utf-8'> var accelJS = new Object(); if(typeof Amp != 'undefined') Amp.current_show_id = 'C.R.E.A.M-Lindsay-Howard';
+ 
+                $(document).ready(function() { 
+					
+                    
+		$('input[name=loop]').click(function(){
+			$('a.signup:first').click();
+		});
+	/*
+		$('input[name=email]').hover(function(){
+			$(this).attr('placeholder', 'ENTER YOUR EMAIL ADDRESS');
+		}, function(){
+			$(this).attr('placeholder', 'KEEP ME UPDATED!');
+		});
+		*/
+	
+ 
+                }); 
+            </script>
+  <!--[if lt IE 7 ]>
+    <script src="http://artmicropatronage.org/framework/js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+  <![endif]-->
+</body>
+</html>

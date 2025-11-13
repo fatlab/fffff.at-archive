@@ -1,0 +1,36 @@
+User-agent: *
+Allow: /
+
+User-agent: SiteAuditBot
+Disallow: /
+
+User-agent: SemrushBot-BA
+Disallow: /
+
+User-agent: SemrushBot-SI
+Disallow: /
+
+User-agent: SemrushBot-SWA
+Disallow: /
+
+User-agent: SplitSignalBot
+Disallow: /
+
+User-agent: SemrushBot-OCOB
+Disallow: /
+
+User-agent: SemrushBot-FT
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: bingbot
+Crawl-delay: 1
+
+Disallow: /download-manager.php?
+Disallow: /page/
+Disallow: /Downloadordner
+# BEGIN XML-SITEMAP-PLUGIN
+Sitemap: https://stadt-bremerhaven.de/wp-sitemap.xml
+# END XML-SITEMAP-PLUGIN

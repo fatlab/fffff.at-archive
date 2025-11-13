@@ -1,0 +1,1925 @@
+<!DOCTYPE html><script>var __pbpa = true;</script><script>var translated_warning_string = 'Warning: Never enter your Tumblr password unless \u201chttps://www.tumblr.com/login\u201d\x0ais the address in your web browser.\x0a\x0aYou should also see a green \u201cTumblr, Inc.\u201d identification in the address bar.\x0a\x0aSpammers and other bad guys use fake forms to steal passwords.\x0a\x0aTumblr will never ask you to log in from a user\u2019s blog.\x0a\x0aAre you absolutely sure you want to continue?';</script><script type="text/javascript" language="javascript" src="../../../assets.tumblr.com/assets/scripts/pre_tumblelog.js@_v=b9f848c06fcba7eaf305d4a7cb7a1b98"></script><!DOCTYPE html>
+
+<!--
+
+Observer Theme
+By Zack Sultan
+Released January 2013
+Revised June 25, 2017
+
+-->
+
+<html>
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
+        <title>howLAB</title>
+        <style>figure{margin:0}.tmblr-iframe{position:absolute}.tmblr-iframe.hide{display:none}.tmblr-iframe--amp-cta-button{visibility:hidden;position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:100}.tmblr-iframe--amp-cta-button.tmblr-iframe--loaded{visibility:visible;animation:iframe-app-cta-transition .2s ease-out}</style><link rel="stylesheet" media="screen" href="../../../assets.tumblr.com/client/prod/standalone/blog-network-npf/index.build.css@_v=f085dde138e244526309d4673db67b4c.css"><link rel="shortcut icon" href="../../../64.media.tumblr.com/avatar_6ad013f86671_128.pnj">
+        <link rel="alternate" type="application/rss+xml" href="https://howlab.tumblr.com/rss">
+        
+            <meta name="description" content="here is where howLAB (how life art to be) members post what they are researching, developing or doing." />
+        
+        <link rel="shortcut icon" href="../../../64.media.tumblr.com/avatar_6ad013f86671_128.pnj">
+        <link rel="alternate" type="application/rss+xml" href="https://howlab.tumblr.com/rss">
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no" />
+
+
+
+<!-- Options -->
+
+
+        <meta name="if:Show Navigation" content="1"/>
+        <meta name="if:Alternate Header Layout" content="0"/>
+        <meta name="if:Show Description" content="0"/>
+        <meta name="if:Show Archive Navigation Link" content="1"/>
+        <meta name="if:Wide Images" content="1"/>
+        <meta name="if:Photoset Layout" content="0"/>
+        <meta name="if:Show Post Tags" content="1"/>
+        <meta name="if:Show Post Notes" content="1"/>
+        <meta name="if:Show Copyright" content="0"/>
+
+        <meta name="Title font" content="Gibson">
+        <meta name="Title font weight" content="bold" title="Bold">
+        <meta name="Title font weight" content="normal" title="Normal">
+        <meta name="font:Body font" content="Calluna"/>
+
+        <meta name="Background color" content="#fff">
+        <meta name="Title color" content="#444444">
+        <meta name="Link color" content="#5f79a4">
+
+        <meta name="color:Body text" content="#333333"/>
+		<meta name="color:Secondary text" content="#888888"/>
+        <meta name="image:Logo" content=""/>
+        <meta name="text:TypeKit ID" content=""/>
+        <meta name="text:Title Font" content=""/>
+        <meta name="text:Body Font" content=""/>
+        <meta name="text:Post Headline Font" content=""/>
+        <!--<meta name="text:Secondary Font" content=""/>-->
+
+        <meta name='text:Disqus Shortname' content='' />
+        <meta name='text:Google Analytics' content='' />
+
+<!-- Scripts -->
+
+    <script src="../../../static.tumblr.com/4kpnlef/Pttmhz2ap/jquery-1.9.1.min.js"></script>
+
+    
+
+    <!-- Media resizing -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Make desktop tumblr video stretch to 100%
+            $('.tumblr_video_container').css({ 'width' : '100%', 'height' : '100%' });
+            // Resize tumblr video on mobile
+            $('.iphone-video a').css({ 'width' : '100%', 'height' : '200px' });
+		});
+
+        //Make Spotify the right size and responsive
+	    $(document).ready(function(){
+	        $('.mobile-spotify iframe').css('height', '80px');
+            $('.mobile-spotify iframe').css('width', '290px');
+            $('iframe[src*="embed.spotify.com"]').each( function() {
+                $(this).css('width',$(this).parent(1).css('width'));
+                $(this).css('height', '82');
+                $(this).attr('src',$(this).attr('src'));
+            });
+        });
+        $(window).resize(function() {
+            $('iframe[src*="embed.spotify.com"]').each( function() {
+                $(this).css('width',$(this).parent(1).css('width'));
+                $(this).css('height', '82');
+                $(this).attr('src',$(this).attr('src'));
+            });
+        });
+
+        // Fix Flickr images treated as videos.
+        $(document).ready(function(){
+          // Grab the videoWrappers that are already here.
+          var videoWrappers = document.querySelectorAll('.videoWrapper');
+          for(var i = 0, len = videoWrappers.length; i < len; i++) {
+              fixFlickr(videoWrappers[i]);
+          }
+
+          // Also process any new nodes that are added to the page.
+          var observer,
+          observerConfig = {
+          	childList: true,
+          	subtree: true
+          };
+
+          observer = new MutationObserver(function (mutations) {
+          	for (var i = 0, len = mutations.length; i < len; i++) {
+          		// If there were new nodes added, we check that they are valid flickr embeds
+          		if (mutations[i].addedNodes.length && mutations[i].addedNodes[0].querySelector) {
+          		    var newVideoWrapper = mutations[i].addedNodes[0].querySelector('.videoWrapper');
+          			if (newVideoWrapper !== null) {
+          				fixFlickr(newVideoWrapper);
+          			}
+          		}
+          	}
+          });
+
+          observer.observe(document.getElementById('content'), observerConfig);
+        });
+
+        function fixFlickr(videoWrapper){
+          var potentialEmbed = videoWrapper.firstElementChild;
+          if(potentialEmbed.hasAttribute('data-flickr-embed')) {
+              videoWrapper.style.paddingBottom = 0;
+              videoWrapper.style.height = 'auto';
+          }
+        }
+
+        //disable safari active states
+        document.addEventListener("touchstart", function() {},false);
+
+	</script>
+
+
+
+
+<!-- Style Sheet -->
+
+<style type="text/css">
+
+.regular p {
+	font-weight: bold;
+	color:aqua;
+}
+
+.regular .bottom-nav {
+	display: none;
+}
+
+::selection {
+    background: #000000; /* Safari */
+	color: #333333;
+	}
+
+::-moz-selection {
+	background: #000000; /* Firefox */
+	color: #333333;
+}
+
+body {
+	margin: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+    font-size:18px;
+	-webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+
+p, li, blockquote {
+	line-height: 28px;
+	margin: 0;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-weight: 400;
+	font-size: 30px;
+}
+
+.ir {
+	text-indent: -99999em;
+}
+
+.center {
+	text-align: center;
+}
+
+/* Global colors
+********************************/
+
+body {
+	color: #333333;
+	background-color: #f4ff27;
+}
+
+.blog-description {
+	color: #888888;
+}
+
+a {
+	color: #333333;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(136, 136, 136, 0.3);
+}
+
+#header h1 a {
+	color: #444444;
+	border-bottom: none;
+}
+
+a:hover {
+}
+
+a:active {
+	position: relative;
+	outline: none;
+	top: 1px;
+}
+
+
+.metadata a, #footer-links a, #footer p.promo a, .links a {
+	color: #888888;
+	border-bottom: none;
+}
+
+.metadata a:hover, #footer-links a:hover, #footer p.promo a:hover, .links a:hover, .more a:hover, a.mobile-player:hover {
+
+}
+
+.post {
+	border-bottom: 1px solid rgba(136, 136, 136, 0.2);
+}
+
+.colophon p {
+	color: #888888;
+}
+
+
+/* Global fonts
+********************************/
+
+body {
+	font-family:  'Calluna', serif, georgia, serif;
+	font-weight: normal;
+}
+
+.title h1, .link-title h1, .chat-title h1, .q h1, .a h1, .album-info h2, #footer h2 {
+	font-family:  'Gibson', sans-serif, georgia, serif;
+	font-weight: bold;
+}
+
+.blog-title h1 {
+	font-family:  'Gibson', sans-serif, futura, helvetica, arial, sans-serif;
+	font-weight: bold;
+	font-size: 96px;
+	line-height: 1em;
+}
+
+.metadata a {
+	font-family:  , helvetica, arial, sans-serif;
+	font-weight: normal;
+}
+
+
+/* Page
+********************************/
+
+
+#page {
+	border: 0px solid;
+	max-width: 900px;
+	padding-left:  50px;
+	padding-right: 50px;
+	margin: auto;
+}
+
+
+
+
+
+
+
+
+/* Header Centered
+********************************/
+
+#header {
+	margin-top: 20px;
+	margin-bottom: 80px;
+	display: block;
+	overflow: visible;
+}
+
+#header a {
+	text-decoration: none;
+}
+
+.blog-title {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: 70px;
+}
+
+.blog-title a {
+	border-bottom: none;
+}
+
+.blog-title img {
+	max-width: 100%;
+}
+
+.blog-description {
+	font-size: 16px;
+	line-height: 20px;
+	margin-top: 20px;
+}
+
+.links {
+	margin-top: 0px;
+	text-align: center;
+	float: none;
+	border-bottom: 1px solid rgba(136, 136, 136, 0.2);
+}
+
+.links ul {
+	margin-top: 10px;
+	padding: 0;
+	display: block;
+	text-align: center;
+	float: none;
+}
+
+.links li {
+	display: inline;
+	margin-left: 10px;
+	text-transform: none;
+}
+
+.links li:first-child {
+	margin-left: 0px;
+}
+
+
+
+/* Post wrappers
+********************************/
+
+#content {
+	width: 100%;
+	overflow-x: hidden;
+	clear: both;
+}
+
+.post {
+	margin-bottom: 45px;
+	padding-bottom: 40px;
+	width: 100%;
+}
+
+.narrow {
+	max-width: 640px;
+	margin: auto;
+}
+
+
+/* Headings
+********************************/
+
+.title h1, .link-title h1, .chat-title h1 {
+	text-align: center;
+	margin: auto;
+	margin-bottom: 25px;
+	font-size: 42px;
+	line-height: 50px;
+}
+
+.link-title a {
+	text-decoration: none;
+	position: relative;
+	border: none;
+	color: #000000;
+}
+
+span.link-arrow {
+	position: relative;
+	font-size: 20px;
+	bottom: 3px;
+}
+
+.quote-short {
+	font-size: 24px;
+	line-height: 36px;
+	margin-bottom: 25px;
+}
+
+.photo img, .album-art img, .videoWrapper {
+  max-width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	border-radius: 2px;
+}
+
+.photo img, .album-art img, .videoWrapper img {
+	min-width: 640px;
+}
+
+.photoset-layout {
+    max-width: 700px;
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.tumblr_audio_player {
+	height: 250px;
+}
+
+.audio iframe {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.videoWrapper iframe, .videoWrapper object {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.videoWrapper iframe.flickr-embed-frame, .videoWrapper img {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Post body styles
+********************************/
+
+.caption p {
+	margin-bottom: 15px;
+}
+
+.caption h1 {
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.caption h2 {
+	font-weight: bold;
+	margin-bottom: 15px;
+	font-size: 24px;
+}
+
+.caption blockquote {
+	margin-bottom: 10px;
+	border-left: 3px solid rgba(136, 136, 136, 0.2);
+	margin-left: 5px;
+	padding-left: 15px;
+	line-height: 26px;
+}
+
+.caption pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	background-color: rgba(136, 136, 136, 0.2);
+	border-radius: 2px;
+	padding: 10px 15px 10px 15px;
+	font-size: 15px;
+	line-height: 24px;
+	margin: 15px 0 25px 0;
+}
+
+.caption ul, ol {
+	margin-top: 0;
+	margin-bottom: 25px;
+	padding-left: 40px;
+}
+
+.caption img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 30px auto 30px auto;
+    border-radius: 2px;
+}
+
+.quote-short {
+	line-height: 40px;
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.quote-medium, .quote-long {
+	line-height: 32px;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+ul.chat {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.chat li {
+	border-bottom: 1px solid rgba(136, 136, 136, 0.3);
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.chat li:last-child {
+	border: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+span.odd, span.even  {
+	font-weight: bold;
+}
+
+.more a {
+	display: block;
+	width: 99%;
+	height: 30px;
+	border: 1px solid rgba(136, 136, 136, 0.3);
+	text-align: center;
+	text-decoration: none;
+	border-radius: 2px;
+	padding-top: 10px;
+	margin-bottom: 30px;
+}
+
+
+.more a:active {
+    background: rgba(136, 136, 136, 0.08);
+    box-shadow: inset 0px 1px 4px rgba(136, 136, 136, 0.2);
+    top: 0px;
+}
+
+.audio-module {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 25px;
+}
+
+a.mobile-player {
+	border: 1px solid rgba(136, 136, 136, 0.2);
+	background: rgba(136, 136, 136, 0.1);
+	width: 99%;
+	padding: 30px 0 30px 0;
+	margin-bottom: 25px;
+	border-radius: 2px;
+	display: none;
+}
+
+a.mobile-player:active {
+    top: 0px;
+    box-shadow: inset 0px 1px 4px rgba(136, 136, 136, 0.2);
+    background: rgba(136, 136, 136, 0.18);
+    border: 1px solid rgba(136, 136, 136, 0.3);
+}
+
+.play-triangle {
+	margin-left: 20px;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 6.5px 0 6.5px 10px;
+	border-color: transparent transparent transparent rgba(136, 136, 136, 0.8);
+}
+
+.album-info {
+	display: block;
+	float: left;
+	width: 63%;
+}
+
+.player {
+	display: block;
+	background-color: #ffffff;
+	float: right;
+	padding-top: 5px;
+	padding-right: 2px;
+	border: 1px solid rgba(136, 136, 136, 0.3);
+}
+
+.desktop-spotify {
+	display: block;
+
+}
+
+.mobile-spotify {
+	display: none;
+	width: 290px;
+	margin: auto;
+}
+
+.iphone-video object {
+    display: block;
+    margin: 0px auto 20px;
+}
+
+.asker-block, .answer-text {
+	display: block;
+	overflow: auto;
+}
+
+p.question {
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+p.album, p.question {
+	font-size: 24px;
+	line-height: 32px;
+}
+
+h1.qa-letter {
+	display: block;
+	float: left;
+	width: 45px;
+	position: relative;
+	bottom: 3px;
+	font-size: 30px;
+}
+
+.q {
+	margin-bottom: 20px;
+}
+
+img.asker {
+	float:left;
+	margin-right: 8px;
+	border-radius: 2px;
+	position: relative;
+	top: 2px;
+}
+
+p.asker {
+	font-style: italic;
+}
+
+p.question {
+	clear: both;
+}
+
+
+/* Metadata
+********************************/
+
+.metadata {
+	border: 0px solid gray;
+	overflow: auto;
+	font-size: 12px;
+	text-transform: uppercase;
+	margin-top: 20px;
+}
+
+.metadata a {
+	text-decoration: none;
+}
+
+.date, .tags, .notes-count {
+	display: block;
+	float: left;
+	margin-right: 15px;
+}
+
+.tags a, .notes-count a, .date a {
+	margin-right: 5px;
+}
+
+
+/* Footer
+********************************/
+
+#footer {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+#footer a {
+	text-decoration: none;
+	border-bottom: none;
+}
+
+a.back-next {
+    margin: 0px 10px 0px 10px;
+}
+
+#footer h2 {
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+
+#footer-links ul {
+	margin-bottom: 0px;
+	padding: 0;
+	display: block;
+	text-align: center;
+}
+
+#footer-links li {
+	display: inline;
+	margin-left: 5px;
+	font-size: 14px;
+}
+
+#footer-links li:first-child {
+	margin-left: 0px;
+}
+
+#footer .colophon p {
+	font-size: 14px;
+	font-style: italic;
+}
+
+#footer p.promo {
+	font-size: 12px;
+	text-transform: uppercase;
+	font-style: normal;
+}
+
+
+/* Notes and comments
+********************************/
+
+#permalink-content {
+	margin-top: 40px;
+}
+
+.avatar_frame {
+	position: relative;
+	top: 4px;
+	margin-right: 10px;
+}
+
+.comments {
+	margin-bottom: 35px;
+}
+
+.comments h3, .permalink-notes h3 {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.permalink-notes ol {
+	padding-left: 0;
+}
+
+.permalink-notes li {
+	list-style: none;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	border-top: 1px solid rgba(136, 136, 136, 0.3);
+	font-size: 13px;
+}
+
+.permalink-notes blockquote {
+	margin: 5px 0px 5px 0px;
+	border-left: 3px solid rgba(136, 136, 136, 0.2);
+	margin-left: 20px;
+	padding-left: 15px;
+    line-height: 24px;
+}
+
+.notes a {
+	border-bottom: none;
+	text-decoration: underline;
+}
+
+
+.post iframe, .post object {
+max-width: 100%;
+}
+
+
+/* Browser size break-points
+********************************/
+
+
+@media screen and (max-width: 800px) {
+
+#header {
+	margin-top: 20px;
+	display: block;
+	overflow: visible;
+	padding-bottom: 0px;
+}
+
+.blog-title {
+	display: block;
+	text-align: center;
+	margin-top: 50px;
+	float: none;
+	width: 100%;
+    margin-bottom: 50px;
+}
+
+.blog-title h1 {
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+.blog-description {
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.links {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+	float: none;
+	border-bottom: 1px solid rgba(136, 136, 136, 0.4);
+}
+
+.links ul {
+	margin-top: 10px;
+	padding: 0;
+	display: block;
+	text-align: center;
+	float: none;
+}
+
+.links li {
+	display: inline;
+	margin-left: 16px;
+	font-size: 17px;
+	text-transform: none;
+}
+
+
+.metadata {
+	font-size: 16px;
+	}
+
+.player {
+	display: none;
+}
+
+a.mobile-player {
+	display: block;
+}
+
+.album-info {
+	width: 100%
+}
+
+.title h1, .link-title h1, .chat-title h1 {
+text-align: center;
+font-size: 36px;
+line-height: 42px;
+}
+
+}
+
+@media screen and (max-width: 740px) {
+
+#page {
+	padding-left:  1em;
+	padding-right: 1em;
+}
+
+#header {
+	margin-bottom: 50px;
+}
+
+/* WRANGLE TUMBLR VIDEO PLAYER */
+
+
+.iphone-video img {
+	width: 90%;
+}
+
+.iphone-video a {
+	margin-bottom: 20px;
+}
+
+/* IMAGES */
+
+.photo img, .album-art img, .videoWrapper img {
+	min-width: 100%;
+}
+
+.link-title a {
+	line-height: 50px;
+}
+
+.desktop-spotify {
+	display: none;
+}
+
+.mobile-spotify {
+	display: block;
+}
+
+}
+
+
+
+</style>
+
+<!-- End header -->
+
+    <link rel="alternate" href="android-app://com.tumblr/tumblr/x-callback-url/blog?blogName=howlab" /><link rel="alternate" href="ios-app://305343404/tumblr/x-callback-url/blog?blogName=howlab" /><script
+    defer
+    type="application/javascript"
+    id="bilmur"
+    data-provider="tumblr.com"
+    data-service="blognetwork"
+    data-customproperties='{"theme": "observer"}'
+    nonce="33Y3Vb0U9TQTFOL3aBDdSvSiZs"
+    src="../../../s0.wp.com/wp-content/js/bilmur.min.js@m=202546"
+  ></script><script src="../../../assets.tumblr.com/assets/scripts/tumblelog_post_message_queue.js@_v=a8fadfa499d8cb7c3f8eefdf0b1adfdd"></script><link rel="stylesheet" type="text/css" href="../../../assets.tumblr.com/fonts/calluna/stylesheet.css@v=3.css"><link rel="stylesheet" type="text/css" href="../../../assets.tumblr.com/fonts/gibson/stylesheet.css@v=3.css"><meta name="keywords" content="famous" /><!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS --><!-- If you'd like to specify your own Open Graph tags, define the og:url and og:title tags in your theme's HTML. --><!-- Read more: http://ogp.me/ --><meta property="fb:app_id" content="48119224995" /><meta property="og:site_name" content="Tumblr" /><meta property="og:title" content="howLAB" /><meta property="og:url" content="https://howlab.tumblr.com/?og=1" /><meta property="og:description" content="here is where howLAB (how life art to be) members post what they are researching, developing or..." /><meta property="og:type" content="profile" /><meta property="og:image" content="https://64.media.tumblr.com/avatar_6ad013f86671_128.pnj" /><meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName=howlab" /><meta property="al:ios:app_name" content="Tumblr" /><meta property="al:ios:app_store_id" content="305343404" /><meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName=howlab" /><meta property="al:android:app_name" content="Tumblr" /><meta property="al:android:package" content="com.tumblr" /><!-- END TUMBLR FACEBOOK OPENGRAPH TAGS --><!-- TWITTER TAGS --><meta charset="utf-8"><meta name="twitter:site" content="tumblr" /><meta name="twitter:card" content="summary" /><meta name="twitter:description" content="here is where howLAB (how life art to be) members post what they are researching, developing or..." /><meta name="twitter:title" content="howLAB" /><meta name="twitter:app:name:iphone" content="Tumblr" /><meta name="twitter:app:name:ipad" content="Tumblr" /><meta name="twitter:app:name:googleplay" content="Tumblr" /><meta name="twitter:app:id:iphone" content="305343404" /><meta name="twitter:app:id:ipad" content="305343404" /><meta name="twitter:app:id:googleplay" content="com.tumblr" /><meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName=howlab&amp;referrer=twitter-cards" /><meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName=howlab&amp;referrer=twitter-cards" /><meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName=howlab&amp;referrer=twitter-cards" /><!-- GOOGLE CAROUSEL --><script type="application/ld+json">
+	{"@type":"ItemList","url":"https:\/\/howlab.tumblr.com","itemListElement":[{"@type":"ListItem","position":1,"url":"https:\/\/howlab.tumblr.com\/post\/161608601646\/cofounder-walter"},{"@type":"ListItem","position":2,"url":"https:\/\/howlab.tumblr.com\/post\/149299806331\/seward-cruise-northern-passage"},{"@type":"ListItem","position":3,"url":"https:\/\/howlab.tumblr.com\/post\/149236743496\/httpsculpture-centerorgexhibitionsexhibitionh"},{"@type":"ListItem","position":4,"url":"https:\/\/howlab.tumblr.com\/post\/149153688871\/tsunami-stones-ancient-japanese-markers-warn"},{"@type":"ListItem","position":5,"url":"https:\/\/howlab.tumblr.com\/post\/148570001821\/infiniteinterior-got-myself-a-soundcard-and-now"},{"@type":"ListItem","position":6,"url":"https:\/\/howlab.tumblr.com\/post\/146236099491\/anticonventional-objects-perennial"},{"@type":"ListItem","position":7,"url":"https:\/\/howlab.tumblr.com\/post\/144464966416\/english-has-destroyed-and-sucked-up-the-languages"},{"@type":"ListItem","position":8,"url":"https:\/\/howlab.tumblr.com\/post\/144464961731\/dad-had-us-cover-our-eyes-when-the-commercials"},{"@type":"ListItem","position":9,"url":"https:\/\/howlab.tumblr.com\/post\/144464960766\/as-the-eldest-child-i-often-felt-that-i-belonged"},{"@type":"ListItem","position":10,"url":"https:\/\/howlab.tumblr.com\/post\/143276042271\/iheartmyart-moebius-tribute-by-dave-taylor"}],"@context":"http:\/\/schema.org"}</script><link rel="canonical" href="https://www.tumblr.com/howlab" /></head>
+
+	<body>
+
+		<div id="page">
+
+			<div id="header">
+
+                
+				<div class="links">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+                        
+                        
+						<li><a href="https://howlab.tumblr.com/Projects">Projects</a></li>
+                        
+                        
+                        
+    					<li><a href="https://howlab.tumblr.com/ask">ask about howLAB--what tha fuck is it?</a></li>
+						
+                        
+						<li><a href="https://howlab.tumblr.com/submit">Yeah, these are submoted</a></li>
+						
+                        
+                        <li><a href="https://howlab.tumblr.com/archive">Archive</a></li>
+                        
+					</ul>
+				</div>
+				
+
+
+
+				<div class="blog-title">
+
+                    
+
+                    
+                    <h1><a href="index.html">howLAB</a></h1>
+                    
+
+                    
+				</div>
+
+
+
+			</div> <!-- header end -->
+
+			<div id="content">
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        <a href="https://howlab.tumblr.com/image/161608601646">
+
+						<img src="../../../64.media.tumblr.com/962b66ed4375eb47d13e9df0efdfbb79/tumblr_or9iedLIi21r0epc1o1_1280.jpg" alt="cofounder: Walter" />
+
+                        </a>
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <p>cofounder: Walter <br /></p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://howlab.tumblr.com/post/161608601646/cofounder-walter">Jun. 9 2017</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+                            <div class="tags">
+                                
+								<a href="https://howlab.tumblr.com/tagged/famous">#famous</a>
+							    
+							</div>
+                            
+						    
+
+                            
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+
+
+                
+    			<!-- PHOTOSET POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					
+					<div class="wide">
+                        
+                        
+						<img src="../../../64.media.tumblr.com/4ce060dd366889c5ae3cff16192d5f8e/tumblr_oc9i0i60pJ1qfqfdyo1_1280.jpg" alt="climateadaptation:
+&ldquo;  The Crystal Serenity cruise launched on a luxury tour of the Arctic that promises to carry passengers through the storied Northwest Passage and across the roof of the world. The controversial cruise was scheduled to set sail..." />
+                        
+                        
+                        
+						<img src="../../../64.media.tumblr.com/531ab4eb8649c48166fb3f73f221ca07/tumblr_oc9i0i60pJ1qfqfdyo2_1280.jpg" alt="climateadaptation:
+&ldquo;  The Crystal Serenity cruise launched on a luxury tour of the Arctic that promises to carry passengers through the storied Northwest Passage and across the roof of the world. The controversial cruise was scheduled to set sail..." />
+                        
+                        
+					</div>
+					
+
+					
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <p><a class="tumblr_blog" href="http://climateadaptation.tumblr.com/post/149269471084">climateadaptation</a>:</p><blockquote><p> <b>The Crystal Serenity cruise launched on a luxury tour of the Arctic that 
+promises to carry passengers through the storied Northwest Passage and 
+across the roof of the world</b>. The controversial cruise was scheduled to 
+set sail Tuesday from Seward, Alaska, and dock 32 days later in New York
+ City.</p><p>Scientists have long predicted this moment, although as recently as last year, a <a href="https://www.washingtonpost.com/news/energy-environment/wp/2015/09/10/why-the-northwest-passage-probably-wont-be-ready-for-shipping-any-time-soon/?utm_term=.90bfc19cdc96">scientific study found</a> the
+ Northwest Passage would remain too unpredictable for regular shipping 
+for some time to come. But that hasn&rsquo;t stopped some commercial shipping 
+vessels from already making the journey. Nor did it stop the planning 
+for the Arctic&rsquo;s inaugural cruise &mdash; a journey that will mark the first 
+case of mega-scale tourism in one of last virtually untouched landscapes
+ left in the world.</p><p>As many as 1,700 passengers and crew were expected to be on board the
+ Crystal Serenity, which will transit the Bering Strait and visit 
+Greenland. Tickets for the historic journey started at about $22,000 and
+ went into the six figures. That price doesn&rsquo;t include extras that 
+guests can book, such as a helicopter ride or side excursion to a 
+Greenland glacier.</p><p>Despite the cost, the trip sold out quickly, and the company behind it said a second journey is already in the planning.</p><p>The
+ location might be the Arctic, but the Crystal Serenity&rsquo;s 1,100 guests 
+aren&rsquo;t exactly roughing it. The $350 million ship is 820 feet long and 
+has 13 decks and 535 state rooms. It has a driving range and putting 
+green, a casino, a movie theater, half a dozen restaurants, multiple 
+pools and a library with thousands of books, games and DVDs. There&rsquo;s 
+also a spa, fitness center, hair salon and 24-hour complimentary room 
+service.</p><p>More than anything, the cruise is a symbol, a harbinger 
+of the tourism and commercial traffic that is likely to fill the 
+once-isolated, ice-choked waters of the Arctic. Many scientists have 
+projected that the ocean could become virtually free of ice during 
+summers at some point, perhaps as soon as <a href="http://www.noaanews.noaa.gov/stories2013/20130412_arcticseaice.html">the next few decades</a>. <br /></p><p><a href="https://www.washingtonpost.com/news/energy-environment/wp/2016/08/16/a-luxury-cruise-ship-sets-sail-for-the-arctic-thanks-to-climate-change/?utm_term=.8d3ac078e99c">Via WaPo</a><br /></p></blockquote><p>(via <a href='https://climateadaptation-deactivated20.tumblr.com/post/149269471084/seward-cruise-northern-passage'>climateadaptation-deactivated20</a>)</p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://howlab.tumblr.com/post/149299806331/seward-cruise-northern-passage">Aug. 21 2016</a>
+							</div>
+                            
+
+                            
+        					<div class="date">
+								<a href="https://www.washingtonpost.com/news/energy-environment/wp/2016/08/16/a-luxury-cruise-ship-sets-sail-for-the-arctic-thanks-to-climate-change/?utm_term=.797901810aad">Via Washington Post</a>
+							</div>
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://howlab.tumblr.com/post/149299806331/seward-cruise-northern-passage">118 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        <a href="https://howlab.tumblr.com/image/149236743496">
+
+						<img src="../../../64.media.tumblr.com/3838b3d46111e0c9d7ec482fd7085038/tumblr_oc86t8jA7r1r0epc1o1_1280.png" alt="http://sculpture-center.org/exhibitionsExhibition.htm?id=113236" />
+
+                        </a>
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <p><a href="http://sculpture-center.org/exhibitionsExhibition.htm?id=113236">http://sculpture-center.org/exhibitionsExhibition.htm?id=113236</a><br /></p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://howlab.tumblr.com/post/149236743496/httpsculpture-centerorgexhibitionsexhibitionh">Aug. 20 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+
+
+                
+
+
+				
+				<!-- LINK POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post link">
+
+					<div class="narrow">
+
+						<div class="link-title">
+
+							<h1><a href="http://99percentinvisible.org/article/tsunami-stones-ancient-japanese-markers-warn-builders-high-water/">Tsunami Stones: Ancient Japanese Markers Warn Builders of High Water - 99% Invisible <span class="link-arrow">&#10132;</span></a></h1>
+
+						</div>
+
+                        
+
+						<div class="metadata">
+
+							
+        					<div class="date">
+								<a href="https://howlab.tumblr.com/post/149153688871/tsunami-stones-ancient-japanese-markers-warn">Aug. 18 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://howlab.tumblr.com/post/149153688871/tsunami-stones-ancient-japanese-markers-warn">113 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+				<!-- AUDIO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post audio">
+
+					<div class="narrow">
+
+
+					    
+                        	<iframe class="tumblr_audio_player tumblr_audio_player_148570001821" src="post/148570001821/audio_player_iframe/howlab/tumblr_obhotoRUdv1rn8p4d@audio_file=https%253A%252F%252Fa.tumblr.com%252Ftumblr_obhotoRUdv1rn8p4do1.mp3&amp;color=white.html" frameborder="0" allowtransparency="true" scrolling="no" width="500" height="85"></iframe>
+                        
+
+                        
+
+
+                        
+						<div class="caption">
+							<p><a class="tumblr_blog" href="http://infiniteinterior.tumblr.com/post/148541366578">infiniteinterior</a>:</p><blockquote><p>got myself a soundcard and now i can do multitrack recordings of the sounds inside my mouth</p></blockquote>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+                    		<div class="date">
+								<a href="https://howlab.tumblr.com/post/148570001821/infiniteinterior-got-myself-a-soundcard-and-now">Aug. 6 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://howlab.tumblr.com/post/148570001821/infiniteinterior-got-myself-a-soundcard-and-now">4 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+                
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        <a href="https://howlab.tumblr.com/image/146236099491">
+
+						<img src="../../../64.media.tumblr.com/ad64873ffac4a8c6defcc6f1f70bd428/tumblr_o8yv3a16Q91s2jikwo1_1280.jpg" alt="brucesterling:
+&ldquo; &ldquo;Anticonventional Objects,&rdquo; perennial design-fiction theory fave
+&rdquo;" />
+
+                        </a>
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <p><a class="tumblr_blog" href="http://brucesterling.tumblr.com/post/146105284233">brucesterling</a>:</p><blockquote><p>&ldquo;Anticonventional Objects,&rdquo; perennial design-fiction theory fave</p></blockquote><p>(via <a href='https://emergentfutures.tumblr.com/post/146226520379/anticonventional-objects-perennial'>emergentfutures</a>)</p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://howlab.tumblr.com/post/146236099491/anticonventional-objects-perennial">Jun. 20 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://howlab.tumblr.com/post/146236099491/anticonventional-objects-perennial">294 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+
+
+                
+
+
+				
+
+
+				
+				<!-- QUOTE POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post quote">
+
+					<div class="narrow">
+
+						<div class="quote-short">
+
+							&#8220;English has destroyed and sucked up the languages of other cultures—its cruelty is its vitality.&#8221;
+
+						</div>
+
+                        
+						<div class="caption">
+
+							&#8212; <a href="http://www.theparisreview.org/interviews/6055/the-art-of-fiction-no-208-louise-erdrich">http://www.theparisreview.org/interviews/6055/the-art-of-fiction-no-208-louise-erdrich</a>
+
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+            				<div class="date">
+								<a href="https://howlab.tumblr.com/post/144464966416/english-has-destroyed-and-sucked-up-the-languages">May. 16 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+                
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+
+
+                
+
+
+				
+
+
+				
+				<!-- QUOTE POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post quote">
+
+					<div class="narrow">
+
+						<div class="quote-medium">
+
+							&#8220;Dad had us cover our eyes when the commercials came on. He didn’t want us to nurse any unnecessary desires and succumb to capitalism.&#8221;
+
+						</div>
+
+                        
+						<div class="caption">
+
+							&#8212; <a href="http://www.theparisreview.org/interviews/6055/the-art-of-fiction-no-208-louise-erdrich">http://www.theparisreview.org/interviews/6055/the-art-of-fiction-no-208-louise-erdrich</a>
+
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+            				<div class="date">
+								<a href="https://howlab.tumblr.com/post/144464961731/dad-had-us-cover-our-eyes-when-the-commercials">May. 16 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+                
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+
+
+                
+
+
+				
+
+
+				
+				<!-- QUOTE POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post quote">
+
+					<div class="narrow">
+
+						<div class="quote-short">
+
+							&#8220;As the eldest child, I often felt that I belonged more to my parents’ generation than to my own.&#8221;
+
+						</div>
+
+                        
+						<div class="caption">
+
+							&#8212; <a href="http://www.theparisreview.org/interviews/6055/the-art-of-fiction-no-208-louise-erdrich">http://www.theparisreview.org/interviews/6055/the-art-of-fiction-no-208-louise-erdrich</a>
+
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+            				<div class="date">
+								<a href="https://howlab.tumblr.com/post/144464960766/as-the-eldest-child-i-often-felt-that-i-belonged">May. 16 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://howlab.tumblr.com/post/144464960766/as-the-eldest-child-i-often-felt-that-i-belonged">1 note</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+                
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        <a href="https://howlab.tumblr.com/image/143276042271">
+
+						<img src="../../../64.media.tumblr.com/ce2a004dcb8a6dd9930a9e8a6797a228/tumblr_o1jrf2v3Lk1u0cvfko1_1280.jpg" alt="iheartmyart:
+&ldquo;Moebius tribute by Dave Taylor, 2012
+______
+Discover more art on iheartmyart
+Find us: Facebook | Twitter | Instagram | Flickr | Mail List | Pinterest | Soundcloud | Google +
+See more artwork by Dave Taylor on iheartmyart.
+Discover more..." />
+
+                        </a>
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <p><a href="http://www.iheartmyart.com/post/143167456053/moebius-tribute-by-dave-taylor-2012" class="tumblr_blog">iheartmyart</a>:</p><blockquote><p>Moebius tribute by <b>Dave Taylor</b>, 2012</p><p>______<br />Discover more art on <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fbitly.com%2F1mYik9d&amp;t=MDAxZDY5ZTA3M2E0MzAwZDQwYjdiZTg4YzljM2YxOWNjZjJmNjAzNCxyQTBKUFdnRg%3D%3D">iheartmyart</a></p><p>Find us: <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fbitly.com%2Fiheartmyartfb&amp;t=OTA5YjE3ODZkNTc3ZjY5NjdkZTc2MDk4ZDEwZmZhZTAyZTYyOTQxMixyQTBKUFdnRg%3D%3D">Facebook</a> | <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fbitly.com%2F1kLz6tA&amp;t=MzkzZTJiNDc1YWQ4ZWMzZmM3ZTExZGY3NDAzYmY0MTIxYzk4MThhOSxyQTBKUFdnRg%3D%3D">Twitter</a> | I<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fbitly.com%2F1kLzp7u&amp;t=NGVkNzkxZDUyNTE0ODY5MjkwOWJiOWViYTU1NzRkNmFmODllYzQ3ZixyQTBKUFdnRg%3D%3D">nstagram</a> | <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fbitly.com%2F1ksYNP6&amp;t=MmViMGI0N2RiOWIxOWVmYTNmN2VmODY3ZTdlNjBkN2EyZjYzOTMxZixyQTBKUFdnRg%3D%3D">Flickr</a> | <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fbitly.com%2F1ylwJOL&amp;t=OTQ0NDcxYmIwYTlmZTE4ZGY5MzNhZTFhMzllMjg0MWNmN2ExYzY1MSxyQTBKUFdnRg%3D%3D">Mail List</a> | <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fbitly.com%2Fiheartmyartpin&amp;t=MjE4YTA3YTE2MGVmOWEzYWM3N2U4M2JhZjZlODQwMjcyYjhmYTUwOSxyQTBKUFdnRg%3D%3D">Pinterest</a> | <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fbitly.com%2Fiheartscloud&amp;t=MmNmOWExYjQyNzhlYmJiM2Y3M2ViYzM3OWY2OTFlODExYzNlM2VhYyxyQTBKUFdnRg%3D%3D">Soundcloud</a> | <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fbitly.com%2FiheartGplus&amp;t=M2M2YjNmMGEyYjhmOTQyYzlhMmIzN2ExOWI1NTk1Njg2MTM1N2UzOCxyQTBKUFdnRg%3D%3D">Google +</a></p><p>See more artwork by <a href="http://www.iheartmyart.com/tagged/Moebius">Dave Taylor on iheartmyart.</a><br />Discover more <a href="http://www.iheartmyart.com/tagged/illustration">illustration on iheartmyart.</a></p></blockquote><p>(via <a href='https://www.iheartmyart.com/post/143167456053/moebius-tribute-by-dave-taylor-2012'>iheartmyart</a>)</p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://howlab.tumblr.com/post/143276042271/iheartmyart-moebius-tribute-by-dave-taylor">Apr. 23 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://howlab.tumblr.com/post/143276042271/iheartmyart-moebius-tribute-by-dave-taylor">447 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+            
+
+			</div> <!-- content end -->
+
+			<div id="footer">
+
+
+                
+
+                <h2>
+                
+
+                
+                <a class="back-next" href="https://howlab.tumblr.com/page/2">Next</a>
+                
+                </h2>
+
+                
+
+
+				<div id="footer-links">
+
+						<ul>
+							<li><a href="index.html">Home</a></li>
+                            
+                            
+    					    <li><a href="https://howlab.tumblr.com/Projects">Projects</a></li>
+                            
+                            
+                            
+    					    <li><a href="https://howlab.tumblr.com/ask">ask about howLAB--what tha fuck is it?</a></li>
+						    
+                            
+						    <li><a href="https://howlab.tumblr.com/submit">Yeah, these are submoted</a></li>
+						    
+                            <li><a href="https://howlab.tumblr.com/archive">Archive</a></li>
+					</ul>
+				</div>
+
+				<div class="colophon">
+
+                    
+
+					<p class="promo"><a href="http://zacksultan.com">Observer theme by Zack Sultan</a></p>
+
+				</div>
+
+			</div><!-- content end -->
+
+		</div> <!-- page end -->
+
+
+<iframe scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0; z-index:9999;" id="ga_target"></iframe><script type="text/javascript">
+    (function(){
+        var analytics_frame = document.getElementById('ga_target');
+        var analytics_iframe_loaded;
+        var user_logged_in;
+        var blog_is_nsfw = 'No';
+
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent,function(e) {
+            var message = (e.data && e.data.split) ? e.data.split(';') : '';
+            switch (message[0]) {
+                case 'analytics_iframe_loaded':
+                    analytics_iframe_loaded = true;
+                    postCSMessage();
+                    postGAMessage();
+                    break;
+                case 'user_logged_in':
+                    user_logged_in = message[1];
+                    postGAMessage();
+                    break;
+            }
+        }, false);
+
+        analytics_frame.src = "https://assets.tumblr.com/analytics.html?_v=9f5febfd57a8a649c598d888f2d9e062#" +
+                              "https://howlab.tumblr.com";
+        function postGAMessage() {
+            if (analytics_iframe_loaded && user_logged_in) {
+                var is_ajax = false;
+                analytics_frame.contentWindow.postMessage(['tick_google_analytics', is_ajax, user_logged_in, blog_is_nsfw, '/?route=%2F'].join(';'), analytics_frame.src.split('/analytics.html')[0]);
+            }
+        }
+        function postCSMessage() {
+            COMSCORE = true;
+            analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
+        }
+    })();
+</script><script type="text/javascript" nonce="33Y3Vb0U9TQTFOL3aBDdSvSiZs">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1762948026&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDovL2hvd2xhYi50dW1ibHIuY29tLyIsInJlcXR5cGUiOjAsInJvdXRlIjoiLyJ9&U=ODFAHGDOKD&K=05e9ee01f684c91163b8fad3e26e500f3838784778485f018df38165cf512ac4&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="../../../px.srvcs.tumblr.com/impixu@T=1762948026&amp;J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDovL2hvd2xhYi50dW1ibHIuY29tLyIsInJlcXR5cGUiOjAsInJvdXRlIjoiLyIsIm5vc2NyaXB0IjoxfQ==&amp;U=ODFAHGDOKD&amp;K=be53b616a0a4f1c8ed1e3f8ea5f8a6b367025f15bb6f0d07e484eeba01a84b39&amp;R="></noscript><script type="text/javascript" nonce="33Y3Vb0U9TQTFOL3aBDdSvSiZs">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1762948026&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9ob3dsYWIudHVtYmxyLmNvbS8iLCJyZXF0eXBlIjowLCJyb3V0ZSI6Ii8iLCJwb3N0cyI6W3sicG9zdGlkIjoiMTYxNjA4NjAxNjQ2IiwiYmxvZ2lkIjoyNDU4NDk2NSwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjEwNTE1NjQ1Iiwicm9vdF9wb3N0aWQiOiIxNDkyNjk0NzEwODQiLCJwb3N0aWQiOiIxNDkyOTk4MDYzMzEiLCJibG9naWQiOjI0NTg0OTY1LCJzb3VyY2UiOjMzfSx7InBvc3RpZCI6IjE0OTIzNjc0MzQ5NiIsImJsb2dpZCI6MjQ1ODQ5NjUsInNvdXJjZSI6MzN9LHsicm9vdF9ibG9naWQiOiI1ODU0MzYyIiwicm9vdF9wb3N0aWQiOiIxNDkxNDc0MDY0NjYiLCJwb3N0aWQiOiIxNDkxNTM2ODg4NzEiLCJibG9naWQiOjI0NTg0OTY1LCJzb3VyY2UiOjMzfSx7InJvb3RfYmxvZ2lkIjoiNDA0OTM5MzAiLCJyb290X3Bvc3RpZCI6IjE0ODU0MTM2NjU3OCIsInBvc3RpZCI6IjE0ODU3MDAwMTgyMSIsImJsb2dpZCI6MjQ1ODQ5NjUsInNvdXJjZSI6MzN9LHsicm9vdF9ibG9naWQiOiI4ODY2ODU4MyIsInJvb3RfcG9zdGlkIjoiMTQ2MTA1Mjg0MjMzIiwicG9zdGlkIjoiMTQ2MjM2MDk5NDkxIiwiYmxvZ2lkIjoyNDU4NDk2NSwic291cmNlIjozM30seyJwb3N0aWQiOiIxNDQ0NjQ5NjY0MTYiLCJibG9naWQiOjI0NTg0OTY1LCJzb3VyY2UiOjMzfSx7InBvc3RpZCI6IjE0NDQ2NDk2MTczMSIsImJsb2dpZCI6MjQ1ODQ5NjUsInNvdXJjZSI6MzN9LHsicG9zdGlkIjoiMTQ0NDY0OTYwNzY2IiwiYmxvZ2lkIjoyNDU4NDk2NSwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjIwNTg5ODA5NyIsInJvb3RfcG9zdGlkIjoiMTM4MDcxOTU2OTA0IiwicG9zdGlkIjoiMTQzMjc2MDQyMjcxIiwiYmxvZ2lkIjoyNDU4NDk2NSwic291cmNlIjozM31dfQ==&U=BMJLNBPPPJ&K=041b132253d03281660ff8fe70bbd421677915d4e243d9efbb18333b9e2d6b88&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="../../../px.srvcs.tumblr.com/impixu@T=1762948026&amp;J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9ob3dsYWIudHVtYmxyLmNvbS8iLCJyZXF0eXBlIjowLCJyb3V0ZSI6Ii8iLCJwb3N0cyI6W3sicG9zdGlkIjoiMTYxNjA4NjAxNjQ2IiwiYmxvZ2lkIjoyNDU4NDk2NSwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjEwNTE1Nj"></noscript><iframe
+    id="blue-space-api-calls-iframe"
+    src="https://www.tumblr.com/dashboard/iframe/monetization?tumblelog=howlab&src=https%3A%2F%2Fhowlab.tumblr.com%2F"
+    style="display: none;"
+    sandbox="allow-scripts allow-same-origin"></iframe><script async src="../../../securepubads.g.doubleclick.net/tag/js/gpt.js" crossorigin="anonymous" nonce="33Y3Vb0U9TQTFOL3aBDdSvSiZs"></script><!--
+Open GAM console on the page:
+1. Open browser JS console
+2. Run `googletag.openConsole()`
+3. GAM debug UI should appear and tell some more info on the ad itself and its fulfillment status
+--><noscript id="bootloader" data-bootstrap="{&quot;Components&quot;:{&quot;PostActivity&quot;:[],&quot;NotificationPoller&quot;:{&quot;messaging_keys&quot;:[],&quot;token&quot;:&quot;&quot;,&quot;inbox_unread&quot;:0},&quot;DesktopDashboardLogo&quot;:{&quot;animations&quot;:[[&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1.png?_v=161861acded461bb6e995593a3bae835&quot;,&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1@2x.png?_v=496a774637302a598c851381d00009b0&quot;]]},&quot;Monetization&quot;:{&quot;client_side_waterfall&quot;:false,&quot;no_demand_reason&quot;:null},&quot;TumblelogIframe&quot;:{&quot;variant&quot;:null,&quot;isCompact&quot;:true,&quot;tumblelogBundleSrc&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/standalone\/tumblelog\/index.build.js?_v=4a1639e90881218a9d0826bd29b5b53a&quot;,&quot;tumblelogName&quot;:&quot;howlab&quot;,&quot;isLoggedIn&quot;:false,&quot;isFriend&quot;:false,&quot;formKey&quot;:&quot;&quot;,&quot;canSubscribe&quot;:false,&quot;isSubscribed&quot;:false,&quot;tumblelogTitle&quot;:&quot;howLAB&quot;,&quot;tumblelogAvatar&quot;:&quot;https:\/\/64.media.tumblr.com\/avatar_6ad013f86671_64.pnj&quot;,&quot;tumblelogAvatar128&quot;:&quot;https:\/\/64.media.tumblr.com\/avatar_6ad013f86671_128.pnj&quot;,&quot;tumblelogHost&quot;:&quot;https:\/\/howlab.tumblr.com&quot;,&quot;hasCustomDomain&quot;:false,&quot;isOptica&quot;:false,&quot;isCustomTheme&quot;:false,&quot;themeHeaderImage&quot;:&quot;https:\/\/static.tumblr.com\/bc4872cc9b9153cc98fd3abf73d4ff94\/j41729k\/iq4or9i9t\/tumblr_static_tumblr_static_bsm2deq61fk0oo800ck08k800_focused_v3.jpg&quot;,&quot;themeBackgroundColor&quot;:&quot;#f4ff27&quot;,&quot;themeTitleColor&quot;:&quot;#444444&quot;,&quot;themeAccentColor&quot;:&quot;#000000&quot;,&quot;brag&quot;:true,&quot;canShowAd&quot;:false,&quot;isPremium&quot;:false,&quot;geminiSectionCodeDesktop&quot;:&quot;a10bca9c-0c5d-4a02-ab13-14ab8513d81d&quot;,&quot;geminiSectionCodeMobile&quot;:&quot;ced63809-b609-4aca-96a0-abc099acba6b&quot;,&quot;currentPageType&quot;:&quot;blog&quot;,&quot;currentPage&quot;:1,&quot;searchQuery&quot;:&quot;&quot;,&quot;tag&quot;:&quot;&quot;,&quot;query&quot;:&quot;&quot;,&quot;chrono&quot;:false,&quot;postId&quot;:&quot;&quot;,&quot;src&quot;:&quot;https:\/\/howlab.tumblr.com\/&quot;,&quot;postUrl&quot;:&quot;&quot;,&quot;openInPeeprUrl&quot;:&quot;https:\/\/www.tumblr.com\/howlab&quot;,&quot;isBlocked&quot;:null,&quot;isAdmin&quot;:false,&quot;lookupButtonUrl&quot;:&quot;&quot;,&quot;showSpamButton&quot;:false,&quot;showRootPostButton&quot;:false,&quot;rootPostUrl&quot;:&quot;&quot;,&quot;showRadarPostButton&quot;:false,&quot;radarKeys&quot;:&quot;&quot;,&quot;isUniblocked&quot;:false,&quot;isNsfw&quot;:false,&quot;isAdult&quot;:false,&quot;isSpam&quot;:false,&quot;isPrimaryBlog&quot;:false,&quot;canEdit&quot;:false,&quot;showRemoveAdsCta&quot;:false,&quot;canReblogSelf&quot;:false,&quot;showLikeButton&quot;:false,&quot;showReblogButton&quot;:false,&quot;reblogUrl&quot;:&quot;&quot;,&quot;showMessagingButton&quot;:false,&quot;loginCheckIframeSrc&quot;:&quot;https:\/\/assets.tumblr.com\/assets\/html\/iframe\/login_check.html?_v=3de94a184d600617102ddd5b48fb36e9&quot;,&quot;appInstallUrls&quot;:{&quot;android&quot;:&quot;https:\/\/play.google.com\/store\/apps\/details?id=com.tumblr\u0026referrer=utm_source%3Dtumblr%26utm_medium%3Diframe%26utm_campaign%3Dbn_continue_or_install_cta&quot;,&quot;ios&quot;:&quot;https:\/\/apps.apple.com\/app\/apple-store\/id305343404?pt=212308\u0026ct=bn_continue_or_install_cta\u0026mt=8&quot;},&quot;appOpenReferrer&quot;:&quot;bn_header_open_btn&quot;,&quot;isShowSearch&quot;:true,&quot;supplyLogging&quot;:[],&quot;secondsSinceLastActivity&quot;:-1,&quot;installUrlOpenFailed&quot;:{&quot;android&quot;:&quot;https:\/\/play.google.com\/store\/apps\/details?id=com.tumblr\u0026referrer=utm_source%3Dtumblr%26utm_medium%3Diframe%26utm_campaign%3Dbn_header_app_open_failed&quot;,&quot;ios&quot;:&quot;https:\/\/apps.apple.com\/app\/apple-store\/id305343404?pt=212308\u0026ct=bn_header_app_open_failed\u0026mt=8&quot;},&quot;loginWallVariant&quot;:&quot;small_center&quot;},&quot;CommunityLabels&quot;:{&quot;has_community_label&quot;:false,&quot;is_single&quot;:false,&quot;redirect_target&quot;:null}},&quot;Flags&quot;:{&quot;features&quot;:&quot;eyJmaWx0ZXJfbnNmdyI6dHJ1ZSwibW9iaWxlX3dlYl9nYXRlIjp0cnVlLCJzYWZlX21vZGUiOnRydWUsInNhZmVfbW9kZV9lbmFibGVkIjp0cnVlLCJrZXljb21tYW5kX2F1dG9fcGFnaW5hdGUiOnRydWUsImxvZ2dlZF9vdXRfc2VhcmNoIjp0cnVlLCJrcmFrZW5fd2ViX2xvZ2dpbmdfbGlicmFyeSI6dHJ1ZSwibGl2ZXBob3Rvc193ZWIiOnRydWUsInVzZXJfdGFnX2ZpbHRlcmluZyI6dHJ1ZSwic2FmZV9tb2RlX293bl9wb3N0Ijp0cnVlLCJwcm9qZWN0X3hfYXBwZWFsIjp0cnVlLCJtb2JpbGVfd2ViX3Bob3Rvc2V0cyI6dHJ1ZSwiaGlkZV9kZWZhdWx0X2hlYWRlcnNfYmxvZ19jYXJkcyI6dHJ1ZSwibm90aWZpY2F0aW9uX3JlcGx5X2xpbmtfdG9fbm90ZXMiOnRydWUsInR5cGluZ19pbmRpY2F0b3Jfd3JpdGUiOnRydWUsInR1bWJscl92aWRlb19zcG9uc29yZWRfZGF5Ijp0cnVlLCJjYXB0Y2hhOnVzZV9yZWNhcHRjaGEyIjp0cnVlLCJsaXR0bGVfc2lzdGVyIjp0cnVlLCJsb2dfbGFkeSI6dHJ1ZSwicmVkcG9wX3Bvc3RfZm9ybV9tb2JpbGVfY3JlYXRlIjp0cnVlLCJsZWdhY3lfcG9zdF9mb3JtX2J1dHRvbnNfbGlua190b19yZWRwb3AiOnRydWUsInNob3dfdHNwX2NsaWNrX3Rocm91Z2hfdG9nZ2xlIjp0cnVlLCJkYXJsYV9hZF9mZWVkYmFjayI6dHJ1ZSwic3RhdHVzX2luZGljYXRvciI6dHJ1ZSwiY29udmVyc2F0aW9uYWxfbm90aWZpY2F0aW9ucyI6dHJ1ZSwiZGlzYWJsZV95YWhvb19iX2Nvb2tpZSI6dHJ1ZSwibGl2ZXBob3RvcyI6dHJ1ZSwiY29tbXVuaXR5X2xhYmVscyI6dHJ1ZSwibW9uZXRpemF0aW9uIjp0cnVlfQ==&quot;},&quot;Context&quot;:{&quot;name&quot;:&quot;default&quot;,&quot;time&quot;:1762948026000,&quot;userinfo&quot;:{&quot;primary&quot;:&quot;&quot;,&quot;name&quot;:&quot;&quot;,&quot;channels&quot;:[]},&quot;hosts&quot;:{&quot;assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;secure_assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;secure_www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;embed_host&quot;:&quot;https:\/\/embed.tumblr.com&quot;,&quot;safe_host&quot;:&quot;https:\/\/safe.txmblr.com&quot;,&quot;platform_host&quot;:&quot;https:\/\/platform.tumblr.com&quot;},&quot;language&quot;:&quot;en_US&quot;,&quot;language_simple&quot;:&quot;en&quot;,&quot;assets&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/&quot;},&quot;Translations&quot;:{&quot;%1$sReport %2$s&#039;s post?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;,&quot;%1$sReport %2$s&#039;s reply?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;,&quot;%1$sDelete your tip??%2$s&quot;:&quot;%1$sDelete your tip?%2$s&quot;,&quot;Deleting your tip&quot;:&quot;Deleting your tip will only remove it from the replies tab and notes. %1$sYou won&#039;t receive a refund of your tip.%2$s For further help contact %3$sTumblr Support%4$s.&quot;}}"></noscript><script src="../../../assets.tumblr.com/client/prod/standalone/tumblelog/index.build.js@_v=4a1639e90881218a9d0826bd29b5b53a"></script></body>
+
+</html>

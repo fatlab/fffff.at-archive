@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "bustime-custom";
+  src: url("fonts/bustime-custom.eot@nj2ioq");
+  src: url("fonts/bustime-custom.eot@nj2ioq") format("embedded-opentype"), url("fonts/bustime-custom.ttf@nj2ioq") format("truetype"), url("fonts/bustime-custom.woff@nj2ioq") format("woff"), url("fonts/bustime-custom.svg@nj2ioq") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+.bustime-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "bustime-custom" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bt-detour_removed_stops:before {
+  content: "\e913";
+}
+
+.bt-metra_train_icon:before {
+  content: "\e912";
+}
+
+.bt-search:before {
+  content: "\e911";
+}
+
+.bt-traffic:before {
+  content: "\e900";
+}
+
+.bt-clearall:before {
+  content: "\e901";
+}
+
+.bt-reverse:before {
+  content: "\e902";
+}
+
+.bt-routeprogress:before {
+  content: "\e903";
+}
+
+.bt-mylocation:before {
+  content: "\e904";
+}
+
+.bt-routeschedule:before {
+  content: "\e905";
+}
+
+.bt-tripplanner:before {
+  content: "\e906";
+}
+
+.bt-bus:before {
+  content: "\e907";
+}
+
+.bt-peoplemover:before {
+  content: "\e908";
+}
+
+.bt-rail:before {
+  content: "\e909";
+}
+
+.bt-ferry:before {
+  content: "\e90a";
+}
+
+.bt-vehiclenofocus:before {
+  content: "\e90b";
+}
+
+.bt-vehiclefocus:before {
+  content: "\e90c";
+}
+
+.bt-cognito:before {
+  content: "\e90d";
+}
+
+.bt-traintracks:before {
+  content: "\e90e";
+}
+
+.bt-stationicon:before {
+  content: "\e90f";
+}
+
+.bt-wheelchair:before {
+  content: "\e910";
+}
+
+/*# sourceMappingURL=style.css.map */

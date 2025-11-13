@@ -1,0 +1,15 @@
+Sitemap: https://sedo.com/fileadmin/sitemaps/sitemap.xml
+
+User-agent: *
+Disallow: /datenbank
+Disallow: /logs
+Disallow: /img
+Disallow: /cgi-bin
+Disallow: /auction
+Disallow: /search
+Disallow: /auth
+Disallow: /store
+Allow: /search/details/
+
+User-agent: Riddler
+Disallow: /

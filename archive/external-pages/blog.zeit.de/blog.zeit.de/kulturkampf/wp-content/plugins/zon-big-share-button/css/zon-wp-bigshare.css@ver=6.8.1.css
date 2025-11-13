@@ -1,0 +1,27 @@
+.tb-newShareButton {
+	border-radius: 5px;
+	color: #fff;
+	float: left;
+	font-family: "TabletGothic",sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	line-height: 1;
+	margin: 21px 21px 0px 0px;
+	padding: 11px 20px;
+	text-transform: uppercase;
+}
+
+.tb-twitter {
+	background: rgb(40, 150, 235) url('../images/twitter-icon.png') no-repeat 11px 3px;
+	padding-left: 49px;
+}
+
+.tb-facebook {
+	background: rgb(12, 47, 105) url('../images/fb-icon.png') no-repeat 5px 3px;
+	padding-left: 39px;
+}
+
+.entry-footer .tb-newShareButton {
+	color: #fff;
+}

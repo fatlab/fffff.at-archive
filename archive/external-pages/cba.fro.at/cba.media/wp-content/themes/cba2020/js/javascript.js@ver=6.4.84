@@ -1,0 +1,1507 @@
+/**
+ * Display a fading out notification layer
+ * Used to display messages to the user after receiving an AJAX response
+ */
+
+function cbaNotify(msg) {
+	let notify = jQuery("#cba-notification");
+	notify.html(msg);
+	notify.show();
+	notify.fadeOut(2000);
+}
+
+
+/**
+ * Feedback form field toggle
+ */
+function toggleFormFields(){
+
+	df = document.forms['download-form'];
+
+	if( df.rebroadcast.checked || df.production.checked ) {
+
+		jQuery('.rebroadcast-container').fadeIn();
+
+		df.nameofbroadcast.disabled = false;
+		df.nameofstation.disabled = false;
+		df.nameofbroadcast.style.backgroundColor='#ffffff';
+		df.nameofstation.style.backgroundColor='#ffffff';
+	} else {
+		jQuery('.rebroadcast-container').fadeOut();
+
+		df.nameofbroadcast.disabled = true;
+		df.nameofstation.disabled = true;
+		df.nameofbroadcast.value='';
+		df.nameofstation.value='';
+		df.nameofbroadcast.style.backgroundColor='#f6f6f6';
+		df.nameofstation.style.backgroundColor='#f6f6f6';
+	}
+}
+
+
+
+/**
+ * Only load an action after confirming in an alert dialog
+ */
+function confirmLink(theLink, what) {
+    if (confirmMsg == '')
+        return true;
+
+    var is_confirmed = confirm(what);
+
+    if(is_confirmed)
+        theLink.href += '&is_js_confirmed=1';
+
+    return is_confirmed;
+}
+
+var confirmMsg  = '.';
+
+var wpgeo_icon_large='http://cba.media/wp-content/plugins/wp-geo/img/logo/wp-geo-icon.png';
+
+
+
+
+/*
+ * Checks or unchecks all checkboxes of a given form
+ *
+ * @param string : form name
+ * @param string : checkboxes' variable name to check/uncheck
+ * @param boolean: true for check, false for uncheck
+ *
+ */
+function setCheckboxes(the_form, values, do_check) {
+  var elts      = document.forms[the_form].elements[values];
+  var elts_cnt  = elts.length;
+
+  for (var i = 0; i < elts_cnt; i++) {
+      elts[i].checked = do_check;
+  }
+
+  return true;
+}
+
+
+
+
+/**
+ * The cursor lets you interact with the waveform and player
+ *
+ * - Load and display the waveform
+ * - Lets users click the waveform to scrubb
+ * - Load and display markers
+ * - Unlock the download link for a file
+ */
+var cursor = {
+  init : function(player, post_id, duration) {
+
+    if( ! cursor.tooltipPosition )
+      cursor.tooltipPosition = 'top';
+
+    if( cursor.showTooltip != false )
+      cursor.showTooltip = true;
+
+    cursor.post_id = post_id;
+    cursor.duration = duration;
+    cursor.setTo(0);
+    cursor.framewidth = jQuery("#waveform_image").width() / duration;
+
+    if( ! cursor.hideWaveform ) {
+
+      cursor.getWaveform();
+      cursor.drawWaveform();
+
+      // Seeking via waveform: set current position of seekbar and player if waveform is clicked
+      jQuery("#waveform_image").bind( 'click', function(e) {
+			// Don't change the cursor position when clicking of waveform button
+			// It means we only want to play from the current position, not the new one
+			if( jQuery('.waveform-play-button').css('display') == 'block' )
+				return;
+
+        var framewidth = cursor.duration / jQuery(this).width(); // How many pixels has one second?
+        var mousepos = e.pageX - jQuery(this).offset().left;
+        var newpos = mousepos * framewidth; // Current mouse position to seconds
+        player.setCurrentTime(newpos); // Set the player to the relative second
+      });
+
+    }
+
+    //cursor.getMarkers(post_id);
+    cursor.getPostMeta();
+    cursor.drawMarkers();
+
+  },
+
+  getMarkers : function() {
+      jQuery.ajax({
+        type: "POST",
+        url: ajaxurl,
+        async: false,
+        data: {
+                'action': 'cba_ajax_get_markers',
+                'post_id': cursor.post_id
+              },
+        dataType: 'json',
+        success: function(markers) {
+          cursor.markers = markers;
+        }
+      });
+  },
+
+  getWaveform : function() {
+
+      jQuery.ajax({
+        type: "POST",
+        url: ajaxurl,
+        async:false,
+        data: {
+                'action': 'cba_ajax_get_waveform',
+                'post_id': cursor.post_id
+              },
+        dataType: 'json',
+        success: function(waveform) {
+          cursor.waveform = waveform;
+        }
+      });
+  },
+
+  getPostMeta : function() {
+
+      jQuery.ajax({
+        type: "POST",
+        url: ajaxurl,
+        async: false,
+        data: {
+                  'action':  'cba_ajax_get_postmeta',
+                  'post_id': cursor.post_id
+              },
+        dataType: 'json',
+        success: function(postmeta) {
+
+				cursor.postmeta = postmeta;
+
+				// Display postmeta
+				/*
+				jQuery("." + post_id + " .attinfo #fileformat-" + cursor.mediatype).html(postmeta.fileformat[0].toUpperCase());
+				jQuery(".attinfo #bitrate-" + cursor.mediatype).html((postmeta.bitrate[0] / 1000).toFixed(0));
+				jQuery(".attinfo #filesize-" + cursor.mediatype).html((postmeta.filesize[0] / 1048576).toFixed(2));
+				jQuery(".attinfo #license-" + cursor.mediatype).html(postmeta.license_image);
+				*/
+				jQuery("#cut-link").html('<a href="/wp-admin/edit.php?page=cba_cut&post_id=' + cursor.post_id + '" onclick="window.open(this.href,\'\',\'width=980,height=650,menubar=no,location=yes,resizable=yes,scrollbars=auto,status=no,dependent=no,toolbar=no\'); return false;">' + cbatrsl.cutfile + '</a>');
+				// Only display download link if there's no copyrighted material in it
+
+				jQuery(".post-title").html(postmeta.post_parent_title);
+				jQuery(".post-description").html(nl2br(postmeta.post_parent_content));
+
+				jQuery(".series-title").html(postmeta.series.post_title);
+
+				if(cursor.mediatype == 'video') {
+					jQuery("#size-video").html(postmeta.width[0] + " x " + postmeta.height[0] + " px");
+				}
+
+				// Update download link
+				if(postmeta.attachment_link != '') {
+					jQuery("#download-link-" + cursor.post_id).html( postmeta.attachment_link );
+				}
+
+				// Tooltips
+				jQuery(".ttb").bttp();
+
+				/* Change button targets in OnDemand Player */
+				jQuery('.embed-share-button a').attr('href', postmeta.post_permalink);
+				jQuery('.embed-podcast-button a').attr('href', postmeta.series.permalink);
+
+				/* Populate originators */
+				jQuery('#originator-container').html( postmeta.originators );
+
+				/* Toggle the show-originators-button's visibility */
+				if( postmeta.originators != '' ) {
+					jQuery('.toggle-originators').show();
+					jQuery('#originator-container').hide();
+				} else {
+					jQuery('.toggle-originators').hide();
+				}
+
+				jQuery('.waveform-play-button').fadeIn(300);
+
+	      }
+      });
+  },
+
+  drawMarkers : function() {
+
+    var is_copyright_marker = false; // Check for copyrighted parts
+
+    jQuery("#markers").html('');
+
+    //markers = ( cursor.markers instanceof Array ) ? cursor.markers : [] ;
+    markers = ( cursor.postmeta.markers instanceof Array ) ? cursor.postmeta.markers : [];
+
+    // Get current framewidth since the window could have been resized in the meantime
+    cursor.framewidth = jQuery("#waveform_image").width() / cursor.duration;
+
+	 console.log( "file duration: " + cursor.duration );
+    console.log( "framewidth: " + cursor.framewidth );
+
+    if( markers == undefined ) {
+      markers[0][type] = "hide";
+      markers[0][from] = 0;
+      markers[0][to] = cursor.duration;
+    }
+
+    for( x = 0; x < markers.length; x++ ) {
+
+      if( markers[x].license == "copyright")  {
+        var stroke = '#DEBEBE';
+        var fill = '#FFF3F3';
+        var c = 'non-copyright'; // Class name of the marker. Set this to "copyright" in order to display it as non-playable
+        is_copyright_marker = false; // Set to true, if you want to display a note to the user that copyright markers will be skipped while playing
+      } else {
+        var stroke = '#B7B7B7';
+        var fill = '#F7F7F7';
+        var c = 'non-copyright';
+      }
+
+      // If it's the last marker don't draw a border on the right
+      if(x == (markers.length - 1)) {
+        c = c + ' noborder';
+      }
+
+      // Width and left margin of the current marker
+      var width = Math.round( ( (markers[x].to / 1000) - (markers[x].from / 1000) ) * cursor.framewidth ) - 1;
+      var left = Math.round( (markers[x].from / 1000) * cursor.framewidth );
+      var height = jQuery("#waveform_image").height();
+
+      if( markers[x].desc != undefined && markers[x].desc != '' )
+        description = '<br><i>' + escapeHTMLEncode(markers[x].desc) + '</i>';
+      else
+        description = '';
+
+      // Draw the marker
+      jQuery("#markers").append('<div id="marker_' + x + '" class="marker ' + c + '" style="width:' + width + 'px; left:' + left + 'px; height:' + height + 'px;" title="' + escapeHTMLEncode(markers[x].title) + description + '<br><br>Author: ' + escapeHTMLEncode(markers[x].author) + '<br>Type: ' + escapeHTMLEncode(markers[x].type) + '<br>License: ' + escapeHTMLEncode(markers[x].license) + '<br>Duration: ' + sec2min( ( markers[x].to - markers[x].from ) / 1000 ) + '"></div>');
+
+      if( markers[x].type != "hide" && cursor.showTooltip === true ) {
+
+        // Set tooltip
+        jQuery('#waveform_image #marker_' + x).bt({
+          fill: fill,
+          strokeStyle: stroke,
+          spikeLength: 10,
+          spikeGirth: 10,
+          padding: 8,
+          cornerRadius: 0,
+          cssStyles: {
+            fontFamily: 'arial,helvetica,sans-serif',
+            fontSize: '11px'
+          },
+          positions: [cursor.tooltipPosition],
+
+          preShow: function() {
+            jQuery(this).data('origContent', jQuery(this).html());
+          },
+          postHide: function() {
+            jQuery(this).html(jQuery(this).data('origContent'));
+          }
+        });
+      }
+    } // for
+
+    // Print an info about unavailable (=copyrighted) content
+    if( is_copyright_marker ) {
+      jQuery("#file-preview-info-" + cursor.mediatype + " .copyright-msg").html('<br />' + cbatrsl.redmarkers );
+    } else {
+      jQuery("#file-preview-info-" + cursor.mediatype + " .copyright-msg").html('');
+    }
+
+  },
+
+  drawWaveform : function () {
+
+    if( cursor.waveform != '' ) {
+      jQuery("#waveform_image > img").attr("src", cursor.waveform);
+    }
+
+  },
+
+  drawWatermark : function () {
+
+    var offset = jQuery("#waveform_image").offset();
+    var top = (offset.top < 2) ? 20 : offset.top; // How far is the waveform from top?
+    // Draw the watermark from top
+    jQuery("#waveform_watermark").css({"top":parseInt(jQuery("#waveform_image").height()) - top +'px', "display":"block"});
+  },
+
+  setTo : function(perc){ //sets the currently playing cursor to a percentage value of the current position (= seconds in percent)
+    var pixelpos = jQuery("div#waveform_image").width() / 100 * perc;
+    var height = jQuery("#waveform_image img").height();
+		jQuery('div#waveform_image div#waveform_cursor').css({
+			'margin-left':pixelpos+'px', 'height':height+'px'
+		});
+
+		cursor.pos = perc;
+
+  },
+
+  toPercent: function( value, total, decimal ) {
+    var r = Math.pow( 10, decimal || 0 );
+		return Math.round( ( value * 100 ) / total * r ) / r;
+  },
+
+  setCursor : function(pos, duration) {
+
+    cursor.setTo( cursor.toPercent( pos, duration, 2 ) );
+
+    if( cursor.markers != undefined ) {
+
+      for( x = 0; x < cursor.markers.length; x++ ) {
+
+        cursor.markers[x].license = 'stream-it'; // Uncomment this line if you want the player to skip copyrighted parts
+
+        cursor.setTo( cursor.toPercent( pos, duration, 2 ) ); // Set the cursor while playing
+/*
+        // If the current playing marker is copyrighted and if a next marker element exists
+        if(cursor.markers[x].from/1000 <= pos && cursor.markers[x].to/1000 > pos && cursor.markers.length-1 > x && cursor.markers[x].license=='copyright') {
+          player.setCurrentTime(cursor.markers[x + 1].from/1000 + 0.1); //jump to next marker and increase new position by 0.1 sec as decimals differ
+        } else {
+          // If it's the last marker playing and it's a copyrighted one..
+          if(cursor.markers[x].from/1000 <= pos && cursor.markers[x].to/1000 > pos && cursor.markers.length-1==x && cursor.markers[x].license=="copyright") {
+            player.pause(); //..we stop playing
+            cursor.setTo(cursor.toPercent(duration, duration, 2)); //..and set the cursor to the end
+          } else {
+            //if we just play non-copyrighted material the cursor follows the current position
+            cursor.setTo(cursor.toPercent(pos, duration, 2)); //set the cursor while playing
+          }
+        }
+*/
+      }
+
+    } else {
+      cursor.setTo( cursor.toPercent( pos, duration, 2 ) ); // Set the cursor while playing
+    }
+  },
+
+  unlock : function(post_id, series_id, e) {
+
+
+    //jQuery('body').append('<div class="blocker"></div>');
+    jQuery('body').append('<div class="unlock-dialog one-line-dialog"><strong>' + cbatrsl.unlockfile + '</strong><form id="unlock-form"><input type="text" id="pw" placeholder="' + cbatrsl.password +'" /><button type="submit" class="ok fa fa-check"></button><button class="cancel fa fa-remove"></button></form></div>');
+    bindToMouse( jQuery('.unlock-dialog'), e );
+
+    jQuery('#pw').focus().select();
+
+		jQuery('.unlock-dialog .cancel').click( function() {
+			jQuery('.unlock-dialog').remove();
+			return false;
+		});
+
+		jQuery('.unlock-dialog .ok').click( function() {
+
+			var pw = jQuery('form#unlock-form input#pw').val();
+
+			if( pw == '' ) {
+				alert('Wrong password.');
+				return false;
+			}
+
+	      jQuery.ajax({
+	        type: "POST",
+	        url: ajaxurl,
+	        data: {
+	                'action': 'cba_ajax_unlock_file',
+	                'post_id': post_id,
+	                'series_id': series_id,
+	                'pw': pw
+	              },
+	        dataType: 'json',
+	        success: function(download_url) {
+
+	          if( download_url != 'error' ) {
+	            cursor.doUnlock();
+	            jQuery('.unlock-dialog').remove();
+
+	            var dl_link = '<a href="' + download_url + '?pw=' + pw + '" rel="modal:open"><img src="' + image_url + 'download.svg" /></a>';
+	            jQuery('#unlock-' + post_id + '.unlock').html(dl_link);
+
+	          } else {
+	            alert('Wrong password.');
+	          }
+	        }
+	      });
+
+	    return false;
+    });
+
+  },
+
+  doUnlock : function() {
+
+    var col = 'none';
+
+    cursor.markers = ( cursor.markers instanceof Array ) ? cursor.markers : [] ;
+
+    for(x=0; x < cursor.markers.length; x++) {
+
+     	col = 'none';
+
+      if(cursor.markers[x].license=='copyright')
+      	col = '#eee';
+
+      //remove copyright-stripes from all markers
+      jQuery("#waveform_image #marker_" + x).css({
+        'background-image' : 'none',
+        'background' : 'none',
+        'background-color' : col,
+        'opacity' : 0.4
+      });
+
+      //set all markers to default license
+      cursor.markers[x].license='default';
+
+    }
+  }
+
+}
+
+
+
+/**
+ * Helper function: mimics php' var_dump()
+ */
+function dump(arr,level) {
+	var dumped_text = "";
+	if(!level) level = 0;
+
+	//The padding given at the beginning of the line.
+	var level_padding = "";
+	for( var j = 0; j < level + 1; j++ ) level_padding += "    ";
+
+	if(typeof(arr) == 'object') { //Array/Hashes/Objects
+		for(var item in arr) {
+			var value = arr[item];
+
+			if(typeof(value) == 'object') { //If it is an array,
+				dumped_text += level_padding + "[" + item + "] (" + typeof(item) +")\n";
+				dumped_text += dump(value,level+1);
+			} else {
+				dumped_text += level_padding + " " + item + " => " + value + " (" + typeof(item) + "[" + typeof(value) + "])\n";
+			}
+		}
+	} else { //Stings/Chars/Numbers etc.
+		dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+	}
+	return dumped_text;
+}
+
+
+
+
+// Keeps dialog windows in the user's viewpoint
+function bindToMouse(jqItem, e) {
+	var lpos = e.pageX-jqItem.width();
+	if( lpos < 0 )
+		lpos = 10;
+	else if( lpos + jqItem.width() > jQuery(document).width() )
+		lpos = jQuery(document).width() - jqItem.width() -10;
+
+	var tpos = e.pageY;
+	if( tpos + jqItem.height() > jQuery(document).height() )
+		tpos = jQuery(document).height() - jqItem.height() - 30;
+	if( tpos < 0 )
+		tpos = 0; // If the window is really, really small
+
+	jqItem.css({
+		'left' :lpos +'px',
+		'top' : tpos+'px'
+	});
+}
+
+
+// When a playlist item was clicked
+jQuery(document).on('click', '.cba-playlist li .filetitle', function () {
+
+	var li = jQuery(this).parent('li');
+	var media_element = document.getElementById('cba-audioplayer');
+
+	if (!media_element) return;
+
+	li.addClass('current').siblings().removeClass('current');
+
+	// Set neue Metadaten
+	jQuery(media_element)
+		.removeClass()
+		.addClass('ready')
+		.attr('duration', li.attr('duration'))
+		.attr('postid', li.attr('postid'));
+
+	// Player pausieren
+	media_element.pause();
+
+	const media_element_html5 = document.getElementById('cba-audioplayer_html5');
+
+	// Alte Quellen entfernen
+	media_element_html5.removeAttribute('src');
+	while (media_element_html5.firstChild) {
+		media_element_html5.removeChild(media_element_html5.firstChild);
+	}
+
+	// Neue Quellen anhängen
+	li.find('.cba-source').each(function () {
+		var src = jQuery(this).data('src');
+		var type = jQuery(this).data('type');
+		var source = document.createElement('source');
+		source.src = src;
+		source.type = type;
+		media_element_html5.appendChild(source);
+	});
+
+	// Neu laden und abspielen
+	media_element.load();
+	media_element.play();
+
+	// Cursor initialisieren
+	cursor.init(audioplayer, li.attr('postid'), li.attr('duration'));
+	cursor.getPostMeta();
+	jQuery('.waveform-play-button').fadeOut(300);
+
+	// Zählvorgang starten
+	jQuery.ajax({
+		type: 'POST',
+		url: ajaxurl,
+		data: { 'action': 'cba_increase_stream_count', 'post_id': cursor.post_id },
+		dataType: 'json',
+		success: function () {
+			jQuery(media_element).removeClass().addClass('done');
+			console.log(cursor.post_id);
+		}
+	});
+});
+
+
+
+
+
+
+// If a playlist item ended, try playing the next one. Otherwise stop.
+function cbaPlayNext(mediatype) {
+
+	let player = (mediatype === 'audio') ? audioplayer : videoplayer;
+	let mediaclass = '.' + mediatype;
+	let media_element = document.getElementById('cba-' + mediatype + 'player_html5');
+
+	let current_item;
+
+	if (jQuery(mediaclass + '.cba-playlist li.current').length > 0) {
+		current_item = jQuery(mediaclass + '.cba-playlist li.current:first');
+	} else {
+		current_item = jQuery(mediaclass + '.cba-playlist li:first');
+	}
+
+	let next_item = current_item.next();
+
+	if (next_item.length === 0) {
+		current_item.removeClass('current');
+		return;
+	}
+
+	// Update classes
+	next_item.addClass('current').siblings().removeClass('current');
+
+	// Update duration and postid
+	jQuery('#cba-' + mediatype + 'player_html5')
+		.attr('duration', next_item.attr('duration'))
+		.attr('postid', next_item.attr('postid'));
+
+	// Pause and clean current sources
+	player.pause();
+	while (media_element.firstChild) {
+		media_element.removeChild(media_element.firstChild);
+	}
+
+	// Add new sources
+	next_item.find('.cba-source').each(function () {
+		let src = jQuery(this).data('src');
+		let type = jQuery(this).data('type');
+		let source = document.createElement('source');
+		source.src = src;
+		source.type = type;
+		media_element.appendChild(source);
+	});
+
+	// Reload and play
+	media_element.load();
+	media_element.play();
+
+	cursor.init(player,
+		jQuery('#cba-' + mediatype + 'player_html5').attr('postid'),
+		jQuery('#cba-' + mediatype + 'player_html5').attr('duration')
+	);
+	cursor.getPostMeta();
+	player.play();
+}
+
+
+
+
+
+/**
+ * Start playing when waveform-play-button was clicked
+ * and hide the play-button itself
+ */
+jQuery(document).on('click', '.waveform-play-button', function() {
+	jQuery(this).fadeOut(300);
+	audioplayer.play();
+});
+
+
+
+
+/**
+ * Helper debug function
+ * Encodes take the internal HTML conversion code from your browser and returns a string converted to HTML
+ *		-> somehow equivalent to htmlspecialchars()
+ * http://sanzon.wordpress.com/2008/05/01/neat-little-html-encoding-trick-in-javascript
+ */
+function escapeHTMLEncode(str) {
+  var div = document.createElement('div');
+  var text = document.createTextNode(str);
+  div.appendChild(text);
+  return div.innerHTML;
+}
+
+
+
+
+/**
+ * Converts seconds into a timestring (hh:mm:ss)
+ * @param int
+ * @return string
+ */
+function sec2min( secs ) {
+	var seconds = Math.floor( secs ),
+	hours = Math.floor( seconds / 3600 );
+	seconds -= hours * 3600;
+	var minutes = Math.floor( seconds / 60 );
+	seconds -= minutes * 60;
+
+	if (hours   < 10)
+		hours   = "0" + hours;
+
+	if (minutes < 10)
+		minutes = "0" + minutes;
+
+	if (seconds < 10)
+		seconds = "0" + seconds;
+
+	return hours + ':' + minutes + ':' + seconds;
+
+}
+
+
+
+
+/**
+ * Converts a timestring (hh:mm:ss) into seconds
+ * @param string
+ * @return int
+ */
+function min2sec(str) {
+
+  if( str == undefined )
+    return 0;
+
+  var p = str.split(':'),
+      s = 0, m = 1;
+
+  while( p.length > 0 ) {
+    s += m * parseInt( p.pop(), 10 );
+    m *= 60;
+  }
+
+  return s;
+
+}
+
+
+
+
+/**
+ * Helper function
+ * Formats a string to be more readable with
+ */
+function nl2br( str, is_xhtml ) {
+  var breakTag = ( is_xhtml || typeof is_xhtml === 'undefined' ) ? '<br />' : '<br>';
+  return ( str + '' ).replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+}
+
+function browse( id, mode ) {
+  if(mode != 'slide')
+    mode = 'show';
+
+  if( document.getElementById(id).style.display=='none' ) {
+
+    // Show
+    if( mode == 'slide' )
+      jQuery('#'+id).slideDown(700);
+
+    if( mode == 'show' ) {
+      jQuery('#'+id).show("slide", { direction: "right" }, 700);
+    }
+  } else {
+
+    // Hide
+    if( mode == 'slide' )
+      jQuery('#'+id).slideUp(700);
+    if( mode == 'show' ) {
+      jQuery('#'+id).fadeOut(500);
+    }
+  }
+}
+
+
+
+
+/**
+ * @name BeautyTips
+ * @desc a tooltips/baloon-help plugin for jQuery
+ *
+ * @author Jeff Robbins - Lullabot - http://www.lullabot.com
+ * @version 0.9.5-rc1  (5/20/2009)
+ */
+jQuery.bt={version:"0.9.5-rc1"};(function(jQuery){jQuery.fn.bt=function(content,options){if(typeof content!="string"){var contentSelect=true;options=content;content=false;}else{var contentSelect=false;}if(jQuery.fn.hoverIntent&&jQuery.bt.defaults.trigger=="hover"){jQuery.bt.defaults.trigger="hoverIntent";}return this.each(function(index){var opts=jQuery.extend(false,jQuery.bt.defaults,jQuery.bt.options,options);opts.spikeLength=numb(opts.spikeLength);opts.spikeGirth=numb(opts.spikeGirth);opts.overlap=numb(opts.overlap);var ajaxTimeout=false;if(opts.killTitle){jQuery(this).find("[title]").andSelf().each(function(){if(!jQuery(this).attr("bt-xTitle")){jQuery(this).attr("bt-xTitle",jQuery(this).attr("title")).attr("title","");}});}if(typeof opts.trigger=="string"){opts.trigger=[opts.trigger];}if(opts.trigger[0]=="hoverIntent"){var hoverOpts=jQuery.extend(opts.hoverIntentOpts,{over:function(){this.btOn();},out:function(){this.btOff();}});jQuery(this).hoverIntent(hoverOpts);}else{if(opts.trigger[0]=="hover"){jQuery(this).hover(function(){this.btOn();},function(){this.btOff();});}else{if(opts.trigger[0]=="now"){if(jQuery(this).hasClass("bt-active")){this.btOff();}else{this.btOn();}}else{if(opts.trigger[0]=="none"){}else{if(opts.trigger.length>1&&opts.trigger[0]!=opts.trigger[1]){jQuery(this).bind(opts.trigger[0],function(){this.btOn();}).bind(opts.trigger[1],function(){this.btOff();});}else{jQuery(this).bind(opts.trigger[0],function(){if(jQuery(this).hasClass("bt-active")){this.btOff();}else{this.btOn();}});}}}}}this.btOn=function(){if(typeof jQuery(this).data("bt-box")=="object"){this.btOff();}opts.preBuild.apply(this);jQuery(jQuery.bt.vars.closeWhenOpenStack).btOff();jQuery(this).addClass("bt-active "+opts.activeClass);if(contentSelect&&opts.ajaxPath==null){if(opts.killTitle){jQuery(this).attr("title",jQuery(this).attr("bt-xTitle"));}content=jQuery.isFunction(opts.contentSelector)?opts.contentSelector.apply(this):eval(opts.contentSelector);if(opts.killTitle){jQuery(this).attr("title","");}}if(opts.ajaxPath!=null&&content==false){if(typeof opts.ajaxPath=="object"){var url=eval(opts.ajaxPath[0]);url+=opts.ajaxPath[1]?" "+opts.ajaxPath[1]:"";}else{var url=opts.ajaxPath;}var off=url.indexOf(" ");if(off>=0){var selector=url.slice(off,url.length);url=url.slice(0,off);}var cacheData=opts.ajaxCache?jQuery(document.body).data("btCache-"+url.replace(/\./g,"")):null;if(typeof cacheData=="string"){content=selector?jQuery("<div/>").append(cacheData.replace(/<script(.|\s)*?\/script>/g,"")).find(selector):cacheData;}else{var target=this;var ajaxOpts=jQuery.extend(false,{type:opts.ajaxType,data:opts.ajaxData,cache:opts.ajaxCache,url:url,complete:function(XMLHttpRequest,textStatus){if(textStatus=="success"||textStatus=="notmodified"){if(opts.ajaxCache){jQuery(document.body).data("btCache-"+url.replace(/\./g,""),XMLHttpRequest.responseText);}ajaxTimeout=false;content=selector?jQuery("<div/>").append(XMLHttpRequest.responseText.replace(/<script(.|\s)*?\/script>/g,"")).find(selector):XMLHttpRequest.responseText;}else{if(textStatus=="timeout"){ajaxTimeout=true;}content=opts.ajaxError.replace(/%error/g,XMLHttpRequest.statusText);}if(jQuery(target).hasClass("bt-active")){target.btOn();}}},opts.ajaxOpts);jQuery.ajax(ajaxOpts);content=opts.ajaxLoading;}}var shadowMarginX=0;var shadowMarginY=0;var shadowShiftX=0;var shadowShiftY=0;if(opts.shadow&&!shadowSupport()){opts.shadow=false;jQuery.extend(opts,opts.noShadowOpts);}if(opts.shadow){if(opts.shadowBlur>Math.abs(opts.shadowOffsetX)){shadowMarginX=opts.shadowBlur*2;}else{shadowMarginX=opts.shadowBlur+Math.abs(opts.shadowOffsetX);}shadowShiftX=(opts.shadowBlur-opts.shadowOffsetX)>0?opts.shadowBlur-opts.shadowOffsetX:0;if(opts.shadowBlur>Math.abs(opts.shadowOffsetY)){shadowMarginY=opts.shadowBlur*2;}else{shadowMarginY=opts.shadowBlur+Math.abs(opts.shadowOffsetY);}shadowShiftY=(opts.shadowBlur-opts.shadowOffsetY)>0?opts.shadowBlur-opts.shadowOffsetY:0;}if(opts.offsetParent){var offsetParent=jQuery(opts.offsetParent);var offsetParentPos=offsetParent.offset();var pos=jQuery(this).offset();var top=numb(pos.top)-numb(offsetParentPos.top)+numb(jQuery(this).css("margin-top"))-shadowShiftY;var left=numb(pos.left)-numb(offsetParentPos.left)+numb(jQuery(this).css("margin-left"))-shadowShiftX;}else{var offsetParent=(jQuery(this).css("position")=="absolute")?jQuery(this).parents().eq(0).offsetParent():jQuery(this).offsetParent();var pos=jQuery(this).btPosition();var top=numb(pos.top)+numb(jQuery(this).css("margin-top"))-shadowShiftY;var left=numb(pos.left)+numb(jQuery(this).css("margin-left"))-shadowShiftX;}var width=jQuery(this).btOuterWidth();var height=jQuery(this).outerHeight();if(typeof content=="object"){var original=content;var clone=jQuery(original).clone(true).show();var origClones=jQuery(original).data("bt-clones")||[];origClones.push(clone);jQuery(original).data("bt-clones",origClones);jQuery(clone).data("bt-orig",original);jQuery(this).data("bt-content-orig",{original:original,clone:clone});content=clone;}if(typeof content=="null"||content==""){return;}var jQuerytext=jQuery('<div class="bt-content"></div>').append(content).css({padding:opts.padding,position:"absolute",width:(opts.shrinkToFit?"auto":opts.width),zIndex:opts.textzIndex,left:shadowShiftX,top:shadowShiftY}).css(opts.cssStyles);var jQuerybox=jQuery('<div class="bt-wrapper"></div>').append(jQuerytext).addClass(opts.cssClass).css({position:"absolute",width:opts.width,zIndex:opts.wrapperzIndex,visibility:"hidden"}).appendTo(offsetParent);if(jQuery.fn.bgiframe){jQuerytext.bgiframe();jQuerybox.bgiframe();}jQuery(this).data("bt-box",jQuerybox);var scrollTop=numb(jQuery(document).scrollTop());var scrollLeft=numb(jQuery(document).scrollLeft());var docWidth=numb(jQuery(window).width());var docHeight=numb(jQuery(window).height());var winRight=scrollLeft+docWidth;var winBottom=scrollTop+docHeight;var space=new Object();var thisOffset=jQuery(this).offset();space.top=thisOffset.top-scrollTop;space.bottom=docHeight-((thisOffset+height)-scrollTop);space.left=thisOffset.left-scrollLeft;space.right=docWidth-((thisOffset.left+width)-scrollLeft);var textOutHeight=numb(jQuerytext.outerHeight());var textOutWidth=numb(jQuerytext.btOuterWidth());if(opts.positions.constructor==String){opts.positions=opts.positions.replace(/ /,"").split(",");}if(opts.positions[0]=="most"){var position="top";for(var pig in space){position=space[pig]>space[position]?pig:position;}}else{for(var x in opts.positions){var position=opts.positions[x];if((position=="left"||position=="right")&&space[position]>textOutWidth+opts.spikeLength){break;}else{if((position=="top"||position=="bottom")&&space[position]>textOutHeight+opts.spikeLength){break;}}}}var horiz=left+((width-textOutWidth)*0.5);var vert=top+((height-textOutHeight)*0.5);var points=new Array();var textTop,textLeft,textRight,textBottom,textTopSpace,textBottomSpace,textLeftSpace,textRightSpace,crossPoint,textCenter,spikePoint;switch(position){case"top":jQuerytext.css("margin-bottom",opts.spikeLength+"px");jQuerybox.css({top:(top-jQuerytext.outerHeight(true))+opts.overlap,left:horiz});textRightSpace=(winRight-opts.windowMargin)-(jQuerytext.offset().left+jQuerytext.btOuterWidth(true));var xShift=shadowShiftX;if(textRightSpace<0){jQuerybox.css("left",(numb(jQuerybox.css("left"))+textRightSpace)+"px");xShift-=textRightSpace;}textLeftSpace=(jQuerytext.offset().left+numb(jQuerytext.css("margin-left")))-(scrollLeft+opts.windowMargin);if(textLeftSpace<0){jQuerybox.css("left",(numb(jQuerybox.css("left"))-textLeftSpace)+"px");xShift+=textLeftSpace;}textTop=jQuerytext.btPosition().top+numb(jQuerytext.css("margin-top"));textLeft=jQuerytext.btPosition().left+numb(jQuerytext.css("margin-left"));textRight=textLeft+jQuerytext.btOuterWidth();textBottom=textTop+jQuerytext.outerHeight();textCenter={x:textLeft+(jQuerytext.btOuterWidth()*opts.centerPointX),y:textTop+(jQuerytext.outerHeight()*opts.centerPointY)};points[points.length]=spikePoint={y:textBottom+opts.spikeLength,x:((textRight-textLeft)*0.5)+xShift,type:"spike"};crossPoint=findIntersectX(spikePoint.x,spikePoint.y,textCenter.x,textCenter.y,textBottom);crossPoint.x=crossPoint.x<textLeft+opts.spikeGirth/2+opts.cornerRadius?textLeft+opts.spikeGirth/2+opts.cornerRadius:crossPoint.x;crossPoint.x=crossPoint.x>(textRight-opts.spikeGirth/2)-opts.cornerRadius?(textRight-opts.spikeGirth/2)-opts.CornerRadius:crossPoint.x;points[points.length]={x:crossPoint.x-(opts.spikeGirth/2),y:textBottom,type:"join"};points[points.length]={x:textLeft,y:textBottom,type:"corner"};points[points.length]={x:textLeft,y:textTop,type:"corner"};points[points.length]={x:textRight,y:textTop,type:"corner"};points[points.length]={x:textRight,y:textBottom,type:"corner"};points[points.length]={x:crossPoint.x+(opts.spikeGirth/2),y:textBottom,type:"join"};points[points.length]=spikePoint;break;case"left":jQuerytext.css("margin-right",opts.spikeLength+"px");jQuerybox.css({top:vert+"px",left:((left-jQuerytext.btOuterWidth(true))+opts.overlap)+"px"});textBottomSpace=(winBottom-opts.windowMargin)-(jQuerytext.offset().top+jQuerytext.outerHeight(true));var yShift=shadowShiftY;if(textBottomSpace<0){jQuerybox.css("top",(numb(jQuerybox.css("top"))+textBottomSpace)+"px");yShift-=textBottomSpace;}textTopSpace=(jQuerytext.offset().top+numb(jQuerytext.css("margin-top")))-(scrollTop+opts.windowMargin);if(textTopSpace<0){jQuerybox.css("top",(numb(jQuerybox.css("top"))-textTopSpace)+"px");yShift+=textTopSpace;}textTop=jQuerytext.btPosition().top+numb(jQuerytext.css("margin-top"));textLeft=jQuerytext.btPosition().left+numb(jQuerytext.css("margin-left"));textRight=textLeft+jQuerytext.btOuterWidth();textBottom=textTop+jQuerytext.outerHeight();textCenter={x:textLeft+(jQuerytext.btOuterWidth()*opts.centerPointX),y:textTop+(jQuerytext.outerHeight()*opts.centerPointY)};points[points.length]=spikePoint={x:textRight+opts.spikeLength,y:((textBottom-textTop)*0.5)+yShift,type:"spike"};crossPoint=findIntersectY(spikePoint.x,spikePoint.y,textCenter.x,textCenter.y,textRight);crossPoint.y=crossPoint.y<textTop+opts.spikeGirth/2+opts.cornerRadius?textTop+opts.spikeGirth/2+opts.cornerRadius:crossPoint.y;crossPoint.y=crossPoint.y>(textBottom-opts.spikeGirth/2)-opts.cornerRadius?(textBottom-opts.spikeGirth/2)-opts.cornerRadius:crossPoint.y;points[points.length]={x:textRight,y:crossPoint.y+opts.spikeGirth/2,type:"join"};points[points.length]={x:textRight,y:textBottom,type:"corner"};points[points.length]={x:textLeft,y:textBottom,type:"corner"};points[points.length]={x:textLeft,y:textTop,type:"corner"};points[points.length]={x:textRight,y:textTop,type:"corner"};points[points.length]={x:textRight,y:crossPoint.y-opts.spikeGirth/2,type:"join"};points[points.length]=spikePoint;break;case"bottom":jQuerytext.css("margin-top",opts.spikeLength+"px");jQuerybox.css({top:(top+height)-opts.overlap,left:horiz});textRightSpace=(winRight-opts.windowMargin)-(jQuerytext.offset().left+jQuerytext.btOuterWidth(true));var xShift=shadowShiftX;if(textRightSpace<0){jQuerybox.css("left",(numb(jQuerybox.css("left"))+textRightSpace)+"px");xShift-=textRightSpace;}textLeftSpace=(jQuerytext.offset().left+numb(jQuerytext.css("margin-left")))-(scrollLeft+opts.windowMargin);if(textLeftSpace<0){jQuerybox.css("left",(numb(jQuerybox.css("left"))-textLeftSpace)+"px");xShift+=textLeftSpace;}textTop=jQuerytext.btPosition().top+numb(jQuerytext.css("margin-top"));textLeft=jQuerytext.btPosition().left+numb(jQuerytext.css("margin-left"));textRight=textLeft+jQuerytext.btOuterWidth();textBottom=textTop+jQuerytext.outerHeight();textCenter={x:textLeft+(jQuerytext.btOuterWidth()*opts.centerPointX),y:textTop+(jQuerytext.outerHeight()*opts.centerPointY)};points[points.length]=spikePoint={x:((textRight-textLeft)*0.5)+xShift,y:shadowShiftY,type:"spike"};crossPoint=findIntersectX(spikePoint.x,spikePoint.y,textCenter.x,textCenter.y,textTop);crossPoint.x=crossPoint.x<textLeft+opts.spikeGirth/2+opts.cornerRadius?textLeft+opts.spikeGirth/2+opts.cornerRadius:crossPoint.x;crossPoint.x=crossPoint.x>(textRight-opts.spikeGirth/2)-opts.cornerRadius?(textRight-opts.spikeGirth/2)-opts.cornerRadius:crossPoint.x;points[points.length]={x:crossPoint.x+opts.spikeGirth/2,y:textTop,type:"join"};points[points.length]={x:textRight,y:textTop,type:"corner"};points[points.length]={x:textRight,y:textBottom,type:"corner"};points[points.length]={x:textLeft,y:textBottom,type:"corner"};points[points.length]={x:textLeft,y:textTop,type:"corner"};points[points.length]={x:crossPoint.x-(opts.spikeGirth/2),y:textTop,type:"join"};points[points.length]=spikePoint;break;case"right":jQuerytext.css("margin-left",(opts.spikeLength+"px"));jQuerybox.css({top:vert+"px",left:((left+width)-opts.overlap)+"px"});textBottomSpace=(winBottom-opts.windowMargin)-(jQuerytext.offset().top+jQuerytext.outerHeight(true));var yShift=shadowShiftY;if(textBottomSpace<0){jQuerybox.css("top",(numb(jQuerybox.css("top"))+textBottomSpace)+"px");yShift-=textBottomSpace;}textTopSpace=(jQuerytext.offset().top+numb(jQuerytext.css("margin-top")))-(scrollTop+opts.windowMargin);if(textTopSpace<0){jQuerybox.css("top",(numb(jQuerybox.css("top"))-textTopSpace)+"px");yShift+=textTopSpace;}textTop=jQuerytext.btPosition().top+numb(jQuerytext.css("margin-top"));textLeft=jQuerytext.btPosition().left+numb(jQuerytext.css("margin-left"));textRight=textLeft+jQuerytext.btOuterWidth();textBottom=textTop+jQuerytext.outerHeight();textCenter={x:textLeft+(jQuerytext.btOuterWidth()*opts.centerPointX),y:textTop+(jQuerytext.outerHeight()*opts.centerPointY)};points[points.length]=spikePoint={x:shadowShiftX,y:((textBottom-textTop)*0.5)+yShift,type:"spike"};crossPoint=findIntersectY(spikePoint.x,spikePoint.y,textCenter.x,textCenter.y,textLeft);crossPoint.y=crossPoint.y<textTop+opts.spikeGirth/2+opts.cornerRadius?textTop+opts.spikeGirth/2+opts.cornerRadius:crossPoint.y;crossPoint.y=crossPoint.y>(textBottom-opts.spikeGirth/2)-opts.cornerRadius?(textBottom-opts.spikeGirth/2)-opts.cornerRadius:crossPoint.y;points[points.length]={x:textLeft,y:crossPoint.y-opts.spikeGirth/2,type:"join"};points[points.length]={x:textLeft,y:textTop,type:"corner"};points[points.length]={x:textRight,y:textTop,type:"corner"};points[points.length]={x:textRight,y:textBottom,type:"corner"};points[points.length]={x:textLeft,y:textBottom,type:"corner"};points[points.length]={x:textLeft,y:crossPoint.y+opts.spikeGirth/2,type:"join"};points[points.length]=spikePoint;break;}var canvas=document.createElement("canvas");jQuery(canvas).attr("width",(numb(jQuerytext.btOuterWidth(true))+opts.strokeWidth*2+shadowMarginX)).attr("height",(numb(jQuerytext.outerHeight(true))+opts.strokeWidth*2+shadowMarginY)).appendTo(jQuerybox).css({position:"absolute",zIndex:opts.boxzIndex});if(typeof G_vmlCanvasManager!="undefined"){canvas=G_vmlCanvasManager.initElement(canvas);}if(opts.cornerRadius>0){var newPoints=new Array();var newPoint;for(var i=0;i<points.length;i++){if(points[i].type=="corner"){newPoint=betweenPoint(points[i],points[(i-1)%points.length],opts.cornerRadius);newPoint.type="arcStart";newPoints[newPoints.length]=newPoint;newPoints[newPoints.length]=points[i];newPoint=betweenPoint(points[i],points[(i+1)%points.length],opts.cornerRadius);newPoint.type="arcEnd";newPoints[newPoints.length]=newPoint;}else{newPoints[newPoints.length]=points[i];}}points=newPoints;}var ctx=canvas.getContext("2d");if(opts.shadow&&opts.shadowOverlap!==true){var shadowOverlap=numb(opts.shadowOverlap);switch(position){case"top":if(opts.shadowOffsetX+opts.shadowBlur-shadowOverlap>0){jQuerybox.css("top",(numb(jQuerybox.css("top"))-(opts.shadowOffsetX+opts.shadowBlur-shadowOverlap)));}break;case"right":if(shadowShiftX-shadowOverlap>0){jQuerybox.css("left",(numb(jQuerybox.css("left"))+shadowShiftX-shadowOverlap));}break;case"bottom":if(shadowShiftY-shadowOverlap>0){jQuerybox.css("top",(numb(jQuerybox.css("top"))+shadowShiftY-shadowOverlap));}break;case"left":if(opts.shadowOffsetY+opts.shadowBlur-shadowOverlap>0){jQuerybox.css("left",(numb(jQuerybox.css("left"))-(opts.shadowOffsetY+opts.shadowBlur-shadowOverlap)));}break;}}drawIt.apply(ctx,[points],opts.strokeWidth);ctx.fillStyle=opts.fill;if(opts.shadow){ctx.shadowOffsetX=opts.shadowOffsetX;ctx.shadowOffsetY=opts.shadowOffsetY;ctx.shadowBlur=opts.shadowBlur;ctx.shadowColor=opts.shadowColor;}ctx.closePath();ctx.fill();if(opts.strokeWidth>0){ctx.shadowColor="rgba(0, 0, 0, 0)";ctx.lineWidth=opts.strokeWidth;ctx.strokeStyle=opts.strokeStyle;ctx.beginPath();drawIt.apply(ctx,[points],opts.strokeWidth);ctx.closePath();ctx.stroke();}opts.preShow.apply(this,[jQuerybox[0]]);jQuerybox.css({display:"none",visibility:"visible"});opts.showTip.apply(this,[jQuerybox[0]]);if(opts.overlay){var overlay=jQuery('<div class="bt-overlay"></div>').css({position:"absolute",backgroundColor:"blue",top:top,left:left,width:width,height:height,opacity:".2"}).appendTo(offsetParent);jQuery(this).data("overlay",overlay);}if((opts.ajaxPath!=null&&opts.ajaxCache==false)||ajaxTimeout){content=false;}if(opts.clickAnywhereToClose){jQuery.bt.vars.clickAnywhereStack.push(this);jQuery(document).click(jQuery.bt.docClick);}if(opts.closeWhenOthersOpen){jQuery.bt.vars.closeWhenOpenStack.push(this);}opts.postShow.apply(this,[jQuerybox[0]]);};this.btOff=function(){var box=jQuery(this).data("bt-box");opts.preHide.apply(this,[box]);var i=this;i.btCleanup=function(){var box=jQuery(i).data("bt-box");var contentOrig=jQuery(i).data("bt-content-orig");var overlay=jQuery(i).data("bt-overlay");if(typeof box=="object"){jQuery(box).remove();jQuery(i).removeData("bt-box");}if(typeof contentOrig=="object"){var clones=jQuery(contentOrig.original).data("bt-clones");jQuery(contentOrig).data("bt-clones",arrayRemove(clones,contentOrig.clone));}if(typeof overlay=="object"){jQuery(overlay).remove();jQuery(i).removeData("bt-overlay");}jQuery.bt.vars.clickAnywhereStack=arrayRemove(jQuery.bt.vars.clickAnywhereStack,i);jQuery.bt.vars.closeWhenOpenStack=arrayRemove(jQuery.bt.vars.closeWhenOpenStack,i);jQuery(i).removeClass("bt-active "+opts.activeClass);opts.postHide.apply(i);};opts.hideTip.apply(this,[box,i.btCleanup]);};var refresh=this.btRefresh=function(){this.btOff();this.btOn();};});function drawIt(points,strokeWidth){this.moveTo(points[0].x,points[0].y);for(i=1;i<points.length;i++){if(points[i-1].type=="arcStart"){this.quadraticCurveTo(round5(points[i].x,strokeWidth),round5(points[i].y,strokeWidth),round5(points[(i+1)%points.length].x,strokeWidth),round5(points[(i+1)%points.length].y,strokeWidth));i++;}else{this.lineTo(round5(points[i].x,strokeWidth),round5(points[i].y,strokeWidth));}}}function round5(num,strokeWidth){var ret;strokeWidth=numb(strokeWidth);if(strokeWidth%2){ret=num;}else{ret=Math.round(num-0.5)+0.5;}return ret;}function numb(num){return parseInt(num)||0;}function arrayRemove(arr,elem){var x,newArr=new Array();for(x in arr){if(arr[x]!=elem){newArr.push(arr[x]);}}return newArr;}function canvasSupport(){var canvas_compatible=false;try{canvas_compatible=!!(document.createElement("canvas").getContext("2d"));}catch(e){canvas_compatible=!!(document.createElement("canvas").getContext);}return canvas_compatible;}function shadowSupport(){try{var userAgent=navigator.userAgent.toLowerCase();if(/webkit/.test(userAgent)){return true;}else{if(/gecko|mozilla/.test(userAgent)&&parseFloat(userAgent.match(/firefox\/(\d+(?:\.\d+)+)/)[1])>=3.1){return true;}}}catch(err){}return false;}function betweenPoint(point1,point2,dist){var y,x;if(point1.x==point2.x){y=point1.y<point2.y?point1.y+dist:point1.y-dist;return{x:point1.x,y:y};}else{if(point1.y==point2.y){x=point1.x<point2.x?point1.x+dist:point1.x-dist;return{x:x,y:point1.y};}}}function centerPoint(arcStart,corner,arcEnd){var x=corner.x==arcStart.x?arcEnd.x:arcStart.x;var y=corner.y==arcStart.y?arcEnd.y:arcStart.y;var startAngle,endAngle;if(arcStart.x<arcEnd.x){if(arcStart.y>arcEnd.y){startAngle=(Math.PI/180)*180;endAngle=(Math.PI/180)*90;}else{startAngle=(Math.PI/180)*90;endAngle=0;}}else{if(arcStart.y>arcEnd.y){startAngle=(Math.PI/180)*270;endAngle=(Math.PI/180)*180;}else{startAngle=0;endAngle=(Math.PI/180)*270;}}return{x:x,y:y,type:"center",startAngle:startAngle,endAngle:endAngle};}function findIntersect(r1x1,r1y1,r1x2,r1y2,r2x1,r2y1,r2x2,r2y2){if(r2x1==r2x2){return findIntersectY(r1x1,r1y1,r1x2,r1y2,r2x1);}if(r2y1==r2y2){return findIntersectX(r1x1,r1y1,r1x2,r1y2,r2y1);}var r1m=(r1y1-r1y2)/(r1x1-r1x2);var r1b=r1y1-(r1m*r1x1);var r2m=(r2y1-r2y2)/(r2x1-r2x2);var r2b=r2y1-(r2m*r2x1);var x=(r2b-r1b)/(r1m-r2m);var y=r1m*x+r1b;return{x:x,y:y};}function findIntersectY(r1x1,r1y1,r1x2,r1y2,x){if(r1y1==r1y2){return{x:x,y:r1y1};}var r1m=(r1y1-r1y2)/(r1x1-r1x2);var r1b=r1y1-(r1m*r1x1);var y=r1m*x+r1b;return{x:x,y:y};}function findIntersectX(r1x1,r1y1,r1x2,r1y2,y){if(r1x1==r1x2){return{x:r1x1,y:y};}var r1m=(r1y1-r1y2)/(r1x1-r1x2);var r1b=r1y1-(r1m*r1x1);var x=(y-r1b)/r1m;return{x:x,y:y};}};jQuery.fn.btPosition=function(){function num(elem,prop){return elem[0]&&parseInt(jQuery.css(elem[0],prop,true),10)||0;}var left=0,top=0,results;if(this[0]){var offsetParent=this.offsetParent(),offset=this.offset(),parentOffset=/^body|htmljQuery/i.test(offsetParent[0].tagName)?{top:0,left:0}:offsetParent.offset();offset.top-=num(this,"marginTop");offset.left-=num(this,"marginLeft");parentOffset.top+=num(offsetParent,"borderTopWidth");parentOffset.left+=num(offsetParent,"borderLeftWidth");results={top:offset.top-parentOffset.top,left:offset.left-parentOffset.left};}return results;};jQuery.fn.btOuterWidth=function(margin){function num(elem,prop){return elem[0]&&parseInt(jQuery.css(elem[0],prop,true),10)||0;}return this["innerWidth"]()+num(this,"borderLeftWidth")+num(this,"borderRightWidth")+(margin?num(this,"marginLeft")+num(this,"marginRight"):0);};jQuery.fn.btOn=function(){return this.each(function(index){if(jQuery.isFunction(this.btOn)){this.btOn();}});};jQuery.fn.btOff=function(){return this.each(function(index){if(jQuery.isFunction(this.btOff)){this.btOff();}});};jQuery.bt.vars={clickAnywhereStack:[],closeWhenOpenStack:[]};jQuery.bt.docClick=function(e){if(!e){var e=window.event;}if(!jQuery(e.target).parents().andSelf().filter(".bt-wrapper, .bt-active").length&&jQuery.bt.vars.clickAnywhereStack.length){jQuery(jQuery.bt.vars.clickAnywhereStack).btOff();jQuery(document).unbind("click",jQuery.bt.docClick);}};jQuery.bt.defaults={trigger:"hover",clickAnywhereToClose:true,closeWhenOthersOpen:false,shrinkToFit:false,width:"200px",padding:"10px",spikeGirth:10,spikeLength:15,overlap:0,overlay:false,killTitle:true,textzIndex:9999,boxzIndex:9998,wrapperzIndex:9997,offsetParent:null,positions:["most"],fill:"rgb(255, 255, 102)",windowMargin:10,strokeWidth:1,strokeStyle:"#000",cornerRadius:5,centerPointX:0.5,centerPointY:0.5,shadow:false,shadowOffsetX:2,shadowOffsetY:2,shadowBlur:3,shadowColor:"#000",shadowOverlap:false,noShadowOpts:{strokeStyle:"#999"},cssClass:"",cssStyles:{},activeClass:"bt-active",contentSelector:"jQuery(this).attr('title')",ajaxPath:null,ajaxError:"<strong>ERROR:</strong> <em>%error</em>",ajaxLoading:"<blink>Loading...</blink>",ajaxData:{},ajaxType:"GET",ajaxCache:true,ajaxOpts:{},preBuild:function(){},preShow:function(box){},showTip:function(box){jQuery(box).show();},postShow:function(box){},preHide:function(box){},hideTip:function(box,callback){jQuery(box).hide();callback();},postHide:function(){},hoverIntentOpts:{interval:300,timeout:500}};jQuery.bt.options={};})(jQuery);
+
+jQuery.bttp=(function(jQuery) {
+  jQuery.fn.bttp=function(position) {
+
+		if(typeof position != 'string')
+			position = "top";
+
+    jQuery(this).bt({
+          fill: 'rgba(0, 0, 0)',
+          strokeStyle: '#555',
+          spikeLength: 10,
+          spikeGirth: 10,
+          padding: 6,
+          cornerRadius: 0,
+          cssStyles: {
+            fontFamily: 'TTHoves-Regular,Arial,Helvetica,Sans-serif',
+            fontSize: '11px',
+            color: '#fff',
+            width: 'auto',
+            textAlign: 'center'
+          },
+          positions: [position],
+
+          preShow: function() {
+            jQuery(this).data('origContent', jQuery(this).html());
+          },
+          postHide: function() {
+            jQuery(this).html(jQuery(this).data('origContent'));
+          }
+        });
+
+  }
+})(jQuery);
+
+
+
+
+/**
+ * Embed link
+ */
+
+
+/**
+ * Embed Link Preview
+ *
+ * Generates the preview link for embedding
+ * Displays the result
+ */
+function setEmbedLinkVal(newvalue) {
+
+  var embedval = jQuery("#embed-link").val();
+
+  if( embedval.indexOf( newvalue ) >= 0 ) {
+    // If newvalue is part of embed-link -> remove it
+    var rnewvalue = embedval.replace( newvalue, '' );
+  } else {
+    // Otherwise add it
+    var rnewvalue = embedval + newvalue;
+  }
+
+  var width = 580; // Default player width. is only increased if a description is displayed
+  var height = 180; // Default player height with title, waveform and player
+
+  // Increase the iframe height for each playlist item
+  var playListItems = jQuery("ul.cba-playlist li");
+  playListItems.each( function( key, value ) {
+      height += 40;
+  });
+
+  // Decrease the height when removing waveform
+  if( rnewvalue.indexOf('waveform=false') > 0 ) {
+    height -= 121;
+  }
+
+  // Decrease the height when removing the title
+  if( rnewvalue.indexOf('title=false') > 0 ) {
+  }
+
+  // Increase the height description
+  if(rnewvalue.indexOf('fileinfo=true') > 0 ) {
+    height += 25;
+  }
+
+  // Increase the height description
+  if( rnewvalue.indexOf('description=true') > 0 ) {
+    height += 100;
+    width += 15;
+  }
+
+  // Increase the height for meta infos
+  if( rnewvalue.indexOf('meta=true') > 0 ) {
+    height += 125;
+  }
+
+  // Increase the height for links
+  if( rnewvalue.indexOf('series_link=true') > 0 || rnewvalue.indexOf('subscribe=true') > 0 ) {
+    height += 25;
+
+    if( rnewvalue.indexOf('socialmedia=true') > 0 ) {
+    }
+  } else {
+    if( rnewvalue.indexOf('socialmedia=true') > 0 ) {
+    }
+  }
+
+  width = '100%';
+
+  var embedcode = '<iframe src="' + rnewvalue + '" width="' + width + '" height="' + height + '" style="border:none; width:' + width + '; height:' + height + 'px;"></iframe>';
+
+  // If the description is being displayed, make the div y-scrollable
+  if( rnewvalue.indexOf('description=true') > 0 ) {
+    embedcode = embedcode.replace("border:none;", "border:none; overflow-y:scroll;");
+  }
+
+  jQuery("input#embed-link").val(rnewvalue); // Set the new value for the input field
+  jQuery("textarea#embed-code").val(embedcode);
+
+  // Update the preview
+  jQuery("#embed-link-window #embed-preview").html( embedcode );
+
+}
+
+
+
+/**
+ *
+ */
+/*
+jQuery(document).on('click', '.embed-edit-link', function(e) {
+	audioplayer.pause();
+	e.preventDefault();
+});
+*/
+
+
+
+/**
+ * Embed link configuration
+ */
+jQuery(".embed-edit-link").click( function(e) {
+	// Initiate the preview
+	setEmbedLinkVal("&q=1");
+});
+
+jQuery("textarea#embed-code").click( function() {
+	jQuery("textarea#embed-code").select();
+});
+
+jQuery("#waveform").click( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+jQuery("#width").keyup( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+jQuery("input#title").click( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+jQuery("input#fileinfo").click( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+jQuery("input#description").click( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+jQuery("input#meta").click( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+jQuery("input#socialmedia").click( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+jQuery("input#series_link").click( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+jQuery("input#subscribe").click( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+jQuery("input#mode").click( function() {
+	setEmbedLinkVal(jQuery(this).val());
+});
+
+
+
+
+/**
+ * Set tooltips
+ */
+jQuery('.tt').bttp();
+jQuery('.ttb').bttp('bottom');
+
+
+
+
+/**
+ * Toggle layer visibility for series of station
+ */
+jQuery('#station-series-select a').click( function() {
+	// Select the targeted div
+	id = '#' + jQuery(this).attr('id').replace('button-station-series-', 'station-series-');
+	// Hide all except for the targeted div
+	jQuery(".station-series-list").not(id).hide();
+	// Show the targeted div
+	jQuery(id).show();
+	// Update the menu
+	jQuery('#station-series-select a').removeClass('current');
+	jQuery(this).addClass('current');
+});
+
+
+
+
+/**
+ * Expand search filters
+ */
+jQuery('.search-filter-icon').click( function() {
+
+	var target = '.' + jQuery(this).attr('target');
+
+	jQuery('.search-filter-icon').removeClass('current');
+	jQuery(this).addClass('current');
+
+	// Reset buttons and expandles that are not already open
+	// When clicked on the already open one it collides instead of expanding again
+	if(jQuery(target).css('display') != 'block' && jQuery(target).css('display') != 'inline-grid') {
+		jQuery('.search-expandle').slideUp();
+		jQuery('.search-filter-icon > img').removeClass('flip');
+	}
+
+	// Flip the icon that was clicked
+	jQuery(this).find('img').toggleClass('flip');
+	jQuery(target).slideToggle();
+
+});
+
+
+
+
+/**
+ * Expand the years container in single series
+ */
+jQuery('.years-button').click( function() {
+	jQuery('.blocker-trans').show();
+	jQuery('.years-container').slideToggle(.1);
+});
+
+
+
+
+/**
+ * Hide modals when clicking outside of it
+ */
+jQuery(document).on( 'click', '.blocker-trans', function() {
+	jQuery('.overlay, .one-line-dialog').hide();
+	jQuery(this).remove();
+});
+
+
+
+
+/**
+ * Toggle duration on mouseover and hover effect for media icon
+ */
+jQuery('#station-posts article, .featured-list .item, .post-preview, .featured-post, .slick-post').mouseenter( function() {
+	jQuery(this).find('.duration').show( 'slide', { 'easing': 'easeInExpo', 'direction': 'left' }, 100 );
+}).mouseleave( function() {
+	jQuery(this).find('.duration').hide( 'slide', { 'easing': 'easeOutExpo', 'direction': 'left' }, 100 );
+});
+
+
+
+
+/**
+ * Bind datepicker to search inputs from/until
+ */
+if( jQuery.isFunction( jQuery.fn.datepicker ) ) {
+	jQuery('.search-datepicker').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		maxDate: '+0D',
+		constrainInput: true,
+		dateFormat: 'd.m. yy',
+		altFormat: 'yy-m-d',
+      onSelect: function(dateText, inst) {
+         inst.currentMonth++; // Why does datepicker start with January as 0 ?
+         if( inst.currentMonth > 12 ) {
+           int.currentMonth = 01;
+           int.currentYear++;
+         }
+
+         var date = inst.currentYear + '-' + inst.currentMonth  + '-' + inst.currentDay;
+
+			// Remove date_from and date_until from location
+			var url = window.location.href;
+			url = removeURLParameter( url, 'date_from' );
+			url = removeURLParameter( url, 'date_until' );
+
+			// ... and add it afterwards again
+			if( jQuery(this).attr('name') == 'date_from' ) {
+	         window.location = url + '&date_from=' + date + '&date_until=' + jQuery('input[name="date_until"]').val();
+			}
+
+			if( jQuery(this).attr('name') == 'date_until' ) {
+				window.location = url + '&date_until=' + date + '&date_from=' + jQuery('input[name="date_from"]').val();
+			}
+
+      },
+
+		minDate: new Date(1999, 1 - 1, 1),
+		//showButtonPanel:true
+	});
+}
+
+
+
+
+/**
+ * Toggle grid/list view
+ */
+jQuery(document).on('click', '.toggle-grid-view span', function() {
+	jQuery('.toggle-grid-view span').removeClass('current');
+	jQuery(this).addClass('current');
+
+	if( jQuery(this).hasClass('fa-table') )
+		jQuery('#posts-grid').css('display', 'grid');
+	else
+		jQuery('#posts-grid').css('display', 'block');
+
+});
+
+
+
+
+/**
+ * Display the login Modal
+ */
+if( jQuery.isFunction( jQuery.fn.modal ) ) {
+
+	jQuery(document).on('click', '.login', function(e) {
+
+		jQuery('#site-navigation').removeClass('toggled');
+
+		e.preventDefault();
+		jQuery('.widget_loginwithajaxwidget').modal({
+			fadeDuration: 100
+		});
+
+		jQuery('.widget_loginwithajaxwidget')
+	});
+
+}
+
+
+/**
+ * Login modal: Give the rememberme-checkbox a valid markup
+ */
+jQuery(document).ready( function() {
+	jQuery('input[name="rememberme"]').attr('id', 'rememberme');
+	jQuery('.lwa-submit-links label').attr('for', 'rememberme');
+
+});
+
+
+
+/**
+ * Focus on username field after opening the modal
+ */
+if( jQuery.isFunction( jQuery.fn.modal ) ) {
+	jQuery('.widget_loginwithajaxwidget').on(jQuery.modal.OPEN, function(event, modal) {
+		jQuery('input[name="log"]').focus();
+	});
+}
+
+
+
+/**
+ * Livestream Player
+ */
+var livestream = {
+	init : function() {
+
+		var player = new MediaElementPlayer('livestream-player', {
+			success : function( mediaElement, domObject ) {
+     		},
+			keyActions: [],
+			// If the <video width> is not specified, this is the default
+			defaultVideoWidth: 0,
+			// If the <video height> is not specified, this is the default
+			defaultVideoHeight: 0,
+			// If set, overrides <video width>
+			videoWidth: -1,
+			// If set, overrides <video height>
+			videoHeight: -1,
+			// Width of audio player
+			audioWidth: 0,
+			// Height of audio player
+			audioHeight: 0,
+			// Initial volume when the player starts
+			startVolume: 0.8,
+			// Useful for <audio> player loops
+			loop: false,
+			// Enables Flash and Silverlight to resize to content size
+			enableAutosize: false,
+			// The order of controls you want on the control bar (and other plugins below)
+			features: ['playpause'],
+			//'progress','current','duration','tracks','volume','fullscreen'],
+			// Hide controls when playing and mouse is not over the video
+			alwaysShowControls: false,
+			// Force iPad's native controls
+			iPadUseNativeControls: false,
+			// Force iPhone's native controls
+			iPhoneUseNativeControls: false,
+			// Force Android's native controls
+			AndroidUseNativeControls: false,
+			// Forces the hour marker (##:00:00)
+			alwaysShowHours: false,
+			// Show framecount in timecode (##:00:00:00)
+			showTimecodeFrameCount: false,
+			// Used when showTimecodeFrameCount is set to true
+			framesPerSecond: 25,
+			// Turns keyboard support on and off for this instance
+			enableKeyboard: true,
+			// When this player starts, it will pause other players
+			pauseOtherPlayers: true,
+			//muteText: 'Drücken Sie m um stummzuschalten',
+			//unmuteText: 'Drücken Sie m um die Stummschaltung aufzuheben',
+			//playText: 'Drücken Sie p um den Livestream zu starten',
+			//pauseText: 'Drücken Sie p um den Livestream zu stoppen'
+      });
+
+      //jQuery(".mejs-offscreen, #livestream .mejs-container").hide();
+
+      /* Click on play */
+		jQuery(document).on('click', '#livestream-play-button, .livestream-waveform', function() {
+
+			var button = jQuery(this);
+
+         if( button.attr('state') == 'pause' ) {
+    			// When play is pressed
+            player.play(); // Start playing
+            player.setMuted(false); // Unmute
+         	button.attr('src', theme_dir + '/images/stop.svg'); // Change button to stop
+         	button.attr('state', 'play'); // Set state to 'play'
+				jQuery('.livestream-waveform').text( cbatrsl.youarelisteninglive ).fadeIn(); // Show live text
+				jQuery('.livestream-volume').fadeIn(); // Show volume fader
+	         jQuery('#livestream-volume-indicator').fadeIn(); // Show volume indicator
+         } else {
+				// When pause is pressed
+         	player.pause(); // Pause player
+         	button.attr('src', theme_dir + '/images/play.svg'); // Change button to play
+         	button.attr('state', 'pause'); // Set state to 'pause'
+	         //jQuery('#livestream-volume-indicator').fadeOut(); // Hide volume indicator
+				jQuery('.livestream-waveform').text( cbatrsl.listenlive ); // Hide waveform
+				jQuery('.livestream-volume').fadeOut(); // Hide volume fader
+         }
+		});
+
+
+		/* Set volume */
+		jQuery(document).on('click', '#livestream-volume', function( e ) {
+			var offset = jQuery(this).offset(); // Get the coords where clicked
+			var offset_l = e.pageX - offset.left;
+			var volume = offset_l / jQuery(this).width(); // Get a volume value between 0 and 1
+			player.setVolume(volume); // Set the volume to value
+			jQuery('#livestream-volume-indicator').show().css('margin-left', 21 - ( 21 - offset_l ) ); // Display the indicator at its correct position
+		});
+
+      /* Keyboard controls */
+   /*
+		jQuery("#livestream, #header").keypress( function( event ) {
+
+	      // M, m = Mute / Unmute
+			if ( event.which == 109 || event.which == 77 ) {
+				if( player.media.paused )
+					return;
+
+				if( player.media.muted ) {
+					jQuery('#livestream-volume-indicator').show().css('margin-left', 21 ); // Set indicator to the right
+					player.setMuted( false ); // Unmute
+				} else {
+					jQuery('#livestream-volume-indicator').show().css('margin-left', 0 ); // Set indicator to the left
+					player.setMuted( true ); // Mute
+				}
+			}
+
+	      // P,p = Play / Pause
+			if ( event.which == 112 || event.which == 80 ) {
+				jQuery('#livestream-play-button').trigger('click'); // Trigger play
+			}
+
+		});
+	*/
+
+	}
+}
+
+
+
+
+/**
+ * Subscribe buttons
+ */
+jQuery('.subscribe').click( function(e) {
+
+	e.preventDefault();
+
+	var subscribe_url = jQuery(this).attr('href');
+
+	jQuery('.one-line-dialog').remove(); // Get rid of all open one-line dialogs
+
+	// Append the dialog
+	jQuery('body').append('<div class="blocker-trans"></div>'); // Add the background layer for closing the dialog
+	jQuery('body').append('<div class="subscribe-dialog one-line-dialog"><strong>' + cbatrsl.subscribetopodcast + '</strong><input type="text" value="' + subscribe_url +'" onclick="this.select(); this.setSelectionRange(0, 99999);" id="subscribe-url" /><button type="submit" class="ok fa fa-copy tt" title="' + cbatrsl.copyurl + '"></button></div>');
+	jQuery('.one-line-dialog').css('width', 'auto');
+	jQuery('.subscribe-dialog .tt').bttp(); // Tooltips
+
+	/* Display */
+	bindToMouse( jQuery('.subscribe-dialog'), e );
+	jQuery('.subscribe-dialog').show();
+
+	/* Cancel and hide all dialogs */
+	jQuery('.subscribe-dialog .cancel').click( function() {
+		jQuery('.subscribe-dialog').remove();
+		jQuery('.blocker-trans').remove();
+		return false;
+	});
+
+	/* Copy URL to clipboard */
+	jQuery('.subscribe-dialog .ok').click( function() {
+		var copyText = document.getElementById('subscribe-url');
+		copyText.select();
+		copyText.setSelectionRange(0, 99999); /* For mobile devices*/
+		document.execCommand("copy");
+		jQuery('.subscribe-dialog').remove();
+		jQuery('.blocker-trans').remove();
+		return false;
+	});
+
+});
+
+
+
+
+/**
+ * Share buttons
+ */
+jQuery('.share').click( function(e) {
+
+	e.preventDefault();
+
+	var share_url = jQuery(this).attr('href');
+
+	jQuery('.one-line-dialog').remove(); // Get rid of all open one-line dialogs
+
+	// Append the dialog
+	jQuery('body').append('<div class="blocker-trans"></div>');
+	jQuery('body').append('<div class="share-dialog one-line-dialog"><strong>' + cbatrsl.share + '</strong><div id="share-buttons"></div><!--<button type="submit" class="ok fa fa-close tt"></button>--></div>');
+
+	jQuery('#share-buttons').html(''); // Clear content
+	jQuery('#share-buttons').append('<a href="https://www.facebook.com/sharer.php?u=' + encodeURIComponent(share_url) + '" rel="nofollow" target="_blank"><span class="fa fa-facebook"></span></a>');
+	jQuery('#share-buttons').append('<a href="https://twitter.com/intent/tweet?url=' + encodeURIComponent(share_url) + '" rel="nofollow" target="_blank"><span class="fa fa-twitter"></span></a>');
+	jQuery('#share-buttons').append('<a href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(share_url) + '" rel="nofollow" target="_blank"><span class="fa fa-linkedin"></span></a>');
+	jQuery('#share-buttons').append('<a href="https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(share_url) + '" rel="nofollow" target="_blank"><span class="fa fa-pinterest"></span></a>');
+	jQuery('#share-buttons').append('<a href="mailto:?&subject=&body=' + share_url  +'" rel="nofollow"><span class="fa fa-envelope"></span></a>');
+
+	jQuery('.one-line-dialog').css('width', 'auto');
+	jQuery('.share-dialog .tt').bttp();
+
+	/* Display */
+	bindToMouse( jQuery('.share-dialog'), e );
+	jQuery('.share-dialog').show();
+
+	/* Cancel and hide all dialogs */
+	jQuery('.share-dialog .cancel').click( function() {
+		jQuery('.share-dialog').remove();
+		jQuery('.blocker-trans').remove();
+		return false;
+	});
+
+	jQuery('.share-dialog .ok').click( function() {
+		jQuery('.share-dialog').remove();
+		jQuery('.blocker-trans').remove();
+		return false;
+	});
+
+});
+
+
+
+
+/**
+ * Removes a parameter from an URL
+ */
+function removeURLParameter(url, parameter) {
+    //prefer to use l.search if you have a location/link object
+    var urlparts = url.split('?');
+    if (urlparts.length >= 2) {
+
+        var prefix = encodeURIComponent(parameter) + '=';
+        var pars = urlparts[1].split(/[&;]/g);
+
+        //reverse iteration as may be destructive
+        for (var i = pars.length; i-- > 0;) {
+            //idiom for string.startsWith
+            if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                pars.splice(i, 1);
+            }
+        }
+
+        return urlparts[0] + (pars.length > 0 ? '?' + pars.join('&') : '');
+    }
+    return url;
+}
+
+
+
+
+jQuery(document).ready( function() {
+
+	/**
+	 * Set proper placeholders in search inputs
+	 */
+	jQuery('.navigation-search input[name="s"]').attr('placeholder', cbatrsl.searchformedia );
+	jQuery('#search-tag-form input#search-field').attr('placeholder', cbatrsl.searchfor );
+
+	/**
+	 * Inject the duration of the first playlist item into the player duration
+	*/
+	let duration = jQuery('ul.cba-playlist li:first-child div.duration').text();
+	jQuery('.mejs-audio .mejs-duration').text( duration );
+});
+
+
+/**
+ * Saves the listening time when the user is leaving the page
+ *
+ * When leaving the page, tab or browser window, putting an app into the background, etc.
+ * send a reliable HTTP request via beacon
+ * Also works on mobiles and in iframes
+ */
+jQuery(window).on( "visibilitychange", (event) => {
+
+	if (document.visibilityState != 'hidden')
+		return;
+
+	if (typeof audioplayer === 'undefined' || !audioplayer)
+		return;
+
+
+	// Get timeranges played from mediaelement player
+	let timeplayed = audioplayer.media.played;
+	let secs = 0;
+
+	for( let i = 0; i < timeplayed.length; i++ ) {
+		secs += timeplayed.end(i) - timeplayed.start(i);
+	}
+
+	// Only save listening times longer than one second
+	if( secs < 1 )
+		return;
+
+	console.log("Listening time: " + secs + "s");
+
+	// Send the total listening time via beacon reliably to the AJAX API
+	// Send it as formdata since no header can be set on sendBeacon() and admin-ajax.php will reject it otherwise
+	let data = new FormData();
+	data.append( 'nonce', cba_nonce );
+	data.append( 'action', 'cba_ajax_save_listening_time' );
+	data.append( 'post_id', cursor.post_id );
+	data.append( 'seconds', secs );
+
+	navigator.sendBeacon( ajaxurl, data );
+
+});
+
+
+jQuery(document).on('click', '.cba-toggle-displeu-post-tagging', function() {
+
+	let post_id = jQuery(this).attr('post_id');
+
+	jQuery.ajax({
+		type: "POST",
+		url: ajaxurl,
+		data: { 'action': 'toggle_displeu_post_tagging', 'post_id': post_id },
+		dataType: 'json',
+		success: function(result) {
+			if( result.success == 1 ) {
+
+				// Change the button's description after adding/removing the tag
+				if( result.action == 'added' )
+					jQuery('.cba-toggle-displeu-post-tagging').text( 'Remove DisplayEurope Tag' );
+				else
+					jQuery('.cba-toggle-displeu-post-tagging').text( 'Add DisplayEurope Tag' );
+			}
+
+			cbaNotify( result.message );
+		}
+	});
+
+});
+
+
+/*
+jQuery(document).ready( function() {
+	var date_from = jQuery('input[name="date_from"]').val();
+	var date_until = jQuery('input[name="date_from"]').val();
+});
+*/
+
+/*
+jQuery(document).ready( function() {
+
+	slidestoshow = 4;
+
+	if( window.innerWidth < 680 ) {
+		slidestoshow = 3;
+	}
+	if( window.innerWidth < 400 ) {
+		slidestoshow = 2;
+	}
+
+	jQuery(".cba-posts-slider").slick({
+		dots: false,
+		infinite: false,
+		slidesToShow: slidestoshow,
+		slidesToScroll: 3,
+		lazyLoad: 'ondemand', // ondemand progressive anticipated
+	});
+
+});
+*/

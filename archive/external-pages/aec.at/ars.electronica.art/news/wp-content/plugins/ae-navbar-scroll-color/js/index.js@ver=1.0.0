@@ -1,0 +1,25 @@
+(function ($) {
+    const masterHeader = $('header#masthead');
+	if (
+		!window.navbarNoScrollColor ||
+		window.navbarNoScrollColor.isNavbarScrollColor !== 'false'
+	) {
+		$(masterHeader).wrap("<div class='header-wrapper'></div>");
+		$(masterHeader).addClass('white');
+
+		const headerHeight = $(masterHeader)
+			.get(0)
+			.getBoundingClientRect().height;
+
+		$('.header-wrapper').css('height', headerHeight + 'px');
+
+		return;
+	}
+	const scroll = $(document).scrollTop();
+	if (scroll > 0) masterHeader.addClass('white');
+
+	$(window).scroll(function () {
+		if ($(document).scrollTop() > 0) masterHeader.addClass('white');
+		else masterHeader.removeClass('white');
+	});
+})(jQuery);

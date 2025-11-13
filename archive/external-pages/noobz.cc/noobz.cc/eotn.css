@@ -1,0 +1,181 @@
+@import url(../fonts.googleapis.com/css@family=UnifrakturMaguntia.css);
+
+span[lang=de] {
+    font-family: "UnifrakturMaguntia";
+}
+
+body {
+    padding: 48px 240px 48px 48px;
+    margin: 0;
+    font-family: "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 24px;
+    background: #fff;
+    color: #000;
+    
+
+}
+
+a:link {color: blue;}
+a:visited {color:purple;}
+a:active {color:red;}
+
+pre, tt, code, input, textarea {
+    font-size: 13px;
+    line-height: normal;
+    font-family: 'DejaVu Sans Mono', 'Courier New', monospace;
+    font-size: 13px;
+}
+
+#cart {
+    float:left;
+    position: fixed;
+    right:2em;
+    top:0;
+    z-index: 128;
+}
+
+    #cart pre {
+        float: right;
+    }
+    #cart div {
+        clear: right;
+        text-align: right;
+    }
+
+
+.bubble {
+    display: none;
+}
+
+    .feedback .bubble {
+        position: absolute;
+        left: -1024px;
+        display: block;
+    }
+
+
+a.whut {
+    font-size: 10px;
+    position: relative;
+    top: -6px;
+}
+
+img {
+    display: block;
+}
+
+img#facebookfags {
+    position: absolute;
+    top: -1024px;
+    left: -1024px;
+}
+
+p, h1, h2, h3, h4, div, form {
+    margin: 0;
+    padding: 0;
+}
+
+p.buy label {
+    font-style: italic;
+}
+
+button, label, input[type=checkbox] {
+    cursor: pointer;
+}
+
+p.buy input, input#dummycheck {
+    position: relative;
+    top: 2px;
+}
+
+p.next {
+    text-indent: 32px;
+}
+
+p.sucks {
+    text-decoration: blink;
+    background: yellow;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 29px;
+}
+
+h1 + p {
+    margin-top: -24px;
+}
+
+h2 {
+    margin-top: 72px;
+    position: relative;
+    top: -2px;
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 19px;
+    margin-top: 48px;
+}
+
+div.AudioPlayer {
+    height: 24px;
+}
+
+.info {
+    font-size: 12px;
+    position: relative;
+    top: 2px;
+} 
+
+div.AudioPlayer {
+    white-space: nowrap;
+}
+
+div.AudioPlayer button {
+    width: 4em;
+}
+
+div.tune ul.progress {
+    display: none;
+}
+
+        #me0{
+            width: 1440px;
+            height: 951px;
+            background: url(fruit.jpg);
+        }
+        #me1{
+            width: 1440px;
+            height: 1080px;
+            background: url(sc.jpg);
+        }
+        #me2{
+            width: 1440px;
+            height: 1080px;
+            background: url(shroom.jpg);
+        }
+        #me3{
+            width: 1440px;
+            height: 1080px;
+            background: url(peak.jpg);
+        }
+
+.feedback {
+    position: relative;   
+}
+
+    .feedback form {
+        color: white;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+
+form#btc-email input,
+form#btc-email button {
+    font-size: 32px;
+}
+

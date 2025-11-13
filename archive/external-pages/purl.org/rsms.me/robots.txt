@@ -1,0 +1,35 @@
+# Hello, Human. Beep bloop!
+
+User-Agent: *
+Allow: /
+Disallow: /etc/
+Disallow: /scripter-legacy/
+Allow: /etc/car-physics/
+Sitemap: https://rsms.me/sitemap.xml
+
+User-agent: Fasterfox
+Disallow: /
+
+User-agent: Nutch
+Disallow: /
+
+User-agent: spock
+Disallow: /
+
+User-agent: OmniExplorer_Bot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: BecomeBot
+Disallow: /
+
+User-agent: genieBot
+Disallow: /
+
+User-agent: MLBot
+Disallow: /

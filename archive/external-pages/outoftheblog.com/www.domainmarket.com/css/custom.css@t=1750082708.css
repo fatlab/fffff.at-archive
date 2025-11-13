@@ -1,0 +1,77 @@
+.resource_content h1, .resource_content h2, .resource_content h3, .resource_content h4, .resource_content h5, .resource_content h6 {
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+}
+
+header ul {
+  color: #000000!important;
+}
+
+.padded-box h2,
+.padded-box h3,
+.padded-box h4,
+.padded-box h5,
+.padded-box h6 {
+  color: #000000!important;
+}
+
+header ul li a:hover {
+  color: #CCC!important;
+}
+
+.padded-box h3 {
+  color: #000!important;
+  padding-top: 4%;
+}
+
+.padded-box a {
+  color: #1f5378;
+}
+
+.padded-box a:hover {
+  color: #f79c16;
+}
+
+/* Begin Lander Styles */
+
+.container-blue-bg {
+  padding: 4% 0 0 0;
+  background-color: #1D5377;
+  color: #FFF;
+}
+
+.container-blue-bg .grid {
+  margin: 4% 0 0 0;
+}
+
+.container-blue-bg p,
+.container-blue-bg-2 p,
+.container-blue-bg h2,
+.container-blue-bg-2 h2,
+.container-blue-bg h3,
+.container-blue-bg-2 h3 {
+  color: #ffffff;
+}
+
+.container-blue-bg-2 p {
+  font-size: 24px;
+}
+
+.container-blue-bg-2 {
+  margin-bottom: 4%;
+  background-color: #1D5377;
+}
+
+.lander-v2 h3 {
+  font-size: 32px;
+  color: #1D5377;
+}
+
+.lander-v2-optin {
+  background-color: #f1f1f1;
+}
+
+.post-top-domains {
+  background-color: #f1f1f1;
+  padding: 4% 8%;
+}

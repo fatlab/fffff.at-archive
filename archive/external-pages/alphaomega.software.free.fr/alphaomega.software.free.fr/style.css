@@ -1,0 +1,15 @@
+a:link { color: #99FF99; text-decoration: none; }
+a:visited { color: #FF9999; text-decoration: none; }
+a:active { color: #FF0000; text-decoration: none; }
+a:hover { color: #00FF00; text-decoration: none; }
+a.menu:link { background-image: url("button.gif"); color: #FFFFFF; }
+a.menu:visited { background-image: url("button.gif"); color: #FFFFFF; }
+a.menu:active { background-image: url("buttonon.gif"); }
+a.menu:hover { color: #000000; }
+table { color: #FFFFFF; font: 11px geneva, verdana, arial, sans-serif; }
+.title { color: #FFFFFF; font: 18px verdana, arial, sans-serif; font-weight: bold; }
+.just { text-align: justify; }
+.subtitle { color: #FFFFFF; font: 15px geneva, verdana, arial, sans-serif; font-weight: bold; }
+.whitetitle { color: #FFFFFF; font: 13px verdana, arial, sans-serif; font-weight: bold; }
+.whitetext { color: #FFFFFF; font: 11px geneva, verdana, arial, sans-serif; }
+.menu { font-family: arial, verdana, helvetica, sans; font-size: 8pt; height: 22px; padding-top: 3px; padding-bottom: 3px; padding-left: 7px; padding-right: 7px; cursor: hand; font-weight: bold; text-align: center; line-height: 16px; border: #000000 0px solid; }

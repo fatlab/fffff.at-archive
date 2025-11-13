@@ -1,0 +1,57 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * azo-sans-web:
+ *   - http://typekit.com/eulas/000000000000000000013f4e
+ *   - http://typekit.com/eulas/000000000000000000013f4b
+ *   - http://typekit.com/eulas/000000000000000000013f48
+ *   - http://typekit.com/eulas/000000000000000000013f62
+ *   - http://typekit.com/eulas/000000000000000000013f8f
+ *   - http://typekit.com/eulas/000000000000000000014a32
+ *
+ * © 2009-2025 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{}*/
+
+@import url("../p.typekit.net/p.css@s=1&k=kja4oxl&ht=tk&f=18438.18440.18441.18442.18445.22801&a=7121&app=typekit&e=css.css");
+
+@font-face {
+font-family:"azo-sans-web";
+src:url("af/b02092/000000000000000000013f4e/21/l@subset_id=2&fvd=n7&v=3") format("woff2"),url("af/b02092/000000000000000000013f4e/21/d@subset_id=2&fvd=n7&v=3") format("woff"),url("af/b02092/000000000000000000013f4e/21/a@subset_id=2&fvd=n7&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+font-family:"azo-sans-web";
+src:url("af/d6a3d1/000000000000000000013f4b/21/l@subset_id=2&fvd=i4&v=3") format("woff2"),url("af/d6a3d1/000000000000000000013f4b/21/d@subset_id=2&fvd=i4&v=3") format("woff"),url("af/d6a3d1/000000000000000000013f4b/21/a@subset_id=2&fvd=i4&v=3") format("opentype");
+font-display:auto;font-style:italic;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"azo-sans-web";
+src:url("af/b57551/000000000000000000013f48/21/l@subset_id=2&fvd=n3&v=3") format("woff2"),url("af/b57551/000000000000000000013f48/21/d@subset_id=2&fvd=n3&v=3") format("woff"),url("af/b57551/000000000000000000013f48/21/a@subset_id=2&fvd=n3&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"azo-sans-web";
+src:url("af/777c4b/000000000000000000013f62/21/l@subset_id=2&fvd=i3&v=3") format("woff2"),url("af/777c4b/000000000000000000013f62/21/d@subset_id=2&fvd=i3&v=3") format("woff"),url("af/777c4b/000000000000000000013f62/21/a@subset_id=2&fvd=i3&v=3") format("opentype");
+font-display:auto;font-style:italic;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"azo-sans-web";
+src:url("af/77dbd8/000000000000000000013f8f/21/l@subset_id=2&fvd=n4&v=3") format("woff2"),url("af/77dbd8/000000000000000000013f8f/21/d@subset_id=2&fvd=n4&v=3") format("woff"),url("af/77dbd8/000000000000000000013f8f/21/a@subset_id=2&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"azo-sans-web";
+src:url("af/f104fa/000000000000000000014a32/21/l@subset_id=2&fvd=n2&v=3") format("woff2"),url("af/f104fa/000000000000000000014a32/21/d@subset_id=2&fvd=n2&v=3") format("woff"),url("af/f104fa/000000000000000000014a32/21/a@subset_id=2&fvd=n2&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:200;font-stretch:normal;
+}
+
+.tk-azo-sans-web { font-family: "azo-sans-web",sans-serif; }

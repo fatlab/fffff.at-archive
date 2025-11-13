@@ -1,0 +1,261 @@
+/*
+ Theme Name:     Panke
+ Description:    Theme for pankeculture.com based on Divi Theme
+ Author:         Larissa Wunderlich and Elegant Themes
+ Author URI:     https://www.larissawunderlich.de
+ Template:       Divi
+ Version:        1.0.0
+*/
+ 
+ 
+/* Theme customisation starts here
+------------------------------------------------------- */
+
+p:empty {
+    display: none;
+}
+
+.et_pb_row.et_pb_row_fullwidth, .et_pb_specialty_fullwidth > .et_pb_row {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Kontakt */
+
+.et_pb_with_background .et_pb_contact_field_options_title {
+    color: #fff;
+}
+
+/* Event
+--------------------------- */
+
+.no_events {
+    padding-bottom: 50px;
+}
+
+
+.et_pb_events article {
+    padding: 150px 0;
+    margin: 0;
+    text-align: right;
+    border-bottom: 20px solid #2d2d2c;
+    overflow: hidden;
+    position: relative;
+}
+
+.et_pb_events article:hover::before {
+    background: inherit;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    filter: brightness(50%);
+    top: 0;
+    left: 0;
+}
+
+#main-content .et_pb_events article .event-content-wrapper{
+    width: 54%;
+    margin-right: 10%;
+    padding: 30px;
+}
+
+.et_right_sidebar #main-content .container::before {
+    background: none;
+}
+
+.et_pb_events article .event-content-wrapper .et_pb_row{
+    width: 100%;
+}
+
+/* Event date box
+--------------------------- */
+
+.et_pb_events .eventDate{
+    display: inline-block;
+    padding: 10px 30px;
+    border: 2px solid #fff;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.et_pb_events .eventDate .weekday,
+.et_pb_events .eventDate .month{
+    text-transform: uppercase;
+    font-size: 15px;
+    display: block;
+}
+
+.et_pb_events .eventDate .day{
+    font-size: 50px;
+    padding: 15px 0 20px;
+    display: block;
+}
+
+.et_pb_events .eventDate .month{
+    font-weight: bold;
+    text-transform: none;
+}
+
+.et_pb_events .show-post-content{
+    text-align: right;
+}
+
+/* Event show more
+--------------------------- */
+
+.et_pb_events .show-post-content button:hover{
+    cursor: pointer;
+}
+
+/* Event details overlay
+--------------------------- */
+
+.et_pb_events .post-content-full {
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.9);
+    padding: 40px;
+    z-index: 999999;
+    height: 100vh;
+    overflow: scroll;
+}
+
+.et_pb_events .post-content-full .close {
+    text-align: right;
+    margin: 60px 50px 0;
+}
+
+.et_pb_events .post-content-full .close:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+.et_pb_events .post-content-full .close span{
+    font-size: 50px;   
+}
+
+.et_pb_events .post-content-full .eventDate{
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+
+.et_pb_events .post-content-full .eventInfo {
+    font-size: 0.8em;
+}
+
+.et_pb_events .post-content-full .eventInfo small {
+    opacity: 0.5;
+}
+
+.et_pb_events .post-content-full br {
+    margin: 0 0 10px;
+}
+
+/*
+.et_pb_posts .et_pb_post {
+    display: grid;
+    grid-template-columns: 30% auto;
+    grid-template-rows: auto auto auto;
+    grid-column-gap: 30px;
+}
+
+.et_pb_posts .et_pb_post .entry-featured-image-url {
+    grid-row: 1 / span 3;
+}
+
+.et_pb_posts .et_pb_post .entry-title, 
+.et_pb_posts .et_pb_post .post-meta,
+.et_pb_posts .et_pb_post .post-content {
+    grid-column-start: 2;
+}
+*/
+
+@media screen and (max-width: 980px){
+    #main-content .et_pb_events article .event-content-wrapper{
+        width: 80%;
+    }
+    
+    .et_pb_events .eventDate{
+        margin-left: 0;
+    }
+    
+    .et_pb_events .show-post-content {
+
+        text-align: left;
+
+    }
+    
+    .et_pb_row_0, .et_pb_row_1,  .et_pb_row_2, .et_pb_row_3, .et_pb_row_4, .et_pb_row_5{
+
+        width: 80% !important;
+
+    }
+}
+
+
+
+/* Newsletter form
+--------------------------- */
+
+/* Empty p in form creates floating bug */
+.et_pb_with_background .tnp-subscription form > p {
+    display: none;
+}
+
+.et_pb_with_background .tnp-subscription .tnp-field input {
+    border: 1px solid #fff;
+    background: none;
+    color: #fff;
+}
+
+.et_pb_with_background .tnp-subscription .tnp-field-email{
+    float: left; 
+    margin-right: 10px;
+}
+
+.et_pb_with_background .tnp-subscription input.tnp-email{
+    height: 40px;
+    padding: 8px 10px;
+}
+
+.et_pb_with_background .tnp-subscription input.tnp-submit{
+    height: 40px;
+    padding: 8px 10px;
+}
+
+.et_pb_with_background .tnp-subscription input.tnp-submit:hover{
+    background: #666;
+}
+
+.et_pb_with_background .tnp-subscription .tnp-field-privacy label {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9em;
+    font-weight: 400;
+}
+
+/* Single event pages
+---------------------------
+
+.single .eventDate {
+    border: 2px solid #000;
+    padding: 10px;
+    display: inline-block;
+    margin: 30px 0;
+}
+
+.single .entry-content a > img {
+    display: none;
+}  */
+
+#main-content .container::before{
+	background: transparent;
+}
+
+/* Fix white text on white bg in editor */
+/* Set body color in Themer and Customizer to black and make text white here */
+.single .et_pb_post_content {
+    color: #fff !important;
+}

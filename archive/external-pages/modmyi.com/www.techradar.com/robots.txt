@@ -1,0 +1,64 @@
+##################################################
+# Vanilla-wide rules                             #
+##################################################
+User-agent: *
+
+# Common path patterns (* prefix to handle localisation)
+Disallow: */deals/compare
+Disallow: */html/
+Disallow: */p/*/embed/captioned
+
+# Common query string patterns
+Disallow: *searchTerm=*
+Disallow: *sortBy=*
+Disallow: *productBrand=*
+Disallow: *%7B*%7D*
+
+# Infinite scroll paths
+Disallow: /infinite-scroll-article/*
+Disallow: /infinite-scroll-review/*
+Disallow: /infinite-scroll-recipe/*
+
+##################################################
+# Site-specific rules                            #
+##################################################
+User-Agent: *
+Disallow: */price-comparison
+Disallow: */specification
+
+##################################################
+# Sitemaps                                       #
+##################################################
+User-agent: *
+Sitemap: https://www.techradar.com/sitemap.xml
+Sitemap: https://www.techradar.com/sg/sitemap.xml
+Sitemap: https://www.techradar.com/uk/sitemap.xml
+Sitemap: https://www.techradar.com/au/sitemap.xml
+Sitemap: https://www.techradar.com/nz/sitemap.xml
+Sitemap: https://global.techradar.com/es-mx/sitemap.xml
+Sitemap: https://global.techradar.com/da-dk/sitemap.xml
+Sitemap: https://global.techradar.com/fi-fi/sitemap.xml
+Sitemap: https://global.techradar.com/no-no/sitemap.xml
+Sitemap: https://global.techradar.com/sv-se/sitemap.xml
+Sitemap: https://global.techradar.com/it-it/sitemap.xml
+Sitemap: https://global.techradar.com/nl-nl/sitemap.xml
+Sitemap: https://global.techradar.com/nl-be/sitemap.xml
+Sitemap: https://global.techradar.com/fr-fr/sitemap.xml
+Sitemap: https://global.techradar.com/de-de/sitemap.xml
+Sitemap: https://global.techradar.com/es-es/sitemap.xml
+Sitemap: https://www.techradar.com/sitemap-news.xml
+Sitemap: https://www.techradar.com/sg/sitemap-news.xml
+Sitemap: https://www.techradar.com/uk/sitemap-news.xml
+Sitemap: https://www.techradar.com/au/sitemap-news.xml
+Sitemap: https://www.techradar.com/nz/sitemap-news.xml
+Sitemap: https://global.techradar.com/es-mx/sitemap-news.xml
+Sitemap: https://global.techradar.com/da-dk/sitemap-news.xml
+Sitemap: https://global.techradar.com/fi-fi/sitemap-news.xml
+Sitemap: https://global.techradar.com/no-no/sitemap-news.xml
+Sitemap: https://global.techradar.com/sv-se/sitemap-news.xml
+Sitemap: https://global.techradar.com/it-it/sitemap-news.xml
+Sitemap: https://global.techradar.com/nl-nl/sitemap-news.xml
+Sitemap: https://global.techradar.com/nl-be/sitemap-news.xml
+Sitemap: https://global.techradar.com/fr-fr/sitemap-news.xml
+Sitemap: https://global.techradar.com/de-de/sitemap-news.xml
+Sitemap: https://global.techradar.com/es-es/sitemap-news.xml

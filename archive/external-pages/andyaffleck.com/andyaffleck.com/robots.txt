@@ -1,0 +1,5 @@
+Sitemap: https://andyaffleck.com/sitemap.xml
+Sitemap: https://andyaffleck.com/news-sitemap.xml
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php

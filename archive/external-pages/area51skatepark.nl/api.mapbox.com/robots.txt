@@ -1,0 +1,24 @@
+User-agent: *
+Disallow: /v1/
+Disallow: /v2/
+Disallow: /v3/
+Disallow: /v4/*.jpg
+Disallow: /v4/*.jpeg
+Disallow: /v4/*.png
+Disallow: /v4/*.webp
+Disallow: /v4/*.vector.pbf
+Disallow: /v4/*.mvt
+Disallow: /v4/*.json
+Disallow: /uploads/v1/
+Disallow: /fonts/v1/
+Disallow: /datasets/v1/
+Disallow: /tilesets/v1/
+Disallow: /styles/v1/
+Disallow: /directions/
+Disallow: /matching/
+Disallow: /isochrone/
+Disallow: /directions-matrix/
+Disallow: /optimized-trips/
+
+User-Agent: Twitterbot
+Allow: /styles/v1/*/static/

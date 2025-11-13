@@ -1,0 +1,43 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * space-mono:
+ *   - http://typekit.com/eulas/00000000000000007735e94a
+ *   - http://typekit.com/eulas/00000000000000007735e949
+ *   - http://typekit.com/eulas/00000000000000007735e948
+ *   - http://typekit.com/eulas/00000000000000007735e94b
+ *
+ * © 2009-2025 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2023-07-18 12:04:19 UTC"}*/
+
+@import url("../p.typekit.net/p.css@s=1&k=bop3ihl&ht=tk&f=47182.47183.47184.47185&a=102767358&app=typekit&e=css.css");
+
+@font-face {
+font-family:"space-mono";
+src:url("af/d27913/00000000000000007735e94a/30/l@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("af/d27913/00000000000000007735e94a/30/d@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("af/d27913/00000000000000007735e94a/30/a@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"space-mono";
+src:url("af/8ebf2a/00000000000000007735e949/30/l@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),url("af/8ebf2a/00000000000000007735e949/30/d@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),url("af/8ebf2a/00000000000000007735e949/30/a@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
+font-display:auto;font-style:italic;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"space-mono";
+src:url("af/5af780/00000000000000007735e948/30/l@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),url("af/5af780/00000000000000007735e948/30/d@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),url("af/5af780/00000000000000007735e948/30/a@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
+font-display:auto;font-style:italic;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+font-family:"space-mono";
+src:url("af/85404f/00000000000000007735e94b/30/l@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("af/85404f/00000000000000007735e94b/30/d@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("af/85404f/00000000000000007735e94b/30/a@primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+.tk-space-mono { font-family: "space-mono",mono; }

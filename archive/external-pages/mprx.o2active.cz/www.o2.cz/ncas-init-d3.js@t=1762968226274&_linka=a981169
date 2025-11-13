@@ -1,0 +1,6 @@
+(function(){document.querySelectorAll("js-sso,.js2-sso,.js3-sso");const e={error:"color:#c00;font-weight:bold",warning:"color:#990;font-weight:bold",info:"color:#39c;font-weight:bold",debug:"color:#777;font-weight:bold"},c={none:5,error:4,warning:3,info:2,debug:1},f=c.none,b=function(a,g,d){c[a]<f||(console.log("%cNCAS implementation "+a,e[a]),console.log(g),d&&console.log(d))};b("info",'Logging level was set to "none"');b("info","SSO script start.");b("error","Redirect to SSO login most probably failed - still no SSO session available.")})();
+/* 
+
+__ETN_.O.K.__
+
+ */

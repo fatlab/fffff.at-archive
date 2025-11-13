@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" lang="en">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="en">
+<![endif]-->
+<!--[if !(IE 6) & !(IE 7) & !(IE 8)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>
+Tweets of Note | halfblog.net	</title>
+<link rel="profile" href="https://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="../../../../../../../s2.wp.com/wp-content/themes/pub/twentyeleven/style.css@m=1741693348i&amp;ver=20190507.css" />
+<link rel="pingback" href="https://halfblog.net/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="https://s2.wp.com/wp-content/themes/pub/twentyeleven/js/html5.js?m=1394055389i&amp;ver=3.7.0" type="text/javascript"></script>
+<![endif]-->
+<meta name='robots' content='max-image-preview:large' />
+<meta name="google-site-verification" content="Ml_04tqyDIrgll7Ju710b_sqisEBKkD7BNx8jafbPjM" />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.parentNode.removeChild( dom_node ); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[ i ].parentNode.removeChild( dom_nodes[ i ] );
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+					+ '//' + window.location.hostname
+					+ '&postid=11335'
+					+ '&is_singular=1';
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9oYWxmYmxvZy5uZXQ%3D"
+		+ "&wpcomid=2092608"
+		+ "&time=1762946417";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='https://s2.wp.com/' />
+<link rel='dns-prefetch' href='https://s1.wp.com/' />
+<link rel='dns-prefetch' href='https://s0.wp.com/' />
+<link rel="alternate" type="application/rss+xml" title="halfblog.net &raquo; Feed" href="https://halfblog.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="halfblog.net &raquo; Comments Feed" href="https://halfblog.net/comments/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?m=1751981882i&ver=6.9-beta2-61099"}};
+/*! This file is auto-generated */
+!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-1' href='../../../../../../../_static/index.html@%253F-eJxtzEkKgDAQRNELGZs4EDfiWUJsxMzYHby+RARB3BQ8KD6cWZgUGSNDKCL7su2RwCJnbdxjCCnVWYtHggO9ZlxFTsQftYaogf+k3x2+4Vv1voRZqrHvpkHJwV5glDTa&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-2-1' href='../../../../../../../_static/index.html@%253F-eJylzFsKgCAQQNENlZMR1k+0lrTBrFHDR+Huk7bQ5+XCgedqlXcJXYKLsjYugs41JQZdT0C4e84460BmQxtI8upsyciwhgIxFUKmYmzgH5R2tB+02JmPoudiEsN0vCAvOE8=&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-4-1' href='../../../../../../../_static/index.html@%253F-eJyVzDEOgCAMQNELiQU1Jg7Gs2AlDYpAaInx9ro5O%252F7hfbiywhTFRYEcKvnIQPXN1RVSa0h4MOxOssVDBXunKoqK34DlDq5F5gb+LIoVH4k%252FvpyzGYe+03oyw%252F4AcmU1KQ==&amp;cssminify=yes.css' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-6-1' href='../../../../../../../_static/index.html@%253F-eJzTLy%252FQzcxLzilNSS3WzyrWz01NyUxMzUnNTc0rQeEU5CRWphbp5qSmJyZX6uVm5uklFxfr6OPTDpRD5sM02efaGpoZmFkYGRuZGmQBAHPvL0Y=&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='jetpack-sharing-buttons-style-inline-css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-8-1' href='../../../../../../../_static/index.html@%253F-eJx9jcEKg0AMRH+oaVhorR7Eb9E16IpZg8min2889FZ6GYbhPQYPgbhlo2zIBWQtU8qKcdvJd5be0AmmMfW0Ejv2jKoP%252FK0daZzIXNdvB6PzvyJ+A8MgO6mCJ6fCYLN%252F6e113IZXU9WfUL%252FDcgHSTkDo&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #fff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--blue: #1982d1;--wp--preset--color--dark-gray: #373737;--wp--preset--color--medium-gray: #666;--wp--preset--color--light-gray: #e2e2e2;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--albert-sans: 'Albert Sans', sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda', serif;--wp--preset--font-family--bricolage-grotesque: 'Bricolage Grotesque', sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: 'Courier Prime', monospace;--wp--preset--font-family--crimson-pro: 'Crimson Pro', serif;--wp--preset--font-family--dm-mono: 'DM Mono', monospace;--wp--preset--font-family--dm-sans: 'DM Sans', sans-serif;--wp--preset--font-family--dm-serif-display: 'DM Serif Display', serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: 'EB Garamond', serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: 'Fira Sans', sans-serif;--wp--preset--font-family--fjalla-one: 'Fjalla One', sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono', monospace;--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans', sans-serif;--wp--preset--font-family--ibarra-real-nova: 'Ibarra Real Nova', serif;--wp--preset--font-family--instrument-serif: 'Instrument Serif', serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: 'Josefin Sans', sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: 'Noto Sans Mono', sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: 'Open Sans', sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: 'PT Serif', serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: 'Playfair Display', serif;--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: 'Roboto Slab', serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: 'Source Sans 3', sans-serif;--wp--preset--font-family--source-serif-4: 'Source Serif 4', serif;--wp--preset--font-family--space-mono: 'Space Mono', monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: 'Work Sans', sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-10-1' href='../../../../../../../_static/index.html@%253F-eJyNjtsKwjAQRH%252FIuLZY0QfxW9q4jbGbC9lNQ%252F++EV8Uofg2M5wDAyUqHbygF5AHOmSIeQApdViQcEYPAwU98V4z7+APnGUhVCXq4H4cl1WkbKxnKPZuUBhGsnpKb2uLT1h%252FmBoNVOqjbkkGg6rve7HBfxU1Um%252FTS725a3Nq2%252FPxcmi65wqZt2Yc&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-12-1' href='../../../../../../../_static/index.html@%253F-eJyNjcEKwjAQRH%252FIuFRT6kX8FNkmS5K6yQY3Qfx7bfEiXrwM82B4A49qnJRGpUHupnIPqSgs1Cq624chi6zhO5OCRryTR++fW00l7J3qDv43XVNxoOISsmEJol%252FwY2uR8vs3WggsM%252FI6uOTzMI3Hw8lOg11eUT1JKA==&amp;cssminify=yes.css' type='text/css' media='all' />
+<script type="text/javascript" id="jetpack_related-posts-js-extra">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="wpcom-actionbar-placeholder-js-extra">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"2092608","postID":"11335","siteURL":"https:\/\/halfblog.net","xhrURL":"https:\/\/halfblog.net\/wp-admin\/admin-ajax.php","nonce":"38fba6079a","isLoggedIn":"","statusMessage":"","subsEmailDefault":"instantly","proxyScriptUrl":"https:\/\/s0.wp.com\/wp-content\/js\/wpcom-proxy-request.js?ver=20211021","shortlink":"https:\/\/wp.me\/p8MnK-2WP","i18n":{"followedText":"New posts from this site will now appear in your <a href="https://halfblog.net/2012/03/23/tweets-of-note/\&quot;https:\/\/wordpress.com\/reader\&quot;">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Shortlink copied to clipboard."}};
+/* ]]> */
+</script>
+<script type="text/javascript" id="jetpack-mu-wpcom-settings-js-before">
+/* <![CDATA[ */
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https:\/\/s1.wp.com\/wp-content\/mu-plugins\/jetpack-mu-wpcom-plugin\/moon\/jetpack_vendor\/automattic\/jetpack-mu-wpcom\/src\/build\/"};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../_static/index.html@%253F%252Fwp-content%252Fmu-plugins%252Fjetpack-plugin%252Fmoon%252F_inc%252Fbuild%252Frelated-posts%252Frelated-posts.min.js,%252Fwp-content%252Fjs%252Frlt-proxy.js%253Fm=1755006225j'></script>
+<script type="text/javascript" id="rlt-proxy-js-after">
+/* <![CDATA[ */
+	rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
+/* ]]> */
+</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://foomandoonian.wordpress.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://wp.me/p8MnK-2WP' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fhalfblog.net%2F2012%2F03%2F23%2Ftweets-of-note%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fhalfblog.net%2F2012%2F03%2F23%2Ftweets-of-note%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Tweets of Note" />
+<meta property="og:url" content="https://halfblog.net/2012/03/23/tweets-of-note/" />
+<meta property="og:description" content="Update 2012.03.23: Never mind. Tweets of Note was going to be a weekly newsletter, created with TinyLetter, that compiled links and other stuff from my Twitterings. I promoted it a bit on Twitter (…" />
+<meta property="article:published_time" content="2012-03-23T09:30:56+00:00" />
+<meta property="article:modified_time" content="2012-03-23T15:33:19+00:00" />
+<meta property="og:site_name" content="halfblog.net" />
+<meta property="og:image" content="https://secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db?s=200&#038;ts=1762946417" />
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+<meta name="twitter:creator" content="@foomandoonian" />
+<meta name="twitter:site" content="@foomandoonian" />
+<meta name="twitter:text:title" content="Tweets of Note" />
+<meta name="twitter:image" content="https://secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db?s=240" />
+<meta name="twitter:card" content="summary" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=32" sizes="16x16" />
+<link rel="icon" type="image/x-icon" href="../../../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=32" sizes="16x16" />
+<link rel="apple-touch-icon" href="https://secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db?s=114" />
+<link rel='openid.server' href='https://halfblog.net/?openidserver=1' />
+<link rel='openid.delegate' href='https://halfblog.net/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://halfblog.net/osd.xml" title="halfblog.net" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="theme-color" content="#e2e2e2" />
+	<style>
+		/* Link color */
+		a,
+		#site-title a:focus,
+		#site-title a:hover,
+		#site-title a:active,
+		.entry-title a:hover,
+		.entry-title a:focus,
+		.entry-title a:active,
+		.widget_twentyeleven_ephemera .comments-link a:hover,
+		section.recent-posts .other-recent-posts a[rel="bookmark"]:hover,
+		section.recent-posts .other-recent-posts .comments-link a:hover,
+		.format-image footer.entry-meta a:hover,
+		#site-generator a:hover {
+			color: #0066cc;
+		}
+		section.recent-posts .other-recent-posts .comments-link a:hover {
+			border-color: #0066cc;
+		}
+		article.feature-image.small .entry-summary p a:hover,
+		.entry-header .comments-link a:hover,
+		.entry-header .comments-link a:focus,
+		.entry-header .comments-link a:active,
+		.feature-slider a.active {
+			background-color: #0066cc;
+		}
+	</style>
+	<meta name="description" content="Update 2012.03.23: Never mind. Tweets of Note was going to be a weekly newsletter, created with TinyLetter, that compiled links and other stuff from my Twitterings. I promoted it a bit on Twitter (it got 12 subscribers — thanks!) and put together the first edition. When it was ready (666 words!), I hit send. And...&hellip;" />
+		<style type="text/css" id="twentyeleven-header-css">
+				#site-title,
+		#site-description {
+			position: absolute;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+				</style>
+	<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url("../../../../../foomandoonian.files.wordpress.com/2012/12/dust_2x.png"); background-position: center top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
+</style>
+	<style type="text/css" id="custom-colors-css">#access {
+	background-image: -webkit-linear-gradient( rgba(0,0,0,0), rgba(0,0,0,0.08) );
+	background-image: -moz-linear-gradient( rgba(0,0,0,0), rgba(0,0,0,0.08) );
+	background-image: linear-gradient( rgba(0,0,0,0), rgba(0,0,0,0.08) );
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+}
+#branding .only-search #s { border-color: #000;}
+#branding .only-search #s { border-color: rgba( 0, 0, 0, 0.2 );}
+#site-generator { border-color: #000;}
+#site-generator { border-color: rgba( 0, 0, 0, 0.1 );}
+#branding .only-search #s { background-color: #fff;}
+#branding .only-search #s { background-color: rgba( 255, 255, 255, 0.4 );}
+#branding .only-search #s:focus { background-color: #fff;}
+#branding .only-search #s:focus { background-color: rgba( 255, 255, 255, 0.9 );}
+#access a { color: #EEEEEE;}
+#access li:hover > a, #access a:focus { color: #F7F7F7;}
+#branding .only-search #s { color: #F7F7F7;}
+body { background-color: #e2e2e2;}
+#site-generator { background-color: #e2e2e2;}
+#site-generator { background-color: rgba( 226, 226, 226, 0.1 );}
+#branding { border-color: #C9C9C9;}
+#access { background-color: #111111;}
+#access li:hover > a, #access a:focus { background: #C43535;}
+.entry-title, .entry-title a, .singular .entry-title { color: #222222;}
+.entry-title a:hover, .entry-title a:focus { color: #070707;}
+a, #site-title a:focus, #site-title a:hover, #site-title a:active, .entry-title a:active, .widget_twentyeleven_ephemera .comments-link a:hover, section.recent-posts .other-recent-posts a[rel="bookmark"]:hover, section.recent-posts .other-recent-posts .comments-link a:hover, .format-image footer.entry-meta a:hover, #site-generator a:hover { color: #0066CC;}
+section.recent-posts .other-recent-posts .comments-link a:hover { border-color: #0066cc;}
+article.feature-image.small .entry-summary p a:hover, .entry-header .comments-link a:hover, .entry-header .comments-link a:focus, .entry-header .comments-link a:active, .feature-slider a.active { background-color: #0066cc;}
+</style>
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-11335 single-format-standard custom-background wp-embed-responsive wp-theme-pubtwentyeleven customizer-styles-applied single-author singular two-column right-sidebar jetpack-reblog-enabled">
+<div class="skip-link"><a class="assistive-text" href="index.html#content">Skip to primary content</a></div><div id="page" class="hfeed">
+	<header id="branding">
+			<hgroup>
+				<h1 id="site-title"><span><a href="https://halfblog.net/" rel="home">halfblog.net</a></span></h1>
+				<h2 id="site-description">things that amuse and confuse me</h2>
+			</hgroup>
+
+						<a href="https://halfblog.net/">
+									<img src="../../../../../../../wp-content/uploads/2013/01/crow-banner.jpg" width="1000" height="288" alt="halfblog.net" />
+								</a>
+			
+						<div class="only-search with-image">
+					<form method="get" id="searchform" action="https://halfblog.net/">
+		<label for="s" class="assistive-text">Search</label>
+		<input type="text" class="field" name="s" id="s" placeholder="Search" />
+		<input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
+	</form>
+			</div>
+				
+			<nav id="access">
+				<h3 class="assistive-text">Main menu</h3>
+				<div class="menu-main-container"><ul id="menu-main" class="menu"><li id="menu-item-7013" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-7013"><a href="https://halfblog.net/">Home</a></li>
+<li id="menu-item-7011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7011"><a href="https://halfblog.net/aboutness/">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-7012" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7012"><a href="https://halfblog.net/aboutness/follow/" title="(aka Geoff)">Follow Foomandoonian</a></li>
+	<li id="menu-item-7462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7462"><a href="https://halfblog.net/aboutness/history/">Disambloguation</a></li>
+	<li id="menu-item-13153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13153"><a href="https://halfblog.net/aboutness/header-images/">Header images</a></li>
+	<li id="menu-item-9262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9262"><a href="https://halfblog.net/aboutness/comments-policy/" title="tl;dr Be constructive. Be nice.">Comments policy</a></li>
+</ul>
+</li>
+<li id="menu-item-11281" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-11281"><a href="https://halfblog.net/category/short-films/">Short films</a>
+<ul class="sub-menu">
+	<li id="menu-item-11282" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11282"><a href="https://halfblog.net/category/short-films/action/">Action</a></li>
+	<li id="menu-item-11283" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11283"><a href="https://halfblog.net/category/short-films/animation/">Animation</a></li>
+	<li id="menu-item-11284" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11284"><a href="https://halfblog.net/category/short-films/comedy/">Comedy</a></li>
+	<li id="menu-item-11285" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11285"><a href="https://halfblog.net/category/short-films/crime/">Crime</a></li>
+	<li id="menu-item-11286" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11286"><a href="https://halfblog.net/category/short-films/documentary/">Documentary</a></li>
+	<li id="menu-item-11287" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11287"><a href="https://halfblog.net/category/short-films/drama/">Drama</a></li>
+	<li id="menu-item-11288" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11288"><a href="https://halfblog.net/category/short-films/fantasy/">Fantasy</a></li>
+	<li id="menu-item-11289" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11289"><a href="https://halfblog.net/category/short-films/horror/">Horror</a></li>
+	<li id="menu-item-11290" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11290"><a href="https://halfblog.net/category/short-films/sci-fi/">Sci-fi</a></li>
+	<li id="menu-item-11291" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11291"><a href="https://halfblog.net/category/short-films/war/">War</a></li>
+</ul>
+</li>
+<li id="menu-item-9616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9616"><a href="https://halfblog.net/explore/">Explore…</a>
+<ul class="sub-menu">
+	<li id="menu-item-9240" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9240"><a href="https://halfblog.net/?random" title="Click here for a random post!">Random post</a></li>
+	<li id="menu-item-9241" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9241"><a href="https://halfblog.net/tag/mine/" title="All posts tagged &#8216;mine&#8217;">Stuff I created</a></li>
+	<li id="menu-item-9243" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9243"><a href="https://halfblog.net/tag/crap-infographics/" title="Posts tagged &#8216;crap infographics&#8217;">The Campaign Against Crap Infographics</a></li>
+</ul>
+</li>
+</ul></div>			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a href="https://halfblog.net/2012/03/18/inventing-on-principle-bret-victor/" rel="prev"><span class="meta-nav">&larr;</span> Previous</a></span>
+						<span class="nav-next"><a href="https://halfblog.net/2012/03/25/phytoplankton-bloom-seen-from-space/" rel="next">Next <span class="meta-nav">&rarr;</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-11335" class="post-11335 post type-post status-publish format-standard hentry category-miscellania tag-twitter">
+	<header class="entry-header">
+		<h1 class="entry-title">Tweets of Note</h1>
+
+				<div class="entry-meta">
+						<span class="sep">Posted on </span><a href="index.html" title="09:30 GMT" rel="bookmark"><time class="entry-date" datetime="2012-03-23T09:30:56+00:00">23 March 2012</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="https://halfblog.net/author/foomandoonian/" title="View all posts by Geoff" rel="author">Geoff</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p><em><strong>Update 2012.03.23:</strong> Never mind.</em></p>
+<p><strong>Tweets of Note</strong> was going to be a weekly newsletter, created with <a href="http://tinyletter.com/">TinyLetter</a>, that compiled links and other stuff from my Twitterings. I promoted it a bit on Twitter (it got 12 subscribers — thanks!) and put together the first edition. When it was ready (666 words!), I hit send. And&#8230; </p>
+<blockquote><p>&#8220;Message was not sent because its content is flagged as spam&#8221;</p></blockquote>
+<p>Oh. They don&#8217;t give me an option to edit my email either. &#8216;That looks like spam&#8217;, <em>yoink</em>. If I hadn&#8217;t emailed myself a draft, I wouldn&#8217;t have any copy at all.</p>
+<p>So the idea has been nixed by an algorithm. While I don&#8217;t consider the newsletter (linkletter?) to be spammy, I can&#8217;t think of any way to provide an email full of links without it <em>looking</em> spammy. </p>
+<p>I&#8217;ve included the text from the newsletter below. Consider this the first and final edition. Sorry if you were hoping for more. <span id="more-11335"></span></p>
+<hr />
+<h1>Tweets of Note, early adopter edition</h1>
+<p>Thanks for subscribing to <strong>Tweets of Note</strong>. My plan is to look back on my Twitter feed roughly once a week, cherry pick the most interesting and entertaining tweets and compile them here. I&#8217;ll add some context, expand on some things a bit, throw in some extras.</p>
+<p>This being the first newsletter, I went back through several weeks of tweets. No extra charge.</p>
+<p><strong>1. Best thing in this newsletter</strong></p>
+<p>Remixing exists so Nick Amado could make <a href="http://www.youtube.com/watch?v=8faq5amdK30"><strong>John Carpenter&#8217;s The Thing: The Musical</strong></a>.</p>
+<p><strong>2. Runners up for best thing in this newsletter</strong></p>
+<p>+ Brilliant post on <a href="https://halfblog.net/2012/03/23/tweets-of-note/hellotailor.blogspot.com/2012/03/movie-costumes-i-have-loved-alien-part.html"><strong>the costumes in </strong><strong><em>Alien</em></strong></a>, and what they say about the wearers. Also: <a href="http://hellotailor.blogspot.co.uk/2012/03/aliens-james-cameron-says-put-gun-on-it.html"><em>Aliens</em></a>.</p>
+<p>+ To display a 140 character tweet on the web, <a href="http://mike.teczno.com/notes/bandwidth.html">Twitter pulls in 2MB worth of crap</a>. Mostly JavaCrap.</p>
+<p>+ <a href="http://redlettermedia.com/plinkett/star-trek/star-trek-09/"><strong>Red Letter Media&#8217;s Plinkett nails </strong><strong><em>Star Trek</em></strong><strong> &#8217;09</strong></a> in another of his epic reviews. It&#8217;s basically like the &#8217;98 <em>Lost in Space</em> movie.</p>
+<p>+ Here&#8217;s a fun website for browsing old maps online: <a href="http://www.oldmapsonline.org/"><strong>Oldmapsonline.org</strong></a></p>
+<p>+ <a href="http://www.ted.com/talks/rob_reid_the_8_billion_ipod.html"><strong>The $8 billion iPod</strong></a> &#8211; Some revealing copyright maths from Rob Reid speaking at TED. Sorry, I know you&#8217;ve seen this one, but it was too good to leave out.</p>
+<p>+ If so many regular people conflate a browser with Google, maybe they should rename Chrome to &#8216;Google Browser&#8217;. Just a thought.</p>
+<p>+ <em>Ever wanted to connect your Legos and Tinkertoys together?</em> <a href="http://fffff.at/free-universal-construction-kit/"><strong>The Free Universal Construction Kit</strong></a> by FFFFFAT is a set of adapters for complete interoperability between 10 popular construction toys. (Not Meccano though.)</p>
+<p>+ I knew the origin of <em>&#8216;Do not want!&#8217;</em>, but <a href="http://winterson.com/2009/01/episode-iii-backstroke-of-west-redux.html">I didn&#8217;t know the whole story</a>. And while I&#8217;m on the subject of <em>Star Wars</em>, <a href="http://youtu.be/j0muvy9fllw"><em>Some say there is a fight scene at the end of &#8220;The Phantom Menace&#8221;…</em></a></p>
+<p>+ Create a P2P network for use in Occupy camps, run from a wi-fi router with <a href="http://occupyhere.org/"><strong>Occupy.here</strong></a>. Is it warm enough for Occupy Cardiff to return yet?</p>
+<p>+ The <a href="http://special.movies.yahoo.co.jp/detail/20120315076798/"><strong>Japanese <em>Avengers</em> trailer</strong></a> has a bit more action and, of course, a few shots of the Helicarrier. If this film were directed by anyone other than Joss Whedon I wouldn&#8217;t be interested, but I&#8217;ll see it in hopes that he&#8217;s been able to get in some of his trademark amazing dialogue and surprise twists.</p>
+<p>+ <a href="http://dwww.reactos.org/"><strong>ReactOS</strong></a> is a free, open source OS in development. It&#8217;s no Linux though — written from scratch and based on the design of XP/2003, it aims to be binary compatible with Windows. I think they should adopt the look and feel of <a href="http://www.guidebookgallery.org/screenshots/whistler2257">Windows Whistler</a>, the XP theme too stylish for Microsoft to use.</p>
+<p>+ There are plenty of places online to find out what the time is around the world, but <a href="http://time.is/"><strong>Time.is</strong></a> looks the best. Also, <a href="https://halfblog.net/2012/03/23/tweets-of-note/everytimezone.com/">EveryTimeZone.com</a>. But not <a href="https://halfblog.net/2012/03/23/tweets-of-note/chirpclock.com/">Chirpclock.com</a>.</p>
+<p>+ Camera nerds and aspiring film makers should take a look at the <a href="http://www.digitalbolex.com/"><strong>Digital Bolex</strong></a>, a retro look digital 16mm camera that shoots RAW. Already (over)funded on <a href="http://www.kickstarter.com/projects/joedp/the-digital-bolex-the-1st-affordable-digital-cinem">Kickstarter</a>.</p>
+<p>+ RIP <a href="http://conceptships.blogspot.co.uk/2012/03/good-bye-mr-ralph-mcquarrie.html"><strong>Ralph McQuarrie</strong></a> and <a href="http://theairtightgarage.tumblr.com/"><strong>Moebius</strong></a>. Two artists who made the future look so cool.</p>
+<p>+ A teaser for <a href="http://www.tgdaily.com/entertainment/62240-blood-and-chrome-teaser-kicks-the-toaster"><strong>Battlestar Galactica: Blood and Chrome</strong></a> appeared online, but was quickly <a href="http://www.youtube.com/watch?v=A0ixAkA5bng">removed from YouTube</a>. It is such a blatant imitation of <a href="http://www.youtube.com/watch?v=WVLvMg62RPA"><em>The Girl With The DragonTattoo</em> trailer</a> that I can&#8217;t believe it was intended for broadcast. It&#8217;s exciting, but some of the effects look unfinished to me. I hope they are anyway.</p>
+<p>+ Season 2 of <strong>The Walking Dead</strong> hasn&#8217;t really lived up to my expectations somehow. Still, <a href="http://www.youtube.com/watch?v=a8z_dJoWjP4"><strong>it could be worse</strong></a>.</p>
+<p>+ Dustin Curtis has started his own simple blogging platform, provisionally called the <a href="http://dcurt.is/codename-svbtle"><strong>Svbtle Network</strong></a>, with an interface designed to help writers develop their ideas. Smart thinking, but it&#8217;s invite only (not for the likes of you and I). I also appreciated his <a href="http://dcurt.is/the-markdown-mark">Markdown mark</a>, and <a href="http://dcurt.is/the-open-brand">Open Brand framework</a>.</p>
+<p>+ Trailer of the week that isn&#8217;t <em>Prometheus</em>: <a href="https://halfblog.net/2012/03/16/god-bless-america/"><strong><em>God Bless America</em></strong></a>.</p>
+<p><strong>3. Final thing in this newsletter</strong></p>
+<p>ᕙ(⇀‸↼‶)ᕗ <a href="http://emojicons.com/"><strong>Emojicons</strong></a> ლ(ಠ益ಠლ)</p>
+<p><strong>Thanks for reading!</strong> Remember, this email is forward-friendly (it&#8217;s like retweeting). Tell your forward-friends to sign up at <a href="http://tinyletter.com/foomandoonian">http://tinyletter.com/Foomandoonian</a></p>
+<hr />
+<h3>Original post, for posterity</h3>
+<p><strong><a href="http://tinyletter.com/Foomandoonian">Tweets of Note</a></strong> is a newsletter I am starting using <a href="http://tinyletter.com/">TinyLetter</a>.</p>
+<p>My plan is to look back on my Twitter feed roughly once a week, cherry pick the most interesting and entertaining tweets and compile them. I&#8217;ll add some context, expand on some things a bit, throw in some extras. It&#8217;s all a bit experimental. If you <a title="@foomandoonian" href="http://twitter.com/foomandoonian">follow me on Twitter</a>, you&#8217;ll know what to expect. (And if you read most of my tweets, subscribing to this newsletter may be a bit redundant anyway.)</p>
+<p>I expect to hit send on the first one this afternoon.</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-official sd-sharing"><h3 class="sd-title">Share &amp; enjoy:</h3><div class="sd-content"><ul><li class="share-reddit"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-reddit-11335"
+				class="share-reddit sd-button"
+				href="https://halfblog.net/2012/03/23/tweets-of-note/?share=reddit"
+				target="_blank"
+				aria-labelledby="sharing-reddit-11335"
+				>
+				<span id="sharing-reddit-11335" hidden>Click to share on Reddit (Opens in new window)</span>
+				<span>Reddit</span>
+			</a></li><li class="share-twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://halfblog.net/2012/03/23/tweets-of-note/" data-text="Tweets of Note" data-via="foomandoonian" data-related="wordpressdotcom">Tweet</a></li><li class="share-email"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-email-11335"
+				class="share-email sd-button"
+				href="mailto:?subject=%5BShared%20Post%5D%20Tweets%20of%20Note&#038;body=https%3A%2F%2Fhalfblog.net%2F2012%2F03%2F23%2Ftweets-of-note%2F&#038;share=email"
+				target="_blank"
+				aria-labelledby="sharing-email-11335"
+				data-email-share-error-title="Do you have email set up?" data-email-share-error-text="If you&#039;re having problems sharing via email, you might not have email set up for your browser. You may need to create a new email yourself." data-email-share-nonce="5d305f9a5a" data-email-share-track-url="https://halfblog.net/2012/03/23/tweets-of-note/?share=email">
+				<span id="sharing-email-11335" hidden>Click to email a link to a friend (Opens in new window)</span>
+				<span>Email</span>
+			</a></li><li><a href="index.html#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-tumblr"><a class="tumblr-share-button" target="_blank" href="https://www.tumblr.com/share" data-title="Tweets of Note" data-content="https://halfblog.net/2012/03/23/tweets-of-note/" title="Share on Tumblr">Share on Tumblr</a></li><li class="share-facebook"><div class="fb-share-button" data-href="https://halfblog.net/2012/03/23/tweets-of-note/" data-layout="button_count"></div></li><li class="share-linkedin"><div class="linkedin_button"><script type="in/share" data-url="https://halfblog.net/2012/03/23/tweets-of-note/" data-counter="right"></script></div></li><li class="share-end"></li></ul></div></div></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-2092608-11335-69146d71c04db' data-src='//widgets.wp.com/likes/index.html?ver=20251112#blog_id=2092608&amp;post_id=11335&amp;origin=foomandoonian.wordpress.com&amp;obj_id=2092608-11335-69146d71c04db&amp;domain=halfblog.net' data-name='like-post-frame-2092608-11335-69146d71c04db' data-title='Like or Reblog'><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class='loading'>Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		This entry was posted in <a href="https://halfblog.net/category/miscellania/" rel="category tag">Miscellania</a> and tagged <a href="https://halfblog.net/tag/twitter/" rel="tag">Twitter</a> by <a href="https://halfblog.net/author/foomandoonian/">Geoff</a>. Bookmark the <a href="index.html" title="Permalink to Tweets of Note" rel="bookmark">permalink</a>.
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post-11335 -->
+
+						<div id="comments">
+	
+	
+	
+	
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon">
+
+			
+<div id="supplementary" class="three">
+		<div id="first" class="widget-area" role="complementary">
+		<aside id="text-4" class="widget widget_text"><h3 class="widget-title">You should read…</h3>			<div class="textwidget"><ul>
+<li><a href="https://halfblog.net/2012/05/07/the-russians-used-a-pencil/">The Russians used a pencil</a></li>
+<li><a href="https://halfblog.net/2012/10/08/some-very-cool-wordpress-plugins/">Some very cool WordPress plugins</a></li>
+<li><a href="https://halfblog.net/2012/04/11/some-of-the-strangest-videos-you-will-ever-see/">Some of the strangest videos you will ever see</a></li>
+<li><a href="https://halfblog.net/2012/02/12/an-idea-for-the-iphone-home-button/">An idea for the iPhone home button</a></li>
+<li><a href="https://halfblog.net/2012/01/02/wikipedia-the-free-encyclopedia-that-not-just-anyone-can-edit/">Wikipedia, the free encyclopedia that not just anyone can edit</a></li>
+<li><a href="https://halfblog.net/2011/11/29/the-telegraph-thought-councillor-thought-cloud-computing-depended-on-rainy-weather/">The Telegraph thought councillor thought cloud computing depended on rainy weather</a></li>
+<li><a href="https://halfblog.net/2011/11/14/four-free-fantastic-wordpress-logos/">Four fantastic WordPress logos</a></li>
+<li><a href="https://halfblog.net/2011/10/30/the-future-is-boring/">The future is boring</a></li>
+<li><a href="https://halfblog.net/2011/10/29/container-bob/">Container Bob</a></li>
+<li><a href="https://halfblog.net/2011/10/15/flighty-birds-my-free-creative-commons-designs-that-keep-getting-stolen-anyway/">Flighty birds: My free Creative Commons designs that keep getting stolen anyway</a> and <a href="https://halfblog.net/2011/09/18/adventures-of-boggle-the-creative-commons-penguin/">The Adventures of Boggle, the Creative Commons penguin</a></li>
+</ul></div>
+		</aside><aside id="top-posts-2" class="widget widget_top-posts"><h3 class="widget-title">Top Posts &amp; Pages</h3><ul><li><a href="https://halfblog.net/2008/11/20/torchwood-set-photos-details-details-details/" class="bump-view" data-bump-view="tp">Torchwood set photos: details, details, details</a></li><li><a href="https://halfblog.net/2008/11/11/torchwood-autopsy-room-set-photos/" class="bump-view" data-bump-view="tp">Torchwood autopsy room, set photos</a></li><li><a href="https://halfblog.net/aboutness/history/" class="bump-view" data-bump-view="tp">Disambloguation</a></li><li><a href="https://halfblog.net/2011/11/03/lomo-kino-movie-camera/" class="bump-view" data-bump-view="tp">LomoKino: The Lomo movie camera</a></li><li><a href="https://halfblog.net/2010/10/27/i-saw-a-cool-spider-this-morning-orb-weaver/" class="bump-view" data-bump-view="tp">I saw a cool spider this morning... Orb weaver</a></li><li><a href="https://halfblog.net/2008/11/19/torchwood-set-photos-the-subway/" class="bump-view" data-bump-view="tp">Torchwood set photos: the subway</a></li><li><a href="https://halfblog.net/2008/11/17/torchwood-set-photos-jacks-office/" class="bump-view" data-bump-view="tp">Torchwood set photos: Jack&#039;s office</a></li><li><a href="https://halfblog.net/2008/11/04/torchwood-uses-linux-ubuntu-to-be-exact/" class="bump-view" data-bump-view="tp">Torchwood uses Linux! Ubuntu, to be exact...</a></li><li><a href="https://halfblog.net/2011/11/10/philosoraptor/" class="bump-view" data-bump-view="tp">The wisdom of Philosoraptor</a></li></ul></aside><aside id="linkcat-503533" class="widget widget_links"><h3 class="widget-title">Internet friends</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://creativejuus.com/" rel="friend met" title="CreativeJUUS was created because I wanted a space online that could focus on my work as a designer and anything that influenced me within the design field.">Jason Stanley &#8211; CreativeJUUS</a></li>
+<li><a href="http://neilcocker.com/" rel="contact met" title="A “creative industries ninja” and “good egg”">Neil Cocker</a></li>
+<li><a href="http://seono.co.uk/" rel="acquaintance met" title="Online Marketing &amp; SEO">Steve Morgan &#8211; SEOno</a></li>
+<li><a href="http://themeekshall.co.uk/" rel="friend met" title="An illustrator &amp; designer based in Cardiff who likes to drink tea &amp; draw things.">Matt Joyce &#8211; themeekshall</a></li>
+<li><a href="http://spikeworld.co.uk/" rel="friend met" title="Cardiff based artist.">Spike Dennis</a></li>
+<li><a href="http://www.renatopequito.com/" rel="friend met" title="Cardiff based designer, illustrator and photographer.">Renato Pequito</a></li>
+
+	</ul>
+</aside>
+	</div><!-- #first .widget-area -->
+	
+		<div id="second" class="widget-area" role="complementary">
+		<aside id="tag_cloud-2" class="widget widget_tag_cloud"><h3 class="widget-title">Main categories</h3><div style="overflow: hidden;"><a href="https://halfblog.net/category/cardiff/" style="font-size: 120%; padding: 1px; margin: 1px;"  title="Cardiff (53)">Cardiff</a> <a href="https://halfblog.net/category/design/" style="font-size: 194.28571428571%; padding: 1px; margin: 1px;"  title="Design (79)">Design</a> <a href="https://halfblog.net/category/miscellania/geeky/" style="font-size: 131.42857142857%; padding: 1px; margin: 1px;"  title="Geeky (57)">Geeky</a> <a href="https://halfblog.net/category/design/infographics/" style="font-size: 165.71428571429%; padding: 1px; margin: 1px;"  title="Infographics (69)">Infographics</a> <a href="https://halfblog.net/category/miscellania/" style="font-size: 194.28571428571%; padding: 1px; margin: 1px;"  title="Miscellania (79)">Miscellania</a> <a href="https://halfblog.net/category/the-internet/social-media/" style="font-size: 162.85714285714%; padding: 1px; margin: 1px;"  title="Social media (68)">Social media</a> <a href="https://halfblog.net/category/miscellania/technology-miscellania/" style="font-size: 131.42857142857%; padding: 1px; margin: 1px;"  title="Technology (57)">Technology</a> <a href="https://halfblog.net/category/the-internet/web/" style="font-size: 200%; padding: 1px; margin: 1px;"  title="Web (81)">Web</a> </div></aside><aside id="wp_tag_cloud-2" class="widget wp_widget_tag_cloud"><h3 class="widget-title">Ye olde tag cloud</h3><ul class='wp-tag-cloud' role='list'>
+	<li><a href="https://halfblog.net/tag/550d/" class="tag-cloud-link tag-link-30436263 tag-link-position-1" style="font-size: 8pt;" aria-label="550D (4 items)">550D</a></li>
+	<li><a href="https://halfblog.net/tag/advertising/" class="tag-cloud-link tag-link-521 tag-link-position-2" style="font-size: 10.105263157895pt;" aria-label="advertising (7 items)">advertising</a></li>
+	<li><a href="https://halfblog.net/tag/apple/" class="tag-cloud-link tag-link-291 tag-link-position-3" style="font-size: 14.105263157895pt;" aria-label="Apple (18 items)">Apple</a></li>
+	<li><a href="https://halfblog.net/tag/art/" class="tag-cloud-link tag-link-177 tag-link-position-4" style="font-size: 10.631578947368pt;" aria-label="art (8 items)">art</a></li>
+	<li><a href="https://halfblog.net/tag/atheism/" class="tag-cloud-link tag-link-8146 tag-link-position-5" style="font-size: 12.736842105263pt;" aria-label="atheism (13 items)">atheism</a></li>
+	<li><a href="https://halfblog.net/tag/bbc/" class="tag-cloud-link tag-link-2988 tag-link-position-6" style="font-size: 14.105263157895pt;" aria-label="BBC (18 items)">BBC</a></li>
+	<li><a href="https://halfblog.net/tag/behind-the-scenes/" class="tag-cloud-link tag-link-59824 tag-link-position-7" style="font-size: 10.105263157895pt;" aria-label="behind the scenes (7 items)">behind the scenes</a></li>
+	<li><a href="https://halfblog.net/tag/blogging/" class="tag-cloud-link tag-link-91 tag-link-position-8" style="font-size: 10.631578947368pt;" aria-label="blogging (8 items)">blogging</a></li>
+	<li><a href="https://halfblog.net/tag/brainfart/" class="tag-cloud-link tag-link-31222 tag-link-position-9" style="font-size: 12.315789473684pt;" aria-label="brainfart (12 items)">brainfart</a></li>
+	<li><a href="https://halfblog.net/tag/business/" class="tag-cloud-link tag-link-179 tag-link-position-10" style="font-size: 16.842105263158pt;" aria-label="business (34 items)">business</a></li>
+	<li><a href="https://halfblog.net/tag/canon/" class="tag-cloud-link tag-link-16479 tag-link-position-11" style="font-size: 8pt;" aria-label="canon (4 items)">canon</a></li>
+	<li><a href="https://halfblog.net/tag/cgi/" class="tag-cloud-link tag-link-19808 tag-link-position-12" style="font-size: 15.473684210526pt;" aria-label="CGI (25 items)">CGI</a></li>
+	<li><a href="https://halfblog.net/tag/chroma-feed/" class="tag-cloud-link tag-link-83123673 tag-link-position-13" style="font-size: 22pt;" aria-label="Chroma Feed (107 items)">Chroma Feed</a></li>
+	<li><a href="https://halfblog.net/tag/comics/" class="tag-cloud-link tag-link-756 tag-link-position-14" style="font-size: 8pt;" aria-label="comics (4 items)">comics</a></li>
+	<li><a href="https://halfblog.net/tag/comments/" class="tag-cloud-link tag-link-992 tag-link-position-15" style="font-size: 10.631578947368pt;" aria-label="comments (8 items)">comments</a></li>
+	<li><a href="https://halfblog.net/tag/computer-game/" class="tag-cloud-link tag-link-482814 tag-link-position-16" style="font-size: 12.736842105263pt;" aria-label="computer game (13 items)">computer game</a></li>
+	<li><a href="https://halfblog.net/tag/copyright/" class="tag-cloud-link tag-link-9386 tag-link-position-17" style="font-size: 9.5789473684211pt;" aria-label="copyright (6 items)">copyright</a></li>
+	<li><a href="https://halfblog.net/tag/crap-infographics/" class="tag-cloud-link tag-link-71824050 tag-link-position-18" style="font-size: 12.736842105263pt;" aria-label="crap infographics (13 items)">crap infographics</a></li>
+	<li><a href="https://halfblog.net/tag/creative-commons/" class="tag-cloud-link tag-link-6195 tag-link-position-19" style="font-size: 11.578947368421pt;" aria-label="Creative Commons (10 items)">Creative Commons</a></li>
+	<li><a href="https://halfblog.net/tag/crowdfunding/" class="tag-cloud-link tag-link-609795 tag-link-position-20" style="font-size: 13.263157894737pt;" aria-label="crowdfunding (15 items)">crowdfunding</a></li>
+	<li><a href="https://halfblog.net/tag/culture/" class="tag-cloud-link tag-link-1098 tag-link-position-21" style="font-size: 11.578947368421pt;" aria-label="culture (10 items)">culture</a></li>
+	<li><a href="https://halfblog.net/tag/datahole/" class="tag-cloud-link tag-link-53932933 tag-link-position-22" style="font-size: 8pt;" aria-label="Datahole (4 items)">Datahole</a></li>
+	<li><a href="https://halfblog.net/tag/dr-who/" class="tag-cloud-link tag-link-142582 tag-link-position-23" style="font-size: 11.157894736842pt;" aria-label="Dr Who (9 items)">Dr Who</a></li>
+	<li><a href="https://halfblog.net/tag/dystopia/" class="tag-cloud-link tag-link-113545 tag-link-position-24" style="font-size: 13.578947368421pt;" aria-label="dystopia (16 items)">dystopia</a></li>
+	<li><a href="https://halfblog.net/tag/events/" class="tag-cloud-link tag-link-924 tag-link-position-25" style="font-size: 11.578947368421pt;" aria-label="events (10 items)">events</a></li>
+	<li><a href="https://halfblog.net/tag/facebook/" class="tag-cloud-link tag-link-81819 tag-link-position-26" style="font-size: 14.105263157895pt;" aria-label="Facebook (18 items)">Facebook</a></li>
+	<li><a href="https://halfblog.net/tag/fan-film/" class="tag-cloud-link tag-link-667795 tag-link-position-27" style="font-size: 11.578947368421pt;" aria-label="fan film (10 items)">fan film</a></li>
+	<li><a href="https://halfblog.net/tag/film/" class="tag-cloud-link tag-link-524 tag-link-position-28" style="font-size: 10.105263157895pt;" aria-label="film (7 items)">film</a></li>
+	<li><a href="https://halfblog.net/tag/free/" class="tag-cloud-link tag-link-1827 tag-link-position-29" style="font-size: 8.8421052631579pt;" aria-label="free (5 items)">free</a></li>
+	<li><a href="https://halfblog.net/tag/funny/" class="tag-cloud-link tag-link-684 tag-link-position-30" style="font-size: 10.631578947368pt;" aria-label="funny (8 items)">funny</a></li>
+	<li><a href="https://halfblog.net/tag/future/" class="tag-cloud-link tag-link-2850 tag-link-position-31" style="font-size: 12pt;" aria-label="future (11 items)">future</a></li>
+	<li><a href="https://halfblog.net/tag/games/" class="tag-cloud-link tag-link-21 tag-link-position-32" style="font-size: 8.8421052631579pt;" aria-label="games (5 items)">games</a></li>
+	<li><a href="https://halfblog.net/tag/google/" class="tag-cloud-link tag-link-81 tag-link-position-33" style="font-size: 16.526315789474pt;" aria-label="Google (31 items)">Google</a></li>
+	<li><a href="https://halfblog.net/tag/hyperlocal/" class="tag-cloud-link tag-link-652426 tag-link-position-34" style="font-size: 10.631578947368pt;" aria-label="hyperlocal (8 items)">hyperlocal</a></li>
+	<li><a href="https://halfblog.net/tag/icons/" class="tag-cloud-link tag-link-1960 tag-link-position-35" style="font-size: 10.105263157895pt;" aria-label="icons (7 items)">icons</a></li>
+	<li><a href="https://halfblog.net/tag/idea/" class="tag-cloud-link tag-link-2933 tag-link-position-36" style="font-size: 10.105263157895pt;" aria-label="idea (7 items)">idea</a></li>
+	<li><a href="https://halfblog.net/tag/inkscape/" class="tag-cloud-link tag-link-12740 tag-link-position-37" style="font-size: 13.894736842105pt;" aria-label="Inkscape (17 items)">Inkscape</a></li>
+	<li><a href="https://halfblog.net/tag/iphone/" class="tag-cloud-link tag-link-106595 tag-link-position-38" style="font-size: 14.736842105263pt;" aria-label="iPhone (21 items)">iPhone</a></li>
+	<li><a href="https://halfblog.net/tag/journalism/" class="tag-cloud-link tag-link-316 tag-link-position-39" style="font-size: 16.526315789474pt;" aria-label="journalism (31 items)">journalism</a></li>
+	<li><a href="https://halfblog.net/tag/lightwave/" class="tag-cloud-link tag-link-96976 tag-link-position-40" style="font-size: 8.8421052631579pt;" aria-label="LightWave (5 items)">LightWave</a></li>
+	<li><a href="https://halfblog.net/tag/linux/" class="tag-cloud-link tag-link-610 tag-link-position-41" style="font-size: 13.052631578947pt;" aria-label="Linux (14 items)">Linux</a></li>
+	<li><a href="https://halfblog.net/tag/mac/" class="tag-cloud-link tag-link-808 tag-link-position-42" style="font-size: 11.578947368421pt;" aria-label="Mac (10 items)">Mac</a></li>
+	<li><a href="https://halfblog.net/tag/minecraft/" class="tag-cloud-link tag-link-20586534 tag-link-position-43" style="font-size: 10.105263157895pt;" aria-label="Minecraft (7 items)">Minecraft</a></li>
+	<li><a href="https://halfblog.net/tag/news/" class="tag-cloud-link tag-link-103 tag-link-position-44" style="font-size: 13.052631578947pt;" aria-label="news (14 items)">news</a></li>
+	<li><a href="https://halfblog.net/tag/new-york/" class="tag-cloud-link tag-link-4614 tag-link-position-45" style="font-size: 8.8421052631579pt;" aria-label="New York (5 items)">New York</a></li>
+	<li><a href="https://halfblog.net/tag/open-paper/" class="tag-cloud-link tag-link-67456870 tag-link-position-46" style="font-size: 8.8421052631579pt;" aria-label="Open Paper (5 items)">Open Paper</a></li>
+	<li><a href="https://halfblog.net/tag/open-source/" class="tag-cloud-link tag-link-25 tag-link-position-47" style="font-size: 8.8421052631579pt;" aria-label="open source (5 items)">open source</a></li>
+	<li><a href="https://halfblog.net/tag/photos/" class="tag-cloud-link tag-link-304 tag-link-position-48" style="font-size: 16.210526315789pt;" aria-label="photos (29 items)">photos</a></li>
+	<li><a href="https://halfblog.net/tag/piracy/" class="tag-cloud-link tag-link-15170 tag-link-position-49" style="font-size: 10.105263157895pt;" aria-label="piracy (7 items)">piracy</a></li>
+	<li><a href="https://halfblog.net/tag/politics/" class="tag-cloud-link tag-link-398 tag-link-position-50" style="font-size: 12.315789473684pt;" aria-label="politics (12 items)">politics</a></li>
+	<li><a href="https://halfblog.net/tag/posterous/" class="tag-cloud-link tag-link-8291877 tag-link-position-51" style="font-size: 8.8421052631579pt;" aria-label="Posterous (5 items)">Posterous</a></li>
+	<li><a href="https://halfblog.net/tag/privacy/" class="tag-cloud-link tag-link-3279 tag-link-position-52" style="font-size: 12pt;" aria-label="privacy (11 items)">privacy</a></li>
+	<li><a href="https://halfblog.net/tag/rants/" class="tag-cloud-link tag-link-47 tag-link-position-53" style="font-size: 18.631578947368pt;" aria-label="rants (50 items)">rants</a></li>
+	<li><a href="https://halfblog.net/tag/review/" class="tag-cloud-link tag-link-1745 tag-link-position-54" style="font-size: 8.8421052631579pt;" aria-label="review (5 items)">review</a></li>
+	<li><a href="https://halfblog.net/tag/robots/" class="tag-cloud-link tag-link-5536 tag-link-position-55" style="font-size: 8.8421052631579pt;" aria-label="robots (5 items)">robots</a></li>
+	<li><a href="https://halfblog.net/tag/science-fiction/" class="tag-cloud-link tag-link-10615 tag-link-position-56" style="font-size: 11.157894736842pt;" aria-label="science fiction (9 items)">science fiction</a></li>
+	<li><a href="https://halfblog.net/tag/search/" class="tag-cloud-link tag-link-2373 tag-link-position-57" style="font-size: 8.8421052631579pt;" aria-label="search (5 items)">search</a></li>
+	<li><a href="https://halfblog.net/tag/software/" class="tag-cloud-link tag-link-581 tag-link-position-58" style="font-size: 8.8421052631579pt;" aria-label="software (5 items)">software</a></li>
+	<li><a href="https://halfblog.net/tag/space/" class="tag-cloud-link tag-link-174 tag-link-position-59" style="font-size: 10.631578947368pt;" aria-label="space (8 items)">space</a></li>
+	<li><a href="https://halfblog.net/tag/star-trek/" class="tag-cloud-link tag-link-28444 tag-link-position-60" style="font-size: 8pt;" aria-label="Star Trek (4 items)">Star Trek</a></li>
+	<li><a href="https://halfblog.net/tag/surreal/" class="tag-cloud-link tag-link-14568 tag-link-position-61" style="font-size: 11.157894736842pt;" aria-label="surreal (9 items)">surreal</a></li>
+	<li><a href="https://halfblog.net/tag/torchwood/" class="tag-cloud-link tag-link-35666 tag-link-position-62" style="font-size: 10.105263157895pt;" aria-label="Torchwood (7 items)">Torchwood</a></li>
+	<li><a href="https://halfblog.net/tag/twitter/" class="tag-cloud-link tag-link-599182 tag-link-position-63" style="font-size: 16.736842105263pt;" aria-label="Twitter (33 items)">Twitter</a></li>
+	<li><a href="https://halfblog.net/tag/ux/" class="tag-cloud-link tag-link-81969 tag-link-position-64" style="font-size: 10.105263157895pt;" aria-label="UX (7 items)">UX</a></li>
+	<li><a href="https://halfblog.net/tag/vfx/" class="tag-cloud-link tag-link-30145 tag-link-position-65" style="font-size: 12.315789473684pt;" aria-label="VFX (12 items)">VFX</a></li>
+	<li><a href="https://halfblog.net/tag/video/" class="tag-cloud-link tag-link-412 tag-link-position-66" style="font-size: 9.5789473684211pt;" aria-label="video (6 items)">video</a></li>
+	<li><a href="https://halfblog.net/tag/wallpapers/" class="tag-cloud-link tag-link-3641 tag-link-position-67" style="font-size: 8pt;" aria-label="wallpapers (4 items)">wallpapers</a></li>
+	<li><a href="https://halfblog.net/tag/webcomic/" class="tag-cloud-link tag-link-18944 tag-link-position-68" style="font-size: 8.8421052631579pt;" aria-label="webcomic (5 items)">webcomic</a></li>
+	<li><a href="https://halfblog.net/tag/wikileaks/" class="tag-cloud-link tag-link-629753 tag-link-position-69" style="font-size: 8.8421052631579pt;" aria-label="WikiLeaks (5 items)">WikiLeaks</a></li>
+	<li><a href="https://halfblog.net/tag/wikipedia/" class="tag-cloud-link tag-link-5547 tag-link-position-70" style="font-size: 12pt;" aria-label="Wikipedia (11 items)">Wikipedia</a></li>
+	<li><a href="https://halfblog.net/tag/wordpress-com/" class="tag-cloud-link tag-link-1177123 tag-link-position-71" style="font-size: 14.736842105263pt;" aria-label="WordPress.com (21 items)">WordPress.com</a></li>
+	<li><a href="https://halfblog.net/tag/wordpress-org/" class="tag-cloud-link tag-link-1703532 tag-link-position-72" style="font-size: 8.8421052631579pt;" aria-label="WordPress.org (5 items)">WordPress.org</a></li>
+	<li><a href="https://halfblog.net/tag/writing/" class="tag-cloud-link tag-link-349 tag-link-position-73" style="font-size: 14.947368421053pt;" aria-label="writing (22 items)">writing</a></li>
+	<li><a href="https://halfblog.net/tag/youtube/" class="tag-cloud-link tag-link-6567 tag-link-position-74" style="font-size: 8.8421052631579pt;" aria-label="YouTube (5 items)">YouTube</a></li>
+	<li><a href="https://halfblog.net/tag/zombies/" class="tag-cloud-link tag-link-58320 tag-link-position-75" style="font-size: 10.105263157895pt;" aria-label="zombies (7 items)">zombies</a></li>
+</ul>
+</aside><aside id="calendar-2" class="widget widget_calendar"><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar" class="wp-calendar-table">
+	<caption>March 2012</caption>
+	<thead>
+	<tr>
+		<th scope="col" aria-label="Monday">M</th>
+		<th scope="col" aria-label="Tuesday">T</th>
+		<th scope="col" aria-label="Wednesday">W</th>
+		<th scope="col" aria-label="Thursday">T</th>
+		<th scope="col" aria-label="Friday">F</th>
+		<th scope="col" aria-label="Saturday">S</th>
+		<th scope="col" aria-label="Sunday">S</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td colspan="3" class="pad">&nbsp;</td><td>1</td><td>2</td><td><a href="https://halfblog.net/2012/03/03/" aria-label="Posts published on March 3, 2012">3</a></td><td>4</td>
+	</tr>
+	<tr>
+		<td><a href="https://halfblog.net/2012/03/05/" aria-label="Posts published on March 5, 2012">5</a></td><td><a href="https://halfblog.net/2012/03/06/" aria-label="Posts published on March 6, 2012">6</a></td><td>7</td><td>8</td><td>9</td><td><a href="https://halfblog.net/2012/03/10/" aria-label="Posts published on March 10, 2012">10</a></td><td><a href="https://halfblog.net/2012/03/11/" aria-label="Posts published on March 11, 2012">11</a></td>
+	</tr>
+	<tr>
+		<td>12</td><td>13</td><td>14</td><td><a href="https://halfblog.net/2012/03/15/" aria-label="Posts published on March 15, 2012">15</a></td><td><a href="https://halfblog.net/2012/03/16/" aria-label="Posts published on March 16, 2012">16</a></td><td><a href="https://halfblog.net/2012/03/17/" aria-label="Posts published on March 17, 2012">17</a></td><td><a href="https://halfblog.net/2012/03/18/" aria-label="Posts published on March 18, 2012">18</a></td>
+	</tr>
+	<tr>
+		<td>19</td><td>20</td><td>21</td><td>22</td><td><a href="https://halfblog.net/2012/03/23/" aria-label="Posts published on March 23, 2012">23</a></td><td>24</td><td><a href="https://halfblog.net/2012/03/25/" aria-label="Posts published on March 25, 2012">25</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://halfblog.net/2012/03/26/" aria-label="Posts published on March 26, 2012">26</a></td><td><a href="https://halfblog.net/2012/03/27/" aria-label="Posts published on March 27, 2012">27</a></td><td><a href="https://halfblog.net/2012/03/28/" aria-label="Posts published on March 28, 2012">28</a></td><td>29</td><td>30</td><td>31</td>
+		<td class="pad" colspan="1">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table><nav aria-label="Previous and next months" class="wp-calendar-nav">
+		<span class="wp-calendar-nav-prev"><a href="https://halfblog.net/2012/02/">&laquo; Feb</a></span>
+		<span class="pad">&nbsp;</span>
+		<span class="wp-calendar-nav-next"><a href="https://halfblog.net/2012/04/">Apr &raquo;</a></span>
+	</nav></div></aside><aside id="blog-stats-2" class="widget widget_blog-stats"><h3 class="widget-title">Count &#039;em</h3>		<ul>
+			<li>824,118 hits since Sept 2011</li>
+		</ul>
+		</aside><aside id="akismet_widget-2" class="widget widget_akismet_widget">
+		<style>
+			.a-stats {
+				--akismet-color-mid-green: #357b49;
+				--akismet-color-white: #fff;
+				--akismet-color-light-grey: #f6f7f7;
+
+				max-width: 350px;
+				width: auto;
+			}
+
+			.a-stats * {
+				all: unset;
+				box-sizing: border-box;
+			}
+
+			.a-stats strong {
+				font-weight: 600;
+			}
+
+			.a-stats a.a-stats__link,
+			.a-stats a.a-stats__link:visited,
+			.a-stats a.a-stats__link:active {
+				background: var(--akismet-color-mid-green);
+				border: none;
+				box-shadow: none;
+				border-radius: 8px;
+				color: var(--akismet-color-white);
+				cursor: pointer;
+				display: block;
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+				font-weight: 500;
+				padding: 12px;
+				text-align: center;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+
+			/* Extra specificity to deal with TwentyTwentyOne focus style */
+			.widget .a-stats a.a-stats__link:focus {
+				background: var(--akismet-color-mid-green);
+				color: var(--akismet-color-white);
+				text-decoration: none;
+			}
+
+			.a-stats a.a-stats__link:hover {
+				filter: brightness(110%);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 0 2px rgba(0, 0, 0, 0.16);
+			}
+
+			.a-stats .count {
+				color: var(--akismet-color-white);
+				display: block;
+				font-size: 1.5em;
+				line-height: 1.4;
+				padding: 0 13px;
+				white-space: nowrap;
+			}
+		</style>
+
+		<div class="a-stats">
+			<a href="https://akismet.com?utm_source=akismet_plugin&amp;utm_campaign=plugin_static_link&amp;utm_medium=in_plugin&amp;utm_content=widget_stats" class="a-stats__link" target="_blank" rel="noopener" style="background-color: var(--akismet-color-mid-green); color: var(--akismet-color-white);">
+				<strong class="count">834,429 spam</strong> blocked by <strong>Akismet</strong>			</a>
+		</div>
+
+		</aside>	</div><!-- #second .widget-area -->
+	
+		<div id="third" class="widget-area" role="complementary">
+		<aside id="rss-2" class="widget widget_rss"><h3 class="widget-title"><a class="rsswidget" href="http://feeds.pinboard.in/rss/u:foomandoonian/" title="Syndicate this content"><img style="background: orange; color: white; border: none;" width="14" height="14" src="../../../../../../../s.wordpress.com/wp-includes/images/rss.png@m=1354137473i" alt="RSS" /></a> <a class="rsswidget" href="https://pinboard.in/u:foomandoonian/public/" title="recent bookmarks from foomandoonian">My recent Pinboard.in links</a></h3><ul><li><a class='rsswidget' href='https://github.com/sferik/t' title='The CLI takes syntactic cues from the Twitter SMS commands, but it offers vastly more commands and capabilities than are available via SMS.'>t: A command-line power tool for Twitter</a></li><li><a class='rsswidget' href='https://www.audiotool.com/' title='Audiotool is a powerful online music production studio right in your browser.'>Audiotool</a></li><li><a class='rsswidget' href='http://epic-pen.com/' title='Free screen marker and desktop annotation tool for Windows'>Epic Pen</a></li><li><a class='rsswidget' href='http://abundant-music.com/' title='Abundant Music is a procedural music generator that doesn&#039;t require any musical knowledge to generate music.'>Abundant Music</a></li><li><a class='rsswidget' href='http://pinout.xyz/' title='The comprehensive GPIO Pinout guide for the Raspberry Pi.'>Pinout</a></li><li><a class='rsswidget' href='http://fantasynamegenerators.com/' title='I find myself at this site every time I need a name for an Elder Scrolls or Dragon Age character, etc, but it&#039;s actually an incredible resource for writers of fantasy and science fiction works looking for not just character names, but place names, vehicle names, drink names, drug dames, disease names and many, many more.'>Fantasy name generators</a></li><li><a class='rsswidget' href='http://inform7.com/' title='Inform is a design system for interactive fiction based on natural language. It is a radical reinvention of the way interactive fiction is designed, guided by contemporary work in semantics and by the practical experience of some of the world&#039;s best-known writers of IF.'>Inform 7</a></li><li><a class='rsswidget' href='http://www.eastgate.com/storyspace/index.html' title='Storyspace 3 is a tool for writing and reading hypertext narrative, for fictional and nonfictional stories told with links. Long the tool of choice for serious hypertext writers, Storyspace now offers new features, new tools, and unmatched elegance for handling complex stories with ease.'>Storyspace</a></li><li><a class='rsswidget' href='http://www.aseprite.org/' title='Animated sprite editor &amp; pixel art tool'>Aseprite</a></li><li><a class='rsswidget' href='http://wptest.io/' title='A fantastically exhaustive set of test data to measure the integrity of your plugins and themes.'>WP Test - The Best Tests For WordPress</a></li></ul></aside>	</div><!-- #third .widget-area -->
+	</div><!-- #supplementary -->
+			<div id="site-generator">
+				 								
+			</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<!--  -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/files\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/pub\/twentyeleven\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript" src="../../../../../../../0.gravatar.com/js/hovercards/hovercards.min.js@ver=202546924dcd77a86c6f1d3698ec27fc5da92b28585ddad3ee636c0397cf312193b2a1" id="grofiles-cards-js"></script>
+<script type="text/javascript" id="wpgroho-js-extra">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../wp-content/mu-plugins/gravatar-hovercards/wpgroho.js@m=1610363240i'></script>
+
+	<script>
+		// Initialize and attach hovercards to all gravatars
+		( function() {
+			function init() {
+				if ( typeof Gravatar === 'undefined' ) {
+					return;
+				}
+
+				if ( typeof Gravatar.init !== 'function' ) {
+					return;
+				}
+
+				Gravatar.profile_cb = function ( hash, id ) {
+					WPGroHo.syncProfileData( hash, id );
+				};
+
+				Gravatar.my_hash = WPGroHo.my_hash;
+				Gravatar.init(
+					'body',
+					'#wp-admin-bar-my-account',
+					{
+						i18n: {
+							'Edit your profile →': 'Edit your profile →',
+							'View profile →': 'View profile →',
+							'Contact': 'Contact',
+							'Send money': 'Send money',
+							'Sorry, we are unable to load this Gravatar profile.': 'Sorry, we are unable to load this Gravatar profile.',
+							'Gravatar not found.': 'Gravatar not found.',
+							'Too Many Requests.': 'Too Many Requests.',
+							'Internal Server Error.': 'Internal Server Error.',
+							'Is this you?': 'Is this you?',
+							'Claim your free profile.': 'Claim your free profile.',
+							'Email': 'Email',
+							'Home Phone': 'Home Phone',
+							'Work Phone': 'Work Phone',
+							'Cell Phone': 'Cell Phone',
+							'Contact Form': 'Contact Form',
+							'Calendar': 'Calendar',
+						},
+					}
+				);
+			}
+
+			if ( document.readyState !== 'loading' ) {
+				init();
+			} else {
+				document.addEventListener( 'DOMContentLoaded', init );
+			}
+		} )();
+	</script>
+
+		<div style="display:none">
+	</div>
+		<div id="actionbar" dir="ltr" style="display: none;"
+			class="actnbr-pub-twentyeleven actnbr-has-follow actnbr-has-actions">
+		<ul>
+								<li class="actnbr-btn actnbr-hidden">
+						<a class="actnbr-action actnbr-actn-reblog" href="index.html">
+							<svg class="gridicon gridicons-reblog" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M22.086 9.914L20 7.828V18c0 1.105-.895 2-2 2h-7v-2h7V7.828l-2.086 2.086L14.5 8.5 19 4l4.5 4.5-1.414 1.414zM6 16.172V6h7V4H6c-1.105 0-2 .895-2 2v10.172l-2.086-2.086L.5 15.5 5 20l4.5-4.5-1.414-1.414L6 16.172z"/></g></svg><span>Reblog</span>
+						</a>
+					</li>
+									<li class="actnbr-btn actnbr-hidden">
+								<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+							<div class="actnbr-popover tip tip-top-left actnbr-notice" id="follow-bubble">
+							<div class="tip-arrow"></div>
+							<div class="tip-inner actnbr-follow-bubble">
+															<ul>
+											<li class="actnbr-sitename">
+			<a href="https://halfblog.net">
+				<img loading='lazy' alt='' src='../../../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png' srcset='../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnge.png../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=75&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-white.../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=100&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-gray../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=150&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pngwpcom../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=200&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnggo%2Fwpcom-gray-white.png 4x' class='avatar avatar-50' height='50' width='50' />				halfblog.net			</a>
+		</li>
+										<div class="actnbr-message no-display"></div>
+									<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" style="display: none;">
+																						<div class="actnbr-follow-count">Join 4,768 other subscribers</div>
+																					<div>
+										<input type="email" name="email" placeholder="Enter your email address" class="actnbr-email-field" aria-label="Enter your email address" />
+										</div>
+										<input type="hidden" name="action" value="subscribe" />
+										<input type="hidden" name="blog_id" value="2092608" />
+										<input type="hidden" name="source" value="https://halfblog.net/2012/03/23/tweets-of-note/" />
+										<input type="hidden" name="sub-type" value="actionbar-follow" />
+										<input type="hidden" id="_wpnonce" name="_wpnonce" value="966c1bd6a3" />										<div class="actnbr-button-wrap">
+											<button type="submit" value="Sign me up">
+												Sign me up											</button>
+										</div>
+									</form>
+									<li class="actnbr-login-nudge">
+										<div>
+											Already have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fhalfblog.net%252F2012%252F03%252F23%252Ftweets-of-note%252F">Log in now.</a>										</div>
+									</li>
+								</ul>
+															</div>
+						</div>
+					</li>
+							<li class="actnbr-ellipsis actnbr-hidden">
+				<svg class="gridicon gridicons-ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M7 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm12-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-7 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"/></g></svg>				<div class="actnbr-popover tip tip-top-left actnbr-more">
+					<div class="tip-arrow"></div>
+					<div class="tip-inner">
+						<ul>
+								<li class="actnbr-sitename">
+			<a href="https://halfblog.net">
+				<img loading='lazy' alt='' src='../../../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png' srcset='../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnge.png../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=75&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-white.../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=100&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-gray../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=150&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pngwpcom../../../../../secure.gravatar.com/blavatar/3e8c77156fcd548a54b79c643b10e7778eaf1f3bfaa8a60eb7787cd7500d49db@s=200&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnggo%2Fwpcom-gray-white.png 4x' class='avatar avatar-50' height='50' width='50' />				halfblog.net			</a>
+		</li>
+								<li class="actnbr-folded-follow">
+										<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+								</li>
+														<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign up</a></li>
+							<li class="actnbr-login"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fhalfblog.net%252F2012%252F03%252F23%252Ftweets-of-note%252F">Log in</a></li>
+																<li class="actnbr-shortlink">
+										<a href="https://wp.me/p8MnK-2WP">
+											<span class="actnbr-shortlink__text">Copy shortlink</span>
+											<span class="actnbr-shortlink__icon"><svg class="gridicon gridicons-checkmark" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M9 19.414l-6.707-6.707 1.414-1.414L9 16.586 20.293 5.293l1.414 1.414"/></g></svg></span>
+										</a>
+									</li>
+																<li class="flb-report">
+									<a href="https://wordpress.com/abuse/?report_url=https://halfblog.net/2012/03/23/tweets-of-note/" target="_blank" rel="noopener noreferrer">
+										Report this content									</a>
+								</li>
+															<li class="actnbr-reader">
+									<a href="https://wordpress.com/reader/blogs/2092608/posts/11335">
+										View post in Reader									</a>
+								</li>
+															<li class="actnbr-subs">
+									<a href="https://subscribe.wordpress.com/">Manage subscriptions</a>
+								</li>
+																<li class="actnbr-fold"><a href="index.html">Collapse this bar</a></li>
+														</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+<script>
+window.addEventListener( "DOMContentLoaded", function( event ) {
+	var link = document.createElement( "link" );
+	link.href = "/wp-content/mu-plugins/actionbar/actionbar.css?v=20250116";
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	document.head.appendChild( link );
+
+	var script = document.createElement( "script" );
+	script.src = "/wp-content/mu-plugins/actionbar/actionbar.js?v=20250204";
+	document.body.appendChild( script );
+} );
+</script>
+
+	
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/halfblog.net\/2012\/03\/23\/tweets-of-note\/":11335};
+	</script>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						<script id="tumblr-js" type="text/javascript" src="../../../../../../../assets.tumblr.com/share-button.js"></script>
+						<div id="fb-root"></div>
+			<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;appId=249643311490&version=v2.3'; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+			<script>
+			document.body.addEventListener( 'is.post-load', function() {
+				if ( 'undefined' !== typeof FB ) {
+					FB.XFBML.parse();
+				}
+			} );
+			</script>
+						<script type="text/javascript">
+				( function () {
+					var currentScript = document.currentScript;
+
+					// Helper function to load an external script.
+					function loadScript( url, cb ) {
+						var script = document.createElement( 'script' );
+						var prev = currentScript || document.getElementsByTagName( 'script' )[ 0 ];
+						script.setAttribute( 'async', true );
+						script.setAttribute( 'src', url );
+						prev.parentNode.insertBefore( script, prev );
+						script.addEventListener( 'load', cb );
+					}
+
+					function init() {
+						loadScript( 'https://platform.linkedin.com/in.js?async=true', function () {
+							if ( typeof IN !== 'undefined' ) {
+								IN.init();
+							}
+						} );
+					}
+
+					if ( document.readyState === 'loading' ) {
+						document.addEventListener( 'DOMContentLoaded', init );
+					} else {
+						init();
+					}
+
+					document.body.addEventListener( 'is.post-load', function() {
+						if ( typeof IN !== 'undefined' ) {
+							IN.parse();
+						}
+					} );
+				} )();
+			</script>
+			<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-2' href='../../../../../../../wp-content/mu-plugins/jetpack-plugin/moon/modules/widgets/top-posts/style.css@m=1753284714i&amp;cssminify=yes.css' type='text/css' media='all' />
+<script type="text/javascript" id="sharing-js-js-extra">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../_static/index.html@%253F-eJxtjMEOwiAQRH9IurUJejJ+ikF20y6FBQsb07+XmHrzNpN58+BdjM%252FSSBokNSXqzFIh8koVXkpKixOMtA2hnqDDLD4q9jFU8DmlfjQblbgPieUH%252FTEGasX59eiQchZ4dBk8lSNCXdxG6BD3b2SZD9893c5Xa8fxMk02fADBzkBn'></script>
+<script type="text/javascript" id="sharing-js-js-after">
+/* <![CDATA[ */
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-facebook' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-facebook' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+						return false;
+					}
+				} );
+			} )();
+/* ]]> */
+</script>
+
+	<script type="text/javascript">
+		(function () {
+			var wpcom_reblog = {
+				source: 'toolbar',
+
+				toggle_reblog_box_flair: function (obj_id, post_id) {
+
+					// Go to site selector. This will redirect to their blog if they only have one.
+					const postEndpoint = `https://wordpress.com/post`;
+
+					// Ideally we would use the permalink here, but fortunately this will be replaced with the 
+					// post permalink in the editor.
+					const originalURL = `${ document.location.href }?page_id=${ post_id }`; 
+					
+					const url =
+						postEndpoint +
+						'?url=' +
+						encodeURIComponent( originalURL ) +
+						'&is_post_share=true' +
+						'&v=5';
+
+					const redirect = function () {
+						if (
+							! window.open( url, '_blank' )
+						) {
+							location.href = url;
+						}
+					};
+
+					if ( /Firefox/.test( navigator.userAgent ) ) {
+						setTimeout( redirect, 0 );
+					} else {
+						redirect();
+					}
+				},
+			};
+
+			window.wpcom_reblog = wpcom_reblog;
+		})();
+	</script>
+	<iframe src='../../../../../../../widgets.wp.com/likes/master.html@ver=20251112.html#ver=20251112' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+	<div id='likes-other-gravatars' role="dialog" aria-hidden="true" tabindex="-1"><div class="likes-text"><span>%d</span></div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+	<script src="https://stats.wp.com/w.js?68" defer></script> <script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'2092608','blog_tz':'1','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'2092608','v':'wpcom','tz':'1','user_id':'0','post':'11335','subd':'foomandoonian'}]);
+_stq.push(['extra', {'crypt':'UE5tW3cvZGQ/JUs1UEo3MlhbTHVDVTRvbmM3RjIzb05bci89VFVBXWJyUHxLW3UxSX56MnYtQWFmLUVKa1c5MHc4NmJRLWwucjRVR3A3MDZCRSw1UEJSOTBhW3prWF14am1FRmd6VkVHQ3F6LD9+ZjRwbVVyck9PMWU4akpbdFNqRmIuMW1JREVRRWQ4Lj9Tam1kQkljUGt4LlRkY09yVEUlVy1uTC1pYjJhU0dZQW9GYTVzfmhyd0ZWTTJVfmtHRU9wOSZDSmR3OHxUdjB5bnV6el9VYjV4c2IsfGlhaXJ4dDJXY3VSeGxVNEJyRUNySy9IXXRPNVc0fC94LnBNN3JdS0Fpc0pabltSP3VUWU9zZGI='}]);
+_stq.push([ 'clickTrackerInit', '2092608', '11335' ]);
+</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+<meta id="bilmur" property="bilmur:data" content="" data-provider="wordpress.com" data-service="simple" data-site-tz="Europe/London" data-custom-props="{&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;pub\/twentyeleven&quot;,&quot;wptheme_is_block&quot;:&quot;0&quot;}"  >
+		<script defer src="../../../../../../../wp-content/js/bilmur.min.js@i=17&amp;m=202546"></script> 	
+</body>
+</html>

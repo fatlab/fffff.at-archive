@@ -1,0 +1,18 @@
+User-agent: CCBot
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: *
+Disallow: /tagsuche
+Disallow: /suche
+Disallow: /_em_cms/
+Disallow: /_em_daten/_emag_data/hk/
+
+Sitemap: https://www.haller-kreisblatt.de/sitemap_hk_index.xml.gz
+Sitemap: https://www.haller-kreisblatt.de/sitemap_hk_index_news.xml.gz
+Sitemap: https://www.haller-kreisblatt.de/_retresco/sitemap/index.xml
+
+Allow: /_em_cms/globals/csslibs.php
+Allow: /_em_cms/globals/jslibs.php

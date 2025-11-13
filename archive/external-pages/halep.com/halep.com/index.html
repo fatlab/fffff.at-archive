@@ -1,0 +1,258 @@
+<!--
+Welcome, this is the default page for your hosting plan, if you are seeing this page it means you have not added any files
+to your hosting account yet.  This page can be deleted at any time.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Directnic Expired Domain</title>
+    <script src='../../../ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js' > </script>
+    <link href="../../../fonts.googleapis.com/css2@family=Open+Sans%253Awght@300%3B400%3B500%3B600%3B700%3B800&amp;display=swap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../directnic.com/local/directnic/css/gumby2.css">
+    <link rel="stylesheet" type="text/css" href="../../../directnic.com/local/directnic/css/style.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            background-repeat: no-repeat;
+            background-color: #000;
+            text-align:center;
+            background-color: #f5f5f5;
+            z-index: 1 !important;
+        }
+        #domain {
+            margin-left:auto;
+            margin-right:auto;
+            height:auto;
+            text-align:center;
+            display:block;
+            padding: 0px 0px 92px 0px;
+            background-image: url(http://halep.com/assets/images/expired_bg_main.jpg);
+            background-size: cover;
+            z-index: 50 !important
+        }
+        #domain h1 {
+            color: #fff;
+            margin-top:-15px;
+            margin-bottom:25px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 36px;
+            font-weight: 100;
+            letter-spacing: -1px;
+            padding: 0;
+            line-height:36px;
+
+        }
+        #domain h2 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 68px;
+            text-transform: uppercase;
+            color:#fff;
+            padding-top:92px;
+            margin-bottom:0px;
+
+        }
+
+        #footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #222222;
+            color: #4f4f4f;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1em;
+            line-height: 1em !important;
+            text-align: center;
+            margin-left:auto;
+            margin-right:auto;
+            height:auto;
+            margin-top:150px;
+            display:block;
+            padding:30px 0px;
+            background-color: #fff;
+            align-items:center;
+            z-index: 100 !important;
+        }
+
+    </style>
+    <!--[if lt IE 9]>
+    <style> .bubbleInfo {  margin-left:0px;} </style>
+    <![endif]-->
+    <script>
+        $(function(){
+            $("#domain h1").html(window.location.hostname);
+            $('.bubbleInfo').each(function () {
+                var distance = 10;
+                var time = 250;
+                var hideDelay = 500;
+
+                var hideDelayTimer = null;
+
+                var beingShown = false;
+                var shown = false;
+                var trigger = $('.trigger', this);
+                var info = $('.popup', this).css('opacity', 0);
+
+
+                $([trigger.get(0), info.get(0)]).mouseover(function () {
+                    if (hideDelayTimer) clearTimeout(hideDelayTimer);
+                    if (beingShown || shown) {
+                        // don't trigger the animation again
+                        return;
+                    } else {
+                        // reset position of info box
+                        beingShown = true;
+
+                        info.css({
+                            top: -60,
+                            left: 0,
+                            display: 'block'
+                        }).animate({
+                            top: '-=' + distance + 'px',
+                            opacity: 1
+                        }, time, 'swing', function() {
+                            beingShown = false;
+                            shown = true;
+                        });
+                    }
+
+                    return false;
+                }).mouseout(function () {
+                    if (hideDelayTimer) clearTimeout(hideDelayTimer);
+                    hideDelayTimer = setTimeout(function () {
+                        hideDelayTimer = null;
+                        info.animate({
+                            top: '-=' + distance + 'px',
+                            opacity: 0
+                        }, time, 'swing', function () {
+                            shown = false;
+                            info.css('display', 'none');
+                        });
+
+                    }, hideDelay);
+
+                    return false;
+                });
+            });
+
+            //end bubble
+            $('#renew-now').click(function(e){
+                e.preventDefault();
+                var host = window.location.hostname || '';
+                var $input = $('#renew-domain');
+                if ($input.length) {
+                    $input.val(host);
+                    $('#renew-form').trigger('submit');
+                } else {
+                    var f = document.createElement('form');
+                    f.method = 'POST';
+                    f.action = 'https://directnic.com/easyrenew';
+                    var i = document.createElement('input');
+                    i.type = 'hidden';
+                    i.name = 'domain';
+                    i.value = host;
+                    f.appendChild(i);
+                    document.body.appendChild(f);
+                    f.submit();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="domain">
+    <h2>EXPIRED</h2>
+    <h1>halep.com</h1>
+    <div class="medium metro primary btn">
+        <a href="https://directnic.com/easyrenew" id="renew-now">RENEW NOW</a>
+    </div>
+</div>
+
+<div class="row text-center pad-top-30 mb-20">
+    <h4 class="fw600">Directnic has everything you need to bring your ideas to the web</h4>
+</div>
+
+<div class="row pad-bottom-50">
+    <div class="three columns pad-20 text-center mb-10">
+        <h5 class="fw400 pad-0 mb-5 text-center mt-5">Domains</h5>
+
+        <p>With over 600+ TLDs there is a domain for you</p>
+
+        <div class="btn ghost_blue medium uppercase mt-5"><a class="avg" href="https://directnic.com/search" target="_blank" >Search Now</a></div>
+    </div>
+
+    <div class="three columns pad-20 text-center mb-10">
+        <h5 class="fw400 pad-0 mb-5 text-center mt-5">Hosting</h5>
+
+        <p>Fast, reliable and secure cPanel based hosting</p>
+
+        <div class="btn ghost_blue medium uppercase mt-5"><a class="avg" href="https://directnic.com/website/?option=hosting" target="_blank" >Get Hosting</a></div>
+    </div>
+
+    <div class="three columns pad-20 text-center mb-10">
+        <h5 class="fw400 pad-0 mb-5 text-center mt-5">Email</h5>
+
+        <p>Access from anywhere<br>Loaded with features</p>
+
+        <div class="btn ghost_blue medium uppercase mt-5"><a class="avg" href="https://directnic.com/email" target="_blank" >Get Email</a></div>
+    </div>
+    <div class="three columns pad-20 text-center mb-10">
+        <h5 class="fw400 pad-0 mb-5 text-center mt-5">Direct Privacy</h5>
+
+        <p>Protection against spam, identity theft and telemarketers</p>
+
+        <div class="btn ghost_blue medium uppercase mt-5"><a class="avg" href="https://directnic.com/page/privacy.html" target="_blank" >Get Privacy</a></div>
+    </div>
+
+
+    <div class="row">
+        <div class="three columns pad-20 text-center mb-10">
+            <h5 class="fw400 pad-0 mb-5 text-center mt-5">SSL</h5>
+
+            <p>Protect your customers<br>and your reputation</p>
+
+            <div class="btn ghost_blue medium uppercase mt-5"><a class="avg" href="https://directnic.com/ssl" target="_blank" >Get SSL</a></div>
+        </div>
+
+        <div class="three columns pad-20 text-center mb-10">
+            <h5 class="fw400 pad-0 mb-5 text-center mt-5">cWatch</h5>
+
+            <p>Protect your website from cyber attacks</p>
+
+            <div class="btn ghost_blue medium uppercase mt-5"><a class="avg" href="https://directnic.com/hosting/cwatch" target="_blank" >Get cWatch</a></div>
+        </div>
+
+        <div class="three columns pad-20 text-center mb-10">
+            <h5 class="fw400 pad-0 mb-5 text-center mt-5">Direct DNS</h5>
+
+            <p>Take control of your domains DNS for FREE</p>
+
+            <div class="btn ghost_blue medium uppercase mt-5"><a class="avg" href="https://directnic.com/dns" target="_blank" >Get DNS</a></div>
+        </div>
+        <div class="three columns pad-20 text-center mb-50">
+            <h5 class="fw400 pad-0 mb-5 text-center mt-5">SiteBuilder</h5>
+
+            <p>Use our drag and drop builder to create your own website</p>
+
+            <div class="btn ghost_blue medium uppercase mt-5"><a class="avg" href="https://directnic.com/website/?option=sitebuilder" target="_blank" >Get Started</a></div>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    <div><span>Powered by:&nbsp;</span><a href="https://directnic.com/" target="_blank" border="0"><img src="http://halep.com/assets/images/directnic_dark_logo.png" width="105" height="25" alt="Directnic.com" style="width:105px; height:25px; vertical-align: bottom;"/></a></div>
+</div>
+</body>
+</html>

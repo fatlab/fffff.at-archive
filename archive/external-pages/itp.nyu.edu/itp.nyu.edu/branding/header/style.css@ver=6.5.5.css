@@ -1,0 +1,334 @@
+/* ================================================ */
+/* Font Imports */
+/* ================================================ */
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamPro-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamPro-Light.ttf')
+    format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamPro-MediumItalic.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamPro-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamPro-BoldItalic.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamPro-Black.ttf')
+    format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/GothamPro-BlackItalic.ttf')
+    format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* ================================================ */
+/* Mobile Scaling */
+/* ================================================ */
+@media (max-width: 50rem) {
+  .nav-1 #bottom-bar {
+    width: 100vw !important;
+  }
+  .nav-1 #bottom-bar #bottom-bar-background-illustration {
+    display: none;
+  }
+  .nav-1 .bottom-bar-link-parent {
+    display: none !important;
+  }
+  .nav-1 #bottom-bar #bottom-bar-col-container {
+    flex-direction: column !important;
+    padding: 1rem !important;
+  }
+  .nav-1 #bottom-bar .bottom-bar-col {
+    width: 100% !important;
+  }
+  .nav-1 #bottom-bar-small menu {
+    flex-direction: column;
+  }
+}
+
+/* ================================================ */
+/* CSS Reset */
+/* ================================================ */
+#new-itp-header * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 0;
+  border: 0;
+  vertical-align: bottom;
+  line-height: 1em;
+}
+
+#masthead>*{
+  position: relative;
+}
+
+/* ================================================ */
+/* Header Styling */
+/* ================================================ */
+#new-itp-header {
+  width: 100%;
+  position: relative;
+  z-index: 1001;
+  box-sizing: border-box;
+}
+.nav-1 {
+  font-family: 'Gotham', serif;
+  font-size: '13pt';
+  font-weight: 300;
+}
+.nav-1 * {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+.nav-1 *::selection {
+  background: #ffec5c;
+  color: inherit;
+}
+.nav-1 a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav-1 #top-bar {
+  height: 2.5rem;
+  width: 100%;
+  background-color: #1a1a1a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1001;
+  padding: 0.86em 1rem;
+}
+
+.nav-1 #top-bar a {
+  color: #ddd;
+}
+
+.nav-1 #top-bar a:hover {
+  color: #fff;
+}
+
+.nav-1 #tisch-logo {
+  width: 10rem;
+  fill: #fff;
+  margin: 0.5rem;
+}
+.nav-1 #explore-button {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  font-weight: bold;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding-right: 0.5em;
+}
+.nav-1 img{
+  height: 1.5em !important;
+}
+.nav-1.nav-retracted #explore-button:hover,
+.nav-1.nav-retracted #explore-button:active {
+  /*letter-spacing: 3px;
+  background-color: #d3d3d3;*/
+}
+.nav-expanded #explore-button {
+  opacity: 0.68;
+}
+
+/* Bottom Bar */
+.nav-1 #bottom-bar, .nav-1 #bottom-bar-small {
+  position: absolute;
+  top: 2.3rem;
+  right: 0;
+  z-index: 999;
+  width: 50rem;
+  min-height: 10vh;
+  background-color: #f2f2f2;
+  color: #000000;
+  box-shadow: 0 0 6rem rgba(0, 0, 0, 0.2);
+  display: none;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.nav-1 #bottom-bar-small {
+  width: 100%;
+  height: fit-content;
+  box-shadow: 0 1px 3px black;
+  border-bottom-left-radius: 0;
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.34s;
+  display: block;
+}
+
+.nav-1 #bottom-bar-small menu {
+  margin: 0.68em auto !important;
+  text-align: center;
+  width: 100%;
+  max-width: 50em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-1 #bottom-bar-small a {
+  color: #111;
+  line-height: 1em;
+  margin: 0.5em;
+}
+
+.nav-1.nav-expanded #bottom-bar-small {
+  max-height: 20em;
+}
+
+.nav-1.nav-expanded #bottom-bar{
+  display: block;
+}
+.nav-1 #bottom-bar #bottom-header {
+  width: 100%;
+  background-color: #520783;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  color: #dedede;
+}
+.nav-1 #bottom-bar #bottom-header-bold {
+  font-weight: 700;
+}
+.nav-1 #bottom-bar #bottom-header-normal {
+  font-weight: 500;
+}
+.nav-1 #bottom-bar #bottom-bar-col-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0 1rem 1rem 1rem;
+  position: relative;
+  z-index: 3;
+}
+.nav-1 #bottom-bar .bottom-bar-col {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.nav-1 #bottom-bar .bottom-bar-link-container {
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.nav-1 #bottom-bar .bottom-bar-link-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  height: 1.6rem;
+}
+.nav-1 #bottom-bar .bottom-bar-link-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: -0.16rem;
+}
+.nav-1 #bottom-bar .bottom-bar-link-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding-left: 0.45rem;
+}
+.nav-1 #bottom-bar .bottom-bar-contact-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.nav-1 #bottom-bar .bottom-bar-contact-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding-left: 0.24rem;
+}
+.nav-1 #bottom-bar .bottom-bar-contact-parent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem 0.4rem 0 0.4rem;
+  font-size: 0.9rem;
+}
+.nav-1 #bottom-bar .bottom-bar-contact-row {
+  width: 100%;
+  padding: 0.2rem;
+}
+.nav-1 #bottom-bar .bottom-bar-contact-row-label {
+  font-weight: 700;
+}
+.nav-1 #bottom-bar .bottom-bar-contact-row-link {
+  color: #520783;
+  margin-left: 0.3rem;
+}
+.nav-1 #bottom-bar .bottom-bar-link-parent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0.4rem 0.4rem 0 0.4rem;
+}
+.nav-1 #bottom-bar .bottom-bar-link-col {
+  display: flex;
+  flex-direction: column;
+}
+.nav-1 #bottom-bar .bottom-bar-link-left-col {
+  width: 35%;
+}
+.nav-1 #bottom-bar .bottom-bar-link-right-col {
+  width: 60%;
+  margin-left: 5%;
+}
+.nav-1 #bottom-bar .bottom-bar-link {
+  color: #000000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.3em;
+}
+.nav-1 #bottom-bar #bottom-bar-background-illustration {
+  position: absolute;
+  bottom: -1.5rem;
+  right: 0;
+  width: 18rem;
+  pointer-events: none;
+  z-index: 2;
+}

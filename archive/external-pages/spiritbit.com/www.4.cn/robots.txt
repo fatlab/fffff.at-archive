@@ -1,0 +1,7 @@
+# 默认规则：禁止所有爬虫
+User-agent: *
+Disallow: /
+
+# Googlebot 专属规则：允许访问所有内容
+User-agent: Googlebot
+Disallow:

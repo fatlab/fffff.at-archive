@@ -1,0 +1,154 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* Fade in Animations */
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.wp-block-create-block-itp-featured-projects-gallery {
+  max-width: unset !important;
+  box-sizing: border-box;
+  padding-top: 8px;
+  height: 100%;
+}
+
+.itp-featured-projects {
+  height: 100%;
+  margin: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(16, 6.25%);
+  grid-template-rows: repeat(16, 6.25%);
+}
+@media screen and (max-width: 780px) {
+  .itp-featured-projects {
+    padding-top: 0;
+    margin: -8px !important;
+    overflow: hidden;
+  }
+}
+
+.itp-featured-projects__card {
+  padding: 0;
+  height: auto;
+  position: relative;
+  transition: all 0.2s;
+  color: white;
+  align-self: unset !important;
+}
+.itp-featured-projects__card .card-container {
+  transition: all 0.3s;
+  position: relative;
+  height: 100%;
+  color: inherit;
+}
+.itp-featured-projects__card .card-container::after {
+  content: "→";
+  transform: rotate(-45deg);
+  color: inherit;
+  position: absolute;
+  top: 0px;
+  right: 4px;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  font-size: 2em;
+  opacity: 0;
+}
+.itp-featured-projects__card figure {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.itp-featured-projects__card figure img {
+  height: auto;
+  min-height: 340px;
+  max-width: none;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.itp-featured-projects__card h6 {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0;
+}
+.itp-featured-projects__card p {
+  line-height: 1;
+  padding: 6px 8px;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+}
+.itp-featured-projects__card p span {
+  font-size: 0.8em;
+}
+.itp-featured-projects__card p a {
+  display: none;
+}
+.itp-featured-projects__card a {
+  margin: 0;
+  color: var(--wp--preset--color--primary);
+  text-decoration: none;
+}
+.itp-featured-projects__card figure {
+  height: 100%;
+}
+.itp-featured-projects__card figure img {
+  height: 100%;
+}
+.itp-featured-projects__card:nth-of-type(1) {
+  grid-area: 1/1/14/9;
+  animation-delay: 0s;
+}
+@media screen and (max-width: 780px) {
+  .itp-featured-projects__card:nth-of-type(1) {
+    grid-area: 1/1/10/10;
+  }
+}
+.itp-featured-projects__card:nth-of-type(1) .card-container {
+  animation: appear 1.5s cubic-bezier(0.49, 0.1, 0.01, 1);
+}
+.itp-featured-projects__card:nth-of-type(2) {
+  grid-area: 9/8/17/13;
+}
+@media screen and (max-width: 780px) {
+  .itp-featured-projects__card:nth-of-type(2) {
+    grid-area: 10/1/17/10;
+  }
+}
+.itp-featured-projects__card:nth-of-type(2) .card-container {
+  animation: appear 1.5s cubic-bezier(0.49, 0.1, 0.01, 1);
+}
+.itp-featured-projects__card:nth-of-type(3) {
+  grid-area: 1/12/10/17;
+}
+@media screen and (max-width: 780px) {
+  .itp-featured-projects__card:nth-of-type(3) {
+    grid-area: 1/10/17/17;
+  }
+}
+.itp-featured-projects__card:nth-of-type(3) .card-container {
+  animation: appear 2s cubic-bezier(0.49, 0.1, 0.01, 1);
+}
+.itp-featured-projects__card:hover {
+  z-index: 20;
+}
+.itp-featured-projects__card:hover .card-container {
+  transform: translate3d(8px, -8px, 0);
+}
+.itp-featured-projects__card:hover .card-container::after {
+  opacity: 1;
+}
+@media screen and (max-width: 780px) {
+  .itp-featured-projects__card:hover .card-container {
+    transform: none;
+  }
+}
+
+/*# sourceMappingURL=style-index.css.map*/

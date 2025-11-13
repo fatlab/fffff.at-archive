@@ -1,0 +1,689 @@
+/**
+ * Theme Name:     Blog Cycle
+ * Author:         candidthemes
+ * Template:       gist
+ * Text Domain:    blog-cycle
+ * Description:    Blog Cycle is the Child Theme of <a href="https://www.candidthemes.com/themes/gist-clean-minimal-wordpress-blog-theme/">Gist.</a> This theme is best ever crafted free WordPress theme for Blog, news and Magazine. It is a simple, easy to use, modern and creative, user friendly WordPress theme with typography, fonts and color options. In addition Blog Cycle is responsive, cross browser compatible and child theme ready. Gist comes with added custom widgets for social and author, sticky sidebar options, footer widget, sidebar options, meta option, copyright option, social options etc. 
+ * Theme URI:      https://www.candidthemes.com/themes/blog-cycle/
+ * Author URI:     https://www.candidthemes.com/
+ * Version:        1.0.0
+ * License:        GNU General Public License v2 or later
+ * License URI:    http://www.gnu.org/licenses/gpl-2.0.html
+ * Tags:           two-columns, right-sidebar, custom-background, custom-colors, custom-menu, featured-images, theme-options, threaded-comments, translation-ready, blog
+ */
+.p-15 .entry-content {
+    display: block;
+    overflow: hidden;
+}
+
+.p-15 .entry-header,
+.p-15 .entry-footer {
+    text-align: left;
+}
+
+.p-15 .entry-content p {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    border: none;
+    padding: 0;
+}
+
+.btn-primary:hover {
+    color: #555;
+}
+
+.btn-primary:hover {
+    background-color: #fff;
+}
+
+a.btn-primary::after {
+    content: "\f101";
+    font-family: FontAwesome;
+    position: relative;
+}
+
+.widget-title {
+    text-align: initial;
+}
+
+.widget-title:after {
+    left: 0;
+    margin-left: 0;
+}
+
+.p-15 .entry-content {
+    margin: 0;
+}
+
+/*--------------------------------------------------------------
+## Pagination
+--------------------------------------------------------------*/
+.candid-pagination {
+    clear: both;
+}
+
+/*--------------------------------------------------------------
+## Footer
+--------------------------------------------------------------*/
+.top-footer {
+    background: #111;
+    padding: 60px 0 40px 0;
+}
+
+footer .site-info {
+    text-align: center;
+    color: #fff;
+    padding: 20px 10px;
+}
+
+footer .site-info a {
+    color: #fff;
+    opacity: 0.75;
+}
+
+footer.site-footer {
+    background: #000;
+}
+
+footer .top-footer a,
+footer.site-footer,
+footer .featured-post-title a,
+footer .featured-post-title a:visited {
+    color: #eee;
+}
+
+footer .widget-title {
+    text-align: left;
+}
+
+footer .widget-title:after {
+    background: #efefef;
+    left: 0;
+    margin-left: 0;
+}
+
+footer.site-footer {
+    text-align: justify;
+}
+
+@media screen and (max-width: 767px) {
+    footer .ct-col-4,
+    footer .ct-col-3,
+    footer .ct-col-2,
+    footer .ct-col-1 {
+        padding: 0 20px;
+    }
+}
+
+/*---------------------------------------------------
+*   Post Column
+*   ----------------------------------------------------- */
+@media screen and (min-width: 768px) {
+    #main:after {
+        clear: left;
+        content: "";
+        display: table;
+        table-layout: fixed;
+    }
+
+    .ct-col-3 {
+        width: 31%;
+        float: left;
+        margin-right: 3.5%;
+    }
+
+    .ct-col-3:nth-child(3n+1) {
+        clear: left;
+    }
+
+    .ct-col-3:nth-child(3n) {
+        margin-right: 0;
+    }
+
+    .ct-col-2 {
+        width: 48%;
+        float: left;
+        margin-right: 4%;
+    }
+
+    .ct-col-2:nth-child(2n+1) {
+        clear: left;
+    }
+
+    .ct-col-2:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    .ct-col-4 {
+        width: 22%;
+        float: left;
+        margin-right: 4%;
+    }
+
+    .ct-col-4:nth-child(4n+1) {
+        clear: left;
+    }
+
+    .ct-col-4:nth-child(4n) {
+        margin-right: 0;
+    }
+
+    .ct-col-4 img.right-image,
+    .ct-col-4 img.left-image,
+    .ct-col-3 img.right-image,
+    .ct-col-3 img.left-image,
+    .ct-col-2 img.right-image,
+    .ct-col-2 img.left-image {
+        width: 100%;
+        float: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/*---------------------------------------------------
+*   Footer Section
+*   ----------------------------------------------------- */
+
+.clearfix:after {
+    display: table;
+    content: '';
+    clear: left;
+}
+
+footer.site-footer {
+    padding: 0;
+}
+
+/*---------------------------------------------------
+*  Menu Design
+* ----------------------------------------------------- */
+.main-navigation ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.main-navigation ul {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+}
+
+.main-navigation li {
+    padding: 0 16px;
+}
+
+.main-navigation ul li.menu-item-has-children > a:after {
+    font-family: "FontAwesome";
+    content: "\f107";
+    font-size: 17px;
+}
+
+.menu-top-menus-container ul {
+    background: #fafafa;
+}
+
+.menu-top-menus-container ul li a {
+    font-size: 16px;
+}
+
+.menu-top-menus-container ul li {
+    padding: 0 12px;
+}
+
+.top-menu-container-inner nav {
+    clear: none;
+}
+
+.top-menu-container-inner .top-header-social li {
+    margin-bottom: 0;
+}
+
+.top-header-social .gist-menu-social {
+    line-height: 1;
+}
+
+.top-header-social .gist-menu-social li a {
+    background: none;
+    margin-right: 0;
+    width: auto;
+    height: auto;
+    line-height: 1.5;
+    padding: 10px 2px;
+}
+
+.top-header-social .gist-menu-social li a:before {
+    color: #333;
+    font-size: 12px;
+    margin: 0;
+    font-weight: bold;
+}
+
+article .left-image:after {
+    display: table;
+    content: '';
+    width: 0;
+    height: 0;
+    clear: both;
+}
+
+.widget ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .top-menu-container-inner .top-header-social {
+        text-align: right;
+    }
+
+    .top-menu-container-inner .top-header-social {
+        width: 28%;
+        float: right;
+        margin-left: 2%;
+    }
+
+    .top-menu-container-inner nav {
+        width: 70%;
+        float: left;
+    }
+
+    .top-menu-container-inner nav ul li a {
+        padding: 10px 0;
+        font-size: 12px;
+    }
+
+    .top-menu-container-inner nav ul ul > li > a {
+        padding: 10px 20px;
+    }
+
+    .top-menu-container-inner nav ul li.menu-item-has-children > a:after {
+        font-size: 12px;
+    }
+
+    .top-menu-container-inner nav ul {
+
+        justify-content: left;
+    }
+
+    .top-menu-container-inner .main-navigation ul ul {
+        top: 38px;
+    }
+
+    .top-menu-toggle {
+        display: none;
+    }
+
+    header .right-menu-blk .main-navigation ul {
+        display: inline-block;
+        float: right;
+    }
+
+    header .right-menu-blk .main-navigation ul ul {
+        display: none;
+    }
+
+
+    header .right-menu-blk .main-navigation li:hover ul {
+        display: block;
+    }
+
+    header .right-menu-blk .main-navigation li:hover li ul {
+        display: none;
+    }
+
+    header .right-menu-blk .main-navigation li li:hover ul {
+        display: block;
+        top: 10px;
+    }
+
+    header .right-menu-blk .main-navigation li li:hover li ul {
+        display: none;
+    }
+
+    header .right-menu-blk .main-navigation li li li:hover ul {
+        display: block;
+    }
+
+    header .right-menu-blk .main-navigation li li li:hover li ul {
+        display: none;
+    }
+
+    header .right-menu-blk .main-navigation li li li li:hover > ul {
+        display: block;
+    }
+    header .right-menu-blk .header-wrapper {
+        display: table;
+        width: 100%;
+    }
+
+    header .right-menu-blk .site-branding .logo-wrapper,
+    header .right-menu-blk .main-navigation-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    header .right-menu-blk .site-branding .logo-wrapper {
+        width: 300px;
+        margin-right: 20px;
+    }
+
+    header .right-menu-blk .main-navigation li {
+        padding: 0 12px;
+    }
+
+    header .right-menu-blk .main-navigation ul ul {
+        top: 40px;
+    }
+
+    header .right-menu-blk .main-navigation ul li a {
+        padding: 10px 0;
+    }
+
+    header .right-menu-blk .main-navigation ul li.menu-item-has-children > a:after {
+        left: 5px;
+    }
+}
+
+header .right-menu-blk.site-branding {
+    text-align: left;
+}
+
+.header-right-menu.hide {
+    display: none;
+}
+
+@media screen and (max-width: 1023px) {
+    .top-menu-container-inner nav ul.top-menu {
+        display: none;
+    }
+
+    .top-menu-container-inner .top-header-social {
+        position: relative;
+    }
+
+    .top-menu-toggle {
+        border: none;
+        position: absolute;
+        line-height: 1.5;
+        top: 2px;
+        right: 0;
+        background: transparent;
+    }
+}
+
+/*--------------------------------------------------------------
+## Image Left Right Design
+--------------------------------------------------------------*/
+@media screen and (min-width: 768px) {
+    .ct-post-list-blk .ct-featured-image img.alternate {
+        float: left;
+        margin-left: 0;
+        margin-right: 15px;
+    }
+
+    .ct-post-list-blk:nth-child(even) .ct-featured-image img.alternate {
+        float: right;
+        margin-right: 0;
+        margin-left: 15px;
+    }
+}
+
+
+/*---------------------------------------------------
+*   Social links
+*   ----------------------------------------------------- */
+.gist-menu-social {
+    clear: both;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.gist-menu-social li a i {
+    color: #6e6e6e;
+    font-size: 18px;
+    font-weight: normal;
+    text-indent: 0;
+}
+
+.gist-menu-social li a {
+    background-color: #b08653;
+    border: medium none;
+    border-radius: 5px;
+    display: table-cell;
+    float: left;
+    font-weight: normal !important;
+    height: 30px;
+    line-height: 1.7;
+    margin-right: 5px;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 30px;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.gist-menu-social li {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.widget .gist-menu-social li {
+    margin-left: 0;
+}
+
+.gist-menu-social li a:before {
+    color: #fff;
+    content: "\f002";
+    font-family: FontAwesome;
+    font-weight: normal;
+    margin: 6px;
+    text-indent: 0;
+    padding-right: 0;
+    font-size: 18px;
+}
+
+.gist-menu-social li a:before {
+    height: inherit;
+    width: inherit;
+}
+
+.gist-menu-social li a:hover {
+    opacity: 0.7;
+}
+
+.gist-menu-social li a:hover:before {
+    color: #fff;
+}
+
+.gist-menu-social li a[href*="facebook.com"]:before {
+    content: "\f09a";
+}
+
+.gist-menu-social li a[href*="facebook.com"] {
+    background-color: #45619d;
+}
+
+.gist-menu-social li a[href*="twitter.com"]:before {
+    content: "\f099";
+}
+
+.gist-menu-social li a[href*="twitter.com"] {
+    background-color: #53a8ea;
+}
+
+.gist-menu-social li a[href*="linkedin.com"]:before {
+    content: "\f0e1";
+}
+
+.gist-menu-social li a[href*="linkedin.com"] {
+    background-color: #1b85bc;
+}
+
+.gist-menu-social li a[href*="plus.google.com"]:before {
+    content: "\f0d5";
+}
+
+.gist-menu-social li a[href*="plus.google.com"] {
+    background-color: #df4b38;
+}
+
+.gist-menu-social li a[href*="youtube.com"]:before {
+    content: "\f167";
+}
+
+.gist-menu-social li a[href*="youtube.com"] {
+    background-color: #e82707;
+}
+
+.gist-menu-social li a[href*="dribbble.com"]:before {
+    content: "\f17d";
+}
+
+.gist-menu-social li a[href*="dribbble.com"] {
+    background-color: #c42462;
+}
+
+.gist-menu-social li a[href*="pinterest.com"]:before {
+    content: "\f0d2";
+}
+
+.gist-menu-social li a[href*="pinterest.com"] {
+    background-color: #ca1f26;
+}
+
+.gist-menu-social li a[href*="bitbucket.org"]:before {
+    content: "\f171";
+}
+
+.gist-menu-social li a[href*="bitbucket.org"] {
+    background-color: #205081;
+}
+
+.gist-menu-social li a[href*="github.com"]:before {
+    content: "\f113";
+}
+
+.gist-menu-social li a[href*="github.com"] {
+    background-color: #181617;
+}
+
+.gist-menu-social li a[href*="codepen.io"]:before {
+    content: "\f1cb";
+}
+
+.gist-menu-social li a[href*="codepen.io"] {
+    background-color: #000;
+}
+
+.gist-menu-social li a[href*="flickr.com"]:before {
+    content: "\f16e";
+}
+
+.gist-menu-social li a[href*="flickr.com"] {
+    background-color: #0063db;
+}
+
+.gist-menu-social li a[href$="/feed/"]:before {
+    content: "\f09e";
+}
+
+.gist-menu-social li a[href*="foursquare.com"]:before {
+    content: "\f180";
+}
+
+.gist-menu-social li a[href*="foursquare.com"] {
+    background-color: #f94877;
+}
+
+.gist-menu-social li a[href*="instagram.com"]:before {
+    content: "\f16d";
+}
+
+.gist-menu-social li a[href*="instagram.com"] {
+    background-color: #d3cdbc;
+}
+
+.gist-menu-social li a[href*="tumblr.com"]:before {
+    content: "\f173";
+}
+
+.gist-menu-social li a[href*="tumblr.com"] {
+    background-color: #34465d;
+}
+
+.gist-menu-social li a[href*="reddit.com"]:before {
+    content: "\f1a1";
+}
+
+.gist-menu-social li a[href*="reddit.com"] {
+    background-color: #ff4403;
+}
+
+.gist-menu-social li a[href*="vimeo.com"]:before {
+    content: "\f194";
+}
+
+.gist-menu-social li a[href*="vimeo.com"] {
+    background-color: #23b6ea;
+}
+
+.gist-menu-social li a[href*="digg.com"]:before {
+    content: "\f1a6";
+}
+
+.gist-menu-social li a[href*="digg.com"] {
+    background-color: #006094;
+}
+
+.gist-menu-social li a[href*="twitch.tv"]:before {
+    content: "\f1e8";
+}
+
+.gist-menu-social li a[href*="twitch.tv"] {
+    background-color: #6441a5;
+}
+
+.gist-menu-social li a[href*="stumbleupon.com"]:before {
+    content: "\f1a4";
+}
+
+.gist-menu-social li a[href*="stumbleupon.com"] {
+    background-color: #eb4823;
+}
+
+.gist-menu-social li a[href*="delicious.com"]:before {
+    content: "\f1a5";
+}
+
+.gist-menu-social li a[href*="delicious.com"] {
+    background-color: #3274cf;
+}
+
+.gist-menu-social li a[href*="vk.com"]:before {
+    content: "\f189";
+}
+
+.gist-menu-social li a[href*="vk.com"] {
+    background-color: #3274cf;
+}
+
+.gist-menu-social li a[href*="mailto:"]:before {
+    content: "\f0e0";
+}
+gist-menu-social li a[href*="vk.com"] {
+    background-color: #3274cf;
+}
+
+.gist-menu-social li a[href*="mailto:"]:before {
+    content: "\f0e0";
+}

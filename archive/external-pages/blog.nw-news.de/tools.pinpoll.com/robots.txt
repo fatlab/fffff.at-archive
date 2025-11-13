@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /api/
+Disallow: /v1/
+Disallow: /v2/
+Disallow: /v3/
+Disallow: /x/
+Disallow: /embed/refresh-html/
+Disallow: /webjobs/htmlgeneration/status
+Disallow: /embed/refresh-html/v2

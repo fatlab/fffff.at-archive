@@ -1,0 +1,11 @@
+/** The name of the TA, which should match the folder name under assets/ta/. Empty = default site */
+var taName = 'cta';
+/** Encapsulates Google Analytics data */
+var btga = {
+  /** Project ID for this site. Empty = no analytics */
+  gaID: 'G-0H0BBBDZPS',
+  /** If false, query parameters will be removed from pageviews, condensing some actions to a single entry. (e.g. /map?stpid=555 -> /map) */
+  gaIncludeParams: true,
+  /** If false, initial requests to the site will not be counted. Initial requests have a title of "Loading..." on the dashboard.) */
+  gaIncludeInitial: false,
+};

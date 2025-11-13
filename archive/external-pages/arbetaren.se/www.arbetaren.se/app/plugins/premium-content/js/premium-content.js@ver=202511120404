@@ -1,0 +1,138 @@
+var $ = jQuery.noConflict();
+
+$(function(){
+
+	$.validate({
+		form : '#registerform',
+		modules : 'security, sweden',
+		lang : 'sv',
+		onSuccess : function($form) {
+      		var data = {
+				'action': 'kayak_create_customer_subscribtion',
+				'paymentmethod': $('#registerform input[name=user_payment]:checked').val(),
+				'subscriptiontype': $('#registerform input[name=user_type]:checked').val(),
+				'price': $('#registerform input[name=user_type]:checked').data('price'),
+				'time': $('#registerform input[name=user_type]:checked').data('time'),
+				'firstname': $('#registerform input[name=user_firstname]').val(),
+				'lastname': $('#registerform input[name=user_lastname]').val(),
+				'socialsecno': $('#registerform input[name=user_personnr]').val(),
+				'email': $('#registerform input[name=user_email]').val(),
+				'password': $('#registerform input[name=user_pass]').val(),
+				'phone': $('#registerform input[name=user_phone]').val(),
+				'streetname': $('#registerform input[name=user_address]').val(),
+				'zipcode': $('#registerform input[name=user_postnr]').val(),
+				'city': $('#registerform input[name=user_postaddress]').val(),
+				'countrycode': 'SE'
+			};
+
+			$.post(ajaxurl, data, function(response) {
+				if(response.error == false){
+					if( $('#registerform input[name=user_payment]:checked').val() == '13' ) {
+						var template = wp.template('dibs-template');
+						$('#collapse-register').html( template( {
+							'billingaddress': response.dibs_data.billingaddress,
+							'billingcity': response.dibs_data.billingcity,
+							'billingcountry': response.dibs_data.billingcountry,
+							'billingfirstname': response.dibs_data.billingfirstname,
+							'billinglastname': response.dibs_data.billinglastname,
+							'currency': response.dibs_data.currency,
+							'data': response.dibs_data.data,
+							'pageset': response.dibs_data.pageset,
+							'email': response.dibs_data.eMail,
+							'mac': response.dibs_data.MAC,
+							'accepturl': response.dibs_data.activation_link
+						} ) );
+						$('#dibsform').submit();
+					} else if ( $('#registerform input[name=user_payment]:checked').val() == '03' ) {
+						location.href = 'https://www.arbetaren.se/autogiro/';
+					} else {
+						location.href = response.dibs_data.activation_link;
+					}
+				} else {
+					alert('Oj, något gick fel!');
+				}
+			}, 'JSON');
+
+      		return false;
+    	},
+	});
+
+	$('#registerform input[name=user_type]').on('click', function(event){
+		if( $('#registerform input[name=user_type]:checked').data('rule') == 'Month' ) {
+			$('#registerform input#user_payment1').prop('checked', true);
+			$('#registerform input#user_payment3').prop('disabled', true);
+		} else if( $('#registerform input[name=user_type]:checked').data('rule') == 'Year' ) {
+			$('#registerform input#user_payment3').prop('disabled', false);
+		}
+	});
+
+	$('#registerexisting').on('submit', function(event){
+		event.preventDefault();
+		var cusno = $('#registerexisting input[name=cusno]').val();
+		var zipcode = $('#registerexisting input[name=zipcode]').val();
+
+		var data = {
+			'action': 'kayak_check_subscriber',
+			'cusno': cusno,
+			'zipcode': zipcode
+		};
+
+		$('#registerexisting input[type="submit"]').val('Laddar...');
+		$('#registerexisting input[type="submit"]').prop('disabled', true);
+
+		$.post(ajaxurl, data, function(response) {
+			if(response.error == false){
+				var template = wp.template('registeruser-template');
+				$('#collapse-registerexisting').html( template( { cusno: response.cusno, email: response.email, name: response.name } ) );
+			} else {
+				var template = wp.template('error-template');
+				$('#collapse-registerexisting').html( template( { message: response.message } ) );
+			}
+		}, 'JSON');
+
+	});
+
+	$('body').on('click', '#wp-lostpassword', function(event){
+		var template = wp.template('lostpassword-template');
+		$('#collapse-login').html( template({}) );
+	});
+
+	$('body').on('submit', '#lostpassword', function(event){
+		var user_login = $('#lostpassword input[name=user_login]').val();
+		event.preventDefault();
+
+		var data = {
+			'action': 'kayak_lost_password',
+			'user_login': user_login
+		};
+
+		$.post(ajaxurl, data, function(response) {
+			var template = wp.template('lostpasswordresult-template');
+			$('#collapse-login').html( template({ message: response.message }) );
+		}, 'JSON');
+	});
+
+	$('body').on('submit', '#registeruser', function(event){
+		event.preventDefault();
+
+		var cusno = $('#registeruser input[name=cusno]').val();
+		var email = $('#registeruser input[name=email]').val();
+		var password = $('#registeruser input[name=password]').val();
+
+		var data = {
+			'action': 'kayak_create_subscriber',
+			'cusno': cusno,
+			'email': email,
+			'password': password
+		};
+
+		$.post(ajaxurl, data, function(response) {
+			if(response.error == false){
+				location.reload();
+			} else {
+				alert(response.message);
+			}
+		}, 'JSON');
+	});
+
+});

@@ -1,0 +1,17 @@
+.nytc-actions>li {
+    display: inline !important;
+    padding-right: 15px !important;
+}
+.nytc-inner {
+    width: max-content !important;
+}
+#nytc {
+    width: 100% !important;
+    position: relative !important;
+}
+#shell {
+    padding-top: 0 !important;
+}
+#masthead, #ribbon {
+    position: sticky !important;
+}

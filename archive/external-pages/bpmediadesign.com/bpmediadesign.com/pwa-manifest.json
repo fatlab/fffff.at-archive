@@ -1,0 +1,52 @@
+{
+    "name": "BP.MEDIAS.DESIGN",
+    "short_name": "BP.MEDIAS.DESIGN",
+    "description": "Digitalisation et Communication visuelle",
+    "icons": [
+        {
+            "src": "https:\/\/bpmediadesign.com\/wp-content\/uploads\/2025\/04\/ICON-APP2025.png",
+            "sizes": "192x192",
+            "type": "image\/png",
+            "purpose": "any"
+        },
+        {
+            "src": "https:\/\/bpmediadesign.com\/wp-content\/uploads\/2025\/04\/ICON-APP2025.png",
+            "sizes": "192x192",
+            "type": "image\/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "https:\/\/bpmediadesign.com\/wp-content\/uploads\/2025\/04\/ICON-APP2025.png",
+            "sizes": "512x512",
+            "type": "image\/png",
+            "purpose": "any"
+        },
+        {
+            "src": "https:\/\/bpmediadesign.com\/wp-content\/uploads\/2025\/04\/ICON-APP2025.png",
+            "sizes": "512x512",
+            "type": "image\/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "https:\/\/bpmediadesign.com\/wp-content\/uploads\/2025\/04\/ICON-APP2025.png",
+            "sizes": "512x512",
+            "type": "image\/png",
+            "purpose": "monochrome"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "https:\/\/bpmediadesign.com\/wp-content\/uploads\/2025\/04\/ICON-APP2025.png",
+            "sizes": "512x512",
+            "type": "image\/png",
+            "purpose": "maskable",
+            "form_factor": "wide"
+        }
+    ],
+    "background_color": "#D5E0EB",
+    "theme_color": "#D5E0EB",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "https:\/\/bpmediadesign.com\/",
+    "scope": "https:\/\/bpmediadesign.com\/"
+}

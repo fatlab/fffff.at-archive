@@ -1,0 +1,77 @@
+#sr-table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #ddd; }
+
+
+
+/* thead and tfoot */
+
+#sr-table thead tr, #sr-table tfoot tr {
+	background: #ddd url(images/bg.png) repeat-x;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #aaa; }
+
+#sr-table td, #sr-table th {
+	padding: 2px 10px;
+	border-left: 1px solid #eee; }
+
+#sr-table td.date, #sr-table th.date, #sr-table tfoot td {
+	border-left: 0; }
+
+#sr-table th {
+	font-size: 1.1em; }
+
+#sr-table tfoot {
+	font-size: 0.9em; }
+
+#sr-table tfoot .sr-tips{
+	float: left;
+	padding: 0 3px; }
+
+#sr-table tfoot .sr-plugin {
+	float: right;
+	padding: 0 3px; }
+
+
+
+/* tbody */
+
+#sr-table tr.odd {
+	background: #f1f5fa; }
+	
+#sr-table tbody tr:hover {
+	background: #def;  }
+	
+#sr-table .hidden { display: none; }
+
+
+
+/* the following classes are applied by tablesorter.js */
+
+#sr-table thead .header {
+	background-image: url(images/sort.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer; }
+
+#sr-table thead .headerSortUp {
+	background-image: url(images/asc.gif); }
+
+#sr-table thead .headerSortDown {
+	background-image: url(images/desc.gif); }
+
+#sr-table thead .headerSortUp, #sr-table thead .headerSortDown {
+	background-color: #ddd; }
+
+
+/* css for sidebar functions */
+
+.sr-review { /* post title */
+	float: left; }
+
+.sr-rating { /* star images */
+	float: right; }
+
+.sr-clear { /* clear the floats */
+	clear: both; }

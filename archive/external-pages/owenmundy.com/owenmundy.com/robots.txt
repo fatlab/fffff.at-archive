@@ -1,0 +1,18 @@
+
+
+
+
+
+# Disallow directory Files
+
+User-agent: *
+Disallow: /docs/
+
+Disallow: /includes/
+Disallow: /tests/
+Disallow: /work/
+Disallow: /teaching/
+Disallow: /_site/content/student_work/
+Disallow: /_site/content/student_work/*
+Disallow: /_site/content/student-work/hollen_gameboy/
+Disallow: /_site/student_work/

@@ -1,0 +1,462 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+body {
+  font: 13px Helvetica, Arial, sans-serif;
+  background-color: #222;
+  color: #aaa5aa;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: #ff555d;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: #00f399;
+}
+
+h1, h2, h3, header h1 a {
+  font-weight: bold;
+  color: #bbb6bb;
+}
+
+/* HIDE MOBILE STUFF */
+#nav-toggle,
+.mobile,
+header nav > p,
+nav .categories {
+ display: none;
+}
+
+/* LAYOUT */
+header {
+  width: 230px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+section {
+  margin-left: 250px;
+  margin-top: 60px;
+}
+footer {
+  margin: 18px auto 38px auto;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  width: 280px;
+}
+footer p {
+  text-align: center;
+}
+footer p.title {
+  text-indent: -5000px;
+  width: 155px;
+  height: 30px;
+  background-image: url(../images/appitizeus-light.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* HEADER */
+header {
+  padding: 60px 0 0 20px;
+}
+header > p {
+  width: 190px;
+}
+nav {
+  margin-top: 12px;
+}
+header h1 {
+  margin-bottom: 13px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  font-size: 24px;
+}
+header h1 a {
+  display: block;
+  text-indent: -5000px;
+  width: 155px;
+  height: 30px;
+  background-image: url(../images/appitizeus-light.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+header li {
+  line-height: 17px;
+}
+
+#party {
+
+}
+
+/* ADS */
+.ads {
+  margin-top: 20px;
+}
+.ads a {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  width: 130px;
+  color: #c2c2c2;
+  transition: all 250ms;
+}
+.ads a:first-child {
+  border-bottom-width: 0;
+}
+.ads a:hover {
+  background-color: #111;
+}
+
+/* CATEGORIES */
+.categories {
+  margin: 16px 0;
+  padding-top: 16px;
+  border-top: 2px solid #ccc;
+  width: 200px;
+}
+.categories h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.categories .active a {
+  color: #00f399;
+}
+
+/* EMAIL SIGNUP */
+.signup {
+  margin: 16px 0;
+  padding-top: 16px;
+  border-top: 2px solid #ccc;
+  width: 200px;
+}
+.signup h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.signup input[type=email] {
+  border-radius: 4px;
+  padding: 4px 6px;
+  background-color: #f1f1f1;
+  margin: 3px 0 6px 0;
+  width: 123px;
+  color: #999;
+}
+.signup input.on[type=email] {
+  color: #333;
+}
+.signup input[type=email],
+.signup input[type=submit] {
+  font: 13px Helvetica, Arial, sans-serif;
+}
+.signup input[type=submit] {
+  color: #ccc;
+  background-color: #555;
+  border-radius: 4px;
+  padding: 4px 6px;
+  margin-bottom: 8px;
+  margin-left: 7px;
+  cursor: pointer;
+}
+.signup p {
+    font-size: 11px;
+    color: #666;
+}
+.signup img {
+    display: inline;
+    vertical-align: -6px;
+}
+
+/* PAGINATION */
+.pagination {
+  margin: 40px auto 0 auto;
+  max-width: 300px;
+}
+.pagination li {
+  display: inline;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0 2px;
+}
+.pagination .previous, .pagination .next {
+  font-size: 28px;
+}
+
+/* TAGS AND TITLES */
+section > h1, section.content h1 {
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+/* DEFAULT TEMPLATES */
+.content article {
+  max-width: 400px;
+  margin-right: 40px;
+}
+.content h2, .content h3, .content p {
+    margin-bottom: 0.9em;
+}
+
+/* APPS */
+article.app {
+  width: 280px;
+  margin-bottom: 40px;
+  position: relative;
+}
+article.app img {
+  margin-bottom: 8px;
+}
+article.app p {
+  margin-top: 6px;
+  width: 240px;
+}
+article.app p.author {
+  margin-top: 2px;
+}
+article.app p.author a, article.app p.tags, article.app p.tags a,
+article.app p.date {
+  /*color: #bab5ba;*/
+  color: #5a5a5a;
+}
+article.app p.date {
+  font-size: 9px;
+  margin-top: 3px;
+}
+article.app p em {
+  font-style: normal;
+}
+article.app .meta a {
+  font-weight: bold;
+}
+article.app .badges {
+  margin-top: 10px;
+}
+article.app .badges a {
+  margin-right: 5px;
+  display: inline-block;
+}
+article.app p.tags {
+  margin-top: -4px;
+  margin-bottom: 30px;
+}
+article.app .related {
+  margin-bottom: 30px;
+}
+article.app .related {
+  width: 300px;
+  position: absolute;
+  top: 0;
+  left: 320px;
+}
+article.app .related h2 {
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #ccc;
+}
+article.app .related .facebook {
+  margin: 10px 0;
+}
+
+.content h1 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.meta h2 {
+  font-size: 12px;
+}
+.meta h2, .meta ul, .meta li {
+  display: inline;
+}
+
+.sharing {
+    padding-top: 20px;
+}
+.sharing iframe {
+    display: block;
+    margin-bottom: 6px;
+}
+
+@media screen and (max-width: 600px) {
+
+    body {
+      font-size: 16px;
+      padding-bottom: 20px;
+    }
+    header {
+      padding-top: 20px;
+      padding-bottom: 0px;
+      margin-bottom: 40px;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-left: 0;
+      border-bottom: 2px solid #ccc;
+      width: 280px;
+    }
+    section {
+        margin: 0;
+    }
+    header, footer {
+      position: static;
+    }
+    section, .pagination {
+      margin-left: 20px;
+    }
+
+    footer {
+      width: 260px;
+    }
+
+    header nav p,
+    .mobile,
+    nav .categories {
+      display: block;
+    }
+
+    header > .categories {
+      display: none;
+    }
+
+    .ads div a:first-child {
+      border-right-width: 0;
+      border-bottom-width: 1px;
+    }
+
+    #nav-toggle {
+      position: fixed;
+      right: 25px;
+      top: 15px;
+      z-index: 1;
+      background-color: #222;
+      width: 50px;
+      height: 50px;
+      display: block;
+      border-radius: 6px;
+      z-index: 11;
+      transition: all 250ms;
+    }
+    #nav-toggle em {
+      display: none;
+    }
+    #nav-toggle span:first-child {
+      margin-top: 10px;
+    }
+    #nav-toggle span {
+      width: 38px;
+      height: 6px;
+      border-radius: 1px;
+      background-color: #f1f1f1;
+      display: block;
+      margin-left: 6px;
+      margin-bottom: 6px;
+      opacity: 0.25;
+    }
+    #nav-toggle.on {
+      background-color: #f1f1f1;
+      -webkit-transform: rotateZ(-90deg);
+    }
+    #nav-toggle.on span {
+      background-color: #222;
+    }
+
+    header h1, nav > div > p > a {
+      display: block;
+      text-indent: -5000px;
+      width: 155px;
+      height: 30px;
+      background-image: url(../images/appitizeus-light.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    nav > div > p > a {
+      display: block;
+      margin-top: 10px;
+      padding-bottom: 20px;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      margin: 0;
+      -webkit-perspective: 1000;
+      -webkit-backface-visibility: hidden;
+      perspective: 1000;
+      backface-visibility: hidden;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+      display: none;
+    }
+    nav.on {
+      display: block;
+    }
+    nav > div {
+      color: #f1f1f1;
+      background-color: #111;
+      padding: 10px 0 0 10px;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+      display: none;
+      opacity: 0;
+    }
+    nav li {
+      line-height: 22px;
+      font-size: 18px;
+    }
+    nav .categories {
+      width: 300px;
+      margin-top: 20px;
+    }
+    .categories h2 {
+      font-size: 18px;
+    }
+    nav.on > div {
+      display: block;
+      opacity: 1;
+    }
+
+    .signup {
+      width: 300px;
+    }
+    .signup input[type=email], .signup input[type=submit] {
+        height: 40px;
+        font-size: 16px;
+    }
+    .signup input[type=email] {
+        width: 205px;
+    }
+    .signup input[type=submit] {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+}
+
+@media screen and (max-width: 870px) {
+
+  article.app .related {
+    position: static;
+    max-width: 280px;
+  }
+
+}

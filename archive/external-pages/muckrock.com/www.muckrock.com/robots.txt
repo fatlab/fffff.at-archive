@@ -1,0 +1,99 @@
+User-agent: *
+Allow: /sitemap.xml
+
+Allow: /*
+Crawl-delay: 5
+
+Allow: /sitemap-*.xml?p=*
+Allow: /news-sitemaps/*.xml?p=*
+Disallow: /*?
+
+Disallow: /foi/feeds
+
+User-agent: ChatGPT-User
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: YouBot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: PerplexityBot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: Applebot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: Amazonbot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: omgili
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: omgilibot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: cohere-ai
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: CCBot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: FacebookBot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: Twitterbot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: ClaudeBot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: Google-Extended
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+User-agent: GPTBot
+Allow: /$
+Allow: /news/
+Allow: /about/
+Disallow: /*
+
+Host: www.muckrock.com
+Sitemap: https://www.muckrock.com/sitemap.xml
+

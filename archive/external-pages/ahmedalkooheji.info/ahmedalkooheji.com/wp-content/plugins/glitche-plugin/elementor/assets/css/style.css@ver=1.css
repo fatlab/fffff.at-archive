@@ -1,0 +1,9 @@
+.elementor-editor-active .wrapper {
+	margin-top: 162px;
+}
+.elementor-editor-active .started {
+	height: 100vh;
+}
+.elementor-editor-active .started.layout-creative {
+	height: auto;
+}

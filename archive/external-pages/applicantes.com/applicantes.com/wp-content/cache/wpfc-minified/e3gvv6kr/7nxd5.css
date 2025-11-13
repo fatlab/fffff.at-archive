@@ -1,0 +1,413 @@
+@media only screen and (max-width:560px) {
+#wrap,
+.limit,
+#head-content {
+width:auto;
+max-width:94%;
+margin:0;
+padding:0 3%;
+}
+#sitetitle,
+#logo {
+width:100% !important;
+display:block;
+float:none;
+clear:both;
+margin:0 0 10px;
+padding:0;
+}
+.head-banner468 {
+max-width:100%;
+width:100% !important;
+display:block;
+float:none;
+clear:both;
+text-align:left;
+margin:0 auto 10px;
+padding:0;
+}
+#sitetitle,
+#sitetitle .title,
+#logo,
+.head-banner468 {
+text-align:center;
+}
+#contentleft,
+#contentright,
+#content,
+#sidebar,
+#sidebar-bottom,
+#sidebar-bottom-left,
+#sidebar-bottom-right,
+#sidebar-narrow,
+.footer-widget1,
+.footer-widget2,
+.footer-widget3,
+.footer-widget4 {
+width: 100% !important;
+clear:both !important;
+float:none !important;
+margin: 0 auto;
+}
+#content {
+padding-bottom:30px;
+}
+.home-widget-1,
+.home-widget-2,
+.home-widget-3 {
+width: 100%;
+clear:both;
+float:none;
+padding:0;
+}
+.sitemap-narrow {
+width:auto;
+float:none;
+padding: 0;
+margin:0 auto 15px;
+}
+.sitemap-wide {
+width:auto;
+float:none;
+padding: 0;
+margin:0 auto 15px;
+}
+.post-left,
+.post-right {
+clear:both;
+float:none;
+width: 100%;
+}
+.cat-posts-left,
+.cat-posts-right {
+margin: 0 auto 20px;
+padding: 0;
+width:100%;
+float:none;
+clear:both;
+}
+.cat-posts-left {
+padding-bottom:30px;
+margin-bottom:30px;
+border-bottom:3px double #eee;
+}
+.cats-by-2 img.thumbnail {
+float:none;
+margin: 0 0 10px;
+padding:0;
+width:auto;
+max-width:none;
+height:auto;
+}
+.featured.galleries .gallery-post,
+.featured.galleries.videos .gallery-post {
+width:100%;
+float:none;
+margin: 0 0 30px;
+}
+.featured.galleries .gallery-post.second,
+.featured.galleries.videos .gallery-post.second {
+width:100%;
+float:none;
+margin: 0;
+}
+#topnav, #catnav {
+padding-top:10px;
+background:transparent !important;
+border:0 !important;
+}
+#topnav ul, #catnav ul { 
+display: none; 
+}
+.select-menu,
+.select-menu-catnav {
+display:block;
+border:1px solid #ddd;
+padding: 10px;
+margin: 0 auto;
+font-size:10pt;
+width:100%;
+background:#f5f5f5;
+color:#666;
+text-transform:none;
+}
+.select-menu-catnav {
+border:1px solid #ddd;
+background:#fff;
+color:#666;
+}
+.banner728.left {
+margin: 0 auto 10px;
+float:none;
+width:100%;
+display:block;
+text-align:center;
+}
+.banner220 {
+margin: 0 auto;
+padding:0;
+float:none;
+text-align:center;
+width:100%;
+display:block;
+}
+.banner125 .ad,
+.banner125 .ad.right {
+display:inline;
+float:left;
+margin-right:5px;
+}
+.reveal-modal {
+visibility: hidden;
+top:0;
+left: 0;
+margin: 0 auto;
+width: 84%;
+padding: 8%;
+border:0;
+-moz-box-shadow: 0 0 0 0 rgba(255,255,255,1.0);
+-webkit-box-shadow: 0 0 0 0 rgba(255,255,255,1.0);
+box-shadow: 0 0 0 0 rgba(255,255,255,1.0);
+}
+.rating-box {
+float:none;
+clear:both;
+display:block;
+margin: 0 auto 15px;
+}
+}
+@media only screen and (min-width: 561px) and (max-width: 768px) {
+#wrap,
+.limit,
+#head-content {
+width:auto;
+max-width:96%;
+margin:0;
+padding:0 2%;
+}
+#sitetitle,
+#logo {
+width:100% !important;
+display:block;
+float:none;
+clear:both;
+margin:0 0 10px;
+padding:0;
+}
+.head-banner468 {
+max-width:100%;
+width:100% !important;
+display:block;
+float:none;
+clear:both;
+text-align:left;
+margin:0 auto 10px;
+padding:0;
+}
+#sitetitle,
+#sitetitle .title,
+#logo,
+.head-banner468 {
+text-align:center;
+}
+#contentleft,
+#contentright,
+#content,
+#sidebar,
+#sidebar-bottom,
+#sidebar-bottom-left,
+#sidebar-bottom-right,
+#sidebar-narrow,
+.footer-widget1,
+.footer-widget2,
+.footer-widget3,
+.footer-widget4 {
+width: 100% !important;
+clear:both !important;
+float:none !important;
+margin: 0 auto;
+}
+#content {
+padding-bottom:30px;
+}
+.sitemap-narrow {
+width:auto;
+float:none;
+padding: 0;
+margin:0 auto 15px;
+}
+.sitemap-wide {
+width:auto;
+float:none;
+padding: 0;
+margin:0 auto 15px;
+}
+#topnav, #catnav {
+padding-top:10px;
+background:transparent !important;
+border:0 !important;
+}
+#topnav ul, #catnav ul { 
+display: none; 
+}
+.select-menu,
+.select-menu-catnav {
+display:block;
+border:1px solid #ddd;
+padding: 10px;
+margin: 0 auto;
+font-size:10pt;
+width:100%;
+background:#f5f5f5;
+color:#666;
+text-transform:none;
+}
+.select-menu-catnav {
+border:1px solid #ddd;
+background:#fff;
+color:#666;
+}
+.banner728.left {
+margin: 0 auto 10px;
+float:none;
+width:100%;
+display:block;
+text-align:center;
+}
+.banner220 {
+margin: 0 auto;
+padding:0;
+float:none;
+text-align:center;
+width:100%;
+display:block;
+}
+.banner125 .ad,
+.banner125 .ad.right {
+display:inline;
+float:left;
+margin-right:5px;
+}
+.reveal-modal {
+visibility: hidden;
+top:50%;
+left: 0;
+margin: 0 auto;
+width: 90%;
+padding: 5%;
+border:0;
+}
+}
+@media only screen and (min-width: 769px) and (max-width: 960px) {
+#wrap,
+.limit,
+#head-content {
+width:auto;
+max-width:96%;
+margin:0;
+padding:0 2%;
+}
+#sidebar,
+#sidebar-bottom,
+#sidebar-bottom-left,
+#sidebar-bottom-right	 {
+float:none;
+display:block;
+width:auto;
+clear:both;
+}
+.banner728.left {
+margin: 0 auto 10px;
+float:none;
+width:100%;
+display:block;
+text-align:center;
+}
+.banner220 {
+margin: 0 auto;
+padding:0;
+float:none;
+text-align:center;
+width:100%;
+display:block;
+}
+#topnav, #catnav {
+padding-top:10px;
+background:transparent !important;
+border:0 !important;
+}
+#topnav ul, #catnav ul { 
+display: none; 
+}
+.select-menu,
+.select-menu-catnav {
+display:block;
+border:1px solid #ddd;
+padding: 10px;
+margin: 0 auto;
+font-size:10pt;
+width:100%;
+background:#f5f5f5;
+color:#666;
+text-transform:none;
+}
+.select-menu-catnav {
+border:1px solid #ddd;
+background:#fff;
+color:#666;
+}
+.reveal-modal {
+visibility: hidden;
+top:50%;
+left: 0;
+margin: 0 auto;
+width: 90%;
+padding: 5%;
+border:0;
+}
+}
+@media only screen and (min-width: 961px) and (max-width: 1040px) {
+#wrap,
+.limit,
+#head-content {
+width:auto;
+max-width:96%;
+margin:0;
+padding:0 2%;
+}
+}
+@media only screen and (min-width: 1170px) and (max-width: 1300px) {
+#wrap,
+#header {
+margin: 0 auto 0 5px;
+}
+}
+@media only screen and (max-width: 706px) {
+.header-left {
+width: 100%;
+float: none;
+margin: 0 auto;
+}
+.header-right {
+width: 100%;
+float: none;
+}
+.header-right #search {
+float: none;
+text-align: center;
+}	
+.l-hdExtra {
+float: none;
+margin: 15px auto 20px;
+display: block;
+text-align: center;
+}	
+#site-desc {
+text-align: center;
+}
+}
+@media only screen and (max-width: 345px) {	
+#site-desc {
+font-size: 9px;
+}
+}

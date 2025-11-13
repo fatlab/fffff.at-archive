@@ -1,0 +1,22 @@
+/**
+ * File footer.js.
+ *
+ * Theme Customizer enhancements for a better user experience.
+ *
+ * Handle footer visibility on scrolling and hide on page load for better user experience.
+ */
+
+(() => {
+  const $ = jQuery;
+  $(window).scroll(() => {
+    function footer() {
+      const scroll = $(window).scrollTop();
+      if (scroll > 100) {
+        $('.footer-nav').addClass('show');
+      } else {
+        $('.footer-nav').removeClass('show');
+      }
+    }
+    footer();
+  });
+})();

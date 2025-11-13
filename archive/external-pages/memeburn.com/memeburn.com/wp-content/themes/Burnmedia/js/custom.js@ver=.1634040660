@@ -1,0 +1,507 @@
+jQuery('html').removeClass('no_js');
+jQuery('html').addClass('js');
+//Hee
+var AppSettings = {
+    DEBUGMODE: true //change to turn on/off console.log statements
+};
+
+/**
+ * Simple debug setup for logging to the console
+ * @type {Object}
+ */
+var Debug = {
+    log: function(string, variable) {
+        if (AppSettings.DEBUGMODE) {
+            try {
+                console.log(string, variable);
+            } catch (e) {}
+        }
+    },
+    warn: function(string, variable) {
+        if (AppSettings.DEBUGMODE) {
+            try {
+                console.warn(string, variable);
+            } catch (e) {}
+        }
+    }
+};
+
+
+
+var frontendOverlays = {
+    init: function(){
+        jQuery(document).keypress(function(e) {
+          // 1
+          if(e.which == 49) {
+            jQuery('body').toggleClass('home-1');
+          }
+        });
+    }
+}
+
+var Timeago = {
+    init: function(){
+		// Display original dates older than 24 hours
+        let cutoff = 1000*60*60*24;
+        jQuery.timeago.settings.cutoff = cutoff;
+        jQuery("time.timeago").timeago();
+    }
+}
+
+var Headroomy = {
+    init: function(){
+        jQuery("body").headroom({
+            offset : 90,
+            tolerance : {
+                up : 15,
+                down : 30
+            },
+        });
+    }
+}
+
+var JobsBurner = {
+    checkme: function(html_container, css_class) {
+        var html = "<div class=\"owl-carousel job-list " + css_class + "\">";
+        for (j = 0; j < jobs.length; j++)
+        {
+            html += `<div class="job-item">
+            <a href="http://jobsburn.com/job/${jobs[j].id}/${jobs[j].url_title}" target="_blank">
+            <h3 class="job-item__title">${jobs[j].title}</h3>
+            <span class="job-item__company">${jobs[j].company}</span>
+            <span class="job-item__category">${jobs[j].category_name}</span>
+            <span class="divdot">•</span>
+            <span class="job-item__area">${jobs[j].location}</span></a>
+            </div>`;
+        }
+        html += "</div>";
+        
+        if (document.getElementById(html_container))
+        {
+            document.getElementById(html_container).innerHTML = html;	
+        }
+        else
+        {
+            document.write("<div id=\"" + html_container + "\">" + html + "</div>");
+        }
+
+
+        jQuery('.job-carousel').owlCarousel({
+            loop:true,
+            margin:15,
+            responsiveClass:true,
+            navText : ['','<i class="icon-chevron"></i>'],
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                320:{
+                    items:2,
+                    nav:true
+                },
+                800:{
+                    items:3,
+                    nav:true,
+                    loop:true
+                }
+            }
+        })
+
+    }
+}
+
+var MegaSwitch = {
+    
+    init: function(){
+
+        jQuery('.burn-mega-menu').css({'min-height': jQuery('.megasite.active').height() + 20 + "px" });
+
+        jQuery(".megaswitch").click(function(e) {
+            e.preventDefault()
+            let target = jQuery(this).data('target')
+            jQuery('.megasite, .megaswitch').removeClass('active')
+            jQuery(this).addClass('active')
+
+            let telement = jQuery('.megasite.'+ target)
+            telement.addClass('active')
+            jQuery('.burn-mega-menu').css({'min-height': telement.height() + 20 + "px" });
+
+        })
+
+        jQuery(".megatoggle").click(function(e) {
+            e.preventDefault()
+            let target = jQuery(this).data('target')
+            jQuery(this).toggleClass('active')
+            jQuery('.megasite.'+ target).toggleClass('active')
+        })
+
+        jQuery(window).on('resize', function(){
+            var win = jQuery(this); //this = window
+            if (win.height() >= 768) {
+                jQuery('.burn-mega-menu').css({'min-height': jQuery('.megasite.active').height() + 20 + "px" });
+            }
+      });
+    }
+}
+
+var OwlCarousels = {
+    init: function(){
+        jQuery('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:2,
+                    nav:true
+                },
+                1000:{
+                    items:3,
+                    nav:true,
+                    loop:true
+                }
+            }
+        })
+    }
+}
+
+var ToggleBodyClassButton = {
+    init: function(){
+        jQuery(".toggle-body").click(function(e) {
+            e.preventDefault()
+            let tclass = jQuery(this).data('toggleclass');
+            if (jQuery('body').hasClass(tclass)) {
+                jQuery('body').removeClass(tclass)
+                jQuery(this).removeClass('active')
+            } else {
+                jQuery('.toggle-body').removeClass('active')
+                jQuery('body').removeClass('burn-menu--open')
+                jQuery('body').removeClass('burn-search--open')
+                jQuery('body').removeClass('burn-mega--open')
+                jQuery('body').removeClass('burn-social-list--open')
+                jQuery(this).addClass('active')
+                jQuery('body').addClass(tclass)
+            }
+        })
+        jQuery(".nav-bar__subscribe").click(function(e) {
+            e.preventDefault()
+            // class must be the same as in cookie
+            jQuery('body').toggleClass('show_subscribe')
+        })
+    }
+}
+
+
+var interval = null
+let interstitialName = 'interstitial_cookie'
+var interstitial = {
+    init: function(){
+        jQuery(document).ready(function() {
+            // Total Time add must be shown for in seconds
+            let totalAdTime = 10
+            let skipDelay = 1
+                
+            if (!cookies.readCookie(interstitialName) && show_interstitial) {
+                let totalTime = totalAdTime
+                jQuery('.interstitial__countdown .counter').html(totalTime)
+                jQuery('body').addClass('interstitial--active')
+                
+                // Push the ad in if no cookie
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-interstitial-wrapper'); });
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-interstitial-mobile-wrapper'); });
+
+                interval = setInterval(() => {
+                    totalTime -= 1
+                    jQuery('.interstitial__countdown .counter').html(totalTime)
+    
+                    // if (totalTime == (totalAdTime - skipDelay)) {
+                        interstitial.skip()
+                    // }
+
+                    if (totalTime == 0) {
+                        interstitial.continue()
+                    }
+                }, 1000);
+            } else {
+                cookies.init();
+            }
+        });
+    },
+    skip: function(){
+        jQuery('.interstitial__skip').addClass('activeSkip')
+
+        jQuery(".activeSkip").click(function(event) {
+            event.preventDefault();
+            jQuery('.interstitial__skip').removeClass('activeSkip')
+            interstitial.continue()
+        });
+    },
+    continue: function () {
+        clearInterval(interval);
+    
+        jQuery('body').removeClass('interstitial--active')
+        jQuery('.interstitial__skip').removeClass('activeSkip')
+        // cookie lifetime = 14 days
+        cookies.createCookie(interstitialName, 'true', 14);
+        cookies.init();
+    }
+}
+
+var cookies = {
+    init: function(){
+        jQuery(document).ready(function() {
+            // cookies
+            var cookieName = 'permission_cookie'
+            var subCookieName = 'subscription_cookie'
+            // cookies.eraseCookie(subCookieName)
+
+            jQuery(".cookie_accept").click(function(e) {
+                e.preventDefault();
+                // cookie lifetime = 1 year
+                cookies.createCookie(cookieName, 'true', 365);
+                jQuery('body').removeClass("show_cn");
+            });
+
+            jQuery(".close_subscription").click(function() {
+                // cookie lifetime = 2 weeks
+                jQuery('body').removeClass("show_subscribe");
+            });
+
+            var cookie_read = cookies.readCookie(cookieName);
+            var sub_cookie_read = cookies.readCookie(subCookieName);
+
+            if (!cookie_read) {
+                // console.log('No Cookie')
+                setTimeout(() => {
+                    jQuery('body').addClass("show_cn");
+                }, 1000);
+            }
+
+            if (!sub_cookie_read) {
+                // console.log('No Subscriber')
+                setTimeout(() => {
+                    // class must be the same as in ToggleBodyClassButton
+
+                    jQuery(".footerSub__button").click(function(e) {
+                        e.preventDefault()
+                        jQuery('body').toggleClass('show_subscribe')
+                    })
+
+                    jQuery('body').addClass("show_subscribe_prompt");
+                    
+                    jQuery(".closeSubButton").click(function(e) {
+                        e.preventDefault()
+                        cookies.createCookie(subCookieName, 'true', 31);
+                        jQuery('body').removeClass('show_subscribe_prompt')
+                        cookies.surveyCookie();
+                    })
+                }, 3500);
+            } else {
+                cookies.surveyCookie();
+            }
+        });
+    },
+    surveyCookie: function(){
+        let survey_cookie = cookies.readCookie(survey_cookieName);
+
+        if (!survey_cookie) {
+            setTimeout(() => {
+                jQuery('body').toggleClass('show_survey')
+            }, 3500);
+        }
+    },
+    surveyClose: function(time){
+        let survey_cookie = cookies.readCookie(survey_cookieName);
+
+        if (!survey_cookie) {
+            cookies.createCookie(survey_cookieName, 'true', time);
+        }
+    },
+    createCookie: function(name, value, days){
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        } else {
+            var expires = "";
+        }
+        let cookie = name + "=" + value + expires + "; path=/"
+        document.cookie = cookie;
+    },
+    readCookie: function(name){
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    },
+    eraseCookie: function(name){
+        cookies.createCookie(name, "", -1);
+    }
+}
+
+var SingleScroll = {
+    init: function(){
+        if (jQuery('body').hasClass("single-post")) {
+            jQuery(window).scroll(function(){
+
+                let triggerElemnet = document.getElementById("triggerNext")
+
+                function elementScrolled(elem) {
+                    var docViewTop = jQuery(window).scrollTop()
+                    var docViewBottom = docViewTop + jQuery(window).height()
+                    var elemTop = jQuery(elem).offset().top
+                    return elemTop <= docViewBottom
+                }
+
+                if (elementScrolled(triggerElemnet)) {
+                    jQuery('.nextCard').addClass('open')
+                } else {
+                    jQuery('.nextCard').removeClass('open')
+                }
+            });
+        }
+    }
+}
+
+var LazyLoading = {
+    init: function(){
+        var lazyloadImages;
+        if ("IntersectionObserver" in window) {
+            lazyloadImages = document.querySelectorAll(".lazy");
+            var imageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                var image = entry.target;
+                image.classList.remove("lazy");
+                imageObserver.unobserve(image);
+                }
+            });
+            });
+        
+            lazyloadImages.forEach(function(image) {
+            imageObserver.observe(image);
+            });
+        } else {  
+            var lazyloadThrottleTimeout;
+            lazyloadImages = document.querySelectorAll(".lazy");
+            
+            function lazyload () {
+            if(lazyloadThrottleTimeout) {
+                clearTimeout(lazyloadThrottleTimeout);
+            }    
+        
+            lazyloadThrottleTimeout = setTimeout(function() {
+                var scrollTop = window.pageYOffset;
+                lazyloadImages.forEach(function(img) {
+                    if(img.offsetTop < (window.innerHeight + scrollTop)) {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    }
+                });
+                if(lazyloadImages.length == 0) { 
+                document.removeEventListener("scroll", lazyload);
+                window.removeEventListener("resize", lazyload);
+                window.removeEventListener("orientationChange", lazyload);
+                }
+            }, 20);
+            }
+            document.addEventListener("scroll", lazyload);
+            window.addEventListener("resize", lazyload);
+            window.addEventListener("orientationChange", lazyload);
+        } 
+    }
+}
+
+var Survey = {
+    init: function() {
+        jQuery('.survey_closer').click(function(e) {
+            e.preventDefault()
+            cookies.surveyClose(7)
+            jQuery('body').removeClass('show_survey')
+        });
+
+        let questions = jQuery('.survey_container .gform_body .gform_fields').children('li')
+        let questionIds = []
+        let counter = 0
+
+        for (var question of questions) {
+            let thisID = question.id
+            jQuery('#' + thisID).hide()
+            if (thisID.substring(0,5) == 'field') 
+                questionIds.push(thisID)
+            
+        }
+
+        console.log(questionIds)
+
+        Survey.nextQuestion(questionIds[counter]);
+        // jQuery('.survey_container .survey_counter').text('Question (' + (counter + 1) + '/' + questionIds.length + ')')
+
+        jQuery('.surveyAgree').click(function() {
+            counter++
+            Survey.nextQuestion(questionIds[1], questionIds[0])
+            jQuery('.survey_container .survey_counter').text('Question (' + (counter) + '/' + (questionIds.length - 1) + ')')
+        })
+
+        for (var questionId of questionIds) {
+            jQuery('#' + questionId).change(function() {
+                let thisAnswer = jQuery('#' + questionIds[counter]).find("input:checked").val()
+                let thisQuestion = jQuery('#' + questionIds[counter]).find(".gfield_label").text()
+                counter++
+                Survey.nextQuestion(questionIds[counter], questionIds[counter-1], {question: thisQuestion, answer: thisAnswer})
+
+                jQuery('.survey_container .survey_counter').text('Question (' + (counter) + '/' + (questionIds.length - 1) + ')')
+
+                if (counter == questionIds.length) {
+                    cookies.surveyClose(365)
+                    jQuery('.survey_container .gform_footer .gform_button').click()
+
+                    jQuery('.survey_container .survey_counter').text('').css('margin-bottom: 0;')
+                }
+            })
+        }
+    },
+    nextQuestion: function(qId, lastId, qDetails) {
+        if (lastId) {
+            jQuery('#' + lastId).hide()
+            if (qDetails) {
+                ga('send', 'event', {
+                    eventCategory: 'Survey',
+                    eventAction: qDetails.question,
+                    eventLabel: qDetails.answer
+                });
+            }
+        }
+        jQuery('#' + qId).show()
+
+    }
+}
+
+var survey_cookieName = 'md_survey_cookie_' + jQuery('.survey_container form').attr('id')
+
+var Main = {
+    run: function() {
+        Debug.log('Custom Scripts Running');
+        interstitial.init();
+        frontendOverlays.init();
+        OwlCarousels.init();
+        Timeago.init();
+        MegaSwitch.init();
+        Headroomy.init();
+        ToggleBodyClassButton.init();
+        SingleScroll.init();
+        LazyLoading.init();
+        Survey.init();
+    }
+};
+
+jQuery(document).ready(Main.run);

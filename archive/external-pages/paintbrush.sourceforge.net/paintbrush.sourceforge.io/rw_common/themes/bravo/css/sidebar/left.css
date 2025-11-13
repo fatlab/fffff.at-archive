@@ -1,0 +1,44 @@
+#sidebarContainer {
+	float: left;
+}
+
+#contentContainer {
+	margin-left: 250px;
+}
+
+#sidebarContainer #sidebar,
+#pageHeader {
+	padding-right: 15px;
+}
+
+#navcontainer a {
+	padding-left: 15px;
+	background-position: left center;
+}
+
+#navcontainer ul ul a {
+	padding-left: 30px;
+}
+
+#navcontainer ul ul #current,
+#navcontainer ul ul .currentAncestor {
+	background-position: 15px center;
+}
+
+#navcontainer ul ul ul a {
+	padding-left: 45px;
+}
+
+#navcontainer ul ul ul #current,
+#navcontainer ul ul ul .currentAncestor {
+	background-position: 30px center;
+}
+
+#navcontainer ul ul ul ul a {
+	padding-left: 60px;
+}
+
+#navcontainer ul ul ul ul #current,
+#navcontainer ul ul ul ul .currentAncestor {
+	background-position: 45px center;
+}

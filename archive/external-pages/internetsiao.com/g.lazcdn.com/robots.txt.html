@@ -1,0 +1,456 @@
+
+<!DOCTYPE html><html><head><meta name="wpk-bid" content="nzk9v4lx-mcsc0hok">
+<script>(function () {try {if (location.href.indexOf('disable_localStorage_hook=true') >=0) {return;}
+if (window.localStorageHooked ===true) {return;}
+window.localStorageHooked =true;var iosVersion =-1;var userAgent =window.navigator.userAgent;if (/iPad|iPhone|iPod/.test(userAgent)) {var iosMatch =userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);if (iosMatch &&iosMatch.length >1) {iosVersion =parseInt(iosMatch[1],10);}
+}
+if (iosVersion < 18) {return;}
+console.log('通过ua判断系统为ios26，开始劫持localStorage');var localStorageData ={};for (var i =0;i < localStorage.length;i++) {var key =localStorage.key(i);localStorageData[key] =localStorage.getItem(key);}
+console.log('localStorageData',localStorageData);var taskQueue =[];function processTaskQueue() {while (taskQueue.length >0) {var task =taskQueue.shift();try {if (task.type ==='setItem') {localStorage.setItemOriginal(task.key,task.value);console.log(`处理任务${task.type}: ${task.key} = ${task.value}`);} else if (task.type ==='removeItem') {localStorage.removeItemOriginal(task.key);console.log(`处理任务${task.type}: ${task.key}`);} else {console.log(`处理任务unknown:${task}`);}
+} catch (error) {console.warn(`处理任务时发生错误: ${task.type}, key: ${task.key}`,error);}
+}
+}
+setInterval(processTaskQueue,500);var originalSetItem =Storage.prototype.setItem;Storage.prototype.setItem =function(key,value) {console.log(`劫持到数据setItem:${key} = ${value}`);var storageValue;if (value ===null ||value ===undefined) {storageValue ='';} else if (typeof value ==='string') {storageValue =value;} else if (typeof value ==='object' ||typeof value ==='number' ||typeof value ==='boolean') {storageValue =JSON.stringify(value);} else {storageValue =String(value);}
+localStorageData[key] =storageValue;taskQueue.push({type:'setItem',key,value:storageValue });return;};Storage.prototype.setItemOriginal =function(key,value) {return originalSetItem.call(this,key,value);};Storage.prototype.getItem =function(key) {var value =localStorageData.hasOwnProperty(key) ?localStorageData[key] :null;console.log(`劫持到数据getItem:${key} = ${value}`);return value;};var originalRemoveItem =Storage.prototype.removeItem;Storage.prototype.removeItem =function(key) {console.log(`劫持到数据removeItem:${key}`);delete localStorageData[key];taskQueue.push({type:'removeItem',key });return;};Storage.prototype.removeItemOriginal =function(key) {return originalRemoveItem.call(this,key);};} catch (error) {console.log('Error hook localStorage',error);}
+})();</script><meta charset="utf-8"><meta name="spm-id" content="a2o42.page-not-found"><meta name="aplus-waiting" content="1000"><meta name="wpk-sampleRate" content="0.25"><link rel="dns-prefetch" href="https://lzd-img-global.slatic.net/"><link rel="dns-prefetch" href="https://acs-m.lazada.sg/"><link rel="preload" as="style" href="https://g.lazcdn.com/g/code/npm/@ali/gcp-lzd-project-common-page/0.0.12/css/commError-pc.css"><link rel="preload" href="https://g.lazcdn.com/g/alilog/mlog/aplus_int.js" as="script"><link rel="preload" href="https://g.lazcdn.com/g/mtb/??3rd/0.0.10/require.js,lib-promise/3.1.3/polyfillB.js,lib-mtop/2.6.1/mtop.js,lib-windvane/3.0.6/windvane.js" as="script"><link rel="preload" href="https://g.lazcdn.com/g/lzd/assets/1.2.0/??react/17.0.2/react.production.min.js,react-dom/17.0.2/react-dom.production.min.js" as="script"><link rel="preload" crossorigin="anonymous" href="https://g.lazcdn.com/g/woodpeckerx/itrace-next/??itrace-jserror.iife.js,itrace-interface.iife.js,itrace-perf.iife.js,itrace-flow.iife.js,itrace-blank.iife.js,itrace-resource.iife.js,itrace.iife.js" as="script"><link rel="preload" crossorigin="anonymous" href="https://g.lazcdn.com/res-o/lzdfe/lzd-h5-itrace/index.js" as="script"><link rel="preload" crossorigin="anonymous" href="https://g.lazcdn.com/g/code/npm/@ali/gcp-lzd-project-common-page/0.0.12/js/commError-pc.js" as="script">
+<link rel="preload" href="https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Regular.woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Medium.woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Bold.woff2" as="font" crossorigin="anonymous">
+<title>Page Not Found</title>
+<link rel="shortcut icon" href="https://g.lazcdn.com/favicon.ico"><script>window.g_config =window.g_config ||{};window.g_config.language ="zh";window.g_config.regionID ="SG";</script>
+<style>@font-face{font-family:"NotoSans-Regular";src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Regular.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-Regular";font-weight:400;src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Regular.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-Regular";font-weight:500;src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Medium.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-Regular";font-weight:600;src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Bold.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-Regular";font-weight:700;src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Bold.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-SemiBold";src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Medium.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-SemiBold";font-weight:500;src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Medium.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-SemiBold";font-weight:600;src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Bold.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-SemiBold";font-weight:700;src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Bold.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-Bold";src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Bold.woff2') format('woff2');font-display:fallback;}@font-face{font-family:"NotoSans-Bold";font-weight:700;src:url('https://g.lazcdn.com/g/lzd/assets/1.2.13/font/EuclidCircularA-Bold.woff2') format('woff2');font-display:fallback;}</style>
+<style>*[style*=NotoSans-Regular i]{font-family:NotoSans-Regular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Tahoma,Arial,"PingFang SC","Microsoft YaHei",sans-serif !important;font-weight:400;}*[style*=NotoSans-SemiBold i]{font-family:NotoSans-SemiBold,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Tahoma,Arial,"PingFang SC","Microsoft YaHei",sans-serif !important;font-weight:500;}*[style*=NotoSans-Bold i]{font-family:NotoSans-Bold,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Tahoma,Arial,"PingFang SC","Microsoft YaHei",sans-serif !important;font-weight:700;}</style>
+<style>*[style*=NotoSans-SemiBold i],*[style*=NotoSans-Bold i]{letter-spacing:-0.5px;}</style>
+<style>button,hr,input{overflow:visible}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}a,a:hover{text-decoration:none}a,html{-webkit-tap-highlight-color:transparent}body{font-family:NotoSans-Regular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Tahoma,Arial,"PingFang SC","Microsoft YaHei",sans-serif !important;margin:0;}details,main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:NotoSans-Regular;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{padding:.35em .75em .625em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}table{border-collapse:separate;border-spacing:0}caption,td,th{text-align:left;font-weight:400}table,td,th{vertical-align:middle}blockquote:after,blockquote:before,q:after,q:before{content:""}blockquote,q{quotes:"" ""}a img{border:none}html{font-family:NotoSans-Regular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Tahoma,Arial,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:400;font-size:100%;line-height:1.15}.lzd-font-thin{font-weight:300}.lzd-font-normal{font-weight:400}.lzd-font-bold{font-weight:500}.lzd-font-bolder{font-weight:600}.lzd-font-small{font-size:12px}.lzd-font-normal{font-size:14px}.lzd-font-large{font-size:16px}.lzd-font-larger{font-size:18px}.lzd-theme-color{color:#ff330c}.lzd-text-overflow{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lzd-base-mask{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;background:rgba(0,0,0,.03)}.lzd-base-center{display:flex;align-items:center;justify-content:center}.lzd-icon-navigation-arrow:hover{background:rgba(0,0,0,.15)!important}.laz-icon-navigation-hover:hover{color:#FE4960!important}.lzd-voucher-arrow:hover{background:rgba(0,0,0,.3)!important}.lzd-two-line-ellipsis{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.lzd-item-hover-mask:hover{opacity:1!important}.product-list .product-row:last-child{margin-bottom:0!important}.elevator-tab-item:hover{background-image:linear-gradient(136deg,#FF933F 0,#F93782 67%,#F93782 100%)!important}.elevator-tab-item span:hover{color:#fff!important}.lzd-rwb-bottom-bar-placeholder{height:52px}@media only screen and (device-width:375px) and (device-height:812px),screen and (device-width:414px) and (device-height:896px){.lzdrwb-navigation-base{padding-bottom:17px}.lzd-rwb-bottom-bar-placeholder{height:69px}}</style>
+<link rel="stylesheet" href="https://g.lazcdn.com/g/code/npm/@ali/gcp-lzd-project-common-page/0.0.12/css/commError-pc.css">
+<script src="https://g.lazcdn.com/g/alilog/mlog/aplus_int.js"></script></head><body><script>with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","cfgver=1.0&aplus",id="beacon-aplus",src="//g.lazcdn.com/g/alilog/mlog/aplus_int.js")
+</script>
+<script>window.g_config =window.g_config ||{};window.g_config.wh_project ="lazada";window.g_config.pageType ="default";window.g_config.channel ="default";window.g_config.language ="en";window.g_config.regionID ="SG";window.g_config.channelEnv ="product";window.g_config.showPcSearchboxHotWords =false;window.g_config.newPcHeadFoot =true;</script><link rel="stylesheet" type="text/css" href="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/css/615.css"/><link rel="stylesheet" type="text/css" href="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/css/p_index-index.css"/>
+<script>console.log('[header debug data]:','header start');</script>
+<script>(function() {try {if (window.aplusPageIdSetComplete ||/AliApp/i.test(navigator.userAgent)) {return;}
+var get_cookie =function (sName) {var sRE ='(?:; )?' + sName + '=([^;]*);?';var oRE =new RegExp(sRE);if (oRE.test(document.cookie)) {var str =decodeURIComponent(RegExp['$1']) ||'';if (str.trim().length >0) {return str;} else {return '-';}
+} else {return '-';}
+};var getRand =function () {var page_id =get_cookie('cna') ||'001';page_id =page_id.toLowerCase().replace(/[^a-zd]/g,'');page_id =page_id.substring(0,16);var d =(new Date()).getTime();var randend =[page_id,d.toString(16)
+].join('');for (var i =1;i < 10;i++) {var _r =parseInt(Math.round(Math.random() *10000000000),10).toString(16);randend +=_r;}
+randend =randend.substr(0,42);return randend;};var pageid =getRand();var aq =(window.aplus_queue ||(window.aplus_queue =[]));aq.push({'action':'aplus.appendMetaInfo','arguments':['aplus-cpvdata',{"pageid":pageid}]
+});aq.push({'action':'aplus.appendMetaInfo','arguments':['aplus-exdata',{"st_page_id":pageid}]
+});var gq =(window.goldlog_queue ||(window.goldlog_queue =[]));gq.push({'action':'goldlog.appendMetaInfo','arguments':['aplus-cpvdata',{"pageid":pageid}]
+});gq.push({'action':'goldlog.appendMetaInfo','arguments':['aplus-exdata',{"st_page_id":pageid}]
+});window.aplusPageIdSetComplete =true;} catch(err) {console.error(err);}
+})();</script>
+<div id="New_LzdSiteNav" class="site-nav J_NavScroll"><div id="topActionHeaderWrapper" class="lzd-header" data-spm="header" data-tag="links"><div id="topActionHeader" class="lzd-header-content-wrap J_NavScroll"><div class="lzd-header-content "><div class="lzd-links-bar " id="topActionLinks"><div class="links-list header-content SG en">
+<div class="top-links-item" id="topActionInternalFeedback" style="display:none;">
+<a class="highlight" target="_blank" href="https://pages.lazada.sg/wow/gcp/route/lazada/sg/upr_1000345_lazada/channel/sg/upr-router/sg?wx_navbar_transparent=true&amp;disable_smb=true&amp;lzd_pc_navbar_hidden=true&amp;hybrid=1&amp;data_prefetch=true&amp;prefetch_replace=1&amp;at_iframe=1&amp;wh_pid=/lazada/channel/sg/feedback/internal-feedback" data-spm-click="gostr=/lzdpub.header.tbar;locaid=internal_feedback">INTERNAL FEEDBACK</a>
+</div>
+<div class="top-links-item" id="topActionFeedback">
+<a class="highlight" target="_blank" href="https://pages.lazada.sg/wow/gcp/route/lazada/sg/upr_1000345_lazada/channel/sg/upr-router/sg?hybrid=1&amp;data_prefetch=true&amp;prefetch_replace=1&amp;at_iframe=1&amp;wh_pid=/lazada/channel/sg/trade/feedback" data-spm-click="gostr=/lzdpub.header.tbar;locaid=dfeedback">feedback</a>
+</div>
+<div class="top-links-item orange" id="topActionDownload" data-spm-click="gostr=/lzdpub.header.tbar;locaid=app_download">
+<span>SAVE MORE ON APP</span>
+<div class="lzd-download-popup top-popup-wrap" id="lzdDownloadPopup">
+<div class="top-popup-content lzd-download-content">
+<div class="get-the-app-scope">
+<div class="get-the-app">
+<div class="get-the-app-title">Download the App</div>
+<div class="get-the-app-promotion">
+<div class="get-the-app-lazada-qr-wrap">
+<img class="get-the-app-lazada-qr" src="https://img.lazcdn.com/us/domino/d830782f509dbbffe5811eb1080e55f4.png" alt="">
+</div>
+<div class="promotion-text">
+<a href="https://pages.lazada.sg/wow/i/sg/SGCampaign/download-the-app/">
+<div class="get-the-app-download-text">
+<p>Shop through our app to enjoy:&nbsp;</p>
+<ul>
+<li>Exclusive Vouchers</li>
+<li>Better deals</li>
+<li>Personalised recommendations</li>
+<li>Find out first</li>
+</ul>
+</div>
+</a>
+</div>
+</div>
+<div class="app-stores">
+<a href="https://itunes.apple.com/app/id785385147" class="store-link">
+<i class="app-apple"></i>
+</a>
+<a href="https://play.google.com/store/apps/details?id=com.lazada.android" class="store-link">
+<i class="app-google"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="top-links-item" id="topActionSell">
+<a class="highlight" href="https://sellercenter.lazada.sg/apps/register/index?gsc=1" data-spm-click="gostr=/lzdpub.header.tbar;locaid=sell_on">sell on lazada</a>
+</div>
+<div class="top-links-item orange" id="topActionCustomCare" data-spm-click="gostr=/lzdpub.header.tbar;locaid=customer_care">
+<span>CUSTOMER CARE</span>
+<div class="lzd-customcare-popup top-popup-wrap">
+<div class="top-popup-content l-customcare-content">
+<ul class="care-list">
+<li class="care-item">
+<a href="https://helpcenter.lazada.sg/s/faq" class="care-item-anchor">
+<span class="care-icon help-center"></span>
+Lazada Help Center
+</a>
+</li>
+<li class="care-item">
+<a href="https://helpcenter-redmart.lazada.sg/s/faq" class="care-item-anchor">
+<span class="care-icon redmart-help-center"></span>
+RedMart Help Center
+</a>
+</li>
+<li class="care-item">
+<a href="https://h5-alimebot.lazada.sg/intl/index.htm?from=adn8BgiqoB" class="care-item-anchor">
+<span class="care-icon help-center"></span>
+Chat with us
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="top-links-item grey" id="topActionTrack" data-spm-click="gostr=/lzdpub.header.tbar;locaid=track_order">
+<span>Track my order</span>
+<div class="lzd-track-popup top-popup-wrap" id="lzdTrackPop">
+<div class="top-popup-content lzd-track-content">
+<div id="topActionMyLastOrder"></div>
+<div class="track-title">Track my order</div>
+<form class="track-order-form" id="topActionTrackForm">
+<label for="topActionTrackOrderNumber" class="top-input-label">Your order number:</label>
+<div class="top-input-wrap track-order-input-wrap">
+<input placeholder="eg.123456789" id="topActionTrackOrderNumber" class="order-text top-input">
+<button type="button" class="top-button button-submit">
+<i class="icon icon-arrow-on-button"></i>
+</button>
+</div>
+<p class="track-order-more-text">For any other inquiries, <a href="https://www.lazada.sg/contact/" title="For any other inquiries, ">Click here</a></p>
+</form>
+<div class="error-message" id="topActionTrackErrorMsg"></div>
+</div>
+</div>
+</div>
+<div class="top-links-item  grey" id="anonLogin">
+<a class="grey" href="https://member.lazada.sg/user/login" data-spm-click="gostr=/lzdpub.header.tbar;locaid=login">login</a>
+</div>
+<div class="top-links-item  grey" id="anonSignup">
+<a class="grey" href="https://member.lazada.sg/user/register" data-spm-click="gostr=/lzdpub.header.tbar;locaid=signup">sign up</a>
+</div>
+<div class="top-links-item top-links-item-hidden" id="topActionUserAccont" data-spm-click="gostr=/lzdpub.header.tbar;locaid=account">
+<span id="myAccountTrigger" class="orange top-links-item-text-limit"></span>
+<div class="lzd-account-popup top-popup-wrap" id="lzdMyAccountPop">
+<div class="top-popup-content lzd-account-content">
+<ul class="account-list">
+<li class="account-item">
+<a href="https://member.lazada.sg/user/account#/" class="account-item-anchor" id="account-popup-manage-account">
+<span class="account-icon test manage-account"></span>Manage My Account
+</a>
+</li>
+<li class="account-item">
+<a href="https://my.lazada.sg/customer/order/index/" class="account-item-anchor">
+<span class="account-icon test my-orders"></span>My Orders
+</a>
+</li>
+<li class="account-item">
+<a href="https://my.lazada.sg/wishlist/index" class="account-item-anchor">
+<span class="account-icon test wishlist"></span>My Wishlist &amp; Followed Stores
+</a>
+</li>
+<li class="account-item">
+<a href="https://my.lazada.sg/customer/myReview/my-reviews" class="account-item-anchor">
+<span class="account-icon test my-reviews"></span>My Reviews
+</a>
+</li>
+<li class="account-item">
+<a href="https://my.lazada.sg/customer/returns/index?requestType=return" class="account-item-anchor">
+<span class="account-icon test returns"></span>My Returns &amp; Cancellations
+</a>
+</li>
+<li class="account-item">
+<a href="https://member.lazada.sg/user/logout" class="account-item-anchor" id="account-popup-logout">
+<span class="account-icon test logout"></span>Logout
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div><div class="lzd-logo-bar default"><div class="logo-bar-content header-content">
+<div class="lzd-logo-content"><a href="https://www.lazada.sg/" data-spm="dhome"><img src="https://img.lazcdn.com/g/tps/images/ims-web/TB12_ByawFY.1VjSZFnXXcFHXXa.png" alt="Online Shopping Lazada.sg Logo" /></a></div>
+<div class="lzd-nav-search" data-spm="search">
+<div id="button" data-spm-click="gostr=/lzdpub.header.search;locaid=d_go"></div>
+</div>
+<div class="lzd-nav-cart">
+<a href="https://cart.lazada.sg/cart?scm=1003.4.icms-zebra-5001270-2589730.OTHER_5196110127_2265486" data-spm="dcart">
+<span class="cart-icon"></span>
+<span class="cart-num " id="topActionCartNumber"></span>
+</a>
+</div>
+<div class="lzd-header-banner" id="topActionLiveUpBanner">
+</div></div></div></div><div class="lzd-site-nav-menu lzd-site-nav-menu-active" data-config="{}"><div class="lzd-site-menu-nav-container"><div class="lzd-site-menu-nav-category">
+<div class="lzd-site-menu-nav-category-label">
+<span class="lzd-site-menu-nav-category-text">Categories</span>
+</div>
+</div>
+<nav class="lzd-menu-labels" data-spm="menu">
+<a class="lzd-menu-labels-item" href="https://pages.lazada.sg/wow/gcp/route/lazada/sg/upr_1000345_lazada/channel/sg/upr-router/sg?hybrid=1&amp;data_prefetch=true&amp;prefetch_replace=1&amp;at_iframe=1&amp;wh_pid=/lazada/channel/sg/lazmall-channel/lazmall-channel-pc">
+<span class="lzd-site-nav-menu-iconfont lzd-menu-labels-item-icon">
+<img alt="LazMall" class="lzd-site-nav-menu-iconfont-img" src='https://img.lazcdn.com/g/icms/images/ims-web/787bfdb2-8a17-4807-8521-6756a4fdf541.png'/>
+</span>
+<span class="lzd-menu-labels-item-text">LazMall</span>
+</a>
+<a class="lzd-menu-labels-item" href="https://www.lazada.sg/shop/taobao?scm=1003.4.icms-zebra-5000519-2586695.OTHER_6502011286_7663767">
+<span class="lzd-site-nav-menu-iconfont lzd-menu-labels-item-icon">
+<img alt="Taobao" class="lzd-site-nav-menu-iconfont-img" src='https://img.lazcdn.com/g/icms/images/ims-web/10254f5b-9a65-4125-a31c-94e237924935.png'/>
+</span>
+<span class="lzd-menu-labels-item-text">Taobao</span>
+</a>
+<a class="lzd-menu-labels-item" href="https://pages.lazada.sg/wow/gcp/route/lazada/sg/upr_1000345_lazada/channel/sg/upr-router/sg?data_prefetch=true&amp;useRMContainer=h5&amp;useTabViewStack=true&amp;wh_pid=/lazada/channel/sg/redmart-channel/homepage&amp;showRMFrame=true&amp;showLoading=false&amp;showSearchBar=true&amp;hideRMBreadcrumb=true&amp;hybrid=1&amp;tab=home&amp;at_iframe=1&amp;showTabBar=true&amp;showUserJourneyWidget=true&amp;scm=1003.4.icms-zebra-5000519-2586695.OTHER_6502011287_7663767&amp;prefetch_replace=1">
+<span class="lzd-site-nav-menu-iconfont lzd-menu-labels-item-icon">
+<img alt="RedMart" class="lzd-site-nav-menu-iconfont-img" src='https://img.lazcdn.com/g/icms/images/ims-web/930f1232-e64c-47c2-88df-8e66ea34b294.png'/>
+</span>
+<span class="lzd-menu-labels-item-text">RedMart</span>
+</a>
+<a class="lzd-menu-labels-item" href="https://pages.lazada.sg/wow/gcp/lazada/channel/sg/voucher/claimvoucher?pha=true&amp;scm=1003.4.icms-zebra-5000519-2586695.OTHER_6502011288_7663767">
+<span class="lzd-site-nav-menu-iconfont lzd-menu-labels-item-icon">
+<img alt="Vouchers" class="lzd-site-nav-menu-iconfont-img" src='https://img.lazcdn.com/g/icms/images/ims-web/9e95c0a6-1831-4efb-b37e-6e5efd84f0ab.png'/>
+</span>
+<span class="lzd-menu-labels-item-text">Vouchers</span>
+</a>
+<a class="lzd-menu-labels-item" href="https://pages.lazada.sg/wow/gcp/route/lazada/sg/upr_1000345_lazada/channel/sg/upr-router/sg?hybrid=1&amp;data_prefetch=true&amp;at_iframe=1&amp;wh_pid=/lazada/channel/sg/bau-campaigns/wow-deals-for-you&amp;scm=1003.4.icms-zebra-5000519-2586695.OTHER_6502011290_7663767&amp;prefetch_replace=1">
+<span class="lzd-site-nav-menu-iconfont lzd-menu-labels-item-icon">
+<img alt="Lifestyle Deals" class="lzd-site-nav-menu-iconfont-img" src='https://img.lazcdn.com/g/icms/images/ims-web/b2cfe39b-e32a-4814-a8c9-0491926ff3d9.png'/>
+</span>
+<span class="lzd-menu-labels-item-text">Lifestyle Deals</span>
+</a>
+</nav></div></div></div></div></div><script src="https://g.lazcdn.com/g/mtb/lib-mtop/2.7.3/mtop.js"></script>
+<script src="https://g.lazcdn.com/g/lzd/assets/1.2.13/??react/16.8.0/react.production.min.js,react-dom/16.8.0/react-dom.production.min.js"></script><script src="https://g.lazcdn.com/g/lzd/??polyfill/0.0.1/index.js"></script><script src="https://g.lazcdn.com/g/lzd/assets/0.0.5/next/0.19.21/next.min.js"></script>
+<script>console.log('[header debug data]:','header end');</script>
+<script>try {var body =document.querySelector('body');var bodyClass =body.className;if (!bodyClass ||!bodyClass.match(/(?:^|s)gcp-(daraz-mybiz|daraz|lazada)-page(?:s|$)/)) {var businessClass ='gcp-lazada-page';body.className =(bodyClass ?(bodyClass + ' ') :'') + businessClass;}
+} catch (e) {console.error(e);}
+</script><div id="root"></div>
+<script>window.g_config =window.g_config ||{};window.g_config.wh_project ="lazada";window.g_config.pageType ="default";window.g_config.channel ="default";window.g_config.language ="en";window.g_config.regionID ="SG";window.g_config.channelEnv ="product";window.g_config.showPcSearchboxHotWords =false;window.g_config.newPcHeadFoot =true;</script>
+<script>console.log('[header debug data]:','footer start');</script>
+<section class="new-desktop-footer " data-config="{}">
+<div class="footer-first">
+<div class="lzd-footer-inner" data-spm="footer_top">
+<div class="lzd-footer-width-25">
+<h3 class="footer-title">Customer Care</h3>
+<ul class="footer-list">
+<li class="footer-li"><a href="https://www.lazada.sg/helpcenter/">Lazada Help Center</a></li>
+<li class="footer-li"><a href="https://helpcenter-redmart.lazada.sg/s/faq">RedMart Help Center</a></li>
+<li class="footer-li"><a href="https://www.lazada.sg/helpcenter/payments/">How to Buy</a></li>
+<li class="footer-li"><a href="https://www.lazada.sg/helpcenter/shipping_delivery/">Shipping &amp; Delivery</a></li>
+<li class="footer-li"><a href="https://www.lazada.sg/helpcenter/products-on-lazada/#answer-faq-internationalproduct-ans">International Product Policy</a></li>
+<li class="footer-li"><a href="https://www.lazada.sg/helpcenter/how-do-i-return-an-item-13301.html">How to Return</a></li>
+<li class="footer-li"><a href="https://www.lazada.sg/contact/">Contact Lazada</a></li>
+<li class="footer-li"><a href="https://redmart.lazada.sg/support/contact-us">Contact RedMart</a></li>
+</ul>
+</div>
+<div class="lzd-footer-width-25">
+<h3 class="footer-title">Lazada</h3>
+<ul class="footer-list">
+<li class="footer-li">
+<a href="https://group.lazada.com/en/">About Lazada</a>
+</li>
+<li class="footer-li">
+<a href="https://www.lazada.sg/affiliate/">Afﬁliate Program</a>
+</li>
+<li class="footer-li">
+<a href="https://www.lazada.sg/sellonlazada?hybrid=1&amp;wx_navbar_transparent=true&amp;titleHidden=1&amp;at_iframe=1">Sell on Lazada</a>
+</li>
+<li class="footer-li">
+<a href="https://pages.lazada.sg/wow/gcp/route/lazada/sg/upr_1000345_lazada/channel/sg/upr-router/sg?hybrid=1&amp;data_prefetch=true&amp;prefetch_replace=1&amp;at_iframe=1&amp;wh_pid=/lazada/channel/sg/redmart-channel/b2b-landing-page&amp;useRMContainer=h5&amp;showLoading=false&amp;showTabBar=false&amp;actionBarButtons=share&amp;showUserJourneyWidget=false&amp;showRMFrame=true&amp;enableNavBarAutohide=false">RedMart for Business</a>
+</li>
+<li class="footer-li">
+<a href="https://pages.lazada.sg/wow/i/sg/LandingPage/partnerspromotions?hybrid=1">Partners Promotions</a>
+</li>
+<li class="footer-li">
+<a href="https://www.lazada.com/work-at-lazada/">Careers</a>
+</li>
+<li class="footer-li">
+<a href="https://www.lazada.sg/terms-of-use">Terms & Conditions</a>
+</li>
+<li class="footer-li">
+<a href="https://pages.lazada.sg/wow/gcp/route/lazada/sg/upr_1000345_lazada/channel/sg/upr-router/sg?hybrid=1&amp;data_prefetch=true&amp;prefetch_replace=1&amp;at_iframe=1&amp;wh_pid=/lazada/channel/sg/legal/privacy_policy">Privacy Policy</a>
+</li>
+<li class="footer-li">
+<a href="https://pages.lazada.sg/wow/gcp/route/lazada/sg/upr_1000345_lazada/channel/sg/upr-router/sg?hybrid=1&amp;data_prefetch=true&amp;prefetch_replace=1&amp;at_iframe=1&amp;wh_pid=/lazada/channel/sg/legal/ipr-policy">Intellectual Property Protection</a>
+</li>
+<li class="footer-li">
+<a href="https://redmart.lazada.sg/">Redmart Official Website</a>
+</li>
+</ul>
+</div>
+<div class="lzd-footer-width-50">
+<div class="footer-new-customer">
+<h3 class="footer-title"></h3>
+<input type="button" class="new-user-mobile-button footer-btn" value="DOWNLOAD NOW" data-spm-click="gostr=/lzdpub.footer.top;locaid=app_download">
+<div class="footer-input-div">
+<input type="text" class="new-user-mobile-number" id="txtphone" placeholder="Your mobile number">
+</div>
+</div>
+<div class="lzd-footer-app-downloads">
+<div class="lzd-footer-appIcon pull-left logo icon-logo-lazada-footer">
+<img loading="lazy" src="https://img.lazcdn.com/us/media/d33f1c45a4bd2fc773f8614625ed9cee-165-165.png" alt="Download the App" style="width: 100%; height: 100%;" />
+</div>
+<div class="pull-left lzd-app-download-text">
+<div class="title">Always Better</div>
+<div class="text">Download the App</div>
+</div>
+<div class="pull-left" style="width: 290px">
+<a class="pull-left icon-appStore-footer icon-appstore-footer" data-spm-click="gostr=/lzdpub.footer.top;locaid=app_store" href="https://apps.apple.com/sg/app/id785385147">
+<img loading="lazy" src="https://img.lazcdn.com/us/domino/e8ab6f9c-5f88-402d-b2a1-1dd940e046b4_SG-126-42.png" style="width: 100%; height: 100%;" alt="Apple App Download" />
+</a>
+<a class="pull-left icon-android-footer icon-appstore-footer" data-spm-click="gostr=/lzdpub.footer.top;locaid=android" href="https://play.google.com/store/apps/details?id=com.lazada.android&amp;hl=en_SG">
+<img loading="lazy" src="https://img.lazcdn.com/us/domino/aaec14c4-2bba-445d-aa83-0898020e4b2e_SG-126-42.png" style="width: 100%; height: 100%;" alt="Android App Download" />
+</a>
+<a class="pull-left icon-huawei-footer" data-spm-click="gostr=/lzdpub.footer.top;locaid=huawei" href="https://appgallery.huawei.com/#/app/C100164557">
+<img loading="lazy" src="https://img.lazcdn.com/g/tps/imgextra/i1/O1CN01brmkRW21eAmpV4slQ_!!6000000007009-2-tps-126-42.png" style="width: 100%; height: 100%;" alt="Huawei App Download" />
+</a>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+<div class="footer-second"><div class="lzd-footer-inner">
+<div class="lzd-footer-width-32">
+<h3 class="lzd-footer-h3">Payment Methods</h3>
+<div class="payment-card-list ">
+<span class="lzd-icon-payment ">
+<img loading="lazy" src="https://img.lazcdn.com/us/domino/436a8de5-c39f-4e20-a90f-371962f093a8_SG-53-39.png" alt="visa" style="height: 39px; width: 100%"/>
+</span>
+<span class="lzd-icon-payment ">
+<img loading="lazy" src="https://img.lazcdn.com/us/domino/d61caa9e-b487-441f-b537-8133824cba7f_SG-53-39.png" alt="ms" style="height: 39px; width: 100%"/>
+</span>
+<span class="lzd-icon-payment ">
+<img loading="lazy" src="https://img.lazcdn.com/us/domino/07b6990e-1a6e-4239-a160-9e6a97ea103d_SG-53-39.png" alt="ae" style="height: 39px; width: 100%"/>
+</span>
+</div>
+</div>
+<div class="lzd-footer-width-32 lzd-footer-spacing">
+<h3 class="lzd-footer-h3">Delivery Services</h3>
+<img loading="lazy" class="lzd-icon-delivery" src="https://img.lazcdn.com/g/tps/imgextra/i2/O1CN0119qSnn1DrFQgdG1kH_!!6000000000269-0-tps-96-70.jpg" alt="lazada logistics" />
+<img loading="lazy" class="lzd-icon-delivery" src="https://img.lazcdn.com/g/tps/imgextra/i2/O1CN01ARkHUF1oSBXXkBBZS_!!6000000005223-2-tps-96-70.png" alt="singpost" />
+<img loading="lazy" class="lzd-icon-delivery" src="https://img.lazcdn.com/g/tps/imgextra/i3/O1CN01myOrhg24Z5MOM2aAF_!!6000000007404-0-tps-96-70.jpg" alt="QXP" />
+<img loading="lazy" class="lzd-icon-delivery" src="https://img.lazcdn.com/g/tps/imgextra/i4/O1CN01vPq4n41PWtDFXGs0x_!!6000000001849-0-tps-96-70.jpg" alt="NJV" />
+<img loading="lazy" class="lzd-icon-delivery" src="https://img.lazcdn.com/g/tps/imgextra/i4/O1CN01npMjOy1g1bd0qvrdD_!!6000000004082-0-tps-96-70.jpg" alt="CJX" />
+<img loading="lazy" class="lzd-icon-delivery" src="https://img.lazcdn.com/g/tps/imgextra/i2/O1CN01QJfJF11pmcpaotRCe_!!6000000005403-2-tps-96-70.png" alt="J &amp; T" />
+<img loading="lazy" class="lzd-icon-delivery" src="https://img.lazcdn.com/us/domino/481d1f81-fbd2-4986-a085-9a36c35cdf81_SG-96-70.png" alt="Laku6" />
+<img loading="lazy" class="lzd-icon-delivery" src="https://img.lazcdn.com/us/domino/dd2b11c7-a86c-4ef5-90fd-636180fb397a_SG-96-70.png" alt="uParcel" />
+</div>
+<div class=" lzd-footer-width-32 ">
+<h3 class="lzd-footer-h3">Verified by</h3>
+<div class="lzd-footer-verified">
+<div class="lzd-footer-verified-left">
+<a class="lzd-footer-verified-item" href="https://img.lazcdn.com/us/media/d295573f9cbd9ad441822b9a09845bac-2480-3508.jpg" target="_blank">
+<img loading="lazy" alt="ISO" src="https://img.lazcdn.com/g/tps/tfs/TB1lbmoqYr1gK0jSZR0XXbP8XXa-340-200.png" style="height: 60px;" />
+</a>
+</div>
+<div class="lzd-footer-verified-right">
+<a class="lzd-footer-verified-item" href="https://img.lazcdn.com/us/media/71a069abbbe4a1df9e7801a60341d402-2480-3508.jpg" target="_blank">
+<img loading="lazy" alt="PCI DSS" src="https://img.lazcdn.com/g/tps/tfs/TB1jyJMv.H1gK0jSZSyXXXtlpXa-184-120.png" style="height: 60px;" />
+</a>
+</div>
+</div>
+</div>
+</div></div>
+<div class="footer-fourth">
+<div class="lzd-footer-inner">
+<div class="lzd-footer-width-50" data-spm="venture">
+<h3 class="lzd-footer-title">Lazada Southeast Asia</h3>
+<div class="lzd-footer-venture-list">
+<a class="lzd-footer-country country-id " href="https://www.lazada.co.id" data-spm-click="gostr=/lzdpub.footer.venture;locaid=id">
+<img loading="lazy" class="lzd-footer-country-image" src="https://img.lazcdn.com/us/domino/4df3b77e-f742-40e8-9785-fc646db1ca67_SG-32-32.png" alt="id" />
+</a>
+<a class="lzd-footer-country country-my " href="https://www.lazada.com.my" data-spm-click="gostr=/lzdpub.footer.venture;locaid=my">
+<img loading="lazy" class="lzd-footer-country-image" src="https://img.lazcdn.com/us/domino/7d095410-c513-4190-b851-577bd944de8c_SG-32-32.png" alt="my" />
+</a>
+<a class="lzd-footer-country country-ph " href="https://www.lazada.com.ph" data-spm-click="gostr=/lzdpub.footer.venture;locaid=ph">
+<img loading="lazy" class="lzd-footer-country-image" src="https://img.lazcdn.com/us/domino/16fea16e-c434-4a7d-81b7-2b72e02d89ae_SG-32-32.png" alt="ph" />
+</a>
+<a class="lzd-footer-country country-sg " href="https://www.lazada.sg" data-spm-click="gostr=/lzdpub.footer.venture;locaid=sg">
+<img loading="lazy" class="lzd-footer-country-image" src="https://img.lazcdn.com/us/domino/3ea2e43e-ad44-4776-9618-6363067fc89d_SG-32-32.png" alt="sg" />
+</a>
+<a class="lzd-footer-country country-th " href="https://www.lazada.co.th" data-spm-click="gostr=/lzdpub.footer.venture;locaid=th">
+<img loading="lazy" class="lzd-footer-country-image" src="https://img.lazcdn.com/us/domino/4a18c248-e89f-408a-8d23-d2e1ec259755_SG-32-32.png" alt="th" />
+</a>
+<a class="lzd-footer-country country-vn " href="https://www.lazada.vn" data-spm-click="gostr=/lzdpub.footer.venture;locaid=vn">
+<img loading="lazy" class="lzd-footer-country-image" src="https://img.lazcdn.com/us/domino/135fe6af-b17b-45cc-818e-52d9a60c04b4_SG-32-32.png" alt="vn" />
+</a>
+</div>
+</div>
+<div class="lzd-footer-width-25" data-spm="sns">
+<h3 class="lzd-footer-title">Follow Us</h3>
+<div class="lzd-follow-us-icon-list">
+<a class="lzd-follow-us-icon " href="https://www.facebook.com/LazadaSingapore" data-spm-click="gostr=/lzdpub.footer.sns;locaid=d_fbk">
+<img loading="lazy" src="https://img.lazcdn.com/g/tps/imgextra/i3/O1CN01Wdetn224xMIRNihao_!!6000000007457-2-tps-34-34.png" alt="fb" />
+</a>
+<a class="lzd-follow-us-icon " href="https://www.linkedin.com/company/lazada?spm=a2o42.pdp_revamp.sns.d_lnk.2e024fd0B1FvTr" data-spm-click="gostr=/lzdpub.footer.sns;locaid=d_lnk">
+<img loading="lazy" src="https://img.lazcdn.com/g/tps/imgextra/i4/O1CN01D6oQr31GPG1ONK9jd_!!6000000000614-2-tps-34-34.png" alt="linkin" />
+</a>
+<a class="lzd-follow-us-icon " href="https://www.youtube.com/@LazadaSingapore" data-spm-click="gostr=/lzdpub.footer.sns;locaid=d_ytb">
+<img loading="lazy" src="https://img.lazcdn.com/g/tps/imgextra/i4/O1CN01zt1zOu1zsFnzoIWje_!!6000000006769-2-tps-34-34.png" alt="yt" />
+</a>
+<a class="lzd-follow-us-icon " href="https://www.pinterest.com/lazadasg/?spm=a2o42.home.sns.d_pnt.72ea46b5l7ZQyU" data-spm-click="gostr=/lzdpub.footer.sns;locaid=d_pnt">
+<img loading="lazy" src="https://img.lazcdn.com/g/tps/imgextra/i2/O1CN01b9cK511pjsP40xyAX_!!6000000005397-2-tps-34-34.png" alt="pnt" />
+</a>
+<a class="lzd-follow-us-icon " href="https://www.instagram.com/lazada_sg" data-spm-click="gostr=/lzdpub.footer.sns;locaid=d_ins">
+<img loading="lazy" src="https://img.lazcdn.com/g/tps/imgextra/i4/O1CN011gka8L1E0PIZlHK7e_!!6000000000289-2-tps-34-34.png" alt="ins" />
+</a>
+<a class="lzd-follow-us-icon " href="https://x.com/lazadasg" data-spm-click="gostr=/lzdpub.footer.sns;locaid=d_twr">
+<img loading="lazy" src="https://img.lazcdn.com/g/tps/imgextra/i3/O1CN01bSHOIg1O2N9lO20XK_!!6000000001647-2-tps-34-34.png" alt="tw" />
+</a>
+<a class="lzd-follow-us-icon " href="https://www.tiktok.com/@lazada_sg" data-spm-click="gostr=/lzdpub.footer.sns;locaid=d_tkk">
+<img loading="lazy" src="https://img.lazcdn.com/g/tps/imgextra/i4/O1CN0193C9ay1QIykTmUlwk_!!6000000001954-2-tps-34-34.png" alt="tiktok" />
+</a>
+</div>
+</div>
+<div class="lzd-footer-width-25">
+<div class="lzd-footer-copyright">
+© Lazada 2025
+</div>
+</div>
+</div>
+</div>
+</section>
+<script>window.__ANON_CART_SCENE__ ='default';window.__ANON_CART_VERSION__ ='1.0.2';window.__ANON_CART_ASSETS_ENV__ ='product';</script>
+<script src="https://g.lazcdn.com/g/code/npm/@ali/gcom-pc-anonymous-cart-sdk/1.0.2/lib_anonymousCart/index.umd.es5.production.js" crossorigin="anonymous"></script>
+<script>window.__LIB_SEARCH_BOX_SCENE__ ='default';window.__LIB_SEARCH_BOX_VERSION__ ='0.4.26';window.__LIB_SEARCH_BOX_ASSETS_ENV__ ='product';window.__GCP_ENV ='production';</script>
+<link rel="stylesheet" href="https://g.lazcdn.com/g/lazada-search-fe/lzd-searchbox/0.4.26/index.css" />
+<script src="https://g.lazcdn.com/g/lazada-search-fe/lzd-searchbox/0.4.26/index.js"></script>
+<script>(() =>{var ele =document.querySelector('.lzd-nav-search');if(!ele) return;var extraParam ={taobao:{showOnlyInTaobao:true,onlyInTaobaoChecked:true,},}['default'] ||{};if (window.LZD &&window.LZD.SearchBox &&window.LZD.SearchBox.init) {var initOptions =extraParam;initOptions.lang ='en';initOptions.regionID ='SG';initOptions.submitSpm ='gostr=/lzdpub.header.search;locaid=d_go';window.LZD.SearchBox.init(ele,initOptions);}
+})();</script>
+<script>window.__LIB_LOGIN_SIGNUP_POPUP_SCENE__ ='default';window.__LIB_LOGIN_SIGNUP_POPUP_VERSION__ ='1.0.8';window.__LIB_LOGIN_SIGNUP_POPUP_ASSETS_ENV__ ='product';window.__GCP_ENV ='production';</script>
+<script src="https://g.lazcdn.com/g/code/npm/@ali/multimod-lzd-member__signup-login-pop/1.0.8/lib-signuppop/index.umd.es5.production.js" crossorigin="anonymous"></script>
+<script>console.log('[header debug data]:','footer end');</script>
+<div id="webim-container" onclick="javascript:goldlog.record('/lazada.IM.im-msgbox','CLK','platform=desktop&pagename='+ window.LZD_RETCODE_PAGENAME || 'other','GET')"></div>
+<script>var imJsLink ='//g.lazcdn.com/g/code/npm/@ali/lazada-buyer-im-pc/1.0.17/index.js';var imCssLink ='//g.lazcdn.com/g/code/npm/@ali/lazada-buyer-im-pc/1.0.17/index.css';var gConfig =window.g_config ||{regionID:'SG',language:'en'};window.onload =function() {if (!gConfig.regionID) return;window._imSDKconfig =window._imSDKconfig ||{region:(gConfig.regionID ||'sg').toLowerCase(),lang:gConfig.language ||'en',version:'1.0.17',enabled:/enable_webim=true/.test(document.location.search) ||true };if (window._imSDKconfig.disabled ||!window._imSDKconfig.enabled) {return;}
+var imy =document.createElement('link');imy.rel ='stylesheet';imy.href =imCssLink;var sty =document.getElementsByTagName('link')[0];sty.parentNode.insertBefore(imy,sty);var ims =document.createElement('script');ims.type ='text/javascript';ims.async =true;ims.crossOrigin ="anonymous";ims.src =imJsLink;var scr =document.getElementsByTagName('body')[0];scr.appendChild(ims);var done =false;ims.onload =ims.onreadystatechange =function() {if (!done &&(!this.readyState ||this.readyState==='loaded' ||this.readyState==='complete')) {done =true;window._chat &&window._chat.init(window._imSDKconfig).render('webim-container');}
+};};</script>
+<script async src="https://g.lazcdn.com/g/??mmfe/cps-rt-tracking/0.0.6/index.js,lzdmod/back-to-third-party-app/5.0.2/m/button.js"></script><script>!(function () {var a =window.__ICE_APP_CONTEXT__ ||{};var b ={"appData":null,"loaderData":{"/":{"pageConfig":{}}},"routePath":"/","matchedIds":["/"],"documentOnly":true,"renderMode":"CSR"};for (var k in a) {b[k] =a[k]}window.__ICE_APP_CONTEXT__=b;})();</script><script src="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/js/809.js"></script><script src="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/js/772.js"></script><script src="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/js/432.js"></script><script src="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/js/158.js"></script><script src="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/js/p_index-index.js"></script><script src="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/js/framework.js"></script><script src="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/js/386.js"></script><script src="https://g.lazcdn.com/g/psolution/lzd-head-foot/1.4.3/js/main.js"></script>
+<script>!function(e){"function"==typeof define&&define.amd?define(e):e()}((function(){"use strict";var e;!function(){var e="",i=document.head.querySelector('meta[name="itrace-bid"]')||document.head.querySelector('meta[name="wpk-pid"]')||document.head.querySelector('meta[name="wpk-bid"]');i&&i.getAttribute("content")&&(e=i.getAttribute("content"));var o=1,n=document.head.querySelector('meta[name="wpk-sampleRate"]');n&&n.getAttribute("content")&&(o=Number(n.getAttribute("content")));var r={id:"perf",collectResTiming:!0,maxLoadTiming:5e3};window.lazada_itrace_config&&(r=Object.assign(r,window.lazada_itrace_config.perfPlugin)),window.isTrace2=!0,window.__itrace_conf={bid:e,debug:!1,cluster:"intl",sampleRate:o,plugins:["flow","resource","jserror",{id:"blank",maxDepth:10,rootDom:function(){return document.getElementById("container")||document.getElementById("root")||document.body}},{id:"interface",enableXHR:!1,enableFetch:!1},r]}}(),e=["report","reportError","reportJSError","reportApi","reportApiError","reportBlankPage","reportPerf","reportFlow","setConfig"],window.__wpk={},e.forEach((function(e){window.__wpk[e]=function(){}})),e.forEach((function(e){Object.defineProperty(window.__wpk,e,{get:function(){return function(){window.__iTraceLogQueue||(window.__iTraceLogQueue=[]),"reportError"===e&&(e="reportJSError"),"reportApiError"===e&&(e="reportApi");var i=[e].concat(Array.prototype.slice.call(arguments));window.__iTraceLogQueue.push(i)}}})})),window.onerror=function(e,i,o,n,r){!window.__wpk.ready&&r&&window.__wpk.reportJSError(r,{stack:(r.stack||"").toString(),w_msg:e,w_file:i,w_line:o,w_col:n})},window.iLogger={},["iLoggerInit","iLoggerMtopPluginInit","iLoggerReportApi","iLoggerSelfDefineFSP","iLoggerIntegrate"].forEach((function(e){window.iLogger[e]=function(){if(window.iLogger.isReady&&"function"==typeof window.iLogger[e])window.iLogger[e].apply(null,arguments);else{window.__iTraceExpansionQueue||(window.__iTraceExpansionQueue=[]);var i=[e].concat(Array.prototype.slice.call(arguments));window.__iTraceExpansionQueue.push(i)}}})),function(){window.lzdiTraceLifeCircle={};var e={};["NativePrefetchEnd","FirstScreenRenderingStart","FirstScreenRenderingEnd","FSPStart","FSPEnd","FetchSSRDataStart","FetchSSRDataEnd","FetchFirstScreenDataStart","FetchFirstScreenDataEnd","PageRenderingEnd","lzdiTraceShareDidMountTime"].forEach((function(i){var o=function(){window.__iTraceLifeQueue||(window.__iTraceLifeQueue=[]);var e=[i].concat(Array.prototype.slice.call(arguments));window.__iTraceLifeQueue.push(e)};window.lzdiTraceLifeCircle[i]=o,e[i]=o})),window.clearTraceLifeQueue=function(){if(window.__iTraceLifeQueue){for(var i=window.__iTraceLifeQueue,o=0;o<i.length;o++){var n=i[o]||[],r=n.shift&&n.shift();window.lzdiTraceLifeCircle&&"function"==typeof window.lzdiTraceLifeCircle[r]&&e[r]!==window.lzdiTraceLifeCircle[r]&&window.lzdiTraceLifeCircle[r].apply(null,n)}window.__iTraceLifeQueue=[]}};var i=navigator.userAgent||"",o=/iPad|iPhone|iPod/.test(i)?"pagehide":"beforeunload";window.addEventListener(o,(function(){window.clearTraceLifeQueue()}))}(),function(){window.addEventListener("oniLoggerMtopPluginInit",(function(e){i(e.detail)}),!1);var e=!(window.lib&&window.lib.mtop);window.lib||(window.lib={}),e&&(e=!1,Object.defineProperty(window.lib,"mtop",{get:function(){return window.__lzdlib_mtop__},set:function(e){window.__lzdlib_mtop__=e,Object.defineProperty(window.lib.mtop,"middlewares",{get:function(){return window.__lzdlib_mtop_middlewares__},set:function(e){var i=new CustomEvent("oniLoggerMtopPluginInit",{detail:{}});window.__lzdlib_mtop_middlewares__=e,window.dispatchEvent(i)},configurable:!0,enumerable:!0})},configurable:!0,enumerable:!0}));var i=function(){var e;window.isMtopMiddlewareReady||(window,(e=window.lib||(window.lib={}))&&e.mtop&&!e.mtop.ERROR?(window.__iTraceMtopQueue||(window.__iTraceMtopQueue=[]),e.mtop.middlewares.push((function(e){var i=this.params,o=this.options,n=o.querystring,r=parseInt((void 0===n?{}:n).t)||Date.now(),t=void 0;return performance&&"function"==typeof performance.now&&(t=Math.floor(performance.now())-Math.floor(window.preLoadTime||0)),e().then((function(){var e=(o.results[0]||{}).stat,n=(void 0===e?{}:e).oneWayTime||Date.now()-r,a={params:i,options:o,spent:n,performanceNow:t};window.iLogger&&window.iLogger.mtopReport?window.iLogger.mtopReport(a):window.__iTraceMtopQueue.push(a)}))})),window.isMtopMiddlewareReady=!0,console.log("[lzd-h5-itrace] add mtop middlewares success")):console.warn("[lzd-h5-itrace] Mtop 没有初始化，无法添加 Mtop Itrace 监控插件！请参考 Mtop 文档 http://gitlab.alibaba-inc.com/mtb/lib-mtop ",e))}}(),window.__itraceBundleReady=function(){console.log("--- itrace sdk onload ---"),window.__wpk=window.__itrace,window.__wpk.reportError=window.__wpk.reportJSError,window.__wpk.reportApiError=window.__wpk.reportApi,window.__wpk.setReady(),"function"==typeof window.onWpkReady&&window.onWpkReady()},window.__itraceExpansionReady=function(){console.log("--- itrace expansion onload ---");var e=window.__iTraceExpansionQueue||[];window.iLogger.isReady=!0,window.lzdFspTrackerPlugin&&(window.iLogger.fspTracker=window.lzdFspTrackerPlugin);for(var i=0;i<e.length;i++){var o=e[i]||[],n=o.shift();"function"==typeof window.iLogger[n]&&window.iLogger[n].apply(null,o)}window.clearTraceLifeQueue(),"function"==typeof window.onTraceExpansionReady&&window.onTraceExpansionReady()}}));</script>
+<script>if(!window.__isSSR) {!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).lzdFspTrackerPlugin=e()}(this,(function(){"use strict";var t=function(){var t=[],e=screen.width*screen.height,n=null,i=!1,o=!1,a=["SCRIPT","LINK","SVG","IMG","VIDEO"],r=[];function l(t){if(!t)return"";var e=t.nodeName.toLowerCase();return""!==t.id?"".concat(e,"#").concat(t.id):"string"==typeof t.className?"".concat(e,".").concat(t.className.replace(" ",".")):e}function c(t){var e=[];y(t,(function(t){y(t.addedNodes,(function(t){1===t.nodeType&&e.push(t)}))})),e.length>0&&p(e.concat([]))}var u=null;function h(t){i||(o=!0,n&&clearTimeout(n),u.disconnect(),u.takeRecords(),setTimeout((function(){i=!0,v(t)}),1e3))}var f=function(){};function s(e,n){var i=0===t.length,o=screen.width,a=screen.height,r=document.documentElement,l=r?Math.min(r.clientHeight,a):a,c=r?Math.min(r.clientWidth,o):o,u=e.left+e.width,h=e.top+e.height,f=Math.round(.02*Math.min(o,a)),s=Math.round(.05*a);return i?e.width>=n||e.height>=n?f:u>=f&&c-e.left>=f&&h>=s&&l-e.top>=s:e.width>=2*f&&e.height>=2*f&&u>=s&&c-e.left>=s&&h>=s&&l-e.top>2*s}function d(t,e,n){var i=n||0;return y(t,(function(t){i=e(t,i)})),i}function m(t){var e=function(){t.lastTime=Math.max(T(),t.lastTime),t.c=document.getElementsByTagName("*").length,g()};window.requestAnimationFrame?requestAnimationFrame(e):setTimeout(e,0)}function p(n){var o=T(),c={createTime:o,lastTime:o,wait:0,piece:[],v:0,c:document.getElementsByTagName("*").length};y(n,(function(t){(function(t){for(var e=r.length,n=null,i=0;i<e;i++)if((n=r[i])&&n.contains&&n.contains(t))return!0;return!!t.hasAttribute("ignoreFspCollection")&&(r.push(t),!0)})(t)||function(t,n,o){var r=t.piece,c=document.documentElement.scrollTop||window.pageYOffset||document.body&&document.body.scrollTop||0,u=document.documentElement.scrollLeft||window.pageXOffset||document.body&&document.body.scrollLeft||0,h=o?null:n.getBoundingClientRect(),f=o||{type:0,className:"",top:h.top+c,left:h.left+u,width:h.width,height:h.height,domPath:l(n)},p=n.offsetParent;p&&p.offsetWidth<p.scrollWidth&&(f.width=Math.min(p.offsetWidth,f.width)),p&&p.offsetHeight<p.scrollHeight&&(f.height=Math.min(p.offsetHeight,f.height));var w=n.tagName;if(-1!=a.indexOf(w.toUpperCase())&&"IMG"==w){var v=0;f.width=Math.max(f.width,1),f.height=Math.max(f.height,1),f.type=1,s(f)&&(t.wait+=1,n.addEventListener("load",(function o(){if(i)n.removeEventListener("load",o,!0);else{v++,t.wait-=1;var a=n.getBoundingClientRect(),r=T();s(f,!0)&&(v<=1||r<=1e3)?(f.width=a.width,f.height=a.height,t.lastTime=Math.max(r,t.lastTime),f.size=a.width*a.height,f.v=f.size/e,t.v=d(t.piece,(function(t,e){return t.v+e}),0),m(t)):g()}}),!0),n.addEventListener("error",(function e(){i?n.removeEventListener("error",e,!0):(t.wait-=1,s(f)?(t.lastTime=Math.max(T(),t.lastTime),0===t.wait&&(t.v=d(t.piece,(function(t,e){return t.v+e}),0),m(t))):g())}),!0))}var y={};if(window.getComputedStyle&&("none"===(y=window.getComputedStyle(n,null)).display||"fixed"===y.position))return r;if(s(f)){var M=y.backgroundImage||"",b=/url\(['"]?(.*?)['"]?\)/i;if(b.test(M)&&(M=M.replace(b,"$1"),!/^data:/i.test(M)&&M!==location.href)){t.wait+=1;var E=document.createElement("img");E.onload=function(){t.wait-=1,t.lastTime=Math.max(T(),t.lastTime),0===t.wait&&m(t)},E.src=M}(function(t,e){var n=null;for(var i in t)if(n=t[i],e.top>=n.top&&e.left>=n.left&&e.top+e.height<=n.top+n.height&&e.left+e.width<=n.left+n.width)return!0;return!1})(r,f)||(f.size=f.width*f.height,f.v=f.size/e,t.v+=f.v,f.size&&r.push(f))}}(c,t)})),c.piece.length>0&&(t.push(c),m(c))}function g(){if(!o&&!i){n&&clearTimeout(n),n=setTimeout((function(){h()}),3e3);for(var e=null,a=null,r=0,l=0,c=0,u=0,f=0,s=t.length-1;s>1;s--){if(e=t[s],a=t[s-1],u=Math.floor(100*e.v)/100,l=(f=Math.floor(100*a.v)/100)?Math.abs(u-f)/f:0,(c+=Math.min(e.v,1))>4){h();break}if(l<.5){if(++r>6){h();break}}else r>0&&(r=0)}}}var w=0;function v(e){e&&(i=!0);var n=t.length;if(0!==n){var o=[],a=[],r=[],l=[],c=-1,u=0,s=0,d=0;for(d=function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:.1,n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:3,i=t.length-1,o=0;do{var a=t[i],r=t[i-1];if(!(Math.abs(a-r)/a<e))break;o++,i--}while(i>0);return o>=n&&i>0?Math.min(i,t.length-1):t.length-1}(t.map((function(t){return Math.floor(100*t.v)/100}))),a=d>0?t.slice(0,n+2):t;a.length>0;)if(l.push([]),c=a[0].lastTime,u=a[0].c,r=[],s=0,d=0,y(a,(function(t){s+=t.v,d++,t.createTime<=c+200&&(l[l.length-1].push({frame:t}),c=Math.max(c,t.lastTime),u=Math.max(u,t.c)),t.lastTime>c&&r.push(t)})),a=r,s<.02||s/d<.01?w++:w=0,o.push([c,u]),w>=3){o.splice(o.length-3),l.splice(o.length-3),h();break}var m=o.length-1;0!==w&&m>=w&&(m-=w),m=o[m];var p=null,g=null;u=null;try{var v;m&&(p=m[0],u=m[1],function(t,e,n){if(!window.dispatchEvent||!window.CustomEvent)return;var i={cost:e,timestamp:t,domSize:n},o=new CustomEvent("jstracker.fsp",{detail:i});window.__itrace_fsp_detail__=i,window.dispatchEvent(o)}(g=performance.timing.navigationStart+p,p,u)),window.resultFrames=(v=[]).concat.apply(v,l).map((function(t,e){var n;return t.index=e+1,t.uuid=(n=8,Number(Math.random().toString().substr(2,n)+Date.now()).toString(36)),t})),window.__wpk&&window.__wpk.report&&window.__wpk.report({category:208,msg:"FSP分片信息上报",bl1:JSON.stringify(window.resultFrames)}),f&&f(g,p,u)}catch(t){}}}function T(){return performance.now()}function y(t,e){if(Array.prototype.forEach)Array.prototype.forEach.call(t,e);else for(var n=t.length,i=0;i<n;i++)e(t[i],i)}return{install:function(){window.performance&&window.MutationObserver&&((u=new MutationObserver(c)).observe(document.documentElement,{childList:!0,subtree:!0}),p(document.querySelectorAll("BODY > *")),setTimeout((function(){h(!0)}),3e4))},onReport:function(t){t&&"function"==typeof t&&(f=t)},forceStop:function(){v(!0)}}}();return t}));}
+</script>
+<script>!function(e){"function"==typeof define&&define.amd?define(e):e()}((function(){"use strict";var e;(e=document.head.querySelector('meta[name="lzd-itrace-close-auto-monitor"]'))&&e.getAttribute("content")&&e.getAttribute("content").includes("selfDefineFSP")||window.lzdFspTrackerPlugin&&window.lzdFspTrackerPlugin.install&&window.lzdFspTrackerPlugin.install()}));</script><script async src="https://g.lazcdn.com/g/woodpeckerx/itrace-next/??itrace-jserror.iife.js,itrace-interface.iife.js,itrace-perf.iife.js,itrace-flow.iife.js,itrace-blank.iife.js,itrace-resource.iife.js,itrace.iife.js" crossorigin="anonymous" onload="__itraceBundleReady()"></script><script defer src="https://g.lazcdn.com/res-o/lzdfe/lzd-h5-itrace/index.js" crossorigin="anonymous" onload="__itraceExpansionReady()"></script>
+<script>window.g_config =window.g_config ||{};window.g_config.seed =window.g_config.seed ||{"packages":{"@ali/mui-feloader":{"debug":true,"group":"tm","ignorePackageNameInUri":true,"path":"//g.alicdn.com/mui/feloader/5.0.5/","version":"5.0.5","name":"@ali/mui-feloader","base":"//g.alicdn.com/mui/feloader/5.0.5/"}},"modules":{}};</script>
+<script src="https://g.alicdn.com/mui/feloader/5.0.5/??feloader-min.js"></script><script src="https://g.lazcdn.com/g/mtb/??3rd/0.0.10/require.js,lib-promise/3.1.3/polyfillB.js,lib-mtop/2.6.1/mtop.js,lib-windvane/3.0.6/windvane.js"></script><script src="https://g.lazcdn.com/g/lzd/assets/1.2.0/??react/17.0.2/react.production.min.js,react-dom/17.0.2/react-dom.production.min.js"></script>
+<script>window.$system ={"now":"2025-11-12T13:32:59.655Z","env":"production","hostname":"wormholesource033001094049.lazada-sg.os30","isAliIntranet":false,"isGray":false,"isGrey":false,"versions":{"node":"v16.17.1"},"spm":"00000000000000000000000000000000","storage":{},"files":{}}
+</script>
+<script>window.$pegasus ={"components":[],"spma":"a2o42","seaConfig":"","spmb":"page-not-found","description":"","title":"Page Not Found","templateId":0,"path":"/sg/homepage/common-error","activityId":0,"offlineUrl":"https://pages.lazada.sg","pageType":10,"customConfig":{"i18nTitle":{"en":"Page Not Found","zh":"Page Not Found"}},"offlineTime":2666140058000,"id":80342815,"publishTime":1747193692842,"testPage":0,"schemaVersion":"9ef7221f-6361-48b6-a667-8b679092dcd0","terminal":"pc","mobileNative":0,"createPlatform":"global-campaign-platform-f","name":"Page Not Found","style":"<style></style>","channelId":1010760}
+</script>
+<script>window.__i18n__ ={"en":{"campaign-rwb-common-error-back-home":"Back to homepage","campaign-rwb-common-error-jfy":"Just For You","campaign-rwb-common-error-not-lose-you":"We seem to have lost this page but we don’t want to lose you.","campaign-rwb-common-error-sorry":"We’re Sorry…","campaign-rwb-page-not-found":"Page Not Found","campaign-rwb-something-went-wrong":"Something Went Wrong"}};window.g_config =window.g_config ||{};window.flute_langs =window.__i18n__[window.g_config.language ||"en"];</script><script>feloader &&(function(S) {window.g_config =window.g_config ||{};window.g_config.seed =window.g_config.seed ||{};S.config(window.g_config.seed);S.config('combine',true);})(feloader)</script><script src="https://g.lazcdn.com/g/lzdmod/loader/5.1.3/??index.js"></script>
+<script>(function() {function loadScript(source,cb) {if (!source) return;var script =document.createElement('script');var bodyEl =document.getElementsByTagName('body')[0];function onloadHander(_,isAbort) {if (isAbort ||!script.readyState ||/loaded|complete/.test(script.readyState)) {script.onload =null;script.onreadystatechange =null;script =undefined;if (cb &&typeof cb ==='function') {cb();}
+}
+}
+script.onload =onloadHander;script.onreadystatechange =onloadHander;script.crossOrigin ="anonymous";script.src =source;bodyEl.appendChild(script);}
+function recursiveLoadJs(list,index =0) {if (!list[index]) return;var src =list[index];var callback =function() {recursiveLoadJs(list,index + 1)
+};loadScript(src,callback);}
+var needPolyfill =!window.fetch ||!window.Promise ||!Array.prototype.includes ||!Object.entries;var scripts =["https://g.lazcdn.com/g/code/npm/@ali/gcp-lzd-project-common-page/0.0.12/js/commError-pc.js"];if (!needPolyfill) {recursiveLoadJs(scripts);} else {scripts.unshift('//g.lazcdn.com/g/lzdbase/res/1.0.4/??polyfill/preset/default.js');recursiveLoadJs(scripts);(window.goldlog_queue ||(window.goldlog_queue =[])).push({action:"goldlog.record",arguments:["/lazada_polyfill_hit.exposure","EXP","page=commError-pc"]
+});}
+})();</script>
+</body></html>

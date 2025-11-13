@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: *.pdf$
+Disallow: *.doc$
+Disallow: *.docx$
+Disallow: *.zip$
+Disallow: *.msi$

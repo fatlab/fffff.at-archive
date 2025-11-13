@@ -1,0 +1,98 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /*blackhole
+Disallow: /?blackhole
+
+Sitemap: https://www.perfectduluthday.com/sitemap_index.xml
+
+# --------------------------
+# SEO BOTS (search engines)
+# --------------------------
+# Google ignores crawl-delay, set in Search Console
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 43200
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 43200
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 43200
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 43200
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 43200
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 43200
+
+
+# --------------------------
+# AI BOTS (restricted crawl)
+# --------------------------
+
+User-agent: GPTBot
+# Block pre-2021 archives
+Disallow: /2010/
+Disallow: /2011/
+Disallow: /2012/
+Disallow: /2013/
+Disallow: /2014/
+Disallow: /2015/
+Disallow: /2016/
+Disallow: /2017/
+Disallow: /2018/
+Disallow: /2019/
+Disallow: /2020/
+# Limit crawl rate to 2 per day
+Crawl-delay: 43200
+
+User-agent: PerplexityBot
+Disallow: /2010/
+Disallow: /2011/
+Disallow: /2012/
+Disallow: /2013/
+Disallow: /2014/
+Disallow: /2015/
+Disallow: /2016/
+Disallow: /2017/
+Disallow: /2018/
+Disallow: /2019/
+Disallow: /2020/
+Crawl-delay: 43200
+
+User-agent: ClaudeBot
+Disallow: /2010/
+Disallow: /2011/
+Disallow: /2012/
+Disallow: /2013/
+Disallow: /2014/
+Disallow: /2015/
+Disallow: /2016/
+Disallow: /2017/
+Disallow: /2018/
+Disallow: /2019/
+Disallow: /2020/
+Crawl-delay: 43200
+
+User-agent: CCBot
+Disallow: /2010/
+Disallow: /2011/
+Disallow: /2012/
+Disallow: /2013/
+Disallow: /2014/
+Disallow: /2015/
+Disallow: /2016/
+Disallow: /2017/
+Disallow: /2018/
+Disallow: /2019/
+Disallow: /2020/
+Crawl-delay: 43200

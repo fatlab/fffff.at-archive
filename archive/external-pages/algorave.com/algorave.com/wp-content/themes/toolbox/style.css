@@ -1,0 +1,484 @@
+/*
+Theme Name: Toolbox
+Theme URI: http://wordpress.org/extend/themes/toolbox
+Author: Automattic
+Author URI: http://automattic.com/
+Description: A semantic, HTML5, canvas for CSS artists and an ultra-minimal set of super-clean templates for your own WordPress theme development.
+Version: 1.4
+License: GNU General Public License
+License URI: license.txt
+Tags: custom-menu, sticky-post, microformats, rtl-language-support, translation-ready, full-width-template, post-formats
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/* =Structure
+-------------------------------------------------------------- */
+
+body {
+margin: 0;
+//border: 0;
+background: #949599;
+}
+#page {
+        margin-left: auto ;
+        margin-right: auto ;
+	display: block;
+	padding: 404px 0px 0px 0px;
+        width: 1080px;
+        background-image:url('../../../headlogo.png');
+	background-repeat:no-repeat;
+	background-position:63px 0px;
+        background-color:#f6f6f6;
+	font-family: 'Istok Web', sans-serif;
+        font-size: 0.9em;
+}
+
+a, a:link, a:hover, a:visited {
+	text-decoration:none;
+	color:#005f73;
+}
+
+.widget-title {
+	color:#005f73;
+}
+
+h1#site-title {
+ display: none;
+}
+#primary {
+padding: 0 26px 0 0px;
+	width: 700px;
+float: right;
+}
+#content {
+
+	/*margin: 0 0 0 400px;*/
+}
+#secondary {
+float: left;
+        padding: 0 0 0 30px;
+	width: 295px;
+}
+#colophon {
+	clear: both;
+	display: block;
+	width: 100%;
+}
+
+/* Increase the size of the content area for templates without sidebars */
+.full-width #content,
+.image-attachment #content,
+.error404 #content {
+	margin: 0;
+}
+
+/* Text meant only for screen readers */
+.screen-reader-text,
+.assistive-text {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Alignment */
+.alignleft {
+	display: inline;
+	float: left;
+}
+.alignright {
+	display: inline;
+	float: right;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/* =Header
+-------------------------------------------------------------- */
+
+#site-title {
+	font-size: 2em;
+	font-weight: bold;
+	margin: .67em 0;
+}
+#site-description {
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0 0 1em;
+}
+
+
+/* =Menu
+-------------------------------------------------------------- */
+
+#access {
+	clear:both;
+	float:left;
+	margin: 10px 0 0 0;
+	padding:0;
+	width:100%;
+	font-size:90%; /* Menu text size */
+	z-index:1000; /* This makes the dropdown menus appear above the page content below */
+	position:relative;
+}
+
+#access ul {
+ 	margin:0;
+	padding:0;
+	list-style:none;
+	float:right;
+	position:relative;
+	right:50%;
+}
+#access li {
+	margin:0 0 0 1px;
+	padding:0;
+        //border: 1px solid black;
+	float:left;
+	position:relative;
+	left:50%;
+	top:1px;
+}
+
+#access ul li a:after {
+  content: " /";
+}
+#access ul li.last a:after {
+    content:"";
+}
+
+#access a {
+	display:block;
+	margin:0;
+	padding:.6em .5em .4em;
+	font-size:20px;
+	line-height:1em;
+	text-decoration:none;
+        text-transform:uppercase;
+	color:#005f73;
+	//border-bottom:1px solid #000;
+}
+
+#access ul li.active a {
+	color:#000;
+}
+
+#access ul li a:hover {
+        color:#000;
+	//border-bottom:1px solid #03f;
+}
+
+#access ul li:hover a,
+#access ul li.hover a { /* This line is required for IE 6 and below */
+	color:#000;
+	//border-bottom:1px solid #03f;
+}
+
+
+#access ul ul {
+	display:none; /* Sub menus are hidden by default */
+	position:absolute;
+	top:2em;
+	left:0;
+	float:left;
+	right:auto; /*resets the right:50% on the parent ul */
+	width:10em; /* width of the drop-down menus */
+}
+
+#access ul ul li {
+	left:auto;  /*resets the left:50% on the parent li */
+	margin:0; /* Reset the 1px margin from the top menu */
+	clear:left;
+	float:left;
+	width:100%;
+}
+#access ul ul li a,
+#access ul li.active li a,
+#access ul li:hover ul li a,
+#access ul li.hover ul li a { /* This line is required for IE 6 and below */
+	font-size:.8em;
+	font-weight:normal; /* resets the bold set for the top level menu items */
+	background:#eee;
+	color:#444;
+	line-height:1.4em; /* overwrite line-height value from top menu */
+        //border-top: 0px;
+	//border-bottom:1px solid #bbb; /* sub menu item horizontal lines */
+	float:left;
+	width:100%;
+}
+#access ul ul li a:hover,
+#access ul li.active ul li a:hover,
+#access ul li:hover ul li a:hover,
+#access ul li.hover ul li a:hover { /* This line is required for IE 6 and below */
+	background:#bbb; /* Sub menu items background colour */
+	color:#fff;
+	float:left;
+}
+
+/* Flip the last submenu so it stays within the page */
+#access ul ul.last {
+	left:auto; /* reset left:0; value */
+	right:0; /* Set right value instead */
+}
+#access ul ul.last li {
+	float:right;
+	position:relative;
+	right:.8em;
+}
+
+/* Make the sub menus appear on hover */
+#access ul li:hover ul,
+#access ul li.hover ul { /* This line is required for IE 6 and below */
+	display:block; /* Show the sub menus */
+}
+
+/* =Content
+-------------------------------------------------------------- */
+
+.sticky {
+}
+.entry-meta {
+	clear: both;
+	display: block;
+}
+.single-author .entry-meta .byline {
+	display: none;
+}
+#content nav {
+	display: block;
+	overflow: hidden;
+}
+#content nav .nav-previous {
+	float: left;
+	width: 50%;
+}
+#content nav .nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+#content #nav-above {
+	display: none;
+}
+.paged #content #nav-above,
+.single #content #nav-above {
+	display: block;
+}
+#nav-below {
+	margin: 1em 0 0;
+}
+.page-link {
+	clear: both;
+	margin: 0 0 1em;
+}
+.page .edit-link {
+	clear: both;
+	display: block;
+}
+
+/* 404 page */
+.error404 .widget {
+	float: left;
+	width: 33%;
+}
+.error404 .widget .widgettitle,
+.error404 .widget ul {
+	margin-right: 1em;
+}
+.error404 .widget_tag_cloud {
+	clear: both;
+	float: none;
+	width: 100%;
+}
+
+/* Notices */
+.post .notice,
+.error404 #searchform {
+	background: #eee;
+	display: block;
+	padding: 1em;
+}
+
+/* Image Attachments */
+.image-attachment div.entry-meta {
+	float: left;
+}
+.image-attachment nav {
+	float: right;
+	margin: 0 0 1em 0;
+}
+.image-attachment .entry-content {
+	clear: both;
+}
+.image-attachment .entry-content .entry-attachment {
+	background: #eee;
+	margin: 0 0 1em;
+	padding: 1em;
+	text-align: center;
+}
+.image-attachment .entry-content .attachment {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* Aside Posts */
+.format-aside .entry-header {
+	display: none;
+}
+.single .format-aside .entry-header {
+	display: block;
+}
+.format-aside .entry-content,
+.format-aside .entry-summary {
+	padding-top: 1em;
+}
+.single .format-aside .entry-content,
+.single .format-aside .entry-summary {
+	padding-top: 0;
+}
+
+/* Gallery Posts */
+.format-gallery .gallery-thumb {
+	float: left;
+	margin: 0 1em 0 0;
+}
+
+/* Image Posts */
+.format-image .entry-header {
+	display: none;
+}
+.single .format-image .entry-header {
+	display: block;
+}
+.format-image .entry-content,
+.format-image .entry-summary {
+	padding-top: 1em;
+}
+.single .format-image .entry-content,
+.single .format-image .entry-summary {
+	padding-top: 0;
+}
+
+
+/* =Images
+-------------------------------------------------------------- */
+
+a img {
+	border: none;
+}
+p img {
+	margin-bottom: 0.5em; /* a small bottom margin prevents content floating under images */
+}
+/*
+Resize images to fit the main content area.
+- Applies only to images uploaded via WordPress by targeting size-* classes.
+- Other images will be left alone. Use "size-auto" class to apply to other images.
+*/
+img.size-auto,
+img.size-full,
+img.size-large,
+img.size-medium,
+.attachment img,
+.widget-area img,
+.wp-caption {
+	max-width: 100%; /* When images are too wide for containing element, force them to fit. */
+	height: auto; /* Override height to match resized width for correct aspect ratio. */
+}
+img.alignleft {
+	margin-right: 1em;
+}
+img.alignright {
+	margin-left: 1em;
+}
+.wp-caption {
+	padding: .5em;
+	text-align: center;
+}
+.wp-caption img {
+	margin: .25em;
+}
+.wp-caption .wp-caption-text {
+	margin: .5em;
+}
+.gallery-caption {
+}
+.wp-smiley {
+	margin: 0;
+}
+
+
+/* =Forms
+-------------------------------------------------------------- */
+
+#searchform label {
+	display: none;
+}
+#searchform input#s {
+	width: 60%;
+}
+input[type=text],
+input#s {
+	margin: 0 1em 0 0;
+	width: 60%;
+}
+textarea {
+	width: 80%;
+}
+
+/* Class for labelling required form items */
+.required {
+	color: #cc0033;
+}
+
+
+/* =Comments
+-------------------------------------------------------------- */
+
+article.comment {
+	display: block;
+}
+#respond input[type=text] {
+	display: block;
+	width: 60%;
+}
+#respond textarea {
+	display: block;
+	margin: 0 0 1em;
+	width: 80%;
+}
+#respond .form-allowed-tags {
+	clear: both;
+	width: 80%;
+}
+#respond .form-allowed-tags code {
+	display: block;
+}
+
+
+/* =Widgets
+-------------------------------------------------------------- */
+
+.widget {
+	display: block;
+}
+.widget-area .widget_search {
+	overflow: hidden;
+}
+.widget-area .widget_search input {
+	float: left;
+}
+
+
+/* =Footer
+-------------------------------------------------------------- */
+
+#colophon {
+	padding: 1em 0 0;
+}

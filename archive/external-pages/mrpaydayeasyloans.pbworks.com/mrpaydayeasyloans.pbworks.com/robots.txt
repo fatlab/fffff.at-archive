@@ -1,0 +1,37 @@
+Sitemap: http://mrpaydayeasyloans.pbworks.com/sitemap.xml
+
+# Public, indexed site.
+User-agent: Googlebot
+Disallow: /*?
+Disallow: /*\.
+Allow: /f/*
+
+User-agent: *
+Crawl-Delay: 600
+Disallow: /session/
+Disallow: /settings/
+Disallow: /browse/
+Disallow: /w/browse/
+Disallow: /layout/
+Disallow: /rss.xml
+Disallow: /report.php
+Disallow: /w/newpage
+Disallow: /tags.php
+Disallow: /request_access.php
+Disallow: /theme_css.php
+Disallow: /view_img.php
+Disallow: /upgrade.php
+Disallow: /2-easy-ways
+Disallow: /RecentActivity
+Disallow: /WhatWikiIs
+Disallow: /changelist.php
+Disallow: /changes/
+Disallow: /changes.php
+Disallow: /AllPages
+Disallow: /FindPage
+Disallow: /admin.php
+Disallow: /help.php
+Disallow: /report.php
+Disallow: /contact.php
+User-agent: MJ12bot
+Disallow: /

@@ -1,0 +1,740 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+  <title>C.R.E.A.M. curated by Lindsay Howard | Art Micro Patronage</title>
+  <meta name="description" content="Art Micro-Patronage is an experimental online exhibition space featuring monthly curated shows of digital, new media, and intermedia work.  As visitors navigate through the exhibitions, they are encouraged to become micro-patrons of the arts, associating their appreciation of the works with small monetary values.">
+  <meta name="author" content="Oliver Wise">
+
+			<meta property="og:title" content="C.R.E.A.M. curated by Lindsay Howard"/>
+			<meta property="og:site_name" content="Art Micro Patronage"/>
+			<meta property="og:type" content="website"/>
+			<meta property="og:url" content="http://artmicropatronage.org/exhibition/C.R.E.A.M-Lindsay-Howard"/>
+			<meta property="og:description" content="C.R.E.A.M. showcases the work of artists who are politically engaged in open source art &amp; technology while using their creative practice to address issues related to the monetization of net-based work."/>
+			<meta property="og:image" content="http://owise1.cloudant.com/amp-public/C.R.E.A.M-Lindsay-Howard/cash_rules_everything_around_me.gif"/>
+			<meta property="fb:admins" content="612663871"/>
+			<meta property="fb:app_id" content="129737647106311"/>
+	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../../../../favicon.ico">
+  <link rel="apple-touch-icon" href="http://artmicropatronage.org/exhibition/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="../../../../framework/css/style.css@v=2.css">
+</head>
+<body class="color-fff">
+	<div id="overlay_holder" style='display:none'>
+		<div id="overlay_cover"></div>
+		<div id="ribbon">
+				<div id="title"></div>
+				<div id="mainRibbon">
+					<div class="form">
+							<div id="overlay"></div>
+							<a class="close pointer cancel">[cancel]</a>
+					</div>
+				</div>
+				<div id="intro"><div id="left" class="copy"></div></div>
+			</div>
+		</div>
+	</div>
+	<div class="alert" style='display:none'></div>
+  <div id="container">
+    <header class="clearfix" id="main_header">
+		<h1><a href="{{img_thumb}}.html"><img id="main_ribbon" src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/art-micro-patronage.png" class='amp' alt="Art Micro Patronage" width="64" height="79" border="0" /></a></h1>
+		<div id="menubar">
+			<div class="loginfo" data-bind="visible: !is_logged_out()"  style='display:none'>Hello, <a href="http://artmicropatronage.org/myCollection" class="pointer show-user-profile" data-bind="text: first_name"></a>.<a id="logout" title="Logout"  class="pointer"></a></div>
+			<div class="loginfo" data-bind="visible: is_logged_out"  style='display:none'><a class="pointer signup" id="signup">Signup</a> / <a class='pointer login' id="login">Login</a></div>
+			<div class="question" style="top:-1px;left:27px;display:none">?</div>
+			<div class="info" style="top:39px;left:-59px;width:200px;text-align:center;display:none"><p class="pointUp"></p><p class="up">Signup or Login<br>Then click here to access your collection, manage your public profile and join the conversation.</p></div>
+			<div class="cart" data-bind="visible:!is_member()">
+				<div class="pledged">
+					<div class="pledgedLeft"><a href="C.R.E.A.M-Lindsay-Howard.html#cart" data-bind="text: cart_display"></a></div>
+					<div class="pledgedRight"></div>
+				</div>
+				<span class="banked pointer"><a data-bind="text:bank_display">$0<!--<span class="tip"><span data-bind="text:bank_display">$0</span> remaining in bank</span>--></a></span>
+				<div class="question" style="top:-1px;left:139px;display:none">?</div>
+				<div class="info" style="top:37px;left:53px;width:200px;text-align:center;display:none"><p class="pointUp"></p><p class="up">This is how much you have pledged.<br/><br/>Click it to settle up.</p></div>
+				<div class="question" style="top:-1px;left:181px;display:none">?</div>
+				<div class="info" style="top:37px;left:131px;width:128px;text-align:center;display:none"><p class="pointUp"></p><p class="up">This is how much you have left in your bank account.<br/><br/>Click it to add more.</p></div>
+				
+			</div>
+		</div>
+		<ul id="access" class="sf-menu">
+			<li class='main'><a href="http://artmicropatronage.org/about#" >About</a>
+				<ul class="subWrap about"><ul class="subnav">
+					<li class="first"><a href="http://artmicropatronage.org/about#">Why</a></li>
+					<li><a href="http://artmicropatronage.org/about#how">How It Works</a></li>
+					<li><a href="http://artmicropatronage.org/about#faq">FAQ</a></li>
+					<li><a href="http://artmicropatronage.org/support">Support Us</a></li>
+				</ul></ul>
+			</li>
+			<li class='main'><a href="http://artmicropatronage.org/exhibitions" >Exhibitions</a>
+				<!-- <ul class="subWrap exhibitions"><ul class="subnav">
+					<li class="first"><a href="/exhibition">Current Exhibition</a></li>
+					<li><a href="/exhibitions">Archive</a></li>
+					<li><a href="/talks">Artist Talks</a></li>
+				</ul></ul> -->
+				
+			</li>
+			<li class='main'><a href="http://artmicropatronage.org/patrons"  >Patrons</a>
+				<ul class="subWrap patrons-nav"><ul class="subnav">
+					<li class="first"><a href="http://artmicropatronage.org/patrons">View Patrons</a></li>
+					<li><a href="http://artmicropatronage.org/benefits#">Benefits</a></li>
+					<li><a href="http://artmicropatronage.org/benefits#membership">Become a Member</a></li>
+					<li><a href="http://artmicropatronage.org/benefits#sponsorship">Become a Sponsor</a></li>
+				</ul></ul>
+			</li>
+		</ul>
+    </header>
+    <div id="main" role="main" class="exhibitions"><div class="gallery clearfix exhibition-introduction" style='display:none'>
+	<div class="current">
+		<img src="http://owise1.cloudant.com/amp-public/C.R.E.A.M-Lindsay-Howard/cash_rules_everything_around_me.gif" alt="Title" width="940" height="408" border="0">
+		<div id="exhibition_description" class="intro" >
+						<h3>C.R.E.A.M.</h3>
+			
+					<p>C.R.E.A.M. showcases the work of artists who are politically engaged in open source art & technology while using their creative practice to address issues related to the monetization of net-based work.</p>
+			<div class="total-donated">Total donated: $<span data-bind='text:total_donated_amount'></span></div>
+			<!-- <div class="share-links"> -->
+				<!-- <img src="http://artmicropatronage.org/framework/img/facebook-logo.png" width=32 >&nbsp;&nbsp;&nbsp; -->
+				<!-- <img src="http://artmicropatronage.org/framework/img/twitter.png" width=32 > -->
+			<!-- </div> -->
+				<div class="enter">
+					<a href="C.R.E.A.M-Lindsay-Howard.html">Enter Gallery</a>
+				</div>
+							<div class="closed" style="padding-top:40px;text-align:right;color:red">
+					This show took place in April 2012.  
+					<span data-bind="visible:!is_member()"><br/>You can access all of our past shows by <a href="http://artmicropatronage.org/benefits#membership">becoming an AMP Round 1 Member</a></span>
+				</div>
+					</div>
+	</div>
+	<div class="leftColumn">
+		<h1>Essay By Lindsay Howard</h1>
+		<p style="text-align: center">“It's been 22 long hard years and still strugglin’<br/>
+Survival got me buggin’ but I'm alive on arrival<br/>
+I peep at the shape of the streets<br/>
+And stay awake to the ways of the world cause shit is deep”<br/>
+- Wu Tang Clan</p>
+
+<p>Over twenty years have passed since net art first appeared on the screen, and we still don’t have an established system for buying and selling it.  The greatest developments in the field aren’t coming from institutions, curators, or dealers, but from artists who are experimenting with payment and distribution models in ways that are at once creative and practical.</p>
+
+<p>C.R.E.A.M. showcases the work of artists who are politically engaged in open source art and technology while using their creative practice to address issues related to the monetization of net-based work.  The pieces subvert existing models, create new ones, and draw inspiration from e-commerce, software piracy, crowdfunding, computer viruses, and various approaches to digital rights management.</p>
+
+<p>The conversation around online art and commerce is not a new one.  In 1996, Nick Szabo predicted the failure of micropayments, suggesting that their "mental transaction cost" <sup>[1]</sup> is too high.  This assertion was later supported by  <a href="http://www.shirky.com/">Clay Shirky</a> who, in 2003, argued that the goal of the Internet is "fame, not fortune," citing free content as an "evolutionarily stable strategy".  Micropayments eventually became relevant circa 2008 with the launch of Apple’s app store, and Shirky’s “fame, not fortune” <sup>[2]</sup> argument floated during the early years of social media, but now it’s time to get real.  Artists need money.  Good art should not only be widely distributed, but also financially supported.  Art Micro Patronage would have been curated into this exhibition, had it not already been the platform, as viewers are encouraged to access, share, and discuss works, with the explicit opportunity to support the artists through micropayments.  (By the way, if you think the works on AMP are inaccessible, jump to 0-Day Art’s piece, Art Micro Patronage Season 1, which is a torrent of every past exhibition, including this one.)</p>
+
+<p>The past year has seen a major influx of mainstream art world influencers seeking real estate online (see:  <a href="https://www.vipartfair.com/">VIP Art Fair</a>,  <a href="http://art.sy/"> Art.sy</a>, and  <a href="http://www.paddle8.com/"> Paddle 8</a>), no doubt looking to capitalize on the web’s massive distribution potential.  C.R.E.A.M. places the focus on artists who are deeply familiar with the web, have mastered its complexities, and built creative systems that could not exist on any other platform.  From JODI’s Goodtimes, a work inspired by the computer virus hoax of the same name, to Greg Leuch’s G.R.E.E.D., a browser extension designed to demonstrate the impact of online censorship, we can intuit a wide range of political opinions and emotion related to the buying, selling, and distribution of art online, effectively establishing the incredible potential of this medium.  This shit is deep.</p>
+
+
+<p>[1] Szabo, Nick. "Micropayments and Mental Transaction Costs." [<a href="http://www.gernot-gawlik.de/wp-content/uploads/2009/02/micrpapayments-and-mental-transaction-costs.pdf">http://www.gernot-gawlik.de/wp-content/uploads/2009/02/micrpapayments-and-mental-transaction-costs.pdf</a>.].</p>
+ 
+<p>[2] Shirky, Clay. "Fame vs Fortune: Micropayments and Free Content." Clay Shirky's Writings About the Internet. 5 Sept. 2003. [<a href="http://www.shirky.com/writings/fame_vs_fortune.html">http://www.shirky.com/writings/fame_vs_fortune.html</a>].</p>		<h2>Lindsay Howard</h2>
+		<p class="bio"><a href="http://lindsayhoward.net/">LINDSAY HOWARD</a> is a curator and researcher based in New York. She is the Curatorial Director of <a href="http://319scholes.org/">319 Scholes</a>, a Brooklyn gallery dedicated to promoting works at the intersection of art and technology. Howard has lectured at the School of the Art Institute of Chicago and University of Cincinnati. Her exhibitions have been featured in ARTINFO, TechCrunch, Fast Company, Creators Project, Rhizome, L Magazine, DIS Magazine, Hyperallergic, and her exhibition "<a href="http://dump.fm/">DUMP.FM</a> IRL" was selected by Art Fag City as one of the 10 Best Exhibitions of 2010. She is the Curatorial Fellow at Eyebeam Art & Technology Center in NYC.
+
+</p>
+		<div class="enter">
+			<a href="C.R.E.A.M-Lindsay-Howard.html#">Enter Gallery</a>
+		</div>
+	</div>
+	<div class="rightColumn">
+		<h4>
+			Participating Artists
+		</h4>
+		<p class="participating-artists">
+							<div class='artist-list'><a href='http://wwwwwwwww.jodi.org/' target='_blank'>JODI</a></div>
+								
+							<div class='artist-list'><a href='http://gleu.ch' target='_blank'>Greg Leuch</a></div>
+				 
+					<div class="artist-talk-list posd">Live Artist Talk - Tuesday Apr 24th @ 11:00pm PST</div>
+								
+							<div class='artist-list'><a href='http://datenform.de' target='_blank'>Aram Bartholl</a></div>
+								
+							<div class='artist-list'><a href='http://artobjectculture.net/' target='_blank'>Lucy Chinen & Emilie Gervais</a></div>
+								
+							<div class='artist-list'><a href='http://fa-g.org/' target='_blank'>Kim Asendorf & Ole Fach</a></div>
+								
+							<div class='artist-list'><a href='http://davidhorvitz.com/' target='_blank'>David Horvitz</a></div>
+				 
+					<div class="artist-talk-list posd">Live Artist Talk - Tuesday Apr 24th @ 7:00pm PST</div>
+								
+							<div class='artist-list'><a href='http://www.0dayart.net' target='_blank'>0-Day Art</a></div>
+				 
+					<div class="artist-talk-list posd">Live Artist Talk - Wednesday Apr 11th @ 11:00pm PST</div>
+								
+					</p>
+					<hr>
+			<div class="artist-talk-list">
+				<a href="http://artmicropatronage.org/talks"><img src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/70-tv.png" class="left"/></a>
+				<div class="left" style="width:300px;padding-top:7px">Live Curator Talk by Lindsay Howard on Wednesday Apr 11th @ 11:00pm PST</div>
+			</div>
+							<hr>
+			<h4>
+				Top Earning Project
+			</h4>
+			<p style="min-height:80px">
+				<img src="../../../../assets.artmicropatronage.org/artmicropatronage/C.R.E.A.M./0-Day_thumb.jpg" alt="thumb" width="100" height="74" border="0" class="left">Art Micro Patronage Season 01 Complete, torrent, 2012 <em>by 0-Day Art</em><br>
+				<span class="total">Total: $41.50</span>
+			</p>
+							<hr>
+			<h4>Donors</h4>
+			<p>
+									<a href='http://artfagcity.com' target='_blank'>Will Brand</a> (<span class="total">$31.00</span>)<br>
+									Lorna Mills (<span class="total">$20.00</span>)<br>
+									<a href='http://www.anthonyantonellis.com' target='_blank'>Anthony Antonellis</a> (<span class="total">$7.00</span>)<br>
+									<a href='http://anniewerner.tumblr.com' target='_blank'>Annie Werner</a> (<span class="total">$5.58</span>)<br>
+									Stephen Faught (<span class="total">$1.00</span>)<br>
+									<a href='http://www.bestfriendsbestfriendsbestfriendsbestfriends.com/' target='_blank'>Matthew Gaffney</a> (<span class="total">$0.58</span>)<br>
+													6 Anonymous Patrons (<span class="total">$86.08</span>)
+							</p>
+				<!--
+		<hr>
+		<h4>
+			Video Feature
+		</h4>
+		<p>
+			<img src="img/rauch-220x168.jpg" alt="thumb" width="100" height="74" border="0" class="left"><a href="#">An interview with curator blah</a>
+		</p>
+		-->
+	</div>
+</div>
+<div class='exhibition-nav'  style='display:none'>
+	<!-- <div class="title" id="exhibition_title"><h3 class="show"><a href="/exhibition/C.R.E.A.M-Lindsay-Howard#" data-bind="text: show_title"></a></h3> <div class="curator">Curated by<br><span data-bind="text: curator"></span></div></div> -->
+	<div id="infoBox" style='display:none' ><img class="pointer" id="closeBtn" src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/close.png" alt="close" width="30" height="30" border="0" /><div class="infoBoxInterior clearfix">
+		<h1><span data-bind="text: piece_title"></span> <span class="author">by <span data-bind="text: piece_artist"></span></span></h1>
+		<div class="caption">
+			<span data-bind="text: piece_date" class="date"></span>
+			<span data-bind="html: piece_media" class="media"></span>
+			<span data-bind="text: piece_dimensions" class="dimensions"></span>
+		</div>
+		<div class="details" id="piece_description">
+			<div class="artist-talk-list" data-bind="visible:piece_artist_talk"><a href="http://artmicropatronage.org/talks"><img src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/70-tv.png" class="left"/></a><div class="left" style="height:28px;width:340px;padding-top:7px" data-bind="text:piece_artist_talk"></div></div>
+			<div data-bind="html: piece_description"></div>
+			<h2>Artist Bio</h2>
+			<div data-bind="html: piece_artist_bio"></div>
+			<div data-bind="visible: piece_artist_link"><a data-bind="attr: { href : piece_artist_link }, text: piece_artist_link" target="_blank"></a></div>
+		</div>
+		<div class="top-sponsors"><span class="label">share</span><div id="twitter"></div>
+		<div id="facebook"></div></div>
+		<div class="total-pledged"><span class="label">Total pledged</span>
+			<span data-bind="html:piece_total_pledge"></span>
+		</div>
+		<div class="average-pledge">
+			<span class="label">patrons</span>
+			<div class='patrons' data-bind="html:piece_patrons"></div>
+		</div>
+	</div></div>
+	<div id="stage" class="content">&nbsp;
+		<div id="piece"></div>
+		<div id="mover"></div>
+	</div>	
+	<div id="download_wrapper" data-bind="visible:downloads().length > 0 && !is_cart_page()">
+		<div id="download_icon"></div>
+	</div>		
+	<div id="download_wrapper_back" data-bind="visible:downloads().length > 0 && !is_cart_page(),foreach:downloads">
+		<div class="download-title"><span data-bind="html:download_titles"></span> <span data-bind="html:download_dates"></span></div>
+		<div class="download-thumb" data-bind="click:$parent.open_download"><img data-bind="attr:{ src : download_thumbs }" /></div>
+	</div>		
+</div>
+
+<footer class='exhibition-nav' style='display:none'>
+	<div id="pledgebar">		
+		<div class="question" style="top:2px;left:29px;display:none">?</div>
+		<div class="info" style="top:-5px;left:55px;text-align:center;display:none"><p class="pointLeft"></p><p class="left" style="margin-top:9px">Move to the previous piece in the exhibition</p></div>
+
+		<div class="question" style="top:2px;right:29px;display:none">?</div>
+		<div class="info" style="top:-5px;right:60px;text-align:center;display:none"><p class="pointRight"></p><p class="right" style="margin-top:9px;">Move to the next piece in the exhibition</p></div>
+		
+		<button class="backBtn" data-bind="click: last_piece">Back</button>
+		<button class="share help" style="margin-left:3px">?</button>
+		<button class="nextBtn" data-bind="visible:!is_member(),click: next_piece">Skip</button>
+		<button class="nextBtn" data-bind="visible:is_member,click: next_piece" style='display:none'>Next</button>
+		<div id="mainBtns">
+			<div id="pledgeBtns" data-bind="visible:!show_clean_view()">
+				<div class="question" style="top:2px;left:325px;display:none">?</div>
+				<div class="info" style="top:-7px;left:-124px;text-align:center;display:none"><p class="right" style="margin-top:9px">Click to pledge to this artist and move to the next piece in the exhibition</p><p class="pointRight"></p></div>
+				<div class="question" style="top:2px;right:97px;display:none">?</div>
+				<div class="info" style="top:-7px;left:137px;text-align:center;display:none"><p class="right" style="margin-top:9px">Click for information about the current piece, its creator and patrons.</p><p class="pointRight"></p></div>
+				
+				<span>Pledge</span> <img src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/pledgeBtn.gif" alt="Pledge" width="37" height="33" border="0" id="pledgeIcon" />
+				<button class="pledge leftmost" data-bind="click: function(){ vm.handle_pledge(.50) }, css : {pledged:  piece_pledge() == .5 }">50&cent;</button>
+				<button class="pledge" data-bind="click: function(){ vm.handle_pledge(1) }, css : {pledged:  piece_pledge() == 1 }">$1</button>
+				<button class="pledge" data-bind="click: function(){ vm.handle_pledge(2) }, css : {pledged:  piece_pledge() == 2 }">$2</button>
+				<button class="pledge" data-bind="click: function(){ vm.handle_pledge(5) }, css : {pledged:  piece_pledge() == 5 }">$5</button>
+				<button class="pledge" data-bind="click: function(){ vm.handle_pledge(10) }, css : {pledged:  piece_pledge() == 10 }">$10</button>
+				<button class="pledge rightmost" data-bind="click: function(){ vm.handle_pledge(20) }, css : {pledged:  piece_pledge() == 20 }">$20</button>
+			</div>
+			<div id="member_bar" style='display:none'>
+				<span data-bind="text:piece_title"></span> by <span data-bind="text:piece_artist"></span> 
+			</div>
+			<button class="info"><span class="info">info</span></button>
+			<!-- <button class="share"><span class="share">Share</span></button> -->
+		</div>
+		<div id="exhibition_title" class="pointer">
+			<h1 class="show"><span data-bind="text: show_title" class="artist-curator-rotate curator" style='display:none' >C.R.E.A.M.</span><span class="artist-curator-rotate artist" data-bind="text:piece_title"></span></h1>
+			<div class="artist-curator-rotate curator" style='display:none'>Curated by <span data-bind="text: curator">Lindsay Howard</span></div>
+			<div class="artist-curator-rotate artist">by <span data-bind="text: piece_artist"></span></div>
+		</div>
+	</div>
+</footer>
+<script type='text/html' id="cart_tmpl" charset='utf-8'>
+	<div id="cart_page" class="textContent">
+		<h1>Settle Up</h1>
+		<p>Thanks for your pledges!  Now it’s time to settle up your tab.  The artists will love you for it.</p><br/>
+		<div id="your_pledge">Your pledges:</div>
+		<div class='clear'></div>
+		<hr class="cart"/>
+		{{#items}}
+			<div class="clearfix cart-item {{#unpledged}}unpledged{{/unpledged}}">
+				<div class="piece-image {{#unpledged}}unpledged{{/unpledged}}"><img src="http://artmicropatronage.org/exhibition/{{img_thumb}}" /></div>
+				<div class="piece-info {{#unpledged}}unpledged{{/unpledged}}">
+					<h3>{{title}}</h3>
+					<h4>by {{artist}}</h4>
+				</div>
+				<div class='pledge-menu'>
+					<a class="down-pledge pointer" data-bind="click: function(){ vm.down_pledge('{{_id}}') }">-</a> 
+					${{pledge}}
+					<a class="up-pledge pointer"  data-bind="click: function(){ vm.up_pledge('{{_id}}') }">+</a>
+				</div>
+			</div>
+			<hr class="cart"/>
+		{{/items}}
+		<p class="aside bold-aside" style="position:fixed;left:700px;top:135px;" >
+			<b style="font-size:12pt">Patron Benefits</b>
+			<br>&bull; show your appreciation for these works
+			<br>&bull; enable these makers to continue
+			<br>&bull; access pieces and artist talks after the show closes
+			<br>&bull; get recognition for your support
+			<br>&bull; help us keep making shows
+		</p>
+		<div class="cart-item texted subtotal">Subtotal: {{subtotal}}</div>
+		{{#bank}}
+			<div class="cart-item texted subtotal">Bank: -{{bank}}</div>
+		{{/bank}}
+		<div class='cart-item texted total'>Total Owed: {{nonneg_total}}</div>
+		<hr class="cart"/>
+		{{#has_more_dough}}
+			<div class="texted subtotal">
+				You will have ${{abs_total}} left in your bank.&nbsp;&nbsp;
+				<input class='external-load pointer submit' style="width:77px" href="/bank/?{{cart_query}}" value="Use Bank" />
+			</div>
+		{{/has_more_dough}}
+		{{#gots_to_pay}}
+			<div class="texted subtotal">
+			{{#has_bank_and_gots_to_pay}}
+				Settle the difference:&nbsp;&nbsp;&nbsp;
+			{{/has_bank_and_gots_to_pay}}
+			<a href="http://artmicropatronage.org/paypal/?{{cart_query}}" id="paypal_link"><img class="clean" src="../../../../www.paypal.com/en_US/i/btn/btn_dg_pay_w_paypal.gif" /><br/>
+			<img src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/CCs.jpg" width=147 /></a>
+			</div>
+		{{/gots_to_pay}}
+		
+		<br/><input type="submit" class="submitGray" data-bind="click: last_piece" style="font-size:12px;padding:2px 4px;" value="&lt;&lt; Back"/>
+		
+	</div>
+</script>
+<script type='text/html' id="help_tmpl" charset='utf-8'>
+	<h1 class="verlag-lt" style="font-size:14pt">Take a look around. We'll show you the ropes</h1>
+	<p>&nbsp;</p>
+	<p>Hover over the question marks to learn how each element works.</p>
+	<p>If you have any problems or additional questions, please <a href="http://scr.im/ampinfo" target="_blank">let us know</a>.  We're happy to help.</p>
+</script></div>
+  </div> <!--! end of #container -->
+
+
+	<script type='text/html' id="signup_tmpl" charset='utf-8'>
+		<form id="signup_form">
+			<div class="status">{{status}}</div>
+			<!-- <p><label for "first_name">First Name</label> <input type="text" class="req" name="first_name" value="{{first_name}}"></p>
+			<p><label for "last_name">Last Name</label><input type="text" name="last_name" class="req" value="{{last_name}}"></p> -->
+			<p>&nbsp;</p>
+			<p><label for "email">Email</label><input type="email" name="email" class="req" value="{{email}}"></p>
+			<p><label for "password">Password</label><input type="password" class="req" name="password"></p>
+			<!-- <p class="terms" style="overflow:hidden;font-size:11px;margin: 3px 0px 3px 0px;padding-left:165px">I agree to the <a style="color:red;font-size:11px;text-decoration:underline;" onclick="window.open('/terms','terms','height=500,width=400,resizable=1,scrollbars=1')" class="pointer">Terms of Use</a> <input type="checkbox" name='terms' style="width:30px;float:none;" /></p> -->
+			<p class="submitRow">
+				<a href="https://www.facebook.com/dialog/oauth?client_id=129737647106311&redirect_uri=http%3A%2F%2Fartmicropatronage.org%2Ffacebook%2F&state=e39131c5d08f1400801e71b8db7374d5&scope=email" class="facebook" title="Signup Via Facebook"><img src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/facebook-blkborder.png" align="middle"></a>
+				<input type="submit" value="Signup" class="btn submit">
+			</p>
+			<p class='small-bottom'>Already have an account? <a class='pointer login'>Login here</a></p>
+			<input type='hidden' name="payment_id" value="{{payment_id}}" />
+		</form>
+	</script>
+	<script type='text/html' id="login_tmpl" charset='utf-8'>
+		<form id="login_form" >
+			<div class="status"></div>
+			<p><label for "email">Email</label><input type="email" name="email" value=""></p>
+			<div class="forgot-me" style='display:none'>
+				<input type='button' name='forgot' class="btn submit" value="Reset My Password" style="width:180px;margin-left:162px;margin-bottom:7px;" />
+				&nbsp;&nbsp;&nbsp;<a class="forgot pointer">nm</a>
+			</div>
+			<div class='hide-me'>
+				<p>
+					<label for "password">Password</label><input type="password" name="password">
+					&nbsp;&nbsp;&nbsp;<a class="forgot pointer">forgot it?</a>
+				</p>
+				<p class="submitRow">
+					<a href="https://www.facebook.com/dialog/oauth?client_id=129737647106311&redirect_uri=http%3A%2F%2Fartmicropatronage.org%2Ffacebook%2F&state=e39131c5d08f1400801e71b8db7374d5&scope=email" class="facebook" title="Login Via Facebook"><img src="../../../../assets.artmicropatronage.org/artmicropatronage/site/img/facebook-blkborder.png" align="middle"></a>
+					<input type="submit" value="Login" class="btn submit">
+				</p>
+				<p class='small-bottom'>Don&#x27;t have any account? <a class='pointer signup'>Sign up now!</a></p>
+			</div>
+		</form>
+	</script>
+	<script type='text/html' id="detail_tmpl" charset='utf-8'>
+		<div class="detail">
+			<p class="smallThumb">
+				{{#img_link}}<a href="http://artmicropatronage.org/exhibition/{{img_link}}"><img src="http://artmicropatronage.org/exhibition/{{img_thumb}}" alt="" width="88" height="88" border="0" /></a>{{/img_link}}
+				{{^img_link}}<img src="http://artmicropatronage.org/exhibition/{{img_thumb}}" alt="" width="88" height="88" border="0" />{{/img_link}}
+			</p>
+			<p class="details">{{{line_1}}}<br> 
+			{{{line_2}}}<br>
+			{{#bold}}
+				<b>{{key}}:</b> {{{value}}}<br>
+			{{/bold}}
+		</div>
+	</script>
+	<script type='text/html' id="bank_form_tmpl" charset='utf-8'>
+		<div id="bank_form">
+			<p class='verlag-lt' style="padding-right:186px;text-align:right;font-size:13pt;">
+				Current balance: {{bank_display}}</a><br/>
+			</p>
+			<p><label for "bank">{{input_label}}</label><input type="text" name="bank"></p>
+			<p class="submitRow">
+			<a href="C.R.E.A.M-Lindsay-Howard.html" id="bank_paypal_link" ><img class="clean" src="../../../../www.paypal.com/en_US/i/btn/btn_dg_pay_w_paypal.gif" /></a>
+			</p>
+			
+		</div>
+	</script>		
+	<script type='text/html' id="splash_tmpl" charset='utf-8'>
+		<div class='splash verlag-lt'>
+			Art Micro Patronage is an experimental online
+			exhibition space enabling you to view and support
+			artwork that is	ideally experienced on the internet. Built on the
+			generosity of people like you, AMP is a vehicle for
+			a new generation of art patrons, who are willing
+			to associate their appreciation of great work with
+			actual dollar amounts, no matter how small.
+		</div>
+		<div class='splash-options'>
+			<a class="black-arrow" href="http://artmicropatronage.org/exhibition#tour">Take a tour</a>
+			<a class="black-arrow" href="http://artmicropatronage.org/about#how">How does it work?</a>
+			<a class="black-arrow" href="http://artmicropatronage.org/exhibition">Enter exhibition</a>
+		</div>
+		<div class='clear'></div>
+	</script>
+	<script type='text/html' id="password_tmpl" charset='utf-8'>
+		<form id="password_form">
+			<p>{{right}}</p>
+			<p><label for "password">Password</label><input type="password" name="password"></p>
+			<p class="submitRow">
+				<input type="submit" class="btn submit" name="verify" value="Submit" />
+			</p>
+		</form>
+	</script>
+  <script type="text/javascript" src="../../../../ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <script>window.jQuery || document.write("<script src='http://artmicropatronage.org/framework/js/libs/jquery-1.6.min.js'>\x3C/script>")</script>
+  
+  <script type="text/javascript" src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/hoverIntent.js"></script>
+  <script type="text/javascript" src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/superfish.js"></script>
+
+  <script src="../../../../assets.thepresentgroup.com/artmicropatronage/jwplayer.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/jquery-ui-1.8.16.custom.min.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/mustache.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/knockout-2.0.0.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/jstorage.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/jquery.hashchange.js"></script>
+  <script src="../../../../assets.artmicropatronage.org/artmicropatronage/site/js/json2.js"></script>
+		  <script src="../../../../framework/js/renderer.js"></script>
+	  <script src="../../../../framework/js/amp.js"></script>
+	  <script src="../../../../framework/js/vm.js"></script>
+	  <script src="../../../../framework/js/ready.js"></script>
+	
+	  <script type='text/javascript' charset='utf-8'> var accelJS = new Object(); if(typeof Amp != 'undefined') Amp.current_show_id = 'C.R.E.A.M-Lindsay-Howard';
+
+		vm.total_donated_amount = ko.observable('151.24');
+	
+ 
+                $(document).ready(function() { 
+					
+                    
+		if($.browser.msie){
+			$('.exhibition-nav').remove();
+			$('.enter').remove();
+			$('#pledgebar').remove();
+			alert("We're sorry.  Due to limited resources, our exhibition page cannot support Internet Explorer.  Please use Firefox or Google Chrome.  They're free, fast, and they make the internet a better place!");
+		}
+		
+		Amp.after_load = function(){
+						
+			function __do()	{
+				var loaded_total = false;
+				$('div.enter a').attr('href', '#' + Amp.show().pieces[0]._id);
+			
+				$(window).hashchange( function(){
+
+				    var hash = location.hash;
+				
+					var obj = { 
+						url    : encodeURIComponent('http://artmicropatronage.org/exhibition/' + show._id + hash), 
+						text : encodeURIComponent('Check out ' + vm.piece_title() + ' by ' + vm.piece_artist() + ' on #AMPatronage') 
+					};
+					var facebookTemplate = '<iframe src="http://www.facebook.com/plugins/like.php?app_id=129737647106311&amp;href={{url}}&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>';
+					$('#facebook').html(Mustache.to_html(facebookTemplate, obj));
+					var twitterTemplate = '<iframe allowtransparency="true" frameborder="0" scrolling="no" src="../../../../platform.twitter.com/widgets/tweet_button.html@url={{url}}&amp;related=thepresentgroup,owise1&amp;text={{text}}.html" style="width:130px; height:50px;"></iframe>';
+					$('#twitter').html(Mustache.to_html(twitterTemplate, obj));
+				
+			
+					if(hash == '' || hash == '#'){
+						if(!$('div.exhibition-introduction').is(':visible')){
+							if($('.exhibition-nav:visible').length > 0) $('.exhibition-nav').slideUp('fast');
+							$('#main').addClass('exhibitions');
+							$('div.exhibition-introduction').addClass('active').fadeIn(function(){
+								var desc_height = $('#exhibition_description').height();
+								$('#exhibition_description').css('margin-top', (-desc_height-55) + 'px');
+							});
+							Renderer.show_nav();
+							Renderer.to_white();							
+						
+							if(!loaded_total){
+								vm.total_donated_amount(parseFloat(vm.total_donated_amount())+60);
+								/*
+								$.ajax({
+									url : Amp.public_dbp + '_design/amp/_view/totals-by-piece',
+									data : {
+										startkey : '["'+show._id+'"]',
+										endkey : '["'+show._id+'",{}]',
+										stale : 'ok'
+									},
+									dataType : 'jsonp',
+									success : function(response){
+										if(response.rows){
+											var current_val = parseFloat(vm.total_donated_amount());
+											var new_amount = response.rows.length > 0 ? response.rows[0].value : 0;
+										
+											function _inc_it(){
+												if(current_val < new_amount){
+													current_val = Math.round((current_val + .50) * 100)/100;
+													vm.total_donated_amount(current_val.toFixed(2));
+													setTimeout(_inc_it, 100);
+												}
+											}
+										
+											$.ajax({
+												url : Amp.public_dbp + '_design/amp/_view/members',
+												dataType : 'jsonp',
+												success : function(response){
+													new_amount += 10 * response.total_rows;
+													_inc_it();
+												}
+											})
+										}
+										loaded_total = true;
+									}
+								});
+								*/
+							}
+						
+						}
+						return;
+					} 
+				
+					if(hash == '#tour'){
+						$('button.help').click();
+						window.location.hash = '#' + Amp.show().pieces[0]._id;
+						return;
+					}
+
+					function handle_display(){
+						function ready_stage(){
+							$('#main').removeClass('exhibitions');
+							$('.exhibition-nav').slideDown();
+						}
+					
+						if(hash == '#cart'){
+							ready_stage();
+							vm.is_cart_page(true);
+							return;
+						}
+
+						var piece;
+						if(piece = Amp.find_piece(hash.replace('#',''))){
+							ready_stage();
+							Renderer.hide_nav();
+							vm.current_i(piece.i);
+							Renderer.current_piece(piece);
+						} else{
+							window.location.hash = '';
+						}
+					}
+
+					if($('div.exhibition-introduction').is(':visible')){
+						$('div.exhibition-introduction').removeClass('active').fadeOut('fast', handle_display);
+					} else {
+						handle_display();
+					}
+				 });
+				 $(window).hashchange();
+			}
+			
+			function __do_membership(){
+				__do();
+				$('div.enter').remove();
+			}
+			
+			if(false){
+				__do();
+			} else {
+				if(vm.is_logged_out()){
+					__do_membership();
+										
+				// they might be patron for this show
+				} else {
+					if(vm.is_member()){
+						$.ajax({
+							url : 'http://owise1.cloudant.com/amp-public/_design/amp/_view/shows?stale=ok&include_docs=true&startkey=[%22C.R.E.A.M-Lindsay-Howard%22]&endkey=[%22C.R.E.A.M-Lindsay-Howard%22,{}]',
+							dataType : 'jsonp',
+							success : function(resp){
+								show = resp.rows[0].doc;
+								show.pieces = [];
+								for(var i=1;i<resp.rows.length;i++){
+									show.pieces.push(resp.rows[i].doc);
+								}
+								Amp.show(show);
+								__do();
+								Amp.after_logout = window.location.reload;
+							}
+						});
+						return;
+					}
+					Amp.get_collection(function(collection){
+						if(collection){
+							var pieces_by_show = {};
+							for(var i in collection){
+								var p = collection[i];
+								if(!pieces_by_show[p.show]) pieces_by_show[p.show] = [];
+								pieces_by_show[p.show].push(p);
+							}
+							if(pieces_by_show['C.R.E.A.M-Lindsay-Howard']){
+								var s = {"_id":"C.R.E.A.M-Lindsay-Howard","_rev":"12-84054718ff0a31fc5be3323b74ea840a","type":"show","release_date":1333263600,"title":"C.R.E.A.M.","curator":"Lindsay Howard","show_date":"April 2012","short_description":"C.R.E.A.M. showcases the work of artists who are politically engaged in open source art & technology while using their creative practice to address issues related to the monetization of net-based work.","curator_bio":"<a href="http://artmicropatronage.org/exhibition/\&quot;http:\/\/lindsayhoward.net\/\&quot;">LINDSAY HOWARD<\/a> is a curator and researcher based in New York. She is the Curatorial Director of <a href="http://artmicropatronage.org/exhibition/\&quot;http:\/\/319scholes.org\/\&quot;">319 Scholes<\/a>, a Brooklyn gallery dedicated to promoting works at the intersection of art and technology. Howard has lectured at the School of the Art Institute of Chicago and University of Cincinnati. Her exhibitions have been featured in ARTINFO, TechCrunch, Fast Company, Creators Project, Rhizome, L Magazine, DIS Magazine, Hyperallergic, and her exhibition \"<a href="http://artmicropatronage.org/exhibition/\&quot;http:\/\/dump.fm\/\&quot;">DUMP.FM<\/a> IRL\" was selected by Art Fag City as one of the 10 Best Exhibitions of 2010. She is the Curatorial Fellow at Eyebeam Art & Technology Center in NYC.\n\n","show_essay":"<p style=\"text-align: center\">\u201cIt's been 22 long hard years and still strugglin\u2019<br\/>\nSurvival got me buggin\u2019 but I'm alive on arrival<br\/>\nI peep at the shape of the streets<br\/>\nAnd stay awake to the ways of the world cause shit is deep\u201d<br\/>\n- Wu Tang Clan<\/p>\n\n<p>Over twenty years have passed since net art first appeared on the screen, and we still don\u2019t have an established system for buying and selling it.  The greatest developments in the field aren\u2019t coming from institutions, curators, or dealers, but from artists who are experimenting with payment and distribution models in ways that are at once creative and practical.<\/p>\n\n<p>C.R.E.A.M.\u00a0showcases the work of artists who are politically engaged in open source art and technology while using their creative practice to address issues related to the monetization of net-based work. \u00a0The pieces subvert existing models, create new ones, and draw inspiration from e-commerce, software piracy, crowdfunding, computer viruses, and various approaches to digital rights management.<\/p>\n\n<p>The conversation around online art and commerce is not a new one.  In 1996, Nick Szabo predicted the failure of micropayments, suggesting that their \"mental transaction cost\" <sup>[1]<\/sup> is too high.  This assertion was later supported by  <a href="http://artmicropatronage.org/exhibition/\&quot;http:\/\/www.shirky.com\/\&quot;">Clay Shirky<\/a> who, in 2003, argued that the goal of the Internet is \"fame, not fortune,\" citing free content as an \"evolutionarily stable strategy\".  Micropayments eventually became relevant circa 2008 with the launch of Apple\u2019s app store, and Shirky\u2019s \u201cfame, not fortune\u201d <sup>[2]<\/sup> argument floated during the early years of social media, but now it\u2019s time to get real.  Artists need money.  Good art should not only be widely distributed, but also financially supported.  Art Micro Patronage would have been curated into this exhibition, had it not already been the platform, as viewers are encouraged to access, share, and discuss works, with the explicit opportunity to support the artists through micropayments.  (By the way, if you think the works on AMP are inaccessible, jump to 0-Day Art\u2019s piece, Art Micro Patronage Season 1, which is a torrent of every past exhibition, including this one.)<\/p>\n\n<p>The past year has seen a major influx of mainstream art world influencers seeking real estate online (see:  <a href="http://artmicropatronage.org/exhibition/\&quot;https:\/\/www.vipartfair.com\/\&quot;">VIP Art Fair<\/a>,  <a href="http://artmicropatronage.org/exhibition/\&quot;http:\/\/art.sy\/\&quot;"> Art.sy<\/a>, and  <a href="http://artmicropatronage.org/exhibition/\&quot;http:\/\/www.paddle8.com\/\&quot;"> Paddle 8<\/a>), no doubt looking to capitalize on the web\u2019s massive distribution potential.  C.R.E.A.M.\u00a0places the focus on artists who are deeply familiar with the web, have mastered its complexities, and built creative systems that could not exist on any other platform.  From JODI\u2019s Goodtimes, a work inspired by the computer virus hoax of the same name, to Greg Leuch\u2019s G.R.E.E.D., a browser extension designed to demonstrate the impact of online censorship, we can intuit a wide range of political opinions and emotion related to the buying, selling, and distribution of art online, effectively establishing the incredible potential of this medium.  This shit is deep.<\/p>\n\n\n<p>[1] Szabo, Nick. \"Micropayments and Mental Transaction Costs.\" [<a href="http://artmicropatronage.org/exhibition/\&quot;http:\/\/www.gernot-gawlik.de\/wp-content\/uploads\/2009\/02\/micrpapayments-and-mental-transaction-costs.pdf\&quot;">http:\/\/www.gernot-gawlik.de\/wp-content\/uploads\/2009\/02\/micrpapayments-and-mental-transaction-costs.pdf<\/a>.].<\/p>\n \n<p>[2] Shirky, Clay. \"Fame vs Fortune: Micropayments and Free Content.\" Clay Shirky's Writings About the Internet. 5 Sept. 2003. [<a href="http://artmicropatronage.org/exhibition/\&quot;http:\/\/www.shirky.com\/writings\/fame_vs_fortune.html\&quot;">http:\/\/www.shirky.com\/writings\/fame_vs_fortune.html<\/a>].<\/p>","show_essay_title":"","curator_talk_datetime":"1334185200","_attachments":{"cash_rules_everything_around_me.gif":{"content_type":"image\/gif","revpos":2,"digest":"md5-Wh+yfEjZTF58Ga\/IZ9gbVg==","length":781599,"stub":true}}};
+								s.pieces = pieces_by_show['C.R.E.A.M-Lindsay-Howard']; 
+								Amp.show(s);
+								__do();
+								Amp.after_logout = window.location.reload;
+								return;
+							} 
+						}
+						__do_membership();
+					});
+				}
+			}
+		}
+		
+		$('#main_ribbon').hover(function(){
+			if(!$('ul#access').hasClass('hidded')) return;
+			Renderer.show_nav();
+			
+			
+			// create clear div
+			var d = $('<div>')	.css('position', 'fixed')
+								.css('top',100)
+								.css('width', '100%')
+								.css('height', $('body').height())
+								.hover(function(){
+									$(this).remove();
+									Renderer.hide_nav();
+								});
+			$('body').append(d);
+		});
+		
+		$(window).resize(Renderer.resize_stage);
+		
+		$('button.help').click(function(){
+			if($(this).hasClass('on')){
+				$('.question').unbind('hover');
+				$('#menubar').css('z-index', $('#menubar').data('z'));
+				$('#access').css('z-index', $('#access').data('z'));
+
+			} else {
+				$('.question').hover(function(e){
+					$(this).next().fadeIn();
+				}, function(){
+					$(this).next().fadeOut();
+				});
+				
+				Amp.track_event('Movement', 'Help');
+				
+				$('#menubar').data('z', $('#menubar').css('z-index')).css('z-index', 998);
+				$('#access').data('z', $('#access').css('z-index')).css('z-index', 998);
+				
+				Renderer.overlay_template('help_tmpl', {
+					left : "",
+					title : 'tour',
+					opacity : 0.4
+				}, function(){
+					var done = false;
+					$('#overlay_holder a.close,#overlay_cover').click(function(){
+						if(!done){
+							$('button.help').click();
+							done = true;
+						}
+					});
+				});
+
+			}
+
+			$(this).toggleClass('on');
+			$('.question').fadeToggle();
+		});
+		
+		$('#exhibition_title').hover(function(){
+			$('.artist-curator-rotate.curator').show();
+			$('.artist-curator-rotate.artist').hide();
+		}, function(){
+			$('.artist-curator-rotate.curator').hide();
+			$('.artist-curator-rotate.artist').show();
+		});
+		
+		$('#main').on('click', '#exhibition_title,#closeBtn,button.info', function(){
+			$('#infoBox').fadeToggle();
+			$('button.info').toggleClass('active');
+		})
+		
+		$('div.enter a').click(function(){
+			Amp.track_event('Movement', 'Enter Exhibition - ' + Amp.show().title);
+			
+		});
+		
+		$('#infoBox').on('mouseenter', '#piece_description', function(ev){
+			$('#piece_description').css('overflow','auto');
+		}).on('mouseleave', '#piece_description', function(ev){
+				$('#piece_description').css('overflow','hidden');
+			})
+		
+		$('#exhibition_description').hover(function(){
+			$('div.enter a').addClass('hovered');
+		}, function(){
+			$('div.enter a').removeClass('hovered');
+		});
+		
+		$('#download_wrapper').mouseenter(function(){
+			$('#download_wrapper_back').animate({
+				left : '62px'
+			}, 500);
+		});
+		$('#stage').mouseenter(function(){
+			$('#download_wrapper_back').animate({
+				left : '-196px'
+			}, 500);
+		});
+	
+ 
+                }); 
+            </script>
+  <!--[if lt IE 7 ]>
+    <script src="http://artmicropatronage.org/framework/js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+  <![endif]-->
+</body>
+</html>
+<!-- cached Tue, 06 Feb 2018 22:24:00 +0000 -->

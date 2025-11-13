@@ -1,0 +1,349 @@
+     
+html { font-size: 100%; }
+
+body {
+	background-color: #fff;
+	color: #000;	
+	font: normal .9em/1.3  "Helvetica Neue", "Lucida Grande", Helvetica, Arial, sans-serif;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0 0px 0px;
+}
+
+a, a:active, a:visited {
+	color: #000;
+	outline: none;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000000;
+	text-decoration: underline;
+
+}
+
+a img {
+	border: 0;
+}
+
+/* LAYOUT */
+#contain {
+	background-color: #FFFFFF;
+	margin: 0px auto;
+	text-align: left;
+	width: 960px;
+	height: auto;
+	padding: 10px 20px 20px 20px;
+}
+
+#header {
+  //position: relative;
+	background-color: #fff;
+	height: 197px;
+	width:100%;
+  	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 10px 0px;
+}
+
+#logo {
+	float:left;
+	width: 400px;
+	height: 197px;
+}
+
+#topbox {
+	float: left;
+	width: 257px;
+	margin-left: 40px;
+}
+
+#description {
+	clear: both;
+	color: #505050;
+	font-size: 12px;
+	text-align: justify;
+	width: 257px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#follow_box {
+	font-size:12px;
+	color: #505050;
+	margin-top: 12px;
+	padding: 0px;
+}
+
+#facebookfollow {
+	float: left;
+	background: url('https://illegalart.net/home/images/facebook.png');
+	height: 50px;
+	width: 83px;
+}
+
+#tumblrfollow {
+	float: left;
+	background: url('https://illegalart.net/home/images/tumblr.png');
+	height: 50px;
+	width: 83px;
+	margin-left: 4px;
+}
+
+#twitterfollow {
+	float: left;
+	background: url('https://illegalart.net/home/images/twitter.png');
+	height: 50px;
+	width: 83px;
+	margin-left: 4px;
+}
+
+#top_links {
+	float:right;
+	font-size:22px;
+	text-transform: lowercase;
+}
+
+a.top_link {
+	color: #707070;
+	padding-left: 5px;
+	text-decoration: none;
+}
+
+a:hover.top_link {
+	color: #000000;
+	text-decoration: none;
+}
+
+.category {
+	border-bottom: 3px #000 solid;
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+	height: 30px;
+	float:left;
+	width: 100%;
+}
+
+#announcement {
+	width: 400px;
+}
+  
+#follow {
+	background: url("https://illegalart.net/home/images/follow.png") no-repeat 0 0;
+	height: 20px;
+	width: 58px;
+	float: right;
+	display: none;
+	cursor: pointer;
+	margin-top:5px;
+}
+
+#follow:hover {background-position: 0 -20px;}
+
+#rss {
+	background: url("https://illegalart.net/home/images/rss.png") no-repeat 0 0;
+	float: right;
+	height: 20px;
+	width:20px;
+	display: none;
+	cursor: pointer;
+	margin-top: 5px;
+	margin-right: 4px;
+}
+
+#column1 {
+	float: left;
+	clear: left;
+	width: 400px;
+}
+
+#column1:hover #follow {display:inline;}
+#column1:hover #rss {display:inline;}
+
+.line {
+	width: 100%;
+	height: 1px;
+	background-color: #b3b3b3;
+}
+
+#more_blog {
+	float: left;
+	width: 100%;
+	height: 30px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #707070;
+	text-align: center;
+	text-decoration:none;
+	text-transform: uppercase;
+	padding-top: 3px;
+	padding-bottom: 30px;
+}
+
+#more_blog:hover {color: #000;}
+
+#column2 {
+	float: left;
+	width: 520px;
+	margin-left: 40px;
+}
+
+#PWYW {
+	position: relative;
+	margin: 0px 0 10px 0;
+	font-size: 13px;
+	top: -20px;
+	float: right;
+	margin-bottom: -20px;
+	display: none;
+}
+
+#FREE {
+	position: relative;
+	margin: 0px 0 10px 0;
+	font-size: 13px;
+	top: -20px;
+	float: right;
+	margin-bottom: -20px;
+	display: none;
+}
+
+#albumart1 {
+    margin-top: 17px;
+	float: left;
+	width: 257px;
+	height: 257px;
+	background-image: url("https://illegalart.net/home/images/new/MOONMAGIC.jpg");
+}
+
+#albumart1:hover .circleplayer {opacity:0.8;}
+
+#albumart2 {
+    margin-top: 17px;
+	float: left;
+	margin-left: 6px;
+	width: 257px;
+	height: 257px;
+	background-image: url("https://illegalart.net/home/images/new/TWTBTDS.jpg");
+}
+
+#albumart2:hover .circleplayer {opacity:0.8;}
+
+#albumart3 {
+	float: left;
+	margin-top: 6px;
+	width: 257px;
+	height: 257px;
+	background-image: url("https://illegalart.net/home/images/new/REMIXTAPE.jpg");
+}
+
+#albumart3:hover .circleplayer {opacity:0.8;}
+
+#albumart4 {
+	float: left;
+	margin-top: 6px;
+	margin-left: 6px;
+	width: 257px;
+	height: 257px;
+	background-image: url("https://illegalart.net/home/images/new/WILDQUIET.jpg");
+}
+
+/* #albumart3:hover .circleplayer {opacity:0.8;} */
+
+#albumart5 {
+	float: left;
+	margin-top: 6px;
+	width: 257px;
+	height: 257px;
+	background-image: url("https://illegalart.net/home/images/new/OPERARIPARATA.jpg");
+}
+
+#albumart5:hover .circleplayer {opacity:0.8;}
+
+#albumart6 {
+	float: left;
+	margin-top: 6px;
+	margin-left: 6px;
+	width: 257px;
+	height: 257px;
+	background-image: url("https://illegalart.net/home/images/new/ALLDAY.jpg");
+}
+
+#albumart6:hover .circleplayer {opacity:0.8;}
+
+.info {
+	float: left;
+	width: 257px;
+	height: 45px;
+	background-color: #000;
+	opacity: 0.8;
+	text-decoration: none;
+}
+
+a:hover.info {text-decoration: none;}
+
+.artist {
+	margin-left: 5px;
+	font-size: 18px;
+	color: #fff;
+	opacity: 1.0 !important;
+}
+
+.album {
+	margin-left: 5px;
+	font-size: 13px;
+	color: #fff;
+	opacity: 1.0 !important;
+}
+
+.circleplayer {
+	float: left;
+	clear: left;
+	opacity: 0.5;
+	padding-left: 30px;
+}
+
+#more_releases {
+	float: left;
+	height: 30px;
+	color: #707070;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration:none;
+	text-transform: uppercase;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	padding-top: 3px;
+	width: 520px;
+}
+
+#more_releases:hover {color: #000;}
+
+#column3 {
+	float: left;
+	width: 257px;
+	padding-bottom: 30px;
+}
+
+#more_item {
+	width: 257px;
+	margin: 0 auto;
+	clear: left;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #707070;
+}
+
+#more_item img {
+	padding-left: 35px;
+}
+
+#more_item:hover {color: #000;}
+
+#column4 {
+	float: left;
+	width: 257px;
+}

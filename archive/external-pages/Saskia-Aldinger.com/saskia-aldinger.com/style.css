@@ -1,0 +1,357 @@
+body {
+	
+	font-family: Times;
+	font-size: 16px;
+	}
+
+body.disco {
+    background: #000;
+    -webkit-animation-name: disc;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+#unter{
+	font-family: 'UnifrakturCook', arial, serif;
+	font-size: 20px;
+}
+
+#under{
+	font-family: 'UnifrakturCook', arial, serif;
+	font-size: 20px;
+	margin-top:-50px;
+}
+
+
+
+#text{
+	font-size: 20px;
+	color: black;
+	text-decoration: blink;
+	
+}
+
+
+
+#h10{
+    font-family: 'UnifrakturCook', arial, serif;
+	font-size: 90px;
+	text-shadow: 5px 1px 4px lime;
+	
+}
+
+	
+#h1{
+    font-family: 'UnifrakturCook', arial, serif;
+	font-size: 55px;
+
+}
+
+#h2{
+	font-family: 'UnifrakturCook', arial, serif;
+	font-size: 20px;
+	z-index: 1000;
+}
+
+
+#mail{
+	font-family: 'UnifrakturCook', arial, serif;
+	font-size: 20px;
+	z-index: 1000;
+	margin-right:2%;
+	
+}
+
+
+#patch{
+	
+	width:170px;
+	top:7px;
+	right: 20px;
+	position: fixed;
+	z-index: 1000;
+
+
+}
+
+#link{
+	
+	font-family: 'UnifrakturCook', arial, serif;
+	font-size: 20px;
+
+
+}
+
+
+/* TAPETE */
+
+.rainbow{
+	width:100%;
+	background: url(img/rainbow.jpg);
+	height:335px;
+}
+
+.diamond{
+	width:100%;
+	background:url(img/diamond.gif);
+	height:63px;
+}
+
+
+.gesicht{
+	width:100%;
+	background: url(img/gesicht.jpg);
+	height:205px;
+}
+
+.berry{
+	width:100%;
+	background: url(img/strawberry.gif);
+	height:90px;
+}
+
+
+.firewall{
+	width:100%;
+	background: url(img/firewall.jpg);
+	height:267px;
+}
+
+
+.webflair{
+	width:100%;
+	background: url(img/webflair.jpg);
+	height:267px;
+}
+
+.style{
+	width:100%;
+	background: url(img/style.jpg);
+	height:246px;
+}
+
+
+.comet{
+	width:100%;
+	background: url(img/comet.jpg);
+	height:300px;
+}
+
+.schablone{
+	width:100%;
+	background: url(img/schablone-bitmap.png);
+	height:158px;
+}
+
+.glovetrotter{
+	width:100%;
+	background: url(img/glove1.jpg);
+	height:300px;
+}
+
+.glovetrotter2{
+	width:100%;
+	background: url(img/glove2.jpg);
+	height:300px;
+}
+
+
+.gifdisco{
+	width:100%;
+	background: url(img/8-Bit-Dance-Moves.gif);
+	height:272px;
+}
+
+.trailblazer{
+	width:100%;
+	background: url(img/weave.jpg);
+	height:300px;
+
+}
+
+.pxl5{
+	width:100%;
+	background: url(img/pxl5.jpg);
+	height:375px;
+
+}
+
+.ballon3{
+	width:100%;
+	background: url(img/ballon3.jpg);
+	height:300px;
+
+}
+
+
+
+.endbild{
+	width:100%;
+	background: url(img/endbild.jpg);
+	height:118px;
+
+}
+
+
+.jupiter1{
+	width:100%;
+	background: url(img/jupiter1.jpg);
+	height:486px;
+
+}
+.jupiter3{
+	width:100%;
+	background: url(img/jupiter_bild.png);
+	height:86px;
+
+}
+
+
+
+.FlattrButton{
+	top:3%;
+	right: 2%;
+	position: fixed;
+
+}
+
+.speedshow{
+	width:100%;
+	background: url(img/speedshow.jpg);
+	height:135px;
+
+}
+
+.speedshow2{
+	width:100%;
+	background: url(img/speedshow2.jpg);
+	height:71px;
+
+}
+
+.pro1{
+	width:100%;
+	background: url(img/pro1.jpg);
+	height:137px;
+
+}
+
+.pro2{
+	width:100%;
+	background: url(img/pro2.jpg);
+	height:113px;
+
+}
+
+
+.dancer{
+	width:100%;
+	background: url(img/8-Bit-Dance-Moves.gif);
+	height:272px;
+
+}
+
+
+.dream{
+	width:100%;
+	background: url(img/dreams.jpg);
+	height:215px;
+
+}
+
+.mumie{
+	width:100%;
+	background: url(img/mumie_webseite.jpg);
+	height:120px;
+
+}
+
+.vr1{
+	width:100%;
+	background: url(img/vr1.jpg);
+	height:127px;
+
+}
+
+.vr2{
+	width:100%;
+	background: url(img/vr2.jpg);
+	height:180px;
+
+}
+
+
+.hidden1{
+	width:100%;
+	background: url(img/hidden1.jpg);
+	height:167px;
+
+}
+
+.hidden2{
+	width:100%;
+	background: url(img/hidden2.jpg);
+	height:107px;
+
+}
+
+.hidden3{
+	width:100%;
+	background: url(img/hidden3.jpg);
+	height:200px;
+
+}
+
+
+.eliza1{
+	width:100%;
+	background: url(img/eliza1_1.jpg);
+	height:200px;
+
+}
+
+.eliza2{
+	width:100%;
+	background: url(img/eliza2_2.jpg);
+	height:200px;
+
+}
+
+.fb{
+	width:100%;
+	background: url(img/fb-seite.png);
+	height:197px;
+
+}
+
+.mutti{
+	width:100%;
+	background: url(img/mutti-webseite.png);
+	height:199px;
+
+}
+
+.demo{
+	width:100%;
+	background: url(img/jobs2.jpg);
+	height:400px;
+
+}
+
+.demo2{
+	width:100%;
+	background: url(img/shirt2.png);
+	height:272px;
+
+}
+
+.nm{
+	width:100%;
+	background: url(img/nm-blog.png);
+	height:160px;
+
+}
+
+
+
+

@@ -1,0 +1,1844 @@
+jQuery( document ).ready( function( $ ) {
+    let currentSportName = 'football';
+    let matchDetailId = null;
+    const protocol = 'wss';
+    const host = 'emqx.api-score.com';
+    const path = '/mqtt';
+    const clientId = `mqtt_${Math.random().toString(16).slice(3)}`;
+    const connectUrl = `${protocol}://${host}${path}`;
+    let oldTopic = null;
+    let newTopic = null;
+    const topicScore = 'fb-live-score';
+    const topicChatMessage = 'chat/room/6362206e7e42f3850b75692c/message';
+    const topicChatMessageDelete = 'chat/room/6362206e7e42f3850b75692c/message_delete';
+    let isSubscribeToppic = false;
+    let isSubscribeToppicScore = false;
+    let isSubscribeToppicChatMsg = false;
+    let isSubscribeToppicChatMsgDel = false;
+
+    const csgoMaps = [
+        {
+            "id": "9vjxm89wu4q6odg",
+            "name": "cache",
+        },
+        {
+            "id": "gx7lm79xuor2wdk",
+            "name": "dust2",
+        },
+        {
+            "id": "gy0or596uemwzv3",
+            "name": "mirage",
+        },
+        {
+            "id": "kn54qle2h8mvy9d",
+            "name": "inferno",
+        },
+        {
+            "id": "d23xmvx7f4rg8ny",
+            "name": "nuke",
+        },
+        {
+            "id": "4zp5rz5vi1r82w1",
+            "name": "train",
+        },
+        {
+            "id": "j1l4rje7h3m7vx5",
+            "name": "overpass",
+        },
+        {
+            "id": "p4jwq2e6h6q0veo",
+            "name": "cobblestone",
+        },
+        {
+            "id": "jednm928txryox8",
+            "name": "season",
+        },
+        {
+            "id": "l965mk65foq1ge4",
+            "name": "default",
+        },
+        {
+            "id": "8y39mp8zh0qojxg",
+            "name": "tba",
+        },
+        {
+            "id": "9k82rep4fwqepzj",
+            "name": "tuscan",
+        },
+        {
+            "id": "z318q6g3fxro9jd",
+            "name": "vertigo",
+        },
+        {
+            "id": "9dn1m1e6h9qoepl",
+            "name": "ancient",
+        },
+        {
+            "id": "e4wyrnxzfwm86pv",
+            "name": "anubis",
+        }
+    ];
+
+    const client = mqtt.connect(connectUrl, {
+        clientId,
+        clean: false,
+        connectTimeout: 4000,
+        reconnectPeriod: 1000,
+    })
+
+    const pushToChatBox = (msg, topic) => {
+        const iframe = document.getElementById("chatBoxApiSport");
+
+        if (!iframe) {
+            console.error("Iframe không tồn tại.");
+            return;
+        }
+
+        const sendMessage = () => {
+            if (iframe.contentWindow) {
+                // console.log("Gửi message đến iframe.");
+                let type = 'UPDATE_DATA';
+                if(topicChatMessage === topic) {
+                    type = 'CHAT_MESSAGE'
+                } else if(topicChatMessageDelete === topic) {
+                    type = 'CHAT_MESSAGE_DELETE'
+                }
+                iframe.contentWindow.postMessage(
+                    { type, payload: msg },
+                    "*" // Thay bằng origin cụ thể nếu cần
+                );
+            } else {
+                console.error("iframe.contentWindow không tồn tại.");
+            }
+        };
+
+        // Lắng nghe sự kiện load
+        iframe.addEventListener("load", () => {
+            // console.log("Iframe đã load xong, gửi message.");
+            sendMessage();
+        });
+
+        // Gửi ngay nếu iframe đã load
+        if (iframe.contentWindow) {
+            // console.log("Iframe đã sẵn sàng, gửi message ngay.");
+            sendMessage();
+        }
+    };
+
+    // Xử lý sự kiện khi kết nối thành công
+    client.on('connect', () => {
+        // console.log('Connection successful!');
+        // fetchData();
+        // setTimeout(subscribeToppic, 300);
+
+        if(currentSportName === 'football' && $('#match').length > 0) {
+            setTimeout(subscribeToppicScore, 300);
+        }
+        if($('#match').length > 0) {
+            setTimeout(() => {
+                subscribeToppicChatMessage();
+                subscribeToppicChatMessageDelete();
+            }, 300);
+        }
+    });
+    client.on('error', (err) => {
+        console.error('MQTT error:', err);
+    });
+    client.on('close', () => {
+        // console.log('MQTT connection closed');
+    });
+    // Xử lý sự kiện khi nhận được thông điệp
+    client.on('message', (topic, message) => {
+        if(topicChatMessage === topic || topicChatMessageDelete === topic) {
+            pushToChatBox(message, topic);
+        } else  {
+            const matches = parseMessage(message);
+
+            if(topicScore === topic) {
+                const matchScores = matches.filter(item => item.matchId != matchDetailId);
+                if(matchScores.length > 0) {
+                    pushToChatBox(matchScores, topic);
+                }
+            } else if(topic === sport_data[currentSportName].mqtt_topic) {
+                const matchIds = [];
+                for (const match of matches) {
+                    matchIds.push(match.id);
+                    if(sport_data[currentSportName].match_live === undefined) {
+                        sport_data[currentSportName].match_live = matches;
+                    } else {
+                        const matchIndex = sport_data[currentSportName].match_live.findIndex(item => item.id === match.id);
+                        if(matchIndex !== -1) {
+                            sport_data[currentSportName].match_live[matchIndex] = match;
+                        } else {
+                            sport_data[currentSportName].match_live.push(match);
+                        }
+                    }
+                }
+              
+                callback(currentSportName, sport_data[currentSportName].match_live, matchIds);
+            }
+        }
+    });
+
+    const subscribeToppic = (reSubscribe = 1) => {
+        try {
+            // nếu đã subscribe rồi mà oldTopic = newTopic thì dừng lại
+            if(isSubscribeToppic && oldTopic === newTopic) {
+                return;
+            }
+            if(!isSubscribeToppic || !oldTopic) {
+                isSubscribeToppic = false;
+                client.subscribe(newTopic, {qos: 0}, (err) => {
+                    if (!err) {
+                        // console.log(`Subscribed to topic "${newTopic}" successfully!`);
+                        isSubscribeToppic = true;
+                    } else {
+                        console.error('Subscription error:', err);
+                    }
+                });
+            } else {
+                client.unsubscribe(oldTopic, (err) => {
+                    if (!err) {
+                        // console.log(`Unsubscribed from topic "${oldTopic}" successfully!`);
+                    } else {
+                        console.error('Unsubscription error:', err);
+                    }
+                });
+                // Sau khi hủy đăng ký, đăng ký vào topic mới
+                isSubscribeToppic = false;
+                client.subscribe(newTopic, {qos: 0}, (err) => {
+                    if (!err) {
+                        // console.log(`Subscribed to topic "${newTopic}" successfully!`);
+                        isSubscribeToppic = true;
+                    } else {
+                        console.error('Subscription error:', err);
+                    }
+                });
+            }
+        } catch(error) {
+            console.log(error);
+            // reSubscribe tối đa 5 lần
+            console.log('reSubscribe', reSubscribe);
+            if(!isSubscribeToppic && reSubscribe < 5) {
+                setTimeout(subscribeToppic(reSubscribe + 1), 2000);
+            }
+        }
+    };
+
+    const subscribeToppicScore = (reSubscribe = 1) => {
+        try {
+            client.subscribe(topicScore, {qos: 0}, (err) => {
+                if (!err) {
+                    // console.log(`Subscribed to topic "${topicScore}" successfully!`);
+                    isSubscribeToppicScore = true;
+                } else {
+                    console.error('Subscription error:', err);
+                }
+            });
+        } catch(error) {
+            console.log(error);
+            // reSubscribe tối đa 5 lần
+            console.log('reSubscribe Score', reSubscribe);
+            if(!isSubscribeToppicScore && reSubscribe < 5) {
+                setTimeout(subscribeToppicScore(reSubscribe + 1), 2000);
+            }
+        }
+    };
+
+    const subscribeToppicChatMessage = (reSubscribe = 1) => {
+        try {
+            client.subscribe(topicChatMessage, {qos: 0}, (err) => {
+                if (!err) {
+                    // console.log(`Subscribed to to topic "${topicChatMessage}" successfully!`);
+                    isSubscribeToppicChatMsg = true;
+                } else {
+                    console.error('Subscription error:', err);
+                }
+            });
+        } catch(error) {
+            console.log(error);
+            // reSubscribe tối đa 5 lần
+            // console.log('reSubscribe topic Chat', reSubscribe);
+            if(!isSubscribeToppicChatMsg && reSubscribe < 5) {
+                setTimeout(subscribeToppicChatMessage(reSubscribe + 1), 2000);
+            }
+        }
+    };
+
+    const subscribeToppicChatMessageDelete = (reSubscribe = 1) => {
+        try {
+            client.subscribe(topicChatMessageDelete, {qos: 0}, (err) => {
+                if (!err) {
+                    // console.log(`Subscribed to topic "${topicChatMessageDelete}" successfully!`);
+                    isSubscribeToppicChatMsgDel = true;
+                } else {
+                    console.error('Subscription error:', err);
+                }
+            });
+        } catch(error) {
+            console.log(error);
+            // reSubscribe tối đa 5 lần
+            // console.log('reSubscribe Chat Delete', reSubscribe);
+            if(!isSubscribeToppicChatMsgDel && reSubscribe < 5) {
+                setTimeout(subscribeToppicChatMessageDelete(reSubscribe + 1), 2000);
+            }
+        }
+    };
+
+    const parseMessage = (message) => {
+        let matches = [];
+        try {
+            const compressedData = new Uint8Array(message);
+
+            // Sử dụng pako để giải nén dữ liệu
+            const decompressedData = pako.inflate(compressedData, { to: 'string' });
+            const matchData = JSON.parse(decompressedData);
+
+            if(currentSportName === 'football') {
+                for (const match of matchData) {
+                    const matchIndex = sport_data[currentSportName].match_live.findIndex(item => item.id === match.id);
+                    let matchResult = {};
+                    if(matchIndex === -1) {
+                        matchResult = match; 
+                        if(!match.score) {
+                            matchResult.score = [];
+                        }
+                        if(!match.stats) {
+                            matchResult.stats = [];
+                        }
+                    } else {
+                        matchResult = sport_data[currentSportName].match_live[matchIndex];
+                        if(match.score) {
+                            matchResult.score = match.score;
+                        } else {
+                            matchResult.stats = match.stats;
+                        }
+                    }
+    
+                    matches.push(matchResult);
+                }
+            } else {
+                matches = matchData;
+            }
+        } catch (err) {
+            console.error("Decompression failed:", err);
+        }
+
+        return matches;
+    };
+
+    function get_match_by_id( data, match_id ){
+        if(!data) { 
+            return false;
+        }
+        
+        return data.find( function (match) { 
+            return match.id == match_id || match.match_id == match_id;
+        });
+    }
+
+    var getNowTime = function getNowTime() {
+        var d = new Date();
+        return new Date(d.getTime() + d.getTimezoneOffset() * 60000 + 7 * 60 * 60000);
+    }
+
+    const getCurrentDateTimestamp = () => {
+        const currentDateTimestamp = Math.floor(Date.now() / 1000);
+
+        return currentDateTimestamp;
+    };
+
+    const timestampToMinutesSeconds = (timestamp) => {
+        const minutes = Math.floor(timestamp / 60);
+        const seconds = timestamp % 60;
+
+        return { minutes, seconds };
+    };
+
+    const getStatusTimeTexts = (sportName, minutesApp, statusId) => {
+        const statusTimeTexts = {
+            football: {
+                2: minutesApp > 45 ? "45+'" : minutesApp + "'",
+                4: minutesApp + 45 > 90 ? "90+'" : 45 + minutesApp + "'",
+                // 5: minutesApp + 90 > 105 ? "105+'" : 90 + minutesApp + "'",
+                // 6: minutesApp + 105 > 120 ? "120+'" : 105 + minutesApp + "'",
+            },
+            basketball: {
+                2: minutesApp > 12 ? "12'" : minutesApp + "'",
+                4: minutesApp > 12 ? "12'" : minutesApp + "'",
+                6: minutesApp > 12 ? "12'" : minutesApp + "'",
+                8: minutesApp > 12 ? "12'" : minutesApp + "'",
+            }
+        }
+
+        return statusTimeTexts[sportName][statusId] ? `: ${statusTimeTexts[sportName][statusId]}` : '';
+    }
+
+    const getTimeDetailLive = (sportName, statusId, startTimestamp = null, data = null) => {
+        const stautsText = sport_data[sportName].status;
+        const statusTxt = stautsText[statusId] || 'Đang diễn ra';
+        const statusStop = sport_data[sportName].status_deny;
+
+        if (['esports', 'lol', 'dota2', 'csgo'].includes(sportName)) {
+            const {
+                homeScore,
+                awayScore,
+            } = data;
+
+            if(statusStop.includes(data.statusId) || !data) {
+                return statusTxt;
+            }
+
+            if(data.sport === 'lol' && data.boxNum === 5 && statusStop.includes(data.singleStatusId)) {
+                return stautsText[data.singleStatusId];
+            }
+
+            if(data.sport === 'dota2' || data.sport === 'csgo') {
+                if(homeScore >= 3 || awayScore >= 3) {
+                    return 'Kết thúc';
+                }
+            }
+
+            if(statusStop.includes(data.singleStatusId)) {
+                return `G${data.boxNum}-FT`;
+            }
+
+            let t = Math.ceil(data.timeDifference / 60) + "'";
+            if(data.sport === 'dota2' && data.isBp) {
+                t = 'BP';
+            } if(data.sport === 'csgo') {
+                const map = csgoMaps.find(item => item.id === data.mapId);
+                if(map) {
+                    t = map.name;
+                }
+            }
+
+            return `G${data.boxNum}-${t}`;
+        }
+
+        if (['tennis', 'badminton', 'volleyball'].includes(sportName)
+            || statusStop.includes(statusId)
+            || !startTimestamp) {
+            return statusTxt;
+        } 
+
+        const currentDate = getCurrentDateTimestamp();
+        let remaining = sportName === 'basketball' ? startTimestamp : currentDate - startTimestamp;
+        if(remaining < 0) {
+            remaining = remaining * -1;
+        }
+
+        const { minutes, seconds } = timestampToMinutesSeconds(remaining);
+        const minutesApp = seconds > 0 ? minutes + 1 : minutes;
+        const timeText = getStatusTimeTexts(sportName, minutesApp, statusId);
+       
+        return `${statusTxt}${timeText}`;
+    };
+
+    const countDestroyedTowers = (towerStatus) => {
+        // Chuyển thành nhị phân 12 bit
+        const bits = towerStatus.toString(2).padStart(12, '0').split('').map(Number);
+
+        // Bỏ bit 0 (Not used), chỉ xét từ bit 1 đến 11
+        const relevantBits = bits.slice(1);
+
+        // Đếm số trụ đã bị phá (bit = 0)
+        const destroyed = relevantBits.filter(b => b === 0).length;
+
+        return destroyed;
+    }
+
+    const countDestroyedBarracks = (barrackStatus) => {
+        // Chuyển sang nhị phân 7 bit
+        const bits = barrackStatus.toString(2).padStart(7, '0').split('').map(Number);
+
+        // Bỏ bit 6 (Not used)
+        const relevantBits = bits.slice(1);
+
+        // Đếm số barrack bị phá (bit = 0)
+        return relevantBits.filter(b => b === 0).length;
+    }
+
+    const getEsportsCircleVal = (home, away)  => {
+        const hVal = parseFloat(home);
+        const aVal = parseFloat(away);
+        const per = hVal + aVal == 0 ? 0.5 : aVal / (hVal + aVal);
+        const px = per * 282;
+
+        return `${px}px, 282px`;
+    }
+
+    const getMatchData = (sportName, match) => {
+        if (sportName === 'football') {
+            const statusCode = match.score[1];
+            const homeScores = match.score[2];
+            const awayScores = match.score[3];
+            let homeScore = homeScores[0];
+            let awayScore = awayScores[0];
+            if (homeScores[5] > 0) {
+                homeScore = homeScores[5];
+            }
+            if (awayScores[5] > 0) {
+                awayScore = awayScores[5];
+            }
+            const halfStartTime = match.score[4];
+            const homeHalfScore = homeScores[1];
+            const homeCorner = homeScores[4];
+            const awayYellowCards = awayScores[3];
+            const homeYellowCards = homeScores[3];
+            const awayHalfScore = awayScores[1];
+            const awayCorner = awayScores[4];
+
+            return {
+                statusCode,
+                homeScores,
+                homeScore,
+                homeHalfScore,
+                homeCorner,
+                homeYellowCards,
+                awayScores,
+                awayScore,
+                awayHalfScore,
+                awayCorner,
+                awayYellowCards,
+                halfStartTime,
+            };
+        } else if (sportName === 'basketball') {
+            const statusCode = match.score[1];
+            const homeScores = match.score[3];
+            const awayScores = match.score[4];
+            const homeScore = homeScores.reduce((partialSum, a) => partialSum + a, 0);
+            const awayScore = awayScores.reduce((partialSum, a) => partialSum + a, 0);
+            const halfStartTime = match.timer[3];
+
+            return {
+                statusCode,
+                homeScores,
+                homeScore,
+                awayScores,
+                awayScore,
+                halfStartTime,
+            };
+        } else if (['tennis', 'badminton', 'volleyball'].includes(sportName)) {
+            const statusCode = match.score[1];
+            let homeScore = 0;
+            let awayScore = 0;
+            if(match.score[3].ft) {
+                homeScore = match.score[3].ft[0];
+                awayScore = match.score[3].ft[1];
+            }
+
+            return {
+                statusCode,
+                homeScore,
+                awayScore,
+                serve: match.score[2],
+                score: match.score[3],
+            }
+        } else if (['esports', 'lol', 'dota2', 'csgo'].includes(sportName)) {
+            const homeSide = match.home.side;
+            const awaySide = match.away.side;
+            let homeSideName = '';
+            let awaySideName = '';
+            if(homeSide !== undefined) {
+                if(match.sport === 'lol') {
+                    homeSideName = homeSide == 1 ? 'Blue' : 'Red';
+                    awaySideName = awaySide == 1 ? 'Blue' : 'Red';
+                } else if(match.sport === 'dota2') {
+                    homeSideName = homeSide == 1 ? 'Radiant' : 'Dire';
+                    awaySideName = awaySide == 1 ? 'Radiant' : 'Dire';
+                } else if(match.sport === 'csgo') {
+                    homeSideName = homeSide == 1 ? 'T' : 'CT';
+                    awaySideName = awaySide == 1 ? 'T' : 'CT';
+                }
+            }
+
+            const timeDifference = match.timer[3];
+            const singleStatusId = match.single_status_id;
+
+            let data = {
+                sport: match.sport,
+                statusCode: match.status_id,
+                boxNum: match.box_num,
+                singleStatusId,
+                homeScore: match.home.score,
+                awayScore: match.away.score,
+                homeSide,
+                awaySide,
+                homeSideName,
+                awaySideName,
+                timeDifference
+            }
+
+            if(match.sport === 'lol') {
+                const homeKills = match.home.stats ? match.home.stats[0] : 0;
+                const awayKills = match.away.stats ? match.away.stats[0] : 0;
+                const homeFirstBlood = match.home.stats ? match.home.stats[7] : 0;
+                const awayFirstBlood = match.away.stats ? match.away.stats[7] : 0;
+                const homeFirstTower = match.home.stats ? match.home.stats[8] : 0;
+                const awayFirstTower = match.away.stats ? match.away.stats[8] : 0;
+                const homeFirstFiveKill = match.home.stats ? match.home.stats[9] : 0;
+                const awayFirstFiveKill = match.away.stats ? match.away.stats[9] : 0;
+                const homeTenFiveKill = match.home.stats ? match.home.stats[10] : 0;
+                const awayTenFiveKill = match.away.stats ? match.away.stats[10] : 0;
+                const homeCup = match.home.stats ? match.home.stats[4] : 0;
+                const awayCup = match.away.stats ? match.away.stats[4] : 0;
+
+                let homeHtmlDetail = '';
+                let awayHtmlDetail = '';
+                if(homeFirstBlood) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/blood.svg" />';
+                }
+                if(awayFirstBlood) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/blood.svg" />';
+                }
+                if(homeFirstFiveKill) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/skill-5.svg" />';
+                }
+                if(awayFirstFiveKill) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/skill-5.svg" />';
+                }
+                if(homeTenFiveKill) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/skill-10.svg" />';
+                }
+                if(awayTenFiveKill) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/skill-10.svg" />';
+                }
+                if(homeFirstTower) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/tower-start.svg" />';
+                }
+                if(awayFirstTower) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/tower-start.svg" />';
+                }
+                if(homeCup) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/cup.svg" />';
+                }
+                if(awayCup) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/cup.svg" />';
+                }
+
+                const statsHtml = `${homeHtmlDetail} <strong style="color: #fffff;">${homeKills} - ${awayKills}</strong> ${awayHtmlDetail}`
+
+                data = {
+                   ...data,
+                    homeKills: match.home.stats ? match.home.stats[0] : 0,
+                    awayKills: match.away.stats ? match.away.stats[0] : 0,
+                    homeTower: match.home.stats ? match.home.stats[1] : 0,
+                    awayTower: match.away.stats ? match.away.stats[1] : 0,
+                    homeEconomy: match.home.stats ? Number(match.home.stats[2] / 1000).toFixed(1) : 0,
+                    awayEconomy: match.away.stats ? Number(match.away.stats[2] / 1000).toFixed(1) : 0,
+                    homeDrakes: match.home.stats ? match.home.stats[5] : 0, // Drakes
+                    awayDrakes: match.away.stats ? match.away.stats[5] : 0,
+                    homeNashor: match.home.stats ? match.home.stats[6] : 0, // Nahsor
+                    awayNashor: match.away.stats ? match.away.stats[6] : 0,
+                    homeInhibitor: match.home.stats ? match.home.stats[3] : 0,
+                    awayInhibitor: match.away.stats ? match.away.stats[3] : 0,
+                    statsHtml
+                }
+            } else if(match.sport === 'dota2') {
+                const homeKills = match.home.stats ? match.home.stats[0] : 0;
+                const awayKills = match.away.stats ? match.away.stats[0] : 0;
+                const homeFirstBlood = match.home.stats ? match.home.stats[7] : 0;
+                const awayFirstBlood = match.away.stats ? match.away.stats[7] : 0;
+                const homeFirstTower = match.home.stats ? match.home.stats[8] : 0;
+                const awayFirstTower = match.away.stats ? match.away.stats[8] : 0;
+                const homeFirstFiveKill = match.home.stats ? match.home.stats[9] : 0;
+                const awayFirstFiveKill = match.away.stats ? match.away.stats[9] : 0;
+                const homeTenFiveKill = match.home.stats ? match.home.stats[10] : 0;
+                const awayTenFiveKill = match.away.stats ? match.away.stats[10] : 0;
+                const homeCup = match.home.stats ? match.home.stats[6] : 0;
+                const awayCup = match.away.stats ? match.away.stats[6] : 0;
+
+                let homeHtmlDetail = '';
+                let awayHtmlDetail = '';
+                if(homeFirstBlood) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/blood.svg" />';
+                }
+                if(awayFirstBlood) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/blood.svg" />';
+                }
+                if(homeFirstFiveKill) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/skill-5.svg" />';
+                }
+                if(awayFirstFiveKill) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/skill-5.svg" />';
+                }
+                if(homeTenFiveKill) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/skill-10.svg" />';
+                }
+                if(awayTenFiveKill) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/skill-10.svg" />';
+                }
+                if(homeFirstTower) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/tower-start.svg" />';
+                }
+                if(awayFirstTower) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/tower-start.svg" />';
+                }
+                if(homeCup) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/cup.svg" />';
+                }
+                if(awayCup) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/cup.svg" />';
+                }
+
+                const statsHtml = `${homeHtmlDetail} <strong style="color: #fffff;">${homeKills} - ${awayKills}</strong> ${awayHtmlDetail}`
+
+                data = {
+                   ...data,
+                    homeKills: match.home.stats ? match.home.stats[0] : 0,
+                    awayKills: match.away.stats ? match.away.stats[0] : 0,
+                    homeTower: match.home.stats ? countDestroyedTowers(match.away.stats[1]) : 0,
+                    awayTower: match.away.stats ? countDestroyedTowers(match.home.stats[1]) : 0,
+                    homeBarracks: match.home.stats ? countDestroyedBarracks(match.away.stats[2]) : 0,
+                    awayBarracks: match.away.stats ? countDestroyedBarracks(match.home.stats[2]) : 0,
+                    homeEconomy: match.home.stats ? Number(match.home.stats[3] / 1000).toFixed(1) : 0,
+                    awayEconomy: match.away.stats ? Number(match.away.stats[3] / 1000).toFixed(1) : 0,
+                    homeExperience: match.home.stats ? Number(match.home.stats[5] / 1000).toFixed(1) : 0,
+                    awayExperience: match.away.stats ? Number(match.away.stats[5] / 1000).toFixed(1) : 0,
+                    isBp: match.is_bp,
+                    statsHtml
+                }
+            } else if(match.sport === 'csgo') {
+                const homeWinFirstHalf = match.home.stats[0] > 0 ? 1 : 0;
+                const awayWinFirstHalf = match.away.stats[0] > 0 ? 1 : 0;
+                const homeWinSecondHalf = match.home.stats[1] > 0 ? 1 : 0;
+                const awayWinSecondHalf = match.away.stats[1] > 0 ? 1 : 0;
+                const homeWinFiveFoundsFirst = match.home.stats[2] > 0 ? 1 : 0;
+                const awayWinFiveFoundsFirst = match.away.stats[2] > 0 ? 1 : 0;
+                const homeWinTenFoundsFirst = match.home.stats[3] > 0 ? 1 : 0;
+                const awayWinTenFoundsFirst = match.away.stats[3] > 0 ? 1 : 0;
+                const homeCup = 0;
+                const awayCup = 0;
+                if(singleStatusId === 3) {
+                    homeCup = match.home.c_score > match.away.c_score ? 1 : 0;
+                    awayCup = match.home.c_score < match.away.c_score ? 1 : 0;
+                }
+                let homeHtmlDetail = '';
+                let awayHtmlDetail = '';
+                if(homeWinFirstHalf) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/csgo-1.svg" />';
+                }
+                if(awayWinFirstHalf) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/csgo-1.svg" />';
+                }
+                if(homeWinSecondHalf) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/csgo-16.svg" />';
+                }
+                if(awayWinSecondHalf) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/csgo-16.svg" />';
+                }
+                if(homeWinFiveFoundsFirst) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/csgo-5.svg" />';
+                }
+                if(awayWinFiveFoundsFirst) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/csgo-5.svg" />';
+                }
+                if(homeWinTenFoundsFirst) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/csgo-10.svg" />';
+                }
+                if(awayWinTenFoundsFirst) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/csgo-10.svg" />';
+                }
+                if(homeCup) {
+                    homeHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/cup.svg" />';
+                }
+                if(awayCup) {
+                    awayHtmlDetail += '<img src="/wp-content/themes/bongda/dist/images/esports/cup.svg" />';
+                }
+
+                const statsHtml = `${homeHtmlDetail} <strong style="color: #fffff;">${match.home.c_score} - ${match.away.c_score}</strong> ${awayHtmlDetail}`
+
+                data = {
+                   ...data,
+                    homeH1Score: match.c_scores[1] ? match.c_scores[1].home : 0,
+                    awayH1Score: match.c_scores[1] ? match.c_scores[1].away : 0,
+                    homeH2Score: match.c_scores[2] ? match.c_scores[2].home : 0,
+                    awayH2Score: match.c_scores[2] ? match.c_scores[2].away : 0,
+                    homeH3Score: match.c_scores[3] ? match.c_scores[3].home : 0,
+                    awayH3Score: match.c_scores[3] ? match.c_scores[3].away : 0,
+                    mapId: match.map_id,
+                    statsHtml
+                }
+            }
+
+            return data;
+        } 
+    }
+
+    const getTimeDetailLiveProcessStyle = (statusId, startTimestamp = null) => {
+        let style = {
+            width: '20%',
+            borderBottomRightRadius: 0,
+        }
+
+        if (statusId !== 3 && !startTimestamp) {
+            return style;
+        }
+
+        const currentDate = getCurrentDateTimestamp();
+        const { minutes } = timestampToMinutesSeconds(currentDate - startTimestamp);
+        const minutesApp = minutes + 1;
+
+        // % thời gian đá
+        const timeProcess = {
+            2: minutesApp > 45 ? 50 : ((minutesApp / 90) * 100),
+            3: 50,
+            4: minutesApp + 45 > 100 ? 100 : (((45 + minutesApp) / 90) * 100),
+            5: minutesApp + 90 > 105 ? (105 / 120) * 100 : (((90 + minutesApp) / 120) * 100),
+            6: minutesApp + 105 > 120 ? 100 : (((105 + minutesApp) / 120) * 100),
+        };
+
+        const timePlayerProcess = timeProcess[statusId] ? timeProcess[statusId] : 0;
+        let width = 0;
+        if (timePlayerProcess < 20) {
+            width = 20;
+        } else if (timePlayerProcess > 95) {
+            width = 95;
+        } else {
+            width = timePlayerProcess;
+        }
+
+        let borderBottomRightRadius = 0;
+        if (timePlayerProcess > 90) {
+            borderBottomRightRadius = 45;
+        } else if (timePlayerProcess > 80) {
+            borderBottomRightRadius = 20;
+        }
+
+        return {
+            ...style,
+            width: `${width}%`,
+            borderBottomRightRadius: `${borderBottomRightRadius}px`,
+        };
+    };
+
+    var callback = function callback(sportName, matchDetailLive, onlyMatchIds = null) {
+        if($(`#${sportName} .list-filter`).length && ids[sportName]) {
+            try {
+                // trên 500 trận bi lỗi chuyển từ php sang js array biến thành object
+                if(!Array.isArray(ids[sportName])) {
+                    ids[sportName] = Object.values(ids[sportName]);
+                }
+                let countLive = 0;
+                $.map( matchDetailLive, function( item, i ) {
+                    const id = sportName === 'esports' ? item.match_id : item.id;
+                    let statusCode =  1;
+                    if(sportName === 'esports') {
+                        statusCode = item.status_id
+                    } else {
+                        statusCode = item.score ? item.score[1] : 1;
+                    }
+        
+                    if(id && ids[sportName].includes(id) && sport_data[sportName].status_playing.includes(statusCode)) {
+                        countLive++;
+                    }
+                });
+
+                $(`#${sportName} .list-filter .now span`).html(countLive);
+            } catch (error) {
+                console.log(error);
+                console.log(`sportName: ${sportName}`);
+            }
+        }
+
+        $('.grid-matches .grid-matches__item').each(function () {
+            var runtime = $(this).data('runtime'),
+                now = getNowTime().getTime() / 1000;
+
+            try {
+                const matchId = $(this).attr('data-fid');
+
+                let checkShow = true;
+                if(matchId == undefined || (onlyMatchIds && !onlyMatchIds.includes(matchId))) {
+                    checkShow = false;
+                }
+                if(checkShow) {
+                    const match = get_match_by_id(matchDetailLive, matchId);
+                    if(match && (match.score || match.match_id) ) {
+                        const matchdata = getMatchData(sportName, match);
+
+                        const {
+                            statusCode,
+                        } = matchdata;
+                        $(this).attr('data-status', statusCode);
+
+                        if(sportName === 'football') {
+                            const {
+                                homeScore,
+                                homeHalfScore,
+                                homeCorner,
+                                homeYellowCards,
+                                awayScore,
+                                awayHalfScore,
+                                awayCorner,
+                                awayYellowCards,
+                                statusCode,
+                                halfStartTime,
+                            } = matchdata;
+
+                            $(this).find('.gmd-elapsed-wrapper').show();
+                            $(this).find('.t_time, .xstime').addClass('t_time_num').html(getTimeDetailLive(sportName, statusCode, halfStartTime));
+                            $(this).find('.match-status2').addClass('icon-live');
+                            
+                            let scoreResult = `<div class="gmd_home-score ${ homeScore > awayScore ? 'is-win' : '' }"><p>${homeScore}</p></div>
+                                <span> : </span>
+                                <div class="gmd_away-score ${ homeScore < awayScore ? 'is-win' : '' }"><p>${awayScore}</p>
+                            </div>`;
+                            $(this).find('.grid-match__vs').addClass('t_vs_num').html(scoreResult).removeClass('gmd-match__vs');
+                            
+                            if($(this).find('.halfCourt').length > 0) {
+                                $(this).find('.halfCourt').html(homeHalfScore + ' - ' + awayHalfScore );
+                                $(this).find('.cornerGoal').html(homeCorner + ' - ' + awayCorner );
+                                $(this).find('.cornerYellow').html(homeYellowCards + ' - ' + awayYellowCards );
+                            } else {
+                                const flagHtml = `
+                                    <div class="gmd-match__goal-scoring d-flex">
+                                        <span class="gmd-ht">HT</span>
+                                        <span class="gmd-match__half-court halfCourt">${homeHalfScore} - ${awayHalfScore}</span>
+                                    </div>
+                                    <div class="gmd-match__corner-ball d-flex">
+                                        <img src="/wp-content/themes/bongda/dist/images/front/home_capa.svg" alt="Flag" width="12px" height="12px">
+                                        <span class="gmd-match__corner-goal cornerGoal">${homeCorner} - ${awayCorner}</span>
+                                    </div>
+                                    <div class="gmd-match__corner-yellow d-flex">
+                                        <img src="/wp-content/themes/bongda/dist/images/front/home_yellow.svg" alt="Flag" width="10px" height="10px">
+                                        <span class="gmd-match__home-yellow cornerYellow">${homeYellowCards} - ${awayYellowCards}</span>
+                                    </div>
+                                `;
+                                $(this).find('.grid-match--flag').html(flagHtml);
+                                $(this).find('.grid-match--flag').removeClass('grid-match--flag-h2h');
+                            }
+                        } else if(sportName === 'basketball') {
+                            const {
+                                homeScore,
+                                awayScore,
+                                statusCode,
+                                halfStartTime,
+                            } = matchdata;;
+                            $(this).find('.gmd-elapsed-wrapper').show();
+                            $(this).find('.t_time, .xstime').addClass('t_time_num').html(getTimeDetailLive(sportName, statusCode, halfStartTime));
+                            $(this).find('.match-status2').addClass('icon-live');
+                            let scoreResult = `<div class="gmd_home-score ${ homeScore > awayScore ? 'is-win' : '' }"><p>${homeScore}</p></div>
+                                <span> : </span>
+                                <div class="gmd_away-score ${ homeScore < awayScore ? 'is-win' : '' }"><p>${awayScore}</p>
+                            </div>`;
+                            $(this).find('.grid-match__vs').addClass('t_vs_num').html(scoreResult).removeClass('gmd-match__vs');
+                        }  else if(['tennis', 'badminton', 'volleyball'].includes(sportName)) {
+                            const {
+                                homeScore,
+                                awayScore,
+                                statusCode,
+                                score,
+                                serve
+                            } = matchdata;
+                            $(this).find('.gmd-elapsed-wrapper').show();
+                            $(this).find('.t_time, .xstime').addClass('t_time_num').html(getTimeDetailLive(sportName, statusCode, null));
+                            let scoreResult = `<div class="gmd_home-score ${ homeScore > awayScore ? 'is-win' : '' }"><p>${homeScore}</p></div>
+                                <span> : </span>
+                                <div class="gmd_away-score ${ homeScore < awayScore ? 'is-win' : '' }"><p>${awayScore}</p>
+                            </div>`;
+                            $(this).find('.grid-match__vs').addClass('t_vs_num').html(scoreResult).removeClass('gmd-match__vs');
+
+                            let column = 3;
+                            for(let i = 1; i <= 5; i ++) {
+                                const p = score[`p${i}`];
+                                const x = score[`x${i}`];
+                                if(p) {
+                                    if(i > column) {
+                                        column = i;
+                                    }
+                                    let pHomeScore = p[0];
+                                    let pAwayScore = p[1];
+                                    const homeClass = pHomeScore > pAwayScore ? 'tib-win' : '';
+                                    const awayClass = pHomeScore < pAwayScore ? 'tib-win' : '';
+                                    if(x) {
+                                        pHomeScore = `${pHomeScore} <span class="grab-7-points">${x[0] ?? 0}</span>`;
+                                        pAwayScore = `${pAwayScore} <span class="grab-7-points">${x[1] ?? 0}</span>`;
+                                    }
+                                    $(this).find(`.t-incident-tennis .tib-home-s${ i }`).html(pHomeScore);
+                                    $(this).find(`.t-incident-tennis .tib-home-s${ i }`).removeClass('tib-win');
+                                    $(this).find(`.t-incident-tennis .tib-home-s${ i }`).addClass(homeClass);
+                                    $(this).find(`.t-incident-tennis .tib-away-s${ i }`).html(pAwayScore);
+                                    $(this).find(`.t-incident-tennis .tib-away-s${ i }`).removeClass('tib-win');
+                                    $(this).find(`.t-incident-tennis .tib-away-s${ i }`).addClass(awayClass);
+                                }
+                            }
+                            if(column === 4) {
+                                column = 5;
+                            }
+                            $(this).find('.t-incident-tennis .t-incident-tennis').removeClass(`t-incident-tennis-3`);
+                            $(this).find('.t-incident-tennis .t-incident-tennis').removeClass(`t-incident-tennis-5`);
+                            $(this).find('.t-incident-tennis .t-incident-tennis').addClass(`t-incident-tennis-${column}`);
+                            $(this).find('.t-incident-tennis .tib-row').removeClass(`tib-row-3`);
+                            $(this).find('.t-incident-tennis .tib-row').removeClass(`tib-row-5`);
+                            $(this).find('.t-incident-tennis .tib-row').addClass(`tib-row-${column}`);
+                            if(sportName === 'tennis') {
+                                if(score.pt) {
+                                    $(this).find('.grid-pt-home').html(score.pt[0] || 0);
+                                    $(this).find('.grid-pt-away').html(score.pt[1] || 0);
+                                } else if(statusCode === 100) {
+                                    $(this).find('.grid-pt-home').html('');
+                                    $(this).find('.grid-pt-away').html('');
+                                } else {
+                                    $(this).find('.grid-pt-home').html('0');
+                                    $(this).find('.grid-pt-away').html('0');
+                                }
+                            }
+
+                            let serveIconSite = 10;
+                            if(sportName === 'badminton') {
+                                serveIconSite = 14;
+                            } else if(sportName === 'volleyball') {
+                                serveIconSite = 12;
+                            }
+                            const serveIcon = `<svg class="serve-icon ${sportName}-serve-icon" width="${serveIconSite}" height="${serveIconSite}" viewBox="0 0 ${serveIconSite} ${serveIconSite}" fill="none"xmlns="http://www.w3.org/2000/svg">
+                                <use href="#${sportName}-serve"></use>
+                            </svg>`;
+                            $(this).find('.team-logo-group .serve-icon').remove();
+                            if(serve === 1) {
+                                $(this).find('.team-logo-group-home-logo').append(serveIcon);
+                            } else {
+                                $(this).find('.team-logo-group-away-logo').append(serveIcon);
+                            }
+                        } else if(sportName === 'esports') {
+                            const {
+                                boxNum,
+                                singleStatusId,
+                                homeScore,
+                                awayScore,
+                            } = matchdata;
+
+                            $(this).find('.gmd-elapsed-wrapper').show();
+                            $(this).find('.t_time, .xstime')
+                                .addClass('t_time_num')
+                                .html(getTimeDetailLive(sportName, statusCode, null, matchdata));
+                            let scoreResult = `<div class="gmd_home-score ${ homeScore > awayScore ? 'is-win' : '' }"><p>${homeScore}</p></div>
+                                <span> : </span>
+                                <div class="gmd_away-score ${ homeScore < awayScore ? 'is-win' : '' }"><p>${awayScore}</p>
+                            </div>`;
+                            $(this).find('.grid-match__vs').addClass('t_vs_num').html(scoreResult).removeClass('gmd-match__vs');
+
+                            if(match.sport === 'lol') {
+                                const {
+                                    homeEconomy,
+                                    awayEconomy,
+                                    homeKills,
+                                    awayKills,
+                                    homeTower,
+                                    awayTower,
+                                } = matchdata;
+                              
+                                $(this).find('.economy-cards').html(`${homeEconomy} - ${awayEconomy}`);
+                                $(this).find('.kills-cards').html(`${homeKills} - ${awayKills}`);
+                                $(this).find('.tower-cards').html(`${homeTower } - ${awayTower }`);
+                            } else if(match.sport === 'dota2') {
+                                const {
+                                    homeKills,
+                                    awayKills,
+                                    homeTower,
+                                    awayTower,
+                                    homeBarracks,
+                                    awayBarracks,
+                                } = matchdata;
+                              
+                                $(this).find('.kills-cards').html(`${homeKills} - ${awayKills}`);
+                                $(this).find('.tower-cards').html(`${homeTower } - ${awayTower }`);
+                                $(this).find('.barrack-cards').html(`${homeBarracks } - ${awayBarracks }`);
+                            } else if(match.sport === 'csgo') {
+                                const {
+                                    homeH1Score,
+                                    awayH1Score,
+                                    homeH2Score,
+                                    awayH2Score,
+                                    homeH3Score,
+                                    awayH3Score,
+                                } = matchdata;
+                                $(this).find('.grid-match__h1').html(`${homeH1Score} - ${awayH1Score}`);
+                                $(this).find('.grid-match__h2').html(`${homeH2Score} - ${awayH2Score}`);
+                                if(match.c_scores[3]) {
+                                    $(this).find('.grid-match__goal-scoring-h3').removeClass('d-none');
+                                    $(this).find('.grid-match__h3').html(`${homeH3Score} - ${awayH3Score}`);
+                                }
+                            }
+                        }
+                    } else {
+                        if (runtime - 7200 < now && runtime < now) {
+                            $(this).find('.gmd-elapsed-wrapper').show();
+                            $(this).find('.t_time').show().show().html('Đang diễn ra');
+                        } else if (runtime - 900 <= now && runtime > now) {
+                            $(this).find('.gmd-elapsed-wrapper').show();
+                            $(this).find('.t_time').show().html('Sắp diễn ra').show().addClass('t_time_num');
+                        } else {
+                            $(this).find('.gmd-elapsed-wrapper').hide();
+                        }
+                    }
+                }
+            } catch (err) {
+                console.log(err);
+                if (runtime - 7200 < now && runtime < now) {
+                    $(this).find('.t_time').addClass('t_time_num').html('Đang diễn ra').show();
+                }
+            }
+        });
+
+        if($('#match').length > 0) {
+            matchDetailId = $('#match').attr('data-fid');
+
+            let checkShow = true;
+            if(onlyMatchIds && !onlyMatchIds.includes(matchDetailId)) {
+                checkShow = false;
+            }
+            if(checkShow) {
+                const match = get_match_by_id(matchDetailLive, matchDetailId);
+                if(match && (match.score || match.match_id) ) {
+                    const matchdata = getMatchData(sportName, match);
+                    const { statusCode, homeScore, awayScore } = matchdata;
+
+                    $('#match').attr('data-status', statusCode);
+                    let scoreResultDetail =  `
+                        <span class="home-score ${ homeScore > awayScore ? 'is-win' : '' }">${homeScore}</span> <span class="ct-pt">:</span> <span class="away-score ${ homeScore < awayScore ? 'is-win' : '' }">${awayScore}</span>
+                        `;
+                    $('.grid-match__time').show();
+                    $('#match').find('.teambox__ts').html(scoreResultDetail);
+
+                    if(sportName === 'football') {
+                        const {
+                            homeScores,
+                            homeHalfScore,
+                            homeCorner,
+                            homeYellowCards,
+                            awayScores,
+                            awayHalfScore,
+                            awayCorner,
+                            awayYellowCards,
+                            halfStartTime,
+                        } = matchdata;
+
+                        $('#match').find('.teambox__status').html( getTimeDetailLive(sportName, statusCode, halfStartTime));
+
+                        // số lần sút trúng khung thành
+                        const ShotsOffTarget = match.stats.find(item => item.type == 21);
+                        if(ShotsOffTarget) {
+                            const homeTarget = ShotsOffTarget.home;
+                            const awayTarget = ShotsOffTarget.away;
+
+                            $('#match .t-incident .target-home').html(homeTarget);
+                            $('#match .t-incident .target-away').html(awayTarget);
+                        }
+
+                        $('#match .t-incident .corner-home').html(homeCorner);
+                        $('#match .t-incident .corner-away').html(awayCorner);
+                        $('#match .t-incident .yellow-card-home').html(homeYellowCards);
+                        $('#match .t-incident .yellow-card-away').html(awayYellowCards);
+                    } else if(sportName === 'basketball') {
+                        const {
+                            homeScores,
+                            awayScores,
+                            halfStartTime,
+                        } = matchdata;
+                        $('#match').find('.teambox__status').html( getTimeDetailLive(sportName, statusCode, halfStartTime));
+                        $('#match .grid-match__time').show();
+                        for(let i = 0; i < 5; i ++) {
+                            const homeClass = homeScores[i] > awayScores[i] ? 'tib-win' : '';
+                            const awayClass = homeScores[i] < awayScores[i] ? 'tib-win' : '';
+                            $(`#match .t-incident-basketball .tib-home-h${ i + 1 }`).html(homeScores[i]);
+                            $(`#match .t-incident-basketball .tib-home-h${ i + 1 }`).removeClass('tib-win');
+                            $(`#match .t-incident-basketball .tib-home-h${ i + 1 }`).addClass(homeClass);
+                            $(`#match .t-incident-basketball .tib-away-h${ i + 1 }`).html(awayScores[i]);
+                            $(`#match .t-incident-basketball .tib-away-h${ i + 1 }`).removeClass('tib-win');
+                            $(`#match .t-incident-basketball .tib-away-h${ i + 1 }`).addClass(awayClass);
+                        }
+
+                        const homeScoreOt = homeScores[4] ?? 0;
+                        const awayScoreOt = awayScores[4] ?? 0;
+                        if(homeScoreOt > 0 || awayScoreOt > 0 ) {
+                            $(`#match .t-incident-basketball .tib-row`).addClass('tib-row-ot');
+                        }
+                    } else if(['tennis', 'badminton', 'volleyball'].includes(sportName)) {
+                        const { score, serve } = matchdata;
+                        $('#match').find('.teambox__status').html(getTimeDetailLive(sportName, statusCode, null));
+                        $('#match .grid-match__time').show();
+
+                        let column = 3;
+                        for(let i = 1; i <= 5; i ++) {
+                            const p = score[`p${i}`];
+                            const x = score[`x${i}`];
+                            if(p) {
+                                if(i > column) {
+                                    column = i;
+                                }
+                                let pHomeScore = p[0];
+                                let pAwayScore = p[1];
+                                const homeClass = pHomeScore > pAwayScore ? 'tib-win' : '';
+                                const awayClass = pHomeScore < pAwayScore ? 'tib-win' : '';
+                                if(x) {
+                                    pHomeScore = `${pHomeScore} <span class="grab-7-points">${x[0] ?? 0}</span>`;
+                                    pAwayScore = `${pAwayScore} <span class="grab-7-points">${x[1] ?? 0}</span>`;
+                                }
+                                $(`#match .t-incident-tennis .tib-home-s${ i }`).html(pHomeScore);
+                                $(`#match .t-incident-tennis .tib-home-s${ i }`).removeClass('tib-win');
+                                $(`#match .t-incident-tennis .tib-home-s${ i }`).addClass(homeClass);
+                                $(`#match .t-incident-tennis .tib-away-s${ i }`).html(pAwayScore);
+                                $(`#match .t-incident-tennis .tib-away-s${ i }`).removeClass('tib-win');
+                                $(`#match .t-incident-tennis .tib-away-s${ i }`).addClass(awayClass);
+                            }
+                        }
+                        if(column === 4) {
+                            column = 5;
+                        }
+                        $('#match .t-incident-tennis .tib-row').removeClass(`tib-row-3`);
+                        $('#match .t-incident-tennis .tib-row').removeClass(`tib-row-5`);
+                        $('#match .t-incident-tennis .tib-row').addClass(`tib-row-${column}`);
+                        if(sportName === 'tennis') {
+                            if(score.pt) {
+                                $('#match .teambox_agg').html(`<span>${score.pt[0] || 0} - ${score.pt[1] || 0}</span>`);
+                            } else if(statusCode === 100) {
+                                $('#match .teambox_agg').html(`<span></span>`);
+                            } else {
+                                $('#match .teambox_agg').html(`<span>0 - 0</span>`);
+                            }
+                        }
+
+                       let serveIconSite = 10;
+                        if(sportName === 'badminton') {
+                            serveIconSite = 14;
+                        } else if(sportName === 'volleyball') {
+                            serveIconSite = 12;
+                        }
+                        const serveIcon = `<svg class="serve-icon ${sportName}-serve-icon" width="${serveIconSite}" height="${serveIconSite}" viewBox="0 0 ${serveIconSite} ${serveIconSite}" fill="none"xmlns="http://www.w3.org/2000/svg">
+                            <use href="#${sportName}-serve"></use>
+                        </svg>`;
+                        $('#match .team-logo-group .serve-icon').remove();
+                        if(serve === 1) {
+                            $('#match .team-logo-group-home-logo').append(serveIcon);
+                        } else {
+                            $('#match .team-logo-group-away-logo').append(serveIcon);
+                        }
+                    } else if(['esports', 'lol', 'dota2', 'csgo'].includes(sportName)) {
+                        const {
+                            boxNum,
+                            singleStatusId,
+                            homeSideName,
+                            awaySideName,
+                        } = matchdata;
+
+                        $('#match .teambox__status').html(getTimeDetailLive(sportName, statusCode, null, matchdata));
+                        $('#match .grid-match__time').show();
+
+                        $('#match .team-logo-group-home-logo .esports-side span').html(homeSideName);
+                        $('#match .team-logo-group-home-logo .esports-side span').attr('class', `s-${homeSideName.toLowerCase()}`);
+                        $('#match .team-logo-group-away-logo .esports-side span').html(awaySideName);
+                        $('#match .team-logo-group-away-logo .esports-side span').attr('class', `s-${awaySideName.toLowerCase()}`);
+
+                        if(match.sport === 'lol') {
+                            const {
+                                homeNashor,
+                                awayNashor,
+                                homeDrakes,
+                                awayDrakes,
+                                homeTower,
+                                awayTower,
+                                homeInhibitor,
+                                awayInhibitor,
+                                statsHtml
+                            } = matchdata;
+                            $('#match .t-incident .nashor-home').html(homeNashor);
+                            $('#match .t-incident .nashor-away').html(awayNashor);
+                            $('#match .t-incident .incident-content-nashor .circle-away').css('stroke-dasharray', getEsportsCircleVal(homeNashor, awayNashor));
+                            $('#match .t-incident .drakes-home').html(homeDrakes);
+                            $('#match .t-incident .drakes-away').html(awayDrakes);
+                            $('#match .t-incident .incident-content-drakes .circle-away').css('stroke-dasharray', getEsportsCircleVal(homeDrakes, awayDrakes));
+                            $('#match .t-incident .tower-home').html(homeTower);
+                            $('#match .t-incident .tower-away').html(awayTower);
+                            $('#match .t-incident .incident-content-tower .circle-away').css('stroke-dasharray', getEsportsCircleVal(homeTower, awayTower));
+                            $('#match .t-incident .inhibitor-home').html(homeInhibitor);
+                            $('#match .t-incident .inhibitor-away').html(awayInhibitor);
+                            $('#match .t-incident .incident-content-inhibitor .circle-away').css('stroke-dasharray', getEsportsCircleVal(homeInhibitor, awayInhibitor));
+                            $('#match .circle-home').attr('stroke', homeSideName === 'Blue' ? '#1e90ff' : '#ff4c4c');
+                            $('#match .circle-away').attr('stroke', awaySideName === 'Blue' ? '#1e90ff' : '#ff4c4c');
+                            $('#match .incident-home').css('color', homeSideName === 'Blue' ? '#1e90ff' : '#ff4c4c');
+                            $('#match .incident-away').css('color', awaySideName === 'Blue' ? '#1e90ff' : '#ff4c4c');
+                            $('#match .teambox_agg').html(statsHtml);
+                        } else if(match.sport === 'dota2') {
+                            const {
+                                homeEconomy,
+                                awayEconomy,
+                                homeExperience,
+                                awayExperience,
+                                homeTower,
+                                awayTower,
+                                homeBarracks,
+                                awayBarracks,
+                                statsHtml
+                            } = matchdata;
+
+                            $('#match .t-incident .economy-home').html(homeEconomy);
+                            $('#match .t-incident .economy-away').html(awayEconomy);
+                            $('#match .t-incident .incident-content-economy .circle-away').css('stroke-dasharray', getEsportsCircleVal(homeEconomy, awayEconomy));
+                            $('#match .t-incident .exp-home').html(homeExperience);
+                            $('#match .t-incident .exp-away').html(awayExperience);
+                            $('#match .t-incident .incident-content-exp .circle-away').css('stroke-dasharray', getEsportsCircleVal(homeExperience, awayExperience));
+                            $('#match .t-incident .tower-home').html(homeTower);
+                            $('#match .t-incident .tower-away').html(awayTower);
+                            $('#match .t-incident .incident-content-tower .circle-away').css('stroke-dasharray', getEsportsCircleVal(homeTower, awayTower));
+                            $('#match .t-incident .barracks-home').html(homeBarracks);
+                            $('#match .t-incident .barracks-away').html(awayBarracks);
+                            $('#match .t-incident .incident-content-barracks .circle-away').css('stroke-dasharray', getEsportsCircleVal(homeBarracks, awayBarracks));
+                            $('#match .circle-home').attr('stroke', homeSideName === 'Radiant' ? '#66ff66' : '#cc3366');
+                            $('#match .circle-away').attr('stroke', awaySideName === 'Radiant' ? '#66ff66' : '#cc3366');
+                            $('#match .incident-home').css('color', homeSideName === 'Radiant' ? '#66ff66' : '#cc3366');
+                            $('#match .incident-away').css('color', awaySideName === 'Radiant' ? '#66ff66' : '#cc3366');
+                            $('#match .teambox_agg').html(statsHtml);
+                        } else if(match.sport === 'csgo') {
+                            const {
+                                homeH1Score,
+                                awayH1Score,
+                                homeH2Score,
+                                awayH2Score,
+                                homeH3Score,
+                                awayH3Score,
+                                statsHtml
+                            } = matchdata;
+                            $('#match .t-incident .h1-home').html(homeH1Score);
+                            $('#match .t-incident .h1-away').html(awayH1Score);
+                            $('#match .t-incident .h1-home').removeClass('win');
+                            $('#match .t-incident .h1-away').removeClass('win');
+                            if(homeH1Score > awayH1Score) {
+                                $('#match .t-incident .h1-home').addClass('win');
+                            } else if(homeH1Score < awayH1Score) {
+                                $('#match .t-incident .h1-away').addClass('win');
+                            }
+                            $('#match .t-incident .h2-home').html(homeH2Score);
+                            $('#match .t-incident .h2-away').html(awayH2Score);
+                            $('#match .t-incident .h2-home').removeClass('win');
+                            $('#match .t-incident .h2-away').removeClass('win');
+                            if(homeH2Score > awayH2Score) {
+                                $('#match .t-incident .h2-home').addClass('win');
+                            } else if(homeH2Score < awayH2Score) {
+                                $('#match .t-incident .h2-away').addClass('win');
+                            }
+                            if(match.c_scores[3]) {
+                                $('#match .incident-btn-csgo-h3').removeClass('d-none');
+                                $('#match .t-incident .h3-home').html(homeH3Score);
+                                $('#match .t-incident .h3-away').html(awayH3Score);
+                                $('#match .t-incident .h3-home').removeClass('win');
+                                $('#match .t-incident .h3-away').removeClass('win');
+                                if(homeH3Score > awayH3Score) {
+                                    $('#match .t-incident .h3-home').addClass('win');
+                                } else if(homeH3Score < awayH3Score) {
+                                    $('#match .t-incident .h3-away').addClass('win');
+                                }
+                            }
+                            $('#match .teambox_agg').html(statsHtml);
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    var fetchData = function fetchData(isInit = false) {
+        let sportType = 'football';
+        if($('.sports-bars').length) {
+            sportType = $('.sports-bars .nav-item .active').attr('aria-controls');
+            if(!sportType) {
+                console.log('No sport found');
+        
+                return;
+            }
+        } else if($('#match').length) {
+            sportkey = $('#match').attr('data-sport-id');
+            sportkey = ['6', '7', '8'].includes(sportkey) ? 678 : sportkey;
+
+            sportType = sport_list[sportkey];
+        }
+
+        const apiUrl = sport_data[sportType].api;
+        const url = `${apiUrl}/match/detail_live`;
+
+        $.getJSON(url, function(data) {
+            callback(sportType, data.results);
+
+            sport_data[sportType].match_live = data.results;
+            if(currentSportName !== sportType || !oldTopic) {
+                currentSportName = sportType;
+                if(newTopic) {
+                    oldTopic = newTopic;
+                }
+                newTopic = sport_data[sportType].mqtt_topic;
+                if(!isInit) {
+                    subscribeToppic();
+                }
+            }
+        }).always(function () {
+            window.document.dispatchEvent(new Event('DOMContentLoaded', {
+                bubbles: true,
+                cancelable: true,
+            }));
+        });
+    };
+
+    window.addEventListener( 'update-match', function () {
+        fetchData();
+    });
+
+    fetchData(true);
+    setInterval(fetchData, 25000);
+
+    // Handle tabs click
+    jQuery('.sports-bars .nav-item').on('click',function(){
+        setTimeout(() => {
+            jQuery('.sports-bars .nav-item .nav-link').removeClass('active');
+            jQuery(this).find('.nav-link').addClass('active');
+            let target = jQuery(this).find('.nav-link').data('target');
+            jQuery('#matches .tab-pane').removeClass('active show');
+            jQuery(target).addClass('active show');
+        }, 50);
+    });
+    // jQuery('.sports-bars .nav-item').on('click',function(){
+    //     setTimeout(() => {
+    //         fetchData();
+    //     }, 200);
+    // });
+
+    if ($('.btn-loadmore').length > 0) {
+        $('.btn-loadmore').on('click', function() {
+            var $this = $(this),
+            currentPage = $this.attr('data-page'),
+            postsPerPage = $this.attr('data-number'),
+            sportName = $this.attr('data-sport'),
+            ajaxUrl = `/sport/${sportName}/load-more/home/page/${currentPage}/per/${postsPerPage}`,
+            data = {
+                'action': 'load_more_live',
+                'page': currentPage,
+                'key': 'home',
+                'posts_per_page': postsPerPage,
+                'sport': sportName
+            };
+
+            if (['lol', 'dota2', 'csgo'].includes(sportName)) {
+                $(`.match-${sportName}-item`).removeClass('d-none');
+                $this.remove();
+            } else {
+                var selector = `#${sportName} .grid-matches`;
+
+                // AJAX request to load more fixtures
+                // jQuery.get(ajax_object.ajaxurl, data, function(res) {
+                jQuery.get(ajaxUrl, function(res) {
+                    if (res.success) {
+                        $(selector).append(res.data.html);
+                        // $("img.lazyload").lazyload();
+                        if(res.data.pagination.next_page == false) {
+                            $this.remove();  
+                        }else {
+                            $this.attr('data-page',res.data.pagination.next_page);
+                            if(sport_data[currentSportName].match_live) {
+                                callback(currentSportName, sport_data[currentSportName].match_live);
+                            }
+                            fetchData();
+                        }
+                    }
+                });
+            }
+            return false; 
+        });
+    }
+
+    $('.list-filter a').click(function(event) {
+        event.preventDefault(); // Prevent default anchor click behavior
+    
+        // Removing 'active' class from all links and adding to the clicked one
+        $('.list-filter a').removeClass('active');
+        $(this).addClass('active');
+        jQuery('.sl-leagues select').val('');
+    
+        var filter = $(this).data('filter');
+        var sport = $('.sports-bars .nav-item .active').attr('aria-controls');
+        // Building the URL based on sport and filter
+        var ajaxUrl = `/sport/${sport}/filter/${filter}`;
+        show_skeleton_matches(`#${sport} .grid-matches` , sport);
+        var data = {
+            'action': 'filter_match',
+            'filter': filter,
+            'sport': sport
+        };
+
+        // jQuery.get(ajax_object.ajaxurl, data, function(res) {
+        jQuery.get(ajaxUrl, function(res) {
+            if (res.success) {
+                var selector = `#${sport} .grid-matches`;
+                var btnSelector = `#${sport} .btn-loadmore`;
+                
+                jQuery(selector).html(res.data.html);
+                $(btnSelector).remove();
+                if(sport_data[currentSportName].match_live) {
+                    callback(currentSportName, sport_data[currentSportName].match_live);
+                }
+                fetchData();
+            }
+        });
+    });        
+
+    jQuery('.sl-leagues select').on('change', function () {
+		var sport = $(this).closest('.tab-pane.active').attr('id');
+        $('.list-filter a').removeClass('active');
+        localStorage.setItem('filter_league_id', $(this).val());
+        var data = {
+            'action': 'filter_match',
+            'filter': 'league',
+            'league': $(this).val(),
+            'sport': sport,
+        };
+        jQuery.get(window.ajax_object.ajaxurl, data, function (res) {
+            if (res.success) {
+				var selector = `#${sport} .grid-matches`;
+                var btnSelector = `#${sport} .btn-loadmore`;
+
+				jQuery(selector).html(res.data.html);
+                $(btnSelector).remove();
+                if(sport_data[currentSportName].match_live) {
+                    callback(currentSportName, sport_data[currentSportName].match_live);
+                }
+                fetchData();
+                window.document.dispatchEvent(new Event('DOMContentLoaded', {
+                    bubbles: true,
+                    cancelable: true,
+                }));
+            }
+        });
+    });
+	jQuery('.matchPopup-comps').on('click', function () {
+		var sport = $(this).closest('.tab-pane.active').attr('id');
+        $('.list-filter a').removeClass('active');
+        localStorage.setItem('filter_league_id', $(this).val());
+        var data = {
+            'action': 'filter_match',
+            'filter': 'league',
+            'league': $(this).data('sclassid'),
+            'sport': sport,
+        };
+        jQuery.get(window.ajax_object.ajaxurl, data, function (res) {
+            if (res.success) {
+				var selector = `#${sport} .grid-matches`;
+                var btnSelector = `#${sport} .btn-loadmore`;
+				jQuery(selector).html(res.data.html);
+                $(btnSelector).remove();
+                if(sport_data[currentSportName].match_live) {
+                    callback(currentSportName, sport_data[currentSportName].match_live);
+                }
+                fetchData();
+                window.document.dispatchEvent(new Event('DOMContentLoaded', {
+                    bubbles: true,
+                    cancelable: true,
+                }));
+            }
+        });
+    });
+
+	
+		
+	const sportLoaded = {
+        football: true
+    };
+	$('.sports-bars button').click(function() {
+        window.location.hash = '';
+        setTimeout(() => {
+            var sportName = $('.sports-bars .nav-item .active').attr('aria-controls');
+            $('.filter-row').removeClass('active');
+            $(`#filter-${sportName}`).addClass('active');
+            // if(sportLoaded[sportName]) {
+                fetchData();
+                setTimeout(getOddSport, 2000);
+            // } else {
+            //     loadMore(sportName, 0, 20, true);
+            //     sportLoaded[sportName] = true;
+            // }
+        }, 200);
+    });
+	
+	const loadingHtml = `<div class="sport-loading"> 
+        Đang tải, vui lòng chờ lại <br><br>
+        <img src="https://cdn.lfastcdn.com/2025/10/loading.gif" border="0"><br><br> Sau khi hiển thị, trang web được làm mới tự động, bạn không cần làm mới trang tận tay. 
+        <br>
+    </div>`;
+	
+	var loadMore = function(sportName, currentPage, postsPerPage, isFirst = false) {
+        const ajaxUrl = `/sport/${sportName}/load-more/home/page/${currentPage}/per/${postsPerPage}`;
+        const data = {
+            'action': 'load_more_live',
+            'page': currentPage,
+            'key': 'home',
+            'posts_per_page': postsPerPage,
+            'sport': sportName
+        };
+        var selector = `#${sportName} .grid-matches`;
+        var btnSelector = `#${sportName} .btn-loadmore`;
+        if(isFirst) {
+            jQuery(selector).addClass('grid-matches__loading');
+            jQuery(btnSelector).removeClass('d-flex');
+            jQuery(btnSelector).addClass('d-none');
+            jQuery(selector).html(loadingHtml);
+        }
+        // $.get(window.ajax_object.ajaxurl, data, function(res) {
+        jQuery.get(ajaxUrl, function(res) {
+            if(res == 0) {
+                jQuery(btnSelector).remove();
+                return;
+            }
+            if (res.success) {
+                if(isFirst) {
+                    jQuery(selector).removeClass('grid-matches__loading');
+                    jQuery(btnSelector).removeClass('d-none');
+                    jQuery(btnSelector).addClass('d-flex');
+                    jQuery(selector).html(res.data.html);    
+                } else {
+                    jQuery(selector).append(res.data.html);
+                }
+               
+                if (res.data.pagination.next_page === false) {
+                    jQuery(btnSelector).remove();
+                } else {
+                    jQuery(btnSelector).attr('data-page', res.data.pagination.next_page);
+                    if(sport_data[currentSportName].match_live) {
+                        callback(currentSportName, sport_data[currentSportName].match_live);
+                    }
+                    fetchData(); // Ensure fetchData is defined
+                    setTimeout(getOddSport, 2000);
+                }
+            }
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            if(jqXHR.status == 404) {
+                jQuery(btnSelector).remove();
+            }
+            console.log("Lỗi:", jqXHR.status, errorThrown);
+        });;
+    }
+
+	//Custom dropdown
+	// Clicked outside matches__filter
+    $(document).mouseup(function(e) {
+        var sport = $('.sports-bars .nav-item .active').attr('aria-controls');
+        var container = $(`#matches__filter--leagues-${sport}`); 
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            $(`#matches__filter--leagues-${sport} .custom-dropdown-content`).removeClass('show-dropdown');
+        }
+
+        if(sport === 'esports') {
+            var container1 = $(`#matches__filter--leagues-${sport}-sport`); 
+            if (!container1.is(e.target) && container1.has(e.target).length === 0) {
+                $(`#matches__filter--leagues-${sport}-sport .custom-dropdown-content`).removeClass('show-dropdown');
+            }  
+        }
+    });
+
+    // Dropdown toggle
+    $('.custom-dropdown-trigger').on('click', function () {
+        // var sport = $('.sports-bars .nav-item .active').attr('aria-controls');
+        var sport = $(this).attr('data-sport');
+        if(!sport) {
+            console.log('No sport found');
+    
+            return;
+        }
+        $(`#matches__filter--leagues-${sport} .custom-dropdown-content`).toggleClass('show-dropdown');
+    });
+
+    $('.custom-dropdown-close').on('click', function () {
+        // var sport = $('.sports-bars .nav-item .active').attr('aria-controls');
+        var sport = $(this).attr('data-sport');
+        if(!sport) {
+            console.log('No sport found');
+    
+            return;
+        }
+        $(`#matches__filter--leagues-${sport} .custom-dropdown-content`).removeClass('show-dropdown');
+    });
+
+   $('.custom-dropdown-option').on('click', function () {
+        // var sport = $('.sports-bars .nav-item .active').attr('aria-controls');
+        var sport = $(this).attr('data-sport');
+        if(!sport) {
+            console.log('No sport found');
+    
+            return;
+        }
+        let dropdownId = `#matches__filter--leagues-${sport}`;
+        let dropdownIdOpClass = `${dropdownId} .custom-dropdown-option`;
+        $(`${dropdownId} .custom-dropdown-trigger span`).html($(this).find('.league-name').text());
+        $(`${dropdownId} .custom-dropdown-trigger img`).attr('src', $(this).find('img').attr('src'));
+        $(`${dropdownId} .custom-dropdown-content`).removeClass('show-dropdown');
+        $(`${dropdownIdOpClass}`).removeClass('active');
+        $(this).addClass('active');
+        $(`#filter-${sport} .list-filter a`).removeClass('active');
+
+        let leagueId = $(this).attr('data-value');
+        if(sport === 'esports') {
+            // const esportsSport = $(`${dropdownId}-sport .custom-dropdown-option.active`).attr('data-value');
+            // if(esportsSport === 'all') {
+            //     leagueId = esportsSport;
+            // }
+        } else if(sport === 'esports-sport') {
+            sport = 'esports';
+            dropdownId = `#matches__filter--leagues-${sport}`;
+            dropdownIdOpClass = `${dropdownId} .custom-dropdown-option`;
+
+            // cập nhật số lượng trận
+            $(`${dropdownIdOpClass} .count-num-all`).html($(this).find('.count-num').text());
+            if(leagueId === 'all') {
+                $(dropdownIdOpClass).show();
+            } else {
+                $(dropdownIdOpClass).hide();
+                $(`${dropdownIdOpClass}[data-sport-real="${leagueId}"]`).show();
+                $(`${dropdownIdOpClass}`).removeClass('active');
+                $(`${dropdownIdOpClass}[data-value="all"]`).show();
+                $(`${dropdownIdOpClass}[data-value="all"]`).addClass('active');
+                $(`${dropdownId} .custom-dropdown-trigger span`).html('Tất cả giải đấu');
+                $(`${dropdownId} .custom-dropdown-trigger img`).attr('src', '/wp-content/themes/bongda/dist/images/league.svg');
+            }
+        }
+        var data = {
+            'action': 'filter_match',
+            'filter': 'league',
+            'league': leagueId,
+            'sport': sport
+        };
+        var ajaxUrl = `/sport/${sport}/filter/league/${leagueId}`;
+        show_skeleton_matches(`#${sport} .grid-matches` , sport);
+        // jQuery.get(window.ajax_object.ajaxurl, data, function (res) {
+        jQuery.get(ajaxUrl, function(res) {
+            if (res.success) {
+                var selector = `#${sport} .grid-matches`;
+                var btnSelector = `#${sport} .btn-loadmore`;
+                // let data_html = res.data.html;
+                // data_html = data_html.replaceAll(site_url,'')
+                jQuery(selector).html(res.data.html);
+                if(sport_data[currentSportName].match_live) {
+                    callback(currentSportName, sport_data[currentSportName].match_live);
+                }
+                fetchData(); // Assuming fetchData is a function that needs to be called afterwards
+                setTimeout(getOddSport, 2000);
+                jQuery(btnSelector).remove();
+            }
+        });
+    });
+
+    jQuery(document).ready(function() {
+        const waitForElements = setInterval(() => {
+            if (jQuery('.list-filter').length > 0 ) {
+                clearInterval(waitForElements);
+                changehash();
+            }
+        }, 100);
+    });
+
+    window.addEventListener("hashchange", function() {
+        changehash();
+    });
+    var changehash = () => {
+        var sport = $('.sports-bars .nav-item .active').attr('aria-controls');
+        if(!sport) {
+            console.log('No sport found');
+            return;
+        }
+        var hashValue = window.location.hash;
+
+        if(hashValue == '#f-live') {
+            jQuery(`#filter-${sport} .list-filter a.now`).trigger('click');
+        } else if(hashValue == '#f-hot') {
+            jQuery(`#filter-${sport} .list-filter a.hot`).trigger('click');
+        } else if(hashValue == '#f-blv') {
+            jQuery(`#filter-${sport} .list-filter a.commentator`).trigger('click');
+        }
+    } 
+    if( jQuery('body').hasClass('home') ){
+        jQuery('.trigger-football-live').on('click',function(){
+            var sport = $('.sports-bars .nav-item .active').attr('aria-controls');
+            jQuery(`#${sport} .list-filter a.now`).trigger('click');
+        });
+    }
+
+} )
+
+
+jQuery(document).ready(function() {
+    jQuery('#simulation-tab').click(function (e) {
+        let windowWidth = jQuery(window).width();
+        let mophongHeight = jQuery('#mophong').outerHeight();
+        mophongHeight += parseInt(15)
+        let myTab = jQuery('#myTab');
+        var myTabBottom = myTab.offset().top + myTab.outerHeight();
+        let myTabWidth = myTab.outerWidth();
+        let myTabHeight = myTab.outerHeight();
+
+        jQuery('#live-player-content').hide();
+        jQuery('#live-player-content-mophong').show();
+        jQuery('#live-player-content-mophong').css({
+            'min-height': mophongHeight + "px"
+        });
+        jQuery('.simulation-body').addClass('is-moved');
+
+        let mobileValue = windowWidth <= 768 ? -1043 : -707;
+        jQuery(".simulation-body").css({
+            "width": myTabWidth + "px",
+            "top": ( mobileValue ) +  "px",
+        });
+    });
+    jQuery('#live-player-tab').click(function (e) {
+        jQuery('#live-player-content').show();
+        jQuery('#live-player-content-mophong').hide();
+        jQuery('.simulation-body').removeClass('is-moved')
+        
+    });
+
+    async function checkSportHasLive() {
+        if( jQuery('.home').length === 0 ) return
+        let sportNames = Object.keys(sport_data);
+        let url = `https://data.sportflowlivez.com/v1/count-live`;
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        for (const sportName of sportNames) {
+            let countLive = data[sportName] || 0;
+            if (countLive) {
+                jQuery(`#${sportName}-tab`).closest('.nav-item').find('.sport-playing').addClass('is-sport-playing');
+            }else{
+                jQuery(`#${sportName}-tab`).closest('.nav-item').find('.sport-playing').removeClass('is-sport-playing');
+            }
+        }
+    }
+    checkSportHasLive();
+    setInterval(() => {
+        checkSportHasLive();
+    }, 25000);
+});
+function show_skeleton_matches( selector , sport ){
+    jQuery(selector).empty();
+    let skeletonHTML = `
+        <div class="grid-matches__item">
+            <div class="grid-match grid-match-${sport} skeleton-container">
+                <div class="skeleton-header">
+                    <div class="skeleton-header__league"><div class="skeleton-line" style="border-radius: 13px;width:86px;height:27x;float: left;"></div></div>
+                    <div class="skeleton-header__status"><div class="skeleton-line" style="width:110px;height:30px;margin-top:-8px;border-bottom-left-radius: 50%;border-bottom-right-radius: 50%;"></div></div>
+                    <div class="skeleton-header__date"><div class="skeleton-line" style="border-radius: 13px;width:86px;height:27x;float: right;"></div></div>
+                </div>
+                <div class="skeleton-body">
+                    <div class="skeleton-body__team"> <div class="skeleton-line"></div></div>
+                    <div class="skeleton-body__vs"> <div class="skeleton-line" style="width: 40px;height: 40px;border-radius:50%;"></div></div>
+                    <div class="skeleton-body__team"> <div class="skeleton-line"></div></div>
+                </div>
+                <div class="skeleton-footer">
+                    <div class="skeleton-footer__values"> <div class="skeleton-line" style="border-radius: 13px;width:86px;height:27x;float: left;"></div></div>
+                    <div class="skeleton-footer__action"> <div class="skeleton-line" style="border-radius: 13px;width:86px;height:27x;float: right;"></div></div>
+                </div>
+            </div>
+        </div>
+    `;
+    let preloadHTML = '';
+    for (let index = 1; index <= 10; index++) {
+        preloadHTML += skeletonHTML
+    }
+    jQuery(selector).html(preloadHTML);
+}

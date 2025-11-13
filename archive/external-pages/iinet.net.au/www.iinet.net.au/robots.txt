@@ -1,0 +1,75 @@
+#
+# robots.txt
+#
+# This file is to prevent the crawling and indexing of certain parts
+# of your site by web crawlers and spiders run by sites like Yahoo!
+# and Google. By telling these "robots" where not to go on your site,
+# you save bandwidth and server resources.
+#
+# This file will be ignored unless it is at the root of your host:
+# Used:    http://example.com/robots.txt
+# Ignored: http://example.com/site/robots.txt
+#
+# For more information about the robots.txt standard, see:
+# http://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+# CSS, JS, Images
+Allow: /core/*.css$
+Allow: /core/*.css?
+Allow: /core/*.js$
+Allow: /core/*.js?
+Allow: /core/*.gif
+Allow: /core/*.jpg
+Allow: /core/*.jpeg
+Allow: /core/*.png
+Allow: /core/*.svg
+Allow: /profiles/*.css$
+Allow: /profiles/*.css?
+Allow: /profiles/*.js$
+Allow: /profiles/*.js?
+Allow: /profiles/*.gif
+Allow: /profiles/*.jpg
+Allow: /profiles/*.jpeg
+Allow: /profiles/*.png
+Allow: /profiles/*.svg
+# Directories
+Disallow: /core/
+Disallow: /profiles/
+# Files
+Disallow: /README.txt
+Disallow: /web.config
+# Paths (clean URLs)
+Disallow: /admin/
+Disallow: /comment/reply/
+Disallow: /filter/tips
+Disallow: /node/add/
+Disallow: /search/
+Disallow: /user/register/
+Disallow: /user/password/
+Disallow: /user/login/
+Disallow: /user/logout/
+Disallow: /internet-products$
+Disallow: /about/mediacentre/
+Disallow: /about/sponsors/
+Disallow: /internet-products/broadband/vdsl2/plans
+Disallow: /internet-product/broadband/nbn/coverage
+Disallow: /phone/home/
+Disallow: /business/internet-products/broadband/naked-dsl/
+Disallow: /business/internet-product/fibre/cable
+Disallow: /internet-product/bundles
+Disallow: /business/internet-products/broadband/adsl/
+Disallow: /about/careers/
+Disallow: /business/small/internet/vdsl/
+Disallow: /business/small/website-solutions/business-cloud/
+Disallow: /business/small/website-solutions/exchange/
+Disallow: /business/small/website-solutions/web-hosting/
+Disallow: /internet-products/broadband/nbn
+Disallow: /campaign/afl-grand-final-2023/confirmation
+Disallow: /results
+Disallow: /node
+Disallow: /index.php/
+Disallow: /*%20urlParams()%20
+
+Sitemap: https://www.iinet.net.au/sitemap.xml
+Sitemap: https://www.iinet.net.au/site-map/sitemap.xml

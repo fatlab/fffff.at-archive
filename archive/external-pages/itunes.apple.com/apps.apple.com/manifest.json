@@ -1,0 +1,23 @@
+{
+    "name": "Apple App Store",
+    "short_name": "Apple App Store",
+    "icons": [
+        {
+            "src": "assets/favicon/favicon-128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/favicon/favicon-270.png",
+            "sizes": "270x270",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/favicon/favicon-570.png",
+            "sizes": "570x570",
+            "type": "image/png"
+        }
+    ],
+    "background_color": "#ffffff",
+    "display": "standalone"
+}

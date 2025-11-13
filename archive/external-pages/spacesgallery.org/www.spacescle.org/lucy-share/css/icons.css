@@ -1,0 +1,433 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url("https://www.spacescle.org/lucy-share/_fonts/icomoon.eot?cvvgxn");
+  src: url("https://www.spacescle.org/lucy-share/_fonts/icomoon.eot?cvvgxn") format("embedded-opentype"), url("https://www.spacescle.org/lucy-share/_fonts/icomoon.ttf?cvvgxn") format("truetype"), url("https://www.spacescle.org/lucy-share/_fonts/icomoon.woff?cvvgxn") format("woff"), url("https://www.spacescle.org/lucy-share/_fonts/icomoon.svg?cvvgxn") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; }
+
+.icon-prefixes, [class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-search:before {
+  content: "\e900" !important; }
+
+.icon-email:before {
+  content: "\e901" !important; }
+
+.icon-share:before {
+  content: "\e902" !important; }
+
+.icon-heart:before {
+  content: "\e903" !important; }
+
+.icon-alert:before {
+  content: "\e904" !important; }
+
+.icon-calendar:before {
+  content: "\e905" !important; }
+
+.icon-pin:before {
+  content: "\e906" !important; }
+
+.icon-cart-full:before {
+  content: "\e907" !important; }
+
+.icon-cart-empty:before {
+  content: "\e908" !important; }
+
+.icon-phone:before {
+  content: "\e909" !important; }
+
+.icon-music:before {
+  content: "\e90a" !important; }
+
+.icon-print:before {
+  content: "\e90b" !important; }
+
+.icon-gear:before {
+  content: "\e90c" !important; }
+
+.icon-video:before {
+  content: "\e90d" !important; }
+
+.icon-camera:before {
+  content: "\e90e" !important; }
+
+.icon-photo:before {
+  content: "\e90f" !important; }
+
+.icon-man:before {
+  content: "\e910" !important; }
+
+.icon-woman:before {
+  content: "\e911" !important; }
+
+.icon-link:before {
+  content: "\e912" !important; }
+
+.icon-attachment:before {
+  content: "\e913" !important; }
+
+.icon-check:before {
+  content: "\e914" !important; }
+
+.icon-menu:before {
+  content: "\e915" !important; }
+
+.icon-list:before {
+  content: "\e916" !important; }
+
+.icon-grid-small:before {
+  content: "\e917" !important; }
+
+.icon-grid-large:before {
+  content: "\e918" !important; }
+
+.icon-close:before {
+  content: "\e919" !important; }
+
+.icon-plus:before {
+  content: "\e91a" !important; }
+
+.icon-move:before {
+  content: "\e91b" !important; }
+
+.icon-expand:before {
+  content: "\e91c" !important; }
+
+.icon-expand-corner:before {
+  content: "\e91d" !important; }
+
+.icon-play:before {
+  content: "\e91e" !important; }
+
+.icon-minus:before {
+  content: "\e91f" !important; }
+
+.icon-arrow-right:before {
+  content: "\e920" !important; }
+
+.icon-arrow-up:before {
+  content: "\e921" !important; }
+
+.icon-arrow-left:before {
+  content: "\e922" !important; }
+
+.icon-arrow-down:before {
+  content: "\e923" !important; }
+
+.icon-left:before {
+  content: "\e924" !important; }
+
+.icon-up:before {
+  content: "\e925" !important; }
+
+.icon-right:before {
+  content: "\e926" !important; }
+
+.icon-down:before {
+  content: "\e927" !important; }
+
+.icon-up-down:before {
+  content: "\e928" !important; }
+
+.icon-right-left:before {
+  content: "\e929" !important; }
+
+.icon-big-arrow-right:before {
+  content: "\e92a" !important; }
+
+.icon-share-this:before {
+  content: "\e92b" !important; }
+
+.icon-twitter:before {
+  content: "\e92c" !important; }
+
+.icon-facebook:before {
+  content: "\e92d" !important; }
+
+.icon-instagram:before {
+  content: "\e92e" !important; }
+
+.icon-pinterest:before {
+  content: "\e92f" !important; }
+
+.icon-vimeo:before {
+  content: "\e930" !important; }
+
+.icon-linkedin:before {
+  content: "\e931" !important; }
+
+.icon-dribbble:before {
+  content: "\e932" !important; }
+
+.icon-youtube:before {
+  content: "\e933" !important; }
+
+.icon-previous:before {
+  content: "\e934" !important; }
+
+.icon-next:before {
+  content: "\e935" !important; }
+
+.icon-star:before {
+  content: "\e936" !important; }
+
+.icon-staggered-menu:before {
+  content: "\e937" !important; }
+
+.icon-arrow-left-stroke:before {
+  content: "\e938"; }
+
+.icon-arrow-right-stroke:before {
+  content: "\e939" !important; }
+
+.icon-design-by-form:before {
+  content: "\e93a" !important; }
+
+.icon-news:before {
+  content: "\e93b" !important; }
+
+.icon-medium:before {
+  content: "\e93c" !important; }
+
+.icon-arrow-up-stroke:before {
+  content: "\e93d" !important; }
+
+.icon-arrow-down-stroke:before {
+  content: "\e93e" !important; }
+
+.icon-design-by-form-short:before {
+  content: "\e93f" !important; }
+
+.icon-download-arrow:before {
+  content: "\e940" !important; }
+
+.icon-pencil:before {
+  content: "\e941" !important; }
+
+.icon-big-arrow-left:before {
+  content: "\e942" !important; }
+
+.icon-pdf:before {
+  content: "\e943" !important; }
+
+.icon-arrow-left-stem:before {
+  content: "\e944" !important; }
+
+.icon-arrow-right-stem:before {
+  content: "\e945" !important; }
+
+.icon-paper-plane:before {
+  content: "\e946" !important; }
+
+.icon-globe:before {
+  content: "\e947" !important; }
+
+.icon-flag:before {
+  content: "\e948" !important; }
+
+.icon-clock:before {
+  content: "\e949" !important; }
+
+.icon-cross:before {
+  content: "\e94a" !important; }
+
+.icon-home:before {
+  content: "\e94b" !important; }
+
+.icon-link-arrow:before {
+  content: "\e94c" !important; }
+
+.icon-snapchat:before {
+  content: "\e94d" !important; }
+
+.icon-marker:before {
+  content: "\e94e" !important; }
+
+.icon-phone-2:before {
+  content: "\e94f" !important; }
+
+.icon-small-arrow:before {
+  content: "\e950" !important; }
+
+.icon-menu-bold:before {
+  content: "\e951" !important; }
+
+.icon-download-page:before {
+  content: "\e952" !important; }
+
+.icon-calendar-2:before {
+  content: "\e953" !important; }
+
+.icon-flickr:before {
+  content: "\e954" !important; }
+
+.icon-customer-service:before {
+  content: "\e955" !important; }
+
+.icon-accounting-finance:before {
+  content: "\e956"; }
+
+.icon-information-technology:before {
+  content: "\e957" !important; }
+
+.icon-human-resources:before {
+  content: "\e958" !important; }
+
+.icon-marketing:before {
+  content: "\e959" !important; }
+
+.icon-legal:before {
+  content: "\e95a" !important; }
+
+.icon-sales:before {
+  content: "\e95b" !important; }
+
+.icon-office:before {
+  content: "\e95c" !important; }
+
+.icon-office-management:before {
+  content: "\e95d" !important; }
+
+.icon-education:before {
+  content: "\e960" !important; }
+
+.icon-community-relations:before {
+  content: "\e961" !important; }
+
+.icon-medical:before {
+  content: "\e95e" !important; }
+
+.icon-materialsparts:before {
+  content: "\e95f" !important; }
+
+.icon-hamburger-menu:before {
+  content: "\e962" !important; }
+
+.icon-share-arrow-up:before {
+  content: "\e963" !important; }
+
+.icon-twitter-square:before {
+  content: "\e964" !important; }
+
+.icon-arrow-right-stroke-long:before {
+  content: "\e965" !important; }
+
+.icon-trending:before {
+  content: "\e966" !important; }
+
+.icon-search-2:before {
+  content: "\e967" !important; }
+
+.icon-profile:before {
+  content: "\e968" !important; }
+
+.icon-youtube-square:before {
+  content: "\e969" !important; }
+
+.icon-star-unfilled:before {
+  content: "\e96a" !important; }
+
+.icon-amex:before {
+  content: "\e96b" !important; }
+
+.icon-discover:before {
+  content: "\e96c" !important; }
+
+.icon-mastercard:before {
+  content: "\e96d" !important; }
+
+.icon-visa:before {
+  content: "\e96e" !important; }
+
+.icon-shopping-bag:before {
+  content: "\e96f" !important; }
+
+.icon-instagram-round:before {
+  content: "\e970" !important; }
+
+.icon-facebook-round:before {
+  content: "\e971" !important; }
+
+.icon-tumblr-logo:before {
+  content: "\e972" !important; }
+
+.icon-media-audio:before {
+  content: "\e973" !important; }
+
+.icon-media-document:before {
+  content: "\e974" !important; }
+
+.icon-media-image:before {
+  content: "\e975" !important; }
+
+.icon-media-spreadsheet:before {
+  content: "\e978" !important; }
+
+.icon-media-pdf:before {
+  content: "\e979" !important; }
+
+.icon-media-presentation:before {
+  content: "\e976" !important; }
+
+.icon-media-video:before {
+  content: "\e977" !important; }
+
+.icon-media-link:before {
+  content: "\e97a" !important; }
+
+.icon-media-webpage:before {
+  content: "\e97b" !important; }
+
+.icon-phone-outline:before {
+  content: "\e97c" !important; }
+
+.icon-pin-outline:before {
+  content: "\e97d" !important; }
+
+.icon-ticket:before {
+  content: "\e97e" !important; }
+
+.icon-calendar-outline:before {
+  content: "\e97f" !important; }
+
+.icon-clock-outline:before {
+  content: "\e980" !important; }
+
+.icon-cloud-download:before {
+  content: "\e981" !important; }
+
+.icon-photo-lense:before {
+  content: "\e982" !important; }
+
+.icon-arrow-top-right-stem:before {
+  content: "\e983" !important; }
+
+.icon-arrow-top-left-stem:before {
+  content: "\e984" !important; }
+
+.icon-media-phone:before {
+  content: "\e985" !important; }
+
+.icon-media-request:before {
+  content: "\e986" !important; }
+
+.icon-info:before {
+  content: "\e987" !important; }
+
+.icon-computer:before {
+  content: "\e988" !important; }
+
+.icon-tik-tok:before {
+  content: "\e989" !important; }

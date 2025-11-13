@@ -1,0 +1,62 @@
+/*!
+ * Font Awesome Free 5.12.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+.fa,
+.fas,
+.far,
+.fal,
+.fad,
+.fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1; }
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+readers do not read off random characters that represent icons */
+.fa-500px:before {
+  content: "\f26e"; }
+
+.fa-chevron-circle-down:before {
+  content: "\f13a"; }
+
+.fa-chevron-circle-left:before {
+  content: "\f137"; }
+
+.fa-chevron-circle-right:before {
+  content: "\f138"; }
+
+.fa-chevron-circle-up:before {
+  content: "\f139"; }
+
+.fa-chevron-down:before {
+  content: "\f078"; }
+
+.fa-chevron-left:before {
+  content: "\f053"; }
+
+.fa-chevron-right:before {
+  content: "\f054"; }
+
+.fa-chevron-up:before {
+  content: "\f077"; }
+
+.far {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400; }
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: url("https://www.area51eindhoven.nl/wp-content/plugins/ultimate-carousel-for-elementor/css/font-awesome/webfonts/fa-solid-900.eot");
+  src: url("https://www.area51eindhoven.nl/wp-content/plugins/ultimate-carousel-for-elementor/css/font-awesome/webfonts/fa-solid-900.eot?") format("embedded-opentype"), url("../webfonts/fa-solid-900.woff2.html") format("woff2"), url("https://www.area51eindhoven.nl/wp-content/plugins/ultimate-carousel-for-elementor/css/font-awesome/webfonts/fa-solid-900.woff") format("woff"), url("../webfonts/fa-solid-900.ttf") format("truetype"), url("https://www.area51eindhoven.nl/wp-content/plugins/ultimate-carousel-for-elementor/css/font-awesome/webfonts/fa-solid-900.svg") format("svg"); }
+
+.fa,
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900; }

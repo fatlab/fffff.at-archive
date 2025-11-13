@@ -1,0 +1,224 @@
+#content .artCol1_1 {
+	font-size:12px;
+	float:left;
+	width:480px;
+}
+
+#content .artColDivider {
+	width:650px; 
+	margin-top:20px;
+	border-top:1px dotted #ccc;
+	padding-top:20px;
+	font-size:1px;
+}
+
+#content #mwHomeGrid {
+	float:left;
+	min-width:440px;
+	width:90%;
+	max-width:1320px;
+}
+
+#content .artworkPreviewBig img {
+	width:320px;
+}
+
+#content .artworkPreview img {
+	width:240px;
+}
+
+#content .artworkPreviewBig {
+	float:left;
+	margin:0 0 20px 0;
+	width:320px;
+/*	border-top:1px dotted #999999;*/
+	border-bottom:1px dotted #999999;
+	padding:0 0 4px 0;
+}
+
+#content .artworkPreview {
+	float:left;
+	margin:0 0 20px 0;
+	width:240px;
+	border-bottom:1px dotted #999999;
+	padding:0px 0 4px 0;
+}
+
+#content .artworkVertDivider {
+	float:left;
+	width:10px;
+	font-size:1px;
+	padding-top:8px;
+}
+
+#content .artThumb {
+	width:320px;
+/*	height:210px;*/
+	
+	float:left;
+	margin:0;
+	padding:0;
+/*	border:1px solid #ccc;*/
+}
+
+#content .artThumbPrice {
+	font-size:24px;
+	margin-bottom:12px;
+	text-align: right;
+}
+
+#content .col2 .artThumbPrice {
+	font-size:21px;
+}
+
+#content table.artThumbInfo {
+}
+
+#content .artThumb h3 {
+	border:none;
+	font-size:12px;
+	text-transform:none;
+	font-weight:bold;
+}
+
+#content .artThumb a {
+	border:none;
+	color:#0099FF;
+
+}
+
+
+#content .artThumb img {
+}
+
+#content .artThumb p,#content .artworkPreview p,
+#content .artworkPreviewBig p {
+	width:160px;
+	font-size:10px;
+	padding:4px 4px 0 4px;
+	margin:0;
+}
+
+#content .artworkPreviewBig p {
+	width:220px;
+}
+
+#content .artRow1 {
+	background-color: #d4fffc;
+}
+
+#content .artRow2 {
+	background-color: #f9feff;
+}
+
+#content .rnMultHeader {
+	width:920px;
+	margin-bottom:20px;
+}
+
+
+/******** ARTWORK DISPLAY ************/
+#content .artworkContainer {
+	width:650px;
+	margin-bottom:20px;
+}
+
+#content .artworkMain {
+	width:480px;
+	float:left;
+	margin-right:20px;
+}
+
+#content .artworkThumbs,#content .artworkThumbsItem {
+	width:150px;
+	float:left;
+}
+
+#content .artworkThumbs img {
+	width:150px;
+	height:150px;
+}
+
+#content .artworkThumbs ul {
+	list-style-type:none;
+	width:150px;
+	margin:0;
+	padding:0;
+}
+
+#content .artworkThumbs ul li {
+	margin:20px 0 0 0;
+	line-height:0px;
+}
+
+#content .artworkThumbs ul li:FIRST-CHILD {
+	margin:0;
+}
+
+#content .artworkDesc {
+	font-size:12px;
+	margin-top:20px;
+}
+
+#content .artworkBio {
+	font-size:12px;
+	margin-top:20px;
+}
+
+#content .artworkData td {
+	font-size:10px;
+		margin-right: 4px;
+	padding:4px;
+}
+
+#content .artworkInfo {
+	width:760px;
+	margin-top:10px;
+}
+
+#content .artworkInfoCol1,#content .artworkInfoCol2,
+#content .artworkInfoCol1Border,#content .artworkInfoCol2Border {
+	float:left; 
+	width:350px; 
+}
+
+#content .artworkInfoCol1,#content .artworkInfoCol1Border {
+	margin-right:20px;
+}
+
+#content .artworkInfoCol1Border,#content .artworkInfoCol2Border {
+	border-top:1px dotted #000;
+	padding-top:4px;
+}
+
+#content .artworkInfoCol1 p,#content .artworkInfoCol2 p,
+#content .artworkInfoCol1Border p,#content .artworkInfoCol2Border p {
+	width:350px;
+}
+
+#content .artworkInfo h3.subheading {
+	margin-top:10px;
+}
+
+
+
+/******** PAYPAL ************/
+
+#content h3.paypalTitle {
+	text-transform: uppercase;
+	
+}
+
+#content .paypalForm form,#content .paypalForm select {
+	margin-bottom:6px;
+}
+
+#content .paypalForm {
+	padding:8px;
+	margin-top:20px;
+	border-top:1px dotted #000;
+	border-bottom:1px dotted #000;
+	background-color: #D4FFFC;
+}
+
+.menuHover {border: 1px solid #ff0000;}

@@ -1,0 +1,768 @@
+/* -----------------
+ANGEL CLOUD 1.1 - July 2009.
+Theme for Dotclear 2 only.
+By Jean-Michel Royer / themes.jm-royer.com
+
+Licence choisie : Creative Commons by-nc (Paternit� - Usage non commercial).
+
+----------------- */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+	a:hover {
+	border-bottom: 1px dotted #666;
+	}
+
+.category-current {
+	font-weight: bold;
+}
+
+#prelude {
+	visibility: hidden;
+}
+
+body {
+	font-family: Verdana;
+}
+
+
+#page {
+	width: 100%;
+}
+
+#top {
+	top: 100px;
+	width: 100%;
+	height: 350px;
+	//background:url(../../public/images/head.jpg) no-repeat bottom center;
+        background:url(../../public/images/bando_velo.jpg) no-repeat bottom center;
+}
+
+	#top h1 {
+	margin: 0 auto;
+	width: 800px;
+	padding-top: 70px; 
+	}
+	#top p {
+	padding-top: 0.5em;
+	font-family: Georgia;
+	font-style: italic;
+	font-size: 0.8em;
+	color: #666;
+	margin: 0 auto;
+	width: 800px;
+	}
+
+	#top h1 a {
+	color: #FF6600;
+        //color: #E1701F; couleur fouire
+	}
+
+
+#wrapper {
+	margin: 0 auto;
+	width: 800px;
+}
+
+#main {
+	float: left;
+	width: 468px;
+	margin-bottom: 2em;
+}
+
+#content {
+	width: 448px;
+}
+
+#sidebar {
+	float: right;
+	width: 280px;
+}
+
+	#sidebar div div {
+	margin-bottom: 2em;
+	}
+
+	#sidebar h2 {
+	font-size: 1.1em;
+	}
+
+	#sidebar h3 {
+	font-weight: bold;
+	color: #666;
+	font-size: 0.8em;
+	}
+
+	#sidebar a {
+	color: #666;
+	}
+
+	#sidebar p {
+	font-size: 0.8em;
+	}
+
+	#sidebar ul li {
+	font-size: 0.8em;
+	border-bottom: 1px dotted #EEE;
+	list-style: none;
+	padding: 0.5em 0;
+	}
+
+	#sidebar ul li li{
+	font-size: 1em;
+	border-bottom: none;
+	margin-left: 1em;
+	list-style: circle;
+	padding-bottom: 0;
+	}
+
+	.links ul {
+	margin-bottom: 1em;
+	}
+
+	.links h2 {
+	margin-bottom: 0.5em;
+	}
+
+	.tags p {
+	margin-top: 0.5em;
+	}
+
+	#sidebar .selected li{
+	padding-left: 22px;
+	background:transparent url(images/etoile1.png) no-repeat scroll left 4px;
+	}
+
+	#sidebar .selected li{
+	font-weight: bold;
+	}
+
+	#search {
+	background: #EEE;
+	position: absolute;
+        // ici on peut régler la position du widget "moteur de recherche"
+	top: 200;
+	width: 270px;
+	margin-left: 0px;
+	padding-bottom: 5px;
+	}
+
+	#search h2 {
+	font-size: 0.8em;
+	float: left;
+	padding-top: 6px;
+	padding-left: 12px;
+	padding-right: 10px;
+	color: #BFBFBF;
+
+	}
+
+	#search form {
+	text-align: right;
+	margin-top: 2px;
+	}
+
+	#search fieldset {
+	width: 100px;
+	border: none;
+	}
+
+	#search input[type="text"] {
+	border:medium none;
+	margin-top: 3px;
+	width:160px;
+	}
+
+	#search input[type="submit"] {
+	display: none;
+	}
+
+	#topnav {
+	background:#EEE;
+	font-weight:bold;
+	text-align:center;
+	}
+
+	#topnav .topnav-home {
+	border-right: 3px solid white;
+	float: left;
+	width: 50%;
+	}
+
+	#topnav a {
+	color: #BFBFBF;
+	}
+
+	#topnav a:hover {
+	color: #666;
+	}
+
+#footer {
+	background: #EEE;
+	clear: both;
+	width: 100%;
+	height: 40px;
+	color: #666;
+}
+
+	#footer p {
+	font-size: 0.7em;
+	padding: 10px 0;
+	margin: 0 auto;
+	width: 800px;
+	}
+
+	#footer a {
+	color: #666;
+	font-weight: bold;
+	}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #FF6600;
+}
+
+	.post-excerpt h5, .post-content h5 {
+	font-weight: normal;
+	}
+
+hr {
+	margin: 1em 0;
+}
+
+
+.post {
+	margin-bottom: 3em;
+}
+
+	.dc-home .post.first.page1 {
+	background:#EEE;
+	margin: 0px -20px 5em 0;
+	padding:10px;
+	}
+
+	.dc-home .post.first {
+	margin-bottom: 5em;
+	}
+
+	.dc-category .post.odd.first,
+	.dc-search .post.odd.first,
+	.dc-tag .post.odd.first,
+	.dc-tags .post.odd.first {
+	margin-top: 4em;
+	}
+
+.post-tags li {
+	display: inline;
+}
+
+.post-title {
+	border-top: 3px solid #666;
+	color: black;
+	font-size: 1.3em;
+	font-weight: bolder;
+	padding: 0.15em 0 0.25em 0;
+}
+
+	.post-title a{
+	color: black;
+	}
+
+	.post.first.page1 .post-title{
+	padding-left: 22px;
+	background:transparent url(images/etoile2.png) no-repeat scroll left 6px;
+	border-top: 3px solid #666;
+	color: #666;
+	}
+	
+	.post.first.page1 .post-title a{
+	color: #666;
+	}
+
+	.post.selected .post-title{
+	padding-left: 22px;
+	background:transparent url(images/etoile1.png) no-repeat scroll left 7px;
+	border-top: 3px solid #FF6600;
+	color: #FF6600;
+	}
+
+	.post.selected .post-title a{
+	color: #FF6600;
+	}
+
+	.dc-archive-month .post-title {
+	border-top: none;
+	font-size: 1.2em;
+	font-weight: normal;
+	}
+
+	.dc-archive-month .post-title a{
+	color: #FF6600;
+	}
+
+.day-date {
+	border-top: 3px dotted #EEE;
+	font-family: Georgia;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+	color: #666;
+	padding-top: 0.5em;
+	padding-bottom: 2.5em;
+	font-size: 0.9em;
+}
+
+	.dc-archive-month .day-date {
+	text-align: left;
+	border-top: none;
+	font-weight: normal;
+	color:#666666;
+	display:block;
+	font-size:0.8em;
+	padding-bottom:5px;
+	padding-right:20px;
+	margin-top: 2em;
+	}
+
+	.dc-home .post.first.page1 .day-date {
+	display:none;
+	}
+
+.post-excerpt, .post-content {
+	font-size: 0.8em;
+	line-height: 150%;
+	margin-top: 1em;
+}
+
+	.post-excerpt a, .post-content a {
+	color: #666;
+	}
+
+	.post-excerpt a:hover, .post-content a:hover {
+	border-bottom: 1px dotted #666;
+	}
+
+	.post-content p, .post-content ul, .post-content ol, #comments dd p {
+	margin-bottom: 1em;
+	}
+
+	.post-excerpt p, .post-content p {
+	text-align: justify;
+	}
+
+	.post-excerpt h1, .post-excerpt h2, .post-excerpt h3, .post-excerpt h4, .post-excerpt h5,
+	.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5 {
+	margin: 2em 0 0.25em 0;
+	}
+
+	.post-excerpt ul, .post-content ul,
+	.post-excerpt ol, .post-content ol {
+	margin-left: 2em;
+	margin-bottom: 0.5em;
+	}
+
+	pre {
+	font-family: 'courier new',courier,monospace;
+	font-size: 1.1em;
+	overflow: scroll;
+	background: #EEE;
+	padding: 10px;
+	margin-bottom: 1em;
+	}
+
+.read-it {
+	font-size: 0.8em;
+	color: #FF6600;
+	font-weight: bold;
+}
+
+	.read-it a {
+	color: #FF6600;
+	}
+
+.footnotes {
+	color: #BFBFBF;
+}
+
+	.footnotes h4 {
+	color: #666;
+	}
+
+	.footnotes a {
+	color: #666;
+	}
+
+.post-info, .post-info-co, .post-tags {
+	color: #666;
+	font-size: 0.7em;
+	line-height: 150%;
+	text-align: left;
+}
+
+	.post-info a, .post-tags a {
+	color: #666;
+	font-weight: bold;
+	}
+
+	.post-info-co {
+	border-top: 1px dotted #EEE;
+	border-bottom: 1px dotted #EEE;
+	text-align: right;
+	margin-top: 1em;
+	}
+
+	.post-info-co a {
+	color: #666;
+	}
+
+/*	.post.first.page1 .post-info-co {
+	border-top: 1px dotted #BFBFBF;
+	border-bottom: 1px dotted #BFBFBF;
+	} */
+
+	.comment_count {
+	padding-right: 2px;
+	}
+
+	.attach_count, .ping_count {
+	padding-left: 4px;
+	border-left: 1px dotted #EEE;
+	}
+
+	.post.first.page1 .attach_count, .post.first.page1 .ping_count {
+	border-left: 1px dotted #666;
+	}
+
+.pagination {
+	font-size: 0.7em;
+	color: #666;
+}
+
+	.pagination a {
+	font-weight: bold;
+	color: #666;
+	}
+
+#navlinks {
+	padding: 0.5em 0;
+	margin-bottom: 3em;
+	font-size: 0.8em;
+	color: #666;
+	text-align: center;
+	border-top: 1px dotted #EEE;
+	border-bottom: 1px dotted #EEE;
+}
+
+	#navlinks a {
+	color: #666;
+	}
+
+	#topnav span {
+	display:none;
+	}
+
+
+#search-suggest ul{
+	font-size: 1.5em;
+	text-align:left;
+	margin-top: 1em;
+	margin-left: -85px;
+	border: none;
+}
+
+	#search-suggest ul li{
+	border-bottom: 1px dotted #BFBFBF;
+	padding: 2px 0px 2px 0px;
+	}
+
+	#search-suggest ul li a {
+	color: black;
+	}
+
+	#search-suggest ul li a:hover {
+	color: black;
+	font-weight: bold;
+	}
+
+#attachments {
+	margin-bottom: 3em;
+}
+
+#attachments ul {
+	margin-left: 3em;
+}
+
+#attachments li {
+	font-size: 0.8em;
+}
+
+#attachments a {
+	color: #666;
+}
+
+
+#attachments h3, #comments h3, #comment-form h3, #pings h3 {
+	border-top: 3px dotted #EEE;
+	font-family: Georgia;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+	color: #666;
+	padding-top: 0.5em;
+	padding-bottom: 2em;
+}
+
+#comments dt, #pings dt {
+	padding-left: 68px;
+	background:#EEE;
+	color:#666;
+	font-size:0.8em;
+}
+
+	#comments dt a{
+	color: #666;
+	font-weight: bold;
+	}
+
+	#comments dt.me {
+	background: #666;
+	color: white;
+	}
+
+	#comments dt.me a {
+	color:white;
+	}
+
+#comments dd, #pings dd {
+font-size:0.8em;
+line-height: 125%;
+margin-bottom:2em;
+padding: 12px 0 10px 68px;
+text-align:justify;
+}
+
+	#comments dd a {
+	color: #666;
+	}
+
+	#comments dd a:hover {
+	border-bottom: 1px dotted #666;
+	}
+
+.comment-number, .ping-number {
+	float: left;
+	font-size: 2em;
+	margin-top: 6px; 
+	margin-left: -68px;
+}
+
+	a.comment-number, a.ping-number {
+	color: #BFBFBF;
+	}
+
+	.me a.comment-number {
+	color: #666;
+	}
+
+	.URL-comments a{
+	font-size: 0.8em;
+	text-transform: uppercase;
+	color: #BFBFBF;
+	}
+
+	.URL-comments a:hover {
+	color: #666;
+	}
+
+	a.PingAuthorURL {
+	color: #666;
+	font-weight: bold;
+	}
+
+	#ping-url, #comments-feed {
+	font-size: 0.8em;
+	color: #666;
+	margin-bottom: 0.5em;
+	}
+
+	#comments-feed a {
+	color: #666;
+	font-style: italic;
+	}
+
+	.bold {
+	color: #666;
+	font-weight: bold;	
+	}
+
+
+#comment-form {
+	margin-bottom: 3em;
+	}
+
+	fieldset {
+	border: none;
+	}
+
+	p.field, p.form-help, p.remember, p.buttons {
+	color: #666666;
+	font-size: 0.8em;
+	padding-top: 1em;
+	line-height: 150%;
+	}
+
+		p.field {
+		font-weight: bold;
+		}
+
+		#comment-form input.preview, #comment-form input.submit {
+		font-size: 0.8em;
+		font-weight: bold;
+		padding: 0 2px;
+		color: #666;
+		border: 1px solid #666;
+		background: white;
+		text-transform: uppercase;
+		}
+
+		#comment-form input.preview:hover, #comment-form input.submit:hover {
+		background: #666;
+		color: white;
+		border: none;
+		}
+
+	input#c_remember {
+	margin-right: 5px;
+	}
+
+	p.form-help {
+	font-size: 0.7em;
+	}
+
+	#comment-form p.field label {
+	display: block;
+	}
+
+	input#c_name, input#c_mail, input#c_site {
+	width: 99%;
+	border:1px solid #CDCDCD;
+	}
+
+	textarea#c_content {
+	width: 99%;
+	border:1px solid #CDCDCD;
+	}
+
+#content-info .feed{
+	font-size: 1em;
+	color: #666;
+}
+
+#content-info p {
+	margin-top: 0.5em;
+	font-size: 0.8em;
+}
+
+	#content-info a, #subcategories a {
+	color: #666;
+	}
+
+	#content-info h2 {
+	font-size: 1.2em;
+	}
+
+	.dc-archive-month #content-info h2 {
+	color:#666666;
+	font-family:Georgia;
+	font-style:italic;
+	font-weight:bold;
+	margin-bottom:1.5em;
+	text-align:center;
+	}
+
+	#subcategories {
+	margin-top: 1em;
+	}
+
+	#subcategories h3 {
+	font-size: 0.8em;
+	}
+
+	#subcategories li{
+	margin-left: 1.2em;
+	font-size: 0.8em;
+	}
+
+	.content-inner ul {
+	margin-left: 4em;
+	margin-bottom: 1em;
+	font-size: 0.8em;
+	}
+
+	.dc-archive .content-inner h3 {
+	border-top:3px solid #666666;
+	color:black;
+	font-size:1.4em;
+	font-weight:bold;
+	margin-bottom:0.5em;
+	margin-top:3em;
+	}
+
+	.content-inner a {
+	color: #666;
+	}
+
+.espace {
+	clear: both;
+}
+
+input {
+	font-family: Verdana;
+}
+
+dd.comment-preview {
+	font-size: 0.8em;
+	text-align: justify;
+	margin-bottom: 1em;
+}
+
+dd.comment-preview p {
+	margin-bottom: 1em;
+}
+
+#pr {
+	margin-bottom: 2em;
+}
+
+	.message {
+	padding: 1em 1em;
+	background: #EEE;
+	color: #666;
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+	}
+
+	.error {
+	padding: 1em 1em;
+	background: #666;
+	color: #EEE;
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+	}
+
+.post, .post-content, .footnotes, .attachments, 
+.post-info-co, #comments, #footer {
+    clear:both;
+    }
+
+.dc-tags #content ul {
+	margin: 1em 2em;
+	}

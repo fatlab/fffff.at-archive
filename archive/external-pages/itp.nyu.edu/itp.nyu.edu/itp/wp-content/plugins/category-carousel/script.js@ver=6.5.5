@@ -1,0 +1,87 @@
+// document.addEventListener("DOMContentLoaded", function () {
+// 	for (slideshow of document.getElementsByClassName("category_slideshow")) {
+// 		for (item of slideshow.children) {
+// 			item.addEventListener("click", function () {
+// 				var dist =
+// 					this.getBoundingClientRect().x - slideshow.getBoundingClientRect().x;
+// 				if (dist > 10) {
+// 					this.parentElement.scrollBy(dist, 0);
+// 				}
+// 			});
+// 		}
+// 	}
+// });
+
+var page = 0;
+//scroll slideshow by 1 item (using scroll buttons) or to targeted item (using numbers)
+function slideshowScroll(target, dir) {
+	var slideshow = target.parentElement.parentElement.querySelector(
+		".category_slideshow"
+	);
+	var items = slideshow.getElementsByClassName("category_slideshow_item");
+	const max = Math.ceil(items.length / 4);
+	page += dir;
+	if (page < 0) page = 0;
+	if (page > max) page = max;
+	const w = slideshow.offsetWidth;
+	slideshow.scrollTo(w * page, 0);
+	console.log(page);
+
+	// const leftButton = document.querySelector(
+	// 	".wp-block-create-block-itp-category-carousel button.previous"
+	// );
+	// const rightButton = document.querySelector(
+	// 	".wp-block-create-block-itp-category-carousel button.next"
+	// );
+
+	// // if (dist) slideshow.scrollBy(dist, 0);
+	// if (target.classList.contains("category_slideshow_number")) {
+	// 	var num = target.id[target.id.length - 1];
+	// 	var targetItem = slideshow.getElementsByClassName(
+	// 		"category_slideshow_item"
+	// 	)[num];
+	// 	var dist = targetItem.offsetLeft - slideshow.offsetLeft;
+	// }
+}
+
+// assign 'active' classes to slideshow items according to visibility in slideshow (>66% visible)
+// disable scroll buttons if slideshow is scrolled all the way to left/right
+// function getActiveSlideshowItems(slideshow) {
+// 	//get iterable list of items from HTMLCollection
+// 	const items = Array.prototype.slice.call(
+// 		slideshow.getElementsByClassName("category_slideshow_item")
+// 	);
+// 	const numbers = slideshow.parentElement.querySelector(
+// 		"#category_slideshow_numbers"
+// 	);
+// 	//per item: calculate item visibility using current position in viewport
+// 	for (var i in items) {
+// 		item = items[i];
+// 		const [itemW, itemR] = [
+// 			item.getBoundingClientRect().width,
+// 			item.getBoundingClientRect().right,
+// 		];
+// 		const [slideshowL, slideshowR] = [
+// 			slideshow.getBoundingClientRect().left,
+// 			slideshow.getBoundingClientRect().right,
+// 		];
+
+// 		var isVisible =
+// 			itemR - slideshowR < 100 && itemR - slideshowL > itemW * 0.66;
+
+// 		//assign "active" class to visible items
+// 		if (isVisible) {
+// 			item.classList.add("active");
+// 			numbers.querySelector(`#num${i}`).classList.add("active");
+// 		} else {
+// 			item.classList.remove("active");
+// 			numbers.querySelector(`#num${i}`).classList.remove("active");
+// 		}
+// 	}
+// 	//disable back scroll button if 1st item is visible
+// 	slideshow.parentElement.querySelector(".b>input").disabled =
+// 		items[0].classList.contains("active");
+
+// 	slideshow.parentElement.querySelector(".f>input").disabled =
+// 		items[items.length - 1].classList.contains("active");
+// }

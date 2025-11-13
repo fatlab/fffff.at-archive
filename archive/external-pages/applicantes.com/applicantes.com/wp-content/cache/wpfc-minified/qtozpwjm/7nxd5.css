@@ -1,0 +1,11 @@
+.fam_list_parent{
+font-size: 20px;
+font-weight: bold;
+}
+.fam_list_child{
+font-style: italic;
+font-weight: bold;
+}
+li ul li{
+list-style-type:circle;
+}

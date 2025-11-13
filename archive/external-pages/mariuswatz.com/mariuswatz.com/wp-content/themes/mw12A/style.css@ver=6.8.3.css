@@ -1,0 +1,411 @@
+/*   
+Theme Name: mw12A
+Theme URI: 
+Description: Use this theme to start your Thematic Child Theme development.
+Author: Marius Watz
+Author URI: http://mariuswatz.com/
+Template: thematic
+Version: 1.0
+Tags: Thematic
+.
+Thematic is © Ian Stewart http://themeshaper.com/
+.
+*/
+
+/* Reset browser defaults */
+@import url('../thematic/library/styles/reset.css');
+
+/* Apply basic typography styles */
+@import url('../thematic/library/styles/typography.css');
+
+/* Apply a basic layout */
+/*@import url('../thematic/library/layouts/2c-r-fixed.css');*/
+
+/* Apply basic image styles */
+@import url('../thematic/library/styles/images.css');
+
+/* Apply default theme styles and colors */
+/* It's better to actually copy over default.css into this file (or link to a copy in your child theme) if you're going to do anything outrageous */
+@import url('default.css');
+
+/* Prepare theme for plugins */
+@import url('../thematic/library/styles/plugins.css');
+
+
+
+/* OVERRIDE DEFAULTS */
+body, textarea, input {
+	font: 17px/1.231 georgia,verdana,arial,clean,sans-serif;
+}
+
+body {margin:0; padding:0}
+
+p {line-height:140%}
+
+a,a:visited,a:link {color: #000;} 
+a:hover {background-color: #FFFF00; text-decoration: underline;}
+
+#primary,#secondary {
+	width:240px;
+	float:left;
+	clear: left;
+}
+
+#footer {
+	clear:left;
+	margin:0px 30px 30px 30px;
+	border:none;
+	}
+
+#container {
+	width:990px;
+	float:none;
+	padding-left:10px;
+	/*border:1px dashed #CCC;*/
+}
+
+#main,#header {height: auto;
+	padding-left:0px;
+/*	margin:auto;*/	
+	width:960px;
+}
+
+.entry-content img {max-width:800px; margin:0 0 1em 0;}
+
+#mwSidebar {
+	float:left; 
+	width:198px; 
+	height:318px; 
+	margin:0 20px 20px 0;
+	background: #FFFF00;
+	border:1px solid #000;
+}
+
+#header {
+	background-color: #f8f8f8;
+}
+
+#access {
+	border:none;
+	margin-bottom:20px;
+	height:auto;
+}
+
+.menu {
+	width:200px;
+	margin:20px 0 20px 10px;
+	border:1px solid #000;
+}
+
+.hentry {
+	width:800px; 
+	float:left; 
+	/*border-top:1px solid #000;*/
+}
+
+.hentry p {
+	width:640px; 
+}
+
+#branding {
+	padding: 0px 0 00px 0px;
+	width:240px;
+}
+
+
+#content {
+		width:95%;
+		min-width:920px;
+		clear:both;
+	margin:0;
+	background-color:#FFF;
+	padding:30px 0 10px 50px;
+	hidden:auto;
+}
+
+.edit a {
+	font-size:60%;
+	text-transform: uppercase;
+}
+
+/*.edit a:before {content: "\005B";}
+.edit a:after {content: "\005D";}*/
+
+/* CUSTOM STYLES */
+
+.mwThumb {
+	width: 200px;
+	padding:0px;
+	
+/*	height:260px;*/
+	margin:0 20px 40px 0px;
+	float: left;
+/*	border: 1px solid #F5F5F5;
+	background-color:#000;*/
+}
+
+.mwThumb img {
+	widht:200px;
+	max-width:200px;
+	height:auto;/*
+	-moz-transition:all 10s ease-in 0s;	
+	opacity:0.1;
+*/}
+
+/*.mwThumb img:hover {
+	-moz-transition:all 0.2s ease-in 0s;	
+	opacity:1;
+}*/
+
+.mwTaglist,.mwThumbTitle {
+/*	width: 200px;*/
+}
+
+.mwTagsPost,.mwTaglist{
+	text-transform:uppercase;
+	font-size:80%;
+	margin:0 0 10px 0;
+	/*float:right;
+	position:absolute;
+	top:132px;
+	left:6px;
+text-align: right;
+*/
+}
+.mwTagsPost a,.mwTaglist a,.mwPostlist a {
+	padding:4px;
+	font: 10px georgia,arial,sans-serif;
+	color:#FF0099;		
+	/*text-decoration: none;
+	border:1px solid #ccc;*/
+}
+
+.mwTagsPost a:hover,.mwTaglist a:hover,.mwPostlist a:hover {
+	background-color:#FFFF00;
+	color:#FF0099;
+}
+	
+.mwTagsPost a,.mwTaglist a {margin-right: 2px;}
+
+.mwCategories {
+	font-style: italic;
+}
+	
+.mwThumbTitle {
+	padding:4px;
+	font: 14px georgia,verdana,sans-serif;
+	font-style:italic;
+	margin-bottom: 0px;
+}
+
+.mwThumbTitle a {
+	text-decoration: none;
+	color:#000;
+}
+
+.mwThumbTitle a:hover {
+/* 	background-color: #FFFF00;
+	color:#000;
+ */}
+
+.mwFeatureBox {
+	position:relative;
+	margin-bottom:45px;
+}
+
+.mwThumbBox {
+	position:relative;
+	width:200px;
+	height:150px;
+}
+	
+.mwThumbBoxContent {
+/* 	position:absolute;
+	top:0;
+	left:0px;
+ */	z-index:10;
+	padding:0;
+}
+	
+.mwFeatureBoxContent {
+	margin: 10px 0 0 0;
+	text-transform: uppercase;
+	font-style: italic;
+/* 	position:absolute;
+	bottom:0;
+	z-index: 10;
+	background-color:#fff;
+	filter: alpha(opacity = 85);
+	zoom:1;
+	opacity:0.85;
+ */	
+	
+}
+
+.mwFeatureBoxContent a {
+	text-decoration: none;
+}
+
+/* .mwFeatureBoxContent:hover {
+	background: rgba(255,255,0,1);	
+}
+ */
+.mwHomeBox {
+	float:left;
+	width:420px;
+	height:auto;
+	border:0px solid #000;
+	background-color:#FEFEFE;
+	margin:0 20px 0px 0;
+	overflow: hidden;
+}
+
+.mwHomeBox img {max-width:100%;}
+	
+.mwHomeTitle {
+	margin:0 0 0.75em 0;
+	font-size:14px;
+}
+	
+#content .entry-content {
+/* 	font-size:93%; */
+	padding:0;
+/*	overflow:hidden;*/
+}
+
+.entry-content h2, .entry-content h1, .mwPostTitle{
+		margin-bottom:1em;	
+		font-size:175%;
+		padding:0;
+	margin:0 0 15px 0;
+/*	font-size:30px/1.231;*/ 
+}
+
+.entry-date {
+	font-size:80%;
+	float:left;
+	}
+	
+#content .entry-title h2 {
+		margin-bottom:30px;	
+		font-size:200%;
+	font-family: Georgia,serif;
+}
+
+.mwPostTitle,.entry-content {
+	width:640px;
+}
+
+.mwPostTitle {
+	float:none;
+	text-transform:uppercase;
+	margin-top: 0;
+	margin-right: 30px;
+	/* [disabled]margin-bottom: 20px; */
+	margin-left: 0;
+}
+
+.mwPostTitle a {color:#FF0099;}
+
+.mwPostTime {
+	font-size:80%;
+	margin-bottom:6px;
+	color:#222;
+	padding:3px;
+	width:644px;
+	/*background-color: #FFFF00;*/
+}
+.post {
+	margin-bottom:45px;
+	border-bottom:1px dashed #000;
+}
+
+#content .entry-meta {
+	margin:5px 0 20px 0;
+}
+
+#mwDebug {
+	position: absolute;;
+	top:20px;
+	right:10px;
+	z-index: 100;
+	width:200px;
+	overflow: auto;
+}
+
+#mwDebug ul {
+	padding:0;
+	margin:0;
+}
+
+#mwDebug li {
+	background-color: #F0F0F0;
+	margin-bottom:1px;
+	padding:4px;
+	list-style: none;
+}
+
+
+#topmenu {
+	font:14px Georgia,Verdana, Arial, Helvetica, sans-serif;
+	margin:30px 0 30px 30px;
+	width:900px;
+	
+}
+
+#topmenu a {
+	margin-right:0.8em;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	color:#000;
+}
+
+.mwDivider {clear:both; line-height:1px;}
+
+#content h1,#content h2,#content h3,.mwPostTitle {
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight: 400;
+	font-style:normal;
+	text-transform: uppercase;
+}
+
+.list {margin-left:2em;}
+
+.list li {
+	margin:0 0 0.75em 0;
+}
+	
+.topmenuitem {
+	float:right; 
+	width:auto;
+/* 	padding: 0 0px 10px 0; */
+}
+
+.topmenuSubtitle {clear:left; font-family:Georgia, "Times New Roman", Times, serif; }
+
+.calendarFrame {
+	overflow:auto;
+	width:400px;
+	height:700px;
+	border-top:1px dotted #000;
+	border-bottom:1px dotted #000;
+	font-family:Georgia,Arial,sans-serif;
+	font-size:11px;
+	
+}
+
+
+.c {line-height: normal; margin-bottom:11px; padding:0 5px}
+	
+.calendarFrame .c a {text-decoration: underline;}
+
+#searchform {margin:0 0 15px 0;}
+
+#content .centerImage {	width:800px;}
+
+#content .centerImage img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "PBS Video",
+  "short_name": "PBS Video",
+  "theme_color": "#2638c4",
+  "background_color": "#000525",
+  "display": "standalone",
+  "start_url": "/",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.pbs.video"
+    }
+  ],
+  "icons": [
+    { "src": "/favicons/favicon-192x192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/favicons/favicon-512x512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

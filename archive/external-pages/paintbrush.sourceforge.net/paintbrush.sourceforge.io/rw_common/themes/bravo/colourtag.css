@@ -1,0 +1,73 @@
+body,
+.movie-background {
+	color: #343434;
+	background-color: #F3F3F3;
+}
+
+.photo-links {
+	color: #F3F3F3;
+}
+
+#contentContainer,
+.photo-frame {
+	background-color: #FFFFFF;
+	border-color: #F2F2F2;
+}
+
+#footer {
+	background-color: #F2F2F2;
+}
+
+#sidebarContainer,
+#navcontainer a,
+#pageHeader h1,
+.exif-data,
+.photo-title {
+	color: #5E5E5E;
+}
+
+#navcontainer {
+	border-top-color: #F2F2F2;
+}
+
+#navcontainer a,
+.filesharing-item {
+	border-bottom-color: #F2F2F2;
+}
+
+a:link,
+a:visited,
+#pageHeader h2,
+#navcontainer #current,
+#navcontainer .currentAncestor,
+#navcontainer a:hover,
+.blog-entry-title,
+.album-title,
+.photo-caption,
+.movie-title,
+h1,
+h2,
+h3,
+h4,
+h5 {
+	color: #1B8CCE;
+}
+
+a:hover, a:active {
+}
+
+#topbar {
+	background-color: #1B8CCE;
+}
+
+.photo-navigation {
+	background-color: #1B8CCE;
+}
+
+.thumbnail-frame img,
+.movie-thumbnail-frame img {
+	background: #FFFFFF;
+	border-color: #F9F9F9;
+}
+
+

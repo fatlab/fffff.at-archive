@@ -1,0 +1,451 @@
+(function ($) {
+  //multislide plugin
+  /* Declared in multislide.php in ajax functions */
+  const ANIMATION_DURATION = 300;
+  /* Declared on css */
+  const MARGIN_SIZE = 10;
+
+  /* INITIATE */
+  $(".multislide").each(initiateMultislide);
+
+  function initiateMultislide() {
+    const multislide = this;
+    const { id } = multislide;
+    var multiSlideObjId = "multislideObj" + id;
+
+    const { atts, ajaxurl, MIN_MOBILE_SLIDES_NUM, nonce } =
+      window[multiSlideObjId];
+
+    var itemsContainer = $(multislide).find(".multislide-items");
+
+    var itemsList = $(multislide).find(".items-list");
+    var controlLeft = $(multislide).find(".multislide-ctrl-left");
+    var controlRight = $(multislide).find(".multislide-ctrl-right");
+
+    var items = itemsList.find("a");
+    var itemsWidth = 0;
+    var scrollSize = 0;
+    var initialScroll = 0;
+
+    if (atts["query_state"]) {
+      updateByQuery(this, window[multiSlideObjId]);
+    }
+
+    resizeHandler();
+
+    var { initialScroll } = getScrollVars();
+
+    if (atts["query"]["found_posts"] > atts["post_index"]) {
+      $(itemsContainer).animate(
+        { scrollLeft: `${initialScroll}` },
+        ANIMATION_DURATION
+      );
+    }
+
+    if (atts["found_posts"] >= atts["post_index"] + atts["queried_prev"]) {
+      $(multislide)
+        .find(".multislide-ctrl-left.carousel-control-prev")
+        .css({ display: "flex" });
+    }
+
+    setLoadedIds();
+
+    function setLoadedIds() {
+      var elsIds = [];
+      $(items).each(function () {
+        elsIds.push($(this).attr("id"));
+      });
+      atts["queried_ids"] = elsIds;
+    }
+
+    controlLeft.on("click", function () {
+      const multislide = $(this).parent();
+      const repeatMode = $(multislide).hasClass("repeat");
+
+      if (
+        $(multislide).hasClass("moving") ||
+        $(multislide).hasClass("prev-loading")
+      ) {
+        return;
+      }
+
+      /* Reduce index to prevent reloading posts when ctrlRight */
+      if (atts["post_index"] <= atts["posts_per_page"]) {
+        /* When going down, if it is less than last one shown, make it the last of all posts */
+        atts["post_index"] = atts["query"]["found_posts"];
+      } else {
+        atts["post_index"] -= 1;
+      }
+
+      multislide.addClass("moving");
+
+      var lastElement = itemsList.find("a:last-child");
+
+      if (repeatMode) {
+        var clone = lastElement.clone(true);
+        itemsList.prepend(clone);
+        var currentScroll = $(itemsContainer).scrollLeft();
+        $(itemsContainer).scrollLeft(
+          currentScroll + getScrollVars().scrollSize
+        );
+      }
+
+      $(itemsContainer).animate(
+        { scrollLeft: `-=${getScrollVars().scrollSize}` },
+        ANIMATION_DURATION,
+        function () {
+          if (repeatMode) {
+            lastElement.remove();
+          }
+          multislide.removeClass("moving");
+
+          if (repeatMode) return;
+
+          preloadPrevItems(multislide);
+        }
+      );
+    });
+
+    function preloadPrevItems(multislide) {
+      var postIdx = atts["post_index"];
+
+      if (postIdx % 2 === 0) {
+        /* This makes loading only every certain number of preloaded posts */
+        return;
+      }
+
+      $(multislide).addClass("prev-loading");
+
+      setLoadedIds();
+
+      jQuery.ajax({
+        type: "POST",
+        dataType: "json",
+        url: ajaxurl,
+        data: {
+          action: "multislide_prev",
+          atts,
+          _ajax_nonce: nonce,
+        },
+        success: (res) => {
+          onPrevSuccessHandler(res, multislide);
+        },
+      });
+    }
+
+    function onPrevSuccessHandler(res, multislide) {
+      const { template, error } = res.data;
+
+      if ((!res.success && "no-posts" === error) || !template) {
+        $(multislide).addClass("repeat");
+        $(multislide).removeClass("prev-loading");
+
+        return;
+      }
+
+      var newItems = $.parseHTML(template);
+
+      atts["queried_prev"] += res.data.num_els;
+
+      var { itemsWidth } = getScrollVars();
+
+      $(newItems).width(itemsWidth);
+      $(newItems).height(getMinMaxImgHeight());
+      $(newItems).find("img").css("height", getMinMaxImgHeight());
+
+      for (const item of newItems) {
+        if (!$(itemsList).find(`#${item.id}`).length) { 
+            $(item).prependTo($(multislide).find(".items-list"));
+        }
+      }
+
+
+      var currentScroll = $(multislide).find(".multislide-items").scrollLeft();
+
+      var reScroll =
+        currentScroll + res.data.num_els * getScrollVars().scrollSize;
+
+      $(multislide).find(".multislide-items").scrollLeft(reScroll);
+      $(multislide).removeClass("prev-loading");
+    }
+
+    controlRight.on("click", function () {
+      const multislide = $(this).parent();
+      const repeatMode = $(multislide).hasClass("repeat");
+      if ($(multislide).hasClass("moving")) {
+        return;
+      }
+
+      if (atts["post_index"] > atts["found_posts"]) {
+        atts["post_index"] = 0;
+      } else {
+        atts["post_index"]++;
+      }
+
+      $(multislide).addClass("moving");
+      const { scrollSize } = getScrollVars();
+
+      /* skip preloaded first */
+      var firstChild = itemsList.find("a:first-child");
+      if (repeatMode) {
+        var clone = firstChild.clone(true);
+        $(itemsList).append(clone);
+      }
+
+      scrollRight();
+
+      if (repeatMode) return;
+      /* AJAX LOGIC STARTS HERE */
+
+      var pIdx = atts["post_index"];
+
+      if (pIdx % 2 === 0) {
+        /* This makes loading only every certain number of preloaded posts */
+        return;
+      }
+
+      $(multislide).addClass("next-loading");
+      setLoadedIds();
+      jQuery.ajax({
+        type: "POST",
+        dataType: "json",
+        url: ajaxurl,
+        data: {
+          action: "multislide_next",
+          atts,
+          _ajax_nonce: nonce,
+        },
+        success: function (res) {
+          onNextSuccessHandler(res, multislide);
+        },
+        error: function (error) {
+            console.log(error)
+        }
+      });
+
+      function onNextSuccessHandler(res, multislide) {
+        $(multislide).removeClass("next-loading");
+
+        const { template, error, num_els } = res.data;
+        if ("no-posts" === error) {
+          $(multislide).addClass("repeat");
+          return;
+        }
+
+        if (!template) return;
+
+        var newItems = $.parseHTML(template);
+
+        var { itemsWidth } = getScrollVars();
+
+        $(newItems).width(itemsWidth);
+        $(newItems).height(getMinMaxImgHeight());
+        $(newItems).find("img").css("height", getMinMaxImgHeight());
+
+        for (const item of newItems) {
+          if (!$(itemsList).find(`#${item.id}`).length) {
+            itemsList.append(item);
+          }
+        }
+
+        atts["queried_next"] += num_els;
+
+        if (atts["post_index"] === atts["query"]["found_posts"]) {
+          $(multislide).addClass("repeat");
+        }
+      }
+
+      function scrollRight() {
+        $(itemsContainer).animate(
+          { scrollLeft: `+=${scrollSize}` },
+          ANIMATION_DURATION,
+          function () {
+            if (repeatMode) {
+              var currentScroll = $(itemsContainer).scrollLeft();
+
+              firstChild.hide();
+
+              $(itemsContainer).scrollLeft(currentScroll - scrollSize);
+              firstChild.remove();
+            }
+            $(this).parent().removeClass("moving");
+          }
+        );
+      }
+    });
+
+    /* Preloaded by backend */
+    /* preloadNextItems() */
+
+    $(window).on("resize", function () {
+      resizeHandler();
+    });
+
+    function resizeHandler() {
+      var { itemsWidth, controlsWidth } = getScrollVars();
+
+      items.width(itemsWidth);
+      items.height(getMinMaxImgHeight());
+      $(items).find("img").css("height", getMinMaxImgHeight());
+
+      controlRight.width(controlsWidth);
+      controlLeft.width(controlsWidth);
+    }
+
+    function getScrollVars() {
+      items = $(multislide).find("a");
+
+      var itemsContainer = $(multislide).find(".multislide-items");
+
+      var rawWidth;
+      if (window.innerWidth > 480) {
+        rawWidth = itemsContainer.get(0).clientWidth / atts["posts_per_page"];
+      } else {
+        rawWidth = itemsContainer.get(0).clientWidth / MIN_MOBILE_SLIDES_NUM;
+      }
+
+      itemsWidth = Math.trunc(rawWidth) - MARGIN_SIZE;
+
+      controlsWidth = itemsWidth / 2;
+
+      scrollSize = itemsWidth + MARGIN_SIZE;
+
+      preloadNum = atts["queried_prev"] || 0;
+
+      initialScroll = preloadNum * scrollSize - Math.trunc(scrollSize / 2);
+
+      return {
+        controlsWidth,
+        itemsWidth,
+        scrollSize,
+        initialScroll,
+      };
+    }
+
+    var multislideHammer = new Hammer(
+      $(multislide).find(".multislide-items")[0]
+    );
+
+    multislideHammer.on("swipeleft", function () {
+      var controlRight = $(multislide).find(".multislide-ctrl-right");
+      controlRight.trigger("click");
+    });
+    multislideHammer.on("swiperight", function () {
+      var controlLeft = $(multislide).find(".multislide-ctrl-left");
+      controlLeft.trigger("click");
+    });
+
+    function getMinMaxImgHeight() {
+      var items = $(multislide).find(".items-list a"), //grab all slides
+        heights = [], //create empty array to store height values
+        tallest; //create variable to make note of the tallest slide
+
+      if (items.length) {
+        items.each(function () {
+          //add heights to array
+          heights.push($(this).height());
+        });
+        tallest = Math.max.apply(null, heights); //save largest value
+        if (tallest < 125) {
+          tallest = 150;
+        }
+        if (tallest < 150) {
+          tallest = 175;
+        }
+        if (tallest > 300) {
+          tallest = 300;
+        }
+        return tallest;
+      }
+    }
+
+    function updateByQuery(multislide, multislideObj) {
+      const { ajaxurl, nonce, atts } = multislideObj;
+
+      let requested = false;
+
+      var multiTitle = $(multislide).siblings("h3[class*='title']");
+      var oldTitle = multiTitle.html();
+
+      window.addEventListener("url-query-params-change", function (e) {
+        e.preventDefault();
+
+        var params = new URLSearchParams(window.location.search);
+        var selected = params.get("selected");
+
+        var currentTtitle = $(multislide).siblings("h3[class*='title']").html();
+        if (selected && selected.length) {
+          if (multiTitle.length && currentTtitle == oldTitle) {
+            var lang = window.getCurrentLang();
+            var newTitle = "";
+            if (lang == "de") {
+              newTitle = "Wir empfehlen...";
+            } else newTitle = "We recommend...";
+
+            $(multiTitle).html(newTitle);
+          }
+        } else {
+          $(multiTitle).html(oldTitle);
+        }
+
+        if (!requested) {
+          requested = true;
+          console.log("AJAX POST", atts, selected);
+          let safeRespTimeout = setTimeout(() => {
+            /* allow retrigger after 3s */
+            requested = false;
+          }, 3000);
+          jQuery.ajax({
+            type: "POST",
+            dataType: "json",
+            url: ajaxurl,
+            data: {
+              action: "update_by_url_query",
+              selected,
+              atts,
+              _ajax_nonce: nonce,
+            },
+            success: (res) => {
+              requested = false;
+              const { template, error } = res.data;
+              var newAtts = res.data["atts"];
+
+              console.log("response", res.data);
+
+              if (error) {
+                console.log("error", error);
+                return;
+              }
+
+              rerender(multislide, template, newAtts);
+            },
+          });
+        }
+      });
+    }
+
+    function rerender(multislide, template, atts) {
+      $(multislide).find(".items-list").children().remove();
+
+      var newItems = $.parseHTML(template);
+
+      var { itemsWidth } = getScrollVars();
+
+      $(newItems).width(itemsWidth);
+      $(newItems).height(getMinMaxImgHeight());
+      $(newItems).find("img").css("height", getMinMaxImgHeight());
+
+      $(multislide).find(".items-list").append(newItems);
+
+      var { initialScroll } = getScrollVars();
+
+      if (atts["query"]["found_posts"] > atts["post_index"]) {
+        var currentScroll = $(multislide)
+          .find(".multislide-items")
+          .scrollLeft();
+
+        $(multislide).find(".multislide-items").scrollLeft(initialScroll);
+      }
+    }
+  }
+})(jQuery);

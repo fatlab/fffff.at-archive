@@ -1,0 +1,47 @@
+/**
+ * @name		Tooltip CK
+ * @copyright	Copyright (C) 2016. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @author		Cédric KEIFLIN - http://www.joomlack.fr - http://www.template-creator.com - https://www.ceikay.com
+ */
+
+.tooltipck {
+	z-index: 5;
+	position: relative;
+	/*display: inline-block;*/
+}
+
+.tooltipck:hover, .tooltipck-active {
+	z-index: 6;
+}
+
+.tooltipck-tip {
+	position: absolute;
+	z-index : 6000;
+	display : none;
+	box-sizing: border-box;
+	opacity: 0;
+}
+
+.tooltipck:hover .tooltipck-tip {
+	/*display: inline-block;
+	opacity: 1;*/
+	z-index : 7;
+}
+
+.tooltipck-inner {
+	display : block;
+}
+
+.tooltipck-inner img {
+	max-width: 100%;
+	height: auto;
+}
+
+.tooltipck-pointer:after {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	content: "";
+}

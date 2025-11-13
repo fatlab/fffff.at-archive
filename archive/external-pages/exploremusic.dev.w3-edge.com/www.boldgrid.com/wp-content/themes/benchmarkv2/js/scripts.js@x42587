@@ -1,0 +1,52 @@
+// Theme Filters for /themes
+( function( $ ) {
+  $(document).ready(function(){
+    
+	$('#themes-filter-links li').each(function() {
+		$(this).find("a").on('click', function(e) {
+			let category = $(this).attr("href").slice(1);
+			switch(category) {
+				case "all":
+					$('.themes-categories').removeClass("effect-fade-out");
+					$('.themes-categories').addClass("effect-fade-in");
+					break;
+				case "more-themes":
+					break;
+				default:	
+					e.preventDefault();
+					$('.themes-categories').removeClass("effect-fade-in");
+					$('.themes-categories').addClass("effect-fade-out");
+					$('#'+ 'themes-' + $(this).attr("href").slice(1)).removeClass("effect-fade-out");
+					$('#'+ 'themes-' + $(this).attr("href").slice(1)).addClass("effect-fade-in");
+			}
+		});
+	}); 
+
+    // Video for /themes  
+	var videoVer3 = document.getElementById('video-ver-3');
+	var playheadVer3 = document.getElementById('playhead-ver-3');
+	$(playheadVer3).hide();
+	$(videoVer3).on('ended', function(){
+		$(playheadVer3).fadeIn(200);
+	});
+	$(playheadVer3).on('click', function(){
+		$(videoVer3)[0].currentTime = 0;
+		$(videoVer3)[0].play();
+		$(playheadVer3).fadeOut(200);
+		return false;
+	});
+    
+    // Become Partner link  
+    $('a[href^="#becomepartner"]').on('click', function(e) {
+        e.preventDefault();
+        var target = this.hash;
+        var $target = $(target);
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top
+        }, 900, 'swing', function() {
+            window.location.hash = target;
+        });
+    });
+    
+});
+} )( jQuery );

@@ -1,0 +1,65 @@
+/*
+Theme Name: Metaebene
+Description: Child theme for the twentyeleven theme
+Version: 1.0
+Author: Tim Pritlove
+Template: twentyeleven
+*/
+
+@import url("../twentyeleven/style.css");
+
+#site-generator {
+  display:none;
+}
+
+
+/*
+.mejs_chapters .active td {
+  background: #e6e6e6;
+}
+
+.mejs_chapters td.timecode {
+  padding-left: 8px;
+}
+
+*/
+
+* {
+
+  overflow-wrap: break-word;
+}
+
+td {
+    vertical-align: middle;
+}
+
+
+/* Krasse Verschachtelung bei den Kommmentarboxen einschränken */
+
+ol.commentlist ul.children li.comment {
+    padding: 0.5em 0px 0.5em 0.5em;
+}
+
+ol.commentlist ul.children li.depth-2 {
+    padding-right: 0.5em;
+}
+
+ol.commentlist ul.children li.bypostauthor {
+    padding-right: 0.5em;
+}
+
+ol.commentlist ul.children li.bypostauthor > ul > li {
+    padding-right: 0.5em;
+}
+
+.me-metabar {
+	margin-left: -2em;
+	margin-right: -2em;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+	.me-metabar {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}

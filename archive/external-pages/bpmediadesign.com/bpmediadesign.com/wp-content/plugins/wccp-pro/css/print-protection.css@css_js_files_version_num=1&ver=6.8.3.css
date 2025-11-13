@@ -1,0 +1,8 @@
+/* BEGIN wpcp_print_page_preventer_script */
+		@media print {
+			body * { display: none !important;}
+			body:after {
+				content: "You are not allowed to print this page!"; }
+			}
+/* END wpcp_print_page_preventer_script */
+

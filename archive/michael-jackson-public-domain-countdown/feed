@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Michael Jackson Public Domain Countdown&#8230;.</title>
+	<atom:link href="http://fffff.at/michael-jackson-public-domain-countdown/feed/" rel="self" type="application/rss+xml" />
+	<link>http://fffff.at/michael-jackson-public-domain-countdown/</link>
+	<description>Release early, often, and w/ rap music.</description>
+	<lastBuildDate>Thu, 29 Sep 2016 13:21:16 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.7.4</generator>
+	<item>
+		<title>By: Michael Jackson Public Domain Countdown &#124; Tosh.0 Blog</title>
+		<link>http://fffff.at/michael-jackson-public-domain-countdown/comment-page-1/#comment-7346</link>
+		<dc:creator><![CDATA[Michael Jackson Public Domain Countdown &#124; Tosh.0 Blog]]></dc:creator>
+		<pubDate>Thu, 03 Sep 2009 17:01:43 +0000</pubDate>
+		<guid isPermaLink="false">http://fffff.at/?p=2304#comment-7346</guid>
+		<description><![CDATA[[...] F.A.T.]                       More [...]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] F.A.T.]                       More [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kyle McDonald</title>
+		<link>http://fffff.at/michael-jackson-public-domain-countdown/comment-page-1/#comment-7037</link>
+		<dc:creator><![CDATA[Kyle McDonald]]></dc:creator>
+		<pubDate>Tue, 11 Aug 2009 15:39:42 +0000</pubDate>
+		<guid isPermaLink="false">http://fffff.at/?p=2304#comment-7037</guid>
+		<description><![CDATA[@Evan, yes, DAY_OF_YEAR starts at 1 according to http://java.sun.com/j2se/1.5.0/docs/api/java/util/Calendar.html#DAY_OF_YEAR Your code looks good.
+
+I like your modification (playing Billy Jean) :) It feels like a way less cynical piece, and much more optimistic.]]></description>
+		<content:encoded><![CDATA[<p>@Evan, yes, DAY_OF_YEAR starts at 1 according to <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Calendar.html#DAY_OF_YEAR" rel="nofollow">http://java.sun.com/j2se/1.5.0/docs/api/java/util/Calendar.html#DAY_OF_YEAR</a> Your code looks good.</p>
+<p>I like your modification (playing Billy Jean) :) It feels like a way less cynical piece, and much more optimistic.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Evan</title>
+		<link>http://fffff.at/michael-jackson-public-domain-countdown/comment-page-1/#comment-7034</link>
+		<dc:creator><![CDATA[Evan]]></dc:creator>
+		<pubDate>Tue, 11 Aug 2009 07:13:58 +0000</pubDate>
+		<guid isPermaLink="false">http://fffff.at/?p=2304#comment-7034</guid>
+		<description><![CDATA[@ Kyle, nice catch. I made the update. I also subtracted 1 from your DAY value as Calendar.DAY_OF_YEAR starts on 1 rather than 0 like the other values (am I thinking about this right?). I also made it so that when it hits 0 it plays Billy Jean, making it the first time the song will be played free of copyright. New source here: http://evan-roth.com/mj-rIP/mj_timer_04.zip]]></description>
+		<content:encoded><![CDATA[<p>@ Kyle, nice catch. I made the update. I also subtracted 1 from your DAY value as Calendar.DAY_OF_YEAR starts on 1 rather than 0 like the other values (am I thinking about this right?). I also made it so that when it hits 0 it plays Billy Jean, making it the first time the song will be played free of copyright. New source here: <a href="http://evan-roth.com/mj-rIP/mj_timer_04.zip" rel="nofollow">http://evan-roth.com/mj-rIP/mj_timer_04.zip</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: opassande &#187; Blog Archive &#187; Själv kommer jag antagligen inte ens få uppleva det</title>
+		<link>http://fffff.at/michael-jackson-public-domain-countdown/comment-page-1/#comment-7033</link>
+		<dc:creator><![CDATA[opassande &#187; Blog Archive &#187; Själv kommer jag antagligen inte ens få uppleva det]]></dc:creator>
+		<pubDate>Tue, 11 Aug 2009 05:27:03 +0000</pubDate>
+		<guid isPermaLink="false">http://fffff.at/?p=2304#comment-7033</guid>
+		<description><![CDATA[[...] Evan Roths &#8220;Michael Jackson Public Domain Countdown&#8220;. Genialisk om du frågar mig. F.A.T. jobbar på ett mashup tribute album som han inte kommer kunna publicera förrän han är 101 år. Enklare än [...]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] Evan Roths &#8220;Michael Jackson Public Domain Countdown&#8220;. Genialisk om du frågar mig. F.A.T. jobbar på ett mashup tribute album som han inte kommer kunna publicera förrän han är 101 år. Enklare än [&#8230;]</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
+
+<!-- Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Page Caching using disk: enhanced
+Database Caching 12/27 queries in 0.049 seconds using disk
+
+ Served from: fffff.at @ 2017-05-02 08:26:23 by W3 Total Cache -->

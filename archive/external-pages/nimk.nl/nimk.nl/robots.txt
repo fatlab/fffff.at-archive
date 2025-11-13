@@ -1,0 +1,11 @@
+Sitemap: http://nimk.nl/sitemap.php
+User-agent: *
+Disallow: /cms/
+Disallow: /_covers/
+Disallow: /_catalogue/
+Disallow: /_files/
+Disallow: /_fonts/
+Disallow: /_lib/
+Disallow: /_shared/
+Disallow: /formbuilder/
+Allow: /

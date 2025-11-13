@@ -1,0 +1,817 @@
+html,body{margin:0;padding:0}
+h1,h2,h3,h4,h5,h6,p,blockquote,address,big,cite,code,em,font,img,small,strike,sub,sup,li,ol,ul,fieldset,form,label,legend,button,table,caption,tr,th,td{margin:0;padding:0;border:0;font-weight:normal;font-style:normal;font-size:100%;line-height:1;font-family:inherit;text-align:left}
+table{border-collapse:collapse;border-spacing:0}
+ol,ul{list-style:none}
+blockquote:before,blockquote:after{content:""}
+a{outline:0}
+input[type=search],input[type=text],input[type=email],input[type=url],input[type=button],input[type=tel],input[type=submit],textarea{-moz-appearance:none;-webkit-appearance:none}
+input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-results-button,input[type="search"]::-webkit-search-results-decoration{display:none}
+body{margin:0;padding:0;border:0;background:#f1f1f1;color:#444;font-family:Roboto,sans-serif;font-size:18px;-webkit-font-smoothing:antialiased}
+body a{color:#13c4a5;text-decoration:none}
+body a:hover{color:#13c4a5;text-decoration:none}
+*{-webkit-box-sizing:border-box;box-sizing:border-box}
+img{max-width:100%;height:auto}
+.hidden{display:none}
+.clear{clear:both}
+.fleft{float:left}
+.fright{float:right}
+::-moz-selection{background:#444;color:#FFF}
+::selection{background:#444;color:#FFF}
+::-webkit-input-placeholder{color:#999}
+:-ms-input-placeholder{color:#999}
+body a{-webkit-transition:all .1s ease-in-out;transition:all .1s ease-in-out}
+.blog-title a,.post-title a,.post-overlay,.post-likes,.post-meta a,.pagination,.main-menu a,.main-menu>.has-children>a::after,.main-menu>.page_item_has_children>a::after,.searchbutton,.search-toggle,.comment-form input[type="text"],.comment-form input[type="email"],.comment-form textarea,.form-submit #submit,.widget_search .searchsubmit,.widget_search .s,.format-gallery .flex-direction-nav a,.nav-toggle .bar,.dribbble-shot,.flickr_badge_image a,.post-content input[type="submit"],.post-content input[type="reset"],.post-content input[type="button"]{-webkit-transition:all .2s ease-in-out;transition:all .2s ease-in-out}
+.tothetop,.header,.portfolio-item a .portfolio-header-container,.featured-media a img{-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
+.screen-reader-text{clip:rect(1px,1px,1px,1px);position:absolute !important;height:1px;width:1px;overflow:hidden}
+.screen-reader-text:focus{background-color:#f1f1f1;border-radius:3px;-webkit-box-shadow:0 0 2px 2px rgba(0,0,0,0.6);box-shadow:0 0 2px 2px rgba(0,0,0,0.6);clip:auto !important;color:#21759b;display:block;font-size:14px;font-size:.875rem;font-weight:bold;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}
+.section{position:relative;padding:80px 0}
+.no-padding{padding:0}
+.small-padding{padding:40px 0}
+.medium-padding{padding:60px 0}
+.big-padding{padding:100px 0}
+.section-inner{max-width:90%;width:1400px;margin:0 auto}
+.section-inner.content{width:1440px;max-width:92.6%}
+.section-inner.wide{width:1240px}
+.section-inner.thin{width:700px}
+.bg-dark{background-color:#1d1d1d}
+.bg-graphite{background-color:#262626}
+.bg-grey{background-color:#f1f1f1}
+.bg-image{background-size:cover;background-position:center;background-repeat:no-repeat}
+.cover{position:absolute;top:0;right:0;bottom:0;left:0}
+.cover.shade-light{background:rgba(0,0,0,0.25)}
+.cover.shade-medium{background:rgba(0,0,0,0.5)}
+.cover.shade-dark{background:rgba(0,0,0,0.75)}
+.row .one-fourth{width:21.5%;margin-left:5%;float:left}
+.row .one-third{width:30%;margin-left:5%;float:left}
+.row .one-half{width:47.5%;margin-left:5%;float:left}
+.row .two-thirds{width:65%;margin-left:5%;float:left}
+.row .one-fourth:first-child,.row .one-third:first-child,.row .one-half:first-child,.row .two-thirds:first-child{margin-left:0}
+.header{padding:70px 0}
+.header .cover{background:rgba(29,29,29,0.25)}
+.header-inner{position:relative}
+.header .blog-logo{text-align:center}
+.header .logo{display:inline-block}
+.header .logo img{max-height:80px;width:auto}
+.blog-title{font-family:'Pacifico',sans-serif;font-size:2.25em;text-align:center;text-shadow:1px 1px 2px rgba(0,0,0,0.25)}
+.blog-title a{color:#fff}
+.blog-title a:hover{color:#13c4a5}
+.blog-description{font-size:1.1em;line-height:110%;font-weight:400;color:#999;margin:20px 0 0 0;text-align:center;text-shadow:1px 1px 1px rgba(0,0,0,0.25)}
+.search-toggle{display:block;width:68px;height:68px;background:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/spyglass-w.png) no-repeat center;background-size:24px auto;opacity:.5}
+.search-toggle.active{opacity:1}
+.header-search-block{position:absolute;z-index:10000;top:0;right:0;bottom:0;left:0}
+.header-search-block .section-inner{position:relative}
+.header-search-block .s{background:0;border:0;margin:0;width:90%;position:absolute;top:50%;right:5%;left:5%;margin-top:-30px;font-family:'Roboto',sans-serif;font-size:2.5em;font-weight:300;color:#fff;-webkit-font-smoothing:antialiased}
+.header-search-block .s:focus{outline:0}
+.header-search-block .searchsubmit{display:none}
+.main-menu{font-family:'Roboto Slab',sans-serif;font-size:.9em;text-align:center}
+.main-menu li{position:relative}
+.main-menu>li{float:left}
+.main-menu>li:before{content:"/";display:block;position:absolute;right:0;top:50%;margin-top:-9px;margin-right:-3px;font-size:16px;color:#444;font-weight:300;z-index:1000}
+.main-menu>li:last-child:before{content:none}
+.main-menu>li>a{display:block;padding:27px;font-size:.85em;color:#999;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.main-menu>li:first-child>a{margin-left:0}
+.main-menu>.has-children>a,.main-menu>.page_item_has_children>a{padding-right:47px;position:relative}
+.main-menu>.has-children>a::after,.main-menu>.page_item_has_children>a::after{content:"";display:block;border:5px solid transparent;border-top-color:#999;position:absolute;z-index:1001;right:29px;top:50%;margin-top:-2px}
+.main-menu li:hover>a{cursor:pointer;color:#fff}
+.main-menu>.has-children:hover>a::after,.main-menu>.page_item_has_children:hover>a::after{border-top-color:#fff}
+.main-menu li ul{position:absolute;z-index:10000;display:block;left:-9999px;top:38px;opacity:0;z-index:999;-webkit-transition:opacity .3s ease-in-out,top .3s ease-in-out;transition:opacity .3s ease-in-out,top .3s ease-in-out}
+.is_mobile .main-menu li ul{opacity:1;display:none}
+.main-menu>li>ul{padding-top:20px}
+.main-menu>li>ul:before{content:"";display:block;position:absolute;z-index:1000;top:0;left:50%;margin-left:-10px;border:10px solid transparent;border-bottom-color:#2d2d2d}
+.main-menu ul li{float:none;display:block;border-top:1px solid rgba(255,255,255,0.075)}
+.main-menu ul li:first-child{border-top:0}
+.main-menu ul>.has-children::after,.main-menu ul>.page_item_has_children::after{content:"";display:block;border:6px solid transparent;border-left-color:rgba(255,255,255,0.4);position:absolute;z-index:1001;right:10px;top:50%;margin-top:-5px}
+.main-menu ul>.has-children:hover::after,.main-menu ul>.page_item_has_children:hover::after{border-left-color:#FFF}
+.main-menu ul li{display:block;width:240px;background:#2d2d2d}
+.main-menu ul a{display:block;text-align:center;padding:20px;margin:0;line-height:130%;color:#999}
+.main-menu ul a:hover{color:#fff}
+.main-menu li:hover>ul{opacity:1;left:50%;margin-left:-120px;top:48px}
+.is_mobile .main-menu li:hover ul{display:block}
+.main-menu ul li ul{top:5px}
+.main-menu ul li:hover>ul{top:0;left:240px;margin-left:0}
+.main-menu ul ul li{background:#3d3d3d}
+.main-menu ul ul ul li{background:#4d4d4d}
+.main-menu ul ul ul ul li{background:#4d4d4d}
+.posts{overflow:visible !important}
+.post-container{width:33.3%;padding:0 1.5% 4.5% 1.5%}
+.hentry,.post{width:100%;position:relative;background:#fff;border-radius:3px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,0.1);box-shadow:0 1px 4px rgba(0,0,0,0.1);overflow:hidden}
+.post.sticky .post-header{padding-right:17.5%}
+.post .sticky-post{display:block;position:absolute;z-index:100;right:5%;height:38px;width:26px;background:#2b3542 url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/tack-w.png) no-repeat center;background-size:12px auto;top:0;text-indent:-9999px}
+.post .sticky-post:after{content:"";display:block;border:13px solid transparent;border-left-color:#2b3542;border-right-color:#2b3542;position:absolute;right:0;margin-top:-13px;top:38px}
+.featured-media a,.featured-media img,.featured-media iframe{display:block}
+.featured-media iframe,.featured-media object{border:0;margin:0}
+.featured-media a{overflow:hidden}
+.featured-media a img{margin:0 auto}
+.featured-media a:hover img{-webkit-transform:scale(1.1);transform:scale(1.1);opacity:.8}
+.media-caption{font-size:.8em;line-height:110%;font-weight:700;color:#999;padding:20px 0;margin:0 10%;border-bottom:1px solid #eee}
+.post-header{position:relative;padding:8% 10%;border-bottom:1px solid #eee}
+.post-header .post-title{font-family:'Roboto Slab',sans-serif;font-size:1.25em;line-height:120%;font-weight:700;color:#2b3542;word-break:break-word;-ms-word-break:break-word}
+.post-header .post-title a{color:#2b3542}
+.post-header .post-title a:hover{color:#13c4a5}
+.post-excerpt{padding:10%}
+.post-excerpt p{font-size:.95em;line-height:150%;color:#666}
+.post-excerpt p+p{margin-top:1em}
+.post-excerpt .more-link{display:block;margin-top:1.1em}
+.post-excerpt .more-link:hover{text-decoration:underline}
+.posts .post-meta{background:#f9f9f9;padding:0 10%}
+.posts .post-meta a{display:block;color:#999;font-size:.8em;font-weight:700;float:left;padding:20px 0 20px 24px;background:no-repeat left center;background-size:18px auto;margin-left:20px}
+.posts .post-meta a:first-child{margin-left:0}
+.posts .post-meta a:hover{color:#13c4a5}
+.posts .post-meta a.post-date{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/clock-g.png)}
+.posts .post-meta a.post-date:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/clock-c.png)}
+.posts .post-meta a.zilla-likes{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/heart-g.png)}
+.posts .post-meta a.zilla-likes:hover,.posts .post-meta a.zilla-likes.active{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/heart-c.png);color:#13c4a5}
+.posts .post-meta a.post-comments{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/comment-g.png)}
+.posts .post-meta a.post-comments:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/comment-c.png)}
+.posts .post-meta a.post-edit-link{height:59px;width:20px;text-indent:-9999px;background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/edit-g.png);background-size:20px auto;background-position:center}
+.posts .post-meta a.post-edit-link:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/edit-c.png)}
+.post .post-header:before,.page .post-header:before{content:"";display:block;border:12px solid transparent;border-top-color:#eee;position:absolute;z-index:10;bottom:0;left:10%;margin-bottom:-24px}
+.post .post-header:after,.page .post-header:after{content:"";display:block;border:11px solid transparent;border-top-color:#fff;position:absolute;z-index:11;bottom:0;left:10%;margin-left:1px;margin-bottom:-21px}
+.posts .format-video .post-header:before,.posts .format-video .post-header:after,.posts .format-image .post-header:before,.posts .format-image .post-header:after{content:none}
+.format-image .post-excerpt{padding-top:7.5%;font-size:.9em}
+.format-image .post-excerpt .image-caption{font-weight:600}
+.post-quote{padding:10%;background:#2b3542;color:#fff}
+.post-quote blockquote,.post-link p{display:block;font-family:'Roboto',sans-serif;font-size:1.2em;font-weight:400;line-height:140%}
+.post-quote blockquote{font-size:1.1em}
+.post-quote cite,.post-link a{display:block;margin-top:20px;text-transform:uppercase;letter-spacing:1px;font-size:.8em;font-weight:700}
+.post-quote cite{font-family:'Roboto Slab',sans-serif;font-size:14px}
+.post-quote cite:before{content:"— "}
+.post-link{padding:10%;background:#2b3542;color:#fff}
+.post-link a{color:#13c4a5;padding-left:23px;background:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/link-c.png) no-repeat left center;background-size:16px auto}
+.post-link a:hover{color:#13c4a5;text-decoration:underline}
+.single .post-link p,.single .post-quote blockquote{font-size:1.75em}
+.format-gallery .flexslider{position:relative}
+.format-gallery .flex-direction-nav a{display:block;height:32px;width:20px;background-size:auto 32px;background-repeat:no-repeat;position:absolute;top:50%;margin-top:-16px;text-indent:-9999px;opacity:.5}
+.format-gallery .flex-direction-nav .flex-prev{left:16px;background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/chevron-left-w-shade.png)}
+.format-gallery .flex-direction-nav .flex-next{right:16px;background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/chevron-right-w-shade.png)}
+.format-gallery .flex-direction-nav a:hover{opacity:1}
+.format-gallery .flex-direction-nav .flex-prev:hover{left:12px}
+.format-gallery .flex-direction-nav .flex-next:hover{right:12px}
+.format-gallery .slides li{position:relative}
+.posts .format-status .post-excerpt{background:#2b3542}
+.posts .format-status .post-excerpt p,.format-status .post-content{font-family:'Pacifico',sans-serif;color:#fff;text-shadow:1px 1px 1px rgba(0,0,0,0.5);font-size:1.2em}
+.format-status .post-content{color:#333;text-shadow:none}
+.format-chat .post-content p{margin-bottom:.25em;padding:8px 16px;border-radius:3px}
+.format-chat .post-content p:nth-child(odd){background:#f5f5f5}
+.format-chat .more-link{margin-top:1em}
+body.single .content{width:67.5%}
+body.single .content.full-width{width:100%}
+body.single .content.center{margin:0 auto;width:944px;max-width:100%}
+.single{border-radius:6px}
+.single .post-title{font-size:2.25em}
+.single .post-content{padding:10%}
+.single .format-gallery .flex-direction-nav a{height:42px;width:30px;background-size:auto 42px;margin-top:-21px}
+.single .format-gallery .flex-direction-nav .flex-prev{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/chevron-left-w-shade-big.png)}
+.single .format-gallery .flex-direction-nav .flex-next{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/chevron-right-w-shade-big.png)}
+.single .post-quote cite{font-size:1em;margin-top:30px}
+.single .post-meta-container{position:relative;background:#2b3542}
+.single .post-meta-container:after{content:"";display:block;background:#3f4854;position:absolute;z-index:1;top:0;right:0;bottom:0;left:60%}
+.single .post-meta{float:right;width:40%;padding:30px;position:relative;z-index:10}
+.single .post-meta p,.single .post-meta>a,.post-nav a{display:block;margin-top:12px;font-size:.85em;line-height:120%;font-weight:700;min-height:20px;padding:1px 0 1px 23px;background:no-repeat left center;background-size:16px auto;color:#9499a0}
+.single .post-meta p:first-child{margin-top:0}
+.single .post-meta p.post-date{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/clock-g.png)}
+.single .post-meta a.zilla-likes{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/heart-g.png)}
+.single .post-meta a.zilla-likes:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/heart-c.png)}
+.single .post-meta p.post-categories{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/folder-g.png)}
+.single .post-meta p.post-tags{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/tag-g.png)}
+.single .post-meta a{color:#9499a0}
+.single .post-meta a:hover{color:#13c4a5}
+.post-nav{padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);margin-top:20px}
+.post-nav a{background-position:left 3px}
+.post-nav a:first-child{margin-top:0}
+a.post-nav-prev{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/prev-g.png)}
+a.post-nav-prev:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/prev-c.png)}
+a.post-nav-next{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/next-g.png)}
+a.post-nav-next:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/next-c.png)}
+.single a.post-edit-link{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/edit-g.png);background-position:left 5px}
+.single a.post-edit-link:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/edit-c.png)}
+.post-author{width:60%;padding:30px;float:left;position:relative;overflow:hidden}
+.post-author:before,.post-author:after{content:"";display:block;position:absolute;left:30px}
+.post-author:before{z-index:100;top:0;width:40px;height:70px;background:#13c4a5 url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/author-w.png) no-repeat center 29px;background-size:22px auto}
+.post-author:after{top:50px;border:20px solid transparent;border-left-color:#13c4a5;border-right-color:#13c4a5}
+.post-author-content{margin-left:70px}
+.post-author h4{font-family:'Roboto Slab',sans-serif;font-size:1.1em;font-weight:700;color:#fff;margin-bottom:15px}
+.post-author p{font-size:.875em;line-height:150%;color:#9499a0}
+.author-links{margin-top:18px}
+.author-links a{display:inline-block;width:36px;height:36px;background-color:rgba(255,255,255,0.1);background-repeat:no-repeat;background-position:center;background-size:16px auto;margin-left:5px;border-radius:999px;text-indent:-9999px}
+.author-links a:first-child{margin-left:0}
+.author-links a.author-link-posts{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/archive-w.png)}
+.author-links a.author-link-website{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/home-w.png)}
+.author-links a.author-link-mail{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/social/mail-w.png)}
+.author-links a.author-link-twitter{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/social/twitter-w.png)}
+.author-links a:hover{background-color:#13c4a5}
+.post-content a:hover{text-decoration:underline}
+.post-content p,.post-content blockquote,.post-content ul,.post-content ol,.post-content address,.post-content dl,.post-content .wp-caption,.post-content pre{line-height:180%;margin-bottom:1.1em;-ms-word-wrap:break-word;word-wrap:break-word}
+.post-content>*:first-child{margin-top:0}
+.post-content *:last-child{margin-bottom:0}
+.post-content h1,.post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6{margin:50px 0 30px;font-family:'Roboto Slab',sans-serif;font-weight:700;color:#333}
+.post-content h1{font-size:2em}
+.post-content h2{font-size:1.75em}
+.post-content h3{font-size:1.5em}
+.post-content h4{font-size:1.25em;font-weight:400}
+.post-content h5{font-size:1em;font-weight:400}
+.post-content h6{font-size:.9em;font-weight:700;text-transform:uppercase}
+.post-content h1+h1,.post-content h1+h2,.post-content h1+h3,.post-content h1+h4,.post-content h1+h5,.post-content h1+h6,.post-content h2+h1,.post-content h2+h2,.post-content h2+h3,.post-content h2+h4,.post-content h2+h5,.post-content h2+h6,.post-content h3+h1,.post-content h3+h2,.post-content h3+h3,.post-content h3+h4,.post-content h3+h5,.post-content h3+h6,.post-content h4+h1,.post-content h4+h2,.post-content h4+h3,.post-content h4+h4,.post-content h4+h5,.post-content h4+h6,.post-content h5+h1,.post-content h5+h2,.post-content h5+h3,.post-content h5+h4,.post-content h5+h5,.post-content h5+h6,.post-content h6+h1,.post-content h6+h2,.post-content h6+h3,.post-content h6+h4,.post-content h6+h5,.post-content h6+h6{margin-top:30px}
+.post-content blockquote{position:relative;font-size:1em;font-weight:300;font-weight:normal;margin:40px 0}
+.post-content blockquote:before,.post-content blockquote:after{content:"";display:block;width:128px;height:3px;background:#eee;margin:40px auto}
+.post-content blockquote p{font-size:1.2em;line-height:160%;font-weight:300;text-align:center}
+.post-content cite{font-family:'Roboto Slab',sans-serif;font-size:.9rem;font-weight:bold;text-transform:uppercase;line-height:140%;text-align:center}
+.post-content cite:before{content:"— "}
+.post-content blockquote cite{display:block;margin-top:1em}
+.post-content blockquote cite em{font-style:italic;font-weight:bold}
+em,q{font-style:italic}
+.post-content strong em,.post-content em strong{font-weight:bold;font-style:italic}
+.post-content big{font-size:1.25em}
+abbr,acronym{cursor:help}
+code,kbd,pre{font-size:.85em;background:#EEE;font-family:Menlo,Monaco,monospace}
+.post-content .highlight{background:#fcf8a5;display:inline;padding:2px 3px;width:auto}
+.post-content kbd,.post-content code{padding:5px;border-radius:3px}
+.post-content dl{line-height:160%}
+.post-content dl dt{font-weight:bold}
+.post-content hr{background:#EEE;border:0;height:5px;margin:2.5em auto;width:50%}
+.post-content hr.is-style-wide{width:100%}
+.post-content ul{list-style:disc;margin-left:1.5em}
+.post-content ul ul{list-style:circle}
+.post-content ul ul ul{list-style:square}
+.post-content ol{list-style:decimal;margin-left:1.5em}
+.post-content ol ol{list-style:lower-alpha}
+.post-content ol ol ol{list-style:lower-roman}
+.post-content ul ul,.post-content ul ol,.post-content ol ul,.post-content ol ol{margin-bottom:0}
+.post-content li{margin-top:.5em;line-height:170%}
+.post-content ol>li:last-child,.post-content ul>li:last-child{margin-bottom:0}
+.post-content address{padding:3% 3.5%;background:#f1f1f1}
+.post-content pre{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word;line-height:140%;padding:2% 2.5%;background:#363f48;font-size:.8em;color:#FFF;border-radius:6px}
+figure{margin:0}
+.wp-caption,.post-content img{max-width:100%}
+img.alignleft,.alignleft img,img.aligncenter,.aligncenter img,img.alignright,.alignright img{-webkit-box-sizing:border-box;box-sizing:border-box;padding:5px;border:1px solid #EEE}
+.post-content .alignleft,.post-content .alignright{margin-bottom:1.2em;max-width:300px}
+.post-content .wp-caption a,.post-content .wp-caption img{display:block}
+.post-content .wp-caption .alignleft,.post-content .wp-caption .alignright{margin-bottom:0}
+.post-content .alignleft{float:left;margin-right:1em}
+.post-content .alignright{float:right;margin-left:1em}
+.post-content .aligncenter{margin-left:auto;margin-right:auto}
+.post-content .aligncenter a,.post-content .aligncenter img{margin:0 auto}
+.post-content .wp-caption-text,.post-content .gallery-caption{font-size:.8em;font-weight:700;color:#999;padding-top:.5em;text-align:center;width:100%}
+.post-content .gallery-caption{font-size:16px;line-height:24px}
+.post-content .alignfull{margin:2.5em 0;margin-left:calc((1400px * .675) * -0.1);width:calc(1400px * .675);max-width:calc(1400px * .675)}
+.post-content table{border-collapse:collapse;border-spacing:0;empty-cells:show;font-size:.9em;width:100%}
+.post-content th,.post-content td{padding:2%;margin:0;overflow:visible;line-height:120%;border-bottom:1px solid #DDD}
+.post-content caption{text-align:center;padding:2%}
+.post-content thead{vertical-align:bottom;white-space:nowrap}
+.post-content th{font-weight:bold}
+.post-content table tbody>tr:nth-child(odd)>td{background:#f9f9f9}
+.post-content fieldset{padding:25px;border:2px solid #eee;margin-bottom:1em}
+.post-content fieldset legend{font-family:'Roboto Slab',sans-serif;font-size:.9rem;line-height:1;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:10px 12px;background:#13c4a5;color:#fff}
+.post-content label{font-family:'Roboto',sans-serif;font-size:1rem;font-weight:700}
+.post-content input,.post-content textarea{font-family:'Roboto',sans-serif;-webkit-font-smoothing:antialiased}
+.post-content input[type="text"],.post-content input[type="email"],.post-content input[type="tel"],.post-content input[type="url"],.post-content input[type="password"],.post-content textarea{width:100%;padding:14px 16px;font-size:.85em;border:0;color:#333;border:2px solid #eee;background:#fdfdfd;border-radius:3px;-webkit-transition:background-color .2s ease-in-out;transition:background-color .2s ease-in-out;-webkit-appearance:none}
+.post-content textarea{height:180px;line-height:140%}
+.post-content input[type="text"]:focus,.post-content input[type="email"]:focus,.post-content input[type="tel"]:focus,.post-content input[type="url"]:focus,.post-content input[type="password"]:focus,.post-content textarea:focus{background:#fdfdfd;outline:0}
+.post-content input[type="submit"],.post-content input[type="reset"],.post-content input[type="button"]{padding:12px 16px;margin:0;border:0;background:#333;color:#fff;font-size:.9rem;line-height:1;-webkit-appearance:none;border-radius:3px}
+.post-content input[type="submit"]:hover,.post-content input[type="reset"]:hover,.post-content input[type="button"]:hover{cursor:pointer;background:#13c4a5;color:#fff}
+.post-content input[type="submit"]:focus,.post-content input[type="submit"]:active{outline:0}
+.post-content .has-background{background-color:#222}
+.post-content .has-accent-color{color:#13c4a5}
+.post-content .has-accent-background-color{background-color:#13c4a5}
+.post-content .has-black-color{color:#222}
+.post-content .has-black-background-color{background-color:#222}
+.post-content .has-dark-gray-color{color:#444}
+.post-content .has-dark-gray-background-color{background-color:#444}
+.post-content .has-medium-gray-color{color:#666}
+.post-content .has-medium-gray-background-color{background-color:#666}
+.post-content .has-light-gray-color{color:#888}
+.post-content .has-light-gray-background-color{background-color:#888}
+.post-content .has-white-color{color:#fff}
+.post-content .has-white-background-color{background-color:#fff}
+.post-content .has-small-font-size{font-size:.842em}
+.post-content .has-regular-font-size{font-size:1em}
+.post-content .has-large-font-size,.post-content .has-larger-font-size{line-height:1.45}
+.post-content .has-large-font-size{font-size:1.333em}
+.post-content .has-larger-font-size{font-size:1.777em}
+.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.is-resized>figcaption{display:block;width:100%}
+.post-content .wp-block-file__button,.post-content .wp-block-button__link{border-radius:4px;font-weight:500;padding:.8em 1.4em}
+.post-content .wp-block-file a{color:inherit}
+.post-content a.wp-block-file__button{color:#fff}
+.post-content .wp-block-file__button:hover,.post-content .wp-block-button__link:hover{opacity:.85;text-decoration:none}
+.post-content blockquote,.post-content .wp-block-quote.is-large,.post-content .wp-block-quote.is-style-large{margin-bottom:1.25em;padding:0}
+.post-content blockquote p:last-child{margin-bottom:0}
+.wp-block-quote.is-large p,.wp-block-quote.is-style-large p{font-size:1.33em;font-style:inherit;line-height:1.5}
+.post-content .wp-block-quote cite{text-align:center}
+.wp-block-quote.is-large cite,.wp-block-quote.is-style-large cite{font-size:.8em}
+.wp-block-pullquote{padding:0}
+.wp-block-gallery .blocks-gallery-image figcaption,.wp-block-gallery .blocks-gallery-item figcaption{margin:0;padding-bottom:10px}
+.post-content .wp-block-gallery.alignfull{padding:0 8px}
+.post-content ul.wp-block-gallery:not(.alignfull){margin-left:0}
+.wp-block-cover-image.alignfull{min-height:75vh}
+.wp-block-cover-image p{font-weight:400}
+.wp-block-column{padding:0 5px}
+.wp-block-audio audio{width:100%}
+.post-content .wp-block-file{-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:#e6e9ec;border-radius:4px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin:30px 0;padding:15px 20px}
+.post-content .wp-block-file a:not(.wp-block-file__button){font-weight:600;text-decoration:none}
+.post-content .wp-block-file__button{-ms-flex-negative:0;flex-shrink:0}
+.content .comments,div#disqus_thread{padding:10%;background:#fff}
+.nocomments{padding:10%;text-align:center;text-transform:uppercase;font-weight:700;color:#999}
+.comments+.nocomments{border-top:1px solid #eee}
+.comments-title-container{padding-bottom:20px;border-bottom:1px solid #eee;margin-bottom:40px;font-family:'Roboto Slab',sans-serif}
+.comments-title{font-size:1.75em;font-weight:700;color:#2b3542}
+.add-comment-title{font-size:1rem;text-transform:uppercase;font-weight:700;margin-top:14px}
+.add-comment-title a:hover{text-decoration:underline}
+.comments div.comment{margin-top:40px}
+.comments .commentlist>li.comment:first-child>div.comment:first-child{margin-top:0}
+.comments div.comment{position:relative}
+.comments .children{margin-left:5%}
+.comment-inner{margin-left:110px;padding:20px;background:#eee;position:relative;border-radius:3px}
+.comment-inner:after{content:"";display:block;border:12px solid transparent;border-right-color:#eee;position:absolute;top:28px;left:0;margin-left:-24px}
+.comment .avatar{float:left;width:80px;border-radius:3px}
+.comment.bypostauthor{position:relative}
+.comment.bypostauthor:after{content:"";display:block;width:32px;height:32px;background:#13c4a5 url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/author-w.png) no-repeat center 8px;background-size:14px auto;border-radius:999px;position:absolute;top:0;left:0;margin-top:-8px;margin-left:-8px}
+.comment-header{margin-bottom:25px}
+.comment-header cite{display:block;font-family:'Roboto Slab',sans-serif;font-size:1em;font-weight:700;margin-bottom:8px}
+.comment-header cite,.comment-header cite a{color:#2b3542}
+.comment-header cite a:hover{color:#13c4a5}
+.comment-header p{font-size:.85em}
+.comment-header p,.comment-header p a{color:#999}
+.comment-header p a:hover{color:#666}
+.comment-content{font-size:.9em}
+.comment-content a:hover{text-decoration:underline}
+.comment-content p,.comment-content li,.comment-content blockquote{line-height:150%;margin-top:1em;-ms-word-wrap:break-word;word-wrap:break-word}
+.comment-content *:first-child{margin-top:0}
+.comment-content *:last-child{margin-bottom:0}
+.comment-content h1,.comment-content h2,.comment-content h3,.comment-content h4,.comment-content h5,.comment-content h6{margin:50px 0 20px;font-family:'Roboto Slab',sans-serif;font-weight:400;font-size:1.2em}
+.comment-content blockquote{padding:20px;background:#ddd}
+.comment-content ul{list-style:disc;margin-left:1.5em}
+.comment-content ul ul{list-style:circle}
+.comment-content ul ul ul{list-style:square}
+.comment-content ol{list-style:decimal;margin-left:1.5em}
+.comment-content ol ol{list-style:lower-alpha}
+.comment-content ol ol ol{list-style:lower-roman}
+.comment-content ul ul,.comment-content ul ol,.comment-content ol ul,.comment-content ol ol{margin-bottom:0}
+.comment-content li{margin-top:.5em;line-height:170%}
+.comment-content ol>li:last-child,.comment-content ul>li:last-child{margin-bottom:0}
+.comment-content address{padding:20px;background:#ddd;line-height:140%}
+.comment-content pre{padding:20px;background:#ddd;line-height:150%;overflow-x:scroll}
+.comment-actions{position:absolute;top:22px;right:20px}
+.comment-actions a{display:block;position:relative;float:left;width:32px;height:32px;background:#2b3542 no-repeat center;background-size:16px auto;border-radius:999px;text-indent:-9999px}
+.comment-actions a+a{margin-left:-8px}
+.comment-actions .comment-reply-link{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/reply-w.png)}
+.comment-actions .comment-edit-link{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/edit-w.png)}
+.comment-actions a:hover{background-color:#13c4a5;color:#fff;z-index:10}
+.comment-nav-below{margin-top:40px;border-top:1px solid #eee;padding-top:20px;font-size:.9em;font-weight:700}
+.comment-nav-below a{color:#666}
+.comments .pingbacks{padding-top:40px;border-top:1px solid #eee;margin-top:40px}
+.pingbacks-title{font-family:'Roboto Slab',sans-serif;font-size:1.25em;margin-bottom:20px;color:#2b3542}
+.pingbacklist .pingback{padding:15px;line-height:130%}
+.pingbacklist .pingback a{color:#767676}
+.pingbacklist .pingback a:hover{color:#13c4a5}
+.pingbacklist .pingback:nth-child(2n){background-color:#eee}
+.comment-respond{padding:10%;background:#fff;border-top:1px solid #eee}
+.comments .comment-respond{padding:10% 0;border-top:0}
+.comment-reply-title{font-family:'Roboto Slab',sans-serif;font-size:1.75em;font-weight:700;color:#2b3542}
+.comment-reply-title #cancel-comment-reply-link{font-size:.9rem;text-transform:uppercase;font-weight:700;margin-left:5px}
+.comment-reply-title #cancel-comment-reply-link:hover{text-decoration:underline}
+.comment-notes,.logged-in-as{color:#666;line-height:130%;margin-bottom:40px;margin-top:25px}
+.logged-in-as a:hover{text-decoration:underline}
+.comment-form{margin-top:10px}
+.comment-form p{margin-top:18px;position:relative}
+.comment-form p:first-child{margin-top:0}
+.comment-form label{display:block;font-size:16px;margin-bottom:.5rem}
+.comment-form input[type="checkbox"]+label{display:inline;font-size:14px;margin:0 0 0 .5rem}
+.comment-form input[type="text"],.comment-form input[type="email"],.comment-form textarea{display:block;width:100%;padding:16px 18px;border-radius:3px;background:#f1f1f1;color:#333;border:1px solid #eee;font-family:'Roboto',sans-serif;font-size:1em;-webkit-font-smoothing:antialiased;margin:0}
+.comment-form-author,.comment-form-email,.comment-form-url{width:75%}
+.comment-form input[type="text"],.comment-form input[type="email"]{position:relative;padding-right:60px;background-repeat:no-repeat;background-position:96% center;background-size:auto 24px}
+input#author{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/author-g.png)}
+input#email{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/social/mail-g.png)}
+input#url{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/home-g.png);background-size:24px auto}
+.comment-form textarea{height:250px}
+.comment-form input[type="text"]:focus,.comment-form input[type="email"]:focus,.comment-form textarea:focus{outline:0;color:#fff;background-color:#2b3542}
+input#author:focus{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/author-w.png)}
+input#email:focus{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/social/mail-w.png)}
+input#url:focus{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/home-w.png)}
+.form-allowed-tags,.form-allowed-tags code{line-height:160%}
+.comment-notes,.form-allowed-tags,.logged-in-as{font-size:.9em;color:#666}
+p.form-submit{margin-top:30px}
+.form-submit #submit{padding:16px 20px;background:0;border:0;margin:none;font-family:'Roboto Slab',sans-serif;font-size:.9em;font-weight:400;color:#fff;text-shadow:1px 1px 1px rgba(0,0,0,0.1);background:#2b3542;border-radius:3px;-webkit-font-smoothing:antialiased}
+.form-submit #submit:hover{cursor:pointer;background:#13c4a5}
+.posts .page{width:100%;position:relative;background:#fff;border-radius:3px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,0.1);box-shadow:0 1px 4px rgba(0,0,0,0.1);overflow:hidden}
+.post-content+.contributors-container{border-top:1px solid #eee}
+.authors-row{position:relative;padding:10%;border-top:1px solid #eee}
+.authors-row:first-child{border-top:0}
+.authors-row:before{content:"";display:block;width:1px;position:absolute;top:0;bottom:0;left:50%;background:#eee}
+.authors-row .author-info{width:45%;margin-left:10%;text-align:center}
+.authors-row .author-info:first-child{margin-left:0}
+.author-avatar{display:inline-block;width:134px;height:auto;margin:0 auto 25px auto;border:6px solid #eee;border-radius:9999px}
+.author-avatar img{display:block;margin:0 auto;border-radius:9999px}
+.author-info h4{font-family:'Roboto Slab',sans-serif;font-size:1.5em;font-weight:700;text-align:center;margin-bottom:10px}
+.author-info h4 a{color:#2b3542}
+.author-info h4 a:hover{color:#13c4a5}
+.author-info h5{font-family:'Roboto Slab',sans-serif;text-align:center;margin-bottom:25px}
+.author-info h5 a{color:#999}
+.author-info h5 a:hover{color:#444}
+.author-description{line-height:140%;text-align:center}
+.author-description p{line-height:inherit;text-align:inherit}
+.author-info .author-links a{background-color:#2b3542}
+.author-info .author-links a:hover{background-color:#13c4a5}
+.single .post-meta p.image-resolution{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/image-g.png)}
+.single-attachment .post-author:before{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/image-w.png);background-position:center 32px}
+.page-title{margin-bottom:60px;text-align:center}
+.page-title h5{display:inline-block;padding-bottom:4px;border-bottom:2px solid #ccc;font-family:'Roboto Slab',sans-serif;font-size:.9em;font-weight:700;text-transform:uppercase;text-align:center}
+.page-title h3{margin-top:15px;font-family:'Roboto Slab',sans-serif;font-size:1.75em;font-weight:400;text-align:center;color:#2b3542}
+.tag-archive-meta p{text-align:center;margin-top:15px;color:#767676;font-style:italic}
+.archive-nav a{font-size:.9em;padding:16px 20px;background:#2b3542;border-radius:3px;color:#fff}
+.archive-nav a:hover{background:#13c4a5;color:#fff}
+.search-no-results .post-content p{text-align:center}
+.sidebar{width:27.5%;background:#fff;-webkit-box-shadow:0 1px 4px rgba(0,0,0,0.1);box-shadow:0 1px 4px rgba(0,0,0,0.1);border-radius:6px;overflow:hidden}
+.sidebar .widget{padding:30px;border-top:1px solid #EEE}
+.sidebar .widget:first-child{border-top:0}
+.widget-title{font-family:'Roboto Slab',sans-serif;font-size:.9em;font-weight:700;text-transform:uppercase;margin-bottom:20px}
+.sidebar .widget-content{font-size:.85em;color:#767676}
+.widget-content a:hover{text-decoration:underline}
+.sidebar .widget-content p{line-height:150%}
+.widget-content ul li{position:relative;margin-top:10px;padding:1px 0 1px 14px;line-height:130%}
+.widget-content ul li:before{content:"»";position:absolute;left:0;top:0;color:#13c4a5;font-size:18px}
+.widget-content>ul>li:first-child{margin:0}
+.widget-content li ul>li:first-child{margin-top:10px}
+.widget-content .page_item_has_children{padding-bottom:0}
+.widget-content li ul li{padding-left:15px}
+.widget-content ul li .post-date{margin-left:5px;color:#999}
+.widget-content>ul>li:first-child{border-top:0}
+.tagcloud a{display:block;float:left;padding:8px 11px;margin:0 5px 5px 0;background:#BBB;font-size:.8em !important;line-height:1;color:#FFF;border-radius:3px}
+.tagcloud a:hover{background-color:#13c4a5;color:#fff;text-decoration:none}
+.wrapper .searchform,.footer .searchform{position:relative}
+.wrapper .searchform .s,.footer .searchform .s{display:block;width:100%;padding:16px 55px 16px 20px;border:0;margin:0;background:#ddd;color:#fff;border-radius:3px;font-family:'Roboto',sans-serif;font-size:.9em;-webkit-font-smoothing:antialiased}
+.wrapper .searchform .s:focus,.footer .searchform .s:focus{background-color:#2b3542;outline:0}
+.wrapper .searchform .searchsubmit,.footer .searchform .searchsubmit{display:block;height:36px;width:36px;border:0;position:absolute;top:50%;margin-top:-18px;right:10px;text-indent:-9999px;background:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/spyglass-g.png) no-repeat center;background-size:24px auto}
+.wrapper .searchform .searchsubmit:hover,.footer .searchform .searchsubmit:hover{cursor:pointer;background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/1x/spyglass-c.png)}
+#wp-calendar{color:#888;width:100%;max-width:100%;text-align:center;font-size:.9em}
+#wp-calendar a{color:#1abc9c}
+#wp-calendar,#wp-calendar caption,#wp-calendar tr,#wp-calendar td,#wp-calendar th{text-align:center}
+#wp-calendar th,#wp-calendar td{padding:4% 2%}
+#wp-calendar caption,#wp-calendar thead{color:#666}
+#wp-calendar caption{font-family:'Roboto Slab',sans-serif;font-size:1rem;color:#666;text-transform:capitalize;padding-bottom:20px}
+#wp-calendar thead th{font-size:.9em;font-weight:700;text-transform:uppercase;border-bottom:1px solid #eee;border-top:1px solid #eee}
+#wp-calendar tbody{border-bottom:1px solid #eee}
+#wp-calendar tfoot td{padding:0}
+#wp-calendar tfoot #prev{text-align:left}
+#wp-calendar tfoot #next{text-align:right}
+#wp-calendar tfoot a{display:block;color:#999;padding:12px 0;font-size:.9em;font-weight:700;text-transform:uppercase}
+#wp-calendar tfoot a:hover{text-decoration:none;color:#1abc9c}
+.dribbble-shot,.dribbble-shot img{display:block}
+.dribbble-shot{width:47.5%;float:left;margin-right:5%;margin-bottom:5%;padding:6px;background:#f1f1f1}
+.dribbble-shot:nth-child(2n){margin-right:0}
+.dribbble-shot:hover{background-color:#13c4a5}
+.widgetmore{display:block;clear:both}
+.flickr_badge_image a,.flickr_badge_image img{display:block}
+.flickr_badge_image{width:21.25%;float:left;margin-left:5%;margin-bottom:5%}
+.flickr_badge_image a{padding:4px;background:#f1f1f1}
+.flickr_badge_image a:hover{background-color:#13c4a5}
+.flickr_badge_image:nth-child(2),.flickr_badge_image:nth-child(6),.flickr_badge_image:nth-child(10),.flickr_badge_image:nth-child(14){margin-left:0}
+.footer .row{margin-top:-40px}
+.footer .one-third{margin-top:40px}
+.footer .widget{margin-top:40px;border-top:4px solid #333;padding-top:40px}
+.footer .widget:first-child{margin:0;border:0;padding:0}
+.footer .widget-title{color:#FFF;letter-spacing:1px;font-size:.79em}
+.footer .widget-content{color:#767676;font-size:.95em}
+.footer .widget-content p{line-height:160%}
+.widget-content p+p{margin-top:1em}
+.footer .widget_search .s{background:#333}
+.footer .tagcloud a{background-color:#333}
+.footer .tagcloud a:hover{text-decoration:none;background-color:#13c4a5}
+.footer #wp-calendar caption{color:#fff}
+.footer #wp-calendar thead th{border:0;border-top:1px solid #3b3b3b;border-bottom:1px solid #3b3b3b}
+.footer #wp-calendar tbody{border-bottom:1px solid #3b3b3b}
+.footer .dribbble-shot,.footer .flickr_badge_image{background:#333}
+.credits p{font-family:'Roboto Slab',sans-serif;color:#767676;font-size:.8rem;text-transform:uppercase;font-weight:700;letter-spacing:1px}
+.credits a{color:#ccc}
+.credits a:hover{color:#ccc;text-decoration:underline}
+img#wpstats{display:none}
+@font-face{font-family:'icomoon';src:url("../fonts/icomoon.eot@-1ytxek");src:url("../fonts/icomoon.eot@") format("embedded-opentype"),url("../fonts/icomoon.woff@-1ytxek") format("woff"),url("../fonts/icomoon.ttf@-1ytxek") format("truetype"),url("../fonts/icomoon.svg@-1ytxek") format("svg");font-weight:normal;font-style:normal;font-variant:normal;text-transform:none;line-height:1}
+body a{color:#691f1b}
+body a:hover{color:#691f1b}
+.header.bg-image{background-image:url(../images/header2014.jpg);background-size:auto;background-position:0 0;background-repeat:repeat}
+.blog-title{font-family:'Special Elite',monospace;font-size:2.5em}
+.blog-title a{color:#111}
+.blog-title a:hover{color:#691f1b}
+.blog-description{font-family:'Special Elite',monospace;color:#111}
+.search-toggle{background:url(../../../baskerville/images/icons/1x/spyglass-w.png) no-repeat center;background-size:24px auto}
+.main-menu{font-family:'Special Elite',monospace}
+.main-menu>li:before{font-weight:400}
+.main-menu>li>a{font-size:1em;font-weight:400}
+.post .sticky-post{background:#2b3542 url(../../../baskerville/images/icons/1x/tack-w.png) no-repeat center}
+.media-caption>a{display:inline}
+.post-header .post-title{font-family:'Special Elite',monospace;font-weight:400}
+.post-header .post-title a:hover{color:#691f1b}
+.post-excerpt{background:url("../images/tiny_grid.png") repeat}
+.posts .post-meta{background:url("../images/medieval-background400.jpg") repeat #f9f9f9;border-top:1px solid #eee}
+.posts .post-meta a:hover{color:#691f1b}
+.posts .post-meta a.post-date{background-image:url(../../../baskerville/images/icons/1x/clock-g.png)}
+.posts .post-meta a.post-date:hover{background-image:url(../images/icons-coloured/1x/clock-c.png)}
+.posts .post-meta a.zilla-likes{background-image:url(../../../baskerville/images/icons/1x/heart-g.png)}
+.posts .post-meta a.zilla-likes:hover,.posts .post-meta a.zilla-likes.active{background-image:url(../../../baskerville/images/icons/1x/heart-c.png);color:#691f1b}
+.posts .post-meta a.post-comments{background-image:url(../../../baskerville/images/icons/1x/comment-g.png)}
+.posts .post-meta a.post-comments:hover{background-image:url(../images/icons-coloured/1x/comment-c.png)}
+.posts .post-meta a.post-edit-link{background-image:url(../../../baskerville/images/icons/1x/edit-g.png)}
+.posts .post-meta a.post-edit-link:hover{background-image:url(../images/icons-coloured/1x/edit-c.png)}
+.post-quote cite,.post-link a{font-size:.667em;font-weight:400}
+.post-quote cite{font-family:'Special Elite',monospace}
+.post-link a{color:#ba3730;background:url(../../../baskerville/images/icons/1x/link-c.png) no-repeat left center}
+.post-link a:hover{color:#691f1b}
+.format-gallery .flex-direction-nav .flex-prev{background-image:url(../../../baskerville/images/icons/1x/chevron-left-w-shade.png)}
+.format-gallery .flex-direction-nav .flex-next{background-image:url(../../../baskerville/images/icons/1x/chevron-right-w-shade.png)}
+.single .post-content{background:url("../images/tiny_grid.png") repeat}
+.single .format-gallery .flex-direction-nav .flex-prev{background-image:url(../../../baskerville/images/icons/1x/chevron-left-w-shade-big.png)}
+.single .format-gallery .flex-direction-nav .flex-next{background-image:url(../../../baskerville/images/icons/1x/chevron-right-w-shade-big.png)}
+.single .post-meta-container a{color:#ba3730}
+.single .post-meta p.post-date{background-image:url(../../../baskerville/images/icons/1x/clock-g.png)}
+.single .post-meta a.zilla-likes{background-image:url(../../../baskerville/images/icons/1x/heart-g.png)}
+.single .post-meta a.zilla-likes:hover{background-image:url(../../../baskerville/images/icons/1x/heart-c.png)}
+.single .post-meta p.post-categories{background-image:url(../../../baskerville/images/icons/1x/folder-g.png)}
+.single .post-meta p.post-tags{background-image:url(../../../baskerville/images/icons/1x/tag-g.png)}
+.single .post-meta a{color:#9499a0}
+.single .post-meta a:hover{color:#ba3730}
+a.post-nav-prev{background-image:url(../../../baskerville/images/icons/1x/prev-g.png)}
+a.post-nav-prev:hover{background-image:url(../images/icons-coloured/1x/prev-c.png)}
+a.post-nav-next{background-image:url(../../../baskerville/images/icons/1x/next-g.png)}
+a.post-nav-next:hover{background-image:url(../images/icons-coloured/1x/next-c.png)}
+.single a.post-edit-link{background-image:url(../../../baskerville/images/icons/1x/edit-g.png);background-position:left 5px}
+.single a.post-edit-link:hover{background-image:url(../images/icons-coloured/1x/edit-c.png)}
+.post-author:before{display:none}
+.post-author:after{display:none}
+.post-author-content{display:none}
+.post-author h4{font-family:'Special Elite',monospace;font-weight:400}
+.author-links a.author-link-posts{background-image:url(../../../baskerville/images/icons/1x/archive-w.png)}
+.author-links a.author-link-website{background-image:url(../../../baskerville/images/icons/1x/home-w.png)}
+.author-links a.author-link-mail{background-image:url(../../../baskerville/images/icons/1x/social/mail-w.png)}
+.author-links a.author-link-twitter{background-image:url(../../../baskerville/images/icons/1x/social/twitter-w.png)}
+.author-links a:hover{background-color:#691f1b}
+.related-posts ul li,.sterms ul li{position:relative;padding:0 0 0 14px;margin-bottom:6px;line-height:120%}
+.related-posts ul li:before,.sterms ul li:before{color:#ba3730;content:"»";font-size:16px;left:0;position:absolute;top:0}
+.related-posts ul li.grey:before,.sterms ul li:before{color:#9499a0}
+.related-posts ul li,.sterms ul li{color:#9499a0;font-size:.85em;font-weight:700;line-height:120%}
+.related-posts ul li a:hover{text-decoration:underline}
+.related-posts{padding-bottom:30px}
+.post-content h1,.post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6{font-family:'Special Elite',monospace;font-weight:400}
+.post-content blockquote{margin:0 0 1.667em 50px;z-index:60}
+.post-content blockquote p{position:inherit;z-index:inherit;font-size:100%;line-height:inherit;font-weight:400;text-align:inherit}
+.post-content blockquote{position:relative;min-height:40px;width:auto;padding-left:1em;border-left:3px solid #691f1b}
+.post-content blockquote:before,.post-content blockquote:after{content:"";display:block;width:auto;height:auto;background:0;margin:0}
+.post-content blockquote:before{display:block;position:absolute;left:-55px;top:-18px;height:0;content:"\201E";font-family:'Special Elite','Courier New',Courier,'Andale Mono',Monaco,monospace;font-size:100px;line-height:inherit;color:#691f1b}
+.post-content cite{font-family:'Special Elite',monospace;font-size:100%;text-align:inherit}
+.post-content .wp-caption .wp-caption-text a{display:inline}
+.post-content fieldset legend{font-family:'Special Elite',monospace;font-weight:400;background:#691f1b}
+.post-content input[type="submit"]:hover,.post-content input[type="reset"]:hover,.post-content input[type="button"]:hover{background:#691f1b}
+.post-content .indent1_5em{padding-left:1.5em;display:block}
+.post-content .no-top-margin{margin-top:0}
+.warnhinweis{background:url("../images/medieval-background400.jpg");border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;border:2px solid #691f1b;padding:1.1em;margin-bottom:1.1em}
+.post-content .broken-link:before,.comments .broken-link:before{font-family:'icomoon';content:"\e600\00A0";color:#691f1b;font-size:.8em}
+.post-content .broken-link .strike,.comments .broken-link .strike{text-decoration:line-through;color:#691f1b}
+.post-content .broken-link .strike .text,.comments .broken-link .strike .text{color:#555}
+.featured-media .velocity-embed{margin:0}
+.comments-title-container{font-family:'Special Elite',monospace}
+.comments-title{font-weight:400}
+.add-comment-title{font-weight:400}
+.comment.bypostauthor:after{background:#691f1b url(../../../baskerville/images/icons/1x/author-w.png) no-repeat center 8px}
+.comment-header cite{font-family:'Special Elite',monospace;font-weight:400}
+.comment-header cite a:hover{color:#691f1b}
+.comment-content h1,.comment-content h2,.comment-content h3,.comment-content h4,.comment-content h5,.comment-content h6{font-family:'Special Elite',monospace}
+.comment-actions .comment-reply-link{background-image:url(../../../baskerville/images/icons/1x/reply-w.png)}
+.comment-actions .comment-edit-link{background-image:url(../../../baskerville/images/icons/1x/edit-w.png)}
+.comment-actions a:hover{background-color:#691f1b}
+.pingbacks-title{font-family:'Special Elite',monospace}
+.pingbacklist .pingback a:hover{color:#691f1b}
+.comment-reply-title{font-family:'Special Elite',monospace;font-weight:400}
+.comment-form .comment-form-subscriptions label{width:100%}
+#use_gravatar,#subscribe-reloaded,#wp-comment-cookies-consent,#policy{float:left;width:30px;margin:.5em 0 1.5em}
+.comment-form-use-gravatar label,.comment-form .comment-form-subscriptions label,.comment-form-cookies-consent label,.comment-form-policy label{width:auto}
+.comment-form input[type="checkbox"]+label{margin:0}
+input#author{background-image:url(../../../baskerville/images/icons/1x/author-g.png)}
+input#email{background-image:url(../../../baskerville/images/icons/1x/social/mail-g.png)}
+input#url{background-image:url(../../../baskerville/images/icons/1x/home-g.png);background-size:24px auto}
+input#author:focus{background-image:url(../../../baskerville/images/icons/1x/author-w.png)}
+input#email:focus{background-image:url(../../../baskerville/images/icons/1x/social/mail-w.png)}
+input#url:focus{background-image:url(../../../baskerville/images/icons/1x/home-w.png)}
+.form-submit #submit{font-family:'Special Elite',monospace}
+.form-submit #submit:hover{background:#691f1b}
+.author-info h4{font-family:'Special Elite',monospace;font-weight:400}
+.author-info h4 a:hover{color:#691f1b}
+.author-info h5{font-family:'Special Elite',monospace}
+.author-info .author-links a:hover{background-color:#691f1b}
+.single .post-meta p.image-resolution{background-image:url(../../../baskerville/images/icons/1x/image-g.png)}
+.single-attachment .post-author:before{background-image:url(../../../baskerville/images/icons/1x/image-w.png);background-position:center 32px}
+.page-title .bgrd{display:inline-block;padding:15px 30px;background:#fff;background:rgba(255,255,255,0.5);border-radius:3px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,0.1);box-shadow:0 1px 4px rgba(0,0,0,0.1)}
+.page-title h5{border-bottom:2px solid #aaa;font-family:'Special Elite',monospace;font-weight:400}
+.page-title h3{font-family:'Special Elite',monospace}
+.archive-nav a:hover{background:#691f1b}
+.sidebar{background:url("../images/medieval-background400.jpg") repeat #fff}
+.widget-title{color:#444;font-family:'Special Elite',monospace;font-size:1.1em;font-weight:400}
+.widget-content ul li:before{color:#691f1b}
+.tagcloud a:hover{background-color:#691f1b}
+.wrapper .searchform .searchsubmit,.footer .searchform .searchsubmit{background:url(../../../baskerville/images/icons/1x/spyglass-g.png) no-repeat center}
+.wrapper .searchform .searchsubmit:hover,.footer .searchform .searchsubmit:hover{cursor:pointer;background-image:url(../../../baskerville/images/icons/1x/spyglass-c.png)}
+#wp-calendar caption{font-family:'Special Elite',monospace}
+.dribbble-shot:hover{background-color:#691f1b}
+.flickr_badge_image a:hover{background-color:#691f1b}
+.footer a,.footer a:hover{color:#ba3730}
+.footer .widget-content ul li:before{color:#ba3730}
+.footer .tagcloud a:hover{background-color:#691f1b}
+.widget-content ul .recent-comment{padding-left:0}
+.widget-content ul .recent-comment:before{content:""}
+.widget_jga_recent_comments_widget .avatar{border-radius:42px;display:block;float:left;margin:2px 0 0}
+.widget_jga_recent_comments_widget .comment-content{padding:0 0 0 10px;overflow:hidden}
+.widget_jga_recent_comments_widget .comment-content .sidebar-comment-author{font-family:'Special Elite','Courier New',Courier,'Andale Mono',Monaco,monospace;font-size:16px}
+.widget_jga_recent_comments_widget .recent-comment-author{font-size:16px}
+.widget_jga_recent_comments_widget .recent-comment-single .recent-comment-text{font-size:.9em}
+.credits p{font-family:'Special Elite',monospace;font-weight:400}
+@media(-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){.search-toggle{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/spyglass-w.png)}
+.wrapper .searchform .searchsubmit,.footer .searchform .searchsubmit{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/spyglass-g.png)}
+.wrapper .searchform .searchsubmit:hover,.footer .searchform .searchsubmit:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/spyglass-c.png)}
+.post .sticky-post{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/tack-w.png)}
+.posts .post-meta a.post-date{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/clock-g.png)}
+.posts .post-meta a.post-date:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/clock-c.png)}
+.posts .post-meta a.zilla-likes{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/heart-g.png)}
+.posts .post-meta a.zilla-likes:hover,.posts .post-meta a.zilla-likes.active{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/heart-c.png)}
+.posts .post-meta a.post-comments{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/comment-g.png)}
+.posts .post-meta a.post-comments:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/comment-c.png)}
+.post-link a{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/link-c.png)}
+.format-gallery .flex-direction-nav .flex-prev,.single .format-gallery .flex-direction-nav .flex-prev{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/chevron-left-w-shade.png)}
+.format-gallery .flex-direction-nav .flex-next,.single .format-gallery .flex-direction-nav .flex-next{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/chevron-right-w-shade.png)}
+.post-author:before{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/author-w.png)}
+.single .post-meta p.post-date{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/clock-g.png)}
+.single .post-meta a.zilla-likes{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/heart-g.png)}
+.single .post-meta a.zilla-likes:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/heart-c.png)}
+.single .post-meta p.post-categories{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/folder-g.png)}
+.single .post-meta p.post-tags{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/tag-g.png)}
+.author-links a.author-link-posts{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/archive-w.png)}
+.author-links a.author-link-website{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/home-w.png)}
+.author-links a.author-link-mail{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/social/mail-w.png)}
+.author-links a.author-link-twitter{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/social/twitter-w.png)}
+a.post-nav-prev{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/prev-g.png)}
+a.post-nav-prev:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/prev-c.png)}
+a.post-nav-next{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/next-g.png)}
+a.post-nav-next:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/next-c.png)}
+.single a.post-edit-link{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/edit-g.png)}
+.single a.post-edit-link:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/edit-c.png)}
+.comment.bypostauthor:after{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/author-w.png)}
+.comment-actions .comment-reply-link{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/reply-w.png)}
+.comment-actions .comment-edit-link{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/edit-w.png)}
+input#author{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/author-g.png)}
+input#email{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/social/mail-g.png)}
+input#url{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/home-g.png)}
+input#author:focus{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/author-w.png)}
+input#email:focus{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/social/mail-w.png)}
+input#url:focus{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/home-w.png)}
+.single .post-meta p.image-resolution{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/image-g.png)}
+.single-attachment .post-author:before{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/image-w.png)}
+.searchform .searchsubmit{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/spyglass-g.png)}
+.searchform .searchsubmit:hover{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskerville-child-jga/assets/css/images/icons/2x/spyglass-c.png)}
+.search-toggle{background-image:url(../../../baskerville/images/icons/2x/spyglass-w.png)}
+.post .sticky-post{background-image:url(../../../baskerville/images/icons/2x/tack-w.png)}
+.posts .post-meta a.post-date{background-image:url(../../../baskerville/images/icons/2x/clock-g.png)}
+.posts .post-meta a.post-date:hover{background-image:url(../images/icons-coloured/2x/clock-c.png)}
+.posts .post-meta a.zilla-likes{background-image:url(../../../baskerville/images/icons/2x/heart-g.png)}
+.posts .post-meta a.zilla-likes:hover,.posts .post-meta a.zilla-likes.active{background-image:url(../../../baskerville/images/icons/2x/heart-c.png)}
+.posts .post-meta a.post-comments{background-image:url(../../../baskerville/images/icons/2x/comment-g.png)}
+.posts .post-meta a.post-comments:hover{background-image:url(../images/icons-coloured/2x/comment-c.png)}
+.post-link a{background-image:url(../../../baskerville/images/icons/2x/link-c.png)}
+.format-gallery .flex-direction-nav .flex-prev,.single .format-gallery .flex-direction-nav .flex-prev{background-image:url(../../../baskerville/images/icons/2x/chevron-left-w-shade.png)}
+.format-gallery .flex-direction-nav .flex-next,.single .format-gallery .flex-direction-nav .flex-next{background-image:url(../../../baskerville/images/icons/2x/chevron-right-w-shade.png)}
+.single .post-meta p.post-date{background-image:url(../../../baskerville/images/icons/2x/clock-g.png)}
+.single .post-meta a.zilla-likes{background-image:url(../../../baskerville/images/icons/2x/heart-g.png)}
+.single .post-meta a.zilla-likes:hover{background-image:url(../../../baskerville/images/icons/2x/heart-c.png)}
+.single .post-meta p.post-categories{background-image:url(../../../baskerville/images/icons/2x/folder-g.png)}
+.single .post-meta p.post-tags{background-image:url(../../../baskerville/images/icons/2x/tag-g.png)}
+.author-links a.author-link-posts{background-image:url(../../../baskerville/images/icons/2x/archive-w.png)}
+.author-links a.author-link-website{background-image:url(../../../baskerville/images/icons/2x/home-w.png)}
+.author-links a.author-link-mail{background-image:url(../../../baskerville/images/icons/2x/social/mail-w.png)}
+.author-links a.author-link-twitter{background-image:url(../../../baskerville/images/icons/2x/social/twitter-w.png)}
+.comment.bypostauthor:after{background-image:url(../../../baskerville/images/icons/2x/author-w.png)}
+.comment-actions .comment-reply-link{background-image:url(../../../baskerville/images/icons/2x/reply-w.png)}
+.comment-actions .comment-edit-link{background-image:url(../../../baskerville/images/icons/2x/edit-w.png)}
+input#author{background-image:url(../../../baskerville/images/icons/2x/author-g.png)}
+input#email{background-image:url(../../../baskerville/images/icons/2x/social/mail-g.png)}
+input#url{background-image:url(https://www.ja-gut-aber.de/wp-content/themes/baskervilleimages/icons/2x/home-g.png)}
+input#author:focus{background-image:url(../../../baskerville/images/icons/2x/author-w.png)}
+input#email:focus{background-image:url(../../../baskerville/images/icons/2x/social/mail-w.png)}
+input#url:focus{background-image:url(../../../baskerville/images/icons/2x/home-w.png)}
+.single .post-meta p.image-resolution{background-image:url(../../../baskerville/images/icons/2x/image-g.png)}
+.single-attachment .post-author:before{background-image:url(../../../baskerville/images/icons/2x/image-w.png)}
+.searchform .searchsubmit{background-image:url(../../../baskerville/images/icons/2x/spyglass-g.png)}
+.searchform .searchsubmit:hover{background-image:url(../../../baskerville/images/icons/2x/spyglass-c.png)}
+}@media(max-width:1555px){.post-content .alignfull{margin-left:calc((90vw * .675) * -0.1);max-width:calc(90vw * .675);width:calc(90vw * .675)}
+}@media(max-width:1440px){.wrapper.section{padding:5% 0}
+.page-title{margin-bottom:5%}
+.archive-nav{margin-top:1%}
+}@media(max-width:1040px){.section-inner.content{max-width:94%}
+.post-container{width:50%;padding:0 2% 5% 2%}
+}@media(max-width:1000px){body.single .content{width:100%;float:none}
+.sidebar{display:none}
+.main-menu{display:none}
+.search-toggle{width:24px}
+.nav-toggle{display:block;padding:25px 0}
+.nav-toggle .bar{display:block;width:26px;height:3px;margin-top:5px;background:#8e8e8e;border-radius:1px}
+.nav-toggle .bar:first-child{margin-top:0}
+.nav-toggle:hover{cursor:pointer}
+.nav-toggle.active .bar{background:#fff}
+.mobile-menu li{border-top:1px solid rgba(255,255,255,0.1)}
+.mobile-menu>li:first-child{border-top:0}
+.mobile-menu a{display:block;padding:25px 5%;font-size:.9em;text-transform:uppercase;color:#999;letter-spacing:1px}
+.mobile-menu a:hover{color:#fff}
+.mobile-menu ul a{padding-left:10%}
+.mobile-menu ul ul a{padding-left:15%}
+.mobile-menu ul ul ul a{padding-left:20%}
+.mobile-menu ul ul ul ul a{padding-left:25%}
+.mobile-menu ul ul ul ul ul a{padding-left:30%}
+.post-content .alignfull{margin-left:calc(90vw * -0.1);max-width:90vw;width:90vw}
+}@media(max-width:800px){.wrapper.section{padding:4% 0}
+.section-inner{max-width:92%}
+.section-inner.content{max-width:97%}
+.section.header{padding:50px 0}
+.header .logo img{max-height:60px}
+.post-content .alignfull{margin-left:calc(92vw * -0.1);max-width:92vw;width:92vw}
+.footer .one-third{width:47.5%}
+.credits span{display:none}
+}@media(max-width:700px){.post-author,.single .post-meta{width:100%;float:none;border-radius:0}
+.single .post-meta-container:after{content:none}
+.single .post-meta{background-color:#3f4854}
+.post-content .alignleft,.post-content .alignright{max-width:100%;float:none;margin:1.25em 0}
+.post-content .alignleft a,.post-content .alignleft img,.post-content .alignright a,.post-content .alignright img{margin-left:auto;margin-right:auto}
+.comment-form-author,.comment-form-email,.comment-form-url{width:100%}
+}@media(max-width:600px){body{font-size:16px}
+.wrapper.section{padding:25px 0}
+.post-header,.single .post-content,.post-excerpt,.content .comments,div#disqus_thread,.comment-respond,.post-quote,.post-link{padding:7.5% 6%}
+.section.header{padding:35px 0}
+.header-search-block .s{font-size:1.5em;margin-top:-17px}
+.nav-toggle{padding:20px 0}
+.search-toggle{height:59px}
+.navigation-inner{max-width:90%}
+.mobile-menu a{padding-top:20px;padding-bottom:20px}
+.section-inner.content{max-width:92%}
+.post-container{width:100%;padding:0;margin-top:25px}
+.post-container:first-child{margin-top:0}
+.post-header .post-title{font-size:1.5em}
+.post-excerpt{font-size:1em}
+.posts .post-meta{padding:0 6%}
+.media-caption{margin:0 6%;padding-bottom:10px}
+.single .post-quote blockquote,.single .post-link p{font-size:1.2em}
+.single .post-quote cite{font-size:.8em}
+.post-content p,.post-content blockquote,.post-content ul,.post-content ol,.post-content address,.post-content dl,.post-content .wp-caption,.post-content pre{line-height:160%;margin-bottom:1em}
+.post-content h1,.post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6{margin:40px 0 20px}
+.post-content h1{font-size:1.4em}
+.post-content h2{font-size:1.3em}
+.post-content h3{font-size:1.25em}
+.post-content h4{font-size:1.1em}
+.post-content h5{font-size:1em}
+.post-content h6{font-size:.9em;font-weight:700;text-transform:uppercase}
+.post-content h1+h1,.post-content h1+h2,.post-content h1+h3,.post-content h1+h4,.post-content h1+h5,.post-content h1+h6,.post-content h2+h1,.post-content h2+h2,.post-content h2+h3,.post-content h2+h4,.post-content h2+h5,.post-content h2+h6,.post-content h3+h1,.post-content h3+h2,.post-content h3+h3,.post-content h3+h4,.post-content h3+h5,.post-content h3+h6,.post-content h4+h1,.post-content h4+h2,.post-content h4+h3,.post-content h4+h4,.post-content h4+h5,.post-content h4+h6,.post-content h5+h1,.post-content h5+h2,.post-content h5+h3,.post-content h5+h4,.post-content h5+h5,.post-content h5+h6,.post-content h6+h1,.post-content h6+h2,.post-content h6+h3,.post-content h6+h4,.post-content h6+h5,.post-content h6+h6{margin-top:20px}
+.post-content blockquote{margin-top:25px}
+.post-content blockquote:before,.post-content blockquote:after{margin:25px auto;width:96px}
+.post-content blockquote p{font-size:1.1em;line-height:150%}
+.post-content blockquote cite{font-size:.8em}
+.post-content .alignfull{margin-left:calc(92vw * -0.06)}
+.comments-title,.add-comment-title{float:none;width:100%}
+.add-comment-title{display:none}
+.comments-title,.comment-reply-title{font-size:1.5em}
+.comment .avatar{width:50px}
+.comment-inner{margin-left:70px}
+.comment-inner:after{top:13px}
+.comment-content{font-size:.9em}
+.reply-title{margin-bottom:15px}
+.comment-form{margin-top:15px}
+.comment-form{margin-top:10px}
+.comment-notes,.logged-in-as{margin-bottom:25px}
+.comment-form input[type="text"],.comment-form input[type="email"]{background-position:96% center}
+.authors-row{padding:0;border:0}
+.authors-row:before{content:none}
+.authors-row .author-info{width:100%;margin:0;padding:7.5% 6%;float:none;border-top:1px solid #eee}
+.authors-row:first-child .author-info:first-child{border-top:0}
+.author-avatar,.author-info h5{margin-bottom:20px}
+.page-title{margin-bottom:25px}
+.page-title h3{font-size:1.4em}
+.archive-nav{margin-top:25px}
+.footer{padding:30px 0}
+.footer .one-third{float:none;margin:40px 0 0 0;width:100%}
+.footer .one-third+.one-third{border-top:4px solid #333;padding:40px 0 0 0}
+.credits{padding:30px 0}
+.post-content blockquote{margin:25px 0 1.667em 35px;padding-left:.7em}
+.post-content blockquote:before,.post-content blockquote:after{margin:0;width:96px}
+.post-content blockquote:before{display:block;position:absolute;left:-40px;top:-10px;height:0;content:"\201E";font-family:'Special Elite','Courier New',Courier,'Andale Mono',Monaco,monospace;font-size:70px;line-height:inherit;color:#691f1b}
+.post-content blockquote p{font-size:100%;line-height:150%}
+#subscribe-reloaded,#wp-comment-cookies-consent{margin-bottom:2.5em}
+}@media(max-width:500px){.header .blog-title{font-size:1.75em}
+.header .blog-description{font-size:1em;margin-top:15px}
+.post-author:before,.post-author:after{left:15px}
+.post-author-content{margin-left:40px}
+.comments div.comment{margin-top:20px}
+.comment .avatar{display:none}
+.comment-inner{margin-left:0}
+.comment-inner:after{content:none}
+.comment-actions{display:none}
+.comment-actions-below{display:block;margin-top:20px}
+.comment-actions-below a{display:inline-block;margin-left:8px;font-size:.85em;font-weight:700;text-transform:uppercase}
+.comment-actions-below a:first-child{margin-left:0}
+.comment-actions-below a:hover{text-decoration:underline}
+.comment-nav-below span{display:none}
+}@media(max-width:400px){.comment-form label{font-size:14px}
+.comment-form input[type="text"],.comment-form input[type="email"]{background-position:94% center;background-size:20px auto}
+.comment-form input[type="text"],.comment-form input[type="email"],.comment-form textarea{padding:12px;font-size:.9em}
+.comment-form textarea{height:150px}
+}

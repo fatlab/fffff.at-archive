@@ -1,0 +1,28 @@
+# Sitemap
+Sitemap: https://seaworld.com/sitemap.xml
+
+# seaworld
+User-agent: *
+Disallow: /sitecore
+Disallow: */ajax/ 
+Disallow: */customerrors/ 
+Disallow: */dashboard/
+Disallow: */account/
+Disallow: */rpc/
+Disallow: */map-pois/
+Disallow: */checkout* 
+Disallow: */user* 
+Disallow: *sitecore* 
+Disallow: *?tags*
+
+# Disallow Meta bots from AI training our content for Meta's gain (see https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/#identify-2)
+User-agent: meta-externalagent
+Disallow: /
+
+# Disallow CloudFlare /cdn-cgi/ (see https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/#disallow-using-robotstxt)
+User-agent: *
+Disallow: /cdn-cgi/
+
+# Disallow Google Long Queries (ex. Crawling https://domain.com/?utm_source=google&utm_id)
+User-agent: *
+Disallow: /*? 

@@ -1,0 +1,604 @@
+jQuery(document).ready(function(){
+  gsap.registerEffect({
+      name: "hide__content",
+      defaults: {duration: 1}, 
+      effect: (targets, config) => {
+          return gsap.to(targets, 
+              {                
+                  autoAlpha:0
+              });
+      },    
+      extendTimeline: true, 
+  });
+  
+  gsap.registerEffect({
+      name: "show__content",
+      defaults: {duration: 1}, 
+      effect: (targets, config) => {
+          return gsap.to(targets, 
+              {                
+                  autoAlpha:1
+              });
+      },    
+      extendTimeline: true, 
+  });
+  
+  /*********for 6 thumbnails**********/
+  if(jQuery('.thumbs-6').length > 0){
+  /********btn1*****/
+  const txtbtn1 = gsap.timeline();
+  function txtbtn1Animation() {
+   let xValue, yValue;
+ 
+   if (window.matchMedia("(max-width: 992px)").matches) {
+     // Change values for smaller screens
+     xValue = -200;
+     yValue = 0;
+   } else {
+     // Default values for larger screens
+     xValue = -110;
+     yValue = -140;
+   }
+ 
+   txtbtn1.to(".txt-btn1", {
+     x: xValue,
+     y: yValue,
+     scale: 0.7,
+     duration: 0.2,
+   });
+ }
+
+txtbtn1Animation();
+
+  /********btn2*****/
+window.addEventListener("resize", txtbtn1Animation);
+const txtbtn2 = gsap.timeline();
+function txtbtn2Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = -490;
+      yValue = -60;
+    }
+  
+    txtbtn2.to(".txt-btn2", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn2Animation();
+
+window.addEventListener("resize", txtbtn2Animation);
+
+
+  /********btn3*****/
+const txtbtn3 = gsap.timeline();
+function txtbtn3Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = -370;
+      yValue = -290;
+    }
+  
+    txtbtn3.to(".txt-btn3", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn3Animation();
+
+window.addEventListener("resize", txtbtn3Animation);
+
+  /********btn4*****/
+const txtbtn4 = gsap.timeline();
+function txtbtn4Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = -130;
+      yValue = -478;
+    }
+  
+    txtbtn4.to(".txt-btn4", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn4Animation();
+
+window.addEventListener("resize", txtbtn4Animation);
+
+
+  /********btn5*****/
+
+const txtbtn5 = gsap.timeline();
+function txtbtn5Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = -200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = 500;
+      yValue = -530;
+    }
+  
+    txtbtn5.to(".txt-btn5", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn5Animation();
+
+window.addEventListener("resize", txtbtn5Animation);
+
+
+  /********btn6*****/
+
+
+    const txtbtn6 = gsap.timeline();
+    function txtbtn6Animation() {
+        let xValue, yValue;
+      
+        if (window.matchMedia("(max-width: 992px)").matches) {
+          // Change values for smaller screens
+          xValue = -200;
+          yValue = 0;
+        } else {
+          // Default values for larger screens
+          xValue = 710;
+          yValue = -330;
+        }
+      
+        txtbtn6.to(".txt-btn6", {
+            x: xValue,
+            y: yValue,
+            scale:.7,
+            duration: .2,
+        });
+    }
+    txtbtn6Animation();
+
+    window.addEventListener("resize", txtbtn6Animation);
+     
+   
+
+var buttonsAnimation = gsap.timeline({})
+buttonsAnimation.add(txtbtn1, 0); 
+buttonsAnimation.add(txtbtn2, 0); 
+buttonsAnimation.add(txtbtn3, 0); 
+buttonsAnimation.add(txtbtn4, 0); 
+buttonsAnimation.add(txtbtn5, 0); 
+buttonsAnimation.add(txtbtn6, 0); 
+
+var panel2 = gsap.timeline({
+  defaults: { duration: 1.5 } 
+})
+.hide__content(".thumbs-6 .panel1")
+.show__content(".thumbs-6 .panel2", "jump1")
+.hide__content(".thumbs-6 .txt-btn")
+
+
+}
+  
+if(jQuery('.thumbs-5').length > 0){
+  /********btn1*****/
+  const txtbtn1 = gsap.timeline();
+  function txtbtn1Animation() {
+   let xValue, yValue;
+ 
+   if (window.matchMedia("(max-width: 992px)").matches) {
+     // Change values for smaller screens
+     xValue = -200;
+     yValue = 0;
+   } else {
+     // Default values for larger screens
+     xValue = 0;
+     yValue = -200;
+   }
+ 
+   txtbtn1.to(".txt-btn1", {
+     x: xValue,
+     y: yValue,
+     scale: 0.7,
+     duration: 0.2,
+   });
+ }
+
+txtbtn1Animation();
+
+  /********btn2*****/
+window.addEventListener("resize", txtbtn1Animation);
+const txtbtn2 = gsap.timeline();
+function txtbtn2Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = -400;
+      yValue = -60;
+    }
+  
+    txtbtn2.to(".txt-btn2", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn2Animation();
+
+window.addEventListener("resize", txtbtn2Animation);
+
+
+  /********btn3*****/
+const txtbtn3 = gsap.timeline();
+function txtbtn3Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = -300;
+      yValue = -360;
+    }
+  
+    txtbtn3.to(".txt-btn3", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn3Animation();
+
+window.addEventListener("resize", txtbtn3Animation);
+
+  /********btn4*****/
+const txtbtn4 = gsap.timeline();
+function txtbtn4Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = -90;
+      yValue = -560;
+    }
+  
+    txtbtn4.to(".txt-btn4", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn4Animation();
+
+window.addEventListener("resize", txtbtn4Animation);
+
+
+  /********btn5*****/
+
+const txtbtn5 = gsap.timeline();
+function txtbtn5Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = -200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = 580;
+      yValue = -430;
+    }
+  
+    txtbtn5.to(".txt-btn5", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn5Animation();
+
+window.addEventListener("resize", txtbtn5Animation);
+
+
+
+
+var buttonsAnimation = gsap.timeline({})
+buttonsAnimation.add(txtbtn1, 0); 
+buttonsAnimation.add(txtbtn2, 0); 
+buttonsAnimation.add(txtbtn3, 0); 
+buttonsAnimation.add(txtbtn4, 0); 
+buttonsAnimation.add(txtbtn5, 0); 
+
+var panel2 = gsap.timeline({
+  defaults: { duration: 1.5 } 
+})
+.hide__content(".thumbs-5 .panel1")
+.show__content(".thumbs-5 .panel2", "jump1")
+.hide__content(".thumbs-5 .txt-btn")
+
+
+}
+  
+if(jQuery('.thumbs-4').length > 0){
+  /********btn1*****/
+  const txtbtn1 = gsap.timeline();
+  function txtbtn1Animation() {
+   let xValue, yValue;
+ 
+   if (window.matchMedia("(max-width: 992px)").matches) {
+     // Change values for smaller screens
+     xValue = -200;
+     yValue = 0;
+   } else {
+     // Default values for larger screens
+     xValue = 70;
+     yValue = -200;
+   }
+ 
+   txtbtn1.to(".txt-btn1", {
+     x: xValue,
+     y: yValue,
+     scale: 0.7,
+     duration: 0.2,
+   });
+ }
+
+txtbtn1Animation();
+
+  /********btn2*****/
+window.addEventListener("resize", txtbtn1Animation);
+const txtbtn2 = gsap.timeline();
+function txtbtn2Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = -330;
+      yValue = -150;
+    }
+  
+    txtbtn2.to(".txt-btn2", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn2Animation();
+
+window.addEventListener("resize", txtbtn2Animation);
+
+
+  /********btn3*****/
+const txtbtn3 = gsap.timeline();
+function txtbtn3Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = -180;
+      yValue = -480;
+    }
+  
+    txtbtn3.to(".txt-btn3", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn3Animation();
+
+window.addEventListener("resize", txtbtn3Animation);
+
+  /********btn4*****/
+const txtbtn4 = gsap.timeline();
+function txtbtn4Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = 510;
+      yValue = -430;
+    }
+  
+    txtbtn4.to(".txt-btn4", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn4Animation();
+
+window.addEventListener("resize", txtbtn4Animation);
+
+
+
+var buttonsAnimation = gsap.timeline({})
+buttonsAnimation.add(txtbtn1, 0); 
+buttonsAnimation.add(txtbtn2, 0); 
+buttonsAnimation.add(txtbtn3, 0); 
+buttonsAnimation.add(txtbtn4, 0); 
+
+var panel2 = gsap.timeline({
+  defaults: { duration: 1.5 } 
+})
+.hide__content(".thumbs-4 .panel1")
+.show__content(".thumbs-4 .panel2", "jump1")
+.hide__content(".thumbs-4 .txt-btn")
+
+
+}
+  
+if(jQuery('.thumbs-3').length > 0){
+  /********btn1*****/
+  const txtbtn1 = gsap.timeline();
+  function txtbtn1Animation() {
+   let xValue, yValue;
+ 
+   if (window.matchMedia("(max-width: 992px)").matches) {
+     // Change values for smaller screens
+     xValue = -200;
+     yValue = 0;
+   } else {
+     // Default values for larger screens
+     xValue = 140;
+      yValue = -320;
+   }
+ 
+   txtbtn1.to(".txt-btn1", {
+     x: xValue,
+     y: yValue,
+     scale: 0.7,
+     duration: 0.2,
+   });
+ }
+
+txtbtn1Animation();
+
+  /********btn2*****/
+window.addEventListener("resize", txtbtn1Animation);
+const txtbtn2 = gsap.timeline();
+function txtbtn2Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = -260;
+      yValue = -150;
+    }
+  
+    txtbtn2.to(".txt-btn2", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn2Animation();
+
+window.addEventListener("resize", txtbtn2Animation);
+
+
+  /********btn3*****/
+const txtbtn3 = gsap.timeline();
+function txtbtn3Animation() {
+    let xValue, yValue;
+  
+    if (window.matchMedia("(max-width: 992px)").matches) {
+      // Change values for smaller screens
+      xValue = 200;
+      yValue = 0;
+    } else {
+      // Default values for larger screens
+      xValue = 0;
+      yValue = -480;
+    }
+  
+    txtbtn3.to(".txt-btn3", {
+        x: xValue,
+        y: yValue,
+        scale:.7,
+        duration: .2,
+    });
+}
+txtbtn3Animation();
+
+window.addEventListener("resize", txtbtn3Animation);
+
+
+
+var buttonsAnimation = gsap.timeline({})
+buttonsAnimation.add(txtbtn1, 0); 
+buttonsAnimation.add(txtbtn2, 0); 
+buttonsAnimation.add(txtbtn3, 0); 
+
+var panel2 = gsap.timeline({
+  defaults: { duration: 1.5 } 
+})
+.hide__content(".thumbs-3 .panel1")
+.show__content(".thumbs-3 .panel2", "jump1")
+.hide__content(".thumbs-3 .txt-btn")
+
+
+}
+  const myST = ScrollTrigger.create({
+      animation: panel2,
+      trigger: ".scrolled-area",
+      start:"top",
+      scrub:2,
+      pin:'.scrolled-area',
+      end:"top", 
+  })
+  
+  const myST1 = ScrollTrigger.create({
+    animation: buttonsAnimation,
+    trigger: ".scrolled-area",
+    start:"top",
+    scrub:1,
+    end:"top", 
+})
+
+
+
+  });
+  

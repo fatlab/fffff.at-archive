@@ -1,0 +1,17 @@
+User-Agent: bingbot
+Crawl-delay: 5
+
+User-Agent: MegaIndex
+Disallow: /
+
+User-Agent: GrapeshotCrawler
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: proximic
+Disallow: /

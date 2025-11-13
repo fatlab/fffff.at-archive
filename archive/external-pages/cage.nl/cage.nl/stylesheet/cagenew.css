@@ -1,0 +1,135 @@
+body		{ background-color: white;
+                  font-family: Arial, Verdana, Arial, Helvetica, sans-serif;
+				  font-size: 9pt;
+                  color: #400000;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;				  
+                }
+
+samp		{ font-family: Arial, Verdana, Arial, Helvetica, sans-serif;
+		  font-size: 7pt;
+		}
+
+table		{ border-collapse: collapse;
+		  font-family: Arial, Verdana, Arial, Helvetica, sans-serif;
+		  font-size: 9pt;
+		  color: #400000;
+		  font-weight: normal;
+		  font-style: normal;
+		}
+		
+th		{ background-color: #E8E8E8;
+		  font-family: Arial, Verdana, Arial, Helvetica, sans-serif;
+		  font-size: 10pt;
+		  font-weight: bold;
+		  color: navy;
+		}
+		
+b		{ font-weight: bold;
+		}
+		
+h4		{ font-size: 16px;
+		  font-weight: bold;
+		}
+		
+a:visited	{ color: #639CFF;
+		  font-weight: bold;
+		  text-decoration: none;
+		}
+		
+a:link		{ color: navy;
+		  font-weight: bold;
+		  text-decoration: none;
+		}
+		
+a:active	{ color: red;
+		  font-weight: bold;
+		  text-decoration: none;
+		}
+a:hover		{ color: red;
+		  font-weight: bold;
+		  text-decoration: underline;
+		}
+/* SUBNAV */
+.subnav {
+	font-size: 8pt;
+}
+.subnav a:link {
+	color: #FFFFFF;
+	font-weight: normal;
+	text-decoration:none;
+}
+.subnav a:visited {
+	color: silver;
+	font-weight: normal;
+	text-decoration:none;
+}
+.subnav a:hover {
+	color: #2E0466;
+	background: #FFCC00;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+.tiny {
+	font-size: 7pt;
+}
+
+.textfield	{ border-style: solid;
+		border-width: 1px;
+		border-color: #669999;
+		width: 310px;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 11px;
+}
+
+.textfield_full	{ border-style: solid;
+		border-width: 1px;
+		border-color: #669999;
+		width: 99%;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 11px;
+}
+
+.textfield_small { border-style: solid;
+		border-width: 1px;
+		border-color: #669999;
+		width: 110px;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 11px;
+}
+
+.textfield_nosize { border-style: solid;
+		border-width: 1px;
+		border-color: #669999;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 11px;
+}
+.submitbutton { FONT: 7pt verdana, arial,Helvetica,sans-serif;
+		font-weight: bold;
+		color: #000000;
+		border: #000000 1px solid;
+		padding: 1px;
+		overflow: visible; /* seems to keep ie (inc 7) in check without anything else */ 		
+		background-color:#D4D7C5;
+}
+
+.submitbuttonon { FONT: 7pt verdana, arial,Helvetica,sans-serif;
+		font-weight: bold;
+		color: #FFFFFF;
+		border: #000000 1px solid;
+		padding: 1px;
+		overflow: visible; /* seems to keep ie (inc 7) in check without anything else */ 		
+		background-color:#FF3408;
+}
+.spacedletters {
+	font-variant: small-caps;
+	font-size: 15px;
+	letter-spacing: 3px;
+}
+.verplicht {
+	color: #FF0000;
+	font-weight: bold;
+}

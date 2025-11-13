@@ -1,0 +1,118 @@
+/*
+Theme Name: Artzilla.org
+Theme URI: http://artzilla.org/
+Description: ARTZILLA
+Version: 1.0
+Author: Greg Leuch & Tobias Leingruber
+Author URI: http://artzilla.org
+Tags: artzilla
+
+*/
+
+
+
+/* Begin Typography & Colors */
+html, body {padding: 0; margin: 0;}
+body {font-size: 62.5%; font-family: Helvetica, Verdana, Arial, sans-serif; background: #fff url('../../../../../../20150520204108im_/http%253A/www.artzilla.org/wp-content/themes/artzilla/images/bg/body.png') top left repeat; color: #000;}
+
+.rel {position: relative;}
+.abs {position: absolute;}
+.left {clear: none; float: left;}
+.right {clear: none; float: right;}
+.block {display: block;}
+.inline {display: inline;}
+.hide {display: none;}
+.c:after {content: "."; clear: both; display: block; visibility: hidden; height: 0;}
+a img {border: none;}
+.alignnone {display: inline; float: left; margin: 0 10px 10px 0;}
+
+
+#page {min-width: 714px; max-width: 914px; padding: 10px 0 20px 266px; background: url('../../../../../../20150520204108im_/http%253A/www.artzilla.org/wp-content/themes/artzilla/images/bg/zilla.png') 4px 20px no-repeat;}
+
+#logo {top: 0; right: 4px; width: 292px; height: 60px; line-height: 1.0em; overflow: hidden;}
+#logo a img {border: none;}
+
+#header {top: 325px; left: 23px; width: 260px;}
+#header .description {display: inline; padding: 2px 0 1px 0; background: url('../../../../../../20150520204108im_/http%253A/www.artzilla.org/wp-content/themes/artzilla/images/bg/header_description.png') 0 0; font-size: 2.0em; line-height: 1.25em; font-weight: bold; letter-spacing: -.04em; vertical-align: top;}
+#header .description a {color: #e3007a;}
+#header .description a:hover {color: #e3007a; text-decoration: none;}
+#header dl {display: block; padding: 20px 0; margin: 0 auto;}
+#header dl dt {clear: none; float: left; display: block; padding: 2px 5px; margin: 0 0 0 10px; background: url('../../../../../../20150520204108im_/http%253A/www.artzilla.org/wp-content/themes/artzilla/images/bg/header_description.png') 0 0; font-size: 2.0em; line-height: 1.0em; font-weight: bold; letter-spacing: -.04em; vertical-align: top; color: #000;}
+#header dl dt:first-child {margin: 0;}
+#header dl dt a {color: #000000;text-decoration: none;}
+#header dl dt a:hover {color: #e3007a;text-decoration: none;}
+
+#container {padding: 30px 0 0 0;}
+.content {}
+.content.page {margin: 40px 0 0 0;}
+.content .content_header {top: 19px; left: 0;}
+
+.content .content_header h1 {margin: 0; padding: 0 12px 0 0; background: url('../../../../../../20150520204108im_/http%253A/www.artzilla.org/wp-content/themes/artzilla/images/bg/content_header_r.png') top right repeat-y; font-size: 2.8em; line-height: 1.0em;}
+.content .content_header h1 span {display: block; padding: 0 0 12px 0; background: url('../../../../../../20150520204108im_/http%253A/www.artzilla.org/wp-content/themes/artzilla/images/bg/content_header_b.png') bottom left repeat-x; color: #fff; letter-spacing: -.06em; text-transform: lowercase;}
+.content .content_header h1 span a, .content .content_header h1 span span {display: block; min-width: 160px; padding: 9px 12px; background: #e3007a; color: #fff; text-decoration: none;}
+.content .content_header h1 .cr {bottom: 0; right: 0; width: 12px; height: 12px; background: url('../../../../../../20150520204108im_/http%253A/www.artzilla.org/wp-content/themes/artzilla/images/bg/content_header_br.png') bottom right no-repeat;}
+.content .content_header h1 span a:hover {color: #000;}
+.content .rss {position: absolute; top: 12px; right: 12px;}
+.content .twitter {position: absolute; top: 12px; right: 58px;}
+.content .rss a img, .content .twitter a img {border: none;}
+
+.content .content_area {padding: 85px 15px 25px 15px; margin: 0 0 0 29px; background: url('../../../../../../20150520204108im_/http%253A/www.artzilla.org/wp-content/themes/artzilla/images/bg/container.png') top left repeat;}
+.content .content_area h2 {padding: 6px; background: #e3007a; color: #fff; font-size: 1.4em; line-height: 1.2em; letter-spacing: -.02em;}
+.content .content_area h2 a {display: block; color: #fff; text-decoration: none;}
+.content .content_area h2 a:hover {color: #000;}
+.content .content_area .entry {background: url('../../../../../../20150520204108im_/http%253A/www.artzilla.org/wp-content/themes/artzilla/images/bg/content_body.png') top left repeat; overflow: hidden; padding: 10px;}
+.content .content_area .entry p {overflow: hidden;}
+.content .post {padding: 0 0 15px 0; overflow: hidden;}
+
+.entry h4 {color: #e3007a; font-size: 1.4em; line-height: 1.25em; padding: 0 0 12px 0; margin: 0;}
+.entry h4 a {color: #000; text-decoration: none; border-bottom: 1px dotted #000;}
+.entry h4 a:hover {color: #e3007a; text-decoration: none; border-bottom: 1px dotted #e3007a;}
+.entry p {font-size: 1.3em; padding: 0 0 9px 0; margin: 0; line-height: 1.307em;}
+.entry p a {color: #e3007a; text-decoration: underline; font-weight: bold;}
+.entry p a:hover {color: #000; text-decoration: underline;}
+
+.entry.comments {margin: 8px 0 0 0;}
+.entry.comments ol {margin: 0; padding: 0;}
+.entry.comments ol li {clear: both; display: block; margin: 0; padding: 8px 0 8px;}
+.entry.comments ol li .comment-author {padding: 0 0 6px 0;}
+.entry.comments ol li .comment-author .left {padding: 4px 0 0 0;}
+.entry.comments ol li .comment-author .avatar {padding: 0 6px 0 0;}
+.entry.comments ol li .comment-author .left p {padding: 0 0 1px 0;}
+.entry.comments ol li .comment-author .left p.comment-meta {font-size: 1.1em;}
+.entry.comments ol li .comment-author .left p.comment-meta a {font-weight: normal; color: #000; text-decoration: none;}
+
+.content .navigation, .content .bottom {color: #000; padding: 6px 0 0 0; font-size: 1.2em;}
+.content .bottom .right {background: #fff700;}
+.content .navigation {font-size: 1.3em;}
+.content .navigation a, .content .bottom .left a {background: #fff700; font-weight: bold; color: #000; text-decoration: none; padding: 3px;}
+.content .bottom .left a:hover {text-decoration: underline;}
+.content .navigation a {background: #e3007a;  padding: 4px 3px; color: #fff;}
+.content .navigation a:hover {background: #fff700; color: #000;}
+
+
+.home .content {min-width: 45%; max-width: 449px; width: 49%; margin: 40px 0 0 11px;}
+.home .content:first-child {margin: 0; min-width: 49%; max-width: 509px; width: 53%;}
+.home .content:first-child .alignnone {clear: both; margin: 0 auto 8px auto; display: block;}
+.home .content:first-child .entry .alignnone {max-width: 100%; /*width: 100%; height: 100%;*/}
+.home .content:last-child {float: right; min-width: 41%; max-width: 399px; /*width: 45%;*/}
+.home .content:last-child .entry .alignnone {/*width: 33%; height: 33%;*/}
+/*
+     FILE ARCHIVED ON 20:41:08 May 20, 2015 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 04:24:42 Nov 12, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 0.454
+  exclusion.robots: 0.016
+  exclusion.robots.policy: 0.007
+  esindex: 0.008
+  cdx.remote: 22.803
+  LoadShardBlock: 63.822 (3)
+  PetaboxLoader3.datanode: 66.612 (4)
+  load_resource: 107.466
+  PetaboxLoader3.resolve: 70.975
+*/

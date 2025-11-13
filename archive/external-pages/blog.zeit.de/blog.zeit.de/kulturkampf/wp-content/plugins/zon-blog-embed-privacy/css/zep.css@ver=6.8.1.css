@@ -1,0 +1,26 @@
+/* there we have it… specifity wars */
+.embed-wrapper * {
+	font-family: "TabletGothic","Helvetica Neue",Helvetica,Arial,FreeSans,sans-serif;
+}
+
+.embed-wrapper__footer {
+	margin-top: 10px;
+}
+
+.embed-wrapper .embed-wrapper__footer p a,
+.embed-consent__datalink-when-active.embed-consent__datalink-when-active {
+	border: none;
+}
+
+.embed-consent__toggle {
+	font-size: 16px;
+}
+
+.embed-consent__toggle.embed-consent__toggle span {
+	margin-right: 10px;
+}
+
+.raw__rendered {
+	display: flex;
+	justify-content: center;
+}

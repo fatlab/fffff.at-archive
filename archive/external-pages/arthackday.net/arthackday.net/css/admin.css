@@ -1,0 +1,169 @@
+/* For rails notifications e.g. "Message has been sent." */
+.notice {
+  background-color:lightgreen;
+  background-color:rgba(144, 238, 144, 0.75);
+  color:#fff;
+  padding-top:20px;
+  padding-bottom:20px;
+  text-align:center;
+  width:100%;
+}
+
+.alert {
+  background-color:#F33;
+  background-color:rgba(255, 51, 51, 0.75);
+  color:#fff;
+  padding-top:20px;
+  padding-bottom:20px;
+  text-align:center;
+  width:100%;
+}
+
+/* Admin stuffs */
+.admin-header {
+  height: 110px;
+  width: 100%;
+  text-align:center;
+  color: #fff;
+  background-color:rgb(80, 0, 255);
+  /*background-image: url('../img/header_backgrounds/gibson.gif');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+  /*margin-top: -10px;*/
+  margin-bottom: 50px;
+}
+
+/*.admin-header h1 {
+  display: block;
+  color: #fff;
+}*/
+
+.login-container {
+  padding-top:140px;
+  width:442px;
+  margin:0 auto;
+}
+
+.login {
+  width: 400px;
+  height: 350px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 14px;
+  padding: 20px;
+}
+
+.login-form {
+  text-align: left;
+}
+
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login input {
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px;
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.login .text-field {
+  margin-top:20px;
+  width:380px;
+}
+
+/*.login label {
+  width: 100px;
+  line-height: 17px;
+  float:left;
+}*/
+
+#login-button {
+  margin-top:0px;
+  width:400px;
+  font-family:'COLFAX';
+  background-color: #000;
+  color:#FFF;
+  border: none;
+  cursor: pointer;
+}
+
+#login-button:hover {
+  background-color:#5000ff;
+}
+
+.login-links {
+  margin-top:10px;
+  text-align:right;
+}
+
+.admin-two-column {
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+}
+
+.admin-three-column {
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+}
+
+.admin-three-column {
+  -moz-column-count: 4;
+  -webkit-column-count: 4;
+}
+
+small {
+  font-size:12px;
+}
+
+/*Generic form button*/
+.admin-form-button, .admin-form-button:visited {
+  margin-top:15px;
+  padding: 10px 20px;
+  background-color: black;
+  font-family: 'COLFAX';
+  color:#FFF;
+  border: none;
+  font-size: 13px;
+  text-transform:uppercase;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.admin-form-button:hover {
+  background-color: #5000ff;
+  color:#FFF;
+}
+
+/* Admin access buttons when logged in as an admin */
+.admin-button, .admin-button:visited {
+  padding:10px 20px;
+  border-style:solid;
+  border-width:1px;
+  font-size:13px;
+  text-transform:uppercase;
+  border-color:rgb(255, 51, 51);
+  color:rgb(255, 51, 51);
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.admin-button:hover {
+  background-color:rgb(255, 51, 51);
+  color:#FFF;
+}

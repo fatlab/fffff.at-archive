@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="Der Chaos Computer Club ist eine galaktische Gemeinschaft von Lebewesen für Informationsfreiheit und Technikfolgenabschätzung."/>
+
+    <meta property="og:image" content="https://www.ccc.de/images/chaosknoten.svg" />
+    <meta property="og:description" content="Der Chaos Computer Club ist eine galaktische Gemeinschaft von Lebewesen für Informationsfreiheit und Technikfolgenabschätzung." />
+
+    <title>CCC | Chaos Computer Club analyzes government malware </title>
+    <link href="../../../../../../www.ccc.de/stylesheets/ccc.css@1743181483.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="../../../../../../www.ccc.de/javascripts/jquery-1.3.2.min.js@1246657683" type="text/javascript"></script>
+    <script src="../../../../../../www.ccc.de/javascripts/shadowbox/shadowbox.js@1253190035" type="text/javascript"></script>
+    <link href="../../../../../../www.ccc.de/stylesheets/shadowbox.css@1253190035.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="../../../../../../www.ccc.de/javascripts/public.js@1739674435" type="text/javascript"></script>
+
+    <link href="https://www.ccc.de/de/rss/updates.xml" rel="alternate" title="ATOM" type="application/atom+xml" />
+    <link href="https://www.ccc.de/de/rss/updates.rdf" rel="alternate" title="RSS" type="application/rss+xml" />
+
+    <script>
+      (function() { document.addEventListener("DOMContentLoaded", function() {
+        if (localStorage.getItem('override-prefers-color-scheme', false))
+          document.getElementById("light-mode").checked = true;
+      }); })();
+    </script>
+
+  </head>
+
+  <body lang="en">
+    <div id="wrapper">
+      <div id="header">
+        <img alt="Header" src="../../../../../../www.ccc.de/images/header.png@1736906356" />
+        <!-- <a href="/en/home" class="inactive"><img alt="Header" src="/images/header.png?1736906356" /></a> -->
+      </div>
+      <div id="toolbox">
+        <div id="search">
+          <form action="https://www.ccc.de/en/search" method="get">
+  <div><input id="search_term" name="search_term" placeholder="suchen" type="search" /></div>
+</form>
+
+        </div>
+        <div id="light-mode-div">
+          <input id="light-mode" type="checkbox" aria-label="Switch between dark and light mode" /><label for="light-mode"><span class="hide-me">lights</span></label>
+        </div>
+        <div id="burger-div">
+          <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+          <label for="menu-toggle" class="burger-menu"><span></span><span></span><span></span></label>
+        </div>
+      </div>
+      <div id="left_column">
+        <div class="main_navigation">
+  <ul>
+    
+    <li><a href="https://www.ccc.de/en/home" class="inactive">home</a></li>
+    
+    <li><a href="https://www.ccc.de/en/club" class="inactive">Club</a></li>
+    
+    <li><a href="https://www.ccc.de/en/regional" class="inactive">Regional CCC</a></li>
+    
+    <li><a href="https://www.ccc.de/en/support" class="inactive">Support</a></li>
+    
+    <li><a href="https://www.ccc.de/en/topics" class="inactive">Topics</a></li>
+    
+    <li><a href="https://www.ccc.de/en/calendar" class="inactive">Events</a></li>
+    
+    <li><a href="https://www.ccc.de/en/publications" class="inactive">Publications</a></li>
+    
+    <li><a href="https://www.ccc.de/en/club/transparenz" class="inactive">Transparenz</a></li>
+    
+    <li><a href="https://www.ccc.de/en/contact" class="inactive">Contact</a></li>
+    
+  </ul>
+</div>
+
+
+        
+
+  	<div id="frontpage_calendar">
+  <h2>Calendar</h2>
+  <ul class="teasertext">
+    
+  </ul>
+</div>
+      </div>
+      <div id="center_column">
+        <div class="article" lang="en">
+  <h2 class="headline">Chaos Computer Club analyzes government malware </h2>
+  <div class="author_and_date">08 October, 2011 21:00, admin</div>
+  <div class="abstract"><p>The largest European hacker club, "Chaos Computer Club" (CCC), has reverse engineered and analyzed a "lawful interception" malware program used by German police forces. It has been found in the wild and submitted to the CCC anonymously. The malware can not only siphon away intimate data but also offers a remote control or backdoor functionality for uploading and executing arbitrary other programs. Significant design and implementation flaws make all of the functionality available to anyone on the internet.</p></div>
+  <div id="headline_image"><a href="https://www.ccc.de/en/galleries/updates/2011/staatstrojaner" class="inactive"><img alt="0zapftis" src="../../../../../../www.ccc.de/system/uploads/78/headline/0zapftis.png@1318099563" /></a>
+
+
+
+<div class="shadowbox_images" style="display: none">
+  
+    <a href="https://www.ccc.de/system/uploads/78/original/0zapftis.png?1318099563" class="shadowbox_image">hallo</a>
+  
+</div></div>
+  <div class="body"><p>Even before the German constitutional court ("Bundesverfassungsgericht") on February 27 2008 forbade the use of malware to manipulate German citizen's PCs, the German government introduced a less conspicuous newspeak variant of the term spy software: "Quellen-TKÜ" (the term means "source wiretapping" or lawful interception at the source). This Quellen-TKÜ can by definition only be used for wiretapping internet telephony. The court also said that this has to be enforced through technical and legal means.</p>
+<p>The CCC now published the extracted binary files [0] of the government malware that was used for "Quellen-TKÜ", together with a report about the functionality found and our conclusions about these findings [1]. During this analysis, the CCC wrote its own remote control software for the trojan.</p>
+<p>The CCC analysis reveals functionality in the "Bundestrojaner light" (Bundestrojaner meaning "federal trojan" and is the colloquial German term for the original government malware concept) concealed as "Quellen-TKÜ" that go much further than to just observe and intercept internet based telecommunication, and thus violates the terms set by the constitutional court. The trojan can, for example, receive uploads of arbitrary programs from the Internet and execute them remotely. This means, an "upgrade path" from Quellen-TKÜ to the full Bundestrojaner's functionality is built-in right from the start. Activation of the computer's hardware like microphone or camera can be used for room surveillance.</p>
+<p>The analysis concludes, that the trojan's developers never even tried to put in technical safeguards to make sure the malware can exclusively be used for wiretapping internet telephony, as set forth by the constitution court. On the contrary, the design included functionality to clandestinely add more components over the network right from the start, making it a bridge-head to further infiltrate the computer.</p>
+<p>"This refutes the claim that an effective separation of just wiretapping internet telephony and a full-blown trojan is possible in practice – or even desired," commented a CCC speaker. "Our analysis revealed once again that law enforcement agencies will overstep their authority if not watched carefully. In this case functions clearly intended for breaking the law were implemented in this malware: they were meant for uploading and executing arbitrary code on the targeted system."</p>
+<p>The government malware can, unchecked by a judge, load extensions by remote control, to use the trojan for other functions, including but not limited to eavesdropping. This complete control over the infected PC – owing to the poor craftsmanship that went into this trojan –  is open not just to the agency that put it there, but to everyone. It could even be used to upload falsified "evidence" against the PC's owner, or to delete files, which puts the whole rationale for this method of investigation into question.</p>
+<p>But the trojan's built-in functions are scary enough, even without extending it by new moduls. For the analysis, the CCC wrote its own control terminal software, that can be used to remotely control infected PCs over the internet. With its help it is possible to watch screenshots of the web browser on the infected PC – including private notices, emails or texts in web based cloud services.</p>
+<p>The official claim of a strict separation of lawful interception of internet telephony and the digital sphere of privacy has no basis in reality. [NB: The German constitutional court ruled that there is a sphere of privacy that is afforded total protection and can never be breached, no matter for what reason, for example keeping a diary or husband and wife talking in the bedroom. Government officials in Germany argued that it is possible to avoid listening in on this part but still eavesdrop electronically. The constitutional court has created the concept of "Kernbereich privater Lebensgestaltung", core area of private life. The CCC is basically arguing that nowadays a person's laptop is intrinsically part of this core area because people put private notes there and keep a diary on it] The fact that a judge has to sign the warrant does not protect the privacy, because the data are being taken directly from the core area of private life.</p>
+<p>The legislator should put an end to the ever growing expansion of computer spying that has been getting out of hand in recent years, and finally come up with an unambiguous definition for the digital privacy sphere and with a way to protect it effectively. Unfortunately, for too long the legislator has been guided by demands for technical surveillance, not by values like freedom or the question of how to protect our values in a digital world. It is now obvious that he is no longer able to oversee the technology, let alone control it.</p>
+<p>The analysis also revealed serious security holes that the trojan is tearing into infected systems. The screenshots and audio files it sends out are encrypted in an incompetent way, the commands from the control software to the trojan are even completely unencrypted. Neither the commands to the trojan nor its replies are authenticated or have their integrity protected. Not only can unauthorized third parties assume control of the infected system, but even attackers of mediocre skill level can connect to the authorities, claim to be a specific instance of the trojan, and upload fake data. It is even conceivable that the law enforcement agencies' IT infrastructure could be attacked through this channel. The CCC has not yet performed a penetration test on the server side of the trojan infrastructure.</p>
+<p>"We were surprised and shocked by the lack of even elementary security in the code. Any attacker could assume control of a computer infiltrated by the German law enforcement authorities", commented a speaker of the CCC. "The security level this trojan leaves the infected systems in is comparable to it setting all passwords to '1234'".</p>
+<p>To avoid revealing the location of the command and control server, all data is redirected through a rented dedicated server in a data center in the USA. The control of this malware is only partially within the borders of its jurisdiction. The instrument could therefore violate the fundamental principle of national sovereignty. Considering the incompetent encryption and the missing digital signatures on the command channel, this poses an unacceptable and incalculable risk. It also poses the question how a citizen is supposed to get their right of legal redress in the case the wiretapping data get lost outside Germany, or the command channel is misused.</p>
+<p>According to our hacker ethics and to avoid tipping off criminals who are being investigated, the CCC has informed the German ministry of the interior. They have had enough time to activate the existing self destruct function of the trojan.</p>
+<p>When arguing about the government authorized infiltration of computers and secretly scanning suspects' hard drives, the former minister of the interior Wolfgang Schäuble and Jörg Ziercke, BKA's president (BKA, German federal policy agency), have always claimed that the population should not worry because there would only be "a handful" of cases where the trojan would be used at all. Either almost the complete set of government malware has found their way in brown envelopes to the CCC's mailbox, or the truth has been leapfrogged once again by the reality of eavesdropping and "lawful interception".</p>
+<p>The other promises made by the officials also are not basis in reality. In 2008 the CCC was told that all versions of the "Quellen-TKÜ" software would manually be hand-crafted for the specifics of each case. The CCC now has access to several software versions of the trojan, and they all use the same hard-coded cryptographic key and do not look hand-crafted at all. Another promise has been that the trojan would be subject to exceptionally strict quality control to make sure the rules set forth by the constitutional court would not be violated. In reality this exceptionally strict quality control has neither found that the key is hard coded, nor that the "encryption" is uni-directional only, nor that there is a back door for uploading and executing further malware. The CCC expressed hope that this farce is not representative for exceptionally strict quality control in federal agencies.</p>
+<p>The CCC demands: The clandestine infiltration of IT systems by government agencies must stop. At the same time we would like to call on all hackers and people interested in technology to further analyze the malware, so that at least some benefit can be reaped from this embarrassing eavesdropping attempt. Also, we will gladly continue to receive copies of other versions of government malware off your hands. [4]</p>
+<p><strong>Links</strong>:</p>
+<p>[0] <a href="http://www.ccc.de/system/uploads/77/original/0zapftis-release.tgz" title="Cleaned up binaries release">Binaries</a></p>
+<p>[1] <a href="http://www.ccc.de/system/uploads/76/original/staatstrojaner-report23.pdf" title="Analysis of the government malware">Analysis of the government malware (German)</a></p>
+<p>[4] <a href="http://www.bigbrotherawards.de/2009/.com">BigBrotherAwards 2009</a>, Category Business: companies selling internet and phone surveillance technology</p>
+<p>[5] <a href="mailto:0zapftis(at)ccc.de" title="Mail to the analysis' authors">0zapftis (at) ccc.de</a> use the PGP key below:</p>
+<pre>-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.9 (Darwin)
+
+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
+ZQ==
+=jS/I
+-----END PGP PUBLIC KEY BLOCK-----
+</pre></div>
+</div>
+
+
+
+        <div id="footer">
+          <br />
+          <p style="text-align: center">
+            <a href="https://www.ccc.de/en/imprint">Impressum</a>
+            <a href="https://www.ccc.de/en/datenschutz">Datenschutz</a>
+            <a href="https://www.ccc.de/de/updates/2011/staatstrojaner"><span class="inactive">Deutsch</span></a>
+            <!-- %= link_to t(:sponsors), content_path("sponsors") % -->
+          </p>
+        </div>
+      </div>
+      <div id="right_column">
+        
+<div id="tags">
+  <h2>Tags</h2>
+  <ul class="teasertext">
+    
+      <li><a href="https://www.ccc.de/en/tags/update">update</a></li>
+    
+      <li><a href="https://www.ccc.de/en/tags/pressemitteilung">pressemitteilung</a></li>
+    
+      <li><a href="https://www.ccc.de/en/tags/staatstrojaner">staatstrojaner</a></li>
+    
+  </ul>
+</div>
+
+
+        <div id="featured_articles">
+  <h2>Featured</h2>
+
+  <!-- %= link_to(
+        image_tag( '34c3-tuwat.1e4e25c.png' ),
+        "https://events.ccc.de/congress/2017/wiki/Main_Page",
+        :id => "34C3_icon",
+        :size => "155x90",
+        :title => "Chaos Communication Congress 2017"
+  )% -->
+
+  <a href="https://chaosradio.ccc.de/" id="chaosradio_icon" title="Chaosradio"><img alt="Chaosradio" src="../../../../../../www.ccc.de/images/chaosradio.png@1736875067" /></a>
+
+  <a href="https://media.ccc.de" id="media_ccc_de_icon" title="Media Dot CCC Dot de"><img alt="Media-ccc-de-banner" height="45" src="../../../../../../www.ccc.de/images/media-ccc-de-banner.svg@1549308118" width="155" /></a>
+
+  <a href="https://ds.ccc.de/" id="ds_icon" title="Datenschleuder"><img alt="Ds" src="../../../../../../www.ccc.de/images/ds.png@1736875191" /></a>
+
+  <a href="https://events.ccc.de/" id="events_icon" title="Events Blog"><img alt="Events" src="../../../../../../www.ccc.de/images/events.png@1736875302" /></a>
+
+  <a href="https://social.bau-ha.us/@ccc" id="fediverse_icon" rel="me" title="Fediverse"><img alt="Fediverse" height="64" src="../../../../../../www.ccc.de/images/Fediverse.svg@1668911106" width="64" /></a>
+
+  <a href="https://bsky.app/profile/ccc.de" id="bluesky_icon" title="bsky"><img alt="Bluesky_logo" height="64" src="../../../../../../www.ccc.de/images/Bluesky_Logo.svg@1737509920" width="64" /></a>
+
+</div>
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

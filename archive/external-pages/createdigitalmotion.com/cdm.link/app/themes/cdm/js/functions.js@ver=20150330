@@ -1,0 +1,144 @@
+$ = jQuery;
+
+
+$(document).ready(function() {
+  // Toggle mobile menu visibility
+  var admin_nav_height = $('#wpadminbar').length ? $('#wpadminbar').height() : 0;
+  $('#toggle_mobile_menu').click(function() {
+    var that = this;
+    if ($('#nav_wrapper').hasClass('active')) {
+      $(that).removeClass('active').mouseout();
+      $('#nav_wrapper').removeClass('active');
+    } else {
+      var menu_position = $('#masthead').offset();
+      var menu_end = menu_position.top - admin_nav_height - $(window).scrollTop() + $('#masthead').height();
+      $(that).addClass('active');
+      $('#nav_wrapper').addClass('active');
+      $('#nav_wrapper').css('top', menu_end + 'px');
+    }
+  });
+  
+  // Toggle search field visibility
+  $('#search_btn').click(function() {
+    var that = this;
+    $(that).toggleClass('active');
+    $('#search_form').toggle(200, function() {
+      if ($(that).hasClass('active')) {
+        $('#search_form').find('input.search-field').focus();
+      }
+    });
+  });
+  
+  // Make elements sticky on scroll
+  var sticky_nav = false;
+  var sticky_banner = false;
+  var sticky_banner_height = 690;
+  var footer_position = $('.footer').first().offset();
+  var additional_offset = $('.featured_image').length ? $('.featured_image').height() : 0;
+  var menu_offset = $('#masthead .azone').length ? 90 : 0;
+  
+  $(window).scroll(function () {
+    if ($(window).width() > 768) {
+      if ($(window).scrollTop() > menu_offset && !sticky_nav) {
+        sticky_nav = true;
+        var sticky_nav_container = $('#sticky_nav').wrap('<div class="container-fluid sticky_clone">');
+        $('#masthead').css('margin-bottom', '81px');
+      }
+      if ($(window).scrollTop() < menu_offset && sticky_nav) {
+        sticky_nav = false;
+        $('#sticky_nav').unwrap('.container-fluid.sticky_clone');
+        $('#masthead').css('margin-bottom', '0px');
+      }
+      
+      if ($(window).scrollTop() > (menu_offset + additional_offset) && !sticky_banner) {
+        sticky_banner = true;
+        var sticky_banner_width = $('.sticky_banner').parent('.azone').width();
+        $('.sticky_banner').addClass('stick').width(sticky_banner_width);
+      }
+      if ($(window).scrollTop() < (menu_offset + additional_offset) && sticky_banner) {
+        sticky_banner = false;
+        $('.sticky_banner').removeClass('stick').width('auto');
+      }
+  
+      footer_position = $('.footer').first().offset();
+      if (($(window).scrollTop() + sticky_banner_height + 30) > footer_position.top && sticky_banner) {
+        $('.sticky_banner').css('margin-top', footer_position.top - ($(window).scrollTop() + sticky_banner_height + 30));
+      } else {
+        $('.sticky_banner').css('margin-top', 0);
+      }
+      
+      if ($('#nav_wrapper').hasClass('active')) {
+        var menu_position = sticky_nav ? {top: admin_nav_height} : $('#mobile_navigation').offset();
+        var menu_end = menu_position.top + $('#mobile_navigation').height();
+        $('#nav_wrapper').css('top', menu_end + 'px');
+      }
+    } else {
+      if (sticky_nav) {
+        sticky_nav = false;
+        $('#sticky_nav').unwrap('.container-fluid.sticky_clone');
+        $('#masthead').css('margin-bottom', '0px');
+      }
+      if ($(window).scrollTop() > 500) {
+        $('#toggle_mobile_menu').removeClass('active');
+        $('#nav_wrapper').removeClass('active');
+      }
+    }
+  });
+  
+  // Stack articles using isotope
+  var $grid = $('.stack').isotope({
+    itemSelector: '.stack-item',
+    percentPosition: true,
+    masonry: {
+      columnWidth: '.stack-sizer'
+    }
+  });
+  $grid.imagesLoaded().progress( function() {
+    $grid.isotope('layout');
+  });
+
+  // Adding resizing embedded content in main_content column
+  if ($('.main_content iframe, .main_content object, .main_content embed').length) {
+    var $allEmbeds = $('.main_content iframe, .main_content object, .main_content embed');
+    $allEmbeds.each(function() {
+      $(this)
+        .attr('data-aspectRatio', this.height / this.width)
+        .removeAttr('height')
+        .removeAttr('width');
+    });
+    
+    // When the window is resized
+    $(window).resize(function() {
+      $allEmbeds.each(function() {
+        var newWidth = $(this).closest('div').width();
+        $(this).width(newWidth).height(newWidth * $(this).attr('data-aspectRatio'));
+      });
+    }).resize();
+    
+    // Clone pullquotes and inject after parent element
+    $('span.aside').each(function(index, el) {
+      $('<aside>').html($(el).html()).insertBefore($(el).parent('p'));
+    });
+  }
+
+});
+
+
+
+if (!document.getElementById('qwertyuiop')) {
+  if ($('.sticky_banner').length) {
+    $('<a href="https://www.arturia.com/products/analog-classics/v-collection/overview?utm_source=create_digital_music&utm_medium=mediaplan&utm_campaign=vc7_launch&utm_content=banners#en" target="_blank"><img src="http://cdm.link/app/themes/cdm/grfx/camp_may_19/sticky.jpg" alt="Arturia uCollection 7.0" /></a>').appendTo('#a300x600 .sticky_banner');    
+  } else {
+    $('<a href="https://www.arturia.com/products/analog-classics/v-collection/overview?utm_source=create_digital_music&utm_medium=mediaplan&utm_campaign=vc7_launch&utm_content=banners#en" target="_blank"><img src="http://cdm.link/app/themes/cdm/grfx/camp_may_19/sticky.jpg" alt="Arturia uCollection 7.0" /></a>').appendTo('#a300x600');    
+  }
+  ga_track_event({'t': 'event', 'c': 'Adblockers', 'a': 'Blocked', 'l': 'Blocked'});
+}
+
+function ga_track_event(e) {
+  ga('send', {
+    hitType: e.t,
+    eventCategory: e.c,
+    eventAction: e.a,
+    eventLabel: e.l
+  });
+}

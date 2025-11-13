@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /wp-content/uploads/wpo/wpo-plugins-tables-list.json
+
+# START YOAST BLOCK
+# ---------------------------
+User-agent: *
+Disallow:
+
+User-agent: AdsBot
+Disallow: /
+
+Sitemap: https://www.festival-gnaoua.net/sitemap_index.xml
+# ---------------------------
+# END YOAST BLOCK

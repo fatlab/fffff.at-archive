@@ -1,0 +1,17 @@
+# SoHosted
+# 2020-10-26 User Agent DotBot toegevoegd
+
+User-agent: *
+Disallow: /*?
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: *
+Disallow: /cgi-bin
+
+User-agent: Yandex bot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

@@ -1,0 +1,10 @@
+User-agent: Mediapartners-Google
+Disallow: 
+
+User-agent: *
+Disallow: /search
+Disallow: /share-widget
+Allow: /
+
+Sitemap: http://skype-oxypsy.blogspot.com/sitemap.xml
+

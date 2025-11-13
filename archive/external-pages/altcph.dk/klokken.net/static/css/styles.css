@@ -1,0 +1,189 @@
+/* Reset some basic elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0; /* Delimiting line */
+}
+
+.logo a {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333333;
+    text-decoration: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    position: relative;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid #e0e0e0; /* Delimiting line */
+}
+
+.main-nav ul li:first-child {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 1em;
+    padding: 5px 0;
+    display: block;
+}
+
+.main-nav ul li a:hover {
+    color: #007BFF; /* Change color on hover */
+}
+
+/* Dropdown Styling */
+.themes-dropdown:hover .dropdown {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+.dropdown li {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dropdown li:last-child {
+    border-bottom: none;
+}
+
+.dropdown li a {
+    color: #333333;
+}
+
+.dropdown li a:hover {
+    background-color: #f5f5f5;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    padding: 10px 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.9em;
+}
+
+.breadcrumb a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Styling */
+main {
+    padding: 20px;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #e0e0e0;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Ensure the main container behaves in row direction by default */
+#main-calculator-container {
+    display: flex;
+    flex-direction: row; /* Default to side-by-side */
+}
+
+/* Ensure content sections behave properly */
+#content-section-wrapper {
+    display: flex;
+    flex-direction: row; /* Default to row */
+    justify-content: space-between;
+    width: 100%;
+}
+
+#input-section {
+    flex: 1;
+    max-width: 350px;
+    background-color: #f0f0f0;
+    border: 2px solid #d3d3d3;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#result-section {
+    flex: 1;
+    max-width: calc(100% - 350px); /* The remaining space */
+    background-color: #ffffff;
+}
+
+
+/* Popular Section */
+#popular-section {
+    flex: 1; 
+    max-width: 350px;
+    background-color: #e6f6fa;
+    border: 1px solid darkblue;
+    padding: 15px;
+    margin-top: 20px; /* Adds space between sections */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Main navigation stacking vertically on smaller screens */
+    .main-nav ul {
+        flex-direction: column;
+    }
+
+    .main-nav ul li {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .main-nav ul li:first-child {
+        border-top: none;
+    }
+
+    /* Stack sections vertically on mobile screens */
+    #main-calculator-container {
+        flex-direction: column; /* Stack sections vertically */
+        gap: 20px; /* Adds space between stacked sections */
+    }
+
+    /* Make all sections full width on mobile */
+    #input-section,
+    #result-section,
+    #popular-section {
+        max-width: 100%; /* Full width for all sections */
+        margin-bottom: 20px; /* Space between sections */
+    }
+}

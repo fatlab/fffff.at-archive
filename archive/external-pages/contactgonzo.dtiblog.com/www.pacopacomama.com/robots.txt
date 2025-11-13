@@ -1,0 +1,6 @@
+Sitemap: http://www.1pondo.tv/static-seo/sitemap-pages.xml
+Sitemap: http://www.1pondo.tv/static-seo/sitemap-images.xml
+Sitemap: http://www.1pondo.tv/static-seo/sitemap-videos.xml
+User-agent: *
+Disallow: /sitemap.xml.gz
+Disallow: /pu/

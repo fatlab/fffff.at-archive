@@ -1,0 +1,93 @@
+.column {
+	float: left;
+	clear: left;
+	width: 960px;
+}
+
+.columnhalf {
+	float: left;
+	width: 475px;
+}
+
+#artist_name {
+	float: left;
+	color: #000;
+	width: 960px;
+	height: auto;
+	font-size: 120px;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-top: 3px;
+}
+
+#artist_pic {
+	width: 475px;
+	height: auto;
+	float: left;
+	margin-top: 6px;
+}
+
+#artist_music {
+	padding: 0px;
+	margin: 0px;
+}
+
+.info {
+	float: left;
+	width: 232px;
+	height: 45px;
+	background-color: #000;
+	opacity: 0.8;
+	text-decoration: none;
+}
+
+a:hover.info {text-decoration: none;}
+
+.audioname {
+	margin-left: 5px;
+	font-size: 18px;
+	color: #fff;
+	opacity: 1.0 !important;
+	text-align: left;
+}
+
+.getit {
+	margin-left: 5px;
+	font-size: 13px;
+	color: #fff;
+	opacity: 1.0 !important;
+	text-align: left;
+}
+
+.circleplayer {
+	float: left;
+	clear: left;
+	opacity: 0.5;
+	margin-top: -20px;
+	padding-left: 15px;
+}
+
+#artist_links {
+	float: left;
+	color: #000;
+	width: 475px;
+	font-size: 40px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-decoration: none;
+	margin-top: 0px;
+}
+
+#artist_links a {
+	text-decoration: none;
+}
+
+#artist_info {
+	float: left;
+	color: #000;
+	height: auto;
+	padding-top: 3px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}

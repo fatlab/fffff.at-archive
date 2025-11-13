@@ -1,0 +1,124 @@
+body{
+	font:13px Georgia,serif;
+	line-height:15px;
+}
+h1{
+	font-size: 24px;
+}
+a{
+	color: #004B91; /*2151C3*/
+#	text-decoration: none; 
+}
+a:hover{
+	color: #FF4B33; /*157DEC;*/
+	text-decoration: underline;
+}
+hr{
+	size: 1;
+	width: 100%;
+	style: solid;
+	color: silver;
+}
+table{
+	font-size: 13px;
+	width: 100%;
+	padding: 0px;
+	border-width: 1px;
+	border-color: silver;
+	border-style: solid;
+	background-color: white;;
+}
+table.mobile-table {
+	/* display: block; */
+    /* overflow-x: auto; */
+    /* white-space: nowrap; */
+}
+tr.mobile-row td {
+	white-space: nowrap;
+}
+td{
+	padding: 4px;
+	border-width: 0px;
+	border-color: silver;
+	border-style: solid;
+}
+.td_menu{
+	font-size: 13px;
+	border-width: 1px;
+	border-color: white;
+	border-style: solid;
+	background-color: #f6f6f6;
+}
+.div_map{
+	font-size: 13px;
+	border-width: 1px;
+	border-color: silver;
+	border-style: solid;
+}
+.table_menu{
+	font-size: 13px;
+	border-collapse: collapse;
+	width: 100%;
+	border-width: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+.td_page_tab{
+	font-size: 13px;
+	width: 100px;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: silver;
+	margin: 0px;
+#	padding: 0px;
+	text-align: center;
+}
+.td_page_blank{
+	font-size: 13px;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	border-color: silver;
+	margin: 0px;
+#	padding: 0px;
+}
+
+#.paging{
+#	font-size: 13px;
+#}
+
+.paging {
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: bold;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+/* =deadrop status
+------------------------------------------------------- */
+
+.dd-status {
+	border: 1px solid #666;
+	border-radius: 7px;
+	display: inline-block;
+	height: 7px;
+	width: 7px;
+}
+
+.dd-status:hover {
+	cursor: help;
+}
+
+.dd-status.status-0 {
+	background: #000;
+	border-color: #000;
+}
+
+.dd-status.status-1 {
+	background: #aaa;
+}
+
+.dd-status.status-2 {
+	background: #fff;
+}

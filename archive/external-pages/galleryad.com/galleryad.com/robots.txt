@@ -1,0 +1,19 @@
+# robots.txt for http://www.galleryAD.com/
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: Xombot
+Disallow: /
+
+User-agent: *
+Disallow: /cgi-bin/  # This is an infinite virtual URL space
+Disallow: /forms/ # This is an infinite virtual URL space
+Disallow: /movabletype/ # This is an infinite virtual URL space
+Disallow: /mt-static/ # This is an infinite virtual URL space
+Disallow: /productnews/ # This is an infinite virtual URL space
+Disallow: /propaganda/ # This is an infinite virtual URL space
+Disallow: /rADio/ # This is an infinite virtual URL space
+Disallow: /stats/ # This is an infinite virtual URL space
+Disallow: /store/ # This is an infinite virtual URL space
+Disallow: /villagesavant/ # This is an infinite virtual URL space

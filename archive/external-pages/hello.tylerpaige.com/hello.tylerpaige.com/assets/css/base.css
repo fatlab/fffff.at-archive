@@ -1,0 +1,409 @@
+/* Fonts */
+@import url(../../../fonts.googleapis.com/css@family=Knewave.css);
+@import url(../../../fonts.googleapis.com/css@family=Playfair+Display%253A400,400italic,700.css);
+/* colors */
+/* line 25, ../scss/base.scss */
+html {
+  font-size: 62.5%;
+}
+
+/* line 29, ../scss/base.scss */
+body {
+  font-size: 3.0rem;
+  background: #0a1510;
+  color: #1c0d10;
+  font-family: Playfair Display, Georgia, serif;
+}
+
+/* line 35, ../scss/base.scss */
+#container {
+  overflow: hidden;
+}
+
+/* line 38, ../scss/base.scss */
+h1 {
+  font-family: Knewave;
+  font-size: 45rem;
+}
+
+/* line 42, ../scss/base.scss */
+i {
+  font-style: italic;
+}
+
+/* line 45, ../scss/base.scss */
+#title {
+  -webkit-animation-name: fadeToGreen;
+  animation-name: fadeToGreen;
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+/* slides */
+/* line 56, ../scss/base.scss */
+#container > div {
+  width: 100%;
+  position: relative;
+}
+
+/* line 60, ../scss/base.scss */
+.text {
+  padding: 50px 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-size: 3.0rem;
+  line-height: 1.75em;
+}
+/* line 66, ../scss/base.scss */
+.text .wrapper {
+  width: 100%;
+  max-width: 750px;
+  margin: auto;
+  position: relative;
+}
+/* line 72, ../scss/base.scss */
+.text * + * {
+  margin-top: 2em;
+}
+
+/* line 76, ../scss/base.scss */
+.center {
+  display: table;
+  padding: 75px 0;
+}
+/* line 79, ../scss/base.scss */
+.center .wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 25%;
+}
+
+/* line 85, ../scss/base.scss */
+#splash {
+  background: #1c0d10;
+  min-height: 100%;
+}
+
+/* line 89, ../scss/base.scss */
+#description {
+  background: #1c0d10;
+  color: #37190e;
+  -webkit-animation-name: greenToRed;
+  animation-name: greenToRed;
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+/* line 100, ../scss/base.scss */
+#description h2 {
+  font-size: 6.0rem;
+  line-height: 1.25em;
+  text-align: center;
+}
+/* line 105, ../scss/base.scss */
+#description a, #description a:link, #description a:visited {
+  color: #005d35;
+}
+
+/* line 109, ../scss/base.scss */
+#next {
+  padding: 90px 0;
+  background: #0a1510;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFjMGQxMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMTUxMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1c0d10), color-stop(100%, #0a1510));
+  background-image: -moz-linear-gradient(#1c0d10, #0a1510 100%);
+  background-image: -webkit-linear-gradient(#1c0d10, #0a1510 100%);
+  background-image: linear-gradient(#1c0d10, #0a1510 100%);
+  color: #38000c;
+  text-align: center;
+  -webkit-animation-name: redToGreen;
+  animation-name: redToGreen;
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+/* line 123, ../scss/base.scss */
+#next h2 {
+  font-size: 9.0rem;
+}
+/* line 126, ../scss/base.scss */
+#next h3 {
+  font-size: 4.5rem;
+}
+/* line 129, ../scss/base.scss */
+#next h2 + p, #next p + h3 {
+  margin-top: 2em;
+}
+
+/* line 133, ../scss/base.scss */
+#archive {
+  background: #0a1510;
+  -webkit-animation-name: greenToRed;
+  animation-name: greenToRed;
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+/* line 143, ../scss/base.scss */
+#archive h2 {
+  font-size: 9.0rem;
+  text-align: center;
+  position: relative;
+  z-index: 20;
+}
+/* line 149, ../scss/base.scss */
+#archive ul {
+  position: relative;
+}
+/* line 152, ../scss/base.scss */
+#archive ul:after {
+  content: '';
+  width: 3px;
+  background: #172431;
+  display: block;
+  position: absolute;
+  top: -30px;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  z-index: 1;
+}
+/* line 164, ../scss/base.scss */
+#archive li {
+  position: relative;
+  z-index: 10;
+  background: #0a1510;
+  text-align: center;
+}
+/* line 170, ../scss/base.scss */
+#archive li + li {
+  margin-top: 3em;
+}
+/* line 173, ../scss/base.scss */
+#archive .date + p {
+  margin-top: 0.75em;
+}
+/* line 176, ../scss/base.scss */
+#archive a, #archive a:link, #archive a:visited, #archive a:active, #archive a:hover {
+  color: #b80027;
+  border-image: url("../img/wavy-border.png") 0 0 7 0 repeat;
+  border-bottom-width: 6px;
+  text-decoration: none;
+  -webkit-animation-name: redToGreen;
+  animation-name: redToGreen;
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+/* line 190, ../scss/base.scss */
+#archive .date {
+  font-size: 2.5rem;
+  line-height: 1.25em;
+  display: inline-block;
+  border: 12px solid #172431;
+  background: #172431;
+  position: relative;
+}
+/* line 198, ../scss/base.scss */
+#archive .misc {
+  font-size: 2.0rem;
+  line-height: 2.0rem;
+}
+
+/* Decorations */
+/* line 205, ../scss/base.scss */
+.circle {
+  border-radius: 100%;
+  -moz-border-radius: 100%;
+  border: 1px dashed #005d35;
+  position: absolute;
+  z-index: 100;
+  -webkit-transition: all .25s linear;
+  transition: all .25s linear;
+  cursor: pointer;
+}
+
+/* line 215, ../scss/base.scss */
+.circle.active {
+  transform: scale(0);
+  -webkit-transform: scale(0);
+}
+
+/* line 219, ../scss/base.scss */
+#splash .circle, #description .circle {
+  background: #1c0d10;
+}
+
+/* line 222, ../scss/base.scss */
+#archive .circle {
+  background: #0a1510;
+}
+
+/* Contrast animations */
+@keyframes fadeToGreen {
+  0% {
+    color: #0a1510;
+  }
+  25% {
+    color: #0a1510;
+  }
+  75% {
+    color: #005d35;
+  }
+  100% {
+    color: #0a1510;
+  }
+}
+@-webkit-keyframes fadeToGreen {
+  0% {
+    color: #0a1510;
+  }
+  25% {
+    color: #0a1510;
+  }
+  75% {
+    color: #005d35;
+  }
+  100% {
+    color: #0a1510;
+  }
+}
+@keyframes greenToRed {
+  0% {
+    color: #005d35;
+  }
+  25% {
+    color: #005d35;
+  }
+  75% {
+    color: #b80027;
+  }
+  100% {
+    color: #b80027;
+  }
+}
+@-webkit-keyframes greenToRed {
+  0% {
+    color: #005d35;
+  }
+  25% {
+    color: #005d35;
+  }
+  75% {
+    color: #b80027;
+  }
+  100% {
+    color: #b80027;
+  }
+}
+@keyframes redToGreen {
+  0% {
+    color: #b80027;
+  }
+  25% {
+    color: #b80027;
+  }
+  75% {
+    color: #005d35;
+  }
+  100% {
+    color: #005d35;
+  }
+}
+@-webkit-keyframes redToGreen {
+  0% {
+    color: #b80027;
+  }
+  25% {
+    color: #b80027;
+  }
+  75% {
+    color: #005d35;
+  }
+  100% {
+    color: #005d35;
+  }
+}
+@keyframes fadeOutFromGreen {
+  0% {
+    background: #0a1510;
+  }
+  75% {
+    background: #0a1510;
+  }
+  100% {
+    background: fadeOut(#0a1510, 100%);
+  }
+}
+@-webkit-keyframes fadeOutFromGreen {
+  0% {
+    background: #0a1510;
+  }
+  75% {
+    background: #0a1510;
+  }
+  100% {
+    background: fadeOut(#0a1510, 100%);
+  }
+}
+@keyframes fadeOutFromRed {
+  0% {
+    background: #1c0d10;
+  }
+  75% {
+    background: #1c0d10;
+  }
+  100% {
+    background: fadeOut(#1c0d10, 100%);
+  }
+}
+@-webkit-keyframes fadeOutFromRed {
+  0% {
+    background: #1c0d10;
+  }
+  75% {
+    background: #1c0d10;
+  }
+  100% {
+    background: fadeOut(#1c0d10, 100%);
+  }
+}
+@media (min-width: 951px) and (max-width: 1200px) {
+  /* line 372, ../scss/base.scss */
+  h1 {
+    font-size: 35rem;
+  }
+}
+@media (min-width: 701px) and (max-width: 950px) {
+  /* line 377, ../scss/base.scss */
+  h1 {
+    font-size: 25rem;
+  }
+}
+@media (min-width: 501px) and (max-width: 700px) {
+  /* line 382, ../scss/base.scss */
+  h1 {
+    font-size: 20rem;
+  }
+}
+@media (max-width: 500px) {
+  /* line 387, ../scss/base.scss */
+  h1 {
+    font-size: 10rem;
+  }
+}

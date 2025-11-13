@@ -1,0 +1,614 @@
+/*
+Theme Name: Wine
+Theme URI: http://themeforest.net/user/An-Themes/portfolio
+Description: Wine Masonry = Review WordPress News / Magazine. For more Premium WordPress Themes, check <a href="http://themeforest.net/user/An-Themes/portfolio">An-Themes</a> portfolio. More info regarding <strong>"Wine"</strong> Theme can be found <a href="http://themeforest.net/item/wine-masonry-review-wordpress-news-magazine/8259466">here</a>.
+Version: 1.9
+Author: An-Themes
+Author URI: http://themeforest.net/user/An-Themes/portfolio
+Tags: black, white, yellow
+License: GNU General Public License version 3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
+------------------------------------------------ 
+
+				0.	CSS Reset 
+				1.	Layout
+				2.  Header
+				3.  Home Content
+				4.  Entry Content
+				5.  Sidebar & Widgets
+				6.  Comments
+				7.  Contact Form
+				8.  Custom Pages ( Tag & Cat Index / etc. )
+			    9.  Footer
+			   10.  Shortcodes
+
+-------------------------------------------------- */
+ 
+
+/*-----------------------------------------------------------------------------
+----------------------------- 0 - CSS Reset -----------------------------------
+-----------------------------------------------------------------------------*/
+
+html,body,h1,h2,h3,h4,h5,h6,form,li,ul,ol,p,input,select,legend,textarea,fieldset { margin:0; padding:0;}
+ul, ol                     { list-style-type: none; }
+:focus                     { outline: 0;}
+ins                        { text-decoration: none; }
+del                        { text-decoration: line-through; }
+img                        { border:none;}
+
+h1,h2,h3,h4,h5,h6          { line-height:26px;}
+h1                         { font-size: 26px; }
+h2                         { font-size: 24px; }
+h3                         { font-size: 22px; }
+h4                         { font-size: 20px; }
+h5                         { font-size: 18px; }
+h6                         { font-size: 16px; }
+
+code, pre                  { background: url(images/bg_pre.png); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; line-height: 20px; font-size: 12px; display: block;  margin: 14px 0; overflow:hidden; padding: 21px 18px 18px 18px;  }
+code:hover, pre:hover      { overflow:scroll;}
+
+strong                     { font-weight: bold;}
+fieldset                   { border: none;}
+
+.clear                     { clear:both; display:block;}
+.sleft                     { float:left;}
+.sright                    { float:right;}
+iframe                     { border: 0 !important;}
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"] { -webkit-appearance: none; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 1 - Layout --------------------------------------
+-----------------------------------------------------------------------------*/
+
+*                          { margin: 0; padding: 0; /* < google chrome / Safari fixed issues os bad styling > */}
+html body                  { font: 14px/22px "Ruda", Helvetica, Arial, sans-serif; font-weight: 400; -webkit-text-size-adjust: none; overflow-x:hidden; background: url(images/bg.png); }
+header                     { width: 100%; height: auto; background-size: cover; background-position: center; position: relative; margin: 0 auto; }
+.header-content            { width: 100%; height: auto; }
+
+.main-header               { width: 100%; height: auto; margin: 0 auto; }
+.sub-header                { width: 100%; height: 50px; margin: 0 auto; }
+.top-wrap                  { width: 1200px; height: 50px; margin: 0 auto; padding: 0px 0px;}
+
+.wrap                      { width: 1110px; height: auto; margin: 0 auto 0 auto; padding: 30px 45px; }
+
+.wrap-fullwidth            { width: 1200px; height: auto; margin: 10px auto; padding: 0 0px;}
+.wrap-content              { width: 1175px; min-height: 600px; max-height: auto; margin: 0 0 0 20px; padding: 20px 0px;}
+
+.single-content, .page-content   { width: 780px; height: auto; float: left; margin-top: 5px;}
+.page-content              { margin-bottom: 30px;}
+
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 2 - Header --------------------------------------
+-----------------------------------------------------------------------------*/
+
+/* -- Popular Words -- */
+.popular-words             { width: auto; height: 30px; margin: 14px 10px 0 0;  float: left; text-align: left; font-size: 13px !important; }
+.popular-words a           { font-weight: bold; margin-left: 15px; font-size: 13px !important;}
+.popular-words a:hover     { text-decoration: underline;}
+.popular-words strong      { padding: 4px 10px; border-radius: 2px;}
+
+ /* -- Top social icons -- */
+ul.top-social              { width: auto; float: right; margin: 5px 0 0 0; }
+.top-social li             { float: left; line-height: 15px; padding: 11px 0 0 20px; font-size: 18px;}
+
+/* -- Logo -- */
+.logo                      { float: left; margin-top: 30px; margin-bottom: 20px; margin-left: 125px;}
+
+/* -- Ads Header -- */
+.header-728                 { float: right; margin: 16px 0 9px 0;}
+/* -- Ads Header -- */
+.header-468                 { float: right; margin: 15px -15px 10px 0; display: none;}
+
+/* -- Search -- */
+#searchform2               { height: auto; float: right; margin: 10px 0 0 0;  border-radius: 5px; }
+#searchform2 #s            { width: 180px; font-weight: bold; height: 30px; font-family: 'Ruda', sans-serif; float: left; border: none; padding: 1px 20px 0 20px; font-size: 13px; margin-right: -2px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; }
+#searchform2 .buttonicon   { width: 34px; height: 31px; background:url(images/btn_search.png) 9px 8px no-repeat; float: right; border: none; text-align: center; font-weight: bold; font-size: 0px; border-radius: 2px;}
+#searchform2 .buttonicon:hover   { cursor: pointer; opacity:.95; }
+
+/* -- Live Search -- */
+ul.dwls_search_results     { width: 252px !important; }
+ul.search_results li.post_with_thumb a { width: 150px !important; float:left; margin-top: 3px !important; margin-bottom: 0px !important; }
+ul.search_results li       { padding: 7px 10px 5px 10px !important; font-size: 12px !important; line-height: 18px !important; }
+
+/* -- Top Header Menu --
+##################### */
+.jquerycssmenu             { font-size: 16px; font-weight: 700; float: left; margin: 0 0 0 0; position: relative;}
+.jquerycssmenu ul li       { position: relative; display: inline; float: left; padding: 0; }
+.jquerycssmenu ul li i     { padding: 0 3px; font-size: 18px;}
+
+/*Top level menu link items style*/
+.jquerycssmenu ul li a     { text-transform: uppercase; display: block; padding: 8px 12px 4px 13px !important; margin-right: 3px; line-height: 38px; }
+
+/*1st sub level menu*/
+.jquerycssmenu ul li ul    { border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; border-top-right-radius: 3px; position: absolute; z-index: 201; margin-top: 0px; margin-left: 0px; padding: 10px 0; display: block; visibility: hidden; -moz-box-shadow: 0 5px 3px rgba(0,0,0,0.2); -webkit-box-shadow: 0 5px 3px rgba(0,0,0,0.2); box-shadow: 0 5px 3px rgba(0,0,0,0.2); }
+.jquerycssmenu ul li ul:hover { /*display: none;*/}
+.jquerycssmenu ul li ul a:hover {border-radius: 0; }
+.jquerycssmenu ul li ul li ul a:hover {border-radius: 0; }
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.jquerycssmenu ul li ul li { display: list-item; float: none; font-weight: 700;}
+.jquerycssmenu ul li ul li a { padding: 8px 0 !important; }
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.jquerycssmenu ul li ul li ul { top: 0; margin:-10px 0 0 -1px; z-index: 100; }
+
+/* Sub level menu links style */
+.jquerycssmenu ul li ul li a { font-size: 12px; height: auto; line-height: 1.4em; width: 160px; margin: 0; padding-left: 18px !important; }
+
+.jquerycssmenu ul li ul li a:hover { /*sub menus hover style*/ }
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+.downarrowclass             { position: absolute; top: 36px; left: 45%; }
+.rightarrowclass            { position: absolute; top: 14px; right: 18px; }
+.jquerycssmenu ul li.current-menu-ancestor a .downarrowclass { display: none;}
+.jquerycssmenu ul li.current-menu-item a .downarrowclass { display: none;}
+.jquerycssmenu ul li.current_page_item a .downarrowclass { display: none;}
+
+/*Responsive */
+.mobileMenu                 { display: none;}
+
+/* -- Sticky Header -- */
+.stickytop                  { position: fixed; width: 100%; left: 0; top: 0; z-index: 999999 !important; border-top: 0; } 
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 3 - Home Content --------------------------------
+-----------------------------------------------------------------------------*/
+
+/* -- Home Left Line with circles -- */
+.big-circle                { width: 24px; height: 24px; border-radius: 50%; margin-left: -24px; float: left; }
+.circle                    { width: 8px; height: 8px; border-radius: 50%; margin: 8px 0 0 8px;}
+.circle-title h3           { padding: 10px 0 0 23px; text-transform: uppercase; font-size: 12px; text-shadow: 1px 1px 0 rgba(0,0,0,0.2); letter-spacing:2px; word-spacing:5px;  }
+
+/* -- Home blog posts -- */
+#featured-articles         { margin-bottom: 30px;}
+#articles, #featured-articles { width: 100%; height: auto; margin-left: 3px; }
+.masonry .item_an, .masonry .item_an2    { width: 273px; height: auto; float: left; margin: 0 0 20px 20px; border-radius: 2px; overflow: hidden;}
+.item_an.big, .item_an2.big                     { width: 566px; }
+.masonry .item_an img.home-img, .masonry .item_an2 img.home-img   { width: 100%; height: auto; margin-bottom: -7px;}
+.masonry .item_an div.box, .masonry .item_an2 div.box   { padding: 20px;}
+.masonry .item_an h2, .masonry .item_an2 h2  { font-size: 20px; font-weight: 700; }
+.masonry .item_an p, .masonry .item_an2 p    { padding-top: 10px; font-size: 13px; }
+
+#articles .review-box-nr, #featured-articles .review-box-nr   { width: 30px; height: 30px; border-radius: 50%; line-height: 30px; font-size: 12px; text-align: center; font-weight: bold; margin: 15px 15px 0 0; float: right;}
+#articles div.review-line, #featured-articles div.review-line { margin-top: 0px; position: relative; margin-bottom: 0px; }
+#articles div.post-likes, #featured-articles div.post-likes   { width: auto; height: 22px; display: inline-block; border-radius: 2px; padding: 1px 10px; float: left; margin: 10px 0 -50px 10px; position: relative; z-index: 101; }
+#articles span, #featured-articles span { font-size: 12px;}
+#articles .home-meta, #featured-articles .home-meta       { margin-top: 10px; padding-top: 10px;}
+#articles .an-display-time, #featured-articles .an-display-time { float: left; font-size: 12px; padding: 0 15px 0 0;}
+#articles .an-display-comm, #featured-articles .an-display-comm { float: right; font-size: 12px; padding: 0 0 0 0;}
+
+/* -- Sticky Posts style -- */
+#articles .sticky          { background-color: #f1f1f1 !important; z-index: 101 !important;}
+
+/* -- Hover Image -- */
+a.imgWrap                  { display: inline-block; }
+img.home-img:hover, a.imgWrap:hover img.home-img { opacity: 0.4; }
+ 
+/* -- infinite scroll Pagination -- */
+#infscr-loading            { width: 200px; height: auto; padding: 15px 0; position: fixed; z-index: 9999; left: 0; bottom: 50px; text-align: center; font-weight: bold;}
+#infscr-loading span       { padding: 2px 10px; font-size: 12px;}
+
+/* -- Pagination -- */
+.wp-pagenavi { width: auto; float: left; font-size: 15px; margin-top: 50px; margin-left: 22px;}
+.wp-pagenavi a, .wp-pagenavi span  { display: inline-block; padding:5px 13px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;  list-style: none;  margin: 0; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; margin-right:1px; font-size:12px; font-weight:bold; }
+.wp-pagenavi a:hover { border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; }
+.wp-pagenavi span.current  { border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;}
+.wp-pagenavi .pages        { display:none; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 4 - Entry Content -------------------------------
+-----------------------------------------------------------------------------*/
+
+img.attachment-thumbnail-single-image { width: 780px; height: auto;}
+.entry-top                 { padding: 0 0 30px 0;}
+h1.article-title           { font-size: 36px; font-weight: 600; line-height: 44px; }
+h1.page-title              { font-size: 36px; font-weight: 600; line-height: 44px; padding-bottom: 10px; margin-bottom: 20px;}
+.article-meta              { width: auto; height: 30px; font-weight: bold; float: left; font-size: 14px; line-height: 38px; padding-right: 3px; margin-top: -10px;}
+.article-meta a:hover      { text-decoration: underline;}
+.single-share              { float: left; margin: 10px 0 0 0;}
+.single-gallery            { margin-bottom: 25px;}
+.single-gallery img        { margin: 0 0 -8px 0 !important; }
+.single-gallery img:hover  { opacity:.9;-webkit-transform:scale(1.1);-moz-transform:scale(1.1);transform:scale(1.1);-webkit-animation:scaleUp 1s ease-in-out forwards;-moz-animation:scaleUp 1s ease-in-out forwards;animation:scaleUp 1s ease-in-out forwards}@-webkit-keyframes scaleUp{to{-webkit-transform:scale(1)}}@-moz-keyframes scaleUp{to{-moz-transform:scale(1)}}@keyframes scaleUp{to{transform:scale(1)}}
+.single_iframe             { margin-bottom: 25px;}
+.attachment-thumbnail-single-image { margin-bottom: 25px;}
+
+/* -- Entry bottom -- */
+.entry-bottom              { width: 780px; height: auto; margin: 20px auto 80px auto;}
+.single-content h3.title   { font-weight: normal; border-radius: 2px; font-size: 13px; text-transform: uppercase;  padding: 2px 10px 1px 10px; margin: 5px 0 20px 0; }
+.single-content h3.title i { float: right; border-style: solid; border-width: 14px 5px 14px 10px; margin: -2px -15px -5px 0px; height: 1px; width: 0px; }
+.single-content ul.article_list li img { width: 106px; height: 55px; float: left; border-radius: 2px; margin: 0 15px 0 0; }
+
+/*-- Entry button -- */
+.entry-btn                 { display: inline-block; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; font-weight: bold;  padding: 1px 10px; text-align: center; margin: 5px 5px 0 0; background-color: #e76b33; border: 1px solid #e76b33; color: #FFF !important; } 
+.entry-btn a               { color: #FFF !important; }
+.entry-btn a:hover         { background: inherit !important; text-decoration: underline;}
+
+/* -- About Author -- */
+.author-meta               { width: 100%; height: auto; padding: 30px 0; margin: 0 0 20px 0; background: url(http://ilarialab.com/wp-content/themes/wine-wp/images/bg-header.png) repeat-x; }
+.author-meta img.avatar    { width: 100px; height: 100px; float: left; width: inherit; border-radius: 50% !important; }
+.author-info               { width: auto; height: auto; margin: 0px 0 -15px 130px;}
+.author-meta .entry        { padding: 0 50px !important;}
+.author-meta strong        { text-transform: uppercase; padding-right: 10px;}
+.author-info p             { margin: 5px 0 0 0; }
+.author-info a.author-link { text-decoration: underline; padding-left: 8px; font-size: 13px;}
+a.author-nrposts           { float: left; width: 26px; height: 26px; margin-right: -30px; position: relative; display: inline-block; text-align: center; border-radius: 13px; font-size: 12px; line-height: 26px; position: relative; }
+
+/* -- Prev and Next articles --*/
+.prev-articles             { width: auto; height: auto; padding: 15px 30px 20px 30px; }
+.prev-articles h2          { font-size: 22px; font-weight: normal; line-height: 28px; }
+
+/* -- Typography -- */
+.entry                     { width: auto; height: auto; padding: 0 0 20px 0; }
+.entry p                   { padding: 10px 0;}
+.entry h1, .entry h2, .entry h3, .entry h4, .entry h5, .entry h6 { margin-top: 35px; font-weight: normal; text-decoration: underline; }
+.entry strong              { font-weight: bold; text-decoration: underline;}
+
+blockquote                 { font-size: 16px; line-height: 24px; text-align: center; font-weight: normal; margin:40px; background:url(images/quotes.png) no-repeat top left; padding:0 0 0 35px;}
+blockquote p               { padding-right: 25px !important; background:url(images/quotes.png) no-repeat bottom right; color: #000; font-style: italic; }
+
+/* -- Responsive Images -- */
+.entry iframe              { max-width: 100% !important;}
+.entry img, .wp-caption    { max-width: 100%; border-radius: 3px; }
+.entry img,
+img[class*="align"],
+img[class*="wp-image-"],
+img[class*="attachment-"] { height: auto; }
+img.size-full,
+img.size-large,
+.wp-post-image,
+.post-thumbnail img { height: auto; max-width: 100%; }
+img.alignleft, .alignleft img   { width: inherit !important;}
+img.alignright, .alignright img { width: inherit !important;}
+.alignleft                 { float: left; margin: 20px 20px 10px 0px; }
+.alignright                { float: right; margin: 20px 0px 10px 20px; }
+.aligncenter               { display: block; margin-left: auto; margin-right: auto;}
+.wp-caption img[class*="wp-image-"] { display: block; margin: 0; }
+.wp-caption-text { font-weight: bold; font-size: 12px; margin-top: -7px; padding: 0 10px 10px 10px; text-align: center; color: #888;}
+/* -- End res. img -- */
+
+/* -- Lists -- */
+.entry th                  { padding: 0; margin-right: 2px; }
+.entry li                  { padding:3px 0 3px 5px; }
+.entry ul                  { margin:20px 40px; list-style-type: square;}
+.entry ol                  { margin:20px 40px; list-style-type: decimal;}
+
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 5 - Sidebar & Widgets ---------------------------
+-----------------------------------------------------------------------------*/
+
+/* -- Sidebar -- */
+.sidebar                   { width: 300px; height: auto; float: right;  margin: 0 0 35px 0; }
+.sidebar .widget { margin-bottom: 40px; width: 100%; }
+.sidebar .widget h3.title { font-weight: normal; border-radius: 2px; font-size: 13px; text-transform: uppercase;  padding: 2px 10px 1px 10px;  margin: 5px 0 20px 0; }
+.sidebar .widget h3.title i { float: right;  border-style: solid; border-width: 14px 5px 14px 10px; margin: -2px -15px -5px 0px; height: 1px; width: 0px; }
+
+/* -- Review Widgets -- */
+.review-line      { width: 100%; height: 7px; margin-bottom: 5px;}
+.review-score     { height: 7px;}
+.review-box-nr    { width: 30px; height: 27px; font-size: 12px; text-align: center; font-weight: bold; float: right;   }
+
+/* -- Social Count -- */
+.widget_socialcountplus { margin-bottom: 20px !important; }
+
+/* -- FeedBurner -- */
+#newsletter-form input { width:100%; }
+#newsletter-form input.newsletter  { height:30px; font-size: 12px; text-align: center; margin-bottom: -3px; border-top-left-radius: 2px; border-top-right-radius: 2px; }
+#newsletter-form input.newsletter-btn  { width:302px; font-size: 10px; font-weight: 600; text-transform: uppercase; padding: 5px 0 4px 0; margin: 0 0 0 0; text-align: center; border: none; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; }
+#newsletter-form input.newsletter-btn:hover { opacity:.85;  cursor: pointer; }
+
+/* -- Article widget -- */
+ul.article_list          { width: 100%; height: auto; border-radius: 2px;}
+.article_list li         { width: auto; height: auto; padding: 10px 0; margin:0 10px 0 10px; }
+.article_list li:last-child {  border: none;  }
+.sidebar-middle .article_list li img     { width: 180px; height: 93px; float: left; border-radius: 2px; padding-bottom: 10px; }
+.sidebar .article_list li img     { width: 280px; height: 145px; float: left; border-radius: 2px; padding-bottom: 10px;}
+.article_list li h3      { font-size: 12px; line-height: 18px; }
+.article_list li .an-display-author { float: left; font-size: 10px; padding: 0 15px 0 0; }
+.article_list li .an-display-time   { float: left; font-size: 10px; padding: 0 15px 0 0; }
+.article_list li .an-display-comm    { float: left; font-size: 10px; padding: 0 15px 0 0;}
+
+.sidebar-middle .article_list li .media-icon     { width: 30px; height: 30px; background:url(images/video-icon-small.png); margin: 32px 0 0 75px; position: relative; z-index: 101; }
+.sidebar .article_list li .media-icon     { width: 50px; height: 50px; background:url(images/video-icon.png); margin: 47px 0 0 115px; position: relative; z-index: 101;}
+
+/* -- Custom Text -- */
+.widget-text             { }
+.widget_text img           { max-width: 300px !important;}
+.widget_text select { width: 100%; padding: 10px 20px;}
+.widget_text option { padding: 0 10px;}
+
+/* -- Widget RSS -- */
+.widget_rss              { }
+.widget_rss h3 a         { color: #FFF;}
+.widget_rss h3 a img     { width: 10px; height: 10px;}
+.widget_rss li { background: url(images/li_minus_gold.png) no-repeat 0 16px;  border-bottom: 1px solid #f0eee9; display: block;  padding: 10px 0 10px 20px; }
+
+
+/* -- Default Tags -- */
+div.widget_tag_cloud     { display: inline-block; margin-bottom: 10px;}
+div.tagcloud             { }
+div.tagcloud a           { float: left; display: inline-block; padding:3px 10px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;  list-style: none;  border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; margin:0 2px 2px 0; font-size:11px !important; font-weight:400;}
+
+/* -- Default Search -- */
+div.widget_search #searchform2 { float: left; }
+
+/* -- Recent Entries -- */
+div.widget_recent_entries ul { }
+.widget_recent_entries li {  background: url(images/li_minus_green.png) no-repeat 0 16px; border-bottom: 1px solid #f0eee9; display: block;  padding: 10px 0 10px 20px; }
+.widget_recent_entries li:last-child {  border: none;  }
+
+/* -- Recent Comments -- */
+div.widget_recent_comments ul { }
+.widget_recent_comments li { background: url(images/li_minus_black.png) no-repeat 0 16px; border-bottom: 1px solid #f0eee9; display: block; padding: 10px 0 10px 20px; }
+.widget_recent_comments li:last-child { border: none; }
+
+/* -- Archives and Nav menu widget -- */
+div.widget_archive ul, div.widget_nav_menu ul { }
+.widget_archive li, .widget_nav_menu li { background: url(images/li_minus_gold.png) no-repeat 0 16px;  border-bottom: 1px solid #f0eee9; display: block;  padding: 10px 0 10px 20px; }
+.widget_archive li:last-child, .widget_nav_menu li:last-child { border: none;  }
+div.widget_archive select { width: 100%; padding: 10px 20px;}
+div.widget_archive option { padding: 0 10px;}
+div.widget_nav_menu li ul.sub-menu { margin: -5px 0 -10px 10px; padding: 10px 0 0 0;}
+div.widget_nav_menu li ul.sub-menu li { padding: 10px 0 10px 20px; }
+
+/* -- Meta and Pages widget -- */
+div.widget_meta ul, div.widget_pages ul { }
+.widget_meta li, .widget_pages li { background: url(images/li_minus_black.png) no-repeat 0 16px; border-bottom: 1px solid #f0eee9; display: block; padding: 10px 0 10px 20px; }
+.widget_meta li:last-child, .widget_pages li:last-child { border: none; }
+
+/* -- Categories -- */
+div.widget_categories ul { }
+.widget_categories li { background: url(images/li_minus_gold.png) no-repeat 0 16px; border-bottom: 1px solid #f0eee9; display: block; padding: 10px 0 10px 20px; }
+.widget_categories li:last-child { border: none;  }
+div.widget_categories select { width: 100%; padding: 10px 20px;}
+div.widget_categories option { padding: 0 10px;}
+.widget_categories li ul.children { margin: -5px 0 -10px -5px; padding: 10px 0 0 0;}
+.widget_categories li ul.children li { padding: 10px 0 10px 20px; }
+
+/* -- Calendar -- */ 
+#wp-calendar {width: 100%;}
+#wp-calendar caption { text-align: center; font-weight: bold; margin-bottom: 10px; color: #333; font-size: 15px; padding: 0 15px; }
+#wp-calendar thead { font-size: 10px; }
+#wp-calendar thead th { padding-bottom: 10px; }
+#wp-calendar tbody { color: #aaa; }
+#wp-calendar tbody td { background: #f5f5f5; border: 1px solid #fff; text-align: center; padding:8px;}
+.sidebar-middle #wp-calendar tbody td { padding:5px;}
+#wp-calendar tbody td:hover { background: #fff; }
+#wp-calendar tbody td#today { background-color: #222; color: #FFF; border-radius: 4px;}
+#wp-calendar tbody .pad { background: none; }
+#wp-calendar tfoot #next { font-size: 10px; text-transform: uppercase; text-align: right; }
+#wp-calendar tfoot #prev { font-size: 10px; text-transform: uppercase; padding-top: 10px; }
+
+/* -- Mode default widgets -- */
+.sticky {}
+.gallery-caption {}
+.bypostauthor {}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+/* CSS Style for Tables */
+tbody tr:nth-of-type(2n) {background-color: #f0f0f0 !important;}
+th {background-color:#222;font-weight:bold;color:#fff; }
+tbody tr td:nth-of-type(1) {font-weight: bold;}
+tbody td { padding: 2px 0;}
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 6 - Comments Form -------------------------------
+-----------------------------------------------------------------------------*/
+
+.nocomments, .nopassword, .must-log-in  { text-align: center; padding: 15px 0 0 0; }
+
+ul.comment                    { width: 780px; margin: 0 0 50px 0; }
+ul.comment li                 { display: block; margin: 0 0 20px 0; padding: 20px 20px 0 20px; border-radius: 3px; overflow: hidden; }
+ul.comment li span.comm-avatar    { width: 20px; height: 20px; float: left; margin-right: 5px;}
+ul.comment li span.comment-author { margin-right: 15px; font-weight: bold; text-transform: uppercase; font-size: 15px; float: left;}
+ul.comment li span.comment-date { float: left; opacity: 0.5;}
+.comment-body                 { padding-bottom: 5px;}
+ul.comment li ul.children     { margin: 20px 0 0 0;}
+
+/* -- Comments -- */
+.comments                     { width: 780px; float: left;  height: auto; margin: 0 0 0 0;}
+.comments h3.comment-reply-title  { width: auto; height: 26px; font-weight: normal; border-radius: 2px; font-size: 13px; text-transform: uppercase;  padding: 2px 10px 1px 10px; margin: 5px 0 0 0; }
+.comments h3.comment-reply-title i { float: right; border-style: solid; border-width: 14px 5px 15px 10px; margin: -2px -15px -5px 0px; height: 0px; width: 0px; }
+.comments h3.comment-reply-title a { font-weight: bold; text-decoration: underline;}
+.comments h3.comment-reply-title a#cancel-comment-reply-link { text-decoration: none;}
+
+/* -- Comment Form -- */
+.comment-notes                { display: none;}
+#commentform                  { padding: 0 6px 20px 0; font-size:11px;}
+#commentform #author, #comment, #email { width:100%; height:40px; font-size: 14px; font-weight: bold; border-radius: 3px;}	
+#commentform #sendemail       { border: 1px solid #FFF; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; font-weight: bold;  padding: 9px 21px; text-align: center; margin: 15px 5px -10px 0;}
+#commentform #sendemail:hover { opacity:.85;  cursor: pointer; }
+#commentform input, #comment  { padding-left: 5px;  }
+#commentform textarea         { -moz-resize:vertical; resize:vertical;}
+#commentform #comment:hover   { height: 100px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;}
+#commentform label            { display: block; margin-top:10px; font-size:11px; font-weight: bold; }
+#commentform label span       { font-size: 15px; }
+
+/* -- Comment Cols -- */
+.one_half_c, .one_half_last_c { float:left; width:48%; margin-right:4%; }
+.one_half_last_c              { margin-right:0;}
+.one_full_c                   { float:left; width:100%;}
+
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 7 - Contact Form --------------------------------
+-----------------------------------------------------------------------------*/
+
+/* -- Contact Form -- */
+#contactform                  { margin:0 0 10px 0; font-size:11px;}
+#contactform #contactName, #contactform #emaill, #contactform #subject { width:98%; height:40px; font-size: 14px; font-weight: bold; border-radius: 3px;}	
+#contactform #subject         { width: 99%;}
+#contactform textarea         { width: 99%; height:200px; line-height:22px; font-size: 14px; border-radius: 3px; font-weight: bold; -moz-resize:vertical; resize:vertical;} 
+#contactform .sendemail       { border-radius: 3px; border: 1px solid #FFF; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; font-weight: bold;  padding: 7px 21px; text-align: center; margin: 25px 5px -10px 0;}
+#contactform .sendemail:hover { opacity:.85;  cursor: pointer; }
+#contactform input, #contactform textarea   { padding-left: 5px;  }
+#contactform label            { display: block; margin-top:10px; font-size:11px; font-weight: bold; }
+#contactform label span       { font-size: 15px; }
+#contactform label.error      { font-size:11px; text-align: right; margin-top:-20px; padding-right:10px;  font-weight: bold; }
+
+/* -- Contact Form 7 Plugin -- */
+form.wpcf7-form span.wpcf7-radio input { width: auto !important; display: inline-block !important; height: auto !important;}
+form.wpcf7-form span.wpcf7-checkbox input { width: auto !important; display: inline-block !important; height: auto !important;}
+form.wpcf7-form               { margin:0 0 40px 0; font-size:11px;}
+form.wpcf7-form input         { width: 98%; height:40px; font-size: 14px; font-weight: bold; border-radius: 3px; padding-left: 2%; }
+form.wpcf7-form textarea      { width: 98%; height:200px; line-height:22px; font-size: 14px; border-radius: 3px; font-weight: bold; -moz-resize:vertical; resize:vertical; padding-left: 2%;} 
+form.wpcf7-form input.wpcf7-submit       { width: inherit !important; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; font-weight: bold;  padding: 6px 20px; text-align: center; }
+form.wpcf7-form input.wpcf7-submit:hover { opacity:.85;  cursor: pointer; }
+form.wpcf7-form img.ajax-loader { width: inherit !important;}
+form.wpcf7-form .wpcf7-validation-errors { margin-top: -75px; margin-left: -10px; position: relative; border: none; }
+form.wpcf7-form span.wpcf7-form-control-wrap { width: 100% !important;}
+
+/*-----------------------------------------------------------------------------
+----------------------------- 8 - Custom Pages --------------------------------
+-----------------------------------------------------------------------------*/
+
+/* -- Tag & Category Index -- */
+#mcTagMap .tagindex h4, #sc_mcTagMap .tagindex h4 { font-size: 14px; font-weight: bold; }
+#mcTagMap .tagindex ul li span.mctagmap_count { float: right !important; opacity: 0.5;}
+#mcTagMap .tagindex ul li, #sc_mcTagMap .tagindex ul li { font-size: 14px; }
+#mcTagMap .holdleft, #sc_mcTagMap .holdleft { width: 179px !important; }
+
+/* -- bbPress Plugin compatibility -- */
+.bbpress img.avatar           { width: inherit; }
+
+/* --- Review Plugin --- */
+.review-final-score h3     { margin-top:7px !important;}
+.entry h2.review-box-header { text-decoration: none;}
+.entry .review-final-score h3 { text-decoration: none; }
+.entry .review-final-score h4 { text-decoration: none; }
+.entry .review-item h5   { text-decoration: none; font-weight: bold;}
+.review-short-summary p  { font-size: 13px; }
+
+/* -- Front-end Submission Form -- */
+.ap-plugin-link-wrapper           { display: none;}
+.ap-form-field-wrapper select     { height: 40px; border:2px solid #d5d6d8; color:#333; }
+form.ap-form-wrapper div.ap-form-field input { height: 40px; border-radius: 3px; border:2px solid #d5d6d8; color:#333; }
+form.ap-form-wrapper label        { font-size:11px !important; font-weight: bold; }
+.ap-form-error-message            { font-size:11px; font-weight: bold;}
+form.ap-form-wrapper div.ap-form-error-message { margin-bottom: 20px !important;}
+form.ap-form-wrapper #ap_form_content_editor { -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.1); -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.1); box-shadow: 0 1px 5px rgba(0,0,0,0.1);  font-weight: bold; border: 1px solid #eae9e9; }
+#wp-ap_form_content_editor-editor-tools  { margin-top: -35px !important; }
+.ap-form-field-wrapper            { margin-bottom: 30px; margin-top: 20px;}
+.ap-form-wrapper h2               { font-size: 16px; display: none;}
+input.ap-form-submit-button       { border-radius: 3px; background-color: #222 !important; border: 1px solid #222 !important; color: #FFF !important; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; font-weight: bold;  padding: 3px 25px; text-align: center; }
+input.ap-form-submit-button:hover { opacity:.85;  cursor: pointer; }
+.ap-post-submission-message       { box-shadow: 0px 0px 1px #fafafa, 0 2px 2px #fafafa inset; background:#e9f6e3; color:#93c088;
+                                    border:1px solid #ceedc4; padding:15px; margin:15px 0; -moz-border-radius:2px; border-radius:2px; font-weight: bold; text-align: center;}
+
+
+/*-----------------------------------------------------------------------------
+------------------------------ 9 - Footer -------------------------------------
+-----------------------------------------------------------------------------*/
+
+footer                        { width: 100%; height: auto; bottom: 0; }
+.social-section               { width: 100%; height: 75px; text-align: center;}
+.wrap-footer                  { width: 1200px; height: auto; margin: 0 auto; padding: 40px 0; }
+
+/* -- Copyright -- */
+.copyright                    { width: 750px; height: auto; margin: 0 auto; padding: 20px 0 0 0; text-align: center; }
+/* -- footer banner -- */
+.footer-banner-970            { width: 970px; height: 90px; margin: 0 auto;}
+.footer-banner-728            { width: 728px; height: 90px; margin: 0 auto; display: none;}
+.footer-banner-468            { width: 468px; height: 60px; margin: 0 auto; display: none;}
+
+/* -- Footer Social Icons -- */
+ul.footer-social              { margin-left: auto; margin-right: auto; }
+ul.footer-social li           { height: 40px; font-size: 24px; display: inline-block; margin: 27px 5px 0 5px; }
+ul.footer-social li a         { text-align: center; padding: 5px 10px; } 
+
+/* -- Back to Top -- */
+#back-top                     { position: fixed; bottom: 10px; right: 10px; z-index:9999; }
+#back-top a                   { width: 40px; display: block;  }
+#back-top span                { width: 40px; height: 40px; display: block; background: url(images/top.png) -5px -5px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s; }
+
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 10 - Shortcodes -------------------------------------
+-----------------------------------------------------------------------------*/
+
+/* -- Buttons  -- */
+.simplebtn, .smallbtn  { display: inline-block; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; font-weight: bold;  padding: 6px 20px; text-align: center; margin: 10px 10px 0 0; }
+.smallbtn          { padding: 0px 10px; font-weight: 600; }
+.smallbtn a        { color: #FFF !important; }
+.smallbtn a:hover  { background: inherit !important; text-decoration: underline;}
+.simplebtn:hover   { opacity:.85; text-decoration: none !important; }
+.simplebtn i       { padding-right: 5px;}
+a.simplebtn.blue:hover  { background-color: #0099cc !important; color: #FFF !important;}
+a.simplebtn.green:hover { background-color: #7dc34d !important; color: #FFF !important;}
+a.simplebtn.green2:hover { background-color: #0fbe7c !important; color: #FFF !important;}
+a.simplebtn.orange:hover{ background-color: #e76b33 !important; color: #FFF !important;}
+a.simplebtn.gold:hover  { background-color: #ffd62c !important; color: #FFF !important;}
+a.simplebtn.red:hover { background-color: #cc3333 !important; color: #FFF !important;}
+a.simplebtn.pink:hover  { background-color: #d63f72 !important; color: #FFF !important; }
+a.simplebtn.black:hover { background-color: #3b3b3b !important; color: #FFF !important; }
+.simplebtn.blue    { background-color: #0099cc; border: 1px solid #0099cc !important; color: #FFF !important; text-shadow: 0 -1px 0 #0099cc;}
+.simplebtn.green   { background-color: #7dc34d; border: 1px solid #7dc34d !important; color: #FFF !important; text-shadow: 0 -1px 0 #7dc34d;}
+.simplebtn.green2  { background-color: #0fbe7c; border: 1px solid #0fbe7c !important; color: #FFF !important; text-shadow: 0 -1px 0 #0fbe7c;}
+.simplebtn.orange  { background-color: #e76b33; border: 1px solid #e76b33 !important; color: #FFF !important; text-shadow: 0 -1px 0 #e76b33;}
+.simplebtn.gold    { background-color: #ffd62c; border: 1px solid #ffd62c !important; color: #FFF !important; text-shadow: 0 -1px 0 #ffd62c;}
+.simplebtn.red     { background-color: #cc3333; border: 1px solid #cc3333 !important; color: #FFF !important; text-shadow: 0 -1px 0 #cc3333;}
+.simplebtn.pink    { background-color: #d63f72; border: 1px solid #d63f72 !important; color: #FFF !important; text-shadow: 0 -1px 0 #d63f72;}
+.simplebtn.black   { background-color: #3b3b3b; border: 1px solid #3b3b3b; color: #FFF !important; text-shadow: 0 -1px 0 #3b3b3b;}
+
+
+/* -- Columns -- */
+.one_half, .one_half_last         { float:left;width:48%; margin-bottom:10px; margin-right:4%; }
+.one_half_last                    { margin-right:0;}
+
+.one_third, .one_third_last       { float:left; width:30%; margin-bottom:10px; margin-right:5%; }
+.one_third_last                   { margin-right:0;}
+
+.one_fourth, .one_fourth_last     { float:left; width:23.5%; margin-bottom:10px; margin-right:2%; }
+.one_fourth_last                  { margin-right:0;}
+
+/* -- Boxes info  -- */
+.boxinfo                          { box-shadow: 0px 0px 1px #fafafa, 0 2px 2px #fafafa inset; background:#ddecf5; color:#99b1c1; 
+                                    border:1px solid #c3d9e5; padding:15px; margin:15px 0; -moz-border-radius:2px; border-radius:2px; font-weight: bold; text-align: center;}
+.boxsucces                        { box-shadow: 0px 0px 1px #fafafa, 0 2px 2px #fafafa inset; background:#e9f6e3; color:#93c088;
+	                                border:1px solid #ceedc4; padding:15px; margin:15px 0; -moz-border-radius:2px; border-radius:2px; font-weight: bold; text-align: center;}
+.boxerror                         { box-shadow: 0px 0px 1px #fafafa, 0 2px 2px #fafafa inset;	background:#ffe3e3; color:#cf9494;
+	                                border:1px solid #fdcdcd; padding:15px; margin:15px 0; -moz-border-radius:2px; border-radius:2px; font-weight: bold; text-align: center;}
+.boxnotice                        { box-shadow: 0px 0px 1px #fafafa, 0 2px 2px #fafafa inset;	background:#fcf9da; color:#b3ad77;
+	                                border:1px solid #ebe7bc; padding:15px; margin:15px 0; -moz-border-radius:2px; border-radius:2px; font-weight: bold; text-align: center;}
+
+/* -- List styles – ul  -- */
+ul.simplelist li            { padding:3px 0 3px 15px; background: url(images/li_arrow.png) no-repeat 0px center; font-weight: 600;  }
+ul.simplelist               { margin:20px 40px; list-style-type: none;}
+
+ul.minus-blue-list li       { padding:3px 0 3px 17px; background: url(images/li_minus_blue.png) no-repeat 0px center; font-weight: 600;  }
+ul.minus-blue-list          { margin:20px 40px; list-style-type: none;}
+
+ul.minus-green-list li      { padding:3px 0 3px 17px; background: url(images/li_minus_green.png) no-repeat 0px center; font-weight: 600; }
+ul.minus-green-list         { margin:20px 40px; list-style-type: none;}
+
+ul.minus-orange-list li     { padding:3px 0 3px 17px; background: url(images/li_minus_orange.png) no-repeat 0px center; font-weight: 600; }
+ul.minus-orange-list        { margin:20px 40px; list-style-type: none;}
+
+ul.minus-gold-list li       { padding:3px 0 3px 17px; background: url(images/li_minus_gold.png) no-repeat 0px center; font-weight: 600; }
+ul.minus-gold-list          { margin:20px 40px; list-style-type: none;}
+
+ul.minus-black-list li      { padding:3px 0 3px 17px; background: url(images/li_minus_black.png) no-repeat 0px center; font-weight: 600; }
+ul.minus-black-list         { margin:20px 40px; list-style-type: none;}

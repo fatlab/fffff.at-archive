@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap:https://neconnected.co.uk/index.php/sitemap.xml
+
+#WP Import Export Rule
+User-agent: *
+Disallow: /wp-content/uploads/wp-import-export-lite/

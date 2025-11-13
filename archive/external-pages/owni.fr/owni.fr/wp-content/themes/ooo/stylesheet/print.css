@@ -1,0 +1,75 @@
+/* Tuto Alsacreations : Faites bonne impression - Feuille styles css imprimante */
+
+body { /* Modifications : la couleur de fond de page - la police - l'unité utilisée pour la taille de la police  */
+	background-color:#fff;
+	font-family:Serif;
+	font-size:15pt;
+	overflow-y : visible
+}
+* {
+overflow: visible !important;
+} 
+
+.maincontainer,
+.blocMain{
+	width: 100%;
+	float: none;
+	padding: 0;
+	margin: 0;
+}
+.gab, 
+.blocLeft, 
+.propulsBar, 
+.blocComments, 
+.propulsBar-FB,
+.propulsBar-B,
+.listingPost,
+.sep,
+.youtube-player,
+iframe,
+#nav-below,
+footer{ /* Les éléments qui ne seront pas affichés  */
+	display:none;
+}
+
+
+h2, h3, a { /* Modification de la couleur des titres et liens */
+	color:#000;
+}
+
+h2 { /* Modifications : marges - police - couleur du souligné */
+	padding-bottom:2pt;
+	padding-left:0;
+	font:bold 20pt Serif;
+}
+
+a { /* Empêche le souligné par défaut du titre h1 */
+	text-decoration:none;
+}
+
+a:hover { /* Suppression du souligné */
+	text-decoration:none;
+}
+
+p { /* Modifications : alignement du texte - marges - unité des marges, police et taille de la police */
+  text-align:justify;
+  margin:2pt 1pt 6pt 0;
+  font-size:12pt;
+  color:#000;
+}
+
+
+blockquote{
+	background: none;
+	border: 1px solid #000;
+	padding: 30px;
+}
+
+blockquote:before {
+    display: none; 
+}
+blockquote:after {
+    display: none; 
+}
+
+

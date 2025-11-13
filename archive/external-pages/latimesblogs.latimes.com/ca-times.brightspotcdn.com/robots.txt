@@ -1,0 +1,39 @@
+User-Agent: *
+Disallow: /
+
+# Images
+Allow: *.gif
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.svg
+Allow: /dims4/*
+
+# CSS and JS
+Allow: *.css
+Allow: *.js
+
+# Documents
+Allow: *.pdf
+
+# Fonts
+Allow: *.woff
+Allow: *.woff2
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Google-Extended
+Allow: /

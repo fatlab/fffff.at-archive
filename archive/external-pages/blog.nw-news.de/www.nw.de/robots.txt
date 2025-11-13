@@ -1,0 +1,29 @@
+User-agent: CCBot
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Google-Extended
+Disallow: /
+
+
+User-agent: *
+Disallow: /tagsuche
+Disallow: /_em_cms/
+Disallow: /cms7/
+Disallow: /frage/
+Disallow: /microsites/
+Disallow: /suche
+Disallow: /profil/
+Disallow: /nachrichten/wirtschaft/wirtschaftsnewsletter/
+Disallow: /microsites/mediabox/
+Disallow: /anzeigen/native_ads/
+Disallow: /anzeigen/native_ads_oms/
+
+Sitemap: https://www.nw.de/sitemap_nw_index.xml.gz
+Sitemap: https://www.nw.de/sitemap_nw_index_news.xml.gz
+Sitemap: https://www.nw.de/_retresco/sitemap/index.xml
+Sitemap: https://www.nw.de/_events/sitemap/sitemap_event.xml
+Sitemap: https://www.nw.de/_apps/nw/cms-api/evocms/modules/evo_cms_sitemap.php
+
+Allow: /_em_cms/globals/csslibs.php
+Allow: /_em_cms/globals/jslibs.php
+Allow: /_em_cms/globals/acon.php

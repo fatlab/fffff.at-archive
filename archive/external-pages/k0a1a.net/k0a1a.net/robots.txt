@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /tmp
+Disallow: /snappy/files
+
+# AHrefs
+User-agent: AhrefsBot
+Disallow: / 
+
+# Yandex
+User-agent: YandexImages
+Disallow: / 
+

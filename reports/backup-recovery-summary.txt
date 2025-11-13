@@ -1,0 +1,24 @@
+WORDPRESS BACKUP RECOVERY SUMMARY
+======================================================================
+
+Total missing files: 1584
+Recoverable: 1431 (90.3%)
+Unrecoverable: 153 (9.7%)
+
+PHASE 1: Critical Site-Wide Assets
+----------------------------------------------------------------------
+Recovered: 5/6 files
+
+PHASE 2: Project-Specific Directories
+----------------------------------------------------------------------
+Recovered: 16/26 files
+Directories: 12
+
+SKIPPED: Bulk Directories
+----------------------------------------------------------------------
+  files: 905 files
+  fuckflickr: 409 files
+  images: 22 files
+  indices: 7 files
+  wp-content: 62 files
+Total skipped: 1405 files

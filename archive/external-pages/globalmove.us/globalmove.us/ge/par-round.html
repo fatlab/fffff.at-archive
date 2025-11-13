@@ -1,0 +1,88 @@
+<html>
+<head>
+  <title>par-round</title>
+<style type="text/css">
+			html, body {width: 100%; height: 100%}
+			body {margin-top: 0px; margin-right: 0px; margin-left: 0px; margin-bottom: 0px;background-color:#000000;}
+
+
+		
+#map3d  {  height: 100%;width: 100%; position: absolute;left:0px; bottom:0px; width: 100%; height: 100%;}
+
+    
+      .desc { text-align: center; }
+      .info img { float: left; }
+      #zselect { padding-top: 1em; }
+      v\:* {
+              behavior:url(par-round.html);
+           }
+    </style>
+  <script type="text/javascript" src="../../../../www.google.com/jsapi@key=ABQIAAAANnhbwfl1lutgVGPDE8ZmBBRcsOCjkA_88zMAV97wDZspktUO1BRwE_ynkxlRZ-87HLhnWjfhtOfrgQ"></script>
+ 
+ <script>
+var kml_url = 'http://geogoo.net/ge/par-round.kml'
+var ge = null;
+var features = null;
+var fc = null;
+var full_map = null;
+
+google.load("earth", "1");
+
+function init() {
+ google.earth.createInstance("map3d", initCallback, failureCallback);
+}
+
+function initCallback(object) {
+  ge = object;
+  ge.getWindow().setVisibility(true);
+ ge.getNavigationControl().setVisibility(ge.VISIBILITY_SHOW);
+ // ge.getNavigationControl().setVisibility(ge.VISIBILITY_HIDE)
+  google.earth.fetchKml(ge, kml_url, function(object) {
+  if (!object) {
+    alert('bad or NULL kml');
+    return;
+  }
+  ge.getFeatures().appendChild(object);
+  features = object.getFeatures();
+  full_map = features.getFirstChild() ; /* folder */
+  //goto_full_map();
+  goto_next();
+  });
+}
+
+function failureCallback(object) {
+  alert('Failed to initialize Google Earth plugin.');
+}
+
+function get_first_fotb_feature() {
+ features = full_map.getFeatures()
+ fc = features.getFirstChild() ; /* First Placemark */
+}
+
+function goto_full_map() {
+ ge.getView().setAbstractView(full_map.getAbstractView());
+}
+
+function goto_next() {
+ if (!fc || fc.getName() == 'r154')
+ get_first_fotb_feature();
+ else {
+ fc = fc.getNextSibling();
+ }
+ 
+ ge.getView().setAbstractView(fc.getAbstractView()); 
+ setTimeout('goto_next()', 2000);
+ 
+}
+
+
+</script>
+</head>
+<body id="main" onload="init();">
+
+
+	<div id="map3d"></div>
+
+
+</body>
+</html>

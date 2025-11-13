@@ -1,0 +1,125 @@
+﻿
+
+.menu-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.menu-toggle {
+    padding: 1.5em;
+    top: 1vw;
+    right: .5vw;
+    cursor: pointer;
+    position: fixed;
+    margin: .3vw;
+    z-index: 300;
+    background-color: #333;
+    font-size: 1.5vw;
+    line-height: 150%;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    display: block;
+    background: #EBEBD3;
+    height: 3px;
+    width: 4vw;
+    border-radius: 3px;
+    -webkit-transition: all ease-in-out 350ms;
+    transition: all ease-in-out 350ms;
+    z-index: 297;
+}
+
+    .hamburger::before {
+        -webkit-transform: translateY(-7px);
+        transform: translateY(-7px);
+    }
+
+    .hamburger::after {
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+    }
+
+.open .hamburger {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+    .open .hamburger::before {
+        display: none;
+    }
+
+    .open .hamburger::after {
+        -webkit-transform: translateY(-1px) rotate(-90deg);
+        transform: translateY(-1px) rotate(-90deg);
+    }
+
+
+nav {
+    margin: 0;
+    padding: 0;
+}
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: none;
+        /*font-size: 2.3vw;*/
+    }
+
+        nav ul.opening {
+            display: block;
+            height: 1vw;
+            position: fixed;
+            z-index: 296;
+            top: 0.5vw;
+            right: 0.5vw;
+            margin-top: 20px;
+        }
+
+    nav li {
+        border-bottom: 1px solid #f6f4e2;
+    }
+
+        nav li:last-child {
+            border-bottom: none;
+        }
+
+    nav a {
+        color: #EBEBD3 !important;
+        background: #333;
+        display: block;
+        padding: 1.5em 4em 1.5em 3em;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+        nav a:hover,
+        nav a:focus {
+            color: #EBEBD3;
+            background: #aaa;
+        }
+
+.site-nav--icon {
+    font-size: 1.4em;
+    margin-right: 1em;
+    width: 1.1em;
+    text-align: right;
+    color: rgba(255,255,255,.4);
+}
+.open li {
+    padding-bottom: 0;
+}
+#socialmedia img {
+    height: 5vw;
+    float: left;
+    width: auto;
+    padding-right: 4vw;
+    padding-top: .5vw;
+}

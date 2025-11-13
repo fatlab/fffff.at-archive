@@ -1,0 +1,486 @@
+body
+	{
+	margin-right:7%;
+	margin-left:10%;
+	margin-top:40px;
+	margin-bottom:12px;
+	padding: 0px;
+	max-width: 720px;
+	background: #000 url("../img/space.gif");
+	color: #A0A0A0;
+	}
+
+img
+	{
+	border: 0;
+	}
+
+
+.small,
+dd,
+#langalt,
+.caption,
+li.post span.postdate,
+div#headline h2
+	{
+	font-family: "Terminus", "Tahoma", "DejaVu Sans", "Verdana", "Ms Sans Serif", "Arial", "Geneva", sans-serif;
+	font-size: 11px;
+	}
+
+
+body, td, .forum span.date
+	{
+	font-family: 'Terminus', "fixedsys",  "Console", "Lucida Sans Typewriter", "chicago", "charcoal", "Lucida Grande", "DejaVu Sans Mono", monospace;
+	font-size: 13px;
+	}
+
+
+
+.note {
+	float: right;
+	width: 30%;
+	padding: 1px 8px;
+	margin: 0 0 2em 2em;
+	border: #404040 1px solid;
+	}
+
+
+.arr
+	{
+	font-family: "Clean", "Times New Roman", serif;
+	}
+
+
+div.note p {
+	margin: 0.7em 0;
+}
+
+p.intro {
+	background: #A0A0A0;
+	color: #000;
+}
+
+ul
+	{
+	list-style: square;
+	}
+
+dd, li
+	{
+	margin: 0 0 1em 0;
+	}
+
+del
+	{
+	text-decoration: strike-through;
+	}
+
+
+#nav
+	{
+	position:absolute;
+	top:0px;
+	left:2px;
+	}
+
+#langalt
+	{
+	position:absolute;
+	left:2px;
+	top:44px;
+	}
+
+#footer
+	{
+	margin-top: 3em;
+	}
+
+
+div.cols {
+	clear: both;
+	margin: 1em 0;
+}
+
+	div.col {
+		width:49%;
+		float:left;
+	}
+
+	div.cols:after {	/* Clear Float */
+		content: ".";
+    	display: block;
+    	height: 0;
+    	clear: both;
+    	visibility: hidden;
+	}
+
+
+h1, h2, h3, b, strong, th
+	{
+	font-weight: normal;
+	color: white;
+	}
+
+h2
+	{
+	font-size: 2em;
+	}
+
+h3
+	{
+	font-size: 1em;
+	margin-top: 2em;
+	}
+
+h1, h2 {
+	clear: both;
+	font-family: "fixedsys", "Terminus", "Lucida Sans Typewriter", "monospac821 BT", "chicago", "charcoal", "Lucida Grande", "Bitstream Vera Sans Mono";
+}
+
+pre, tt
+	{
+	font-family: "andale mono", "monaco", "courier new", "courier", monospace;
+	font-size: 12px;
+
+	}
+
+label
+	{
+	cursor: default;
+	}
+
+pre, .box, .boxabsatz, tt, .imgframe
+	{
+	background-color: #303030;
+	}
+
+/* wxsat headline */
+
+div#headline img
+	{
+	float: left;
+	margin-right: 16px;
+	}
+
+
+	div#headline h1,
+	div#headline h2 {
+		margin: 0;
+		padding: 0;
+		color: #fff;
+		clear: none !important;
+	}
+
+	div#headline h1 {
+		padding-top: 8px;
+	}
+
+	div#headline h2 {
+		padding-left: 2px;
+	}
+
+/* die langen webseiten */
+
+table.long td {
+	vertical-align: bottom;
+	padding-right: 2em;
+}
+
+
+/* lila pfeil */
+
+span.arrow
+	{
+	color: #FF50FF;
+	text-decoration: blink;
+	white-space: nowrap;
+	}
+
+/* Newsposts */
+
+ul.news {
+	padding: 0;
+	margin: 0 0 1em 0;
+}
+
+	li.post {
+		margin: 0 0 5em 0;
+		padding: 0 0 0 0;
+		list-style: none;
+	}
+
+		li.post span.postdate {
+			color: #fff;
+		}
+
+		li.post h1 {
+			padding: 0;
+			margin: 0 0 0.5em 0;
+		}
+
+		li.post h1 a:hover {
+			text-decoration: underline;
+		}
+
+
+/* Link-Behandlung */
+
+a:link
+	{
+	text-decoration:none;
+	color: #50FF50;
+	}
+
+a:visited
+	{
+	text-decoration:none;
+	color: #00A000;
+	}
+
+a.int:hover, a.ext:hover, a.mail:hover, #nav a:hover, #langalt a:hover
+	{
+	text-decoration:underline;
+	color: #50FF50;
+	}
+
+/* Forum */
+
+.forum iframe
+	{
+	width: 100%;
+	border: 0;
+	height: 200px;
+
+	}
+
+.forum
+	{
+	color: #c00;
+	margin: 3em 0 1em 0;
+	border-bottom: 1px solid #c00;
+	}
+
+.forum span.date {
+	color: #c00 !important;
+}
+
+p.comment
+	{
+	border-bottom: 1px solid #c00;
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+	}
+
+.forum a.comment
+	{
+	color: #FF5050;
+	}
+
+.forum a.comment:hover
+	{
+	text-decoration: underline;
+	}
+
+.forum ul
+	{
+	margin: 0;
+	padding: 0;
+	}
+
+.forum ul ul
+	{
+	margin: 1em 0 0 32px;
+	}
+
+.forum li
+	{
+	display: block;
+	list-style: none;
+	}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+.forum a.ext
+	{
+	color: #b00;
+	}
+
+.forum a.ext:hover
+	{
+	color: #ff5050;
+	}
+
+/* drx himself */
+
+.forum div.master
+	{
+	color: #A0A0A0;
+	}
+
+div.reply-gray:before
+	{
+	content: url("../img/comment-gray.gif");
+	}
+
+.forum div.master .date {
+	color: #a0a0a0 !important;
+}
+
+.forum .master a.ext
+	{
+	color: #50ff50;
+	}
+
+.forum .master a.ext:visited
+	{
+	color: #00a000;
+	}
+
+.forum .master a.ext:hover
+	{
+	color: #50ff50;
+	}
+
+
+
+/* EXTENDED LINKS */
+
+/* externe links */
+
+.forum .master a.ext:visited:before,
+a.ext:visited:before
+	{
+	content: url("../img/ext_visited.gif");
+	white-space: nowrap;
+	}
+
+.forum .master a.ext:before,
+.forum .master a.ext:hover:before,
+a.ext:before,
+a.ext:hover:before
+	{
+	content: url("../img/ext.gif");
+	white-space: nowrap;
+	}
+
+	.small a.ext:before
+		{
+		content: url("../img/extsmall.gif");
+		white-space: nowrap;
+		}
+
+	.small a.ext:visited:before
+		{
+		content: url("../img/extsmall_visited.gif");
+		white-space: nowrap;
+		}
+
+	.small a.ext:hover:before
+		{
+		content: url("../img/extsmall.gif");
+		white-space: nowrap;
+		}
+
+
+
+
+/* interne links */
+
+a.int:before
+	{
+	content: url("../img/int.gif");
+	white-space: nowrap;
+	}
+
+a.int:visited:before
+	{
+	content: url("../img/int_visited.gif");
+	white-space: nowrap;
+	}
+
+a.int:hover:before
+	{
+	content: url("../img/int.gif");
+	white-space: nowrap;
+	}
+
+	.small a.int:before
+		{
+		content: url("../img/intsmall.gif");
+		white-space: nowrap;
+		}
+
+	.small a.int:visited:before
+		{
+		content: url("../img/intsmall_visited.gif");
+		white-space: nowrap;
+		}
+
+	.small a.int:hover:before
+		{
+		content: url("../img/intsmall.gif");
+		white-space: nowrap;
+		}
+
+
+
+
+/* mail links */
+
+a.mail:visited:before
+	{
+	content: url("../img/mail_visited.gif");
+	white-space: nowrap;
+	}
+
+a.mail:before,
+a.mail:hover:before
+	{
+	content: url("../img/mail.gif");
+	white-space: nowrap;
+	}
+
+	.small a.mail:before
+		{
+		content: url("../img/mailsmall.gif");
+		white-space: nowrap;
+		}
+
+	.small a.mail:visited:before
+		{
+		content: url("../img/mailsmall_visited.gif");
+		white-space: nowrap;
+		}
+
+	.small a.mail:hover:before
+		{
+		content: url("../img/mailsmall.gif");
+		white-space: nowrap;
+		}
+
+
+/* Forum-Links */
+
+.forum a.comment:before
+	{
+	content: url("../img/comment.gif");
+	white-space: nowrap;
+	}
+
+.forum a.ext:visited:before
+	{
+	content: url("../img/ext_forum_visited.gif");
+	white-space: nowrap;
+	}
+
+.forum a.ext:before, #forum a.ext:hover:before
+	{
+	content: url("../img/ext_forum.gif");
+	white-space: nowrap;
+	}
+
+
+.URLrow {
+	display: none;
+}

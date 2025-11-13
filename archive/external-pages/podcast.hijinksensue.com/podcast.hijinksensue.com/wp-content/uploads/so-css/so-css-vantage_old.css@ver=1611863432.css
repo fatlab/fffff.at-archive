@@ -1,0 +1,6 @@
+/* Image hover in page builder row */
+/* Row class = image-hover */
+.image-hover img:hover {
+opacity: 0.5;
+}
+/* End Image hover in page builder row */

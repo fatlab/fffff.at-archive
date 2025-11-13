@@ -1,0 +1,78 @@
+
+    
+            .salvia-header{text-align:center;margin:110px auto;}
+            .this-mobile.mobile-version .salvia-header{margin-top:60px;margin-bottom:60px;}
+            .salvia-occupations a{font-size:12pt;font-family:times;display:inline-block;margin-left:25px;margin-right:25px;padding-left:5px;padding-right:5px;display:inline-block}
+        
+            .salvia-title{line-height:100% !important;margin:auto;}
+            .salvia-title img{max-width:80%;margin:auto;}
+            .salvia-title a{border-bottom:0px;}
+            .salvia-description{margin-top:0px;font-size:11pt;}
+            .salvia-occupation a{
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;}
+        .trigger-buttons a{display:inline-block;padding:11px;font-size:17pt;margin-right:8px;line-height:14pt;cursor:pointer;line-height:100% !Important;}
+        .trigger-buttons{position:fixed;top:25px;left:25px;z-index:999999;}
+        
+        .hidden-menu{position:fixed;top:0px;left:0px;width:260px;height:100%;z-index:999999999;left:-261px}
+        .hidden-menu,.trigger-buttons,#max-width-fix,.copyrighting,.salvia-header,.scrolling,.load-more-container,.paginate-it-container,footer,.max-width-fix{
+        -webkit-transition: transform 0.35s; /* Safari */
+    transition: transform 0.35s;}
+        .hidden-menu-content{padding:45px;}
+        .hidden-menu-avatar{overflow:hidden;border-radius:50%;width:100px;height:100px;display:inline-block;}
+        .hidden-menu-avatar img{width:100%;}
+        .hidden-menu-links a{border-bottom:0px;display:inline-block;margin-bottom:5px;}
+        .hidden-menu-links span{display:block;}
+        .hidden-menu-links{font-size:11pt;line-height:175%;}
+        .this-overflow .salvia-occupations{position:absolute;top:-999999px;}
+        html.mobile-bar-enabled{opacity:0}
+        
+.this-mobile .tmblr-iframe-pushdown .trigger-buttons{top:73px}
+.this-mobile .hidden-menu{overflow:scroll}
+.this-mobile .tmblr-iframe-pushdown .hidden-menu-content{padding-top:93px}
+.hidden-menu-close{display:none}
+.this-mobile .hidden-menu-close{position:absolute;top:26px;left:45px;font-size:16pt;font-family:lato;font-weight:300;transform:scale(1.4,1);display:block;}
+.this-mobile .tmblr-iframe-pushdown .hidden-menu-close{top:60px}
+.this-mobile .hidden-menu-content{padding-top:75px;}
+.this-mobile .tmblr-iframe-pushdown .hidden-menu-content{padding-top:109px;}
+ 
+.no-border-occupation .salvia-occupations a{border-bottom:0px}
+.capitalize-title .salvia-title{text-transform:uppercase}
+.bold-title .salvia-title{font-weight:600}
+.italic-title .salvia-title{font-style:oblique}
+.bold-occupation .salvia-occupations{font-weight:600}
+.italic-occupation .salvia-occupations{font-style:oblique}
+.no-search .search-trigger{display:none}
+.no-italic-links .hidden-menu-links{font-style:oblique}
+.this-mobile .search-trigger{display:none !important}
+.this-mobile.mobile-version .salvia-occupations{display:none !Important}
+
+
+
+/** instagram feed **/
+        #instagram-feed{max-width:650px;margin:auto;;text-align:center;;}
+        .instagram-label{width:100%;text-align:center;margin-bottom:20px;font-family:georgia;font-style:oblique;}
+        #instagram-feed a{width:25%;box-sizing:border-box;display:inline-block;border-bottom:0;
+margin-bottom:-6px;}
+.customize #instagram-feed{margin-bottom:0px;}
+        #instagram-feed *{line-height:100% !important;}
+        #instagram-feed img{width:100%;box-sizing:border-box;display:block}
+        .instagram-feed-container{display:none;margin-bottom:70px;margin-top:70px;}
+       @media only screen and (max-width: 600px) {
+           #instagram-feed{max-width:450px;padding-left:30px;padding-right:30px;}
+           #instagram-feed a{width:calc(100% / 3);}
+           #instagram-feed a:nth-child(n+7){display:none}
+       }
+        
+        
+       @media only screen and (max-width: 400px) {
+           #instagram-feed{max-width:350px;padding-left:30px;padding-right:30px;}
+           #instagram-feed a{width:calc(100% / 2);}
+           #instagram-feed a:nth-child(n+5){display:none}
+       }
+        
+.instagram-label.not-set-username{display:none}
+.customize .instagram-label.not-set-username{display:block}
+#insta-icon{position:relative;top:3px;display:inline-block;}
+/** instagram feed **/

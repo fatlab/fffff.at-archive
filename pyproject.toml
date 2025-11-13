@@ -1,0 +1,11 @@
+[project]
+name = "fffff-at-archive"
+version = "1.0.0"
+description = "Archival toolkit for preserving the F.A.T. Lab website"
+requires-python = ">=3.7"
+dependencies = [
+    "beautifulsoup4>=4.12.0",
+    "requests>=2.31.0",
+    "lxml>=4.9.0",
+    "ftfy>=6.0.0",
+]

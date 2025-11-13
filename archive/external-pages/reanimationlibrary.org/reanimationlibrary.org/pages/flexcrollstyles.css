@@ -1,0 +1,37 @@
+.scrollgeneric {
+line-height: 1px;
+font-size: 1px;
+position: absolute;
+top: 0; left: 0;
+}
+
+#events .vscrollerbase {
+width: 7px;
+background-image: url(../images/scrollbase.gif);
+visibility: visible !important;
+
+}
+
+
+
+#events .vscrollerbar {
+width: 7px;
+height: 20px !important; 
+background-image: url(../images/scrollbar.gif);
+
+}
+
+#titles .vscrollerbase {
+width: 7px;
+background-image: url(../images/scrollbase.gif);
+visibility: visible !important;
+
+}
+
+#titles .vscrollerbar {
+width: 7px;
+height: 20px !important; 
+background-image: url(../images/scrollbar.gif);
+}
+
+

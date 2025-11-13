@@ -1,0 +1,227 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3577908, 2018-05-10T03:52:16-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: MachineStd by ITC
+ * URL: https://www.myfonts.com/fonts/itc/machine/machine/
+ * Copyright: Copyright &#x00A9; 1985, 1987, 1990, 2001 Adobe Systems Incorporated.  All
+ * Rights Reserved. Copyright &#x00A9; 1985, 1987, 1990, 2001 International Typeface
+ * Corporation. All Rights Reserved. 
+ * Licensed pageviews: 250,000
+ * 
+ * 
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3577908
+ * 
+ * © 2018 MyFonts Inc
+*/
+
+/*
+This CSS resource incorporates links to font software which is the valuable copyrighted 
+property of Monotype and/or its suppliers. You may not attempt to copy, install, 
+redistribute, convert, modify or reverse engineer this font software. Please contact 
+Monotype with any questions regarding Web Fonts: http://www.fontshop.com
+*/
+
+/* Machine */
+
+/* @import url('//hello.myfonts.net/count/369834'); */
+
+/* Franklin ITC */
+
+/* @import url('https://fast.fonts.net/lt/1.css?apiType=css&c=8c4be8f7-f79e-466f-bb1f-5a695c5e3a90&fontids=731399,731435'); */
+
+@font-face {
+  font-family: 'Machine Std';
+  src: url(webfonts/369834_0_0.eot);
+  src: url(webfonts/369834_0_0.eot@) format('embedded-opentype'),
+    url(webfonts/369834_0_0.woff2) format('woff2'),
+    url(webfonts/369834_0_0.woff) format('woff'),
+    url(webfonts/369834_0_0.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Franklin ITC';
+  src: url(webfonts/ced4e6ca-be2c-48f2-80b9-8d3b278b8c43.eot@);
+  src: url(webfonts/ced4e6ca-be2c-48f2-80b9-8d3b278b8c43.eot@)
+      format('eot'),
+    url(webfonts/3c97a7a7-7ada-4c6a-89a4-c9136959d36e.woff2)
+      format('woff2'),
+    url(webfonts/354e9a9e-6d8f-44e5-b7be-c6e4cc0b4b40.woff)
+      format('woff'),
+    url(webfonts/41806dae-38c8-475f-886c-a6626a6cc6b1.ttf)
+      format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Franklin ITC';
+  src: url(webfonts/7db71a0d-51ce-421a-9384-439ef35401bf.eot@);
+  src: url(webfonts/7db71a0d-51ce-421a-9384-439ef35401bf.eot@)
+      format('eot'),
+    url(webfonts/f2819b10-b4ee-44b5-bbdc-2cecc3626f02.woff2)
+      format('woff2'),
+    url(webfonts/9b34eab0-8991-4924-94f9-d8aa905064a0.woff)
+      format('woff'),
+    url(webfonts/20960377-ea81-46cc-aa35-66993c65c256.ttf)
+      format('truetype');
+  font-weight: normal;
+}
+
+/* 
+  Sizes
+  -----
+  18px  base
+  20px  1.111rem
+  36px  2rem
+  69px  3.833rem  (57 / 69)
+
+  One-way margins: top / left
+  Use padding mostly only horizontally
+*/
+
+html {
+  font-family: sans-serif;
+  font-size: 18px;
+  line-height: calc(23 / 18);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Franklin ITC';
+  padding: 0 2rem;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Main layout */
+
+.heading,
+.footer {
+  font-family: 'Machine Std';
+  font-size: 3.833rem;
+  letter-spacing: -0.0125em;
+  line-height: calc(57 / 69);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.heading {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  margin: 1.25rem 0 0;
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+
+main {
+  /* wrong, should be 6.75rem */
+  margin-top: 5.75rem;
+  min-height: 2rem;
+}
+
+.footer {
+  width: 100%;
+  max-width: 16em;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer p {
+  margin-top: 0.833em;
+}
+
+.footer > p:first-child {
+  margin-top: 0;
+}
+
+.footer > p:last-child {
+  /* exception, to keep bottom-most margin "safe" */
+  margin-bottom: 2.5rem;
+}
+
+/* Responsiveness, desktop-first */
+
+:root {
+  /* Grid */
+  --col-large: 50%;
+  --col-small: 25%;
+}
+
+@media (max-width: 60em) { /* 960px */
+  :root {
+    font-size: 15px;
+    
+    --col-large: 100%;
+    --col-small: 50%;
+  }
+}
+
+@media (max-width: 36.250em) { /* 580px */
+  :root {
+    --col-small: 100%;
+  }
+
+  body {
+    padding: 0 1rem;
+  }
+
+  main {
+    margin-top: 3.75rem;
+  }
+
+  .heading,
+  .footer {
+    font-size: 2rem;
+  }
+}
+
+img.svelte-qu6ybq{position:absolute;z-index:0;display:block;max-width:100%;height:auto;opacity:0;transition:opacity 380ms;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(0) scale(1.0, 1.0);transform:translateZ(0) scale(1.0, 1.0)}img.svelte-qu6ybq:not(.is-current){visibility:hidden}img.is-current.svelte-qu6ybq{z-index:1;visibility:visible}
+div.svelte-1830krl{position:relative;width:100%;height:0;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.is-mouse-in.svelte-1830krl{cursor:none}.label.svelte-1830krl{position:absolute;z-index:5;display:block;top:0;left:0;visibility:hidden}.is-mouse-in.svelte-1830krl>.label.svelte-1830krl{visibility:visible}.play-link:hover+.label.svelte-1830krl{visibility:hidden}.counter.svelte-1830krl{position:absolute;z-index:10;display:block;top:0.8rem;left:1rem;opacity:1}@media(min-width: 36.250em){.counter.is-hidden.svelte-1830krl{opacity:0}}.play-link.svelte-1830krl{position:absolute;z-index:10;top:50%;left:50%;cursor:pointer;width:70px;height:70px;margin:-35px 0 0 -35px}.play-link.svelte-1830krl path.svelte-1830krl{fill:#f5f5f5}
+.body.svelte-p1oh7m{margin-top:0.725rem;margin-bottom:-0.35rem}.is-groupable.svelte-p1oh7m>h2.svelte-p1oh7m{text-decoration:none;cursor:pointer;border-bottom-color:black;border-bottom:1px solid black;border-bottom:1px solid var(--black, black)}.is-groupable.svelte-p1oh7m>h2.svelte-p1oh7m:hover{border-bottom-color:transparent}h2.svelte-p1oh7m{display:inline;text-transform:uppercase}h2.svelte-p1oh7m:focus{outline:none}h2.svelte-p1oh7m::after{content:"."}.markup-wrapper.svelte-p1oh7m,.markup-wrapper.svelte-p1oh7m>p{display:inline}.markup-wrapper.svelte-p1oh7m strong{font-weight:normal;text-transform:uppercase}
+.wrapper.svelte-1vegjlj{display:flex;align-items:center;justify-content:center;height:100%;font-weight:bold;font-size:1.111rem;line-height:1;text-align:center}.landscape.svelte-1vegjlj{justify-content:space-between}.portrait.svelte-1vegjlj,.square.items-2.svelte-1vegjlj,.square.items-3.svelte-1vegjlj,.landscape.has-vertical-flow.svelte-1vegjlj{flex-direction:column;justify-content:space-between}.portrait.items-1.svelte-1vegjlj,.landscape.items-1.svelte-1vegjlj{justify-content:center}.landscape.items-1.svelte-1vegjlj>.text.svelte-1vegjlj{flex-basis:auto}.landscape.items-2.svelte-1vegjlj>.text.svelte-1vegjlj{flex-basis:50%}.landscape.items-3.svelte-1vegjlj>.text.svelte-1vegjlj{flex-basis:25%}.landscape.has-vertical-flow.svelte-1vegjlj>.text.svelte-1vegjlj{flex-basis:auto}.image.svelte-1vegjlj{display:flex;align-items:center;justify-content:center;flex:1;height:100%}.square.svelte-1vegjlj img.svelte-1vegjlj{max-width:66%}.landscape.svelte-1vegjlj img.svelte-1vegjlj{max-height:100%}.landscape.has-vertical-flow.svelte-1vegjlj img.svelte-1vegjlj{height:80%}.portrait.svelte-1vegjlj img.svelte-1vegjlj{max-width:100%}
+section.svelte-8ha5ry{position:relative;height:0;padding-bottom:100%;overflow:hidden;border:1px solid black}.container.svelte-8ha5ry{position:absolute;width:100%;height:100%;padding:2rem}
+.background.svelte-196i3nb{position:fixed;z-index:150;display:flex;align-items:center;justify-content:center;background:rgba(0, 0, 0, 0.9);left:0;right:0;top:0;bottom:0;margin:auto;padding:0}.container.svelte-196i3nb{padding:5vw}@media(max-width: 36.250em){.container.svelte-196i3nb{padding:0}}.ratio-wrapper.svelte-196i3nb{position:relative;width:100%;height:0;padding-bottom:56.25%}.ratio-wrapper.svelte-196i3nb>iframe{position:absolute;width:100%;height:100%;top:0;left:0}
+.grid.svelte-ej3xvf{display:flex;flex-wrap:wrap;margin-left:-1rem}.col.svelte-ej3xvf{width:50%;width:var(--col-large);width:var(--col-large);margin-top:1rem;padding-left:1rem}.col--small.svelte-ej3xvf,.grid-sizer.svelte-ej3xvf{width:25%;width:var(--col-small);width:var(--col-small)}@media(min-width: 36.250em){.col.svelte-ej3xvf>.is-vertical.svelte-ej3xvf{width:81.50%;transition:-webkit-transform 300ms;transition:transform 300ms;transition:transform 300ms, -webkit-transform 300ms}.col.is-not-zero-x.svelte-ej3xvf>.is-vertical.svelte-ej3xvf{width:81.50%;-webkit-transform:translateX(calc(100% - 81.50% + 1rem));transform:translateX(calc(100% - 81.50% + 1rem))}}@media(max-width: 36.250em){.ad-is-not-square.svelte-ej3xvf{display:none}}

@@ -1,0 +1,440 @@
+/*
+	Terminologie:
+	- `hourStatus` je stav daný otevíracími hodinami; rozlišuje se
+		- "ONLINE": fakticky online nebo busy, podle dostupnosti operátora
+		- "OFFLINE": stav, kdy je call centrum zavřené
+	- `operatorStatus` je stav daný dostupností online operátora; detekuje se jen když je CC otevřené a má hodnoty
+		- "ONLINE": online stav
+		- "NOT_ONLINE": busy stav (zahrnuje i chybové stavy, kdy se zkrátka nepodařilo ověřit, že je operátor k dispozici)
+	- `status` nebo "efektivní stav" je stav vypočtený z těchto dvou, tj. jedna z hodnot "ONLINE", "OFFLINE", "BUSY"
+*/
+(function() {
+	
+	const LOOKUP_SELECTOR   = '.js3-cmb:not(.js3-cmb--initialized)'; // dosud neinicializované CMB
+	const INITIALIZED_CLASS = 'js3-cmb--initialized';                // třída přidávaná k inicializovaným elementům
+	const DATASET_PREFIX    = 'cmb';
+
+	/*
+	 * Výchozí nastavení
+	 */
+	const defaultOptions = {
+
+		// Perioda kontroly `operatorStatus`
+		checkMs: 5000,
+		checkMsWait: 6000,
+
+		// Parametry endpointu pro kontrolu `operatorStatus`. Část z nich nemá default
+		endpointAuth: true,    // příznak, zda použít HTTP Basic a poslat credentials
+		// endpointUrl          - URL endpointu
+		// endpointCredentials  - encoded credentials
+
+		// Výchozí hodnoty stavů:
+		operatorStatus: "NOT_ONLINE",
+		hourStatus: "OFFLINE",
+
+		// Třídy indikující stav:
+/*
+		classOffline: "o2-cmb--offline",
+		classBusy: "o2-cmb--waiting",
+		classOnline: "o2-cmb--success",
+*/
+
+		// Výjimky pro busy stav:
+		forceBusy: false,    // BUSY stav vynucený z instance (tj. nastavený pro daný asset napevno)
+		treatAsBusy: false,  // BUSY stav detekovaný v prohlížeči (jen počáteční hodnota - mění se)
+		deviceBusy: false,   // BUSY stav v závislosti na zařízení (jen počáteční hodnota - mění se)
+
+		// Parametry ovlivňující logiku deviceBusy:
+		desktopBusy: false,  // BUSY stav bude vynucený pro desktop a tablet
+		mobileBusy: true     // BUSY stav bude vynucený pro mobil
+	};
+
+	const instancesById = {}; // Mapa identifikátorů elementů s CMB na instance CMB objektů
+	
+	const instancesByFormId = {}; // Mapa formId na seznamy instancí s daným formId
+
+	addEventListener("resize", function() {
+		for (let id in instancesById) {
+			instancesById[id].setMedia();
+		}
+	});
+
+	const CMB = function(elm) {
+		
+		this.elm = elm;
+		
+		// Zajistíme, aby element měl identifikátor
+		let elmId = elm.getAttribute('id');
+		if (!elmId) {
+			elmId = 'cmb' + Math.floor(Math.random() * 10000000);
+			elm.setAttribute('id', elmId);
+		}
+		
+		this.calculateOptions();
+		
+		instancesById[elmId] = this;
+
+		if (this.options.formId) {
+			instancesByFormId[this.options.formId] = this;
+		}
+
+		this.scanDom();
+		this.render();
+	};
+
+	CMB.prototype = {
+
+		setMedia: function() {
+			var o = this.options;
+			var isSS = (window.innerWidth < 1024);
+			this.$deviceHidden.value = (isSS ? "SS" : "BS");
+			if (isSS) {
+				// Platí pravidla pro "mobil"
+				if (o.mobileBusy !== this.deviceBusy) {
+					this.updateDeviceBusy(o.mobileBusy);
+				}
+			} else {
+				// Platí pravidla pro "desktop"
+				if (o.desktopBusy !== this.deviceBusy) {
+					this.updateDeviceBusy(o.desktopBusy);
+				}
+			}
+		},
+	
+		calculateOptions: function() {
+
+			const ds = this.elm.dataset;
+			const o = this.options = Object.assign({}, defaultOptions);
+			
+			for (let name in ds) {
+				if (name.startsWith(DATASET_PREFIX)) {
+					let key =
+						name.charAt(DATASET_PREFIX.length).toLowerCase() +
+						name.substring(DATASET_PREFIX.length + 1);
+						
+					let val = ds[name];
+					switch (true) {
+					case val == "true":
+						val = true;
+						break;
+					case val == "false":
+						val = false;
+						break;
+					}
+					o[key] = val;
+				}
+			}
+		},
+
+		scanDom: function() {
+
+			const o = this.options;
+			const elm = this.elm;
+
+			this.operatorStatus = o.operatorStatus;
+			this.hourStatus     = o.hourStatus;
+			this.forceBusy      = o.forceBusy;
+			this.treatAsBusy    = o.treatAsBusy;
+			this.deviceBusy     = o.deviceBusy;
+
+			/*
+				Status se zrcadlí do skrytého formulářového pole:
+			*/
+			this.$statusHidden = elm.querySelector('.js3-cmb-status-hidden');
+
+			/*
+				Device se zrcadlí do skrytého formulářového pole:
+			*/
+			this.$deviceHidden = elm.querySelector('.js3-cmb-device');
+
+			/*
+				V DOM jsou elementy, které reprezentují každé přepnutí stavu `hourStatus`
+				z ONLINE (tj. online/busy) do OFFLINE nebo naopak. Tyto elementy byly
+				vygenerované na serveru, zde se načtou ve strukturované podobě.
+			*/
+			var hourStatusChanges = this.hourStatusChanges = [];
+
+			elm.querySelectorAll(".js3-cmb-status-change").forEach(function($content) {
+				hourStatusChanges.push({
+					timeout: $content.dataset.cmbTimeout,
+					hourStatus: $content.dataset.cmbHourStatus,
+					$content: $content
+				});
+			});
+
+			this.hourStatusIndex = 0; // Ukazatel na nejbližší dosud nepoužitou položku v `hourStatusChanges`.
+			this.$content = this.elm; // Ukazatel na blok obsahu, ve kterém se mají hledat aktuální textace
+			if (this.hourStatus == "ONLINE") {
+				this.$content = this.$content.querySelector(".js3-cmb-status-now");
+			}
+
+			this.contentChanged = false; // Příznak toho, že při některé z operací se změnila hodnota this.$content
+		},
+
+		unrender: function() {
+			this.clearHourStatusTimeout();
+			this.unbindChecks(); 
+		},
+
+		bindChecks: function() {
+			this.unbindChecks();
+			this.checkInterval = window.setInterval(
+				this.checkOperatorStatus.bind(this),
+				this.options.checkMs
+			);
+		},
+
+		unbindChecks: function() {
+
+			if(this.waitTimeout) {
+				window.clearTimeout(this.waitTimeout);
+				this.waitTimeout = false;
+			}
+
+			if (this.checkInterval) {
+				window.clearInterval(this.checkInterval);
+				this.checkInterval = false;
+			}
+		},
+
+		checkOperatorStatusFailed: function() {
+			this.setOperatorStatus("NOT_ONLINE");
+		},
+
+		checkOperatorStatusResult: function(response) {
+			response.text().then((data) => {
+				switch (data.toLowerCase()) {
+				case "online":
+					this.setOperatorStatus("ONLINE");
+					break;
+				case "busy":
+				case "offline":
+				case "exception":
+				default:
+					this.setOperatorStatus("NOT_ONLINE");
+					break;
+				}
+			});
+		},
+
+		/*
+			Kontrola stavu operátora (AJAX call).
+		*/
+		checkOperatorStatus: function() {
+			if (this.forceBusy || this.treatAsBusy || this.deviceBusy) {
+				this.setOperatorStatus("NOT_ONLINE");
+				return;
+			}
+
+			fetch(this.options.endpointUrl + "?formId=" + this.options.formId, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': 'Basic ' + this.options.endpointCredentials,
+				},
+			}).then(
+				this.checkOperatorStatusResult.bind(this),
+				this.checkOperatorStatusFailed(this)
+			);
+		},
+
+		setOfflineStatus: function() {
+			var o = this.options;
+//			this.$elm.removeClass(o.classOnline).removeClass(o.classBusy).addClass(o.classOffline);
+			this.$statusHidden.value = "OFFLINE";
+			this.updateView(this.$content);
+		},
+
+		setBusyStatus: function() {
+			var o = this.options;
+//			this.$elm.removeClass(o.classOnline).removeClass(o.classOffline).addClass(o.classBusy);
+			this.$statusHidden.value = "BUSY";
+			this.updateView(this.$content.querySelector(".js3-cmb-busy"));
+		},
+
+		setOnlineStatus: function() {
+			var o = this.options;
+//			this.$elm.removeClass(o.classOffline).removeClass(o.classBusy).addClass(o.classOnline);
+			this.$statusHidden.value = "ONLINE";
+			this.updateView(this.$content.querySelector(".js3-cmb-online"));
+		},
+
+		updateView: function($tpl) {
+			var elm = this.elm;
+			$tpl.querySelectorAll(".js3-cmb-item").forEach(function($src) {
+				const $tgt = elm.querySelector('[data-cmb-match-of="' + $src.dataset.cmbMatch + '"]');
+				if ($tgt) {
+					var c = $src.dataset.cmbMatchClass;
+					switch (true) {
+					case !!c:
+						$tgt.className = c;
+						break;
+					case $tgt.matches('input'):
+						$tgt.setAttribute("placeholder", $src.getAttribute("placeholder"));
+						break;
+					default:
+						$tgt.innerHTML = $src.innerHTML;
+					}
+/*
+					$tgt.setAttribute("title", $src.getAttribute("title"));
+*/
+				}
+			});
+		},
+
+
+		/*
+			Aktualizace flagu `deviceBusy` a navázané akce.
+		*/
+		updateDeviceBusy: function(newValue) {
+			this.deviceBusy	= newValue;
+			if (this.hourStatus == "ONLINE") {
+				this.busyRecheck();
+			}
+		},
+
+		setHourStatusTimeout: function() {
+
+			var hourStatusChanges = this.hourStatusChanges;
+			
+			if (this.hourStatusIndex < hourStatusChanges.length) {
+				if (this.hourStatusTimeout) {
+					window.clearTimeout(this.hourStatusTimeout);
+				}
+				this.hourStatusTimeout = window.setTimeout(this.advanceHourStatus.bind(this), hourStatusChanges[this.hourStatusIndex].timeout);
+			}
+		},
+
+		/*
+			Akce prováděné při vstupu do `hourStatus` rovného `ONLINE` a při dalších akcích,
+			které mohou změnit efektivní force busy stav - tzn. při změně některého z busy flagů.
+		*/
+		busyRecheck: function() {
+			this.setOperatorStatus("NOT_ONLINE"); // dokud neproběhne check s kladným výsledkem, je operátor brán jako busy
+			if (this.forceBusy || this.treatAsBusy || this.deviceBusy) {
+				this.unbindChecks();
+			} else {
+				this.checkOperatorStatus();
+				this.bindChecks();
+			}
+		},
+
+		clearHourStatusTimeout: function() {
+			if (this.hourStatusTimeout) {
+				window.clearTimeout(this.hourStatusTimeout);
+				this.hourStatusTimeout = false;
+			}
+		},
+
+		/*
+			Posune hourStatus - použije nejbližší položku z pole změn a ukazatel posune
+			na další záznam v poli změn.
+		*/
+		advanceHourStatus: function() {
+			if (this.hourStatusIndex >= this.hourStatusChanges.length) {
+				return;
+			} 
+			var change = this.hourStatusChanges[this.hourStatusIndex];
+			this.setHourStatus(change.hourStatus, change.$content);
+			this.hourStatusIndex++;
+			this.setHourStatusTimeout();
+		},
+
+		/*
+			Aktualizuje hourStatus, ve výsledku včetně textace apod.
+		*/
+		setHourStatus: function(hourStatus, $content) {
+
+			this.$content = $content;
+			this.contentChanged = true;
+			this.hourStatus = hourStatus;
+
+			var o = this.options;
+
+			switch (hourStatus) {
+			case "ONLINE":
+				this.busyRecheck();
+				break;
+			case "OFFLINE":
+				this.unbindChecks();
+				this.setOfflineStatus();
+				break;
+			}
+		},
+
+		setOperatorStatus: function(operatorStatus) {
+			if (this.hourStatus == "ONLINE" && ((operatorStatus != this.operatorStatus) || this.contentChanged)) {
+				switch (operatorStatus) {
+				case "ONLINE":
+					this.setOnlineStatus();
+					break;
+				case "NOT_ONLINE":
+					this.setBusyStatus();
+					break;
+				}
+			}
+			this.operatorStatus = operatorStatus;
+			this.contentChanged = false;
+		},
+
+
+		render: function() {
+
+			const isSS = (window.innerWidth < 1024);
+			const o = this.options;
+
+			this.$deviceHidden.value = (isSS ? "SS" : "BS");
+
+			this.deviceBusy = (
+				isSS ?
+				o.mobileBusy :
+				o.desktopBusy
+			);
+
+			this.setHourStatusTimeout();
+
+			if (this.hourStatus == "ONLINE") {
+					this.checkOperatorStatus();
+					this.waitTimeout = window.setTimeout(() => {
+						this.bindChecks();
+						this.waitTimeout = false;
+					}, o.checkMsWait);
+			}
+		}
+	};
+
+	/*
+	 * Inicializace instance CMB na daném elementu
+	 */
+	const cmbInit = function(elm) {
+
+		elm.classList.add(INITIALIZED_CLASS); // označíme element jako inicializovaný
+
+		new CMB(elm);
+	};
+	
+	/*
+	 * Prohledání elementu a jeho potomků, inicializace všech nových CMB.
+	 */
+	const cmbLookup = function(node) {
+
+		if (!node || !node.querySelectorAll) { return; }
+
+		const cmbLs = node.querySelectorAll(LOOKUP_SELECTOR);
+		cmbLs.forEach(cmbInit);
+		
+		if (node.matches(LOOKUP_SELECTOR)) {
+			cmbInit(node);
+		}
+	};
+
+	// Dohledání CMB k inicializaci pouštíme nejprve v celém body, následně v každém elementu, který byl do DOM
+	// přidaný asynchronní aktualizací (která konvenčně volá událost `d3update`).
+
+	cmbLookup(document.body);
+
+	window.addEventListener('d3update', (event) => {
+	    cmbLookup(event.detail.new_node);
+	});
+	
+})();

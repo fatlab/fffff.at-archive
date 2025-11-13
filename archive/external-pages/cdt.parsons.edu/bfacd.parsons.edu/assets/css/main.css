@@ -1,0 +1,765 @@
+/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+@font-face {
+  font-family: "Diatype";
+  src: url("../fonts/ABCDiatype-Medium.woff2") format("woff2"),
+       url("../fonts/ABCDiatype-Medium.woff") format("woff");
+}
+
+html {
+  box-sizing: border-box;
+  color: black;
+  font-size: 24px;
+  line-height: 120%;
+  font-family: Diatype, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.outer {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  background-color: black;
+}
+
+.star-wrap {
+  width: 4vw;
+  position: fixed;
+  display: none;
+}
+
+.star {
+  fill:#8B98A5;
+}
+
+.intro {
+  color: white;
+  font-size: 4vw;
+  line-height: 110%;
+  position: fixed;
+  top: 2vw;
+  left: 4vw;
+  z-index: 10000;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+.header {
+  padding: 24px 48px;
+  position: relative;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+a {
+  color:  black;
+  text-decoration: none;
+}
+
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-nav {
+  position: absolute;
+  right: 48px;
+  top: 24px;
+}
+
+.button-list {
+  font-size: 0;
+}
+
+.nav-item {
+  display: inline-block;
+}
+
+.button {
+  display: inline-block;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 8px 18px;
+  border-radius: 48px;
+  border: 2px solid black;
+  background-color: transparent;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
+}
+
+.header-nav .button {
+  margin-left: 8px;
+}
+
+.projects {
+  padding: 0 36px;
+  font-size: 0;
+}
+
+.project-outer, .question {
+  padding: 24px 12px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.priority-3 {
+  width: 25%;
+}
+.priority-2 {
+  width: 50%;
+}
+.priority-1 {
+  width: 75%;
+}
+
+.question {
+  width: 50%;
+}
+
+.thumb-image-wrap img {
+  width: 100%;
+}
+
+.thumb-caption {
+  padding-top: 8px;
+  font-size: 24px;
+}
+
+.question-text {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 42px;
+  line-height: 1.1;
+}
+
+.students {
+  column-gap: 24px;
+  columns: 4;
+  padding: 48px;
+}
+
+.students p {
+  margin: 0;
+  padding: 0;
+  text-indent: -24px;
+  padding-left: 24px;
+}
+
+.footer {
+  padding: 48px 36px;
+  font-size: 0;
+}
+
+.foot-col {
+  padding: 0 12px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 24px;
+}
+
+.address {
+  width: 50%;
+}
+
+.right {
+  width: 25%;
+}
+
+
+.page-about {
+  background-color: black;
+  color: white;
+}
+
+.page-about a {
+  color: white;
+}
+
+.page-about .button {
+  border: 2px solid white;
+}
+
+.page-about .button:hover {
+  background-color: white;
+  color: black;
+}
+
+
+.about-outer {
+  padding: 24px 36px;
+}
+.about-header {
+  font-size: 0;
+}
+
+.faculty-header {
+  padding-top: 48px;
+}
+
+.about-col {
+  font-size: 24px;
+  vertical-align: top;
+  display: inline-block;
+  padding: 0 12px;
+}
+
+.about-label {
+  width: 25%;
+}
+
+.authors {
+  width: 75%;
+}
+
+.about-text {
+  padding:  24px 12px;
+  font-size: 32px;
+  line-height: 1.2;
+}
+.faculty-list {
+  padding:  24px 12px;
+  font-size: 32px;
+  line-height: 1.2;
+  columns: 2;
+}
+
+.faculty-list p {
+  padding-bottom: 32px;
+      page-break-inside: avoid;           /* Theoretically FF 20+ */
+    break-inside: avoid-column;         /* Chrome, Safari, IE 11 */
+    display:table;                      /* Actually FF 20+ */
+}
+
+.about-text p {
+  text-indent: 32px;
+}
+
+.about-text p:first-child {
+    text-indent: 0;
+}
+
+.page-about .active {
+  background-color: white;
+  color: black;
+}
+
+.project-wrapper {
+  padding: 24px 36px;
+}
+
+.proj-title {
+  padding: 0 12px;
+  font-size: 0;
+}
+
+.maintitle {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 42px;
+  line-height: 42px;
+  width: 50%;
+}
+
+.mediapills {
+    display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  text-align: right;
+}
+
+.project-meat {
+  font-size: 0;
+  padding-top: 24px;
+}
+
+.proj-col {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 12px;
+}
+
+.proj-images {
+  width: 50%;
+}
+
+.proj-images img {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.proj-text {
+  width: 50%;
+  font-size: 24px;
+}
+
+.proj-text p {
+  text-indent: 24px;
+}
+
+.proj-text p:first-child {
+    text-indent: 0;
+}
+.proj-links {
+  padding-top:  24px;
+}
+.proj-links li:before {
+    content: "\2192";
+    margin-right: 12px;
+}
+
+.proj-links li {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+}
+
+.subnav {
+  font-size: 0;
+  padding-top: 24px;
+  display: none;
+}
+
+.media-pill-wrap {
+  font-size: 0;
+}
+
+.media-pill-wrap .button {
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.subnav .button {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.selected {
+  color: white;
+  background-color: black;
+}
+
+.show {
+  display: block;
+}
+
+.project-name, .upper {
+  text-transform: uppercase;
+}
+
+.question-wrap {
+  font-size: 42px;
+  line-height: 46px;
+}
+
+.question-banner {
+  padding: 24px 48px 0 48px;
+}
+
+
+
+
+@media (max-width: 1200px) {
+.header {
+    padding: 12px 24px;
+}
+
+.header-nav {
+    right: 24px;
+    top: 12px;
+}
+
+.projects {
+    padding: 0 12px;
+}
+
+.students {
+    columns: 2;
+    padding: 48px 24px;
+}
+.footer {
+    padding: 48px 12px;
+}
+.about-outer {
+    padding: 24px 12px;
+}
+.about-label, .authors {
+    width: 100%;
+}
+
+.project-wrapper {
+    padding: 24px 12px;
+}
+.question-banner {
+    padding: 24px 24px 0 24px;
+}
+
+.media-pill-wrap .button {
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+.maintitle, .mediapills {
+    width: 100%;
+}
+
+.mediapills {
+  text-align: left;
+  padding-top: 24px;
+}
+
+}
+
+
+@media (max-width: 800px) {
+.proj-images, .proj-text {
+    width: 100%;
+}
+.header-nav {
+    position: static;
+    padding-top: 24px;
+}
+  .header-nav .button {
+    margin-left: 0;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.priority-3, .priority-2, .priority-1 {
+    width: 100%;
+}
+.students {
+    columns: 1;
+}
+
+.address {
+    width: 100%;
+}
+
+.right {
+    width: 100%;
+    padding-top: 24px;
+}
+
+
+
+.button-list li:last-child .button {
+
+    margin-right: 0;
+
+}
+
+
+
+.star-wrap {
+  width: 8vw;
+}
+
+
+.intro {
+  font-size: 24px;
+  line-height: 120%;
+  top: 12px;
+  left: 24px;
+}
+
+.faculty-list {
+  columns: 1;
+}
+
+
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+/*
+ * Extends the .sr-only class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.sr-only.focusable:active,
+.sr-only.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /*
+   * Printing Tables:
+   * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+

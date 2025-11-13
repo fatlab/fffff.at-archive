@@ -1,0 +1,13 @@
+;(function( $, si, undefined ) {
+	// silence
+})( jQuery, window.si = window.si || {} );
+// Init
+jQuery(function() {
+	/**
+	 * Dashboard Checkbox
+	 */
+	 jQuery('.down-checkbox').change(function() {
+		jQuery('.status_success').closest('tr').toggle(this);
+		jQuery('.info_row').closest('tr').toggle(this);
+	});
+});

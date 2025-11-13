@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /
+Allow: /$
+Allow: /segitseg 
+Allow: /kapcsolat
+Allow: /policy
+Allow: /adatvedelem
+Allow: /belepes*/$
+Allow: /regisztracio*/$

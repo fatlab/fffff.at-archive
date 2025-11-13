@@ -1,0 +1,47 @@
+
+body > nav {
+  padding-bottom: 60px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+body > nav ul {
+  list-style: none;
+  display: inline;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+body > nav li {
+  display: inline;
+  margin: 0 6px;
+  letter-spacing: -0.005rem;
+}
+body > nav li:first-child {
+  margin-left: 0;
+}
+body > nav li:last-child {
+  margin-right: 0;
+}
+body > nav a {
+  font-weight: 500;
+  text-decoration: none;
+}
+body > main > section article header > aside {
+  order: 1;
+  min-width: 100px;
+  float: left;
+  width: 100%;
+}
+body > main > section article header > aside time {
+  text-align: right;
+}
+body > main > section article header > aside ul {
+  display: none;
+}
+body > header > img {
+  width: 150%;
+  margin-left: -25%;
+  max-width: 200%;
+}
+

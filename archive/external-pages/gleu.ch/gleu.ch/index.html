@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Greg Leuch // Creative Product Designer & Developer // gleu.ch</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Greg Leuch // Creative Product Designer & Developer // gleu.ch">
+  <meta property="og:url" content="https://gleu.ch/">
+  <meta property="twitter:site" content="@gleuch">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="https://gleu.ch/">
+  <meta property="twitter:creator" content="Greg Leuch // Creative Product Designer & Developer // gleu.ch">
+  <meta name="viewport" content="initial-scale=1, user-scalable=0, width=device-width">
+  <link rel="canonical" href="index.html">
+  <meta name="revisit-after" content="1 days">
+  <meta name="coverage" content="worldwide">
+  <meta name="distribution" content="global">
+  <meta name="referrer" content="unsafe-url">
+  <meta name="theme-color" content="#63cecf">
+  <meta name="google" content="nositelinkssearchbox">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="pinterest-rich-pin" content="false">
+  <meta name="description" content="Greg Leuch is a creative product designer and developer specializing in user interfaces and chat experiences.">
+  <meta name="keywords" content="product designer, developer, UI design, chat experiences, remote jobs">
+  <meta property="og:title" content="Greg Leuch // Creative Product Designer & Developer // gleu.ch">
+  <meta property="twitter:title" content="Greg Leuch // Creative Product Designer & Developer // gleu.ch">
+  <meta property="og:description" content="Greg Leuch // Creative Product Designer & Developer // gleu.ch">
+  <meta property="twitter:description" content="Greg Leuch // Creative Product Designer & Developer // gleu.ch">
+  <meta property="og:image" content="">
+  <link property="twitter:image:src" content="">
+  <link rel="icon" href="index.html">
+  <meta name="robots" content="index,follow">
+
+  <script defer data-domain="gleu.ch" src="../../../plausible.io/js/script.js"></script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="../../../fonts.googleapis.com/css2@family=Zalando+Sans%253Awght@200%3B500%3B600&amp;display=swap.css" rel="stylesheet">
+
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: 'Zalando Sans', 'Helvetica Neue', Helvetica, Arial, san-serif;
+      font-display: swap;
+      letter-spacing: -0.015em;
+    }
+
+    :root {
+      --color-primary: #63cecf;
+      --color-white: #fff;
+      --color-text: #87999a;
+      --base-size: 4.2rem;
+    }
+
+    body {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    header {
+      --font-size: 1.8rem;
+      position: absolute;
+      left: calc(var(--base-size));
+      bottom: calc(var(--base-size) / 2);
+      z-index: 10;
+    }
+    header h1 {
+      cursor: wait;
+      font-size: var(--font-size);
+      line-height: 0;
+      color: var(--color-white);
+      letter-spacing: -0.075rem;
+    }
+
+    main {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: stretch;
+      padding: var(--base-size);
+      padding-top: calc(var(--base-size) * 1.6);
+      padding-bottom: calc(var(--base-size) * 1.6);
+    }
+    main:after {
+      pointer-events: none;
+      content: '';
+      border: var(--base-size) solid var(--color-primary);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 4;
+    }
+    main section {
+      --font-size: 2.4rem;
+      max-width: 36ch;
+      margin: var(--base-size);
+      margin-block: calc(var(--base-size) / 4);
+      line-height: 1.4em;
+      font-weight: 300;
+      font-size: var(--font-size);
+      color: var(--color-text);
+     /* letter-spacing: -0.0125em; */
+    }
+    main section strong {
+      display: inline;
+      font-weight: 600;
+      margin: -0.4rem;
+      padding: 0.4rem;
+      color: var(--color-text);
+      transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, opacity: 0.64;
+    }
+    main section strong.highlight {
+      display: inline-block;
+    }
+    main section strong.highlight:hover {
+      outline: none;
+      opacity: 0.48;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    main section a {
+      display: inline;
+      font-weight: 500;
+      margin: -0.4rem;
+      padding: 0.4rem;
+      color: var(--color-primary);
+      transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+      outline: none;
+    }
+    main section a:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    footer {
+      --font-size: 0.75rem;
+      position: absolute;
+      right: var(--base-size);
+      bottom: calc(var(--base-size) / 2);
+      z-index: 10;
+      color: var(--color-white);
+      opacity: 0.64;
+      font-size: var(--font-size);
+      line-height: 0;
+    }
+
+    .hide-desktop {
+      display: none;
+      visibility: hidden;
+    }
+    .hide-mobile {
+      display: inline;
+      visibility: visible;
+    }
+
+    @media screen and (max-width: 996px) {
+      main section {
+        --font-size: 2.4rem;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      :root {
+        --base-size: 1.8rem;
+      }
+
+      .hide-mobile {
+        display: none;
+        visibility: hidden;
+      }
+      .hide-desktop {
+        display: inline;
+        visibility: visible;
+      }
+
+      header {
+        --font-size: 1.8rem;
+        top: calc(var(--base-size) * 2);
+        left: var(--base-size);
+        right: var(--base-size);
+        text-align: center;
+        bottom: unset;
+      }
+      header h1 {
+        color: var(--color-primary);
+        line-height: 0.75em;
+      }
+
+      main {
+        margin-top: calc(var(--base-size) * 2);
+      }
+
+      main section {
+        font-size: 1.3rem;
+      }
+
+      footer {
+        --font-size: 0.67rem;
+        left: var(--base-size);
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <header>
+      <h1 title="Greg Leuch">gleu.ch</h1>
+    </header>
+    <main>
+      <section class="hide-mobile">
+        ☺︎
+      </section>
+      <section>
+        <strong class="highlight">Greg Leuch</strong> is a creative product designer and developer with a sharp focus on user interfaces and conversational experiences.
+      </section>
+      <section>
+        He’s led product and technology teams at <strong>betaworks</strong>, <strong>DIRTY LEMON</strong>, <strong>Poncho</strong>, </strong><strong>BuzzFeed</strong>, and more—building everything from prototypes to production-ready platforms.
+      </section>
+      <section>
+        Currently open to <strong>remote full-time or contract roles</strong>.
+      </section>
+      <section>
+        Let’s connect:
+        <a href="https://linkedin.com/in/gleuch">LinkedIn</a>
+        ·
+        <a href="https://github.com/gleuch">GitHub</a>
+        ·
+        <a href="mailto:contact@gleu.ch">contact@gleu.ch</a>
+      </section>
+    </main>
+    <footer>
+      &copy; 2025
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,495 @@
+
+<html xmls="http://www.w3.org/1999/xhtml">
+
+<head>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dead Drops Database</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="lib/node_modules/leaflet/dist/leaflet.css">
+<link rel="stylesheet" href="lib/node_modules/leaflet.markercluster/dist/MarkerCluster.css">
+<link rel="stylesheet" href="lib/node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css">
+
+<script src="lib/jquery/jquery-1.7.min.js" type="text/javascript"></script>
+<script src="lib/node_modules/leaflet/dist/leaflet.js" type="text/javascript"></script>
+<script src="lib/node_modules/leaflet.markercluster/dist/leaflet.markercluster.js" type="text/javascript"></script>
+</head>
+
+<body>
+<noscript><b>JavaScript must be enabled in order for you to use Google Maps.</b></noscript>
+<br><br>
+<table class="table_menu"><tr>
+	<td class="td_page_tab" onClick="document.location='?page=list';" onMouseOver="document.body.style.cursor='pointer';" onMouseOut="document.body.style.cursor='default';">Home</td>
+	<td class="td_page_tab" onClick="document.location='?page=submit';" onMouseOver="document.body.style.cursor='pointer';" onMouseOut="document.body.style.cursor='default';">Submit</td>
+	<td class="td_page_tab" onClick="document.location='?page=map';" onMouseOver="document.body.style.cursor='pointer';" onMouseOut="document.body.style.cursor='default';">World Map</td>
+		<td style="width: *;" class="td_page_blank">&nbsp;</td>
+</tr></table>
+<br>
+
+
+<script>
+	function MM_jumpMenu(targ, selObj, restore) { //v3.0
+		eval(targ + ".location='" + selObj.options[selObj.selectedIndex].value + "'");
+		if (restore) selObj.selectedIndex = 0;
+	}
+</script>
+
+
+<table>
+	<tr><td colspan="4" class="td_menu"><b>Statistics</b></td></tr>
+    <tr>
+    	<td style="width: 200px;"><b>Total USB-drops: </b></td><td style="width: 200px;">2356</td>
+    	<td style="width: 200px;"><b></b></td><td></td>
+    </tr>
+	<tr>
+    	<td style="width: 200px;"><b>Total USB-storage: </b></td><td style="width: 200px;">~ 75406 GB</td>
+        <td style="width: 200px;"><b></b></td><td></td>
+	</tr>
+</table><!--2584--><style type="text/css">
+	.desc {
+		font-size: smaller;
+	}
+
+	label,
+	input,
+	select,
+	.container,
+	.file_box {
+		display: block;
+		float: left;
+	}
+
+	label {
+		width: 120px;
+		font-weight: bold;
+	}
+
+	form br {
+		/* Alle Zeilenumbrüche in Formularen auswählen */
+		clear: left;
+		/* das floating der labels und inputs aufheben */
+	}
+
+	input.submit {
+		/* den Submit-Button */
+		float: none;
+		width: auto;
+	}
+
+	.group_box,
+	label,
+	input,
+	select,
+	textarea,
+	.input_box,
+	.cont,
+	.cont1 {
+		display: inline;
+		float: left;
+	}
+
+	div.group_box {
+		clear: both;
+		position: relative;
+		width: 95%;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #BBB;
+		padding-left: 10px;
+		padding-top: 12px;
+		padding-bottom: 4px;
+		margin-top: 25px;
+		font-size: 13px;
+	}
+
+	span.group_title {
+		position: absolute;
+		top: -12px;
+		left: 10px;
+		padding: 3px;
+		background-color: white;
+	}
+
+	.required {
+		border: #C77 solid 2px;
+	}
+
+	.file_box {
+		width: 220px;
+	}
+
+	.container {
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+</style>
+
+
+<script language="javascript">
+	function advancedsearch() {
+		var myinput = document.createElement("INPUT");
+		myinput.setAttribute("TYPE", "hidden");
+		myinput.setAttribute("NAME", "advancedsearch");
+		myinput.setAttribute("ID", "advancedsearch");
+		document.getElementById("search").appendChild(myinput);
+	}
+</script>
+
+<br />
+
+<form name="search" id="search" action="index.php@page=list.html" method="GET">
+	<div style="overflow-x:auto;">
+		<table class="mobile-table">
+
+							<tr>
+					<td colspan="3" class="td_menu"><b>Simple Search</td>
+				</tr>
+				<tr>
+					<td style="width: 400px;">
+						<div class="container"><label for="location">Location:</label><input type="text" id="location" name="location" size="40" value="" ></div>						<p><i>Search by city and country to get better results.</i></p>
+					</td>
+					<td style="width: 200px;"><div class="container"><label for="maxdistance">Max. Distance:</label><select id="maxdistance" name="maxdistance" ><option value="">unlimited</option>
+<option value="500">500 m</option>
+<option value="1000">1 km</option>
+<option value="5000" selected>5 km</option>
+<option value="10000">10 km</option>
+<option value="50000">50 km</option>
+<option value="100000">100 km</option></select></div></td>
+					<td><div class="container"><label for="pagelen">drops per page:</label><select id="pagelen" name="pagelen" ><option value="" selected>default</option>
+<option value="25">25</option>
+<option value="50">50</option>
+<option value="100">100</option>
+<option value="99999">All</option></select></div></td>
+				</tr>
+						<tr>
+				<td colspan="3"><input type="submit" class="submit" name="action" value="Search">
+					&nbsp;&nbsp;&nbsp;
+					<input type="submit" class="submit" name="action" value="clear">
+				</td>
+			</tr>
+		</table>
+	</div>
+</form><div style="overflow-x:auto;">
+	<table class="mobile-table">
+				<tr>
+			<td align="left" width="50"><span class="paging">< Back</span></td>
+			<td align="center" width="*" colspan="5"><b> 1 </b>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=15&amp;sort=" class="paging">2</a>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=30&amp;sort=" class="paging">3</a>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=45&amp;sort=" class="paging">4</a>|<span class="paging">...</span>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=2565&amp;sort=" class="paging">172</a>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=2580&amp;sort=" class="paging">173</a></td>
+			<td align="right" width="50"><a href="https://deaddrops.com/db/index.php?page=list&amp;start=15&amp;sort=" class="paging">Next ></a></td></td>
+		</tr>
+				<tr>
+			<td style="width: 100px;" class="td_menu" align="center"><a href="https://deaddrops.com/db/index.php?page=list&amp;order_by=created&amp;sort=desc&amp;start=0"><b>Date Created</b></a></td>
+			<td style="width: *;" class="td_menu"><a href="https://deaddrops.com/db/index.php?page=list&amp;order_by=name&amp;sort=desc&amp;start=0"><b>Name</b></a></td>
+			<td style="width: *;" class="td_menu"><a href="https://deaddrops.com/db/index.php?page=list&amp;order_by=address&amp;sort=desc&amp;start=0"><b>Address</b></a></td>
+			<td style="width: *;" class="td_menu"><a href="https://deaddrops.com/db/index.php?page=list&amp;order_by=city&amp;sort=desc&amp;start=0"><b>City</b></a></td>
+			<td style="width: *;" class="td_menu"><a href="https://deaddrops.com/db/index.php?page=list&amp;order_by=state&amp;sort=desc&amp;start=0"><b>State</b></a></td>
+			<td style="width: *;" class="td_menu"><a href="https://deaddrops.com/db/index.php?page=list&amp;order_by=country&amp;sort=desc&amp;start=0"><b>Country</b></a></td>
+			<td style="width: 100px;" class="td_menu" align="center"><a href="https://deaddrops.com/db/index.php?page=list&amp;order_by=size&amp;sort=desc&amp;start=0"><b>Size</b></a></td>
+			<td style="width: 30px;" class="td_menu" align="center"><b>Status</b></td>
+					</tr>
+					<tr class="mobile-row">
+				<td align="center">2025-11-06</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2734">Warwick-to-Ephrata Rail-Trail Bridge</a></td>
+				<td>106-96 Millway Rd, Ephrata, PA 17522</td>
+				<td>Ephrata</td>
+				<td>PA</td>
+				<td><acronym title="United States">US</acronym></td>
+				<td align="center">8 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-11-01</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2729">Lorenzo Hurondi</a></td>
+				<td>Via porta zincata</td>
+				<td>Falvaterra</td>
+				<td>Lazio</td>
+				<td><acronym title="Italy">IT</acronym></td>
+				<td align="center">2 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-10-16</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2722">Walnut Street Bridge, Span 7</a></td>
+				<td>Walnut St Bridge</td>
+				<td>Harrisburg</td>
+				<td>PA</td>
+				<td><acronym title="United States">US</acronym></td>
+				<td align="center">16 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-10-12</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2721">Peroni</a></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><acronym title="Italy">IT</acronym></td>
+				<td align="center">512 MB</td>
+				<td align="center">
+					<div class="dd-status status-0" title="broken/dead/stolen/gone"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-10-08</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2720">DeadDropLC1</a></td>
+				<td>Av. Gabriel Leyva</td>
+				<td>La Cruz, Elota</td>
+				<td>Sinaloa</td>
+				<td><acronym title="Mexico">MX</acronym></td>
+				<td align="center">16 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-10-02</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2719">Pennsylvania 23832 Enola Low Grade Trail</a></td>
+				<td>Enola Low Grade Trail</td>
+				<td>Conestoga</td>
+				<td>PA</td>
+				<td><acronym title="United States">US</acronym></td>
+				<td align="center">8 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-10-02</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2718">東太田三丁目第2児童遊園</a></td>
+				<td>大阪府茨木市東太田３丁目５</td>
+				<td>Ibaraki</td>
+				<td>Osaka</td>
+				<td><acronym title="Japan">JP</acronym></td>
+				<td align="center">8 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-10-02</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2717">Ibaraki City, Osaka</a></td>
+				<td>〒567-0012 大阪府茨木市東太田３丁目５</td>
+				<td>Ibaraki</td>
+				<td>Osaka</td>
+				<td><acronym title="Japan">JP</acronym></td>
+				<td align="center">8 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-09-30</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2716">代々木みどり公園</a></td>
+				<td>yoyogi1-37-10</td>
+				<td>shibuya-ku</td>
+				<td>tokyo</td>
+				<td><acronym title="Japan">JP</acronym></td>
+				<td align="center">32 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-09-22</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2715">expo2025-Grand Roof Ring</a></td>
+				<td>Yumeshima Higashi 1-chome, Konohana-ku</td>
+				<td>Osaka City</td>
+				<td>Osaka Prefecture</td>
+				<td><acronym title="Japan">JP</acronym></td>
+				<td align="center">32 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-09-05</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2714">DEAD_RAT</a></td>
+				<td>8122 103 st</td>
+				<td>Edmonton</td>
+				<td>Alberta</td>
+				<td><acronym title="Canada">CA</acronym></td>
+				<td align="center">35 GB</td>
+				<td align="center">
+					<div class="dd-status status-0" title="broken/dead/stolen/gone"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-09-05</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2713">DEAD_RAT</a></td>
+				<td>8122 103 st</td>
+				<td>Edmonton</td>
+				<td>Alberta</td>
+				<td><acronym title="Canada">CA</acronym></td>
+				<td align="center">35 GB</td>
+				<td align="center">
+					<div class="dd-status status-0" title="broken/dead/stolen/gone"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-08-31</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2712">Sousouro</a></td>
+				<td>Ardittos Hill</td>
+				<td>Athens</td>
+				<td>Attica</td>
+				<td><acronym title="Greece">GR</acronym></td>
+				<td align="center">64 GB</td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-08-29</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2711">Hossein Rezaeie's Mother Fucked Dead Drop</a></td>
+				<td>Abadan Corner - Naahid East</td>
+				<td>Ahvaz</td>
+				<td>Golestan - Boostan</td>
+				<td><acronym title="Iran, Islamic Republic of">IR</acronym></td>
+				<td align="center"></td>
+				<td align="center">
+					<div class="dd-status status-2" title="working"></div>
+				</td>
+				</tr>			<tr class="mobile-row">
+				<td align="center">2025-08-24</td>
+				<td><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2710">UZBEK SILA AKKURGAN</a></td>
+				<td></td>
+				<td>AKKURGAN</td>
+				<td>TASHKENT</td>
+				<td><acronym title="Uzbekistan">UZ</acronym></td>
+				<td align="center">16 GB</td>
+				<td align="center">
+					<div class="dd-status status-0" title="broken/dead/stolen/gone"></div>
+				</td>
+				</tr>			<tr>
+				<td align="left" width="50"><span class="paging">< Back</span></td>
+				<td align="center" width="*" colspan="5"><b> 1 </b>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=15&amp;sort=" class="paging">2</a>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=30&amp;sort=" class="paging">3</a>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=45&amp;sort=" class="paging">4</a>|<span class="paging">...</span>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=2565&amp;sort=" class="paging">172</a>|<a href="https://deaddrops.com/db/index.php?page=list&amp;start=2580&amp;sort=" class="paging">173</a></td>
+				<td align="right" width="50"><a href="https://deaddrops.com/db/index.php?page=list&amp;start=15&amp;sort=" class="paging">Next ></a></td></td>
+			</tr>
+	</table>
+</div>
+<br />
+<table width="95%">
+	<tr>
+		<td class="td_menu"><b>Map shows DeadDrops from list above</b></td>
+	</tr>
+	<tr>
+		<td>
+			<center>
+				<div id="map" style="width: 100%; height: 400px; max-width: 900px;" class="div_map"></div>
+			</center>
+		</td>
+	</tr>
+</table>
+
+
+<script>
+	var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+		osmAttribution = 'Map data &copy; 2011 OpenStreetMap contributors',
+		osm = new L.TileLayer(osmUrl, {
+			maxZoom: 18,
+			attribution: osmAttribution
+		});
+
+	var map = new L.Map('map', { dragging: !L.Browser.mobile, tap: !L.Browser.mobile });
+
+	map.setView(new L.LatLng(0, 0), 2).addLayer(osm);
+
+	let markers = L.markerClusterGroup();
+
+	map.addLayer(markers);
+
+	var typeToImgName = {
+		'1': 'd',
+		'2': 'w',
+		'3': 'l',
+		'9': 'o'
+	};
+
+	var statusToImgName = {
+		'0': '3',
+		'1': '2',
+		'2': '1'
+	};
+
+	var DeadDropIcon = L.Icon.extend({
+		iconUrl: './images/icon/d1.png',
+		iconSize: new L.Point(34, 55),
+		iconAnchor: new L.Point(20, 55),
+		popupAnchor: new L.Point(0, 0)
+	});
+
+	var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(40.157500, -76.226200), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2734"><b>#2734: Warwick-to-Ephrata Rail-Trail Bridge</b></a><br>106-96 Millway Rd, Ephrata, PA 17522, Ephrata PA, US<br> (8 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2734/915365.jpg" target="_blank"><img src="images/thumbs/2734/915365.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2734/759421.jpg" target="_blank"><img src="images/thumbs/2734/759421.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2734/861867.jpg" target="_blank"><img src="images/thumbs/2734/861867.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(41.505800, 13.524100), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2729"><b>#2729: Lorenzo Hurondi</b></a><br>Via porta zincata, Falvaterra Lazio, IT<br> (2 GB)<br><br></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(40.256100, -76.887200), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2722"><b>#2722: Walnut Street Bridge, Span 7</b></a><br>Walnut St Bridge, Harrisburg PA, US<br> (16 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2722/679056.jpg" target="_blank"><img src="images/thumbs/2722/679056.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2722/271052.jpg" target="_blank"><img src="images/thumbs/2722/271052.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2722/559457.jpg" target="_blank"><img src="images/thumbs/2722/559457.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[0] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(41.530500, 13.486500), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2721"><b>#2721: Peroni</b></a><br>,  , IT<br> (512 MB)<br><br></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(23.915900, -106.893000), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2720"><b>#2720: DeadDropLC1</b></a><br>Av. Gabriel Leyva, La Cruz, Elota Sinaloa, MX<br> (16 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2720/650056.jpg" target="_blank"><img src="images/thumbs/2720/650056.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2720/192255.jpg" target="_blank"><img src="images/thumbs/2720/192255.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2720/861652.jpg" target="_blank"><img src="images/thumbs/2720/861652.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(39.961400, -76.456900), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2719"><b>#2719: Pennsylvania 23832 Enola Low Grade Trail</b></a><br>Enola Low Grade Trail, Conestoga PA, US<br> (8 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2719/350713.jpg" target="_blank"><img src="images/thumbs/2719/350713.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2719/819761.jpg" target="_blank"><img src="images/thumbs/2719/819761.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2719/800549.jpg" target="_blank"><img src="images/thumbs/2719/800549.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(34.840200, 135.583000), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2718"><b>#2718: 東太田三丁目第2児童遊園</b></a><br>大阪府茨木市東太田３丁目５, Ibaraki Osaka, JP<br> (8 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2718/849331.jpg" target="_blank"><img src="images/thumbs/2718/849331.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2718/352567.jpg" target="_blank"><img src="images/thumbs/2718/352567.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2718/603748.jpg" target="_blank"><img src="images/thumbs/2718/603748.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(34.838900, 135.583000), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2717"><b>#2717: Ibaraki City, Osaka</b></a><br>〒567-0012 大阪府茨木市東太田３丁目５, Ibaraki Osaka, JP<br> (8 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2717/764676.jpg" target="_blank"><img src="images/thumbs/2717/764676.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2717/373638.jpg" target="_blank"><img src="images/thumbs/2717/373638.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2717/257513.jpg" target="_blank"><img src="images/thumbs/2717/257513.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(35.689000, 139.693000), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2716"><b>#2716: 代々木みどり公園</b></a><br>yoyogi1-37-10, shibuya-ku tokyo, JP<br> (32 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2716/725016.jpg" target="_blank"><img src="images/thumbs/2716/725016.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2716/985994.jpg" target="_blank"><img src="images/thumbs/2716/985994.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(34.646200, 135.383000), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2715"><b>#2715: expo2025-Grand Roof Ring</b></a><br>Yumeshima Higashi 1-chome, Konohana-ku, Osaka City Osaka Prefecture, JP<br> (32 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2715/226195.jpg" target="_blank"><img src="images/thumbs/2715/226195.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2715/568616.jpg" target="_blank"><img src="images/thumbs/2715/568616.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2715/336152.jpg" target="_blank"><img src="images/thumbs/2715/336152.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[0] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(53.543100, -113.494000), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2714"><b>#2714: DEAD_RAT</b></a><br>8122 103 st, Edmonton Alberta, CA<br> (35 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2714/679636.jpg" target="_blank"><img src="images/thumbs/2714/679636.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2714/565600.jpg" target="_blank"><img src="images/thumbs/2714/565600.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2714/210739.jpg" target="_blank"><img src="images/thumbs/2714/210739.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[0] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(53.517600, 133.495000), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2713"><b>#2713: DEAD_RAT</b></a><br>8122 103 st, Edmonton Alberta, CA<br> (35 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2713/730620.jpg" target="_blank"><img src="images/thumbs/2713/730620.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2713/584046.jpg" target="_blank"><img src="images/thumbs/2713/584046.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2713/606187.jpg" target="_blank"><img src="images/thumbs/2713/606187.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(37.968300, 23.739300), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2712"><b>#2712: Sousouro</b></a><br>Ardittos Hill, Athens Attica, GR<br> (64 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2712/450352.jpg" target="_blank"><img src="images/thumbs/2712/450352.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2712/639554.jpg" target="_blank"><img src="images/thumbs/2712/639554.jpg" border="0" /></a>&nbsp;&nbsp;<a href="https://deaddrops.com/db/images/fullsize/2712/806970.jpg" target="_blank"><img src="images/thumbs/2712/806970.jpg" border="0" /></a></div>');
+var iconImgName = './images/icon/' + typeToImgName[1] + statusToImgName[2] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(31.291600, 48.638000), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2711"><b>#2711: Hossein Rezaeie\'s Mother Fucked Dead Drop</b></a><br>Abadan Corner - Naahid East, Ahvaz Golestan - Boostan, IR<br> ()<br><br></div>');
+var iconImgName = './images/icon/' + typeToImgName[2] + statusToImgName[0] + '.png';
+var ddIcon = new L.Icon({ iconUrl: iconImgName, iconSize: new L.Point(34, 55), iconAnchor: new L.Point(20, 55), popupAnchor: new L.Point(0, 0) });
+var marker = new L.Marker(new L.LatLng(41.312300, 69.278700), {icon: ddIcon}).addTo(markers);
+
+marker.bindPopup('<div style="width:240px; height:140px"><a href="https://deaddrops.com/db/index.php?page=view&amp;id=2710"><b>#2710: UZBEK SILA AKKURGAN</b></a><br>, AKKURGAN TASHKENT, UZ<br> (16 GB)<br><br><a href="https://deaddrops.com/db/images/fullsize/2710/523508.jpg" target="_blank"><img src="images/thumbs/2710/523508.jpg" border="0" /></a></div>');
+</script><div align="center"><p>full site at <a href="../../../../index.html" target="_top">deaddrops.com</a></p></div>
+
+</body>
+
+</html>
+

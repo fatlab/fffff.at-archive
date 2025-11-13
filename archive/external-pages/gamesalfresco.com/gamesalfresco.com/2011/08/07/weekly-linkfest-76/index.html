@@ -1,0 +1,1451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if IE 8]>
+<html id="ie8" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<![endif]-->
+<!--[if !(IE 8)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!--<![endif]-->
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Weekly Linkfest | Games Alfresco</title>
+<link rel="pingback" href="https://gamesalfresco.com/xmlrpc.php" />
+<meta name='robots' content='max-image-preview:large' />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.parentNode.removeChild( dom_node ); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[ i ].parentNode.removeChild( dom_nodes[ i ] );
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+					+ '//' + window.location.hostname
+					+ '&postid=4299'
+					+ '&is_singular=1';
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9nYW1lc2FsZnJlc2NvLmNvbQ%3D%3D"
+		+ "&wpcomid=3566751"
+		+ "&time=1762899313";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='https://widgets.wp.com/' />
+<link rel='dns-prefetch' href='https://s2.wp.com/' />
+<link rel='dns-prefetch' href='https://s1.wp.com/' />
+<link rel='dns-prefetch' href='https://s0.wp.com/' />
+<link rel="alternate" type="application/rss+xml" title="Games Alfresco &raquo; Feed" href="https://gamesalfresco.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Games Alfresco &raquo; Comments Feed" href="https://gamesalfresco.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Games Alfresco &raquo; Weekly Linkfest Comments Feed" href="https://gamesalfresco.com/2011/08/07/weekly-linkfest-76/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?m=1751981882i&ver=6.9-alpha-60991"}};
+/*! This file is auto-generated */
+!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-1' href='../../../../../../../_static/index.html@%253F-eJx9jNEKwjAMRX%252FIGuYm80X8ltnGmq1Ng0kZ%252Fr3bEAQRXy4cuOfALM4XNmSDXJ2kGokVRjQZ%252FPRmyKWsE2pChQemwTA4KWpftPeqO%252FidTDThJ7zRvzvxjZjsCXbHvIhSrxAoxnaVLvnc9Mf2cOr6phtfzQxIvA==&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-2-1' href='../../../../../../../wp-content/plugins/gutenberg-core/v21.1.0/build/block-library/style.css@m=1762168648i&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-4-1' href='../../../../../../../_static/index.html@%253F-eJyVzDEOgCAMQNELiQU1Jg7Gs2AlDYpAaInx9ro5O%252F7hfbiywhTFRYEcKvnIQPXN1RVSa0h4MOxOssVDBXunKoqK34DlDq5F5gb+LIoVH4k%252FvpyzGYe+03oyw%252F4AcmU1KQ==&amp;cssminify=yes.css' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-6-1' href='../../../../../../../_static/index.html@%253F-eJzTLy%252FQzcxLzilNSS3WzyrWz01NyUxMzUnNTc0rQeEU5CRWphbp5qSmJyZX6uVm5uklFxfr6OPTDpRD5sM02efaGpoZmFkYGRuZGmQBAHPvL0Y=&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='jetpack-sharing-buttons-style-inline-css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-8-1' href='../../../../../../../_static/index.html@%253F-eJx9jcEKg0AMRH+oaVhorR7Eb9E16IpZg8min2889FZ6GYbhPQYPgbhlo2zIBWQtU8qKcdvJd5be0AmmMfW0Ejv2jKoP%252FK0daZzIXNdvB6PzvyJ+A8MgO6mCJ6fCYLN%252F6e113IZXU9WfUL%252FDcgHSTkDo&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--albert-sans: 'Albert Sans', sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda', serif;--wp--preset--font-family--bricolage-grotesque: 'Bricolage Grotesque', sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: 'Courier Prime', monospace;--wp--preset--font-family--crimson-pro: 'Crimson Pro', serif;--wp--preset--font-family--dm-mono: 'DM Mono', monospace;--wp--preset--font-family--dm-sans: 'DM Sans', sans-serif;--wp--preset--font-family--dm-serif-display: 'DM Serif Display', serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: 'EB Garamond', serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: 'Fira Sans', sans-serif;--wp--preset--font-family--fjalla-one: 'Fjalla One', sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono', monospace;--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans', sans-serif;--wp--preset--font-family--ibarra-real-nova: 'Ibarra Real Nova', serif;--wp--preset--font-family--instrument-serif: 'Instrument Serif', serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: 'Josefin Sans', sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: 'Noto Sans Mono', sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: 'Open Sans', sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: 'PT Serif', serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: 'Playfair Display', serif;--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: 'Roboto Slab', serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: 'Source Sans 3', sans-serif;--wp--preset--font-family--source-serif-4: 'Source Serif 4', serif;--wp--preset--font-family--space-mono: 'Space Mono', monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: 'Work Sans', sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-10-1' href='../../../../../../../wp-content/mu-plugins/jetpack-mu-wpcom-plugin/moon/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/verbum-comments/verbum-comments.css@m=1760027108i&amp;cssminify=yes.css' type='text/css' media='all' />
+<link rel='stylesheet' id='verbum-gutenberg-css-css' href='../../../../../../../widgets.wp.com/verbum-block-editor/block-editor.css@ver=1738686361.css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-12-1' href='../../../../../../../_static/index.html@%253F-eJx9i0EOgzAMwD60LmJFTBzQ3gIlC53SpiKp0H4Pu7ELN1uyYSsuSDbMBrZgQoVSJ5gjkQe1L+M9qN7glKXqCleKWWHFiYUOJDiqk15NhOJYwmhR8p+4N49x%252Fa2vNDTPtul67%252F3jswPVTzwL&amp;cssminify=yes.css' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='print-css-13-1' href='../../../../../../../wp-content/mu-plugins/global-print/global-print.css@m=1465851035i&amp;cssminify=yes.css' type='text/css' media='print' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-16-1' href='../../../../../../../_static/index.html@%253F-eJyNjcEKwjAQRH%252FIuFRT6kX8FNkmS5K6yQY3Qfx7bfEiXrwM82B4A49qnJRGpUHupnIPqSgs1Cq624chi6zhO5OCRryTR++fW00l7J3qDv43XVNxoOISsmEJol%252FwY2uR8vs3WggsM%252FI6uOTzMI3Hw8lOg11eUT1JKA==&amp;cssminify=yes.css' type='text/css' media='all' />
+<script type="text/javascript" id="jetpack_related-posts-js-extra">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="jetpack-mu-wpcom-settings-js-before">
+/* <![CDATA[ */
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https:\/\/s1.wp.com\/wp-content\/mu-plugins\/jetpack-mu-wpcom-plugin\/moon\/jetpack_vendor\/automattic\/jetpack-mu-wpcom\/src\/build\/"};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../_static/index.html@%253F%252Fwp-content%252Fmu-plugins%252Fjetpack-plugin%252Fmoon%252F_inc%252Fbuild%252Frelated-posts%252Frelated-posts.min.js,%252Fwp-content%252Fjs%252Frlt-proxy.js%253Fm=1755006225j'></script>
+<script type="text/javascript" id="rlt-proxy-js-after">
+/* <![CDATA[ */
+	rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
+/* ]]> */
+</script>
+<script type="text/javascript" src="../../../../../../../wp-content/plugins/gutenberg-core/v21.1.0/build/hooks/index.min.js@m=1762168648i&amp;ver=84e753e2b66eb7028d38" id="wp-hooks-js"></script>
+<script type="text/javascript" src="../../../../../../../wp-content/plugins/gutenberg-core/v21.1.0/build/i18n/index.min.js@m=1762168648i&amp;ver=bd5a2533e717a1043151" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<script type="text/javascript" id="wpcom-actionbar-placeholder-js-extra">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"3566751","postID":"4299","siteURL":"https:\/\/gamesalfresco.com","xhrURL":"https:\/\/gamesalfresco.com\/wp-admin\/admin-ajax.php","nonce":"88b328918f","isLoggedIn":"","statusMessage":"","subsEmailDefault":"instantly","proxyScriptUrl":"https:\/\/s0.wp.com\/wp-content\/js\/wpcom-proxy-request.js?ver=20211021","shortlink":"https:\/\/wp.me\/peXSf-17l","i18n":{"followedText":"New posts from this site will now appear in your <a href="https://gamesalfresco.com/2011/08/07/weekly-linkfest-76/\&quot;https:\/\/wordpress.com\/reader\&quot;">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Shortlink copied to clipboard."}};
+/* ]]> */
+</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://gamesalfresco.wordpress.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://wp.me/peXSf-17l' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fgamesalfresco.com%2F2011%2F08%2F07%2Fweekly-linkfest-76%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fgamesalfresco.com%2F2011%2F08%2F07%2Fweekly-linkfest-76%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Weekly Linkfest" />
+<meta property="og:url" content="https://gamesalfresco.com/2011/08/07/weekly-linkfest-76/" />
+<meta property="og:description" content="I&#8217;m a bit sleepy today, so please excuse any increase in grammar mistakes. The augmented reality Korean unification project is an interesting little art/political project leveraging the power…" />
+<meta property="article:published_time" content="2011-08-07T18:49:50+00:00" />
+<meta property="article:modified_time" content="2011-08-07T18:49:50+00:00" />
+<meta property="og:site_name" content="Games Alfresco" />
+<meta property="og:image" content="http://img.youtube.com/vi/a2Ijf2Dk6e4/0.jpg" />
+<meta property="og:image:secure_url" content="https://img.youtube.com/vi/a2Ijf2Dk6e4/0.jpg" />
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+<meta name="twitter:text:title" content="Weekly Linkfest" />
+<meta name="twitter:image" content="https://secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90?s=240" />
+<meta name="twitter:card" content="summary" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=32" sizes="16x16" />
+<link rel="icon" type="image/x-icon" href="../../../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=32" sizes="16x16" />
+<link rel="apple-touch-icon" href="https://secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90?s=114" />
+<link rel='openid.server' href='https://gamesalfresco.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://gamesalfresco.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://gamesalfresco.com/osd.xml" title="Games Alfresco" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+		<style id="wpcom-hotfix-masterbar-style">
+			@media screen and (min-width: 783px) {
+				#wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a img {
+					margin-top: 5px;
+				}
+			}
+		</style>
+		<meta name="description" content="I&#039;m a bit sleepy today, so please excuse any increase in grammar mistakes. The augmented reality Korean unification project is an interesting little art/political project leveraging the power of erasAR. What other sights would you like to erase using augmented reality? Congrats to the guys at Zugara for being the first (afaik) AR clothing application&hellip;" />
+<style type="text/css">
+#header h1 a, #header .description {
+display: none;
+}
+</style>
+</head>
+<body class="wp-singular post-template-default single single-post postid-4299 single-format-standard wp-theme-pubdigg3 customizer-styles-applied jetpack-reblog-enabled"><div id="container">
+
+<div id="header">
+
+	<div id="menu">
+		<ul class="menu">
+	<li class="page_item"><a href="https://gamesalfresco.com/">Home</a></li>
+	<li class="page_item page-item-2"><a href="https://gamesalfresco.com/about/">About The Authors</a></li>
+<li class="page_item page-item-105"><a href="https://gamesalfresco.com/welcome/">About The Blog</a></li>
+<li class="page_item page-item-4461"><a href="https://gamesalfresco.com/my-work/">My Work</a></li>
+</ul>
+	</div>
+
+	<div id="header-box">
+	<div id="header-image">
+		<img src="../../../../../../../wp-content/uploads/2009/10/blog-header6.jpg" alt="" />
+	</div>
+	<div id="header-overlay">
+		<img src="../../../../../../../s2.wp.com/wp-content/themes/pub/digg3/images/bg_header_overlay.png@m=1391151072i" alt="" />
+	</div>
+
+	<div id="pagetitle">
+		<h1><a href="https://gamesalfresco.com/" title="Games Alfresco">Games Alfresco</a></h1>
+	</div>
+
+	<div id="syndication">
+		<a href="https://gamesalfresco.com/feed/" title="Syndicate this site using RSS" class="feed">Entries <abbr title="Really Simple Syndication">RSS</abbr></a> &#124; <a href="https://gamesalfresco.com/comments/feed/" title="Syndicate comments using RSS">Comments RSS</a>
+	</div>
+	<div id="searchbox">
+		<form method="get" id="searchform" action="https://gamesalfresco.com/">
+<div>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+</div>
+</form>	</div>
+	</div>
+</div>
+
+<div class="pagewrapper"><div id="page">
+
+<!-- Start Obar -->
+
+	<div class="obar">
+<ul>
+
+<li id="text-101940804" class="widget widget_text"><h2 class="widgettitle">Featured Posts</h2>
+			<div class="textwidget">
+
+ </div>
+		</li>
+<li id="top-posts-2" class="widget widget_top-posts"><h2 class="widgettitle">Top Posts</h2>
+<ul><li><a href="https://gamesalfresco.com/2013/11/19/republic-launching-urban-art-augmented-reality-reviving-murals/" class="bump-view" data-bump-view="tp">RE+Public launching urban art Augmented Reality - reviving murals</a></li><li><a href="https://gamesalfresco.com/2014/11/06/smart-glasses-report-predicts-1-billion-shipments-by-2020/" class="bump-view" data-bump-view="tp">Smart Glasses Report Predicts 1 Billion Shipments By 2020</a></li><li><a href="https://gamesalfresco.com/2010/09/23/the-first-fun-augmented-reality-game-on-the-iphone-app-store-was-just-submitted/" class="bump-view" data-bump-view="tp">The First Fun Augmented Reality Game on the iPhone App Store Was Just Submitted</a></li></ul></li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+		<label class="screen-reader-text" for="archives-dropdown-2">Archives</label>
+		<select id="archives-dropdown-2" name="archive-dropdown">
+			
+			<option value="">Select Month</option>
+				<option value='https://gamesalfresco.com/2016/02/'> February 2016 </option>
+	<option value='https://gamesalfresco.com/2015/01/'> January 2015 </option>
+	<option value='https://gamesalfresco.com/2014/11/'> November 2014 </option>
+	<option value='https://gamesalfresco.com/2014/06/'> June 2014 </option>
+	<option value='https://gamesalfresco.com/2014/05/'> May 2014 </option>
+	<option value='https://gamesalfresco.com/2013/11/'> November 2013 </option>
+	<option value='https://gamesalfresco.com/2013/07/'> July 2013 </option>
+	<option value='https://gamesalfresco.com/2013/05/'> May 2013 </option>
+	<option value='https://gamesalfresco.com/2013/04/'> April 2013 </option>
+	<option value='https://gamesalfresco.com/2013/03/'> March 2013 </option>
+	<option value='https://gamesalfresco.com/2013/02/'> February 2013 </option>
+	<option value='https://gamesalfresco.com/2012/12/'> December 2012 </option>
+	<option value='https://gamesalfresco.com/2012/03/'> March 2012 </option>
+	<option value='https://gamesalfresco.com/2012/01/'> January 2012 </option>
+	<option value='https://gamesalfresco.com/2011/12/'> December 2011 </option>
+	<option value='https://gamesalfresco.com/2011/11/'> November 2011 </option>
+	<option value='https://gamesalfresco.com/2011/10/'> October 2011 </option>
+	<option value='https://gamesalfresco.com/2011/09/'> September 2011 </option>
+	<option value='https://gamesalfresco.com/2011/08/'> August 2011 </option>
+	<option value='https://gamesalfresco.com/2011/07/'> July 2011 </option>
+	<option value='https://gamesalfresco.com/2011/06/'> June 2011 </option>
+	<option value='https://gamesalfresco.com/2011/05/'> May 2011 </option>
+	<option value='https://gamesalfresco.com/2011/04/'> April 2011 </option>
+	<option value='https://gamesalfresco.com/2011/03/'> March 2011 </option>
+	<option value='https://gamesalfresco.com/2011/02/'> February 2011 </option>
+	<option value='https://gamesalfresco.com/2011/01/'> January 2011 </option>
+	<option value='https://gamesalfresco.com/2010/12/'> December 2010 </option>
+	<option value='https://gamesalfresco.com/2010/11/'> November 2010 </option>
+	<option value='https://gamesalfresco.com/2010/10/'> October 2010 </option>
+	<option value='https://gamesalfresco.com/2010/09/'> September 2010 </option>
+	<option value='https://gamesalfresco.com/2010/08/'> August 2010 </option>
+	<option value='https://gamesalfresco.com/2010/07/'> July 2010 </option>
+	<option value='https://gamesalfresco.com/2010/06/'> June 2010 </option>
+	<option value='https://gamesalfresco.com/2010/05/'> May 2010 </option>
+	<option value='https://gamesalfresco.com/2010/04/'> April 2010 </option>
+	<option value='https://gamesalfresco.com/2010/03/'> March 2010 </option>
+	<option value='https://gamesalfresco.com/2010/02/'> February 2010 </option>
+	<option value='https://gamesalfresco.com/2010/01/'> January 2010 </option>
+	<option value='https://gamesalfresco.com/2009/12/'> December 2009 </option>
+	<option value='https://gamesalfresco.com/2009/11/'> November 2009 </option>
+	<option value='https://gamesalfresco.com/2009/10/'> October 2009 </option>
+	<option value='https://gamesalfresco.com/2009/09/'> September 2009 </option>
+	<option value='https://gamesalfresco.com/2009/08/'> August 2009 </option>
+	<option value='https://gamesalfresco.com/2009/07/'> July 2009 </option>
+	<option value='https://gamesalfresco.com/2009/06/'> June 2009 </option>
+	<option value='https://gamesalfresco.com/2009/05/'> May 2009 </option>
+	<option value='https://gamesalfresco.com/2009/04/'> April 2009 </option>
+	<option value='https://gamesalfresco.com/2009/03/'> March 2009 </option>
+	<option value='https://gamesalfresco.com/2009/02/'> February 2009 </option>
+	<option value='https://gamesalfresco.com/2009/01/'> January 2009 </option>
+	<option value='https://gamesalfresco.com/2008/12/'> December 2008 </option>
+	<option value='https://gamesalfresco.com/2008/11/'> November 2008 </option>
+	<option value='https://gamesalfresco.com/2008/10/'> October 2008 </option>
+	<option value='https://gamesalfresco.com/2008/09/'> September 2008 </option>
+	<option value='https://gamesalfresco.com/2008/08/'> August 2008 </option>
+	<option value='https://gamesalfresco.com/2008/07/'> July 2008 </option>
+	<option value='https://gamesalfresco.com/2008/06/'> June 2008 </option>
+	<option value='https://gamesalfresco.com/2008/05/'> May 2008 </option>
+	<option value='https://gamesalfresco.com/2008/04/'> April 2008 </option>
+	<option value='https://gamesalfresco.com/2008/03/'> March 2008 </option>
+
+		</select>
+
+			<script type="text/javascript">
+/* <![CDATA[ */
+
+(function() {
+	var dropdown = document.getElementById( "archives-dropdown-2" );
+	function onSelectChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value !== '' ) {
+			document.location.href = this.options[ this.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onSelectChange;
+})();
+
+/* ]]> */
+</script>
+</li>
+<li id="wp_tag_cloud-2" class="widget wp_widget_tag_cloud"><h2 class="widgettitle"></h2>
+<a href="https://gamesalfresco.com/tag/acrossair/" class="tag-cloud-link tag-link-22561266 tag-link-position-1" style="font-size: 11.862068965517pt;" aria-label="AcrossAir (14 items)">AcrossAir</a>
+<a href="https://gamesalfresco.com/tag/apple/" class="tag-cloud-link tag-link-291 tag-link-position-2" style="font-size: 10.124137931034pt;" aria-label="Apple (9 items)">Apple</a>
+<a href="https://gamesalfresco.com/tag/ar2010/" class="tag-cloud-link tag-link-28559105 tag-link-position-3" style="font-size: 11.186206896552pt;" aria-label="AR2010 (12 items)">AR2010</a>
+<a href="https://gamesalfresco.com/tag/ar-devices/" class="tag-cloud-link tag-link-7561095 tag-link-position-4" style="font-size: 8.6758620689655pt;" aria-label="AR Devices (6 items)">AR Devices</a>
+<a href="https://gamesalfresco.com/tag/ar-games/" class="tag-cloud-link tag-link-7561108 tag-link-position-5" style="font-size: 17.751724137931pt;" aria-label="AR Games (61 items)">AR Games</a>
+<a href="https://gamesalfresco.com/tag/art/" class="tag-cloud-link tag-link-177 tag-link-position-6" style="font-size: 10.124137931034pt;" aria-label="Art (9 items)">Art</a>
+<a href="https://gamesalfresco.com/tag/artoolkit/" class="tag-cloud-link tag-link-7013180 tag-link-position-7" style="font-size: 14.275862068966pt;" aria-label="artoolkit (26 items)">artoolkit</a>
+<a href="https://gamesalfresco.com/tag/artoolworks/" class="tag-cloud-link tag-link-15063626 tag-link-position-8" style="font-size: 8pt;" aria-label="ARToolWorks (5 items)">ARToolWorks</a>
+<a href="https://gamesalfresco.com/tag/augmented-reality/" class="tag-cloud-link tag-link-282669 tag-link-position-9" style="font-size: 22pt;" aria-label="augmented reality (167 items)">augmented reality</a>
+<a href="https://gamesalfresco.com/tag/augmented-reality-event/" class="tag-cloud-link tag-link-17181705 tag-link-position-10" style="font-size: 12.344827586207pt;" aria-label="augmented reality event (16 items)">augmented reality event</a>
+<a href="https://gamesalfresco.com/tag/blair-macintyre/" class="tag-cloud-link tag-link-10669087 tag-link-position-11" style="font-size: 10.896551724138pt;" aria-label="Blair MacIntyre (11 items)">Blair MacIntyre</a>
+<a href="https://gamesalfresco.com/tag/bruce-sterling/" class="tag-cloud-link tag-link-109789 tag-link-position-12" style="font-size: 10.510344827586pt;" aria-label="Bruce Sterling (10 items)">Bruce Sterling</a>
+<a href="https://gamesalfresco.com/tag/daniel-wagner/" class="tag-cloud-link tag-link-4459949 tag-link-position-13" style="font-size: 10.124137931034pt;" aria-label="Daniel Wagner (9 items)">Daniel Wagner</a>
+<a href="https://gamesalfresco.com/tag/flartoolkit/" class="tag-cloud-link tag-link-17096041 tag-link-position-14" style="font-size: 8.6758620689655pt;" aria-label="flartoolkit (6 items)">flartoolkit</a>
+<a href="https://gamesalfresco.com/tag/fraunhofer/" class="tag-cloud-link tag-link-65229 tag-link-position-15" style="font-size: 8pt;" aria-label="Fraunhofer (5 items)">Fraunhofer</a>
+<a href="https://gamesalfresco.com/tag/futuristic-visions/" class="tag-cloud-link tag-link-3939361 tag-link-position-16" style="font-size: 12.634482758621pt;" aria-label="Futuristic Visions (17 items)">Futuristic Visions</a>
+<a href="https://gamesalfresco.com/tag/games/" class="tag-cloud-link tag-link-21 tag-link-position-17" style="font-size: 14.08275862069pt;" aria-label="Games (25 items)">Games</a>
+<a href="https://gamesalfresco.com/tag/georgia-tech/" class="tag-cloud-link tag-link-42127 tag-link-position-18" style="font-size: 11.572413793103pt;" aria-label="Georgia Tech (13 items)">Georgia Tech</a>
+<a href="https://gamesalfresco.com/tag/ghostwire/" class="tag-cloud-link tag-link-12894637 tag-link-position-19" style="font-size: 8.6758620689655pt;" aria-label="Ghostwire (6 items)">Ghostwire</a>
+<a href="https://gamesalfresco.com/tag/goldrun/" class="tag-cloud-link tag-link-11964160 tag-link-position-20" style="font-size: 8.6758620689655pt;" aria-label="Goldrun (6 items)">Goldrun</a>
+<a href="https://gamesalfresco.com/tag/google/" class="tag-cloud-link tag-link-81 tag-link-position-21" style="font-size: 11.572413793103pt;" aria-label="Google (13 items)">Google</a>
+<a href="https://gamesalfresco.com/tag/google-goggles/" class="tag-cloud-link tag-link-9850324 tag-link-position-22" style="font-size: 9.1586206896552pt;" aria-label="Google Goggles (7 items)">Google Goggles</a>
+<a href="https://gamesalfresco.com/tag/gps-and-compass/" class="tag-cloud-link tag-link-20442951 tag-link-position-23" style="font-size: 14.468965517241pt;" aria-label="GPS and Compass (27 items)">GPS and Compass</a>
+<a href="https://gamesalfresco.com/tag/gudrun-klinker/" class="tag-cloud-link tag-link-10995773 tag-link-position-24" style="font-size: 8pt;" aria-label="Gudrun Klinker (5 items)">Gudrun Klinker</a>
+<a href="https://gamesalfresco.com/tag/handhelds-and-cellphones/" class="tag-cloud-link tag-link-20210952 tag-link-position-25" style="font-size: 17.268965517241pt;" aria-label="Handhelds and Cellphones (54 items)">Handhelds and Cellphones</a>
+<a href="https://gamesalfresco.com/tag/head-up-display/" class="tag-cloud-link tag-link-4561712 tag-link-position-26" style="font-size: 11.572413793103pt;" aria-label="head up display (13 items)">head up display</a>
+<a href="https://gamesalfresco.com/tag/hit-lab-nz/" class="tag-cloud-link tag-link-11169170 tag-link-position-27" style="font-size: 10.896551724138pt;" aria-label="HIT Lab NZ (11 items)">HIT Lab NZ</a>
+<a href="https://gamesalfresco.com/tag/hmd/" class="tag-cloud-link tag-link-2330123 tag-link-position-28" style="font-size: 8.6758620689655pt;" aria-label="HMD (6 items)">HMD</a>
+<a href="https://gamesalfresco.com/tag/indoors-ar/" class="tag-cloud-link tag-link-20641547 tag-link-position-29" style="font-size: 9.1586206896552pt;" aria-label="indoors AR (7 items)">indoors AR</a>
+<a href="https://gamesalfresco.com/tag/int13/" class="tag-cloud-link tag-link-10263750 tag-link-position-30" style="font-size: 11.186206896552pt;" aria-label="int13 (12 items)">int13</a>
+<a href="https://gamesalfresco.com/tag/intel-mid/" class="tag-cloud-link tag-link-6173657 tag-link-position-31" style="font-size: 8pt;" aria-label="Intel MID (5 items)">Intel MID</a>
+<a href="https://gamesalfresco.com/tag/ipad/" class="tag-cloud-link tag-link-580102 tag-link-position-32" style="font-size: 8.6758620689655pt;" aria-label="iPad (6 items)">iPad</a>
+<a href="https://gamesalfresco.com/tag/iphone/" class="tag-cloud-link tag-link-106595 tag-link-position-33" style="font-size: 16.110344827586pt;" aria-label="iphone (41 items)">iphone</a>
+<a href="https://gamesalfresco.com/tag/ismar/" class="tag-cloud-link tag-link-6620728 tag-link-position-34" style="font-size: 10.510344827586pt;" aria-label="ISMAR (10 items)">ISMAR</a>
+<a href="https://gamesalfresco.com/tag/ismar-08/" class="tag-cloud-link tag-link-10994611 tag-link-position-35" style="font-size: 12.055172413793pt;" aria-label="ISMAR 08 (15 items)">ISMAR 08</a>
+<a href="https://gamesalfresco.com/tag/ismar-2009/" class="tag-cloud-link tag-link-15192970 tag-link-position-36" style="font-size: 11.186206896552pt;" aria-label="ISMAR 2009 (12 items)">ISMAR 2009</a>
+<a href="https://gamesalfresco.com/tag/junaio/" class="tag-cloud-link tag-link-25391344 tag-link-position-37" style="font-size: 15.048275862069pt;" aria-label="Junaio (31 items)">Junaio</a>
+<a href="https://gamesalfresco.com/tag/kinect/" class="tag-cloud-link tag-link-18608004 tag-link-position-38" style="font-size: 14.08275862069pt;" aria-label="Kinect (25 items)">Kinect</a>
+<a href="https://gamesalfresco.com/tag/kooaba/" class="tag-cloud-link tag-link-7112401 tag-link-position-39" style="font-size: 10.124137931034pt;" aria-label="Kooaba (9 items)">Kooaba</a>
+<a href="https://gamesalfresco.com/tag/kweekies/" class="tag-cloud-link tag-link-12519481 tag-link-position-40" style="font-size: 8pt;" aria-label="Kweekies (5 items)">Kweekies</a>
+<a href="https://gamesalfresco.com/tag/layar/" class="tag-cloud-link tag-link-205704 tag-link-position-41" style="font-size: 17.462068965517pt;" aria-label="Layar (57 items)">Layar</a>
+<a href="https://gamesalfresco.com/tag/linkfest/" class="tag-cloud-link tag-link-321640 tag-link-position-42" style="font-size: 19.779310344828pt;" aria-label="linkfest (98 items)">linkfest</a>
+<a href="https://gamesalfresco.com/tag/mark-billinghurst/" class="tag-cloud-link tag-link-10262179 tag-link-position-43" style="font-size: 11.186206896552pt;" aria-label="Mark Billinghurst (12 items)">Mark Billinghurst</a>
+<a href="https://gamesalfresco.com/tag/markerless/" class="tag-cloud-link tag-link-7111760 tag-link-position-44" style="font-size: 13.793103448276pt;" aria-label="Markerless (23 items)">Markerless</a>
+<a href="https://gamesalfresco.com/tag/marketing-and-advertisement/" class="tag-cloud-link tag-link-6547009 tag-link-position-45" style="font-size: 14.275862068966pt;" aria-label="Marketing and Advertisement (26 items)">Marketing and Advertisement</a>
+<a href="https://gamesalfresco.com/tag/metaio/" class="tag-cloud-link tag-link-7013175 tag-link-position-46" style="font-size: 18.137931034483pt;" aria-label="Metaio (67 items)">Metaio</a>
+<a href="https://gamesalfresco.com/tag/microsoft/" class="tag-cloud-link tag-link-637 tag-link-position-47" style="font-size: 11.572413793103pt;" aria-label="Microsoft (13 items)">Microsoft</a>
+<a href="https://gamesalfresco.com/tag/mobile-augmented-reality/" class="tag-cloud-link tag-link-10701728 tag-link-position-48" style="font-size: 8pt;" aria-label="Mobile Augmented Reality (5 items)">Mobile Augmented Reality</a>
+<a href="https://gamesalfresco.com/tag/mobile-games/" class="tag-cloud-link tag-link-46556 tag-link-position-49" style="font-size: 8pt;" aria-label="mobile games (5 items)">mobile games</a>
+<a href="https://gamesalfresco.com/tag/mobilizy/" class="tag-cloud-link tag-link-13278048 tag-link-position-50" style="font-size: 12.634482758621pt;" aria-label="Mobilizy (17 items)">Mobilizy</a>
+<a href="https://gamesalfresco.com/tag/neogence/" class="tag-cloud-link tag-link-15847291 tag-link-position-51" style="font-size: 9.1586206896552pt;" aria-label="Neogence (7 items)">Neogence</a>
+<a href="https://gamesalfresco.com/tag/nokia/" class="tag-cloud-link tag-link-3664 tag-link-position-52" style="font-size: 12.344827586207pt;" aria-label="nokia (16 items)">nokia</a>
+<a href="https://gamesalfresco.com/tag/ogmento/" class="tag-cloud-link tag-link-23230970 tag-link-position-53" style="font-size: 9.1586206896552pt;" aria-label="ogmento (7 items)">ogmento</a>
+<a href="https://gamesalfresco.com/tag/opinions-and-reflections/" class="tag-cloud-link tag-link-7295006 tag-link-position-54" style="font-size: 12.827586206897pt;" aria-label="opinions and reflections (18 items)">opinions and reflections</a>
+<a href="https://gamesalfresco.com/tag/ori-inbar/" class="tag-cloud-link tag-link-17708268 tag-link-position-55" style="font-size: 9.1586206896552pt;" aria-label="Ori Inbar (7 items)">Ori Inbar</a>
+<a href="https://gamesalfresco.com/tag/peter-meier/" class="tag-cloud-link tag-link-11101374 tag-link-position-56" style="font-size: 8pt;" aria-label="Peter Meier (5 items)">Peter Meier</a>
+<a href="https://gamesalfresco.com/tag/presselite/" class="tag-cloud-link tag-link-24531881 tag-link-position-57" style="font-size: 8.6758620689655pt;" aria-label="presselite (6 items)">presselite</a>
+<a href="https://gamesalfresco.com/tag/projector-based-ar/" class="tag-cloud-link tag-link-20478204 tag-link-position-58" style="font-size: 11.862068965517pt;" aria-label="Projector based AR (14 items)">Projector based AR</a>
+<a href="https://gamesalfresco.com/tag/qualcomm/" class="tag-cloud-link tag-link-182541 tag-link-position-59" style="font-size: 12.634482758621pt;" aria-label="Qualcomm (17 items)">Qualcomm</a>
+<a href="https://gamesalfresco.com/tag/research/" class="tag-cloud-link tag-link-668 tag-link-position-60" style="font-size: 13.020689655172pt;" aria-label="Research (19 items)">Research</a>
+<a href="https://gamesalfresco.com/tag/sekai-camera/" class="tag-cloud-link tag-link-10953015 tag-link-position-61" style="font-size: 10.124137931034pt;" aria-label="Sekai Camera (9 items)">Sekai Camera</a>
+<a href="https://gamesalfresco.com/tag/sony/" class="tag-cloud-link tag-link-1070 tag-link-position-62" style="font-size: 10.510344827586pt;" aria-label="Sony (10 items)">Sony</a>
+<a href="https://gamesalfresco.com/tag/sprxmobile/" class="tag-cloud-link tag-link-19889271 tag-link-position-63" style="font-size: 10.896551724138pt;" aria-label="SPRXMobile (11 items)">SPRXMobile</a>
+<a href="https://gamesalfresco.com/tag/srengine/" class="tag-cloud-link tag-link-20641548 tag-link-position-64" style="font-size: 8.6758620689655pt;" aria-label="SREngine (6 items)">SREngine</a>
+<a href="https://gamesalfresco.com/tag/tagwhat/" class="tag-cloud-link tag-link-33618114 tag-link-position-65" style="font-size: 8.6758620689655pt;" aria-label="TagWhat (6 items)">TagWhat</a>
+<a href="https://gamesalfresco.com/tag/tonchidot/" class="tag-cloud-link tag-link-10954236 tag-link-position-66" style="font-size: 12.055172413793pt;" aria-label="Tonchidot (15 items)">Tonchidot</a>
+<a href="https://gamesalfresco.com/tag/total-immersion/" class="tag-cloud-link tag-link-940175 tag-link-position-67" style="font-size: 16.88275862069pt;" aria-label="total immersion (49 items)">total immersion</a>
+<a href="https://gamesalfresco.com/tag/tourism-and-outdoors/" class="tag-cloud-link tag-link-20442952 tag-link-position-68" style="font-size: 14.468965517241pt;" aria-label="Tourism and Outdoors (27 items)">Tourism and Outdoors</a>
+<a href="https://gamesalfresco.com/tag/visible-markers/" class="tag-cloud-link tag-link-10141001 tag-link-position-69" style="font-size: 14.855172413793pt;" aria-label="Visible Markers (30 items)">Visible Markers</a>
+<a href="https://gamesalfresco.com/tag/vuzix/" class="tag-cloud-link tag-link-4802515 tag-link-position-70" style="font-size: 11.572413793103pt;" aria-label="Vuzix (13 items)">Vuzix</a>
+<a href="https://gamesalfresco.com/tag/web-camera/" class="tag-cloud-link tag-link-2279574 tag-link-position-71" style="font-size: 15.048275862069pt;" aria-label="web camera (31 items)">web camera</a>
+<a href="https://gamesalfresco.com/tag/wikitude/" class="tag-cloud-link tag-link-7140097 tag-link-position-72" style="font-size: 13.986206896552pt;" aria-label="Wikitude (24 items)">Wikitude</a>
+<a href="https://gamesalfresco.com/tag/will-wright/" class="tag-cloud-link tag-link-163864 tag-link-position-73" style="font-size: 8.6758620689655pt;" aria-label="Will Wright (6 items)">Will Wright</a>
+<a href="https://gamesalfresco.com/tag/ydreams/" class="tag-cloud-link tag-link-694549 tag-link-position-74" style="font-size: 10.510344827586pt;" aria-label="YDREAMS (10 items)">YDREAMS</a>
+<a href="https://gamesalfresco.com/tag/zugara/" class="tag-cloud-link tag-link-22030797 tag-link-position-75" style="font-size: 11.572413793103pt;" aria-label="Zugara (13 items)">Zugara</a></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+<form action="https://gamesalfresco.com" method="get"><label class="screen-reader-text" for="cat">Categories</label><select  name='cat' id='cat' class='postform'>
+	<option value='-1'>Select Category</option>
+	<option class="level-0" value="17356047">AR Advertising</option>
+	<option class="level-0" value="10995430">AR Applications</option>
+	<option class="level-0" value="12072692">AR ART</option>
+	<option class="level-0" value="11221758">AR Authoring</option>
+	<option class="level-0" value="17810232">AR Business</option>
+	<option class="level-0" value="7557894">AR Demos</option>
+	<option class="level-0" value="7561095">AR Devices</option>
+	<option class="level-0" value="14003869">AR Education</option>
+	<option class="level-0" value="7561104">AR Engines</option>
+	<option class="level-0" value="11102432">AR Events</option>
+	<option class="level-0" value="7561108">AR Games</option>
+	<option class="level-0" value="16067750">AR Inspiration</option>
+	<option class="level-0" value="17358624">AR Panel</option>
+	<option class="level-0" value="11221763">AR Tracking</option>
+	<option class="level-0" value="10995277">AR User Experience</option>
+	<option class="level-0" value="11208686">AR Vision</option>
+	<option class="level-0" value="282669">augmented reality</option>
+	<option class="level-0" value="6672">Press Release</option>
+	<option class="level-0" value="1">Uncategorized</option>
+</select>
+</form><script type="text/javascript">
+/* <![CDATA[ */
+
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			dropdown.parentNode.submit();
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+
+/* ]]> */
+</script>
+</li>
+
+</ul>
+	</div>
+
+<!-- End Obar -->
+	<div class="wrapper"><!-- This wrapper class appears only on Page and Single Post pages. -->
+	<div class="narrowcolumnwrapper"><div class="narrowcolumn">
+
+		<div class="content">
+
+			
+			<div class="post-4299 post type-post status-publish format-standard hentry category-uncategorized tag-erasar tag-ismar tag-linkfest tag-zugara" id="post-4299">
+
+				<h2><a href="index.html" rel="bookmark" title="Weekly Linkfest">Weekly Linkfest</a></h2>
+
+				<div class="postinfo">
+					Posted on <span class="postdate">August 7, 2011</span> by rouli									</div>
+
+				<div class="entry">
+
+					<p>I&#8217;m a bit sleepy today, so please excuse any increase in grammar mistakes.</p>
+<div>
+<ul>
+<li><a href="http://koreanunificationproject.wordpress.com/">The augmented reality Korean unification project</a> is an interesting little art/political project leveraging the power of <a href="http://erasar.wordpress.com/">erasAR</a>. What other sights would you like to erase using augmented reality?</li>
+<li>Congrats to the guys at Zugara for being the first (afaik) AR clothing application provider to fully integrate with their product with a retailer&#8217;s website: B<a href="http://weareorganizedchaos.com/index.php/2011/07/21/launching-today-the-1st-online-retailer-to-integrate-augmented-reality-throughout-entire-site/">anana Flame puts Zugara&#8217;s Webcam Social Shopper app on every product page</a>.</li>
+<li>iOS based <a href="http://techcrunch.com/2011/08/01/ios-app-scans-printed-music-notes-plays-them-in-real-time-video/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+Techcrunch+%28TechCrunch%2">Gakufu Camera</a> scans printed music notes and play them in real time.
+</li>
+<li>ISMAR 2011 <a href="http://ismar11.org/index.php/call-for-participation/tracking-competition">AR tracking competition</a> is now open for registration!
+</li>
+<li><a href="http://fffff.at/qr-stenciler-and-qr-hobo-codes/">QR Hobo Codes</a>, for those hobos carrying a smartphone (via <a href="http://twitter.com/bruces">@bruces</a>).</li>
+</ul>
+<div>
+before I fall to sleep, here&#8217;s a very short video illustrating Minecraft brought to the real world using augmented reality (more specifically, using <a href="http://www.kudan.eu/">Kudan&#8217;s Qoncept engine</a>).&nbsp;</div>
+<span class="embed-youtube" style="text-align:center; display: block;"><iframe class="youtube-player" width="468" height="264" src="../../../../../../../www.youtube.com/embed/a2Ijf2Dk6e4@version=3&amp;rel=1&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;fs=1&amp;hl=en&amp;autohide=2&amp;wmode=transparent.html" allowfullscreen="true" style="border:0;" sandbox="allow-scripts allow-same-origin allow-popups allow-presentation allow-popups-to-escape-sandbox"></iframe></span>
+<p>enjoy your week!</p>
+</div>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-reddit"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-reddit-4299"
+				class="share-reddit sd-button share-icon"
+				href="https://gamesalfresco.com/2011/08/07/weekly-linkfest-76/?share=reddit"
+				target="_blank"
+				aria-labelledby="sharing-reddit-4299"
+				>
+				<span id="sharing-reddit-4299" hidden>Click to share on Reddit (Opens in new window)</span>
+				<span>Reddit</span>
+			</a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-linkedin-4299"
+				class="share-linkedin sd-button share-icon"
+				href="https://gamesalfresco.com/2011/08/07/weekly-linkfest-76/?share=linkedin"
+				target="_blank"
+				aria-labelledby="sharing-linkedin-4299"
+				>
+				<span id="sharing-linkedin-4299" hidden>Click to share on LinkedIn (Opens in new window)</span>
+				<span>LinkedIn</span>
+			</a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-facebook-4299"
+				class="share-facebook sd-button share-icon"
+				href="https://gamesalfresco.com/2011/08/07/weekly-linkfest-76/?share=facebook"
+				target="_blank"
+				aria-labelledby="sharing-facebook-4299"
+				>
+				<span id="sharing-facebook-4299" hidden>Click to share on Facebook (Opens in new window)</span>
+				<span>Facebook</span>
+			</a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-3566751-4299-6913b571e7e85' data-src='//widgets.wp.com/likes/index.html?ver=20251111#blog_id=3566751&amp;post_id=4299&amp;origin=gamesalfresco.wordpress.com&amp;obj_id=3566751-4299-6913b571e7e85&amp;domain=gamesalfresco.com' data-name='like-post-frame-3566751-4299-6913b571e7e85' data-title='Like or Reblog'><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class='loading'>Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>					
+					<p class="postinfo">
+						Filed under: <a href="https://gamesalfresco.com/category/uncategorized/" rel="category tag">Uncategorized</a> &#124; Tagged: <a href="https://gamesalfresco.com/tag/erasar/" rel="tag">erasAR</a>, <a href="https://gamesalfresco.com/tag/ismar/" rel="tag">ISMAR</a>, <a href="https://gamesalfresco.com/tag/linkfest/" rel="tag">linkfest</a>, <a href="https://gamesalfresco.com/tag/zugara/" rel="tag">Zugara</a> &#124;					</p>
+
+				</div>
+			</div>
+
+
+
+			<div class="browse">&laquo; <a href="https://gamesalfresco.com/2011/08/05/reality-is-plenty-thanks/" rel="prev">Reality is Plenty,&nbsp;Thanks</a>  <a href="https://gamesalfresco.com/2011/08/08/osterhouts-amazing-hud-dreamware-or-vaporware/" rel="next">Osterhout&#8217;s Amazing HUD: Dreamware or&nbsp;Vaporware?</a> &raquo;</div>
+
+
+
+		</div><!-- End content -->
+
+	</div></div><!-- End narrowcolumnwrapper and narrowcolumn classes -->
+
+	
+<div class="narrowcolumnwrapper"><div class="narrowcolumn">
+	<div class="content">
+	<div class="post post-4299 type-post status-publish format-standard hentry category-uncategorized tag-erasar tag-ismar tag-linkfest tag-zugara">
+
+	<h3 id="comments">One Response</h3>
+
+	<ol class="commentlist">
+	
+<li class="comment even thread-even depth-1" id="comment-87005">
+<div id="div-comment-87005">
+	<div class="comment-meta commentmetadata">
+		<div class="avatar"><img referrerpolicy="no-referrer" alt='Ryan&#039;s avatar' src='../../../../../../../0.gravatar.com/avatar/930da5f6ef82e941544f564b3eea17020139ade09e84796235dde97b674ca7d9@s=32&amp;d=identicon&amp;r=G' srcset='../../../../../0.gravatar.com/avatar/930da5f6ef82e941544f564b3eea17020139ade09e84796235dde97b674ca7d9@s=32&amp;d=identicon&amp;r=Gn&#03../../../../../0.gravatar.com/avatar/930da5f6ef82e941544f564b3eea17020139ade09e84796235dde97b674ca7d9@s=48&amp;d=identicon&amp;r=Gd=ident../../../../../0.gravatar.com/avatar/930da5f6ef82e941544f564b3eea17020139ade09e84796235dde97b674ca7d9@s=64&amp;d=identicon&amp;r=Gs=64&../../../../../0.gravatar.com/avatar/930da5f6ef82e941544f564b3eea17020139ade09e84796235dde97b674ca7d9@s=96&amp;d=identicon&amp;r=Gb674c../../../../../0.gravatar.com/avatar/930da5f6ef82e941544f564b3eea17020139ade09e84796235dde97b674ca7d9@s=128&amp;d=identicon&amp;r=G6235dde97b674ca7d9?s=128&#038;d=identicon&#038;r=G 4x' class='avatar avatar-32' height='32' width='32' loading='lazy' decoding='async' /></div>		<span class="comment-author vcard"><strong class="fn"><a href="https://iphone-11-por-giveaway.blogspot.com/" class="url" rel="ugc external nofollow">Ryan</a></strong>, on <a href="index.html#comment-87005" title="">August 10, 2020 at 11:32 am</a> said:		</span>
+			</div>
+
+	<p>Courage is often Minecraft gammer</p>
+
+	<div class="reply">
+			</div>
+</div>
+</li><!-- #comment-## -->
+	</ol>
+
+	<div class="navigation">
+	<div class="alignleft"></div>
+	<div class="alignright"></div>
+	</div>
+
+	
+
+
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://gamesalfresco.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+
+
+<div class="comment-form__verbum transparent"></div><div class="verbum-form-meta"><input type='hidden' name='comment_post_ID' value='4299' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+
+			<input type="hidden" name="highlander_comment_nonce" id="highlander_comment_nonce" value="72aca458a6" />
+			<input type="hidden" name="verbum_show_subscription_modal" value="" /></div><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="51ee4e8349" /></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="231"/><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	
+	</div>
+	</div>
+</div></div>
+
+
+	</div><!-- End wrapper class -->
+
+	<div class="sidebar">
+	<ul>
+
+<li id="text-102697652" class="widget widget_text">			<div class="textwidget"><p><a href="http://feeds.feedburner.com/GamesAlfresco" rel="alternate"><img src="../../../../../../../i0.wp.com/www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt=""></a><a href="http://feeds.feedburner.com/GamesAlfresco" rel="alternate">Subscribe</a></p>
+
+<!-- AddThis Button BEGIN -->
+<div><a href="http://www.addthis.com/bookmark.php?pub=comogard" title="Bookmark and Share" target="_blank" rel="noopener"><img src="../../../../../../../i0.wp.com/s7.addthis.com/static/btn/lg-share-en.gif" width="156" height="20" border="0" alt="Bookmark and Share"></a></div>
+<!-- AddThis Button END -->
+
+
+<!-- linked Button BEGIN -->
+<a href="http://www.linkedin.com/in/oriinbar" rel="alternate"><img src="../../../../../../../gamesalfresco.files.wordpress.com/2009/01/linkedin_160x25.gif" alt="View my profile on linkedin"></a>
+<!-- linkedin Button END -->
+
+
+
+
+
+
+
+
+</div>
+		</li>
+<li id="text-273565213" class="widget widget_text"><h2 class="widgettitle">Don&#8217;t miss the world&#8217;s largest event for Augmented Reality!</h2>
+			<div class="textwidget"><p><a href="http://augmentedworldexpo.com/" rel="alternate"><img src="../../../../../../../gamesalfresco.files.wordpress.com/2016/04/awe-logo-e1460613343727.png" alt=""></a></p></div>
+		</li>
+<li id="twitter-399678471" class="widget widget_twitter"><h2 class="widgettitle"><a href='http://twitter.com/comogard'>Ori&#8217;s tweet</a></h2>
+<a class="twitter-timeline" data-height="600" data-dnt="true" href="https://twitter.com/comogard">Tweets by comogard</a></li>
+<li id="linkcat-4527291" class="widget widget_links"><h2 class="widgettitle">1. Vision</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://en.wikipedia.org/wiki/Augmented_reality">AR on Wikipedia</a></li>
+<li><a href="http://www.augmentedenvironments.org/blair/2009/03/02/bruce-branit-world-builder/">Bruce Branit</a></li>
+<li><a href="http://www.youtube.com/watch?v=g8Eycccww6k">Demo by Total Immersion</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Denn%C5%8D_Coil">Denno Coil (TV)</a></li>
+<li><a href="http://www.economist.com/opinion/displaystory.cfm?story_id=10251972">Economist Article about AR</a></li>
+<li><a href="http://www.youtube.com/watch?v=t1OFZlE7CeU">Singapore 2015</a></li>
+<li><a href="http://ericrice.com/spin/2008/07/17/baby-steps-to-an-augmented-future/">spinfocalypse</a></li>
+<li><a href="http://vimeo.com/2341387">The future of education</a></li>
+<li><a href="http://www.youtube.com/watch?v=ogywo6qjeBo&#038;NR=1">They Live (The Movie)</a></li>
+<li><a href="http://www.gamasutra.com/php-bin/news_index.php?story=10809">Vernor Vinge About AR</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-6525727" class="widget widget_links"><h2 class="widgettitle">2. History</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.hitlabnz.org/publications/2008-Trend-inAugmentedRealityTrackingInteractionandDisplayAReviewofTenYearsofISMAR.pdf">10 years of AR</a></li>
+<li><a href="http://www.sonycsl.co.jp/project/ar/ref.html">AR Archive</a></li>
+<li><a href="http://www.learningcircuits.org/2004/dec2004/0412_trends.htm">By Eva Kaplan-Leiserson</a></li>
+<li><a href="http://www.manifest-tech.com/society/augmented_reality.htm">Manifest Tech review</a></li>
+<li><a href="https://www.icg.tugraz.at/~daniel/HistoryOfMobileAR/">NEW! History of Mobile AR</a></li>
+<li><a href="http://blogs.discovery.com/good_idea/2009/02/augmented-reality.html">Science Channel</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-24327643" class="widget widget_links"><h2 class="widgettitle">3. NEW! Applications</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.youtube.com/watch?v=UIGAkVMre_o">Bradesco</a></li>
+<li><a href="http://buuuk.com/">BuUuk</a></li>
+<li><a href="http://www.youtube.com/watch?v=AvOxrU_Jons">Cyborg</a></li>
+<li><a href="http://www.chemicalwedding.tv/helios/cyclopedia.html">Cyclopedia</a></li>
+<li><a href="http://www.gamaray.com/">Gamaray (RIP)</a></li>
+<li><a href="http://www.geovector.com/applications/world-surfer/">GeoVector WorldSurfer</a></li>
+<li><a href="http://junaio.com">Junaio</a></li>
+<li><a href="http://www.kooaba.com/">Kooaba</a></li>
+<li><a href="http://layar.eu/">Layar</a></li>
+<li><a href="http://www.acrossair.com/apps_nearesttube.htm">Nearest Tube</a></li>
+<li><a href="http://www.lastminute.com/site/labs/nru.html">Nru</a></li>
+<li><a href="http://peakar.salzburgresearch.at/">Peak.AR</a></li>
+<li><a href="http://www.presselite.com/">presselite</a></li>
+<li><a href="http://robotvision-ar.com/">RobotVision</a></li>
+<li><a href="http://www.tonchidot.com/Sekai_Camera.html">Sekai Camera</a></li>
+<li><a href="http://blog.srengine.com/">SR Engine</a></li>
+<li><a href="http://www.tat.se/">TAT AUgmented ID</a></li>
+<li><a href="http://i.document.m05.de/">TwittARound</a></li>
+<li><a href="http://www.wikitude.org/">Wikitude</a></li>
+<li><a href="http://www.mobilizy.com/drive">Wikitude Drive</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-24281571" class="widget widget_links"><h2 class="widgettitle">3.5 Demos</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.youtube.com/watch?v=LmRd6XtVF0U">4 Angry Men</a></li>
+<li><a href="http://www.picnicnetwork.org/artefact-7117-en.html">AR at Picnic &#8217;07</a></li>
+<li><a href="http://technabob.com/blog/2006/08/06/prototype-augmented-reality-system-from-msft/">AR by Microsoft</a></li>
+<li><a href="http://www.churchillnavigation.com/ARS.wmv">AR for helicopters</a></li>
+<li><a href="http://wearables.unisa.edu.au/arquake/">AR Quake</a></li>
+<li><a href="http://www.youtube.com/watch?v=kd0rCu3teb8">AR Video-in-Video</a></li>
+<li><a href="http://www.youtube.com/watch?v=wbqic_Fau1Q&#038;e">AR Weather</a></li>
+<li><a href="http://www.toyspring.com/arcade/">Arcade Reality</a></li>
+<li><a href="http://www.arcane-technologies.com/?page_id=19">Arcane Technologies</a></li>
+<li><a href="http://archeoguide.intranet.gr/project.htm">ARCHEOGUIDE</a></li>
+<li><a href="http://www.todayandtomorrow.net/2008/09/01/desktop-fireworks/">Augmented Fireworks</a></li>
+<li><a href="http://www.youtube.com/watch?v=QCtP8QOrjgM">Autodesk AR</a></li>
+<li><a href="http://www.a-rage.com/index.php">a_rage</a></li>
+<li><a href="http://www.youtube.com/watch?v=Q6VBpEebgQQ">Bumper Cars</a></li>
+<li><a href="http://www.gizmodo.com.au/2008/09/amazing_magic_mirror_changes_fabrics_on_the_fly-2.html">Change Fabrics On the Fly</a></li>
+<li><a href="http://www.comeoutandplay.org/">Come Out  Play Festival</a></li>
+<li><a href="http://www.offworld.com/2009/02/introversions-defconar-mutuall.html">DefconAR</a></li>
+<li><a href="http://www.youtube.com/watch?v=GD0UMFHhanc">EasyWeb and Neoproj</a></li>
+<li><a href="http://www.youtube.com/watch?v=5V9E5HlWN_k">Electronic Field Guide</a></li>
+<li><a href="http://education.mit.edu/ar/ed.html">Environmental Detectives</a></li>
+<li><a href="http://elianealhadeff.blogspot.com/2007/03/serious-games-revolutionizing-childrens.html">EyeMagic book</a></li>
+<li><a href="http://shiorisaito.com/SAI/?p=452">Filled II (Art)</a></li>
+<li><a href="http://www.lgl.gameslearningsociety.org/games.php">Games Lab</a></li>
+<li><a href="http://www.youtube.com/watch?v=Lfp8id6bpDU">Gizmondo Catapult</a></li>
+<li><a href="http://www.mixedreality.nus.edu.sg/index.php?option=com_content&#038;task=view&#038;id=42&#038;Itemid=36">Human Pacman</a></li>
+<li><a href="http://www.crackunit.com/2008/09/11/examples-of-amazing-augmented-reality/#comment-20823">iain tait</a></li>
+<li><a href="http://video.google.com/videoplay?docid=-8877412759690569174">Intel&#8217;s CES &#8217;08 demo</a></li>
+<li><a href="http://laughingsquid.com/the-iphone-an-alternate-gaming-interface-or-harbinger-of-an-augmented-future/">iPhone as AR device</a></li>
+<li><a href="http://rogiken.org/vr/english.html">Kobito Virtual Brownies</a></li>
+<li><a href="http://www.fastcompany.com/blog/kit-eaton/technomix/why-your-next-gen-smartphone-will-do-augmented-reality">Lastminute.com Nru</a></li>
+<li><a href="http://www.youtube.com/watch?v=5ks1u0A8xdU">LevelHead</a></li>
+<li><a href="http://www.museumlab.jp/english/tech/04tech.html">Louvre-DNP</a></li>
+<li><a href="http://www.mscapers.com/">Media Scape</a></li>
+<li><a href="http://www.youtube.com/watch?v=VtIopu0UgXE&#038;eurl=http://www.crackunit.com/2008/09/11/examples-of-amazing-augmented-reality/">Neon Racer</a></li>
+<li><a href="http://www.notcot.com/archives/2009/01/augmented_reali.php">NOTCOT</a></li>
+<li><a href="http://technivator.blogspot.com/2008/08/props-to-props.html">Omnia Unboxing</a></li>
+<li><a href="http://www.youtube.com/watch?v=jL3C-OVQKWU">Outdoor AR</a></li>
+<li><a href="http://locmedia.wordpress.com/2008/03/23/mobile-locative-game-parallel-kingdom/">Parallel Kingdom</a></li>
+<li><a href="http://www.codywatts.com/photogeist.php">Photogeist</a></li>
+<li><a href="http://www.youtube.com/watch?v=umbTreYhidM&#038;feature=related">Physics and AR</a></li>
+<li><a href="http://lifeplus.miralab.unige.ch/HTML/results_visuals.htm">Pompeii AR Tour</a></li>
+<li><a href="http://www.youtube.com/watch?v=dcvwcizBYk8&#038;eurl=http://www.crackunit.com/2008/09/11/examples-of-amazing-augmented-reality/">Quakelings</a></li>
+<li><a href="http://pv3d.org/2009/03/12/augmented-reality-recursive-webcam/">Recursive AR</a></li>
+<li><a href="http://www.bmw.com/com/en/owners/service/augmented_reality_workshop_1.html">Repair BMW with AR</a></li>
+<li><a href="http://www.youtube.com/watch?v=BUOHfVXkUaI">Roku&#8217;s Reward</a></li>
+<li><a href="http://robotics.cs.brown.edu/projects/embodied_gaming/">Roomba AR</a></li>
+<li><a href="http://www.kingcosmonaut.de/royblock/index.php">Roy Block</a></li>
+<li><a href="http://www.codywatts.com/saveem.php">Save&#8217;em</a></li>
+<li><a href="http://www.youtube.com/watch?v=ODgZtriNYoc&#038;feature=related">Second life and AR</a></li>
+<li><a href="http://seewhatyoumean.3ds.com/video.html">See what you mean</a></li>
+<li><a href="http://www.squidder.com/2009/03/03/augmented-reality-drum-kit/">Squidder</a></li>
+<li><a href="http://www.youtube.com/watch?v=9noMfsg486Y">Sticky Light</a></li>
+<li><a href="http://www.tag004.nl/new/">TAG: AR artists</a></li>
+<li><a href="http://www.thinkartificial.org/">Think Artificial</a></li>
+<li><a href="http://www.ydreams.com/ydreams_2005/index.php?page=507">Virtual site seeing</a></li>
+<li><a href="http://wifiarmy.com/index.php?option=com">WIFI ARMY</a></li>
+<li><a href="http://www.mxrcorp.com/onlinestore/wIzQubesDetail.html">wIzQubes</a></li>
+<li><a href="http://www.youtube.com/watch?v=D-cH61IkXAI">WWF awarness app</a></li>
+<li><a href="http://www.ydreams.com/blog/">YDreams Blog</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-6654889" class="widget widget_links"><h2 class="widgettitle">4. Engines &amp; Tools</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://virtual.vtt.fi/virtual/proj2/multimedia/index.html">ALVAR</a></li>
+<li><a href="http://www.artag.net">Artag</a></li>
+<li><a href="http://www.hitl.washington.edu/artoolkit/">ARToolKit</a></li>
+<li><a href="http://studierstube.icg.tu-graz.ac.at/handheld_ar/artoolkitplus.php">ARToolKit Plus</a></li>
+<li><a href="http://www.sologicolibre.org/projects/atomic/en/index.php?page=Main+page">Atomic</a></li>
+<li><a href="http://www.cc.gatech.edu/dart/">DART</a></li>
+<li><a href="http://english.seac02.it/prodotti/easyon.aspx">EasyOn</a></li>
+<li><a href="http://www1.cs.columbia.edu/graphics/projects/goblin/index.htm">Goblin XNA</a></li>
+<li><a href="http://www.mscapers.com/">HP mscape</a></li>
+<li><a href="http://www.instantreality.org/story/what-is-it/">Instant Reality</a></li>
+<li><a href="http://www1.cs.columbia.edu/graphics/projects/mars/Authoring.html">MARS</a></li>
+<li><a href="http://www.metaio.com/downloads.php">Metaio UnifEye</a></li>
+<li><a href="http://www.arcane-technologies.com/?page_id=16">Mirage AR system</a></li>
+<li><a href="http://argaming.blogspot.com/2005/09/quick-look-of-mits-new-ar-engine.html">MIT AR Engine</a></li>
+<li><a href="http://research.nokia.com/research/projects/mara/index.html">Nokia Research</a></li>
+<li><a href="http://mi.eng.cam.ac.uk/~gr281/outdoortracking.html">Outdoor Tracking</a></li>
+<li><a href="http://t.immersion.free.fr/SimpleViewer_v6/">Total Immersion</a></li>
+<li><a href="http://www.ydreams.com/blog/2008/04/21/ydreams-latest-rd-work-with-augmented-reality-simvideo/">YDreams SimVideo</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-6654664" class="widget widget_links"><h2 class="widgettitle">5. Hardware</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://uwnews.org/uweek/uweekarticle.asp?articleID=39100">Bionic Eyes</a></li>
+<li><a href="http://blog.wired.com/defense/2008/03/darpa-wants-con.html">Darpa Project</a></li>
+<li><a href="http://www.intel.com/products/mid/">Intel&#8217;s MID</a></li>
+<li><a href="http://www.liteye.com/">Liteye</a></li>
+<li><a href="http://petitinvention.wordpress.com/2008/02/10/future-of-internet-search-mobile-version/">Looking Glass</a></li>
+<li><a href="http://www.lumus-optical.com/index.php?option=com_content&#038;task=view&#038;id=5&#038;Itemid=8">Lumus</a></li>
+<li><a href="http://translate.google.com/translate?hl=en&#038;sl=ja&#038;u=http://www.masunaga1905.jp/brand/teleglass/&#038;ei=hT-cSvmNEcKy8Qat4fjFAQ&#038;sa=X&#038;oi=translate&#038;resnum=4&#038;ct=result&#038;prev=/search%3Fq%3Dmasunaga%2Bteleglass%26hl%3Den%26client%3Dfir">Masunaga teleglass</a></li>
+<li><a href="http://www.microvision.com/wearable_displays/mobile.html">Microvision</a></li>
+<li><a href="http://www.mirageinnovations.com/">Mirage Innovations</a></li>
+<li><a href="http://www.nseries.com/products/n95/#l=products,n95">Nokia N95</a></li>
+<li><a href="http://www.digilens.com/">SBG Labs</a></li>
+<li><a href="http://petitinvention.wordpress.com/2009/03/13/snowcorn-another-sixth-sense-device-concept/">Snowcorn</a></li>
+<li><a href="http://www.vuzix.com/">Vuzix</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-6654669" class="widget widget_links"><h2 class="widgettitle">6. Organizations</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.arconsortium.org/home/2009/7/7/eight-augmented-reality-companies-form-ar-consortium.html">AR Consortium</a></li>
+<li><a href="http://www.facebook.com/group.php?gid=9736481972">AR Games Forum</a></li>
+<li><a href="http://www.artoolworks.com/Home.html">ARToolworks Inc.</a></li>
+<li><a href="http://www.augmented-reality-games.com/">Beyond Reality</a></li>
+<li><a href="http://www.easyweb.fr">EasyWeb</a></li>
+<li><a href="http://www.imagination.at/en/?Home">Imagination</a></li>
+<li><a href="http://www.improve-eu.info/">IMPROVE</a></li>
+<li><a href="http://www.ismar08.org/">ISMAR</a></li>
+<li><a href="http://www.lumus-optical.com/index.php?option=com_content&#038;task=view&#038;id=9&#038;Itemid=15">Lumus</a></li>
+<li><a href="http://www.metaio.com/">Metaio</a></li>
+<li><a href="http://www.microvision.com/vehicle_displays/head_up_displays.html">Microvision</a></li>
+<li><a href="http://www.mirageinnovations.com/">Mirage Innovations</a></li>
+<li><a href="http://www.ogmento.com">Ogmento</a></li>
+<li><a href="http://www.perey.com/" title="Consulting for Mobile Handheld AR">Perey Consulting</a></li>
+<li><a href="http://layar.eu/">SPRX &#8211; Layar</a></li>
+<li><a href="http://www.t-immersion.com/">Total Immersion</a></li>
+<li><a href="http://virtual.vtt.fi/virtual/proj2/multimedia/">VTT</a></li>
+<li><a href="http://www.ydreams.com/ydreams_2005/index.php?version=3">YDreams</a></li>
+<li><a href="http://www.koreacontent.org/co/z/zenitum/comp_info.html">Zenitum</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-562210" class="widget widget_links"><h2 class="widgettitle">7. Books</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.pragprog.com/titles/cfar">AR: A Practical Guide</a></li>
+<li><a href="http://www.amazon.com/Augmented-Learning-Research-Design-Educational/dp/0262113155">Augmented Learning</a></li>
+<li><a href="http://pragprog.com/titles/cfar/augmented-reality">Augmented Reality</a></li>
+<li><a href="http://www.antipope.org/charlie/blog-static/2007/10/halting_state_thats_it.html">Halting State</a></li>
+<li><a href="http://vrinimi.org/rainbowsend.html">Rainbows End</a></li>
+<li><a href="http://www.uni-weimar.de/medien/ar/SpatialAR/download.php">Spatial AR</a></li>
+<li><a href="http://www.theendofhardware.com/">The End Of Hardware</a></li>
+<li><a href="http://www.amazon.com/Visual-Tracking-Augmented-Reality-applications/dp/3639078918?&#038;camp=212361&#038;linkCode=wey&#038;tag=curirave-20&#038;creative=391825">Visual Tracking for AR</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-6654675" class="widget widget_links"><h2 class="widgettitle">8. People</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://137.132.165.250/index.php?option=com_content&#038;task=view&#038;id=35&#038;Itemid=70">Adrian Cheok</a></li>
+<li><a href="http://www-static.cc.gatech.edu/~blair/home.html">Blair MacIntyre</a></li>
+<li><a href="http://www.unisanet.unisa.edu.au/Staff/Homepage.asp?Name=Bruce.Thomas">Bruce Thomas</a></li>
+<li><a href="http://www.ad-tech.com/sf/adtech_san_francisco_speakers.aspx?Spkid=1371">Bruno Uzzan</a></li>
+<li><a href="http://virtual.vtt.fi/virtual/proj2/multimedia/">Charles Woodward</a></li>
+<li><a href="http://www.unisanet.unisa.edu.au/Staff/Homepage.asp?Name=Christian.Sandor">Christian Sandor</a></li>
+<li><a href="http://studierstube.icg.tu-graz.ac.at/handheld_ar/index.php">Daniel Wagner</a></li>
+<li><a href="http://educationarcade.org/about/people#eric">Eric Klopfer</a></li>
+<li><a href="http://www.robots.ox.ac.uk/~gk/">Georg Klein</a></li>
+<li><a href="http://campar.in.tum.de/Main/GudrunKlinker">Gudrun Klinker</a></li>
+<li><a href="http://www.ime.cmc.osaka-u.ac.jp/~takemura/">Haruo Takemura</a></li>
+<li><a href="http://www.henryjenkins.org/aboutme.html">Henry Jenkins</a></li>
+<li><a href="http://www.ozawa.ics.keio.ac.jp/Saito/research/augumented_mixed_reality.html">Hideo Saito</a></li>
+<li><a href="http://www.cs.ucla.edu/~lk/">Leonard Kleinrock</a></li>
+<li><a href="http://www.hitlabnz.org/wiki/Mark_Billinghurst">Mark Billinghurst</a></li>
+<li><a href="http://iit-iti.nrc-cnrc.gc.ca/personnel/fiala_mark_e.html">Mark Fiala</a></li>
+<li><a href="http://research.nokia.com/research/projects/mara/index.html">Markus Kahari</a></li>
+<li><a href="http://campar.in.tum.de/Main/NassirNavab">Nassir Navab</a></li>
+<li><a href="http://www.uni-weimar.de/medien/ar/research.php">Oliver Bimber</a></li>
+<li><a href="http://creativetech.inn.leedsmet.ac.uk/staff/rb/">Reinhold Behringer</a></li>
+<li><a href="http://www.ronaldazuma.com">Ronald Azuma</a></li>
+<li><a href="http://wearcam.org/mann.html">Steve Mann</a></li>
+<li><a href="http://www1.cs.columbia.edu/~feiner/">Steven Feiner</a></li>
+<li><a href="http://mi.eng.cam.ac.uk/~twd20/">Tom Drummond</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Vernor_Vinge">Vernor Vinge</a></li>
+<li><a href="http://cvlab.epfl.ch/~vlepetit/">Vincent Lepetit</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-124347" class="widget widget_links"><h2 class="widgettitle">9. Blogroll</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://3dhybrid2008.wordpress.com/">3D HYBRID</a></li>
+<li><a href="http://jmosbaugh.blogspot.com/">Alkaline</a></li>
+<li><a href="http://augmentedreality.ning.com/">AR Network</a></li>
+<li><a href="http://www.archidialog.com">architecture dialog</a></li>
+<li><a href="http://augmentation.wordpress.com/">Augmentation</a></li>
+<li><a href="http://www.visionmobile.com/blog/2009/09/augmented-economics-making-money-at-the-edge-of-reality/">Augmented Economics</a></li>
+<li><a href="http://augmentedexpo.com/">Augmented Expo</a></li>
+<li><a href="http://augmentedplanet.com">Augmented Planet</a></li>
+<li><a href="http://www.augmentedrealitybiz.com">augmented reality biz</a></li>
+<li><a href="http://augmentedblog.wordpress.com/">Augmented Reality Blog</a></li>
+<li><a href="http://argaming.blogspot.com/2005_09_01_archive.html">Augmented Reality Gaming</a></li>
+<li><a href="http://www.se.rit.edu/~jrv/research/ar/">Augmented Reality Page</a></li>
+<li><a href="http://artimes.rouli.net/">Augmented Reality Times</a></li>
+<li><a href="http://www.augmented.org/blog/">Augmented.org</a></li>
+<li><a href="http://arsvirtuafoundation.org/research/">Augmentology</a></li>
+<li><a href="http://www.businessandgames.com/blog/">Business &amp; Game</a></li>
+<li><a href="https://www.sciam.com/article.cfm?id=digitally-augmented-reality&#038;posted=1#comments">Commercial Headway</a></li>
+<li><a href="http://jpyun56.wordpress.com/2008/03/">Creativity Innovation Tech</a></li>
+<li><a href="http://www.curiousraven.com/future-vision/">curious raven</a></li>
+<li><a href="http://compscigail.blogspot.com/">Female Perspective</a></li>
+<li><a href="http://funkadelicadvertising.blogspot.com/2009/06/top-10-augmented-reality-adveritising.html">funkadelic advertising</a></li>
+<li><a href="http://www.gaxonline.com/profiles/blog/show?id=1511077%3ABlogPost%3A202807">GAX Online</a></li>
+<li><a href="http://googleblog.blogspot.com/2008/09/future-of-mobile.html">Google Blog</a></li>
+<li><a href="http://hro-ar.nl/index.php?sid=df044601da62c069dac7a028503d72ae">HRO AR Forum</a></li>
+<li><a href="http://www.crackunit.com/2008/09/11/examples-of-amazing-augmented-reality/">iain tait</a></li>
+<li><a href="http://infocult.typepad.com/infocult/augmented_reality/">Infocult</a></li>
+<li><a href="http://animaljoy.com/?p=78">Introduction to AR</a></li>
+<li><a href="http://gelo.tv/blog/archivo/juegos-en-la-ciudad-aumentada.xhtml/es/">Juegos aumentada</a></li>
+<li><a href="http://educ639su08.edublogs.org/">K12 Technology at UD</a></li>
+<li><a href="http://www.knitwareblog.com/augmented-reality-just-an-illusion-00298/">Knitware Blog</a></li>
+<li><a href="http://www.exhibitresearch.com/trails/?p=147">Learning Trails</a></li>
+<li><a href="http://www.augmentedenvironments.org/blair/">Living in an Augmented World</a></li>
+<li><a href="http://microvision.blogspot.com/search/label/Augmented%20Reality">Microvision Blog</a></li>
+<li><a href="http://museandmaven.wordpress.com/2009/02/05/mash-up-augmented-reality-meets-big-dirty-noisy-disparate-data/">muse and maven</a></li>
+<li><a href="http://pixelsebi.com/2008-11-25/augmented-reality-lifelogging-and-the-open-web/">pixelsebi</a></li>
+<li><a href="http://programmerjoe.com">Programmer Joe</a></li>
+<li><a href="http://www.psyked.co.uk/">Psyked</a></li>
+<li><a href="http://www.regardingjohn.com/blog/category/research-interests/augmented-reality-games/">regarding John</a></li>
+<li><a href="http://reinholdbehringer.blogspot.com/search?q=ismar">Reinhold&#8217;s Musings</a></li>
+<li><a href="http://translate.google.com/translate?hl=en&#038;sl=ja&#038;u=http://semanticlog.blogspot.com/&#038;ei=Y2ipSb3mGo_ftgeO5pnzDw&#038;sa=X&#038;oi=translate&#038;resnum=1&#038;ct=result&#038;prev=/search%3Fq%3Dsemanticlog%2Bsein%2Bblog%26hl%3Den%26rlz%3D1G1GGLQ_ENUS">Sein Blog</a></li>
+<li><a href="http://seriousgamesportal.blogspot.com/2008/07/serious-games-taking-pulse-of-augmented.html">SERIOUS GAMES PORTAL</a></li>
+<li><a href="http://techcomblog.tco3.net/?p=112">technical communication</a></li>
+<li><a href="http://technotecture.com/technobubble">technotecture</a></li>
+<li><a href="http://www.ydreams.com/blog/">The YDreams Blog</a></li>
+<li><a href="http://www.thinkartificial.org/machine-interfaces/sony-moves-to-augment-reality/">Think Artificial</a></li>
+<li><a href="http://thomaskcarpenter.com/">Tom Carpenter</a></li>
+<li><a href="http://tshwi.blogspot.com/">TSHWI</a></li>
+<li><a href="http://turtlethink.com/category/augmented-environments/">Turtle think</a></li>
+<li><a href="http://www.visioos.org/?curtab=links">visioos</a></li>
+<li><a href="http://www.vrider.net/">VRider</a></li>
+
+	</ul>
+</li>
+
+<li id="text-273565211" class="widget widget_text">			<div class="textwidget"><!--NetworkedBlogs Start--><!--.networkedblogs_widget a {text-decoration:none;color:#3B5998;font-weight:normal;}.networkedblogs_widget .networkedblogs_footer a {text-decoration:none;color:#FFFFFF;font-weight:normal;}--><div id='networkedblogs_container'><div id='networkedblogs_above'></div><div id='networkedblogs_widget' style="width:120px;font-family:'lucida grande',tahoma,Verdana,Arial,Sans-Serif;font-size:11px;font-weight:normal;text-decoration:none;background:#3B5998 none repeat scroll 0 0;border:none;line-height:13px;margin:0 auto;padding:0 0 3px;"><div id='networkedblogs_header' style="text-align:left;padding:1px 1px 2px 3px;"><a href='http://www.facebook.com/apps/application.php?id=9953271133'>Blog Networks</a></div><div id='networkedblogs_body' style="background-color:#FFFFFF;color:#444444;border-left:1px solid #D8DFEA;border-right:1px solid #D8DFEA;text-align:left;padding:4px;"><table cellpadding="0" cellspacing="0"><tr><td><span style="color:#777777;">Blog:</span></td></tr><tr><td><a target="_blank" href="http://www.networkedblogs.com/blog/games_alfresco" rel="noopener">Games Alfresco</a></td></tr><tr><td><div style="color:#777777;padding:5px 0 0;">Topics:</div></td></tr><tr><td><a target='_blank' href='http://www.networkedblogs.com/topic/augmented+reality' rel="noopener">augmented reality</a>, <a target='_blank' href='http://www.networkedblogs.com/topic/video+games' rel="noopener">video games</a>, <a target='_blank' href='http://www.networkedblogs.com/topic/mobile+devices' rel="noopener">mobile devices</a></td></tr><tr><td><div id='networkedblogs_badges'>&nbsp;</div></td></tr><tr><td><div><a target="_blank" href="http://www.networkedblogs.com/blog/games_alfresco?ahash=116a8fec26ec070ac14e9048ff7021ea" rel="noopener">Join my network</a></div></td></tr></table></div></div><div id='networkedblogs_below' class='networkedblogs_below'></div></div><!--NetworkedBlogs End--></div>
+		</li>
+
+</ul>
+	</div>
+</div><!-- End pagewrapper -->
+
+<div id="footer">
+<p><a href="https://wordpress.com/?ref=footer_blog" rel="nofollow">Blog at WordPress.com.</a> WP Designer.</p>
+</div>
+
+</div><!-- end page -->
+
+</div><!-- End container id -->
+
+<!--  -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/files\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/pub\/digg3\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript" src="../../../../../../../0.gravatar.com/js/hovercards/hovercards.min.js@ver=202546924dcd77a86c6f1d3698ec27fc5da92b28585ddad3ee636c0397cf312193b2a1" id="grofiles-cards-js"></script>
+<script type="text/javascript" id="wpgroho-js-extra">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../wp-content/mu-plugins/gravatar-hovercards/wpgroho.js@m=1610363240i'></script>
+
+	<script>
+		// Initialize and attach hovercards to all gravatars
+		( function() {
+			function init() {
+				if ( typeof Gravatar === 'undefined' ) {
+					return;
+				}
+
+				if ( typeof Gravatar.init !== 'function' ) {
+					return;
+				}
+
+				Gravatar.profile_cb = function ( hash, id ) {
+					WPGroHo.syncProfileData( hash, id );
+				};
+
+				Gravatar.my_hash = WPGroHo.my_hash;
+				Gravatar.init(
+					'body',
+					'#wp-admin-bar-my-account',
+					{
+						i18n: {
+							'Edit your profile →': 'Edit your profile →',
+							'View profile →': 'View profile →',
+							'Contact': 'Contact',
+							'Send money': 'Send money',
+							'Sorry, we are unable to load this Gravatar profile.': 'Sorry, we are unable to load this Gravatar profile.',
+							'Gravatar not found.': 'Gravatar not found.',
+							'Too Many Requests.': 'Too Many Requests.',
+							'Internal Server Error.': 'Internal Server Error.',
+							'Is this you?': 'Is this you?',
+							'Claim your free profile.': 'Claim your free profile.',
+							'Email': 'Email',
+							'Home Phone': 'Home Phone',
+							'Work Phone': 'Work Phone',
+							'Cell Phone': 'Cell Phone',
+							'Contact Form': 'Contact Form',
+							'Calendar': 'Calendar',
+						},
+					}
+				);
+			}
+
+			if ( document.readyState !== 'loading' ) {
+				init();
+			} else {
+				document.addEventListener( 'DOMContentLoaded', init );
+			}
+		} )();
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-ea5b10299b170a19e08b3aab48194359">
+	</div>
+	</div>
+		<div id="actionbar" dir="ltr" style="display: none;"
+			class="actnbr-pub-digg3 actnbr-has-follow actnbr-has-actions">
+		<ul>
+								<li class="actnbr-btn actnbr-hidden">
+						<a class="actnbr-action actnbr-actn-comment" href="index.html#comments">
+							<svg class="gridicon gridicons-comment" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M12 16l-5 5v-5H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2h-7z"/></g></svg>							<span>Comment						</span>
+						</a>
+					</li>
+									<li class="actnbr-btn actnbr-hidden">
+						<a class="actnbr-action actnbr-actn-reblog" href="index.html">
+							<svg class="gridicon gridicons-reblog" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M22.086 9.914L20 7.828V18c0 1.105-.895 2-2 2h-7v-2h7V7.828l-2.086 2.086L14.5 8.5 19 4l4.5 4.5-1.414 1.414zM6 16.172V6h7V4H6c-1.105 0-2 .895-2 2v10.172l-2.086-2.086L.5 15.5 5 20l4.5-4.5-1.414-1.414L6 16.172z"/></g></svg><span>Reblog</span>
+						</a>
+					</li>
+									<li class="actnbr-btn actnbr-hidden">
+								<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+							<div class="actnbr-popover tip tip-top-left actnbr-notice" id="follow-bubble">
+							<div class="tip-arrow"></div>
+							<div class="tip-inner actnbr-follow-bubble">
+															<ul>
+											<li class="actnbr-sitename">
+			<a href="https://gamesalfresco.com">
+				<img loading='lazy' alt='' src='../../../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png' srcset='../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnge.png../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=75&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-white.../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=100&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-gray../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=150&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pngwpcom../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=200&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnggo%2Fwpcom-gray-white.png 4x' class='avatar avatar-50' height='50' width='50' />				Games Alfresco			</a>
+		</li>
+										<div class="actnbr-message no-display"></div>
+									<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" style="display: none;">
+																						<div class="actnbr-follow-count">Join 45 other subscribers</div>
+																					<div>
+										<input type="email" name="email" placeholder="Enter your email address" class="actnbr-email-field" aria-label="Enter your email address" />
+										</div>
+										<input type="hidden" name="action" value="subscribe" />
+										<input type="hidden" name="blog_id" value="3566751" />
+										<input type="hidden" name="source" value="https://gamesalfresco.com/2011/08/07/weekly-linkfest-76/" />
+										<input type="hidden" name="sub-type" value="actionbar-follow" />
+										<input type="hidden" id="_wpnonce" name="_wpnonce" value="2ea4f5f2fe" />										<div class="actnbr-button-wrap">
+											<button type="submit" value="Sign me up">
+												Sign me up											</button>
+										</div>
+									</form>
+									<li class="actnbr-login-nudge">
+										<div>
+											Already have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fgamesalfresco.com%252F2011%252F08%252F07%252Fweekly-linkfest-76%252F">Log in now.</a>										</div>
+									</li>
+								</ul>
+															</div>
+						</div>
+					</li>
+							<li class="actnbr-ellipsis actnbr-hidden">
+				<svg class="gridicon gridicons-ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M7 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm12-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-7 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"/></g></svg>				<div class="actnbr-popover tip tip-top-left actnbr-more">
+					<div class="tip-arrow"></div>
+					<div class="tip-inner">
+						<ul>
+								<li class="actnbr-sitename">
+			<a href="https://gamesalfresco.com">
+				<img loading='lazy' alt='' src='../../../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png' srcset='../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnge.png../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=75&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-white.../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=100&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-gray../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=150&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pngwpcom../../../../../secure.gravatar.com/blavatar/3fc64f3248f164e9636a54fb0c7f2f6458598effb115ead6eb206823c0c0fa90@s=200&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnggo%2Fwpcom-gray-white.png 4x' class='avatar avatar-50' height='50' width='50' />				Games Alfresco			</a>
+		</li>
+								<li class="actnbr-folded-follow">
+										<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+								</li>
+														<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign up</a></li>
+							<li class="actnbr-login"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fgamesalfresco.com%252F2011%252F08%252F07%252Fweekly-linkfest-76%252F">Log in</a></li>
+																<li class="actnbr-shortlink">
+										<a href="https://wp.me/peXSf-17l">
+											<span class="actnbr-shortlink__text">Copy shortlink</span>
+											<span class="actnbr-shortlink__icon"><svg class="gridicon gridicons-checkmark" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M9 19.414l-6.707-6.707 1.414-1.414L9 16.586 20.293 5.293l1.414 1.414"/></g></svg></span>
+										</a>
+									</li>
+																<li class="flb-report">
+									<a href="https://wordpress.com/abuse/?report_url=https://gamesalfresco.com/2011/08/07/weekly-linkfest-76/" target="_blank" rel="noopener noreferrer">
+										Report this content									</a>
+								</li>
+															<li class="actnbr-reader">
+									<a href="https://wordpress.com/reader/blogs/3566751/posts/4299">
+										View post in Reader									</a>
+								</li>
+															<li class="actnbr-subs">
+									<a href="https://subscribe.wordpress.com/">Manage subscriptions</a>
+								</li>
+																<li class="actnbr-fold"><a href="index.html">Collapse this bar</a></li>
+														</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+<script>
+window.addEventListener( "DOMContentLoaded", function( event ) {
+	var link = document.createElement( "link" );
+	link.href = "/wp-content/mu-plugins/actionbar/actionbar.css?v=20250116";
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	document.head.appendChild( link );
+
+	var script = document.createElement( "script" );
+	script.src = "/wp-content/mu-plugins/actionbar/actionbar.js?v=20250204";
+	document.body.appendChild( script );
+} );
+</script>
+
+	
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/gamesalfresco.com\/2011\/08\/07\/weekly-linkfest-76\/":4299};
+	</script>
+				<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-2' href='../../../../../../../wp-content/mu-plugins/jetpack-plugin/moon/modules/widgets/top-posts/style.css@m=1753284714i&amp;cssminify=yes.css' type='text/css' media='all' />
+<script type="text/javascript" id="verbum-settings-js-before">
+/* <![CDATA[ */
+window.VerbumComments = {"Log in or provide your name and email to leave a reply.":"Log in or provide your name and email to leave a reply.","Log in or provide your name and email to leave a comment.":"Log in or provide your name and email to leave a comment.","Receive web and mobile notifications for posts on this site.":"Receive web and mobile notifications for posts on this site.","Name":"Name","Email (address never made public)":"Email (address never made public)","Website (optional)":"Website (optional)","Leave a reply. (log in optional)":"Leave a reply. (log in optional)","Leave a comment. (log in optional)":"Leave a comment. (log in optional)","Log in to leave a reply.":"Log in to leave a reply.","Log in to leave a comment.":"Log in to leave a comment.","Logged in via %s":"Logged in via %s","Log out":"Log out","Email":"Email","(Address never made public)":"(Address never made public)","Instantly":"Instantly","Daily":"Daily","Reply":"Reply","Comment":"Comment","WordPress":"WordPress","Weekly":"Weekly","Notify me of new posts":"Notify me of new posts","Email me new posts":"Email me new posts","Email me new comments":"Email me new comments","Cancel":"Cancel","Write a comment...":"Write a comment...","Write a reply...":"Write a reply...","Website":"Website","Optional":"Optional","We'll keep you in the loop!":"We'll keep you in the loop!","Loading your comment...":"Loading your comment...","Discover more from":"Discover more from Games Alfresco","Subscribe now to keep reading and get access to the full archive.":"Subscribe now to keep reading and get access to the full archive.","Continue reading":"Continue reading","Never miss a beat!":"Never miss a beat!","Interested in getting blog post updates? Simply click the button below to stay in the loop!":"Interested in getting blog post updates? Simply click the button below to stay in the loop!","Enter your email address":"Enter your email address","Subscribe":"Subscribe","Comment sent successfully":"Comment sent successfully","Save my name, email, and website in this browser for the next time I comment.":"Save my name, email, and website in this browser for the next time I comment.","hovercardi18n":{"Edit your profile \u2192":"Edit your profile \u2192","View profile \u2192":"View profile \u2192","Contact":"Contact","Send money":"Send money","Profile not found.":"Profile not found.","Too Many Requests.":"Too Many Requests.","Internal Server Error.":"Internal Server Error.","Sorry, we are unable to load this Gravatar profile.":"Sorry, we are unable to load this Gravatar profile."},"siteId":3566751,"postId":4299,"mustLogIn":false,"requireNameEmail":true,"commentRegistration":false,"connectURL":"https:\/\/gamesalfresco.wordpress.com\/public.api\/connect\/?action=request&domain=gamesalfresco.com","logoutURL":"https:\/\/gamesalfresco.wordpress.com\/wp-login.php?action=logout&_wpnonce=b7ee65f4f5","homeURL":"https:\/\/gamesalfresco.com\/","subscribeToBlog":true,"subscribeToComment":true,"isJetpackCommentsLoggedIn":false,"jetpackUsername":"","jetpackUserId":0,"jetpackSignature":"","jetpackAvatar":"https:\/\/0.gravatar.com\/avatar\/?s=96&amp;d=identicon&amp;r=G","enableBlocks":true,"enableSubscriptionModal":true,"currentLocale":"en","isJetpackComments":false,"allowedBlocks":["core\/paragraph","core\/list","core\/code","core\/list-item","core\/quote","core\/image","core\/embed","core\/quote","core\/code"],"embedNonce":"5e5a767ac9","verbumBundleUrl":"\/wp-content\/mu-plugins\/jetpack-mu-wpcom-plugin\/moon\/jetpack_vendor\/automattic\/jetpack-mu-wpcom\/src\/features\/verbum-comments\/dist\/index.js","isRTL":false,"vbeCacheBuster":1738686361,"iframeUniqueId":0,"colorScheme":false}
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../wp-content/mu-plugins/likes/queuehandler.js@m=1741961244i'></script>
+<script type="text/javascript" src="../../../../../../../wp-content/mu-plugins/jetpack-mu-wpcom-plugin/moon/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/verbum-comments/assets/dynamic-loader.js@m=1755005491i&amp;minify=false&amp;ver=adc3e7b923a66edb437b" id="verbum-dynamic-loader-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" id="jetpack-script-data-js-before">
+/* <![CDATA[ */
+window.JetpackScriptData = {"site":{"host":"wpcom","is_wpcom_platform":true}};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../_static/index.html@%253F-eJx9jtEOwiAMRX9I1i2L0T0YP2WpgKYbBUKLi38vMbpHX889Jy1s2VC0oTovsAjYxOyjmuJzeHVMsVvkAE2yKWobgKvJoT4oNt1rRruahrbcwu8AnFL8jfPTR5cKYNXEqEp2z1DEq8CtUnA7FFsoq3Go+OcyriTs1YxdD3N7fwf38pFda698GU7H8zD10zgubwyRVeA='></script>
+<script type="text/javascript" src="../../../../../../../platform.twitter.com/widgets.js@ver=20111117" id="twitter-widgets-js"></script>
+<script type="text/javascript" id="sharing-js-js-extra">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../wp-content/mu-plugins/jetpack-plugin/moon/_inc/build/sharedaddy/sharing.min.js@m=1755006225i'></script>
+<script type="text/javascript" id="sharing-js-js-after">
+/* <![CDATA[ */
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-linkedin' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-linkedin' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-facebook' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-facebook' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+						return false;
+					}
+				} );
+			} )();
+/* ]]> */
+</script>
+
+	<script type="text/javascript">
+		(function () {
+			var wpcom_reblog = {
+				source: 'toolbar',
+
+				toggle_reblog_box_flair: function (obj_id, post_id) {
+
+					// Go to site selector. This will redirect to their blog if they only have one.
+					const postEndpoint = `https://wordpress.com/post`;
+
+					// Ideally we would use the permalink here, but fortunately this will be replaced with the 
+					// post permalink in the editor.
+					const originalURL = `${ document.location.href }?page_id=${ post_id }`; 
+					
+					const url =
+						postEndpoint +
+						'?url=' +
+						encodeURIComponent( originalURL ) +
+						'&is_post_share=true' +
+						'&v=5';
+
+					const redirect = function () {
+						if (
+							! window.open( url, '_blank' )
+						) {
+							location.href = url;
+						}
+					};
+
+					if ( /Firefox/.test( navigator.userAgent ) ) {
+						setTimeout( redirect, 0 );
+					} else {
+						redirect();
+					}
+				},
+			};
+
+			window.wpcom_reblog = wpcom_reblog;
+		})();
+	</script>
+	<iframe src='../../../../../../../widgets.wp.com/likes/master.html@ver=20251111.html#ver=20251111' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+	<div id='likes-other-gravatars' role="dialog" aria-hidden="true" tabindex="-1"><div class="likes-text"><span>%d</span></div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+	<script src="https://stats.wp.com/w.js?68" defer></script> <script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'3566751','blog_tz':'-7','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'3566751','v':'wpcom','tz':'-7','user_id':'0','post':'4299','subd':'gamesalfresco'}]);
+_stq.push(['extra', {'crypt':'UE5tW3cvZGRSL0cvLmQ0STdUUWozPUUlMzNINTlbW2ZZeFYta05TVmpsOSV4Vn5icj9SVXJWcDIrbGJfODVEc2RwRmFaV0E0NmZPTV9GQj18YjZiLi1waHhhUlkrNGRQaHhtTlRTaHJ6SkFda2FYRG1UM0tfPzNRNm9oMSwxJnF8VU1ULFV+YnV3Z21kJmdaTEg5Uk9jbX45d0QxQj9NQ2xYWWx8Qm94VjY1QjJqV04uMS9hLFRSJmkyR1czVS5WaGtdTC1bOEglaGljK3lHVUIyW3NzUTVFWUJqb0paZSVtejUyTD1OVXdJLVt3cmlfdU9JQWpZLC8='}]);
+_stq.push([ 'clickTrackerInit', '3566751', '4299' ]);
+</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+<meta id="bilmur" property="bilmur:data" content="" data-provider="wordpress.com" data-service="simple" data-site-tz="Etc/GMT+7" data-custom-props="{&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;pub\/digg3&quot;,&quot;wptheme_is_block&quot;:&quot;0&quot;}"  >
+		<script defer src="../../../../../../../wp-content/js/bilmur.min.js@i=17&amp;m=202546"></script> 	
+<script>
+(function() {
+	'use strict';
+
+	const fetches = {};
+	const promises = {};
+	const urls = {
+		'wp-polyfill': '/wp-includes/js/dist/vendor/wp-polyfill.min.js?m=1744646400i&ver=3.15.0',
+		'verbum': '/wp-content/mu-plugins/jetpack-mu-wpcom-plugin/moon/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/verbum-comments/verbum-comments.js?m=1762887016i&minify=false&ver=8799c3f5dbd9f6da98e4'
+	};
+	const loaders = {
+		'verbum': () => {
+			fetchExternalScript('wp-polyfill');
+			fetchExternalScript('verbum');
+			promises['wp-polyfill'] = promises['wp-polyfill'] || loadWPScript('wp-polyfill');
+			promises['verbum'] = promises['verbum'] || promises['wp-polyfill'].then( () => loadWPScript('verbum') );
+			return promises['verbum'];
+		},
+		
+	};
+	const scriptExtras = {
+		
+	};
+
+	window.WP_Enqueue_Dynamic_Script = {
+		loadScript: (handle) => {
+			if (!loaders[handle]) {
+				console.error('WP_Enqueue_Dynamic_Script: unregistered script `' + handle + '`.');
+			}
+			return loaders[handle]();
+		}
+	};
+
+	function fetchExternalScript(handle) {
+		if (!urls[handle]) {
+			return Promise.resolve();
+		}
+
+		fetches[handle] = fetches[handle] || fetch(urls[handle], { mode: 'no-cors' });
+		return fetches[handle];
+	}
+
+	function runExtraScript(handle, type, index) {
+		const id = 'wp-enqueue-dynamic-script:' + handle + ':' + type + ':' + (index + 1);
+		const template = document.getElementById(id);
+		if (!template) {
+			return Promise.reject();
+		}
+
+		const script = document.createElement( 'script' );
+		script.innerHTML = template.innerHTML;
+		document.body.appendChild( script );
+		return Promise.resolve();
+	}
+
+	function loadExternalScript(handle) {
+		if (!urls[handle]) {
+			return Promise.resolve();
+		}
+
+		return fetches[handle].then(() => {
+			return new Promise((resolve, reject) => {
+				const script = document.createElement('script');
+				script.onload = () => resolve();
+				script.onerror = (e) => reject(e);
+				script.src = urls[handle];
+				document.body.appendChild(script);
+			});
+		});
+	}
+
+	function loadExtra(handle, pos) {
+		const count = (scriptExtras[handle] && scriptExtras[handle][pos]) || 0;
+		let promise = Promise.resolve();
+
+		for (let i = 0; i < count; i++) {
+			promise = promise.then(() => runExtraScript(handle, pos, i));
+		}
+
+		return promise;
+	}
+
+	function loadWPScript(handle) {
+		// Core loads scripts in this order. See: https://github.com/WordPress/WordPress/blob/a59eb9d39c4fcba834b70c9e8dfd64feeec10ba6/wp-includes/class-wp-scripts.php#L428.
+		return loadExtra(handle, 'translations')
+			.then(() => loadExtra(handle, 'before'))
+			.then(() => loadExternalScript(handle))
+			.then(() => loadExtra(handle, 'after'));
+	}
+} )();
+</script>
+
+</body>
+</html>

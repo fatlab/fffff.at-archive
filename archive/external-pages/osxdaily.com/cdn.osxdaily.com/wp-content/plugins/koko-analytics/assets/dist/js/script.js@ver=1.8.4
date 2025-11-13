@@ -1,0 +1,2 @@
+/*! For license information please see script.js.LICENSE.txt */
+!function(){var e=window,r="koko_analytics";e[r].trackPageview=function(t){var i;"prerender"==document.visibilityState||/bot|crawl|spider|seo|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)||(i={p:t,r:0==document.referrer.indexOf(e[r].site_url)?"":document.referrer},e[r].use_cookie?i.m="c":e[r].method&&(i.m=e[r].method[0]),navigator.sendBeacon(e[r].url,new URLSearchParams(i)))},e.addEventListener("load",(function(){e[r].trackPageview(e[r].post_id)}))}();

@@ -1,0 +1,24 @@
+User-agent: *
+Disallow: /error-404
+Disallow: /search/
+Disallow: /favorites
+Disallow: /cdn-cgi/
+Crawl-delay: 2
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: Barkrowler
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: Yandex
+Disallow: /

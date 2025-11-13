@@ -1,0 +1,33 @@
+# Allow AI search and agent use
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: FirecrawlAgent
+User-agent: AndiBot
+User-agent: ExaBot
+User-agent: PhindBot
+User-agent: YouBot
+Allow: /
+
+# Disallow AI training data collection
+User-agent: GPTBot
+User-agent: CCBot
+User-agent: Google-Extended
+Disallow: /
+
+# Allow traditional search indexing
+User-agent: Googlebot
+User-agent: Bingbot
+Disallow: /downloads/
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /*/download
+
+User-agent: *
+Disallow: /images/thumbnail/
+Disallow: /wp-admin/
+Disallow: /ajax-data
+Disallow: /downloads/
+
+Allow: /wp-admin/admin-ajax.php

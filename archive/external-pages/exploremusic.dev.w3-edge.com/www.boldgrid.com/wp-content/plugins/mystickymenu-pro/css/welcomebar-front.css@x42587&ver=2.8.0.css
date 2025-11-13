@@ -1,0 +1,740 @@
+body.mysticky-welcomebar-apper #wpadminbar{
+	z-index:99999999;
+}
+.mysticky-welcomebar-fixed , .mysticky-welcomebar-fixed * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.mysticky-welcomebar-fixed {
+	position: fixed;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	z-index: 999;
+}
+.mysticky-welcomebar-fixed-wrap {
+	padding: 10px 50px;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+.mysticky-welcomebar-animation:not(.mysticky-welcomebar-entry-effect-none) {
+	-webkit-transition: all 1s ease 0s;
+	-moz-transition: all 1s ease 0s;
+	transition: all 1s ease 0s;
+}
+.mysticky-welcomebar-entry-effect-fade {
+	opacity: 0;
+}
+.mysticky-welcomebar-entry-effect-none.entry-effect {
+	display: block;
+	opacity: 1;
+}
+.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-content p a{
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.25ch;
+}
+.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-content p a,
+.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-content p {
+	margin: 0 0;
+	padding: 0;
+	line-height: 1.2;
+	font-family: inherit;
+	font-weight: 400;
+}
+.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-btn {
+	/*padding-left: 30px;*/
+	display: none;
+	line-height: 1;
+}
+
+/*
+.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-btn {
+	display: block;
+	margin-left: 20px;
+}
+*/
+
+.mysticky-welcomebar-fixed.mysticky-welcomebar-btn-desktop.front-site .mysticky-welcomebar-btn {
+	display: block;
+	margin-left: 15px;
+	position: relative;
+}
+
+.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-btn a {
+	font-family: inherit;
+	border-radius: 4px;
+	text-decoration: none;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 1.2;
+	font-weight: 400;
+	padding: 5px 20px;
+	white-space: nowrap;
+}
+.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-btn a:hover {
+	/*opacity: 0.7;*/
+	-moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+	-webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-close {
+	display: none;
+	vertical-align: top;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 5px;
+	color: #000;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	outline: none;	
+	text-decoration: none;
+	text-shadow: 0 0 0px #fff;
+	-webkit-transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	transition: all 0.5s ease 0s;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+}
+.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-close:hover {
+	opacity: 1;
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.mysticky-welcomebar-fixed .mysticky-welcomebar-close span.dashicons {
+    font-size: 27px;
+}
+.mysticky-welcomebar-fixed.mysticky-welcomebar-showx-desktop .mysticky-welcomebar-close {
+	display: inline-block;
+	cursor: pointer;
+}
+
+/* coundown timer style  */
+.count-down-timer-box{
+	margin:0 10px;
+	display: flex;
+	padding-top:15px;
+}
+.count-down-timer-box .counter-timer{
+	display:inline-flex !important;
+    align-items: center;
+	font-size:16px;
+}
+
+.count-down-timer-box .counter-timer span{
+	width:28px !important;
+	height:28px;
+	text-align:center;
+	border-radius:6px;
+	background:#000;
+	color:#fff;
+	line-height:28px;
+	align-items: center;
+	font-family:inherit;
+}
+
+.counter-main-block{
+	display: inline-block;
+    margin: 0 10px;
+    text-align: center;
+	width: max-content;
+}
+
+.counter-main-block label{display:block; font-size:12px; margin-bottom:0px !important;}
+
+/* end coundown timer style  */
+
+/* show coupon front style */
+
+.front-site .coupon-cpy-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.front-site .mysticky-coupon-btn.coupon-cpy-tooltip {
+    margin-left: 10px;
+    width: auto;
+    padding: 6px 10px 10px 10px;
+    max-width: 250px;
+    line-break: anywhere;
+    display: inline-block;
+    position: relative;
+}
+
+.front-site span.tooltiptext.cpy-tooltip {
+    visibility: hidden;
+    width: 92px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 1px 5px;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    margin-left: -44px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    top: -5px;
+    font-size: 10px;
+}
+
+.front-site .mysticky-coupon-btn a {
+	text-decoration: none;
+    font-size: 14px;
+    padding: 0px 16px;
+    background-color: #9437f2;
+	line-height: 2.0em;
+	overflow: hidden;
+    max-height: 28px;
+    display: flex;
+	border-radius: 4px;
+}
+
+.front-site .mysticky-couponbar-content {
+	width: 100%;
+    height: 50px;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1px;
+}
+
+.front-site .coupon-cpy-tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.front-site .coupon-text {	
+    padding: 0 10px;
+    vertical-align: middle;	
+}
+
+.front-site .mysticky-couponbar-content .coupon-text p {
+    margin: 0;
+}
+/*---------------------------------------------------*/
+.front-site .coupon-text-sp{
+	border: 1px dashed #877572;
+    padding: 5px 5px;
+    border-radius: 5px;
+	display: block;
+}
+.front-site .mysticky-coupon-btn.coupon-cpy-tooltip .coupon-text-sp svg{
+    width: 14px; 
+	height: 14px;
+    position: absolute;
+    right: 4px; 
+	top: 0; 
+	left: unset;
+    display: block;
+    transform: rotateY(180deg);
+	z-index: 9999;
+}
+
+
+
+.front-site .vector path {
+    fill: #787b72;
+}
+
+/* End Show coupon style  */
+
+/* contact lead form style  */
+
+.mysticky-welcomebar-fixed .mystickymenu-front.mysticky-welcomebar-lead-content {
+    display: flex;
+    width: auto;
+    margin: 0 10px;
+}
+
+.mysticky-welcomebar-fixed-wrap .mystickymenu-front input[type="email"],
+.mystickymenu-front.mysticky-welcomebar-lead-content input[type="text"] {
+    font-size: 12px;
+    padding: 7px 5px;
+    margin-right: 10px;
+    min-width: 50%;
+	border: none;
+	width: 100%;
+}
+.mysticky-welcomebar-fixed-wrap .mystickymenu-front input[type="email"] {    
+    margin-right: 0px;    
+}
+.mysticky-welcomebar-fixed-wrap .mystickymenu-front input[type="email"]:focus,
+.mystickymenu-front.mysticky-welcomebar-lead-content input[type="text"]:focus {
+	outline: unset;
+	border: unset;
+	border-top-color: unset;
+	border-right-color: unset;
+	border-bottom-color: unset;
+	border-left-color: unset;
+	border-color: unset;
+	box-shadow: unset;
+}
+
+.front-site .input-error {
+    color: #ff0000;
+    font-style: normal;
+    font-family: inherit;
+    font-size: 13px;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+}
+/* End contact lead form style  */
+
+/* 300524 */
+.mysticky-welcomebar-fixed-wrap .mysticky-welcomebar-content {
+	flex: 1;
+	text-align:center;
+}
+
+/* 210824 */
+@media only screen and (min-width: 481px) {
+	.mysticky-welcomebar-fixed-wrap.mysticky-welcomebar-position-left {
+		justify-content: flex-start;
+	}
+	.mysticky-welcomebar-fixed-wrap.mysticky-welcomebar-position-center {
+		justify-content: center;
+	}
+	.mysticky-welcomebar-fixed-wrap.mysticky-welcomebar-position-right  {
+		justify-content: flex-end;
+	}
+	.mysticky-welcomebar-fixed-wrap.mysticky-welcomebar-position-left .mysticky-welcomebar-content,
+	.mysticky-welcomebar-fixed-wrap.mysticky-welcomebar-position-center .mysticky-welcomebar-content,
+	.mysticky-welcomebar-fixed-wrap.mysticky-welcomebar-position-right .mysticky-welcomebar-content {
+		flex: unset;
+	}
+}
+
+/*media*/
+@media only screen and (min-width: 1025px) {
+	.mysticky-welcomebar-display-desktop.mysticky-welcomebar-entry-effect-fade.entry-effect {
+		opacity: 1;
+	}
+	.mysticky-welcomebar-display-desktop.mysticky-welcomebar-entry-effect-none.entry-effect {
+		display: block;
+	}
+	.mysticky-welcomebar-display-desktop.mysticky-welcomebar-position-top.mysticky-welcomebar-fixed ,
+	.mysticky-welcomebar-display-desktop.mysticky-welcomebar-position-top.mysticky-welcomebar-entry-effect-slide-in.entry-effect.mysticky-welcomebar-fixed {
+		top: 0;			
+	}
+	.mysticky-welcomebar-display-desktop.mysticky-welcomebar-position-bottom.mysticky-welcomebar-fixed ,
+	.mysticky-welcomebar-display-desktop.mysticky-welcomebar-position-bottom.mysticky-welcomebar-entry-effect-slide-in.entry-effect.mysticky-welcomebar-fixed {
+		bottom: 0;
+	}	
+}
+
+@media only screen and (max-width: 1024px) {
+	.mysticky-welcomebar-fixed-wrap {
+		padding: 10px;
+	}
+	/*.mysticky-welcomebar-fixed .mysticky-welcomebar-close {
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		right: 0px;
+	}*/
+	.mysticky-welcomebar-display-mobile.mysticky-welcomebar-entry-effect-fade.entry-effect {
+		opacity: 1;
+	}
+	.mysticky-welcomebar-display-mobile.mysticky-welcomebar-entry-effect-none.entry-effect {
+		display: block;
+	}
+	.mysticky-welcomebar-display-mobile.mysticky-welcomebar-position-top.mysticky-welcomebar-fixed ,
+	.mysticky-welcomebar-display-mobile.mysticky-welcomebar-position-top.mysticky-welcomebar-entry-effect-slide-in.entry-effect.mysticky-welcomebar-fixed {
+		top: 0;
+	}
+	.mysticky-welcomebar-display-mobile.mysticky-welcomebar-position-bottom.mysticky-welcomebar-fixed ,
+	.mysticky-welcomebar-display-mobile.mysticky-welcomebar-position-bottom.mysticky-welcomebar-entry-effect-slide-in.entry-effect.mysticky-welcomebar-fixed {
+		bottom: 0;
+	}
+	.mysticky-welcomebar-fixed.mysticky-welcomebar-showx-desktop.front-site .mysticky-welcomebar-close {
+		display: none;
+	}
+	.mysticky-welcomebar-fixed.mysticky-welcomebar-showx-mobile.front-site .mysticky-welcomebar-close {
+		display: inline-block;
+		cursor: pointer;
+	}
+	.mysticky-welcomebar-fixed.mysticky-welcomebar-showx-desktop.front-site .mysticky-welcomebar-btn {
+		display: none;
+		margin-left:15px;
+		
+	}
+	.mysticky-welcomebar-fixed.mysticky-welcomebar-btn-mobile.front-site .mysticky-welcomebar-btn {
+		display: block;
+		margin-left:15px;
+	}
+	.mysticky-welcomebar-fixed.front-site.mysticky-welcomebar-display-mobile.front-site {
+	  height: auto;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-fixed-wrap {
+		padding: 15px 20px 10px 20px;
+		flex-direction: column;
+	}
+	.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-fixed-wrap .mysticky-welcomebar-content{width: 100%;}
+
+	.mysticky-welcomebar-fixed .mysticky-welcomebar-btn {
+		margin-top:10px;
+	}
+	.counter-main-block {margin: 0 8px;}
+
+	.front-site .mysticky-couponbar-content {
+		height: auto !important; flex-wrap: wrap;
+		justify-content: center; text-align: center;
+		flex-direction: column;
+	}
+
+	.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-1,
+	.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-2{height: auto !important;}
+
+	.front-site .mysticky-couponbar-content .coupon-text p {margin-bottom: 3px;}
+	.front-site .mysticky-coupon-btn.coupon-cpy-tooltip {padding: 5px 10px; margin: 0;}
+	.mysticky-welcomebar-fixed.front-site .mysticky-welcomebar-close {width: 20px; right: 2px;}
+	.mysticky-welcomebar-fixed.mysticky-welcomebar-btn-mobile.front-site .mysticky-welcomebar-btn {margin-left: 0; text-align: center;}
+}
+
+/*-------------------------------------------------------------- END MEDIA QUERY -------------------------*/
+
+.mystickymenu-front.mysticky-welcomebar-lead-content div{
+	padding: 0 5px;
+}
+
+
+.mysticky-welcomebar-btn a {
+	outline: none !important;
+	cursor: pointer;
+	position: relative;
+}
+.mysticky-welcomebar-hover-effect-border1 {
+	position: relative;
+}
+.mysticky-welcomebar-hover-effect-border1 a { 
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-border1:before,
+.mysticky-welcomebar-hover-effect-border1:after {
+	position: absolute;
+	content: "";
+	height: 0%;
+	width: 2px;
+	background: #000;
+}
+.mysticky-welcomebar-hover-effect-border1:before {
+	right: 0;
+	top: 0;
+	transition: all 0.1s ease;
+	z-index: 1 !important;
+}
+.mysticky-welcomebar-hover-effect-border1:after {
+	left: 0;
+	bottom: 0;
+	transition: all 0.1s 0.2s ease;
+}
+.mysticky-welcomebar-hover-effect-border1:hover:before {
+	transition: all 0.1s 0.2s ease;
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-border1:hover:after {
+	transition: all 0.1s ease;
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-border1 a:before,
+.mysticky-welcomebar-hover-effect-border1 a:after {
+	position: absolute;
+	content: "";
+	background: #000;
+}
+.mysticky-welcomebar-hover-effect-border1 a:before {
+	left: 0;
+	top: 0;
+	width: 0%;
+	height: 2px;
+	transition: all 0.1s 0.1s ease;
+}
+.mysticky-welcomebar-hover-effect-border1 a:after {
+	left: 0;
+	bottom: -1px;
+	width: 100%;
+	height: 2px;
+}
+.mysticky-welcomebar-hover-effect-border1 a:hover:before {
+	width: 100%;
+}
+.mysticky-welcomebar-hover-effect-border2 a {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-border2:before,
+.mysticky-welcomebar-hover-effect-border2:after {
+	position: absolute;
+	content: "";
+	right: 0px;
+	transition: all 0.3s ease;
+	border-radius: 4px;
+	z-index: 99;
+}
+.mysticky-welcomebar-hover-effect-border2:before {
+	width: 2px;
+}
+.mysticky-welcomebar-hover-effect-border2:after {
+	width: 0%;
+	height: 2px;
+}
+.mysticky-welcomebar-hover-effect-border2:hover:before {
+	height: 29px;
+}
+.mysticky-welcomebar-hover-effect-border2:hover:after {
+	width: 86px;
+}
+.mysticky-welcomebar-hover-effect-border2 a:before,
+.mysticky-welcomebar-hover-effect-border2 a:after {
+	position: absolute;
+	content: "";
+	left: 0;
+	bottom: 0;
+	transition: all 0.3s ease;
+	z-index: 0 !important;
+}
+.mysticky-welcomebar-hover-effect-border2 a:before {
+	width: 2px;
+	height: 0%;
+}
+.mysticky-welcomebar-hover-effect-border2 a:after {
+	width: 0%;
+	height: 2px;
+}
+.mysticky-welcomebar-hover-effect-border2 a:hover:before {
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-border2 a:hover:after {
+	width: 100%; 
+}
+.mysticky-welcomebar-hover-effect-border3 a {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-border3:before,
+.mysticky-welcomebar-hover-effect-border3:after {
+	position: absolute;
+	content: "";
+	right: 0px;
+	transition: all 0.3s ease;
+	z-index: 99;
+}
+.mysticky-welcomebar-hover-effect-border3:before {
+	height: 14px;
+	width: 2px;
+}
+.mysticky-welcomebar-hover-effect-border3:after {
+	width: 14px;
+	height: 2px;
+}
+.mysticky-welcomebar-hover-effect-border3:hover:before {
+	height: 29px;
+}
+.mysticky-welcomebar-hover-effect-border3:hover:after {
+	width: 86px;
+}
+.mysticky-welcomebar-hover-effect-border3 a:before,
+.mysticky-welcomebar-hover-effect-border3 a:after {
+	position: absolute;
+	content: "";
+	left: 0;
+	bottom: 0;
+	transition: all 0.3s ease;
+	z-index: 0 !important;
+}
+.mysticky-welcomebar-hover-effect-border3 a:before {
+	width: 2px;
+	height: 50%;
+}
+.mysticky-welcomebar-hover-effect-border3 a:after {
+	width: 14px;
+	height: 2px;
+}
+.mysticky-welcomebar-hover-effect-border3 a:hover:before {
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-border3 a:hover:after {
+	width: 100%;
+}
+.mysticky-welcomebar-hover-effect-border4 a {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-border4:before,
+.mysticky-welcomebar-hover-effect-border4:after {
+	position: absolute;
+	content: "";
+	right: 0px;
+	bottom: 0px ;
+	transition: all 0.3s ease;
+	z-index: 99;
+}
+.mysticky-welcomebar-hover-effect-border4:before {
+	height: 14px;
+	width: 2px;
+}
+.mysticky-welcomebar-hover-effect-border4:after {
+	width: 14px;
+	height: 2px;
+}
+.mysticky-welcomebar-hover-effect-border4:hover:before {
+	height: 29px;
+}
+.mysticky-welcomebar-hover-effect-border4:hover:after {
+	width: 86px;
+}
+.mysticky-welcomebar-hover-effect-border4 a:before,
+.mysticky-welcomebar-hover-effect-border4 a:after {
+	position: absolute;
+	content: "";
+	left: 0;
+	top: 0;
+	transition: all 0.3s ease;
+}
+.mysticky-welcomebar-hover-effect-border4 a:before {
+	width: 2px;
+	height: 50%;
+}
+.mysticky-welcomebar-hover-effect-border4 a:after {
+	width: 14px;
+	height: 2px;
+}
+.mysticky-welcomebar-hover-effect-border4 a:hover:before {
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-border4 a:hover:after {
+	width: 100%;
+}
+
+.mysticky-welcomebar-hover-effect-fill1 a {
+	z-index: 1;
+}
+.mysticky-welcomebar-hover-effect-fill1 a:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+.mysticky-welcomebar-hover-effect-fill1 a:hover:after {
+	width: 100%;
+}
+.mysticky-welcomebar-hover-effect-fill1 a:active {
+	top: 2px;
+}
+.mysticky-welcomebar-hover-effect-fill2 a {
+	z-index: 1;
+}
+.mysticky-welcomebar-hover-effect-fill2 a:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	top: 0;
+	left: 0;
+	direction: rtl;
+	z-index: -1;
+	transition: all 0.3s ease;
+}
+.mysticky-welcomebar-hover-effect-fill2 a:hover:after {
+	left: auto;
+	right: 0;
+	width: 100%;
+}
+.mysticky-welcomebar-hover-effect-fill2 a:active {
+	top: 2px;
+}
+.mysticky-welcomebar-hover-effect-fill3 a {
+	border: 0px solid #000;
+	z-index: 1;
+}
+.mysticky-welcomebar-hover-effect-fill3 a:after {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	transition: all 0.3s ease;
+}
+.mysticky-welcomebar-hover-effect-fill3 a:hover:after {
+	top: 0;
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-fill3 a:active {
+	top: 2px;
+}
+.mysticky-welcomebar-hover-effect-fill4 a {
+	z-index: 1;
+}
+.mysticky-welcomebar-hover-effect-fill4 a:after {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 0;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	transition: all 0.3s ease;
+}
+.mysticky-welcomebar-hover-effect-fill4 a:hover:after {
+	top: auto;
+	bottom: 0;
+	height: 100%;
+}
+.mysticky-welcomebar-hover-effect-fill4 a:active {
+	top: 2px;
+}
+.mysticky-welcomebar-hover-effect-fill5 a {
+	border: 0px solid #000;
+	z-index: 3;
+}
+.mysticky-welcomebar-hover-effect-fill5 a:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	transition: all 0.3s ease;
+}
+.mysticky-welcomebar-hover-effect-fill5 a:hover:after {
+	left: 0;
+	width: 100%;
+}
+.mysticky-welcomebar-hover-effect-fill5 a:active {
+	top: 2px;
+}

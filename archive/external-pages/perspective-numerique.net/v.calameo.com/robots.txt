@@ -1,0 +1,27 @@
+User-agent: Mediapartners-Google
+Allow: /
+Disallow: /library/
+Disallow: /library$
+Disallow: /locales/
+Disallow: /locales$
+Disallow: /components/
+Disallow: /components$
+Disallow: /old/
+Disallow: /old$
+Disallow: /pinwheel/
+Disallow: /pinwheel$
+Disallow: /*.swf$
+
+User-Agent: *
+Disallow: /
+Disallow: /library/
+Disallow: /library$
+Disallow: /locales/
+Disallow: /locales$
+Disallow: /components/
+Disallow: /components$
+Disallow: /old/
+Disallow: /old$
+Disallow: /pinwheel/
+Disallow: /pinwheel$
+Disallow: /*.swf$

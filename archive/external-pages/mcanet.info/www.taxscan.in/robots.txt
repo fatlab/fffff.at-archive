@@ -1,0 +1,19 @@
+#
+# robots.txt for https://www.taxscan.in
+user-agent: *
+Allow: /
+Disallow: /admin/*
+Disallow: /search/*
+Disallow: /search?*
+Disallow: /xhr/*
+Disallow: /preview/story-*
+Disallow: /amp/preview/story-*
+Disallow: /staging/* 
+Disallow: /alfoo
+Disallow: /sildoo
+Disallow: /dutas
+Disallow: /metsmall
+Disallow: /embed/* 
+Sitemap: https://www.taxscan.in/sitemap/sitemap-index.xml
+Sitemap: https://www.taxscan.in/news-sitemap-daily.xml
+Sitemap: https://www.taxscan.in/sitemap-daily.xml

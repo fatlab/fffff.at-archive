@@ -1,0 +1,19 @@
+<svg id="ICON" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        opacity: 0;
+      }
+
+      .cls-2-amber {
+        fill: #572F00;
+      }
+    </style>
+  </defs>
+  <g id="ic-s24-regular-magnifier">
+    <path id="background" class="cls-1" d="M5,9.5A4.5,4.5,0,1,1,9.5,14,4.505,4.505,0,0,1,5,9.5Z" />
+    <path id="content" class="cls-2a-amber"
+      d="M20.707,19.293l-5.965-5.965a6.523,6.523,0,1,0-1.414,1.414l5.965,5.965a1,1,0,0,0,1.414-1.414ZM5,9.5A4.5,4.5,0,1,1,9.5,14,4.505,4.505,0,0,1,5,9.5Z" />
+  </g>
+</svg>

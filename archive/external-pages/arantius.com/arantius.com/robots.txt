@@ -1,0 +1,65 @@
+User-agent: *
+Disallow: /contact
+Disallow: /login
+Disallow: /search
+Disallow: /prefs
+
+User-agent: Mediapartners-Google*
+Disallow:
+
+User-agent: AboutUsBot 
+Disallow: / 
+
+User-agent: Fasterfox
+Disallow: /
+
+User-agent: Gigabot
+Disallow: /
+
+User-agent: NaverBot
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: FAST-WebCrawler
+Disallow: /
+
+User-agent: Mercator
+Disallow: /
+
+User-agent: NPBot
+Disallow: /
+
+User-agent: ZyBorg
+Disallow: /
+
+User-agent: RoboCrawl
+Disallow: /
+
+User-agent: OmniExplorer
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: barkrowler
+Disallow: /
+
+User-agent: proximic
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: CriteoBot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /

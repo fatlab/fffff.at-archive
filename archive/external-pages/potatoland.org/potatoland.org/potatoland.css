@@ -1,0 +1,103 @@
+body {
+	margin: 30px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+a {
+  color: #665555;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 16px;
+}
+a:hover {
+	color: #F64;
+	text-decoration: underline;
+}
+/* menu blocks */
+.block {
+	margin-bottom: 20px;
+	font-size: 11px;
+}
+.block-title {
+	font-size: 12px;
+	color:#666;
+}
+.block-items {
+	margin-left: 20px;
+}
+.block-items a {
+	display: block;
+	color:#445;
+}
+.block-items a:hover {
+	text-decoration: underline;
+	color: #F64;
+}
+/* masthead */
+#site-title {
+	margin-bottom: 30px;
+	font-size: 20px;
+	color: #999;
+}
+#site-title div {
+	display: inline-block;
+	vertical-align: middle;
+}
+#site-links {
+	display: block;
+	position: absolute;
+	padding: 10px;
+	margin-top: 20px;
+	background-color: rgba(255,255,255,0.98);
+	left: 20px;
+	top: 60px;
+}
+.teasers {
+	display: block;
+	font-size: 13px;
+	margin-top: 6px;
+	margin-bottom: 20px;
+}
+.teasers a {
+	font-size: 13px;
+	font-weight: bold;
+	color: #444;
+}
+.teasers .desc {
+	font-weight: normal;
+}
+/* 3 line menu */
+div#menu-button {
+	display: none;
+	padding: 6px;
+	border-radius: 3px;
+	border: 1px solid transparent;
+	background: #fff;
+	line-height: 0;
+}
+#menu-button:hover {
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+#menu-button .bars {
+	width: 15px;
+	height: 15px;
+	background: linear-gradient(
+	  to bottom,
+	  #888, #888 20%,
+	  transparent 20%, transparent 40%,
+	  #888 40%, #888 60%,
+	  transparent 60%, transparent 80%,
+	  #888 80%, #888 100%
+	);
+}
+/* featured image */
+#main-image {
+	width: 60%;
+	max-width: 600px;
+	margin-left: 25%;
+	margin-top: 20px;
+}
+#main-image img {
+	width: 100%;
+}

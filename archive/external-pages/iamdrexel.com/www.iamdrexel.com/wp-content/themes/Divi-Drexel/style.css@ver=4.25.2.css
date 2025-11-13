@@ -1,0 +1,81 @@
+/* 
+Theme Name:   Divi Child Theme for dreXeL 
+Theme URI:    http://iamdrexel.com/ 
+Description:  Divi Child Theme 
+Author:       dreXeL 
+Author URI:   http://iamdrexel.com 
+Template:     Divi
+Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready 
+Text Domain:  divi-child-drexel
+*/
+
+@import url("../Divi/style.css");
+
+/* =Theme customization starts here-------------------------------------------------------------- */
+
+@import url('../../../../fonts.googleapis.com/css@family=Cabin.css');
+.et_pb_promo_description img {height: 200px;}
+.et_pb_portfolio_item h3 {text-align: center;}
+.prints img {height: 200px;}
+.et_pb_column_4_4 .et_portfolio_image {height: 160px;overflow: hidden;}
+.et_pb_column_2_3 .et_portfolio_image {height: 140px;overflow: hidden;}
+.et_pb_post { overflow: hidden; }
+.et_pb_contact_message {height: 300px;}
+
+body.et_fixed_nav {
+padding-top: 0;
+}
+
+@media only screen and ( min-width: 980px ) {	
+	.hometext {margin-top: 542px;}
+	.home #main-header {visibility: hidden;}
+	.homelogo {	margin-top: -60px;	}
+
+	.home-top {	margin: 0;	padding: 0;	margin-top: -40px;	}
+	.home-middle {	padding-top: 0;	clear: both;	}
+	.homenav-widget {	border: none;	float: right;	}
+	.homenav-widget li {	display: inline;	font-weight: 300;	font-size: 20px;	padding: 14px 20px;	line-height: 20px;	}
+	.et_pb_column_2_3 .homenav-widget .et_pb_widget {	width: 100%;	}
+	.home-middle .et_pb_row .et_pb_column {margin-top: -250px;}
+	.homeslide .et_pb_slide {	height: 320px;	}
+	.homeslide .et_pb_slide_description {	height: 160px;	}
+	.homeslide a.et_pb_more_button {	margin-top: 140px;	}
+    .website .et_pb_container {min-height: 660px !important;}
+} /*media screen min width 980*/
+
+@media only screen and ( min-width: 1450px ) {        
+ .website .et_pb_container {min-height: 800px !important;}
+} /*media screen min width 1450*/
+
+@media only screen and ( max-width: 980px ) {
+.homenav-widget {display: none;}
+.home-top {margin-bottom: 0;padding-bottom: 0;margin-top: 0;padding-top: 0;display: none;}
+.home-middle {margin-top: 0;padding-top: 0;}
+.homelogo {margin-bottom: 0;display: none;}
+.website .et_pb_container {min-height: 505px !important;}
+} /*media screen max width 980*/
+
+@media only screen and ( max-width: 767px ) {
+ .website .et_pb_container {min-height: 396px !important;}
+} /*media screen max width 767*/
+
+@media only screen and ( max-width: 479px ) {
+ .website .et_pb_container {min-height: 248px !important;}
+} /*media screen max width 479*/
+
+.hometext {font-family: helvetica, 'Cabin', Arial, Lucida, sans-serif;}
+.hometext h1 {font-size: 50px;color: #A5A5A5;}
+.hometext h2 {font-size: 24px;letter-spacing: 11.2px;color: #A5A5A5;font-weight: bold;}
+.hometext h3 {font-size: 22px;letter-spacing: 15px;color: #A5A5A5;}
+.hometext a {padding-left: 10px;padding-right: 10px;}
+.designblurb .et_pb_main_blurb_image {overflow: hidden;height: 320px;}
+.designblurb {margin-bottom: 0;}
+.designblurb img {/*height: 250px;max-width: none;*/width: 100%;height: auto;}
+.wideblurb img {height: 100%;max-width: none;width: auto;}
+.et_pb_fullwidth_header {padding: 20px 0;}
+.et_pb_section {padding-top: 0;}
+.toppadding {padding-top: 50px;}
+#main-content .nospacing {margin: 0;padding: 0;}
+#main-content .et_pb_bg_layout_light .et_pb_promo_button {background-color: #DDDDDD;color: #000 !important;font-weight: 400;border: none;}
+#main-content .et_pb_widget_area_right .et_pb_widget {margin-left: 0;}
+.et_pb_widget_area_right {border: none;}

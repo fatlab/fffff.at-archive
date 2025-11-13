@@ -1,0 +1,47 @@
+{
+    "short_name": "Cornify",
+    "name": "Cornify",
+    "description": "Unicorns & Rainbows On-Demand",
+    "icons": [
+        {
+            "src": "/assets/cornify-unicorns-rainbows-48.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "/assets/cornify-unicorns-rainbows-72.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "/assets/cornify-unicorns-rainbows-96.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "/assets/cornify-unicorns-rainbows-144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "/assets/cornify-unicorns-rainbows-168.png",
+            "type": "image/png",
+            "sizes": "168x168"
+        },
+        {
+            "src": "/assets/cornify-unicorns-rainbows-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/assets/cornify-unicorns-rainbows-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#ff00ff"
+}

@@ -1,0 +1,293 @@
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+}
+
+jQ(document).ready(function() {
+    Blog.likeHandler = {
+        usersLoaded : false,
+    };
+
+    /**
+     * A posztok likeolasat kezelo fuggveny
+     * @param  DOM object button    A like gomb
+     * @param  boolean    canUnlike Ha false akkor nem unlikeol. Ilyenkor nem tortenik semmi.
+     * @return XHR|false
+     */
+    Blog.likeHandler.postLike = function(button, canUnlike) {
+                        var self = Blog.likeHandler;
+                        button = jQ(button);
+                        canUnlike = (typeof canUnlike === 'boolean' ? canUnlike : true);
+
+                        var post_id = button.data('postId');
+
+                        // Ha nincs post id es meg valamilyen folyamat zajlik akkor ne csinaljon semmit.
+                        if (!post_id || button.hasClass('loading')) {
+                            return false;
+                        }
+
+                        button.addClass('loading');
+
+                        self.request = jQ.ajax({
+                                            url : Blog.url + '/api/zend/like-post',
+                                            data : {
+                                                post_id    : post_id,
+                                                can_unlike : canUnlike
+                                            },
+                                            type : 'GET',
+                                            success : function(response) {
+                                                var result = JSON.parse(response);
+                                                if (result.message === 'added') {
+                                                    button.addClass('liked');
+                                                    button.next().find('span').text( result.data.likers.length );
+                                                    button.data('data-likes', result.data.likers.length );
+                                                    if (Blog.view === 'desktop') {
+                                                        self.createLikerList(result.data.likers, result.data.id);
+                                                    }
+                                                } else if (result.message === 'removed') {
+                                                    button.removeClass('liked');
+                                                    button.next().find('span').text( result.data.likers.length );
+                                                    button.data('data-likes', result.data.likers.length );
+                                                    if (Blog.view === 'desktop') {
+                                                        self.createLikerList(result.data.likers, result.data.id);
+                                                    }
+                                                } else if (result.message === 'login_needed') {
+                                                    // Ha nincs bejelentkezve a felhasznalo akkor atiranyitja a login oldalra.
+                                                    var anchor = '#' + button.attr('id');
+                                                    window.location.href = Blog.domain + '/user/login?redirect_to='
+                                                        + encodeURIComponent(window.location.origin + window.location.pathname + '?liked_post_id=' + post_id + anchor);
+                                                }
+                                                button.removeClass('loading');
+                                            },
+                                            error : function() {
+                                                button.removeClass('loading');
+                                            }
+                                        });
+                    };
+
+    /**
+     * A likeolok adatlapjara vezeto linkekbol keszit egy felsorolast es elhelyezi a dom aljara.
+     * Ez azert fontos, hogy megjelenithessunk egy tooltipet a like fole hoverezesnel.
+     * @param  array   likers
+     * @param  integer postId
+     */
+    Blog.likeHandler.createLikerList = function(likers, postId) {
+        var likers_box = jQ('.likers[data-post-id="' + postId + '"]');
+        var isHidden   = likers.length == 0 ? '' : 'hidden';
+        var likers_box_content = jQ('<h1>' + likers.length + ' like</h1><a href="#" class="blh_logo"></a>');
+        likers_box.html('');
+
+        likers_box.addClass(isHidden);
+        likers_box.append(likers_box_content);
+        likers_box.addClass('loaded');
+
+        if (likers.length > 0) {
+            for (var j = 0; j < likers.length; j++) {
+                var liker    = likers[j];
+
+                var template =  '<div class="liker">'+
+                                    (liker.avatarUrl !== null ? '<img src="' + liker.avatarUrl + '">' : '<div class="placeholder"></div>') +
+                                    '<a target="_BLANK" href="' + Blog.domain + '/user/' + liker.id  + '/tab/like-list"><span>' + liker.name + '</span></a>' +
+                                '</div>';
+                likers_box.append(jQ(template));
+            }
+        }
+
+        jQ('body').append(likers_box);
+    };
+
+    /**
+     * Megallapitja, hogy mely posztokat likeolta a felhasznalo ha be van jelentkezve.
+     */
+    Blog.likeHandler.isLiked = function() {
+        var self          = this;
+        var post_ids      = self.collectPostIds();
+        var likes         = jQ('.btn_blhlike');
+
+        // Ha nincs bejelentkezve a felhasznalo akkor ne probalja megallapitani a rendszer, hogy miket likeolt.
+        if (!__passportHeader_config.loggedIn || post_ids.length === 0) {
+            return;
+        } else {
+            jQ.when(self.request).done(function(){
+                jQ.ajax({
+                    url : Blog.url + '/api/zend/is-liked',
+                    data : {
+                        post_ids : post_ids
+                    },
+                    type : 'POST',
+                    success : function(response) {
+                        var likes_data = JSON.parse(response);
+                        for (var i = 0; i < likes_data.length; i++) {
+                            var current_like_data = likes_data[i];
+                            var like_button = jQ('.btn_blhlike[data-post-id=' + current_like_data.id + ']');
+
+                            // Vegigfut a likeolokon es keszit egy felsorolast az adatlapjukra vezeto linkekbol.
+                            if (current_like_data.is_liked) {
+                                like_button.addClass('liked');
+                            }
+                        }
+
+                        likes.removeClass('loading');
+                    },
+                    error : function() {
+                        likes.removeClass('loading');
+                    }
+                });
+            });
+        }
+    };
+
+    /**
+     * Vegigfut a like gombokon es osszegyujti a post id-eket roluk.
+     * @return array
+     */
+    Blog.likeHandler.collectPostIds = function() {
+        var likes = jQ('.btn_blhlike');
+        var post_ids = [];
+
+        likes.each(function(key, like) {
+            var current_post_id = jQ(like).data('postId');
+            if (jQ.inArray(current_post_id, post_ids) === -1) {
+                post_ids.push(current_post_id);
+            }
+        });
+
+        return post_ids;
+    };
+
+    /**
+     * Ez a fuggveny vegignezi az oldalon talalhato like gombokat es beallitja a hozzajuk tartozo like adatokat.
+     */
+    Blog.likeHandler.loadLikerList = function() {
+                        var self          = this;
+                        var likes         = jQ('.btn_blhlike');
+                        var likers_box    = jQ('.likers');
+                        var post_ids      = self.collectPostIds();
+
+                        if (likes.length === 0 || likers_box.length < 0 || self.usersLoaded || likes.hasClass('loading') || post_ids.length === 0) {
+                            return false;
+                        }
+
+                        for (var i = 0; i < post_ids.length; i++) {
+                            jQ('body').append('<div class="likers" data-post-id="' + post_ids[i] + '" style="display: none;">'
+                                                + '<div class="loader">'
+                                                    + '<div class="loader-text">Betöltés...</div>'
+                                                    + '<div class="dot dot1"></div>'
+                                                    + '<div class="dot dot2"></div>'
+                                                    + '<div class="dot dot3"></div>'
+                                                    + '<div class="dot dot4"></div>'
+                                                + '</div>'
+                                            + '</div>');
+                        }
+
+                        // Vizsgalja, hogy vegzett e a kedvencelo ajax es csak akkor futhat az init.
+                        likes.addClass('loading');
+                        jQ.when(self.request).done(function(){
+
+                            jQ.ajax({
+                                url : Blog.url + '/api/zend/like-init',
+                                data : {
+                                    post_ids : post_ids
+                                },
+                                type : 'POST',
+                                success : function(response) {
+                                    var likes_data = JSON.parse(response);
+                                    for (var i = 0; i < likes_data.length; i++) {
+                                        var current_like_data = likes_data[i];
+                                        var like_button = jQ('.btn_blhlike[data-post-id=' + current_like_data.id + ']');
+
+                                        like_button.data('data-likes', current_like_data.likers.length);
+
+                                        // Vegigfut a likeolokon es keszit egy felsorolast az adatlapjukra vezeto linkekbol.
+                                        self.createLikerList(current_like_data.likers, current_like_data.id);
+                                        if (current_like_data.likers.length > 0) {
+                                            if (current_like_data.is_liked) {
+                                                like_button.addClass('liked');
+                                            }
+                                        } else {
+                                            var current_like_box = jQ('.likers[data-post-id="' + current_like_data.id + '"]');
+                                            if (current_like_box.is(':visible')) {
+                                                current_like_box.hide();
+                                            }
+                                        }
+                                    }
+
+                                    likes.removeClass('loading');
+                                    self.usersLoaded = true;
+                                },
+                                error : function() {
+                                    likes.removeClass('loading');
+                                    self.usersLoaded = true;
+                                }
+                            });
+                        });
+                    };
+
+    if (Blog.view === 'desktop') {
+        /**
+         * Ha a gomb fole visszuk az egermutatot akkor megjelenik a kedvencelok listaja alatta.
+         * A lista nem tunik el abban a pillanatban ahogy elmozog az eger a gombrol, hogy a
+         * benne levo linkekre ra lehessen kattintani.
+         */
+        jQ(document).on('hover', '.btn_blhlike, .btn_blhlike span', function(e) {
+            var button = jQ(e.currentTarget);
+
+            Blog.likeHandler.loadLikerList();
+
+            var likers_box = jQ('.likers[data-post-id="' + button.data('post-id') + '"');
+            if (likers_box.find('.liker').length === 0 && likers_box.hasClass('loaded')) {
+                likers_box.hide();
+                return;
+            }
+            if (e.type === 'mouseenter') {
+                likers_box.css({
+                    'top' : button.offset().top + button.outerHeight(),
+                    'left' : button.offset().left,
+                    'position' : 'absolute'
+                });
+                likers_box.show();
+                likers_box.addClass('hovered');
+            } else {
+                likers_box.removeClass('hovered');
+                setTimeout(function(){
+                    if (!likers_box.hasClass('hovered')) {
+                        likers_box.hide();
+                    }
+                }, 500);
+            }
+        });
+
+        /**
+         * Amig a doboz folott van az egermutato addig nem tunhet el.
+         */
+        jQ(document).on('hover', '.likers', function(e){
+            var likers_box = jQ(e.currentTarget);
+            if (e.type === 'mouseleave') {
+                likers_box.removeClass('hovered');
+                setTimeout(function(){
+                    if (!likers_box.hasClass('hovered')) {
+                        likers_box.hide();
+                    }
+                }, 500);
+            } else {
+                likers_box.addClass('hovered');
+            }
+        });
+    }
+
+    jQ(window).load(function(){
+        Blog.likeHandler.isLiked();
+        var liked_post_id = getURLParameter('liked_post_id');
+
+        // Ha login utani redirect altal kerul ide akkor belikeolodik a kivant poszt.
+        if (liked_post_id) {
+            var button = null;
+            if (Blog.view === 'desktop') {
+                button = jQ('article.post.public .share .btn_blhlike[data-post-id=' + liked_post_id + ']').get(0);
+            } else {
+                button = jQ('#share-links .btn_blhlike[data-post-id=' + liked_post_id + ']').get(0);
+            }
+
+            Blog.likeHandler.postLike(button, false);
+        }
+    });
+});

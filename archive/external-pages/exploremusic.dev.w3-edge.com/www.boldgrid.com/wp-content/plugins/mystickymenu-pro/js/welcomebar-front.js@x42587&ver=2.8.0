@@ -1,0 +1,1384 @@
+jQuery( document ).ready( function($){
+	
+	var x = '';
+	var adminBarHeight = 0;
+	if ( $("#wpadminbar").length != 0 ){
+		adminBarHeight = $('#wpadminbar').height();
+	}
+	jQuery( '.welcomebar-hidden-sliding-text' ).each( function(){
+		var sliding_text_width = jQuery(this).outerWidth();
+		var sliding_text_height = jQuery(this).outerHeight();		
+		if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			jQuery(this).parent().css('min-width', sliding_text_width + 'px');
+		}
+		jQuery(this).parent().css('min-height', sliding_text_height + 'px');
+	});
+	
+	/* On Load to check Welcome bar widget to appear */
+	
+	jQuery( '.mysticky-welcomebar-fixed' ).each( function(){
+		var welcomebar_widget = jQuery( this ).data( 'welcomebar-widget' ); 
+		GetUserCountry(welcomebar_widget);
+
+		if( jQuery( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('position') == 'top' ) {
+			jQuery( '.mysticky-welcomebar-entry-effect-slide-in.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'top', '-' + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight() + 'px' );
+		} else {
+			jQuery( '.mysticky-welcomebar-entry-effect-slide-in.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'bottom', '-' + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight() + 'px' );
+		}
+
+		var welcombar_aftersubmission = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('aftersubmission');
+		if( welcombar_aftersubmission == 'dont_show_welcomebar' ){
+			var welcomebar_storage = localStorage.getItem("welcomebar_close_" + welcomebar_widget);
+		} else if( welcombar_aftersubmission == 'show_welcomebar_next_visit' ) {
+			var welcomebar_storage = sessionStorage.getItem("welcomebar_close_" + welcomebar_widget);
+		} else {
+			sessionStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+			localStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+			var welcomebar_storage = null;
+		}
+		var is_close_trigger = localStorage.getItem("is_close_trigger_" + welcomebar_widget); 
+		var is_button_trigger = localStorage.getItem("is_button_trigger_" + welcomebar_widget); 
+
+		if(jQuery(this).data("isenablecoupon") == 1 && welcomebar_storage !== null && jQuery(this).data("btn-click-action") == 'show_coupon' && is_close_trigger == null && is_button_trigger == 'yes'){
+			welcomebar_storage = null;
+			jQuery(this).find(".mysticky-welcomebar-content").hide();
+			jQuery(this).find(".mysticky-welcomebar-btn").hide();
+			jQuery(this).find(".mysticky-couponbar-content").show();
+			jQuery(".mysticky-welcomebar-widget-"+welcomebar_widget + " .count-down-timer-box").hide();
+
+			if( jQuery(".mysticky-welcomebar-fixed.mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-lead-content").length > 0 ){
+				jQuery(".mysticky-welcomebar-fixed.mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-lead-content").hide();
+			}
+		}
+
+		if ( welcomebar_storage === null ){
+			var after_trigger = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('after-triger');
+			if ( after_trigger == 'after_a_few_seconds' ) {
+				if ( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-display-desktop' ) ) {
+					if ( $( window ).width() > 1024 ) {
+						var trigger_sec = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('triger-sec') * 1000;
+						var welcombar_position = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('position');
+						var welcombar_height = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight();
+						var divi_topbar_height = $( '.et_fixed_nav #top-header' ).outerHeight();
+						var divi_total_height = welcombar_height + divi_topbar_height;
+
+						setTimeout(function(){
+							if(jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-widget-analytics")== "on"){
+								var viewStatus;
+								var widgetId = jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-welcomebar-widget");
+								var widgetNonce = jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-widget-nonce");
+								viewStatus = checkASECookieExpired(widgetId, 'v-welcomebar');
+								if(viewStatus){
+									saveASECookieString(widgetId, "v-welcomebar");
+									viewStatus = checkASECookieExpired(widgetId, "v-welcomebar" );
+									updateChannelViewkAjax(widgetId,widgetNonce);
+								}
+							}
+							
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-animation' );
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'entry-effect' );
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).removeClass( 'mysticky-welcomebar-notpresent' );
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget + ' .mysticky-welcomebar-animation-text' ).morphext();
+							$( 'html,body' ).addClass( 'mysticky-welcomebar-apper' );
+							var new_welcombar_height_top = new_welcombar_height_bottom = new_welcombar_margin_top = new_welcombar_padding_bottom = 0;
+							/*set welcomebar position when welcombar display*/
+							$( '.mysticky-welcomebar-fixed' ).not( ".mysticky-welcomebar-notpresent" ).each( function( index ){
+								
+								var welcomebar_widget_index = $( this ).data( 'welcomebar-widget' );
+								
+								var welcomebar_widget_ready = $( this ).data( 'welcomebar-widget' );
+								var welcombar_position_ready = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).data( 'position' );
+								var welcombar_height_ready = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+								
+								if( ! $( this ).hasClass( 'mysticky-welcomebar-notpresent' ) && ! $( this ).hasClass( 'mysticky-welcomebar-notapper' ) ) {
+									if ( welcombar_position_ready == 'top' ) {										
+										
+										var new_welcombar_position = adminBarHeight + welcomebar_widget_index + new_welcombar_height_top;
+										if( index != 0 ){
+											var new_welcombar_position =   0 + new_welcombar_height_top;
+										} else {
+											var new_welcombar_position = adminBarHeight + 0 + new_welcombar_height_top;
+										}										
+										$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).css( 'top', new_welcombar_position );
+										$( '.et_fixed_nav #top-header' ).css( 'top', new_welcombar_position + 'px' );
+										new_welcombar_height_top = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+
+										var new_welcomebar_height = adminBarHeight + welcombar_height_ready + new_welcombar_margin_top;
+										//$( 'html.mysticky-welcomebar-apper' ).attr( 'style', 'margin-top: ' + new_welcomebar_height + 'px !important' );
+										$("html").animate({ "margin-top": new_welcomebar_height + "px" }, 500, function() {	
+											$("html").css("cssText", "margin-top:" + new_welcomebar_height + "px!important;");
+										});
+										$( '#mysticky-nav' ).css( 'top', new_welcomebar_height + 'px' );
+										new_welcombar_margin_top = new_welcombar_margin_top + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+									} else {
+										var new_welcombar_position = 0 + new_welcombar_height_bottom;
+										$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).css( 'bottom', new_welcombar_position );
+										new_welcombar_height_bottom = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+
+										var new_welcomebar_height = welcombar_height_ready + new_welcombar_padding_bottom;
+										$( 'head' ).append( '<style class="mysticky_bottom_style" type="text/css">html.mysticky-welcomebar-apper {padding-bottom: ' + new_welcomebar_height + 'px}</style>' );
+										new_welcombar_padding_bottom = new_welcombar_padding_bottom + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+									}
+								}
+
+							} );
+
+							if ( welcombar_position == 'top' ) {
+								$( '#mysticky_divi_style' ).remove();
+
+								$( 'head' ).append( '<style id="mysticky_divi_style" type="text/css">.et_fixed_nav #main-header {top: ' + welcombar_height + 'px !important}.et_fixed_nav #top-header + #main-header{top: ' + divi_total_height + 'px !important}</style>' );
+
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'opacity', '1' );
+
+							} else {
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'opacity', '1' );
+								$( '#mysticky_divi_style' ).remove();
+								$( '.et_fixed_nav #top-header' ).css( 'top', '' );
+							}
+
+							//mysticky_welcombar_automatically_close( welcomebar_widget );
+
+						}, trigger_sec );
+					}
+				}
+			}
+			if ( $( window ).width() <= 1024 ) {
+				if ( after_trigger == 'after_a_few_seconds' ) {
+					if ( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-display-mobile' ) ) {
+						var trigger_sec = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('triger-sec') * 1000;
+						var welcombar_position = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('position');
+						var welcombar_height = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight();
+						setTimeout(function(){
+							
+							if(jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-widget-analytics")== "on"){
+								var viewStatus;
+								var widgetId = jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-welcomebar-widget");
+								var widgetNonce = jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-widget-nonce");
+								viewStatus = checkASECookieExpired(widgetId, 'v-welcomebar');
+								if(viewStatus){
+									saveASECookieString(widgetId, "v-welcomebar");
+									viewStatus = checkASECookieExpired(widgetId, "v-welcomebar" );
+									updateChannelViewkAjax(widgetId,widgetNonce);
+								}
+							}
+							
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-animation' );
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'entry-effect' );
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).removeClass( 'mysticky-welcomebar-notpresent' );
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget + ' .mysticky-welcomebar-animation-text' ).morphext();
+							$( 'html,body' ).addClass( 'mysticky-welcomebar-apper' );
+							$( '#mysticky_divi_style' ).remove();
+							$( '.et_fixed_nav #top-header' ).css( 'top', '' );
+
+							var new_welcombar_height_top = new_welcombar_height_bottom = new_welcombar_margin_top = new_welcombar_padding_bottom = 0;
+							
+							/*set welcomebar position when welcombar display*/
+							$( '.mysticky-welcomebar-fixed' ).not( ".mysticky-welcomebar-notpresent" ).each( function( index ){
+								var welcomebar_widget_ready = $( this ).data( 'welcomebar-widget' );
+								var welcombar_position_ready = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).data( 'position' );
+								var welcombar_height_ready = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+
+								if( ! $( this ).hasClass( 'mysticky-welcomebar-notpresent' ) && ! $( this ).hasClass( 'mysticky-welcomebar-notapper' ) ) {
+									if ( welcombar_position_ready == 'top' ) {
+										if( index == 0 ){
+											var new_welcombar_position = 0 + adminBarHeight + new_welcombar_height_top;
+											var new_welcomebar_height = welcombar_height_ready + adminBarHeight + new_welcombar_margin_top;
+										}else{
+											var new_welcombar_position = 0 + new_welcombar_height_top;
+											var new_welcomebar_height = welcombar_height_ready + new_welcombar_margin_top + adminBarHeight;
+										}
+										
+										$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).css( 'top', new_welcombar_position );
+										$( '.et_fixed_nav #top-header' ).css( 'top', new_welcombar_position + 'px' );
+										new_welcombar_height_top = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+										//$( 'html.mysticky-welcomebar-apper' ).attr( 'style', 'margin-top: ' + ( new_welcomebar_height ) + 'px !important' );
+										$("html").animate({ "margin-top": new_welcomebar_height + "px" }, 500, function() {	
+											$("html").css("cssText", "margin-top:" + new_welcomebar_height + "px!important;");
+										});
+										$( '#mysticky-nav' ).css( 'top', new_welcomebar_height + 'px' );
+										new_welcombar_margin_top = new_welcombar_margin_top + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+									} else {
+										var new_welcombar_position = 0 + new_welcombar_height_bottom;
+										$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).css( 'bottom', new_welcombar_position );
+										new_welcombar_height_bottom = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+
+										var new_welcomebar_height = welcombar_height_ready + new_welcombar_padding_bottom;
+										$( 'head' ).append( '<style class="mysticky_bottom_style" type="text/css">html.mysticky-welcomebar-apper {padding-bottom: ' + new_welcomebar_height + 'px}</style>' );
+										new_welcombar_padding_bottom = new_welcombar_padding_bottom + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget_ready ).outerHeight();
+									}
+								}
+
+							} );
+
+							if ( welcombar_position == 'top' ) {
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-animation' );
+
+								$( 'head' ).append( '<style id="mysticky_divi_style" type="text/css">.et_fixed_nav #main-header {top: ' + welcombar_height + 'px !important}.et_fixed_nav #top-header + #main-header{top: ' + divi_total_height + 'px !important}</style>' );
+
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'opacity', '1' );
+
+							} else {
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'opacity', '1' );
+								$( '.et_fixed_nav #top-header' ).css( 'top', '' );
+							}
+
+							//mysticky_welcombar_automatically_close( welcomebar_widget );
+						}, trigger_sec );
+					}
+				}
+			}
+
+			mystickyelements_present( welcomebar_widget );
+		}
+		
+		/*  
+			mysticky menu: Countdown Timer function initialize
+		*/
+		
+		jQuery('.count-down-timer-box').each(function(){
+			
+			var txtdays 			= $(this).data('txtdays');
+			var txthours 			= $(this).data('txthours');
+			var txtminutes 			= $(this).data('txtminutes');
+			var txtseconds 			= $(this).data('txtseconds');			
+			var timerBgColor 		= $(this).data('timerbgcolor');
+			var timerTxtColor 		= $(this).data('timertxtcolor');
+			var welcomebarTextColor = $(this).data('welcombar-textcolor');
+			var divId 				= "#"+$(this).attr('id');
+			var expiredDate 		= '';
+			var expiredTime 		= '';
+			var timer_from 			= $(this).data('timerfrom');
+			var timezone 			= '';
+			var data_endTime 		= '';
+			
+			txtdays					= (txtdays != '' ) ? txtdays: welcomebar_frontjs.days; 
+			txthours				= (txthours != '' ) ? txthours: welcomebar_frontjs.hours; 
+			txtminutes				= (txtminutes != '' ) ? txtminutes: welcomebar_frontjs.minutes; 
+			txtseconds				= (txtseconds != '' ) ? txtseconds: welcomebar_frontjs.seconds; 
+			if(timer_from == 'timer_apperance'){
+				
+				expiredDate 	= $(this).data('enddate');
+				expiredTime 	= $(this).data('endtime');
+				expiredDate 	= new Date(expiredDate + ' ' + expiredTime);
+				data_endTime 	= $(this).data('endtime');
+				timezone 		= $(this).data('timezone');
+			}else{
+				expiredDate 	= new Date();
+				var expirHour 	= $(this).data('hour');
+			 
+				var expirMinute = $(this).data('minute');
+				var expirSecond = $(this).data('second');
+				var expire_time = readMyStickyMenuCookie('welcombar-countdowntime-'+ welcomebar_widget);
+				
+				if( expire_time != null ) {					
+					expiredDate = new Date(expire_time);
+				} else {
+					createMyStickyMenuCookie('welcombar-countdowntime-'+ welcomebar_widget, expiredDate, 1);
+				}
+				
+				expirHour = parseInt(expirHour) + parseInt(expiredDate.getHours());
+				expirMinute = parseInt(expirMinute) + parseInt(expiredDate.getMinutes());
+				expirSecond = parseInt(expirSecond) + parseInt(expiredDate.getSeconds() + 2);
+				
+
+				var trigger_sec = ( $(".mysticky-welcomebar-widget-"+welcomebar_widget).data("triger-sec") != '' &&  $( ".mysticky-welcomebar-widget-"+welcomebar_widget ).data("after-triger") == 'after_a_few_seconds' ) ? $(".mysticky-welcomebar-widget-"+welcomebar_widget).data("triger-sec") : '3';
+
+				expirSecond = expirSecond + parseInt(trigger_sec);
+				//expirSecond = ( expirSecond > 60 ) ? expirSecond -  : expirSecond;
+				expiredDate.setHours(parseInt(expirHour));
+				expiredDate.setMinutes(parseInt(expirMinute));
+				expiredDate.setSeconds(parseInt(expirSecond));
+			}
+			
+			var num = /^[-+]?[0-9]+\.[0-9]+$/;
+			var plus_number = /^[-+]?[0-9]+$/;	
+			//timezone = timezone.toString().replace("-", "");
+			
+			if(expiredDate == 'Invalid Date'){
+				jQuery(window).trigger('resize');
+				jQuery(divId).html("");
+				return;
+			}
+			
+			/* For Set Time out to check counter div class appear or not */
+			var checkTimerSet = setInterval(function(){
+				if(jQuery(divId + " .counter-main-block").length > 0){
+					jQuery(window).trigger('resize');
+					clearInterval(checkTimerSet);
+				}
+				
+			},1000);			
+			var timer = setInterval(function(){
+				/*
+				 * Return if the "mysticky-welcomebar-notpresent" class found  
+				 */
+				if( jQuery('.mysticky-welcomebar-widget-' + welcomebar_widget).hasClass('mysticky-welcomebar-notpresent') ) {
+					return;
+				}
+				var position = 0;				
+				if ( $('.mysticky-welcomebar-widget-' + welcomebar_widget).hasClass( 'mysticky-welcomebar-position-top' ) && ! $( '.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-notpresent' ) ) {
+					position = parseInt($('.mysticky-welcomebar-widget-' + welcomebar_widget).css('top'));
+					
+					var welcombar_height_ready = adminBarHeight + $( '.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight();
+					$("html").css("cssText", "margin-top:" + welcombar_height_ready + "px!important;");
+				}
+				if ( $('.mysticky-welcomebar-widget-' + welcomebar_widget).hasClass( 'mysticky-welcomebar-position-bottom' ) ) {
+					position = parseInt($('.mysticky-welcomebar-widget-' + welcomebar_widget).css('bottom'));
+				}
+				
+				if ( position >= 0 ) {
+					var nowDate = new Date();
+					if(timer_from == 'timer_apperance'){
+						if( num.test(timezone) == true || plus_number.test(timezone) == true ) {
+							nowDate = getCurrentDateTimeGMT(timezone);							
+						}else{
+							nowDate =  new Date(nowDate.toLocaleString('en-US', {timeZone: timezone}));	
+						}	
+					}
+					
+					var hourss = Math.abs(expiredDate.getTime() - nowDate.getTime()) / 3600000;
+					var diffrenceDate = expiredDate - nowDate;
+					var diffrenceDate = expiredDate - nowDate;
+					
+					if(diffrenceDate < 0){
+						jQuery(window).trigger('resize');
+						jQuery(divId).html("");
+						clearInterval(timer);
+						return;
+					}
+					var days = Math.floor(diffrenceDate / (1000*60*60*24));
+					var hours = Math.floor((diffrenceDate % (1000*60*60*24))/ (1000*60*60));
+					var minute = Math.floor((diffrenceDate %(1000*60*60)) / (1000*60));
+					var seconds = Math.floor((diffrenceDate %(1000*60)) / 1000);
+					if ( Math.floor(hourss) == 24 ) {
+						hours= Math.floor(hourss);
+						days = 0;
+					}
+					
+					days = (days > 9) ? days : '0' + days;
+					hours = (hours > 9) ? hours : '0' + hours;
+					minute = (minute > 9) ? minute : '0' + minute;
+					seconds = (seconds > 9) ? seconds : '0' + seconds;
+					
+				if(timer_from == 'timer_apperance'){
+					if(days == 0 && hours == 0 && minute == 0 && seconds == 0){
+						jQuery(rightDivId).html("");
+					}else{
+						// Build days HTML - 3 digits if >= 100, otherwise 2 digits
+						var daysHtml = '';
+						if(days >= 100) {
+							daysHtml = "<div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(days/100) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt((days/10)%10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(days%10) + "</span></div><label>"+ txtdays +"</label></div>";
+						} else {
+							daysHtml = "<div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(days/10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(days%10) + "</span></div><label>"+ txtdays +"</label></div>";
+						}
+						
+						// Build hours HTML - 3 digits if >= 100, otherwise 2 digits
+						var hoursHtml = '';
+						if(hours >= 100) {
+							hoursHtml = "<div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'> <span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(hours/100) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'> <span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt((hours/10)%10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'> <span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(hours%10) + "</span></div><label>"+ txthours +"</label></div>";
+						} else {
+							hoursHtml = "<div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'> <span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(hours/10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'> <span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(hours%10) + "</span></div><label>"+ txthours +"</label></div>";
+						}
+						
+						jQuery(divId).html( daysHtml + " : " + hoursHtml + " : <div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(minute/10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(minute%10) + "</span></div> <label>"+ txtminutes +"</label></div> : <div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(seconds/10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(seconds%10) + "</span></div><label>"+ txtseconds +"</label></div>");
+					}
+					
+				}else{
+					
+					if (hours > 0) {
+						// Build hours HTML - 3 digits if >= 100, otherwise 2 digits
+						var hoursHtml = '';
+						if(hours >= 100) {
+							hoursHtml = "<div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(hours/100) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt((hours/10)%10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(hours%10) + "</span></div> <label>"+ txthours +"</label></div>";
+						} else {
+							hoursHtml = "<div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(hours/10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(hours%10) + "</span></div> <label>"+ txthours +"</label></div>";
+						}
+						
+						jQuery(divId).html( hoursHtml + " : <div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(minute/10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(minute%10) + "</span></div> <label>"+ txtminutes +"</label></div> : <div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(seconds/10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(seconds%10) + "</span></div><label>"+ txtseconds +"</label></div>");
+					}else{
+						jQuery(divId).html( "<div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" + parseInt(minute/10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(minute%10) + "</span></div> <label>"+ txtminutes +"</label></div> : <div class='counter-main-block'><div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(seconds/10) + "</span></div> <div class='counter-timer' style='color:"+timerTxtColor+";'><span style='background-color:"+timerBgColor+";color:"+timerTxtColor+"'>" +  parseInt(seconds%10) + "</span></div><label>"+ txtseconds +"</label></div>");
+					}
+					
+					
+				}
+					
+					jQuery(divId + " span").css('color',timerTxtColor);
+					jQuery(divId).css('color',welcomebarTextColor);
+				
+				}
+			},1000);	
+		});
+		/*  end timer logic */
+		
+	} );
+	
+	function createMyStickyMenuCookie(name, value, days){
+		if (days) {
+			var expiry = new Date();
+			expiry.setTime(expiry.getTime()+(days*24*60*60*1000));
+			var expires = "; expires=" + expiry.toGMTString();
+		} else {
+			var expires = "";
+		}
+		document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+	}
+	
+	function readMyStickyMenuCookie(name){
+		var nameEQ = escape(name) + "=";
+		var ca = document.cookie.split(';');
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ')
+			c = c.substring(1, c.length);
+			if (c.indexOf(nameEQ) == 0)
+			return unescape(c.substring(nameEQ.length, c.length));
+		}
+		return null;
+	}
+	
+	function getCurrentDateTimeGMT(timezone){
+		var localDate = new Date();
+		var localTime = localDate.getTime();
+		var localOffset = localDate.getTimezoneOffset() * 60000;
+		var utc = localTime + localOffset;
+		var offset = timezone;  
+		var utc_offset = utc + (3600000 * offset);
+		localDate = new Date(utc_offset); 
+		return localDate;
+	}
+	
+	
+	/* resize call to reset welcome bar */
+	$( window ).resize( function(){
+		jQuery( '.welcomebar-hidden-sliding-text' ).each( function(){
+			var sliding_text_width = jQuery(this).outerWidth();
+			var sliding_text_height = jQuery(this).outerHeight();
+			//console.log( sliding_text_width + " =="+ sliding_text_height + " == "+ /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+			if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				jQuery(this).parent().css('min-width', sliding_text_width + 'px');
+			}	
+			jQuery(this).parent().css('min-height', sliding_text_height + 'px');
+		});
+	
+		var adminBarHeight = new_welcombar_height_top = new_welcombar_height_bottom = new_welcombar_margin_top = new_welcombar_padding_bottom = 0;
+		if ( $("#wpadminbar").length != 0 ){
+			adminBarHeight = $('#wpadminbar').height();
+		}
+	} );
+	
+	function GetUserCountry(id){  
+		let selectedCountry = ASEGetCookie("country_data"); 
+		if(selectedCountry == null) {
+			var $ipurl = 'https://www.cloudflare.com/cdn-cgi/trace';
+			jQuery.get($ipurl, function (cloudflaredata) {
+				var currentCountry = cloudflaredata.match("loc=(.*)"); 
+				if (currentCountry && currentCountry.length > 1) {
+					currentCountry = currentCountry[1];
+					if (currentCountry) {
+						currentCountry = currentCountry.toUpperCase();
+						if (currentCountry == "") {
+							currentCountry = "-";
+						}    
+						ASESetCookie("country_data", currentCountry, '365'); 
+						checkCountryFiltering(id)
+					}
+				} else{
+					checkCountryFiltering(id)
+				}
+			});
+		} else{
+			checkCountryFiltering(id)
+		}
+	}
+
+	function checkCountryFiltering(id) {  
+ 
+		var country_list = $('.mysticky-welcomebar-widget-'+id).data('countries');  
+		var selectedCountry = ASEGetCookie("country_data");   
+		if(country_list != ''){ 
+			var country_list_array = country_list.split(',');  
+			if(!country_list_array.includes(selectedCountry)){  
+				$('.mysticky-welcomebar-widget-'+id).remove();  
+			} 
+		} 
+	}
+	
+		
+	
+	$( window ).on('scroll', function(){	
+		if ( $("#wpadminbar").length != 0 ){
+		 	adminBarHeight = $('#wpadminbar').height();
+		}	
+		$( '.mysticky-welcomebar-fixed' ).each( function(){
+			var welcomebar_widget = $( this ).data( 'welcomebar-widget' );
+			var welcombar_aftersubmission = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('aftersubmission');
+			var after_trigger = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('after-triger');
+			if( welcombar_aftersubmission == 'dont_show_welcomebar' ){
+				var welcomebar_storage = localStorage.getItem("welcomebar_close_" + welcomebar_widget);
+			} else if( welcombar_aftersubmission == 'show_welcomebar_next_visit' ) {
+				var welcomebar_storage = sessionStorage.getItem("welcomebar_close_" + welcomebar_widget);
+			} else {
+				sessionStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+				localStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+				var welcomebar_storage = null;
+			}
+			
+			if ( welcomebar_storage === null ){
+				var welcombar_height   = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight();
+				var welcombar_position = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('position');
+				var divi_topbar_height = $( '.et_fixed_nav #top-header' ).outerHeight();
+				var divi_total_height  = welcombar_height + divi_topbar_height;
+				
+				if ( after_trigger === 'after_scroll' ) {					
+					var scroll = 100 * $(window).scrollTop() / ($(document).height() - $(window).height());
+					var after_scroll_val = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('triger-sec');
+
+					if( scroll > after_scroll_val ) {
+						if ( ! $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-notapper' ) ) {
+							$( 'html,body' ).addClass( 'mysticky-welcomebar-apper' );
+						} else {
+							$( 'html,body' ).removeClass( 'mysticky-welcomebar-apper' );
+						}
+						if ( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-display-desktop' ) ) {
+							if ( $( window ).width() > 1024 ) {
+								if(jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-widget-analytics")== "on"){
+									var viewStatus;
+									var widgetId = jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-welcomebar-widget");
+									var widgetNonce = jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-widget-nonce");
+									viewStatus = checkASECookieExpired(widgetId, 'v-welcomebar');
+									if(viewStatus){
+										saveASECookieString(widgetId, "v-welcomebar");
+										viewStatus = checkASECookieExpired(widgetId, "v-welcomebar" );
+										updateChannelViewkAjax(widgetId,widgetNonce);
+									}
+								}
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-animation' );
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'entry-effect' );
+								if( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-notpresent' ) ) {
+									var new_welcombar_height_top = new_welcombar_height_bottom = new_welcombar_margin_top = new_welcombar_padding_bottom = 0;
+									
+									$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).removeClass( 'mysticky-welcomebar-notpresent' );
+
+									/*set welcomebar position when welcombar display*/								
+									$( '.mysticky-welcomebar-fixed' ).not( ".mysticky-welcomebar-notpresent" ).each( function( index ){
+										var new_welcomebar_widget = $( this ).data( 'welcomebar-widget' );
+										var test_welcombar_position = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).data('position');
+										var welcombar_height_scroll   = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+
+										if( ! $( this ).hasClass( 'mysticky-welcomebar-notpresent' ) && ! $( this ).hasClass( 'mysticky-welcomebar-notapper' ) ) {
+											if ( test_welcombar_position == 'top' ) {
+												
+												new_welcombar_margin_top = new_welcombar_margin_top + adminBarHeight + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+												if( $(window).scrollTop() == 0 ) {
+													var new_welcombar_position = 0 + new_welcombar_height_top;
+												} else {
+													if( index != 0 ){
+														var new_welcombar_position =   0 + new_welcombar_height_top;
+													} else {
+														var new_welcombar_position = adminBarHeight + 0 + new_welcombar_height_top;
+													}
+												}
+
+												$( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).css( 'top', new_welcombar_position );
+												new_welcombar_height_top = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+
+												var new_welcomebar_height = new_welcombar_margin_top;
+												jQuery( '.mysticky-welcomebar-apper.et_fixed_nav #top-header' ).css( 'top', new_welcomebar_height + 'px' );
+												jQuery( 'head' ).append( '<style id="mysticky_divi_style" type="text/css">.mysticky-welcomebar-apper.et_fixed_nav #main-header {top: ' + new_welcomebar_height + 'px !important}.mysticky-welcomebar-apper.et_fixed_nav #top-header + #main-header{top: ' + divi_total_height + 'px !important}</style>' );
+												//$( 'html.mysticky-welcomebar-apper' ).attr( 'style', 'margin-top: ' + new_welcomebar_height + 'px !important' );
+												$("html").animate({ "margin-top": new_welcomebar_height + "px" }, 500, function() {	
+													$("html").css("cssText", "margin-top:" + new_welcomebar_height + "px!important;");
+												});
+												$( '.mysticky-welcomebar-apper #mysticky-nav' ).css( 'top', new_welcomebar_height + 'px' );
+												new_welcombar_margin_top = new_welcombar_margin_top + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+											} else {
+												var new_welcombar_position = 0 + new_welcombar_height_bottom;
+												$( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).css( 'bottom', new_welcombar_position );
+												new_welcombar_height_bottom = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+												var new_welcomebar_height = welcombar_height_scroll + new_welcombar_padding_bottom;
+												$( 'head' ).append( '<style class="mysticky_bottom_style" type="text/css">html.mysticky-welcomebar-apper {padding-bottom: ' + new_welcomebar_height + 'px}</style>' );
+												new_welcombar_padding_bottom = new_welcombar_padding_bottom + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+											}
+										}
+									} );
+								}
+								
+								if ( welcombar_position == 'top' ) {
+									$( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'opacity', '1' );
+									jQuery( '#mysticky_divi_style' ).remove();
+								} else {
+									jQuery( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'opacity', '1' );
+									jQuery( '#mysticky_divi_style' ).remove();
+									jQuery( '.et_fixed_nav #top-header' ).css( 'top', '' );
+								}
+							}
+						}
+						if ( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-display-mobile' ) ) {
+							if ( $( window ).width() <= 1024 ) {
+								if(jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-widget-analytics")== "on"){
+								var viewStatus;
+								var widgetId = jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-welcomebar-widget");
+								var widgetNonce = jQuery('.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget).find(".mysticky-welcomebar-fixed-wrap").attr("data-widget-nonce");
+								viewStatus = checkASECookieExpired(widgetId, 'v-welcomebar');
+								if(viewStatus){
+									saveASECookieString(widgetId, "v-welcomebar");
+									viewStatus = checkASECookieExpired(widgetId, "v-welcomebar" );
+									updateChannelViewkAjax(widgetId,widgetNonce);
+								}
+							}
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-animation' );
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'entry-effect' );
+								$( '#mysticky_divi_style' ).remove();
+								$( '.et_fixed_nav #top-header' ).css( 'top', '' );
+								
+								if( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-notpresent' ) ) {
+									$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).removeClass( 'mysticky-welcomebar-notpresent' );
+									var new_welcombar_height_top = new_welcombar_height_bottom = new_welcombar_margin_top = new_welcombar_padding_bottom = 0;
+									$( '.mysticky-welcomebar-fixed' ).not( ".mysticky-welcomebar-notpresent" ).each( function(){
+										var new_welcomebar_widget = $( this ).data( 'welcomebar-widget' );
+										var test_welcombar_position = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).data('position');
+										var welcombar_height_scroll   = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+										
+										if( ! $( this ).hasClass( 'mysticky-welcomebar-notpresent' ) && ! $( this ).hasClass( 'mysticky-welcomebar-notapper' ) ) {
+											if ( test_welcombar_position == 'top' ) {
+												if( new_welcomebar_widget == 0 ){
+													if ( $( window ).width() <= 600 ) {
+														var new_welcombar_position = 0 + new_welcombar_height_top;
+													} else {
+														var new_welcombar_position = 0 + new_welcombar_height_top + adminBarHeight;
+													}
+													new_welcombar_height_top = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+													var new_welcomebar_height = welcombar_height_scroll + new_welcombar_margin_top + adminBarHeight;
+												}else{
+													var new_welcombar_position = 0  + new_welcombar_height_top;
+													new_welcombar_height_top =   new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+													var new_welcomebar_height =   welcombar_height_scroll + new_welcombar_margin_top;
+												}
+												$( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).css( 'top', new_welcombar_position );
+
+												jQuery( '.mysticky-welcomebar-apper.et_fixed_nav #top-header' ).css( 'top', new_welcomebar_height + 'px' );
+												jQuery( 'head' ).append( '<style id="mysticky_divi_style" type="text/css">.mysticky-welcomebar-apper.et_fixed_nav #main-header {top: ' + new_welcomebar_height + 'px !important}.mysticky-welcomebar-apper.et_fixed_nav #top-header + #main-header{top: ' + divi_total_height + 'px !important}</style>' );
+
+												//$( 'html.mysticky-welcomebar-apper' ).attr( 'style', 'margin-top: ' + new_welcomebar_height + 'px !important' );
+												$("html").animate({ "margin-top": new_welcomebar_height + "px" }, 500, function() {	
+													$("html").css("cssText", "margin-top:" + new_welcomebar_height + "px!important;");
+												});
+												$( '.mysticky-welcomebar-apper #mysticky-nav' ).css( 'top', new_welcomebar_height + 'px' );
+												new_welcombar_margin_top = new_welcombar_margin_top + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+											} else {
+												var new_welcombar_position = 0 + new_welcombar_height_bottom;
+												$( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).css( 'bottom', new_welcombar_position );
+												new_welcombar_height_bottom = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+												var new_welcomebar_height = welcombar_height_scroll + new_welcombar_padding_bottom;
+												jQuery( 'head' ).append( '<style class="mysticky_bottom_style" type="text/css">html.mysticky-welcomebar-apper {padding-bottom: ' + new_welcomebar_height + 'px}</style>' );
+												new_welcombar_padding_bottom = new_welcombar_padding_bottom + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+											}
+										}
+									} );
+								}
+								if ( welcombar_position == 'top' ) {
+									jQuery( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'opacity', '1' );
+								} else {
+									jQuery( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'opacity', '1' );
+								}
+							}
+						}
+						//mysticky_welcombar_automatically_close( welcomebar_widget );
+					} else if( $(window).scrollTop() == 0 ) {
+						if ( $( window ).width() <= 600 ) {
+							if ( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-display-mobile' ) ) {
+								$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-notpresent' );
+								var new_welcombar_height_top = 0;
+								$( '.mysticky-welcomebar-fixed' ).each( function( index ){
+									var new_welcomebar_widget = $( this ).data( 'welcomebar-widget' );
+									var test_welcombar_position = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).data('position');
+									
+										if ( test_welcombar_position == 'top' ) {
+											if( index == 0 ){
+												var new_welcombar_position = 0 + adminBarHeight + new_welcombar_height_top;
+											}else{
+												var new_welcombar_position = 0  + new_welcombar_height_top;
+											}
+											$( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).css( 'top', new_welcombar_position );
+											new_welcombar_height_top = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+										}
+									
+								} );
+							}
+						}
+					}
+				} else {
+					if ( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-display-mobile' ) ) {
+						if ( $( window ).width() <= 600 ) {
+							var new_welcombar_height_top = 0;
+							$( '.mysticky-welcomebar-fixed' ).not( ".mysticky-welcomebar-notpresent" ).each( function( index ){
+								var new_welcomebar_widget = $( this ).data( 'welcomebar-widget' );
+								var test_welcombar_position = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).data('position');
+								
+								if( ! $( this ).hasClass( 'mysticky-welcomebar-notpresent' ) && ! $( this ).hasClass( 'mysticky-welcomebar-notapper' ) ) {
+									if ( test_welcombar_position == 'top' ) {
+										if( $(window).scrollTop() > 0 ) {
+											var new_welcombar_position = 0 + new_welcombar_height_top;
+										} else {
+											if( index == 0 ){
+												var new_welcombar_position = 0 + adminBarHeight + new_welcombar_height_top;
+											}else{
+												var new_welcombar_position = 0  + new_welcombar_height_top;
+											}
+										}
+										$( '.mysticky-welcomebar-apper .mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).css( 'top', new_welcombar_position );
+										new_welcombar_height_top = new_welcombar_position + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + new_welcomebar_widget ).outerHeight();
+									}
+								}
+							} );
+						}
+					}
+				}
+				mystickyelements_present( welcomebar_widget );
+			}
+		} );
+	});
+
+	/*  Mysticky Menu : welcombar got it button & close click function */
+	$( '.mysticky-welcomebar-close' ).on( 'click', function(e){	
+		var $this 		= $(this);
+		if($this.attr("data-widget-analytics") == "on"){
+			var widgetId 	= $this.attr("data-welcomebar-widget");
+			var widgetNonce = $this.attr("data-widget-nonce");	
+			var className = $(this).attr('class');
+			if (className.includes('mysticky-welcomebar-close')) {
+				var widgetclass = "mysticky-welcomebar-close";	 
+				closeStatus = checkASECookieExpired(widgetId, 'v-welcomebar-close');
+				if(closeStatus){
+					saveASECookieString(widgetId, "v-welcomebar-close");
+					closeStatus = checkASECookieExpired(widgetId, "v-welcomebar-close" );
+					updateChannelClickAjax(widgetId,widgetNonce,widgetclass);
+				}
+			}
+		}
+	});
+	$( '.mysticky-welcomebar-btn a, .mysticky-coupon-btn a' ).on( 'click', function(e){
+		
+		if ($(this).attr('href') == '') {
+			e.preventDefault();
+		}
+		var $this 		= $(this);		
+		if($this.attr("data-widget-analytics") == "on"){
+			var widgetId 	= $this.attr("data-welcomebar-widget");
+			var widgetNonce = $this.attr("data-widget-nonce");	
+			var className = $(this).attr('class');			
+			if(className == "mysticky-welcomebar-btn-a"){
+				var widgetclass = "mysticky-welcomebar-btn-a";	
+				btnStatus = checkASECookieExpired(widgetId, 'v-welcomebar-btn');
+				if(btnStatus){
+					saveASECookieString(widgetId, "v-welcomebar-btn");
+					btnStatus = checkASECookieExpired(widgetId, "v-welcomebar-btn" );
+					updateChannelClickAjax(widgetId,widgetNonce,widgetclass);
+				}
+			}
+		}		
+	});
+	$( '.mysticky-welcomebar-close, .mysticky-welcomebar-btn a' ).on( 'click', function(e){		
+		if ($(this).attr('href') == '') {
+			e.preventDefault();
+		}
+
+		var new_welcombar_margin_top_close = nw_welcombar_height_top_close = 0;
+		var new_welcombar_padding_bottom_close = new_welcombar_height_bottom_close = 0;
+		var welcomebar_widget = $( this ).data( 'welcomebar-widget' );
+		var welcombar_rediect = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('rediect');
+		var welcombar_height  = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight();
+		var welcombar_aftersubmission = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('aftersubmission');
+		var welcombar_position = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('position');
+		$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-notapper' );
+		$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-notpresent' );
+
+		if( $( '.mysticky-welcomebar-notapper' ).length == $( '.mysticky-welcomebar-fixed' ).length ) {
+			$( 'html,body' ).removeClass( 'mysticky-welcomebar-apper' );
+		}
+
+		/**
+		 * Submit contact lead form 
+		 */
+		 if( jQuery(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-lead-content").length > 0 && !$(this).hasClass("mysticky-welcomebar-close")){
+
+		 	var flag=true;
+
+			if( jQuery('#contact-lead-name-'+welcomebar_widget).val() != '' && ( jQuery('#contact-lead-phone-'+welcomebar_widget).val() != '' || jQuery('#contact-lead-email-'+welcomebar_widget).val() != '' )){
+
+				if( jQuery('#contact-lead-email-'+welcomebar_widget).css("display") != 'none' &&  IsEmail(jQuery('#contact-lead-email-'+welcomebar_widget).val()) != true ){
+
+					if( $(".mysticky-welcomebar-widget-"+welcomebar_widget+" .input-error").length ){
+						$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .input-error").remove();
+					}
+
+					$( '<div class="input-error"><span>Please, enter valid email</span></div>' ).insertAfter( jQuery('#contact-lead-email-'+welcomebar_widget) );
+					flag = false;
+				}	
+
+
+				if( jQuery('#contact-lead-phone-'+welcomebar_widget).css("display") != 'none' &&  validatePhone(jQuery('#contact-lead-phone-'+welcomebar_widget).val()) != true  ){
+					if( $(".mysticky-welcomebar-widget-"+welcomebar_widget+" .input-error").length ){
+						$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .input-error").remove();
+					}
+
+					$( '<div class="input-error"><span>Please, enter valid phone</span></div>' ).insertAfter( jQuery('#contact-lead-phone-'+welcomebar_widget) );
+					flag=false;
+				}	
+
+				if (flag == true) {
+
+					var data = [];
+					data["contact_name"] = jQuery('#contact-lead-name-'+welcomebar_widget).val();
+					data["contact_email"] = jQuery('#contact-lead-email-'+welcomebar_widget).val();
+					data["contact_phone"] = jQuery('#contact-lead-phone-'+welcomebar_widget).val();
+					data["contact_page_link"] = jQuery('#contact-lead-pagelink-'+welcomebar_widget).val();
+					
+					if( welcombar_rediect == 'thankyou_screen' ){
+						$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-lead-content").hide();
+						$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-content p").hide();
+						$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-content .mysticky-welcomebar-thankyou-content p").show();						
+					}
+					jQuery.ajax({
+						url: welcomebar_frontjs.ajaxurl,
+						type:'post',
+						data: 'contact_name='+data["contact_name"]+'&contact_email='+data["contact_email"]+'&contact_phone='+data["contact_phone"]+'&action=stickymenu_contact_lead_form&widget_id=' + welcomebar_widget  + '&page_link='+ data["contact_page_link"] +'&save_form_lead=1&wpnonce=' + welcomebar_frontjs.ajax_nonce,
+						success: function( data ){					
+							$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-fixed-wrap").css("margin-bottom","0");		
+						},
+					});
+
+				}else{
+					$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-fixed-wrap").css("margin-bottom","10px");
+					return false;
+				}
+				
+			}else{
+
+				localStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+				sessionStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+				
+				if($(".mysticky-welcomebar-widget-"+welcomebar_widget+" .input-error").length){
+					$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .input-error").remove();
+				}
+
+				if( jQuery('#contact-lead-name-'+welcomebar_widget).css("display") != 'none' && jQuery('#contact-lead-name-'+welcomebar_widget).val() == '' && jQuery('#contact-lead-email-'+welcomebar_widget).css("display") != 'none' &&  jQuery('#contact-lead-email-'+welcomebar_widget).val() == '' ){
+
+					$( '<div class="input-error"><span>Please enter your name and email</span></div>' ).insertAfter( jQuery('#contact-lead-name-'+welcomebar_widget) );
+					flag=false;
+
+				}else if( jQuery('#contact-lead-name-'+welcomebar_widget).css("display") != 'none' && jQuery('#contact-lead-name-'+welcomebar_widget).val() == '' && jQuery('#contact-lead-phone-'+welcomebar_widget).css("display") != 'none' && jQuery('#contact-lead-phone-'+welcomebar_widget).val() == '' ){
+
+					$( '<div class="input-error"><span>Please enter your name and phone</span></div>' ).insertAfter( jQuery('#contact-lead-name-'+welcomebar_widget) );
+					flag=false;
+
+				}else if( jQuery('#contact-lead-name-'+welcomebar_widget).css("display") != 'none' && jQuery('#contact-lead-name-'+welcomebar_widget).val() == '' ){
+
+					$( '<div class="input-error"><span>Please enter your name</span></div>' ).insertAfter( jQuery('#contact-lead-name-'+welcomebar_widget) );
+					flag=false;
+
+				}else if( jQuery('#contact-lead-email-'+welcomebar_widget).css("display") != 'none' &&  jQuery('#contact-lead-email-'+welcomebar_widget).val() == '' ){
+
+					$( '<div class="input-error"><span>Please, enter your email</span></div>' ).insertAfter( jQuery('#contact-lead-email-'+welcomebar_widget) );
+					flag=false;
+
+				}else if( jQuery('#contact-lead-phone-'+welcomebar_widget).css("display") != 'none' && jQuery('#contact-lead-phone-'+welcomebar_widget).val() == '' ){
+
+					$( '<div class="input-error"><span>Please, enter your phone</span></div>' ).insertAfter( jQuery('#contact-lead-phone-'+welcomebar_widget) );
+					flag=false;
+
+				 }
+
+				if(flag==false){
+					$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-fixed-wrap").css("margin-bottom","10px");
+				} else{
+					$(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-fixed-wrap").css("margin-bottom","0");
+				}
+				return false;
+			}
+		}else{
+			if( $(this).hasClass("mysticky-welcomebar-close") ){
+				localStorage.setItem('is_close_trigger_' + welcomebar_widget, 'yes');
+			}
+		}
+		
+		if( welcombar_rediect != 'thankyou_screen' || $(this).hasClass("mysticky-welcomebar-close")  ) {
+		 
+			if( welcombar_aftersubmission != 'show_welcomebar_every_page' ){
+				if( welcombar_aftersubmission == 'dont_show_welcomebar' ){
+					sessionStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+					localStorage.setItem('welcomebar_close_' + welcomebar_widget, 'close');
+				} else if( welcombar_aftersubmission == 'show_welcomebar_next_visit' ) {
+					localStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+					sessionStorage.setItem('welcomebar_close_' + welcomebar_widget, 'close');
+				}
+			}
+			
+
+			if( jQuery(this).data("isenable-coupon") == 1 ){
+				jQuery(".mysticky-welcomebar-widget-"+welcomebar_widget).find(".mysticky-welcomebar-btn").hide();
+				jQuery(".mysticky-welcomebar-widget-"+welcomebar_widget).find(".mysticky-welcomebar-content").hide();
+				jQuery(".mysticky-welcomebar-widget-"+welcomebar_widget).find(".mysticky-couponbar-content").show();
+				$(".mysticky-welcomebar-widget-"+welcomebar_widget + " .count-down-timer-box").hide();
+
+				if( jQuery(".mysticky-welcomebar-fixed.mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-lead-content").length > 0 ){
+					
+					jQuery(".mysticky-welcomebar-fixed.mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-lead-content").hide();
+				}
+				localStorage.setItem('is_button_trigger_' + welcomebar_widget, 'yes');
+				return;
+			}
+			
+			var btn_click_action = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data("btn-click-action");
+			var is_autometically_close_after_click = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data("automatically-enabled");
+			var after_click_close_sec = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data("automatically-triggersec"); 
+			
+			//console.log(is_autometically_close_after_click + " == "+ after_click_close_sec);
+			/* click after autometically close welcomebar and normal close */
+			if ($(this).hasClass("mysticky-welcomebar-close") || is_autometically_close_after_click != '' || btn_click_action == 'close_bar' ) { 
+				setTimeout(function(){
+					$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).slideUp( 'slow' );
+					if ( welcombar_position == 'top' ) {
+						$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'top', '-' + welcombar_height + 'px' );
+					} else {
+						$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'bottom', '-' + welcombar_height + 'px' );
+						$('.mysticky_bottom_style').remove();
+					}
+					
+					var welcomebar__height = parseFloat($( '.mysticky-welcomebar-fixed.mysticky-welcomebar-position-top.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight());
+					var html_margin_top = jQuery("html").css("margin-top");
+					html_margin_top = html_margin_top.replace("px",'');
+					//jQuery("html").css("margin-top", (parseInt(html_margin_top) - welcomebar__height) + "px");
+					$("html").animate({ "margin-top": (parseInt(html_margin_top) - welcomebar__height) + "px" }, 500, function() {	
+						$("html").css("cssText", "margin-top:" + (parseInt(html_margin_top) - welcomebar__height) + "px!important;");
+					});
+					if ( $( '#mysticky-nav' ).length > 0) {
+						$( '#mysticky-nav' ).css( 'top', (parseInt(html_margin_top) - welcomebar__height) + "px");
+					}
+					
+					jQuery( '#mysticky_divi_style' ).remove();
+					jQuery( '.et_fixed_nav #top-header' ).css( 'top', '' );
+					jQuery( 'html' ).css( 'padding-bottom', '' );
+					
+					/*if mystickyelements show*/
+					var mystickyelements_show = $( '.mystickyelements-fixed' ).length;
+					if( mystickyelements_show && $( window ).width() <= 1024 && $( '.mystickyelements-fixed' ).hasClass( 'mystickyelements-position-mobile-top' ) && welcombar_position == 'top' ) {
+						var mystickyelements_height = adminBarHeight + $( '.mystickyelements-fixed' ).height();
+						$( '.mystickyelements-fixed' ).css( 'top', '' );
+						//$( 'html' ).attr( 'style', 'margin-top: ' + mystickyelements_height + 'px !important' );
+						$("html").animate({ "margin-top": mystickyelements_height + "px" }, 500, function() {	
+							$("html").css("cssText", "margin-top:" + mystickyelements_height + "px!important;");
+						});
+					}
+
+					jQuery(window).trigger('resize');
+					
+				},(parseInt(after_click_close_sec) * 1000));
+			
+			}
+			
+			
+			
+		} else {	
+			
+			var welcomebarHeight = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-'+ welcomebar_widget ).css("height");
+			if( $(".mysticky-welcomebar-fixed.mysticky-welcomebar-widget-"+ welcomebar_widget+" .count-down-timer-box").length > 0 &&  $(".count-down-timer-box").css("display") != 'none' ){
+				jQuery(".count-down-timer-box").hide();
+			}
+			$(".mysticky-welcomebar-fixed.mysticky-welcomebar-widget-"+ welcomebar_widget + " .mysticky-welcomebar-content p").first().hide();
+
+			if( jQuery(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-lead-content").length <= 0 && !$( this ).hasClass('mysticky-welcomebar-close')){
+				
+				var thankyou_content_height = jQuery('.mysticky-welcomebar-thankyou-content').height();
+				if( thankyou_content_height > 60 ) {
+					$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css({ 'min-height': thankyou_content_height + 'px', 'height' : 'auto' });
+				}
+
+				$( '.mysticky-welcomebar-widget-'+ welcomebar_widget +' .mysticky-welcomebar-thankyou-content' ).show();
+				$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget- .mysticky-welcomebar-content > p' ).hide();
+				$( '.mysticky-welcomebar-widget-'+ welcomebar_widget +' .mysticky-welcomebar-btn' ).hide();
+			}else if( jQuery(".mysticky-welcomebar-widget-"+welcomebar_widget+" .mysticky-welcomebar-lead-content").length && $(this).parent().hasClass("mysticky-welcomebar-btn")){
+
+				var thankyou_content_height = jQuery('.mysticky-welcomebar-thankyou-content').height();
+				if( thankyou_content_height > 60 ) {
+					$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css({ 'min-height': thankyou_content_height + 'px', 'height' : 'auto' });
+				}
+
+				$( '.mysticky-welcomebar-widget-'+ welcomebar_widget +' .mysticky-welcomebar-thankyou-content' ).show();
+				$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget- .mysticky-welcomebar-content > p' ).hide();
+				$( '.mysticky-welcomebar-widget-'+ welcomebar_widget +' .mysticky-welcomebar-btn' ).hide();				
+			}else{
+				
+
+				$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).slideUp( 'slow' );
+				if ( welcombar_position == 'top' ) {
+					$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'top', '-' + welcombar_height + 'px' );
+				} else {
+					$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'bottom', '-' + welcombar_height + 'px' );
+					$('.mysticky_bottom_style').remove();
+				}
+				/*
+				var welcomebar__height = parseInt($( '.mysticky-welcomebar-fixed.mysticky-welcomebar-position-top.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight());
+				var html_margin_top = jQuery("html").css("margin-top");
+				html_margin_top = html_margin_top.replace("px",'');				
+				jQuery("html").css("margin-top",""+(parseInt(html_margin_top) - welcomebar__height)+"px")
+				*/
+			}
+			
+			$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-'+ welcomebar_widget ).css("height",welcomebarHeight);
+			
+			if ( welcombar_position === 'top') {
+				setTimeout(hideBarAnimation, 1000,welcomebar_widget,welcombar_position,welcombar_height);
+			}
+			localStorage.setItem('welcomebar_close_' + welcomebar_widget, 'close');
+			jQuery(window).trigger('resize');	
+			
+		}
+
+	} );
+	
+/** 
+ * DATE : 2022-07-01
+ * Hide or Close Welcombar Bar Animation After 3 Second. for show and read thank you message.
+ */
+	function hideBarAnimation(welcomebar_widget,welcombar_position,welcombar_height){
+		$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).slideUp( 'slow' );
+		if ( welcombar_position == 'top' ) {
+			$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'top', '-' + welcombar_height + 'px' );
+		} else {
+			$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'bottom', '-' + welcombar_height + 'px' );
+		}
+		
+		var html_margin_top = jQuery("html").css("margin-top");
+			html_margin_top = html_margin_top.replace("px",'');
+		
+		//jQuery("html").css("margin-top", (parseInt(html_margin_top) - parseInt(welcombar_height)) + "px");
+		$("html").animate({ "margin-top": (parseInt(html_margin_top) - parseInt(welcombar_height)) + "px" }, 500, function() {	
+			$("html").css("cssText", "margin-top:" + (parseInt(html_margin_top) - parseInt(welcombar_height)) + "px!important;");
+		});
+		if ( $( '#mysticky-nav' ).length > 0) {
+			$( '#mysticky-nav' ).css( 'top', (parseInt(html_margin_top) - parseInt(welcombar_height)) + "px")
+		}
+		jQuery(window).trigger('resize');
+	}
+
+	$('.coupon-cpy-tooltip').on("click",function(){
+		var idd = $(this).attr('id');
+		$('#'+idd + ' .tooltiptext').css({"visibility":"visible","opacity":"1"});
+		setTimeout(function(){$('#'+idd +' .tooltiptext').css({"visibility":"hidden","opacity":"0"});}, 3000);
+
+		var copyText =  $("#"+idd+" a");
+		copyText.select();
+		navigator.clipboard.writeText(copyText.text().trim());
+	});
+
+
+	/*function*/
+	function mystickyelements_present( welcomebar_widget ) {
+		var after_trigger 		 	 = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('after-triger');
+		var mystickyelements_show 	= $( '.mystickyelements-fixed' ).length;
+		var welcombar_position 		= $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('position');
+		
+		if( mystickyelements_show ) {
+			var welcombar_position 		= $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('position');
+			var welcombar_height 		= $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight();
+			var mystickyelements_height = $( '.mystickyelements-fixed' ).height();
+			var mystickyelements_total_height =  adminBarHeight + welcombar_height + mystickyelements_height;
+			if ( $( window ).width() <= 1024 && $( '.mystickyelements-fixed' ).hasClass( 'mystickyelements-position-mobile-top' ) ) {
+				if ( after_trigger == 'after_a_few_seconds' ) {
+					if ( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-display-mobile' ) ) {
+						var trigger_sec = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('triger-sec') * 1000;
+						setTimeout(function(){
+							if ( welcombar_position == 'top' ) {
+								if ( jQuery( window ).width() <= 600 && jQuery(window).scrollTop() != 0 && welcombar_position == 'top') {
+									welcombar_height = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight() - adminBarHeight;
+									mystickyelements_total_height =   ( welcombar_height + mystickyelements_height ) - adminBarHeight;
+									$( '.mystickyelements-fixed' ).css( 'top', welcombar_height );
+									//$( 'html' ).attr( 'style', 'margin-top: ' + mystickyelements_total_height + 'px !important' );
+									$("html").animate({ "margin-top": mystickyelements_total_height + "px" }, 500, function() {	
+										$("html").css("cssText", "margin-top:" + mystickyelements_total_height + "px!important;");
+									});
+								} else {
+									$( '.mystickyelements-fixed' ).css( 'top', welcombar_height );
+									//$( 'html' ).attr( 'style', 'margin-top: ' + mystickyelements_total_height + 'px !important' );
+									$("html").animate({ "margin-top": mystickyelements_total_height + "px" }, 500, function() {	
+										$("html").css("cssText", "margin-top:" + mystickyelements_total_height + "px!important;");
+									});
+								}
+							} else {
+								$( '.mystickyelements-fixed' ).css( 'top', '' );
+								if( ! jQuery( 'style' ).hasClass( 'mysticky_bottom_style' ) ) {
+									jQuery( 'head' ).append( '<style class="mysticky_bottom_style" type="text/css">html.mysticky-welcomebar-apper {padding-bottom: ' + welcombar_height + 'px}</style>' );
+								}
+							}
+						}, trigger_sec );
+					}
+				} else if ( after_trigger === 'after_scroll' ) {
+					var scroll = 100 * $(window).scrollTop() / ($(document).height() - $(window).height());
+					var after_scroll_val = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('triger-sec');
+					if( scroll > after_scroll_val ) {
+						if ( $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).hasClass( 'mysticky-welcomebar-display-mobile' ) ) {
+							if ( welcombar_position == 'top' ) {
+								$( '.mystickyelements-fixed' ).css( 'top', welcombar_height );
+								//$( 'html' ).attr( 'style', 'margin-top: ' + mystickyelements_total_height + 'px !important' );
+								$("html").animate({ "margin-top": mystickyelements_total_height + "px" }, 500, function() {	
+									$("html").css("cssText", "margin-top:" + mystickyelements_total_height + "px!important;");
+								});
+							} else {
+								$( '.mystickyelements-fixed' ).css( 'top', '' );
+								if( ! $( 'style' ).hasClass( 'mysticky_bottom_style' ) ) {
+									$( 'head' ).append( '<style class="mysticky_bottom_style" type="text/css">html.mysticky-welcomebar-apper {padding-bottom: ' + welcombar_height + 'px}</style>' );
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	function mysticky_welcombar_automatically_close( welcomebar_widget ) {
+		var welcombar_automatically_enabled = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data( 'automatically-enabled' );
+		var automatically_triggersec = jQuery( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('automatically-triggersec') * 1000;
+		var welcombar_aftersubmission = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('aftersubmission');
+		var welcombar_height = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).outerHeight();
+		if( welcombar_automatically_enabled == 1 ) {
+			
+			setTimeout(function(){
+				jQuery( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-notapper' );
+				$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).addClass( 'mysticky-welcomebar-notpresent' );
+				if( jQuery( '.mysticky-welcomebar-notapper' ).length == jQuery( '.mysticky-welcomebar-fixed' ).length ) {
+					jQuery( 'html,body' ).removeClass( 'mysticky-welcomebar-apper' );
+				}
+				if( welcombar_aftersubmission != 'show_welcomebar_every_page' ){
+					if( welcombar_aftersubmission == 'dont_show_welcomebar' ){
+						sessionStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+						localStorage.setItem('welcomebar_close_' + welcomebar_widget, 'close');
+					} else if( welcombar_aftersubmission == 'show_welcomebar_next_visit' ) {
+						localStorage.removeItem('welcomebar_close_' + welcomebar_widget);
+						sessionStorage.setItem('welcomebar_close_' + welcomebar_widget, 'close');
+					}
+				}
+				var welcombar_position = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).data('position');
+
+				jQuery( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).slideUp( 'slow' );
+				if ( welcombar_position == 'top' ) {
+					jQuery( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'top', '-' + welcombar_height + 'px' );
+				} else {
+					jQuery( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + welcomebar_widget ).css( 'bottom', '-' + welcombar_height + 'px' );
+				}
+				var new_welcombar_margin_top_close = new_welcombar_height_top_close = 0;
+				var new_welcombar_padding_bottom_close = new_welcombar_height_bottom_close = 0;
+				/*set welcomebar position when other welcombar close*/
+				$( '.mysticky-welcomebar-fixed' ).each( function(){
+					var common_welcombar_position = $( this ).data( 'position' );
+					var common_welcomebar_widget  = $( this ).data( 'welcomebar-widget' );
+					if ( common_welcombar_position == 'top' ) {
+						if( ! $( this ).hasClass( 'mysticky-welcomebar-notapper' ) && ! $( this ).hasClass( 'mysticky-welcomebar-notpresent' ) ) {
+							var common_welcombar_height = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + common_welcomebar_widget ).outerHeight();
+							var new_welcomebar_height = common_welcombar_height + new_welcombar_margin_top_close;
+							var new_welcombar_position = 0 + new_welcombar_height_top_close;
+
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + common_welcomebar_widget ).css( 'top', new_welcombar_position );
+							new_welcombar_height_top_close = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + common_welcomebar_widget ).outerHeight() - new_welcombar_position;
+
+							//$( 'html.mysticky-welcomebar-apper' ).attr( 'style', 'margin-top: ' + new_welcomebar_height + 'px !important' );
+							$("html").animate({ "margin-top": new_welcomebar_height + "px" }, 500, function() {	
+								$("html").css("cssText", "margin-top:" + new_welcomebar_height + "px!important;");
+							});
+							
+							$( '#mysticky-nav' ).css( 'top', new_welcomebar_height + 'px' );
+							new_welcombar_margin_top_close = new_welcombar_margin_top_close + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + common_welcomebar_widget ).outerHeight();
+						} else {
+							var welcomebar_fixed_length = $( '.mysticky-welcomebar-fixed' ).length;
+							var welcomebar_notapper_length = $( '.mysticky-welcomebar-notapper' ).length;
+							var welcomebar_notapper_top_length = $( '.mysticky-welcomebar-position-top.mysticky-welcomebar-notapper' ).length;
+							var welcomebar_notpresent_top_length = $( '.mysticky-welcomebar-position-top.mysticky-welcomebar-notpresent' ).length;
+							var welcomebar_top_length = $( '.mysticky-welcomebar-position-top' ).length;
+							if( welcomebar_notapper_length == welcomebar_fixed_length || welcomebar_top_length == welcomebar_notapper_top_length || welcomebar_top_length == welcomebar_notpresent_top_length ) {
+								$( 'html' ).css( 'margin-top', '' );
+								$( '#mysticky-nav' ).css( 'top', '0px' );
+							}
+						}
+					} else {
+						if( ! $( this ).hasClass( 'mysticky-welcomebar-notapper' ) && ! $( this ).hasClass( 'mysticky-welcomebar-notpresent' ) ) {
+							var common_welcombar_height = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + common_welcomebar_widget ).outerHeight();
+							var new_welcomebar_height  = common_welcombar_height + new_welcombar_padding_bottom_close;
+							var new_welcombar_position = 0 + new_welcombar_height_bottom_close;
+
+							$( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + common_welcomebar_widget ).css( 'bottom', new_welcombar_position );
+							new_welcombar_height_bottom_close = $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + common_welcomebar_widget ).outerHeight() - new_welcombar_position;
+
+							$( 'head' ).append( '<style class="mysticky_bottom_style" type="text/css">html.mysticky-welcomebar-apper {padding-bottom: ' + new_welcomebar_height + 'px}</style>' );
+							new_welcombar_padding_bottom_close = new_welcombar_padding_bottom_close + $( '.mysticky-welcomebar-fixed.mysticky-welcomebar-widget-' + common_welcomebar_widget ).outerHeight();
+						} else {
+							var welcomebar_fixed_length = $( '.mysticky-welcomebar-fixed' ).length;
+							var welcomebar_notapper_length = $( '.mysticky-welcomebar-notapper' ).length;
+							var welcomebar_notapper_bottom_length = $( '.mysticky-welcomebar-position-bottom.mysticky-welcomebar-notapper' ).length;
+							var welcomebar_notpresent_bottom_length = $( '.mysticky-welcomebar-position-bottom.mysticky-welcomebar-notpresent' ).length;
+							var welcomebar_bottom_length = $( '.mysticky-welcomebar-position-bottom' ).length;
+
+							if( welcomebar_notapper_length == welcomebar_fixed_length || welcomebar_bottom_length == welcomebar_notapper_bottom_length || welcomebar_bottom_length == welcomebar_notpresent_bottom_length ) {
+								$( 'head' ).append( '<style class="mysticky_bottom_style" type="text/css">html.mysticky-welcomebar-apper {padding-bottom: 0px}</style>' );
+							}
+						}
+					}
+				} );
+
+				jQuery( '#mysticky_divi_style' ).remove();
+				jQuery( '.et_fixed_nav #top-header' ).css( 'top', '' );
+				
+				var mystickyelements_show = $( '.mystickyelements-fixed' ).length;
+				if( mystickyelements_show && $( window ).width() <= 1024 && $( '.mystickyelements-fixed' ).hasClass( 'mystickyelements-position-mobile-top' ) && welcombar_position == 'top' ) {
+					var mystickyelements_height 	  = $( '.mystickyelements-fixed' ).height();
+					$( '.mystickyelements-fixed' ).css( 'top', '' );
+					//$( 'html' ).attr( 'style', 'margin-top: ' + mystickyelements_height + 'px !important' );
+					$("html").animate({ "margin-top": mystickyelements_height + "px" }, 500, function() {	
+						$("html").css("cssText", "margin-top:" + mystickyelements_height + "px!important;");
+					});
+				}
+			}, automatically_triggersec );
+		}
+	}
+	
+	// JS snippet to allow close button to work with keyboard.
+	$('.mysticky-welcomebar-close').on('keydown', function(e) {
+		if(e.keyCode == '13'){
+			$(this).trigger('click');
+		}
+	});
+});
+
+
+jQuery(".mysticky-welcomebar-fixed").on(
+	"animationend MSAnimationEnd webkitAnimationEnd oAnimationEnd",
+	function() {
+		jQuery(this).removeClass("animation-start");
+	}
+);
+jQuery( document ).ready( function() {
+	var container = jQuery( ".mysticky-welcomebar-fixed" );
+	var refreshId = setInterval( function() {
+		container.addClass( "animation-start" );
+	}, 3500 );
+});
+
+
+function updateChannelClickAjax( widgetId,widgetNonce,widgetclass ){
+	jQuery.ajax({
+		url: welcomebar_frontjs.ajaxurl,
+		data: {
+			widgetId: widgetId,
+			nonce: widgetNonce,
+			widgetclass: widgetclass,
+			action: 'update_button_click',
+		},
+		method: 'post',
+	});
+}
+function updateChannelViewkAjax( widgetId,widgetNonce ){
+	jQuery.ajax({
+		url: welcomebar_frontjs.ajaxurl,
+		data: {
+			widgetId: widgetId,
+			nonce: widgetNonce,
+			action: 'update_button_view'
+		},
+		method: 'post',
+	});
+}
+function saveASECookieString(widgetId, cookieStr) {
+	var cookieString = ASEGetCookie("mystickymenuWidget_" + widgetId);
+	var cookiesArray = [];
+	if (cookieString != null && cookieString != "") {
+		cookiesArray = JSON.parse(cookieString);
+	}
+	var cookieFound = false;
+	if (cookiesArray.length > 0) {
+		for (var i = 0; i < cookiesArray.length; i++) {
+			if (cookiesArray[i]['k'] == cookieStr) {
+				cookieFound = true;
+				cookiesArray[i]['v'] = new Date();
+			}
+		}
+	}
+	if (!cookieFound) {
+		cookiesArray.push({"k": cookieStr, "v": new Date()});
+	}
+	cookieString = JSON.stringify(cookiesArray);
+	ASESetCookie("mystickymenuWidget_" + widgetId, cookieString, "7");
+}
+
+
+function ASEGetCookie(cookieName) {
+	var cookieName = cookieName + "=";
+	var ca = document.cookie.split(';');
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(cookieName) == 0) {
+			return c.substring(cookieName.length, c.length); // return data if cookie exists
+		}
+	}
+	return null; // return null if cookie doesn't exists
+}
+
+function ASESetCookie(cname, cvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+	var expires = "expires=" + d.toUTCString();
+	document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/; SameSite=Lax";
+}
+function checkASECookieExpired(widgetId, cookieStr) {
+	var cookieValue = checkForASECookieString(widgetId, cookieStr);
+	if (cookieValue != null && cookieValue != "") {
+		cookieValue = new Date(cookieValue);
+		var diffTime = Math.abs(new Date() - cookieValue);
+		var diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+		if (diffDays >= 2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	return true;
+}
+function checkForASECookieString(widgetId, cookieStr) {
+	var cookieString = ASEGetCookie("mystickymenuWidget_" + widgetId);
+	var cookiesArray = [];
+	if (cookieString != null && cookieString != "") {
+		cookiesArray = JSON.parse(cookieString);
+	}
+	if (cookiesArray.length > 0) {
+		for (var i = 0; i < cookiesArray.length; i++) {
+			if (cookiesArray[i]['k'] == cookieStr) {
+				return cookiesArray[i]['v'];
+			}
+		}
+	}
+	return null;
+}
+
+/* Form submission validation function */
+
+function IsEmail(email) {
+    var regex =
+/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!regex.test(email)) {
+        return false;
+    }else {
+        return true;
+    }
+}
+
+function validatePhone(txtPhone) {
+    var a = txtPhone;
+    var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+    if (filter.test(a)) {
+        return true;
+    }else {
+        return false;
+    }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>iframe</title>
+        <meta name="robots" content="noindex, follow"/>
+        
+<script>
+    function getCookie(name) {
+        var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        result = v ? v[2] : null;
+
+        if (!result) {   // no cookie, look in localstorage
+            var rawLSObject = localStorage.getItem(name);
+            if (rawLSObject) {
+                var resObject = JSON.parse(rawLSObject);
+
+                // enforce expiry
+                if (new Date().getTime() < Date.parse(resObject.expires)) {
+                    result = resObject;
+                }
+            }
+        } else {
+            try {  // maybe it's JSON, otherwise its an older string based cookie.
+                var parsed = JSON.parse(result);
+                result = parsed;
+            } catch (ex) {}
+        }
+
+        return result;
+    }
+
+    function setCookie(name, value, days, opts) {
+        var d = new Date;
+        d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
+        var payload;
+        if (typeof(value) === 'string') {
+            payload = {value: value};
+        } else {
+            payload = value;
+        }
+
+        var cookieStr = name + "=" + JSON.stringify(payload) + ";path=/;expires=" + d.toGMTString();
+        if (opts && opts.samesite) {
+            cookieStr += ';SameSite=' + opts.samesite;
+            if (opts.samesite === 'None') {
+                cookieStr += ';Secure';
+            }
+        }
+        document.cookie = cookieStr;
+
+        payload.expires = d;
+
+        localStorage.setItem(name, JSON.stringify(payload));
+    }
+
+    function deleteCookie(name, opts) {
+        setCookie(name, '', -1, opts);
+        localStorage.removeItem(name);
+    }
+</script>
+
+        <script>
+            window.addEventListener("message", receiveMessage, false); 
+            function receiveMessage(event) {
+                if(event.origin === 'https://sourceforge.net' && event.data?.zone && event.data?.slug ) {
+                    setCookie('sf-outbound-zone-' + event.data.slug, {'zone': event.data.zone.toString(), 'variant': 'sf'}, 60, {samesite: 'None'});
+                }
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

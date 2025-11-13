@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /compare/games1/
+Disallow: /partner_type
+Disallow: /help_topics
+#Disallow: /help_categories/
+Disallow: /go
+
+Sitemap: http://www.casinopapa.co.uk/sitemap_index.xml

@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) & !(IE 8)]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Matt Mullenweg | Unlucky in Cards</title>
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://ma.tt/blog/xmlrpc.php">
+		<link rel="preload" as="style" href="blog-content/themes/ma.tt/css/twentythirteen.min.css">
+	<!--[if lt IE 9]>
+	<script data-jetpack-boost="ignore" src="https://ma.tt/blog-content/themes/twentythirteen/js/html5.js?ver=3.7.0"></script>
+	<![endif]-->
+	<meta name='robots' content='max-image-preview:large' />
+			<link rel="preload" as="image" href="blog-content/themes/ma.tt/i/autumn/5s-2x.webp" type="image/webp">
+		<link rel='dns-prefetch' href='https://s0.wp.com/' />
+<link rel='dns-prefetch' href='https://stats.wp.com/' />
+<link rel='dns-prefetch' href='https://cdn.parsely.com/' />
+<link rel='dns-prefetch' href='https://jetpack.wordpress.com/' />
+<link rel='dns-prefetch' href='https://public-api.wordpress.com/' />
+<link rel='dns-prefetch' href='https://0.gravatar.com/' />
+<link rel='dns-prefetch' href='https://1.gravatar.com/' />
+<link rel='dns-prefetch' href='https://2.gravatar.com/' />
+<link rel='preconnect' href='https://i0.wp.com/' />
+<link rel="alternate" type="application/rss+xml" title="Matt Mullenweg &raquo; Feed" href="https://ma.tt/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Matt Mullenweg &raquo; Comments Feed" href="https://ma.tt/comments/feed/" />
+<style id='wp-img-auto-sizes-contain-inline-css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='the-neverending-homepage-css' href='blog-content/plugins/jetpack/modules/infinite-scroll/infinity.css@ver=20140422.css' media='all' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id='wp-block-library-inline-css'>
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=wp-block-library-inline-css */
+</style><style id='wp-block-embed-inline-css'>
+.wp-block-embed.alignleft,.wp-block-embed.alignright,.wp-block[data-align=left]>[data-type="core/embed"],.wp-block[data-align=right]>[data-type="core/embed"]{max-width:360px;width:100%}.wp-block-embed.alignleft .wp-block-embed__wrapper,.wp-block-embed.alignright .wp-block-embed__wrapper,.wp-block[data-align=left]>[data-type="core/embed"] .wp-block-embed__wrapper,.wp-block[data-align=right]>[data-type="core/embed"] .wp-block-embed__wrapper{min-width:280px}.wp-block-cover .wp-block-embed{min-height:240px;min-width:320px}.wp-block-embed{overflow-wrap:break-word}.wp-block-embed :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-embed iframe{max-width:100%}.wp-block-embed__wrapper{position:relative}.wp-embed-responsive .wp-has-aspect-ratio .wp-block-embed__wrapper:before{content:"";display:block;padding-top:50%}.wp-embed-responsive .wp-has-aspect-ratio iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.wp-embed-responsive .wp-embed-aspect-21-9 .wp-block-embed__wrapper:before{padding-top:42.85%}.wp-embed-responsive .wp-embed-aspect-18-9 .wp-block-embed__wrapper:before{padding-top:50%}.wp-embed-responsive .wp-embed-aspect-16-9 .wp-block-embed__wrapper:before{padding-top:56.25%}.wp-embed-responsive .wp-embed-aspect-4-3 .wp-block-embed__wrapper:before{padding-top:75%}.wp-embed-responsive .wp-embed-aspect-1-1 .wp-block-embed__wrapper:before{padding-top:100%}.wp-embed-responsive .wp-embed-aspect-9-16 .wp-block-embed__wrapper:before{padding-top:177.77%}.wp-embed-responsive .wp-embed-aspect-1-2 .wp-block-embed__wrapper:before{padding-top:200%}
+/*# sourceURL=https://ma.tt/blog-content/plugins/gutenberg/build/styles/block-library/embed/style.css */
+</style>
+<style id='wp-block-embed-theme-inline-css'>
+.wp-block-embed :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed :where(figcaption){color:#ffffffa6}.wp-block-embed{margin:0 0 1em}
+/*# sourceURL=https://ma.tt/blog-content/plugins/gutenberg/build/styles/block-library/embed/theme.css */
+</style>
+<style id='wp-block-paragraph-inline-css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://ma.tt/blog-content/plugins/gutenberg/build/styles/block-library/paragraph/style.css */
+</style>
+<style id='wp-block-quote-inline-css'>
+.wp-block-quote{box-sizing:border-box;overflow-wrap:break-word}.wp-block-quote.is-large:where(:not(.is-style-plain)),.wp-block-quote.is-style-large:where(:not(.is-style-plain)){margin-bottom:1em;padding:0 1em}.wp-block-quote.is-large:where(:not(.is-style-plain)) p,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) p{font-size:1.5em;font-style:italic;line-height:1.6}.wp-block-quote.is-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-large:where(:not(.is-style-plain)) footer,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) footer{font-size:1.125em;text-align:right}.wp-block-quote>cite{display:block}
+/*# sourceURL=https://ma.tt/blog-content/plugins/gutenberg/build/styles/block-library/quote/style.css */
+</style>
+<style id='wp-block-quote-theme-inline-css'>
+.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;font-style:normal;position:relative}.wp-block-quote:where(.has-text-align-right){border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote:where(.has-text-align-center){border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large,.wp-block-quote:where(.is-style-plain){border:none}
+/*# sourceURL=https://ma.tt/blog-content/plugins/gutenberg/build/styles/block-library/quote/theme.css */
+</style>
+<style id='wp-block-image-inline-css'>
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:#5a5a5a40;border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto #5a5a5a40;outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:#5a5a5a40;border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .close-button{align-items:center;cursor:pointer;display:flex;justify-content:center;min-height:40px;min-width:40px;padding:0;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .close-button:focus,.wp-lightbox-overlay .close-button:hover,.wp-lightbox-overlay .close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:9999999999}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://ma.tt/blog-content/plugins/gutenberg/build/styles/block-library/image/style.css */
+</style>
+<style id='wp-block-image-theme-inline-css'>
+:root :where(.wp-block-image figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme :root :where(.wp-block-image figcaption){color:#ffffffa6}.wp-block-image{margin:0 0 1em}
+/*# sourceURL=https://ma.tt/blog-content/plugins/gutenberg/build/styles/block-library/image/theme.css */
+</style>
+<style id='wp-block-list-inline-css'>
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://ma.tt/blog-content/plugins/gutenberg/build/styles/block-library/list/style.css */
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #fff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--dark-gray: #141412;--wp--preset--color--red: #bc360a;--wp--preset--color--medium-orange: #db572f;--wp--preset--color--light-orange: #ea9629;--wp--preset--color--yellow: #fbca3c;--wp--preset--color--dark-brown: #220e10;--wp--preset--color--medium-brown: #722d19;--wp--preset--color--light-brown: #eadaa6;--wp--preset--color--beige: #e8e5ce;--wp--preset--color--off-white: #f7f5e7;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--autumn-brown: linear-gradient(135deg, rgba(226,45,15,1) 0%, rgba(158,25,13,1) 100%);--wp--preset--gradient--sunset-yellow: linear-gradient(135deg, rgba(233,139,41,1) 0%, rgba(238,179,95,1) 100%);--wp--preset--gradient--light-sky: linear-gradient(135deg,rgba(228,228,228,1.0) 0%,rgba(208,225,252,1.0) 100%);--wp--preset--gradient--dark-sky: linear-gradient(135deg,rgba(0,0,0,1.0) 0%,rgba(56,61,69,1.0) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<link rel='stylesheet' id='gravatar-enhanced-patterns-shared-css' href='blog-content/plugins/gravatar-enhanced/build/patterns-shared.css@ver=226b181ff45084e801e6.css' media='all' />
+<link rel='stylesheet' id='gravatar-enhanced-patterns-edit-css' href='blog-content/plugins/gravatar-enhanced/build/patterns-edit.css@ver=a2fa5a272b4a5f94db7a.css' media='all' />
+<link rel='stylesheet' id='jp-lite-youtube-embed-style-css' href='blog-content/mu-plugins/jp-lite-youtube-embed/jp-lite-youtube-embed.min.css@ver=0.3.2-5.css' media='all' />
+<link rel='stylesheet' id='gravatar-enhanced-patterns-view-css' href='blog-content/plugins/gravatar-enhanced/build/patterns-view.css@ver=c8f3511e42e7f7bff2d6.css' media='all' />
+<style id='plvt-view-transitions-inline-css'>
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: no-preference) {::view-transition-group(*) { animation-duration: 0.4s; }}
+/*# sourceURL=plvt-view-transitions-inline-css */
+</style>
+<link rel='stylesheet' id='twentythirteen-fonts-css' href='blog-content/themes/twentythirteen/fonts/source-sans-pro-plus-bitter.css@ver=20230328.css' media='all' />
+<link rel='stylesheet' id='genericons-css' href='blog-content/plugins/jetpack/_inc/genericons/genericons/genericons.css@ver=3.1.css' media='all' />
+<link rel='stylesheet' id='twentythirteen-style-css' href='blog-content/themes/ma.tt/style.css@ver=1760526631.css' media='all' />
+<link rel='stylesheet' id='twentythirteen-block-style-css' href='blog-content/themes/twentythirteen/css/blocks.css@ver=20240520.css' media='all' />
+<link rel='stylesheet' id='jetpack-swiper-library-css' href='blog-content/plugins/jetpack/_inc/blocks/swiper.css@ver=15.2.css' media='all' />
+<link rel='stylesheet' id='jetpack-carousel-css' href='blog-content/plugins/jetpack/modules/carousel/jetpack-carousel.css@ver=15.2.css' media='all' />
+<link rel='stylesheet' id='tiled-gallery-css' href='blog-content/plugins/jetpack/modules/tiled-gallery/tiled-gallery/tiled-gallery.css@ver=2023-08-21.css' media='all' />
+<link rel='stylesheet' id='gravatar-enhanced-hovercards-css' href='blog-content/plugins/gravatar-enhanced/build/style-hovercards.css@ver=801f9da4ebe630b1776f.css' media='all' />
+<link rel='stylesheet' id='infinity-twentythirteen-css' href='blog-content/plugins/jetpack/modules/infinite-scroll/themes/twentythirteen.css@ver=20130409.css' media='all' />
+
+
+<link rel="https://api.w.org/" href="https://ma.tt/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://ma.tt/blog/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9-RC1-61214" />
+<link rel='shortlink' href='https://wp.me/4oB3' />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://ma.tt/blog/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="view-transitions 1.1.1">
+	<style>img#wpstats{display:none}</style>
+		<script data-jetpack-boost="ignore" type="application/ld+json" class="wp-parsely-metadata">{"@context":"https:\/\/schema.org","@type":"WebPage","headline":"Matt Mullenweg","url":"https:\/\/ma.tt","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/ma.tt\/"},"thumbnailUrl":"","image":{"@type":"ImageObject","url":""},"articleSection":"Asides","author":[{"@type":"Person","name":"Matt"}],"creator":["Matt"],"publisher":{"@type":"Organization","name":"Matt Mullenweg","logo":"http:\/\/ma.tt\/files\/2021\/05\/Photo-on-2020-10-28-at-2.05-PM-1.jpg"},"keywords":[],"dateCreated":"2025-11-11T01:34:00Z","datePublished":"2025-11-11T01:34:00Z","dateModified":"2025-11-11T01:34:00Z"}</script><link rel="icon" type="image/x-icon" href="blog-content/themes/ma.tt/i/favicon.ico" />
+<meta name="p:domain_verify" content="bc52ac484003bc590de056c705de47fc"/>
+	<style type="text/css" id="twentythirteen-header-css">
+		.site-header {
+		background: url(blog-content/themes/twentythirteen/images/headers/circle.png) no-repeat scroll top;
+		background-size: 1600px auto;
+	}
+	@media (max-width: 767px) {
+		.site-header {
+			background-size: 768px auto;
+		}
+	}
+	@media (max-width: 359px) {
+		.site-header {
+			background-size: 360px auto;
+		}
+	}
+			</style>
+	
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Matt Mullenweg" />
+<meta property="og:description" content="Unlucky in Cards" />
+<meta property="og:url" content="https://ma.tt/" />
+<meta property="og:site_name" content="Matt Mullenweg" />
+<meta property="og:image" content="https://s0.wp.com/_si/?t=eyJpbWciOiJodHRwczpcL1wvaTAud3AuY29tXC9tYS50dFwvZmlsZXNcLzIwMjRcLzAxXC9jcm9wcGVkLW1hdHQtZmF2aWNvbi5wbmc_Zml0PTUxMiUyQzUxMiZxdWFsaXR5PTgwJnNzbD0xIiwidHh0IjoiTWF0dCBNdWxsZW53ZWciLCJ0ZW1wbGF0ZSI6ImVkZ2UiLCJmb250IjoiIiwiYmxvZ19pZCI6MTA0Nzg2NX0.nMxNiHgw-xe1bfFsTwJHrpHAFHaiqPoEjk23t2-wqDAMQ" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@photomatt" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="../../../i0.wp.com/ma.tt/files/2024/01/cropped-matt-favicon.png@fit=32,32&amp;quality=80&amp;ssl=1" sizes="32x32" />
+<link rel="icon" href="../../../i0.wp.com/ma.tt/files/2024/01/cropped-matt-favicon.png@fit=192,192&amp;quality=80&amp;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://i0.wp.com/ma.tt/files/2024/01/cropped-matt-favicon.png?fit=180%2C180&#038;quality=80&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i0.wp.com/ma.tt/files/2024/01/cropped-matt-favicon.png?fit=270%2C270&#038;quality=80&#038;ssl=1" />
+		<style id="wp-custom-css">
+			body.page-template-page-wide .entry-content, body.page-template-page-wide .entry-header {
+    max-width: 940px;
+}		</style>
+		</head>
+
+<body class="home blog wp-embed-responsive wp-theme-twentythirteen wp-child-theme-matt jps-theme-ma.tt autumn">
+		<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header">
+						<picture class="site-header-bg">
+				<img fetchpriority="high" src="../../../i0.wp.com/ma.tt/blog-content/themes/ma.tt/i/autumn/header-2x.jpg@quality=89&amp;ssl=1" alt="" />
+			</picture>
+			<a class="home-link" href="index.html" title="Matt Mullenweg" rel="home">
+				<h1 class="site-title">Matt Mullenweg</h1>
+				<h2 class="site-description">Unlucky in Cards</h2>
+			</a>
+
+		</header><!-- #masthead -->
+
+		<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+		
+							
+<article id="post-150536" class="post-150536 post type-post status-publish format-video hentry category-asides post_format-post-format-video">
+	<header class="entry-header">
+				<h1 class="entry-title">
+			<a href="https://ma.tt/2025/11/bending-spoons/" rel="bookmark">Bending Spoons</a>
+		</h1>
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:9756,&quot;href&quot;:&quot;https:\/\/bendingspoons.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251012141952\/https:\/\/bendingspoons.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-11 01:34:59&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-11 01:34:59&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9757,&quot;href&quot;:&quot;https:\/\/evernote.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251110200035\/https:\/\/evernote.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-11 01:35:00&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-11 01:35:00&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9758,&quot;href&quot;:&quot;https:\/\/www.meetup.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251109231203\/https:\/\/www.meetup.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-11 01:35:05&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-11 01:35:05&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9759,&quot;href&quot;:&quot;https:\/\/automattic.space&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250917093614\/https:\/\/automattic.space\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-11 01:35:05&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-11 01:35:05&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9760,&quot;href&quot;:&quot;https:\/\/techcrunch.com\/2025\/09\/10\/vimeo-to-be-acquired-by-bending-spoons-in-1-38b-all-cash-deal&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250919001021\/https:\/\/techcrunch.com\/2025\/09\/10\/vimeo-to-be-acquired-by-bending-spoons-in-1-38b-all-cash-deal\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-11 01:35:07&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-11 01:35:07&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9761,&quot;href&quot;:&quot;https:\/\/techcrunch.com\/2025\/10\/29\/bending-spoons-to-acquire-aol&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251110063245\/https:\/\/techcrunch.com\/2025\/10\/29\/bending-spoons-to-acquire-aol\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-11 01:35:08&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-11 01:35:08&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9762,&quot;href&quot;:&quot;https:\/\/en.wikipedia.org\/wiki\/The_Matrix&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251111013631\/https:\/\/en.wikipedia.org\/wiki\/The_Matrix&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-11 01:49:56&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-11 01:49:56&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>The story of what <a href="https://bendingspoons.com/">Bending Spoons</a> has built is very impressive, and I&#8217;m a customer of theirs through <a href="https://evernote.com/">Evernote</a>, WordPress uses <a href="https://www.meetup.com/">Meetup</a> a ton. I think Automattic&#8217;s <a href="https://automattic.space/">Noho office</a> used to belong to Meetup. They&#8217;ve built an incredible engineering and product culture that can terraform technology stacks into something much more efficient. I think their acquisitions of <a href="https://techcrunch.com/2025/09/10/vimeo-to-be-acquired-by-bending-spoons-in-1-38b-all-cash-deal/">Vimeo</a> and <a href="https://techcrunch.com/2025/10/29/bending-spoons-to-acquire-aol/">AOL</a> are brilliant. This interview with Luca Ferrari on Invest Like The Best goes into their story and unique culture. I also always love a good <a href="https://en.wikipedia.org/wiki/The_Matrix">Matrix</a> reference. 🙂</p>
+
+
+
+<figure class="wp-block-embed alignwide is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="The Playbook on Buying and Running Companies Forever" width="604" height="340" src="../../../www.youtube.com/embed/uLSXhmRHpFU@feature=oembed.html" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		<span class="date"><a href="https://ma.tt/2025/11/bending-spoons/" title="Permalink to Bending Spoons" rel="bookmark"><time class="entry-date" datetime="2025-11-10T17:34:00-08:00">November 10, 2025</time></a></span><span class="categories-links"><a href="https://ma.tt/category/asides/" rel="category tag">Asides</a></span><span class="author vcard"><a class="url fn n" href="https://ma.tt/author/saxmatt/" title="View all posts by Matt" rel="author">Matt</a></span>
+				<span class="comments-link">
+			<a href="https://ma.tt/2025/11/bending-spoons/#comments">One comment so far</a>		</span><!-- .comments-link -->
+				
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150524" class="post-150524 post type-post status-publish format-aside hentry category-asides post_format-post-format-aside">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:9753,&quot;href&quot;:&quot;https:\/\/meshtastic.org&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251108154047\/https:\/\/meshtastic.org\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-10 01:38:09&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-10 01:38:09&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9754,&quot;href&quot;:&quot;https:\/\/flasher.meshtastic.org&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251104215950\/https:\/\/flasher.meshtastic.org\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-10 01:38:10&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-10 01:38:10&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9755,&quot;href&quot;:&quot;https:\/\/www.fcc.gov\/wireless\/bureau-divisions\/mobility-division\/amateur-radio-service&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251007215902\/https:\/\/www.fcc.gov\/wireless\/bureau-divisions\/mobility-division\/amateur-radio-service&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-10 01:38:13&quot;,&quot;http_code&quot;:503}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-10 01:38:13&quot;,&quot;http_code&quot;:503},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>I&#8217;ve been following this cool open source project called <a href="https://meshtastic.org/">Meshtastic</a>, which is &#8220;An open source, off-grid, decentralized, mesh network built to run on affordable, low-power devices.&#8221; I finally got some time to set it up tonight. It was super easy; <a href="https://flasher.meshtastic.org/">you just flash the Meshtastic firmware in your browser</a> to any of the compatible devices. I got a Heltec v3 device for $35 bucks on Amazon. (I&#8217;d link but it&#8217;s out of stock, and I think there&#8217;s a newer version.) Apparently, there are enough people running nodes that you can bounce a message from Portland to San Francisco! I love the idea of parallel to the internet networks, and I&#8217;ve been meaning to <a href="https://www.fcc.gov/wireless/bureau-divisions/mobility-division/amateur-radio-service">get a HAM license</a>, but in the meantime, this looks pretty fun.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/11/meshtastic/" title="Permalink to Meshtastic" rel="bookmark"><time class="entry-date" datetime="2025-11-09T17:37:44-08:00">November 9, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150519" class="post-150519 post type-post status-publish format-link hentry category-asides post_format-post-format-link">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:9752,&quot;href&quot;:&quot;https:\/\/stratechery.com\/2025\/the-benefits-of-bubbles&quot;,&quot;archived_href&quot;:&quot;&quot;,&quot;redirect_href&quot;:&quot;https:\/\/stratechery.com\/2025\/the-benefits-of-bubbles\/&quot;,&quot;checks&quot;:[],&quot;broken&quot;:false,&quot;last_checked&quot;:null,&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>Check out Ben Thompson of Stratechery (one of the most valuable subscriptions) on <a href="https://stratechery.com/2025/the-benefits-of-bubbles/">The Benefits of Bubbles</a>.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/11/ben-on-bubbles/" title="Permalink to Ben on Bubbles" rel="bookmark"><time class="entry-date" datetime="2025-11-08T20:45:06-08:00">November 8, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150513" class="post-150513 post type-post status-publish format-link hentry category-asides post_format-post-format-link">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:9751,&quot;href&quot;:&quot;https:\/\/www.switchboardmagazine.com\/monthly\/the-curious-case-of-kaycee-nicole&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251107233220\/https:\/\/www.switchboardmagazine.com\/monthly\/the-curious-case-of-kaycee-nicole&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-07 23:58:15&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-07 23:58:15&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>Mimi Lamarre at Switchboard Magazine has a delightful long read in <a href="https://www.switchboardmagazine.com/monthly/the-curious-case-of-kaycee-nicole">The Curious Case of Kaycee Nicole</a>, where, in the early days of online communities and blogging, a fake person claimed to have leukemia. The blogging community was relatively small back then, and I recall some of this happening contemporarily. </p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/11/kaycee-nicole/" title="Permalink to Kaycee Nicole" rel="bookmark"><time class="entry-date" datetime="2025-11-07T15:36:21-08:00">November 7, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150504" class="post-150504 post type-post status-publish format-video hentry category-technology post_format-post-format-video">
+	<header class="entry-header">
+				<h1 class="entry-title">
+			<a href="https://ma.tt/2025/11/john-borthwick/" rel="bookmark">Conversation with John Borthwick</a>
+		</h1>
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:827,&quot;href&quot;:&quot;https:\/\/distributed.blog&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251019121438\/https:\/\/distributed.blog\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 07:31:43&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 07:32:13&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 07:32:13&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9749,&quot;href&quot;:&quot;https:\/\/patrickcollison.com&quot;,&quot;archived_href&quot;:&quot;&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[],&quot;broken&quot;:false,&quot;last_checked&quot;:null,&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9750,&quot;href&quot;:&quot;https:\/\/dri.es&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251012013526\/https:\/\/dri.es\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-07 06:45:58&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-07 06:45:58&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>I&#8217;m often on the other side, but it&#8217;s such a delight to be an interviewer, I really enjoy it and put a lot of work into coming up with questions and shaping a conversation I think will draw out something novel from the person. Besides the <a href="https://distributed.blog/">Distributed Podcast</a>, I&#8217;ve had a chance at events to interview great minds such as Steve Jurvetson, <a href="https://patrickcollison.com/">Patrick Collison</a>, <a href="https://dri.es/">Dries Buytaert</a>, and now John Borthwick.</p>
+
+
+
+<p>We discussed his early investments in Airbnb and Tumblr, what made the NYC tech scene so special back then, and how it has evolved since. We also touched on the recent mayoral race, where Betaworks fits into the city&#8217;s tech ecosystem, and delved into one of my favorite topics: the comparison between open-source and proprietary models in AI.</p>
+
+
+
+<figure class="wp-block-embed alignwide is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="Matt Mullenweg and John Borthwick talk open source AI at dev/ai/nyc" width="604" height="340" src="../../../www.youtube.com/embed/x4tL3DCw8Fw@feature=oembed.html" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		<span class="date"><a href="https://ma.tt/2025/11/john-borthwick/" title="Permalink to Conversation with John Borthwick" rel="bookmark"><time class="entry-date" datetime="2025-11-06T22:45:51-08:00">November 6, 2025</time></a></span><span class="categories-links"><a href="https://ma.tt/category/technology/" rel="category tag">Technology</a></span><span class="author vcard"><a class="url fn n" href="https://ma.tt/author/saxmatt/" title="View all posts by Matt" rel="author">Matt</a></span>
+				<span class="comments-link">
+			<a href="https://ma.tt/2025/11/john-borthwick/#respond"><span class="leave-reply">Leave a comment</span></a>		</span><!-- .comments-link -->
+				
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150494" class="post-150494 post type-post status-publish format-aside hentry category-ai category-automattic post_format-post-format-aside">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:12,&quot;href&quot;:&quot;https:\/\/luma.com\/fy86k4w5&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101044910\/https:\/\/luma.com\/fy86k4w5&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 06:34:00&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 06:40:36&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 06:40:36&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9746,&quot;href&quot;:&quot;https:\/\/en.wikipedia.org\/wiki\/Her_(2013_film)&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250822100713\/https:\/\/en.wikipedia.org\/wiki\/Her_(2013_film)&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-06 01:48:35&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-06 01:48:35&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9747,&quot;href&quot;:&quot;https:\/\/en.wikipedia.org\/wiki\/Culture_series&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251106014852\/https:\/\/en.wikipedia.org\/wiki\/Culture_series&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-06 02:02:36&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-06 02:02:36&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9748,&quot;href&quot;:&quot;https:\/\/amzn.to\/47LYJ7D&quot;,&quot;archived_href&quot;:&quot;&quot;,&quot;redirect_href&quot;:&quot;https:\/\/www.amazon.com\/MANIAC-Benjamin-Labatut-ebook\/dp\/B0BRMK6615?&amp;linkCode=sl1&amp;tag=photomatt08-20&amp;linkId=acaed88928a710b48ee5495e8425a6a5&amp;language=en_US&amp;ref_=as_li_ss_tl&quot;,&quot;checks&quot;:[],&quot;broken&quot;:false,&quot;last_checked&quot;:null,&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>I just got off stage from the <a href="https://luma.com/fy86k4w5">great dev/ai/nyc event with John Borthwick</a>, we had a wide-ranging discussion that we&#8217;ll post online soon. We had hundreds of people in the room and hundreds on the waitlist&#8230; the energy in NYC is electric! </p>
+
+
+
+<figure class="wp-block-image size-large"><img data-recalc-dims="1" loading="lazy" decoding="async" width="604" height="805" data-attachment-id="150495" data-permalink="https://ma.tt/2025/11/post-talk-recs/borthwick-mullenweg/" data-orig-file="https://i0.wp.com/ma.tt/files/2025/11/borthwick-mullenweg.jpeg?fit=960%2C1280&amp;quality=89&amp;ssl=1" data-orig-size="960,1280" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="borthwick-mullenweg" data-image-description="" data-image-caption="" data-medium-file="https://i0.wp.com/ma.tt/files/2025/11/borthwick-mullenweg.jpeg?fit=555%2C740&amp;quality=89&amp;ssl=1" data-large-file="https://i0.wp.com/ma.tt/files/2025/11/borthwick-mullenweg.jpeg?fit=604%2C805&amp;quality=89&amp;ssl=1" src="../../../i0.wp.com/ma.tt/files/2025/11/borthwick-mullenweg-768x1024.jpeg@resize=604,805&amp;quality=89&amp;ssl=1" alt="" class="wp-image-150495" srcset="../i0.wp.com/ma.tt/files/2025/11/borthwick-mullenweg.jpeg@resize=768,1024&amp;quality=89&amp;ssl=1mp;ssl=../i0.wp.com/ma.tt/files/2025/11/borthwick-mullenweg.jpeg@resize=555,740&amp;quality=89&amp;ssl=1ity=89&../i0.wp.com/ma.tt/files/2025/11/borthwick-mullenweg.jpeg@resize=158,210&amp;quality=89&amp;ssl=1amp;qua../i0.wp.com/ma.tt/files/2025/11/borthwick-mullenweg.jpeg@resize=345,460&amp;quality=89&amp;ssl=15%2C460../i0.wp.com/ma.tt/files/2025/11/borthwick-mullenweg.jpeg@w=960&amp;quality=89&amp;ssl=1nweg.jpeg?w=960&amp;quality=89&amp;ssl=1 960w" sizes="auto, (max-width: 604px) 100vw, 604px" /></figure>
+
+
+
+<p>As a few recommendations from the event, I recommended revisiting the <a href="https://en.wikipedia.org/wiki/Her_(2013_film)">movie Her</a> and <a href="https://en.wikipedia.org/wiki/Culture_series">Iain M. Banks Culture series</a>, John recommended <a href="https://amzn.to/47LYJ7D">The MANIAC about John von Neumann</a>, which I&#8217;ll add to my reading queue now.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/11/post-talk-recs/" title="Permalink to Post-talk Recs" rel="bookmark"><time class="entry-date" datetime="2025-11-05T17:55:39-08:00">November 5, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150470" class="post-150470 post type-post status-publish format-video hentry category-asides post_format-post-format-video">
+	<header class="entry-header">
+				<h1 class="entry-title">
+			<a href="https://ma.tt/2025/11/andrej-on-dwarkesh/" rel="bookmark">Andrej on Dwarkesh</a>
+		</h1>
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:9681,&quot;href&quot;:&quot;https:\/\/x.com\/jtzou&quot;,&quot;archived_href&quot;:&quot;&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[],&quot;broken&quot;:false,&quot;last_checked&quot;:null,&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9682,&quot;href&quot;:&quot;https:\/\/karpathy.ai&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251008075539\/https:\/\/karpathy.ai\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-05 04:51:21&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-12 04:52:37&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-12 04:52:37&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9683,&quot;href&quot;:&quot;https:\/\/ma.tt\/2025\/10\/nanochat-mcp&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251105045945\/https:\/\/ma.tt\/2025\/10\/nanochat-mcp\/&quot;,&quot;redirect_href&quot;:&quot;https:\/\/ma.tt\/2025\/10\/nanochat-mcp\/&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-05 05:07:40&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-12 05:11:01&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-12 05:11:01&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9684,&quot;href&quot;:&quot;https:\/\/www.dwarkesh.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251002125742\/https:\/\/www.dwarkesh.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-05 04:51:22&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-12 04:52:37&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-12 04:52:37&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>Most interviews I watch at 1.5-2x speed, but among my friends, we joke that there are a few people for whom we really enjoy their thoughts at 1x (<a href="https://x.com/jtzou">shoutout to JT</a>). I&#8217;m an unabashed fanboy of <a href="https://karpathy.ai/">Andrej Karpathy</a> (<a href="https://ma.tt/2025/10/nanochat-mcp/">blogged nanochat Oct 13</a>), and his interview with <a href="https://www.dwarkesh.com/">Dwarkesh</a> is excellent. It&#8217;s very dense; I marinated it at 1x.</p>
+
+
+
+<figure class="wp-block-embed alignwide is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="Andrej Karpathy — “We’re summoning ghosts, not building animals”" width="604" height="340" src="../../../www.youtube.com/embed/lXUZvyajciY@feature=oembed.html" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		<span class="date"><a href="https://ma.tt/2025/11/andrej-on-dwarkesh/" title="Permalink to Andrej on Dwarkesh" rel="bookmark"><time class="entry-date" datetime="2025-11-04T20:51:17-08:00">November 4, 2025</time></a></span><span class="categories-links"><a href="https://ma.tt/category/asides/" rel="category tag">Asides</a></span><span class="author vcard"><a class="url fn n" href="https://ma.tt/author/saxmatt/" title="View all posts by Matt" rel="author">Matt</a></span>
+				<span class="comments-link">
+			<a href="https://ma.tt/2025/11/andrej-on-dwarkesh/#respond"><span class="leave-reply">Leave a comment</span></a>		</span><!-- .comments-link -->
+				
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150457" class="post-150457 post type-post status-publish format-link hentry category-asides post_format-post-format-link">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:7420,&quot;href&quot;:&quot;https:\/\/blogrecode.com\/jetpack-tools-every-blogger-should-be-using&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251103191319\/https:\/\/blogrecode.com\/jetpack-tools-every-blogger-should-be-using\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-03 19:32:46&quot;,&quot;http_code&quot;:503},{&quot;date&quot;:&quot;2025-11-10 20:02:39&quot;,&quot;http_code&quot;:503}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-10 20:02:39&quot;,&quot;http_code&quot;:503},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>Mia Elvasia has a great article about <a href="https://blogrecode.com/jetpack-tools-every-blogger-should-be-using/">how they realized they were spending $635/yr across various plugins to get things that Jetpack offered bundled and often free</a>. Save money! </p>
+
+
+
+<p>Jetpack is frequently overlooked as one of the most underappreciated plugins in the WordPress universe. This is partially our fault, as the article notes, because the UI for some of these settings is quite poor. We&#8217;re working on it! If you can tolerate a bit of UI clunkiness, there&#8217;s significant value to be gained from Jetpack right now. For everyone else, we&#8217;ll make it much more intuitive soon.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/11/jetpack-saves/" title="Permalink to Jetpack Saves" rel="bookmark"><time class="entry-date" datetime="2025-11-03T11:10:55-08:00">November 3, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150450" class="post-150450 post type-post status-publish format-quote hentry category-quote post_format-post-format-quote">
+	<div class="entry-content">
+		
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"><div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:5706,&quot;href&quot;:&quot;https:\/\/www.sloww.co\/enlightenment-chop-wood-carry-water&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250710164542\/https:\/\/www.sloww.co\/enlightenment-chop-wood-carry-water\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-02 20:57:48&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-09 20:58:59&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-09 20:58:59&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>Before enlightenment; chop wood, carry water. After enlightenment; chop wood, carry water.</p>
+</blockquote>
+
+
+
+<p><a href="https://www.sloww.co/enlightenment-chop-wood-carry-water/">Kyle Kowalski has an amazing blog post exploring many aspects of this Zen Kōan</a>, including some diversions into David Foster Wallace&#8217;s legendary commencement speech, This is Water.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		<span class="date"><a href="https://ma.tt/2025/11/chop-carry/" title="Permalink to Chop Wood, Carry Water" rel="bookmark"><time class="entry-date" datetime="2025-11-02T12:57:31-08:00">November 2, 2025</time></a></span><span class="categories-links"><a href="https://ma.tt/category/quote/" rel="category tag">Quote</a></span><span class="author vcard"><a class="url fn n" href="https://ma.tt/author/saxmatt/" title="View all posts by Matt" rel="author">Matt</a></span>
+				<span class="comments-link">
+			<a href="https://ma.tt/2025/11/chop-carry/#comments">One comment so far</a>		</span><!-- .comments-link -->
+					</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150444" class="post-150444 post type-post status-publish format-standard hentry category-asides">
+	<header class="entry-header">
+		
+				<h1 class="entry-title">
+			<a href="https://ma.tt/2025/11/creed-update/" rel="bookmark">Creed Update</a>
+		</h1>
+		
+		<div class="entry-meta">
+			<span class="date"><a href="https://ma.tt/2025/11/creed-update/" title="Permalink to Creed Update" rel="bookmark"><time class="entry-date" datetime="2025-11-01T19:24:00-07:00">November 1, 2025</time></a></span><span class="categories-links"><a href="https://ma.tt/category/asides/" rel="category tag">Asides</a></span><span class="author vcard"><a class="url fn n" href="https://ma.tt/author/saxmatt/" title="View all posts by Matt" rel="author">Matt</a></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:392,&quot;href&quot;:&quot;https:\/\/automattic.com\/creed&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250926203918\/https:\/\/automattic.com\/creed\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 05:49:08&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:54:36&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:54:36&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:409,&quot;href&quot;:&quot;https:\/\/wordpress.com\/p2&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101060530\/https:\/\/wordpress.com\/p2\/&quot;,&quot;redirect_href&quot;:&quot;https:\/\/wordpress.com\/p2\/&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 10:18:01&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 10:20:01&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 10:20:01&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:436,&quot;href&quot;:&quot;https:\/\/ma.tt\/2011\/09\/automattic-creed&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250901015850\/https:\/\/ma.tt\/2011\/09\/automattic-creed\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 05:58:46&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 06:25:16&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 06:25:16&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:661,&quot;href&quot;:&quot;https:\/\/automattic.com\/work-with-us&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251031185420\/https:\/\/automattic.com\/work-with-us\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 06:49:21&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 06:59:34&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 06:59:34&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>This week, the <a href="https://automattic.com/creed/">Automattic Creed</a> received its first-ever update, which I&#8217;ll describe as a minor point upgrade. This is the sentence before and after.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p id="p-2">I am in a marathon, not a sprint, and no matter how far away the goal is, the only way to get there is by putting one foot in front of another every day.</p>
+</blockquote>
+
+
+
+<p>Is now.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p id="p-4">I am in a marathon, not a sprint; no matter how far away the goal is, the only way to get there is to put one foot in front of the other every day.</p>
+</blockquote>
+
+
+
+<p>As I wrote earlier in our internal <a href="https://wordpress.com/p2/">P2s</a>, &#8220;Always great to bury a gerund.&#8221; And now we have a semicolon! It&#8217;s all quite exciting. For the backstory, please read <a href="https://ma.tt/2011/09/automattic-creed/">Why Your Company Should Have a Creed</a>. I said in 2011 &#8220;I’m sure that it will evolve in the future&#8221; but I didn&#8217;t expect it to be 14 years before the first revision. </p>
+
+
+
+<p>Internally at Automattic we&#8217;ve debated updating the Creed in dozens of conversations and blog posts, usually in the context of adding a sentence, which I still hope will happen in a future version. But this is a minor update. We&#8217;ll see when Creed 2.0 happens.</p>
+
+
+
+<p>The private Automattic intranet is one of the most delightful things about working there, <a href="https://automattic.com/work-with-us/">which you may consider as well</a>.</p>
+	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+					<div class="comments-link">
+				<a href="https://ma.tt/2025/11/creed-update/#comments">View all 8 comments</a>			</div><!-- .comments-link -->
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150430" class="post-150430 post type-post status-publish format-standard hentry category-asides">
+	<header class="entry-header">
+		
+				<h1 class="entry-title">
+			<a href="https://ma.tt/2025/10/wayback/" rel="bookmark">Wayback Machine Joint</a>
+		</h1>
+		
+		<div class="entry-meta">
+			<span class="date"><a href="https://ma.tt/2025/10/wayback/" title="Permalink to Wayback Machine Joint" rel="bookmark"><time class="entry-date" datetime="2025-10-31T21:33:45-07:00">October 31, 2025</time></a></span><span class="categories-links"><a href="https://ma.tt/category/asides/" rel="category tag">Asides</a></span><span class="author vcard"><a class="url fn n" href="https://ma.tt/author/saxmatt/" title="View all posts by Matt" rel="author">Matt</a></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:1,&quot;href&quot;:&quot;https:\/\/automattic.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251024021121\/https:\/\/automattic.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:25&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:24&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:24&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:2,&quot;href&quot;:&quot;https:\/\/archive.org&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251004045832\/https:\/\/archive.org\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:26&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:24&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:24&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:3,&quot;href&quot;:&quot;https:\/\/wordpress.org\/plugins\/internet-archive-wayback-machine-link-fixer&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101044936\/https:\/\/wordpress.org\/plugins\/internet-archive-wayback-machine-link-fixer\/&quot;,&quot;redirect_href&quot;:&quot;https:\/\/wordpress.org\/plugins\/internet-archive-wayback-machine-link-fixer\/&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 05:35:44&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:54:37&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:54:37&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p><a href="https://automattic.com/">Automattic</a> has been working with the <a href="https://archive.org/">Internet Archive</a> to develop a plugin to combat link rot, <a href="https://wordpress.org/plugins/internet-archive-wayback-machine-link-fixer/">and it&#8217;s a plugin I&#8217;d encourage you to install</a>. As the plugin says:</p>
+
+
+
+<p>When a linked page disappears, the plugin helps preserve your user experience by redirecting visitors to a reliable archived version. It also works proactively by archiving your own posts every time they’re updated, creating a consistent backup of your content’s history.</p>
+
+
+
+<p>I&#8217;ve been doing this manually on my old archives, fixing broken links and tending the garden. But we can make it all automatic. 🙂</p>
+	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+					<div class="comments-link">
+				<a href="https://ma.tt/2025/10/wayback/#comments">View all 12 comments</a>			</div><!-- .comments-link -->
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150420" class="post-150420 post type-post status-publish format-link hentry category-automattic post_format-post-format-link">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:4,&quot;href&quot;:&quot;https:\/\/blog.beeper.com\/2025\/10\/28\/build-a-beeper-bridge&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101044905\/https:\/\/blog.beeper.com\/2025\/10\/28\/build-a-beeper-bridge\/&quot;,&quot;redirect_href&quot;:&quot;https:\/\/blog.beeper.com\/2025\/10\/28\/build-a-beeper-bridge\/&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 05:14:38&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:26:35&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:26:35&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>For smart, enterprising hackers <a href="https://blog.beeper.com/2025/10/28/build-a-beeper-bridge/">Beeper is offering bounties of up to $50,000 for people who create open source bridges</a>.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/10/50k-bounty/" title="Permalink to 50k Bounty" rel="bookmark"><time class="entry-date" datetime="2025-10-30T08:51:40-07:00">October 30, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150412" class="post-150412 post type-post status-publish format-aside hentry category-poetry post_format-post-format-aside">
+	<div class="entry-content">
+		
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"><div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:5,&quot;href&quot;:&quot;https:\/\/x.com\/photomatt\/status\/1983560736464134282&quot;,&quot;archived_href&quot;:&quot;&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[],&quot;broken&quot;:false,&quot;last_checked&quot;:null,&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:1,&quot;href&quot;:&quot;https:\/\/automattic.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251024021121\/https:\/\/automattic.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:25&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:24&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:24&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>Live oaks reach branches<br>Sunlight graces every leaf<br>With gentle wisdom</p>
+</blockquote>
+
+
+
+<figure class="wp-block-image size-large"><img data-recalc-dims="1" loading="lazy" decoding="async" width="604" height="453" data-attachment-id="150413" data-permalink="https://ma.tt/2025/10/haiku/img_0461/" data-orig-file="https://i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg?fit=2560%2C1920&amp;quality=89&amp;ssl=1" data-orig-size="2560,1920" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;1.78&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;iPhone 17 Pro&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1761735955&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;6.7649998656528&quot;,&quot;iso&quot;:&quot;80&quot;,&quot;shutter_speed&quot;:&quot;0.0081967213114754&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="IMG_0461" data-image-description="" data-image-caption="" data-medium-file="https://i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg?fit=840%2C630&amp;quality=89&amp;ssl=1" data-large-file="https://i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg?fit=604%2C453&amp;quality=89&amp;ssl=1" src="../../../i0.wp.com/ma.tt/files/2025/10/IMG_0461-1024x768.jpeg@resize=604,453&amp;quality=89&amp;ssl=1" alt="" class="wp-image-150413" srcset="../i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg@resize=1024,768&amp;quality=89&amp;ssl=1mp;ssl=1../i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg@resize=840,630&amp;quality=89&amp;ssl=1ity=89&../i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg@resize=195,146&amp;quality=89&amp;ssl=1amp;qua../i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg@resize=768,576&amp;quality=89&amp;ssl=18%2C576../i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg@resize=1536,1152&amp;quality=89&amp;ssl=1ize=1536../i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg@resize=2048,1536&amp;quality=89&amp;ssl=1jpeg?res../i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg@resize=613,460&amp;quality=89&amp;ssl=161-scal../i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg@w=1208&amp;quality=89.tt/file../i0.wp.com/ma.tt/files/2025/10/IMG_0461-scaled.jpeg@w=1812&amp;quality=89m/ma.tt/files/2025/10/IMG_0461-scaled.jpeg?w=1812&amp;quality=89 1812w" sizes="auto, (max-width: 604px) 100vw, 604px" /></figure>
+
+
+
+<p>Inspired <a href="https://x.com/photomatt/status/1983560736464134282">by the not-haiku on my ITO EN tea</a>. (BTW the <a href="https://automattic.com/">Automattic home page is all haiku since 2009</a>.)</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/10/haiku/" title="Permalink to Haiku" rel="bookmark"><time class="entry-date" datetime="2025-10-29T09:09:17-07:00">October 29, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150403" class="post-150403 post type-post status-publish format-standard hentry category-review">
+	<header class="entry-header">
+		
+				<h1 class="entry-title">
+			<a href="https://ma.tt/2025/10/grokipedia/" rel="bookmark">Grokipedia</a>
+		</h1>
+		
+		<div class="entry-meta">
+			<span class="date"><a href="https://ma.tt/2025/10/grokipedia/" title="Permalink to Grokipedia" rel="bookmark"><time class="entry-date" datetime="2025-10-28T16:49:26-07:00">October 28, 2025</time></a></span><span class="categories-links"><a href="https://ma.tt/category/review/" rel="category tag">Review</a></span><span class="author vcard"><a class="url fn n" href="https://ma.tt/author/saxmatt/" title="View all posts by Matt" rel="author">Matt</a></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:6,&quot;href&quot;:&quot;https:\/\/en.wikipedia.org\/wiki\/Matt_Mullenweg&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251001100837\/https:\/\/en.wikipedia.org\/wiki\/Matt_Mullenweg&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:37&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:00:09&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:00:09&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:7,&quot;href&quot;:&quot;https:\/\/grokipedia.com\/page\/Matt_Mullenweg&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101045019\/https:\/\/grokipedia.com\/page\/Matt_Mullenweg&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 05:22:21&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:54:36&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:54:36&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:8,&quot;href&quot;:&quot;https:\/\/ma.tt\/2010\/11\/one-point-oh&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250901015850\/https:\/\/ma.tt\/2010\/11\/one-point-oh\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:39&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:27&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:27&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:9,&quot;href&quot;:&quot;https:\/\/www.404media.co\/grokipedia-is-the-antithesis-of-everything-that-makes-wikipedia-good-useful-and-human&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251029013655\/https:\/\/www.404media.co\/grokipedia-is-the-antithesis-of-everything-that-makes-wikipedia-good-useful-and-human\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:42&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:10,&quot;href&quot;:&quot;https:\/\/wikimediafoundation.org&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251031094112\/https:\/\/wikimediafoundation.org\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:43&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:00:09&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:00:09&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>It&#8217;s very interesting to compare <a href="https://en.wikipedia.org/wiki/Matt_Mullenweg">my Wikipedia article</a> and <a href="https://grokipedia.com/page/Matt_Mullenweg">my Grokipedia article</a>. The Grokipedia version is much, much longer, and does a better job of listing my accomplishments versus some random recent controversy. (Will someone reading about me a hundred years from now care that WordPress briefly had a sustainability team as one of its dozens of teams?) But at least everything on Wikipedia is true! On Grokipedia:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>WooCommerce, an open-source e-commerce platform integrated with WordPress, enables online stores and has facilitated over $1 trillion in annual commerce as of 2023.</p>
+</blockquote>
+
+
+
+<p>While I actually believe someday, probably around 2037, Woo will facilitate a trillion in commerce annually, that number is off by a couple orders of magnitude right now. 🙂</p>
+
+
+
+<p>As with all software, we shouldn&#8217;t come to conclusions <a href="https://ma.tt/2010/11/one-point-oh/">based on the 1.0</a> but rather look to its vector and speed of iteration, so I&#8217;ll reserve judgment on Grokipedia for now.</p>
+
+
+
+<p>I <em>love</em> Wikipedia. I&#8217;ve been a contributor since it started, and I think it embodies Open Source ideals in a really beautiful way. For a little love letter to Wikipedia check out this article by Jason Koebler, <a href="https://www.404media.co/grokipedia-is-the-antithesis-of-everything-that-makes-wikipedia-good-useful-and-human/">Grokipedia Is the Antithesis of Everything That Makes Wikipedia Good, Useful, and Human</a>. My take: If you think there&#8217;s something wrong with the Wikipedia, the way to fix it is to get involved and contribute. They have a robust community.</p>
+
+
+
+<p>As a bonus, I learned today that the <a href="https://wikimediafoundation.org/">Wikimedia Foundation runs on WordPress</a>! What an honor.</p>
+	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+					<div class="comments-link">
+				<a href="https://ma.tt/2025/10/grokipedia/#comments">View all 6 comments</a>			</div><!-- .comments-link -->
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150397" class="post-150397 post type-post status-publish format-aside hentry category-asides post_format-post-format-aside">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:11,&quot;href&quot;:&quot;https:\/\/www.borthwick.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250925184709\/https:\/\/www.borthwick.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:44&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:12,&quot;href&quot;:&quot;https:\/\/luma.com\/fy86k4w5&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101044910\/https:\/\/luma.com\/fy86k4w5&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 06:34:00&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 06:40:36&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 06:40:36&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>On November 5<sup>th</sup> at our Noho office the legendary <a href="https://www.borthwick.com/">John Borthwick</a> (investor in Twitter, Tumblr, Buzzfeed, Digg, Venmo&#8230;) and I will have a conversation on the future of the Open Web and human-centered AI. <a href="https://luma.com/fy86k4w5">Please join us</a>!</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/10/ai-nyc-event/" title="Permalink to AI NYC Event" rel="bookmark"><time class="entry-date" datetime="2025-10-27T20:00:16-07:00">October 27, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150385" class="post-150385 post type-post status-publish format-standard hentry category-akismet category-software">
+	<header class="entry-header">
+		
+				<h1 class="entry-title">
+			<a href="https://ma.tt/2025/10/time-zones/" rel="bookmark">Time Zones</a>
+		</h1>
+		
+		<div class="entry-meta">
+			<span class="date"><a href="https://ma.tt/2025/10/time-zones/" title="Permalink to Time Zones" rel="bookmark"><time class="entry-date" datetime="2025-10-26T20:50:31-07:00">October 26, 2025</time></a></span><span class="categories-links"><a href="https://ma.tt/category/akismet/" rel="category tag">Akismet</a>, <a href="https://ma.tt/category/software/" rel="category tag">Software</a></span><span class="author vcard"><a class="url fn n" href="https://ma.tt/author/saxmatt/" title="View all posts by Matt" rel="author">Matt</a></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:13,&quot;href&quot;:&quot;https:\/\/zachholman.com\/posts&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250929193741\/https:\/\/zachholman.com\/posts&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:46&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:14,&quot;href&quot;:&quot;https:\/\/zachholman.com\/talk\/utc-is-enough-for-everyone-right&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251009013700\/https:\/\/zachholman.com\/talk\/utc-is-enough-for-everyone-right&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:47&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:15,&quot;href&quot;:&quot;https:\/\/www.epochconverter.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251011185325\/https:\/\/www.epochconverter.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:49&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:00:10&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:00:10&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:16,&quot;href&quot;:&quot;https:\/\/www.php.net\/manual\/en\/function.date.php&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251011123101\/https:\/\/www.php.net\/manual\/en\/function.date.php&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:22&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:17,&quot;href&quot;:&quot;https:\/\/akismet.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251023175918\/https:\/\/akismet.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:23&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:18,&quot;href&quot;:&quot;https:\/\/en.wikipedia.org\/wiki\/Swatch_Internet_Time&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20250920161133\/https:\/\/en.wikipedia.org\/wiki\/Swatch_Internet_Time&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:24&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>If you like rabbit holes, a wonderful way to spend your Sunday is in the <a href="https://zachholman.com/posts">writing of Zach Holman</a>, an early engineer at Github and Gitlab.</p>
+
+
+
+<p>All are good, but a particular favorite of mine is <a href="https://zachholman.com/talk/utc-is-enough-for-everyone-right">UTC is enough for everyone …right?</a> You don&#8217;t need to code to appreciate that time is a construct, that has evolved over time. &#8220;At noon in DC, it was 12:08 in Philly.&#8221; Time zones introduce particular complexity because, besides obvious things like Daylight Saving Time starting and stopping at different times at different places in history and geography. If you do write code, you&#8217;ve probably come across things like <a href="https://www.epochconverter.com/">Epoch Time</a>.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>The <strong>Unix epoch</strong> (or <strong>Unix time</strong> or <strong>POSIX time</strong> or <strong>Unix timestamp</strong>) is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT), not counting leap seconds (in ISO 8601: 1970-01-01T00:00:00Z). Literally speaking, the epoch is Unix time 0 (midnight 1/1/1970), but &#8216;epoch&#8217; is often used as a synonym for Unix time. Some systems store epoch dates as a signed 32-bit integer, which might cause problems on January 19, 2038 (known as the Year 2038 problem or Y2038).</p>
+</blockquote>
+
+
+
+<p>I&#8217;ve spent far too many hours on the <a href="https://www.php.net/manual/en/function.date.php">PHP date manual page</a> and the related comments (now gone! I used to have a few, they probably retired because they were on earlier versions of the language).</p>
+
+
+
+<p>As a bit of lore for Zach he might appreciate, I&#8217;ll share that when writing some of the first logging and data processing systems for <a href="https://akismet.com/">Akismet</a>, I divided the files using <a href="https://en.wikipedia.org/wiki/Swatch_Internet_Time">Swatch Internet Time</a> to give me a consistent balance of dividing a day, but still doing things as real-time as possible. The anti-spam learning system would update about every 86 seconds.</p>
+	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+					<div class="comments-link">
+				<a href="https://ma.tt/2025/10/time-zones/#comments">One comment so far</a>			</div><!-- .comments-link -->
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150377" class="post-150377 post type-post status-publish format-aside hentry category-asides post_format-post-format-aside">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:19,&quot;href&quot;:&quot;https:\/\/www.theatlantic.com\/magazine\/toc\/2025\/11&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251009210358\/https:\/\/www.theatlantic.com\/magazine\/toc\/2025\/11\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:25&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:20,&quot;href&quot;:&quot;https:\/\/www.theatlantic.com\/magazine\/archive\/2025\/11\/king-george-iii-british-monarchy-american-revolution\/684309&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101043509\/https:\/\/www.theatlantic.com\/magazine\/archive\/2025\/11\/king-george-iii-british-monarchy-american-revolution\/684309\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:26&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:21,&quot;href&quot;:&quot;https:\/\/hamiltonmusical.com\/new-york&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101044911\/https:\/\/hamiltonmusical.com\/new-york\/&quot;,&quot;redirect_href&quot;:&quot;https:\/\/hamiltonmusical.com\/new-york\/&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 06:34:15&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 07:15:19&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 07:15:19&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:22,&quot;href&quot;:&quot;https:\/\/www.theatlantic.com\/magazine\/archive\/2025\/11\/benjamin-franklin-william-political-conflict\/684315&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251010164126\/https:\/\/www.theatlantic.com\/magazine\/archive\/2025\/11\/benjamin-franklin-william-political-conflict\/684315\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:32&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:23,&quot;href&quot;:&quot;https:\/\/www.gutenberg.org\/files\/20203\/20203-h\/20203-h.htm&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251010171851\/https:\/\/www.gutenberg.org\/files\/20203\/20203-h\/20203-h.htm&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:36&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 04:50:28&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:28&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:24,&quot;href&quot;:&quot;https:\/\/www.pencomputing.com\/palm\/Reviews\/visor1.html&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20240913143102\/http:\/\/www.pencomputing.com\/palm\/Reviews\/visor1.html&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:37&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:25,&quot;href&quot;:&quot;https:\/\/www.theatlantic.com\/magazine\/archive\/2025\/11\/the-american-revolution-ken-burns-documentary\/684314&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251029060425\/https:\/\/www.theatlantic.com\/magazine\/archive\/2025\/11\/the-american-revolution-ken-burns-documentary\/684314\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:38&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:26,&quot;href&quot;:&quot;https:\/\/www.apple.com\/apple-news&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101001521\/https:\/\/www.apple.com\/apple-news\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:39&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p><a href="https://www.theatlantic.com/magazine/toc/2025/11/">The Atlantic November issue is lovely</a>, focused on the American Revolution. I particularly enjoyed:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.theatlantic.com/magazine/archive/2025/11/king-george-iii-british-monarchy-american-revolution/684309/">The Myth of Mad King George</a>, which gave a different more nuanced view of King George I didn&#8217;t have before or from <a href="https://hamiltonmusical.com/new-york/">the Hamilton musical</a>.</li>
+
+
+
+<li><a href="https://www.theatlantic.com/magazine/archive/2025/11/benjamin-franklin-william-political-conflict/684315/">Why Did Benjamin Franklin’s Son Remain Loyal to the British?</a> I was obsessed with with Ben Franklin&#8217;s Autobiography as a kid, he was an incredible self-made man who came from impossibly hard beginnings and had a profound impact on history. I think I originally read <a href="https://www.gutenberg.org/files/20203/20203-h/20203-h.htm">through Project Gutenberg </a>on my first <a href="https://www.pencomputing.com/palm/Reviews/visor1.html">Handspring Visor</a>. The article shows an entire huge part of his life that is missing from his Autobiography.</li>
+
+
+
+<li><a href="https://www.theatlantic.com/magazine/archive/2025/11/the-american-revolution-ken-burns-documentary/684314/">What We Learned Filming The American Revolution is from Ken Burns</a>, Sarah Botstein, and David Schmidt, who&#8217;ve come together with the challenging task of making a documentary from a time there were no photographs or videos. Ken Burns is one of my favorite documentarians, and the behind the scenes is very interesting.</li>
+</ul>
+
+
+
+<p>So pick up a copy as you pass through an airport or by a newstand. I consider it a very worthwhile subscription. It might be better to read in print or through <a href="https://www.apple.com/apple-news/">Apple News+</a> as their website a bit broken for me right now.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/10/november-atlantic/" title="Permalink to November Atlantic" rel="bookmark"><time class="entry-date" datetime="2025-10-25T23:55:00-07:00">October 25, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150355" class="post-150355 post type-post status-publish format-standard hentry category-automattic category-wordpress">
+	<header class="entry-header">
+		
+				<h1 class="entry-title">
+			<a href="https://ma.tt/2025/10/counter-claims/" rel="bookmark">Automattic 20 &amp; Counter-claims</a>
+		</h1>
+		
+		<div class="entry-meta">
+			<span class="date"><a href="https://ma.tt/2025/10/counter-claims/" title="Permalink to Automattic 20 &amp; Counter-claims" rel="bookmark"><time class="entry-date" datetime="2025-10-24T19:14:10-07:00">October 24, 2025</time></a></span><span class="categories-links"><a href="https://ma.tt/category/automattic/" rel="category tag">Automattic</a>, <a href="https://ma.tt/category/wordpress/" rel="category tag">WordPress</a></span><span class="author vcard"><a class="url fn n" href="https://ma.tt/author/saxmatt/" title="View all posts by Matt" rel="author">Matt</a></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:1,&quot;href&quot;:&quot;https:\/\/automattic.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251024021121\/https:\/\/automattic.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:44:25&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:24&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:24&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:27,&quot;href&quot;:&quot;https:\/\/www.cnet.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251031141704\/https:\/\/www.cnet.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:40&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:28,&quot;href&quot;:&quot;https:\/\/odd.blog&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251007143103\/https:\/\/odd.blog\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:42&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:00:13&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:00:13&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:17,&quot;href&quot;:&quot;https:\/\/akismet.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251023175918\/https:\/\/akismet.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:23&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 04:50:25&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:29,&quot;href&quot;:&quot;https:\/\/wordpress.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101003754\/https:\/\/wordpress.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:42&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:00:11&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:00:11&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:30,&quot;href&quot;:&quot;https:\/\/wpengine.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251031061253\/https:\/\/wpengine.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:44&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:00:12&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:00:12&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:31,&quot;href&quot;:&quot;https:\/\/www.silverlake.com&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251005173853\/https:\/\/www.silverlake.com\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:45&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 05:00:12&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:00:12&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:32,&quot;href&quot;:&quot;https:\/\/techcrunch.com\/2025\/10\/24\/automattic-files-counterclaims-against-wp-engine-in-wordpress-lawsuit-alleging-trademark-misuse&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251024151242\/https:\/\/techcrunch.com\/2025\/10\/24\/automattic-files-counterclaims-against-wp-engine-in-wordpress-lawsuit-alleging-trademark-misuse\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:45:46&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:00:13&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:00:13&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:33,&quot;href&quot;:&quot;https:\/\/ma.tt\/2025\/09\/legal-win&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251010141935\/https:\/\/ma.tt\/2025\/09\/legal-win\/&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 04:46:09&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 05:00:16&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:00:16&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:34,&quot;href&quot;:&quot;https:\/\/automattic.com\/wp-content\/uploads\/2025\/10\/automattic-counterclaims.pdf&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101044915\/https:\/\/automattic.com\/wp-content\/uploads\/2025\/10\/automattic-counterclaims.pdf&quot;,&quot;redirect_href&quot;:&quot;&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 05:47:43&quot;,&quot;http_code&quot;:206},{&quot;date&quot;:&quot;2025-11-08 05:54:40&quot;,&quot;http_code&quot;:206}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 05:54:40&quot;,&quot;http_code&quot;:206},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p>It&#8217;s a bit of <a href="https://automattic.com/">Automattic</a> lore, but although I founded the company in June 2005, <a href="https://www.cnet.com/">CNET</a> asked me to stay on for a few more months to finish out some projects, which I did. Our HR systems have me as the second employee, after <a href="https://odd.blog/">Donncha O Caoimh</a> (still at the company!) So today is my 20<sup>th</sup> anniversary at Automattic! It&#8217;s 20 years since I started hacking on <a href="https://akismet.com/">Akismet</a>, our first product, and on <a href="https://wordpress.com/">WordPress.com</a>.</p>
+
+
+
+<figure class="wp-block-image alignwide size-large"><img data-recalc-dims="1" loading="lazy" decoding="async" width="604" height="453" data-attachment-id="150359" data-permalink="https://ma.tt/2025/10/counter-claims/img_0435/" data-orig-file="https://i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg?fit=2560%2C1920&amp;quality=89&amp;ssl=1" data-orig-size="2560,1920" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;1.78&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;iPhone 17 Pro&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1761312449&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;6.7649998656528&quot;,&quot;iso&quot;:&quot;640&quot;,&quot;shutter_speed&quot;:&quot;0.016666666666667&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="IMG_0435" data-image-description="" data-image-caption="" data-medium-file="https://i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg?fit=840%2C630&amp;quality=89&amp;ssl=1" data-large-file="https://i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg?fit=604%2C453&amp;quality=89&amp;ssl=1" src="../../../i0.wp.com/ma.tt/files/2025/10/IMG_0435-1024x768.jpeg@resize=604,453&amp;quality=89&amp;ssl=1" alt="" class="wp-image-150359" srcset="../i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg@resize=1024,768&amp;quality=89&amp;ssl=1mp;ssl=1../i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg@resize=840,630&amp;quality=89&amp;ssl=1ity=89&../i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg@resize=195,146&amp;quality=89&amp;ssl=1amp;qua../i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg@resize=768,576&amp;quality=89&amp;ssl=18%2C576../i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg@resize=1536,1152&amp;quality=89&amp;ssl=1ize=1536../i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg@resize=2048,1536&amp;quality=89&amp;ssl=1jpeg?res../i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg@resize=613,460&amp;quality=89&amp;ssl=135-scal../i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg@w=1208&amp;quality=89.tt/file../i0.wp.com/ma.tt/files/2025/10/IMG_0435-scaled.jpeg@w=1812&amp;quality=89m/ma.tt/files/2025/10/IMG_0435-scaled.jpeg?w=1812&amp;quality=89 1812w" sizes="auto, (max-width: 604px) 100vw, 604px" /></figure>
+
+
+
+<p>The team gave me a sweet surprise! I&#8217;ve been fighting for the open web for 20 years, and hope to do it for at least 20 more. There&#8217;s a lot of exciting behind-the-scenes stuff happening inside Automattic that also made this day special, but one significant thing is public.</p>
+
+
+
+<p>Automattic has finally had its first chance to file its counterclaims that spell out the bad actions of <a href="https://wpengine.com/">WP Engine</a> and <a href="https://www.silverlake.com/">Silver Lake</a>, <a href="https://techcrunch.com/2025/10/24/automattic-files-counterclaims-against-wp-engine-in-wordpress-lawsuit-alleging-trademark-misuse/">as reported here by TechCrunch</a>. You may recall that last month, <a href="https://ma.tt/2025/09/legal-win/">the court dismissed several of their most serious claims</a>, and they responded by filing an amended complaint. In our dogged defense of the free, open, and thriving WordPress ecosystem, Automattic responded today with a comprehensive counter-filing, <a href="https://automattic.com/wp-content/uploads/2025/10/automattic-counterclaims.pdf">which you can read in a 162-page PDF here about all the things WP Engine/Heather Brunner and Silver Lake did wrong</a>.</p>
+
+
+
+<p>We&#8217;ve got receipts!</p>
+
+
+
+<p>I don&#8217;t think WP Engine employees or investors were aware of the gaslighting they did, hopefully some of this is enlightening. And there&#8217;s a lot more discovery to go!</p>
+	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+					<div class="comments-link">
+				<a href="https://ma.tt/2025/10/counter-claims/#comments">View all 5 comments</a>			</div><!-- .comments-link -->
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150347" class="post-150347 post type-post status-publish format-aside hentry category-asides post_format-post-format-aside">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[]'></div>
+<p>I don&#8217;t get sick very often, but when it catches up to me it hits like a freight train. Just trying to keep all the plates spinning while operating at 10% capacity, been sleeping a ton. Today was in some ways better, some ways worse than yesterday. I try to avoid hospitals and emergency care, as you wind up in their system, so I&#8217;m trying to ride this one out at home. Had to cancel a bunch of travel and conferences and meetings I was looking forward to this week. Really makes you appreciate and be grateful for good health — it&#8217;s a baseline for everything else and I&#8217;m blessed with it 99% of the time.</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/10/under-the-weather/" title="Permalink to Under the Weather" rel="bookmark"><time class="entry-date" datetime="2025-10-23T20:14:24-07:00">October 23, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+							
+<article id="post-150338" class="post-150338 post type-post status-publish format-link hentry category-asides post_format-post-format-link">
+	<div class="entry-content">
+		<div class='__iawmlf-post-loop-links' style='display:none;' data-iawmlf-post-links='[{&quot;id&quot;:35,&quot;href&quot;:&quot;https:\/\/developer.woocommerce.com\/2025\/10\/22\/woocommerce-10-3-cogs-comes-to-core-and-mcp-beta&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101050423\/https:\/\/developer.woocommerce.com\/2025\/10\/22\/woocommerce-10-3-cogs-comes-to-core-and-mcp-beta\/&quot;,&quot;redirect_href&quot;:&quot;https:\/\/developer.woocommerce.com\/2025\/10\/22\/woocommerce-10-3-cogs-comes-to-core-and-mcp-beta\/&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 06:34:22&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 07:15:19&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 07:15:19&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;},{&quot;id&quot;:36,&quot;href&quot;:&quot;https:\/\/make.wordpress.org\/test\/2025\/10\/21\/help-test-wordpress-6-9&quot;,&quot;archived_href&quot;:&quot;http:\/\/web.archive.org\/web\/20251101050424\/https:\/\/make.wordpress.org\/test\/2025\/10\/21\/help-test-wordpress-6-9\/&quot;,&quot;redirect_href&quot;:&quot;https:\/\/make.wordpress.org\/test\/2025\/10\/21\/help-test-wordpress-6-9\/&quot;,&quot;checks&quot;:[{&quot;date&quot;:&quot;2025-11-01 06:34:23&quot;,&quot;http_code&quot;:200},{&quot;date&quot;:&quot;2025-11-08 07:15:20&quot;,&quot;http_code&quot;:200}],&quot;broken&quot;:false,&quot;last_checked&quot;:{&quot;date&quot;:&quot;2025-11-08 07:15:20&quot;,&quot;http_code&quot;:200},&quot;process&quot;:&quot;done&quot;}]'></div>
+<p><a href="https://developer.woocommerce.com/2025/10/22/woocommerce-10-3-cogs-comes-to-core-and-mcp-beta/">WooCommerce 10.3 is out</a>, just in time for Black Friday / Cyber Monday, with some nice improvements to the checkout experience, tracking cost of goods sold, and a new beta MCP server, &#8220;This new feature enables AI assistants like Claude, Cursor, VS Code, or any other MCP-compatible client to interact directly with WooCommerce stores through a standardized protocol, opening up new possibilities for AI-assisted store management and development workflows.&#8221; <a href="https://make.wordpress.org/test/2025/10/21/help-test-wordpress-6-9/">You can also help out in testing WordPress 6.9</a>, which comes out on December 2<sup>nd</sup>.</p>
+
+
+
+<p>If I&#8217;m slow on anything right now, I apologize. I&#8217;ve got some flu/Covid thing, so I&#8217;m operating at reduced capacity.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+					<span class="date"><a href="https://ma.tt/2025/10/new-woo/" title="Permalink to New Woo" rel="bookmark"><time class="entry-date" datetime="2025-10-22T23:54:56-07:00">October 22, 2025</time></a></span>						</footer><!-- .entry-meta -->
+</article><!-- #post -->
+			
+					<nav class="navigation paging-navigation">
+		<h1 class="screen-reader-text">
+			Posts navigation		</h1>
+		<div class="nav-links">
+
+						<div class="nav-previous"><a href="https://ma.tt/page/2/" ><span class="meta-nav">&larr;</span> Older posts</a></div>
+			
+			
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+		
+		
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+		</div><!-- #main -->
+		<footer id="colophon" class="site-footer">
+			
+			<div class="site-info">
+												<a href="https://wordpress.org/" class="imprint">
+					Proudly powered by WordPress				</a>
+			</div><!-- .site-info -->
+
+            <div id="navbar" class="navbar">
+				<nav id="site-navigation" class="navigation main-navigation">
+					<button class="menu-toggle">Menu</button>
+					<a class="screen-reader-text skip-link" href="index.html#content" title="Skip to content">Skip to content</a>
+					<div class="menu-main-menu-container"><ul id="primary-menu" class="nav-menu"><li id="menu-item-42392" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-42392"><a href="index.html" aria-current="page">Home</a></li>
+<li id="menu-item-42393" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42393"><a href="https://ma.tt/about/">About</a></li>
+<li id="menu-item-48597" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48597"><a href="https://ma.tt/contact/">Contact</a></li>
+<li id="menu-item-51120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51120"><a href="https://distributed.blog/">Distributed</a></li>
+<li id="menu-item-51149" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51149"><a href="https://twitter.com/photomatt">X</a></li>
+<li id="menu-item-110132" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-110132"><a href="https://t.me/+oMWZJFfyMok2ZmUz">Telegram</a></li>
+<li id="menu-item-43841" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43841"><a href="https://automattic.com/work-with-us/">Let&#8217;s Work Together</a></li>
+</ul></div>					<form role="search" method="get" class="search-form" action="index.html">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>				</nav><!-- #site-navigation -->
+			</div><!-- #navbar -->
+
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+			
+		
+			<meta
+				id="bilmur"
+				property="bilmur:data"
+				content=""
+				data-provider="horizoniq.com"
+				data-service="ma.tt"
+				data-custom-props="{&quot;wpcomsp&quot;:&quot;1&quot;,&quot;woo_active&quot;:&quot;0&quot;}"
+				data-site-tz="America/Los_Angeles"
+			>
+		
+		<!-- GA Google Analytics @ https://m0n.co/ga -->
+		
+
+			<div class="jetpack-instant-search__widget-area" style="display: none">
+							<div id="jetpack-search-filters-3" class="widget jetpack-filters widget_search">			<div id="jetpack-search-filters-3-wrapper" class="jetpack-instant-search-wrapper">
+		</div></div>					</div>
+				<div id="infinite-footer">
+			<div class="container">
+				<div class="blog-info">
+					<a id="infinity-blog-title" href="index.html" rel="home">
+						Matt Mullenweg					</a>
+				</div>
+				<div class="blog-credits">
+					<a href="https://wordpress.org/" rel="noopener noreferrer" target="_blank" rel="generator">Proudly powered by WordPress</a> Theme: Ma.tt.				</div>
+			</div>
+		</div><!-- #infinite-footer -->
+				<div id="jp-carousel-loading-overlay">
+			<div id="jp-carousel-loading-wrapper">
+				<span id="jp-carousel-library-loading">&nbsp;</span>
+			</div>
+		</div>
+		<div class="jp-carousel-overlay" style="display: none;">
+
+		<div class="jp-carousel-container">
+			<!-- The Carousel Swiper -->
+			<div
+				class="jp-carousel-wrap swiper jp-carousel-swiper-container jp-carousel-transitions"
+				itemscope
+				itemtype="https://schema.org/ImageGallery">
+				<div class="jp-carousel swiper-wrapper"></div>
+				<div class="jp-swiper-button-prev swiper-button-prev">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskPrev" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="9" height="12">
+							<path d="M16.2072 16.59L11.6496 12L16.2072 7.41L14.8041 6L8.8335 12L14.8041 18L16.2072 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskPrev)">
+							<rect x="0.579102" width="23.8823" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+				<div class="jp-swiper-button-next swiper-button-next">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskNext" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="8" height="12">
+							<path d="M8.59814 16.59L13.1557 12L8.59814 7.41L10.0012 6L15.9718 12L10.0012 18L8.59814 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskNext)">
+							<rect x="0.34375" width="23.8822" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+			</div>
+			<!-- The main close buton -->
+			<div class="jp-carousel-close-hint">
+				<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<mask id="maskClose" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="15" height="14">
+						<path d="M19.3166 6.41L17.9135 5L12.3509 10.59L6.78834 5L5.38525 6.41L10.9478 12L5.38525 17.59L6.78834 19L12.3509 13.41L17.9135 19L19.3166 17.59L13.754 12L19.3166 6.41Z" fill="white"/>
+					</mask>
+					<g mask="url(#maskClose)">
+						<rect x="0.409668" width="23.8823" height="24" fill="#FFFFFF"/>
+					</g>
+				</svg>
+			</div>
+			<!-- Image info, comments and meta -->
+			<div class="jp-carousel-info">
+				<div class="jp-carousel-info-footer">
+					<div class="jp-carousel-pagination-container">
+						<div class="jp-swiper-pagination swiper-pagination"></div>
+						<div class="jp-carousel-pagination"></div>
+					</div>
+					<div class="jp-carousel-photo-title-container">
+						<h2 class="jp-carousel-photo-caption"></h2>
+					</div>
+					<div class="jp-carousel-photo-icons-container">
+						<a href="index.html#" class="jp-carousel-icon-btn jp-carousel-icon-info" aria-label="Toggle photo metadata visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskInfo" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M12.7537 2C7.26076 2 2.80273 6.48 2.80273 12C2.80273 17.52 7.26076 22 12.7537 22C18.2466 22 22.7046 17.52 22.7046 12C22.7046 6.48 18.2466 2 12.7537 2ZM11.7586 7V9H13.7488V7H11.7586ZM11.7586 11V17H13.7488V11H11.7586ZM4.79292 12C4.79292 16.41 8.36531 20 12.7537 20C17.142 20 20.7144 16.41 20.7144 12C20.7144 7.59 17.142 4 12.7537 4C8.36531 4 4.79292 7.59 4.79292 12Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskInfo)">
+										<rect x="0.8125" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+							</span>
+						</a>
+												<a href="index.html#" class="jp-carousel-icon-btn jp-carousel-icon-comments" aria-label="Toggle photo comments visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskComments" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M4.3271 2H20.2486C21.3432 2 22.2388 2.9 22.2388 4V16C22.2388 17.1 21.3432 18 20.2486 18H6.31729L2.33691 22V4C2.33691 2.9 3.2325 2 4.3271 2ZM6.31729 16H20.2486V4H4.3271V18L6.31729 16Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskComments)">
+										<rect x="0.34668" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+
+								<span class="jp-carousel-has-comments-indicator" aria-label="This image has comments."></span>
+							</span>
+						</a>
+											</div>
+				</div>
+				<div class="jp-carousel-info-extra">
+					<div class="jp-carousel-info-content-wrapper">
+						<div class="jp-carousel-photo-title-container">
+							<h2 class="jp-carousel-photo-title"></h2>
+						</div>
+						<div class="jp-carousel-comments-wrapper">
+															<div id="jp-carousel-comments-loading">
+									<span>Loading Comments...</span>
+								</div>
+								<div class="jp-carousel-comments"></div>
+								<div id="jp-carousel-comment-form-container">
+									<span id="jp-carousel-comment-form-spinner">&nbsp;</span>
+									<div id="jp-carousel-comment-post-results"></div>
+																														<form id="jp-carousel-comment-form">
+												<label for="jp-carousel-comment-form-comment-field" class="screen-reader-text">Write a Comment...</label>
+												<textarea
+													name="comment"
+													class="jp-carousel-comment-form-field jp-carousel-comment-form-textarea"
+													id="jp-carousel-comment-form-comment-field"
+													placeholder="Write a Comment..."
+												></textarea>
+												<div id="jp-carousel-comment-form-submit-and-info-wrapper">
+													<div id="jp-carousel-comment-form-commenting-as">
+																													<fieldset>
+																<label for="jp-carousel-comment-form-email-field">Email (Required)</label>
+																<input type="text" name="email" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-email-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-author-field">Name (Required)</label>
+																<input type="text" name="author" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-author-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-url-field">Website</label>
+																<input type="text" name="url" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-url-field" />
+															</fieldset>
+																											</div>
+													<input
+														type="submit"
+														name="submit"
+														class="jp-carousel-comment-form-button"
+														id="jp-carousel-comment-form-button-submit"
+														value="Post Comment" />
+												</div>
+											</form>
+																											</div>
+													</div>
+						<div class="jp-carousel-image-meta">
+							<div class="jp-carousel-title-and-caption">
+								<div class="jp-carousel-photo-info">
+									<h3 class="jp-carousel-caption" itemprop="caption description"></h3>
+								</div>
+
+								<div class="jp-carousel-photo-description"></div>
+							</div>
+							<ul class="jp-carousel-image-exif" style="display: none;"></ul>
+							<a class="jp-carousel-image-download" href="index.html#" target="_blank" style="display: none;">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="19" height="18">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.84615 5V19H19.7775V12H21.7677V19C21.7677 20.1 20.8721 21 19.7775 21H5.84615C4.74159 21 3.85596 20.1 3.85596 19V5C3.85596 3.9 4.74159 3 5.84615 3H12.8118V5H5.84615ZM14.802 5V3H21.7677V10H19.7775V6.41L9.99569 16.24L8.59261 14.83L18.3744 5H14.802Z" fill="white"/>
+									</mask>
+									<g mask="url(#mask0)">
+										<rect x="0.870605" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+								<span class="jp-carousel-download-text"></span>
+							</a>
+							<div class="jp-carousel-image-map" style="display: none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-jetpack-boost="ignore" id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://ma.tt/blog/wp-includes/js/wp-emoji-release.min.js?ver=6.9-RC1-61214"}}
+</script>
+
+		
+				<span id="infinite-aria" aria-live="polite"></span>
+		<script id="twitter-lazyload-js-js-after">
+	( function () {
+		'use strict';
+
+		var waiting = false;
+		var currentScript = null;
+
+		function appendScript() {
+			waiting = false;
+			if ( currentScript ) {
+				document.head.removeChild( currentScript );
+			}
+			currentScript = document.createElement( 'script' );
+			currentScript.setAttribute( 'src', 'https://platform.twitter.com/widgets.js' );
+			document.head.appendChild( currentScript );
+		}
+
+		// Ensures the document is interactive before loading Twitter embeds.
+		function queueAppend() {
+			if ( waiting ) {
+				// Already waiting for the script to be added; no need to do anything.
+				return;
+			}
+			waiting = true;
+			if ( document.readyState !== 'loading' ) {
+				setTimeout( appendScript );
+			} else {
+				document.addEventListener( 'DOMContentLoaded', appendScript );
+			}
+		}
+
+		function addEmbed( scriptEl ) {
+		  if ( ! scriptEl || ! scriptEl.parentElement || ! window.IntersectionObserver ) {
+				// No element to observe or no Intersection Observer support; load immediately.
+				queueAppend();
+				return;
+			}
+
+			var hasLoaded = false;
+
+			var observer = new IntersectionObserver( function( entries ) {
+				if ( ! hasLoaded && entries && entries[ 0 ] && entries[ 0 ].isIntersecting ) {
+					hasLoaded = true;
+					queueAppend();
+				}
+			}, { rootMargin: '1000px' } );
+
+			observer.observe( scriptEl.parentElement );
+		}
+
+		window.twitterLazyLoadEmbedJS = addEmbed;
+} )();
+//# sourceURL=twitter-lazyload-js-js-after
+</script><script id="plvt-view-transitions-js-after">
+window.plvtInitViewTransitions=n=>{if(!window.navigation||!("CSSViewTransitionRule"in window))return void window.console.warn("View transitions not loaded as the browser is lacking support.");const t=(t,o,i)=>{const e=n.animations||{};return[...e[t].useGlobalTransitionNames?Object.entries(n.globalTransitionNames||{}).map((([n,t])=>[o.querySelector(n),t])):[],...e[t].usePostTransitionNames&&i?Object.entries(n.postTransitionNames||{}).map((([n,t])=>[i.querySelector(n),t])):[]]},o=async(n,t)=>{for(const[t,o]of n)t&&(t.style.viewTransitionName=o);await t;for(const[t]of n)t&&(t.style.viewTransitionName="")},i=()=>n.postSelector?document.querySelector(n.postSelector):null,e=t=>{if(!n.postSelector)return null;const o=(i=n.postSelector,e='a[href="'+t+'"]',i.split(",").map((n=>n.trim()+" "+e)).join(","));var i,e;const s=document.querySelector(o);return s?s.closest(n.postSelector):null};window.addEventListener("pageswap",(n=>{if(n.viewTransition){const s="default";let a;n.viewTransition.types.add(s),document.body.classList.contains("single")?a=t(s,document.body,i()):(document.body.classList.contains("home")||document.body.classList.contains("archive"))&&(a=t(s,document.body,e(n.activation.entry.url))),a&&o(a,n.viewTransition.finished)}})),window.addEventListener("pagereveal",(n=>{if(n.viewTransition){const s="default";let a;n.viewTransition.types.add(s),document.body.classList.contains("single")?a=t(s,document.body,i()):(document.body.classList.contains("home")||document.body.classList.contains("archive"))&&(a=t(s,document.body,window.navigation.activation.from?e(window.navigation.activation.from.url):null)),a&&o(a,n.viewTransition.ready)}}))};
+plvtInitViewTransitions( {"postSelector":".wp-block-post.post, article.post, body.single main","globalTransitionNames":{"header":"header","main":"main"},"postTransitionNames":{".wp-block-post-title, .entry-title":"post-title",".wp-post-image":"post-thumbnail",".wp-block-post-content, .entry-content":"post-content"},"animations":{"default":{"useGlobalTransitionNames":true,"usePostTransitionNames":true}}} )
+//# sourceURL=plvt-view-transitions-js-after
+</script><script type="text/javascript">
+		var infiniteScroll = {"settings":{"id":"content","ajaxurl":"https:\/\/ma.tt\/?infinity=scrolling","type":"scroll","wrapper":true,"wrapper_class":"infinite-wrap","footer":"page","click_handle":"1","text":"Older posts","totop":"Scroll back to top","currentday":"22.10.25","order":"DESC","scripts":[],"styles":[],"google_analytics":false,"offset":1,"history":{"host":"ma.tt","path":"\/page\/%d\/","use_trailing_slashes":true,"parameters":""},"query_args":{"error":"","m":"","p":0,"post_parent":"","subpost":"","subpost_id":"","attachment":"","attachment_id":0,"name":"","pagename":"","page_id":0,"second":"","minute":"","hour":"","day":0,"monthnum":0,"year":0,"w":0,"category_name":"","tag":"","cat":"","tag_id":"","author":"","author_name":"","feed":"","tb":"","paged":0,"meta_key":"","meta_value":"","preview":"","s":"","sentence":"","title":"","fields":"all","menu_order":"","embed":"","category__in":[],"category__not_in":[],"category__and":[],"post__in":[],"post__not_in":[],"post_name__in":[],"tag__in":[],"tag__not_in":[],"tag__and":[],"tag_slug__in":[],"tag_slug__and":[],"post_parent__in":[],"post_parent__not_in":[],"author__in":[],"author__not_in":[],"search_columns":[],"posts_per_page":20,"ignore_sticky_posts":false,"suppress_filters":false,"cache_results":true,"update_post_term_cache":true,"update_menu_item_cache":false,"lazy_load_term_meta":true,"update_post_meta_cache":true,"post_type":"","nopaging":false,"comments_per_page":"0","no_found_rows":false,"order":"DESC"},"query_before":"2025-11-12 07:12:20","last_post_date":"2025-10-22 23:54:56","body_class":"infinite-scroll neverending","loading_text":"Loading new page","stats":"blog=1047865&host=ma.tt&v=ext&j=1:15.2&x_pagetype=infinite-jetpack"}};
+		</script><script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/blog/wp-*.php","/blog/wp-admin/*","/files/*","/blog-content/*","/blog-content/plugins/*","/blog-content/themes/ma.tt/*","/blog-content/themes/twentythirteen/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script><script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-52447-3', 'auto');
+			ga('send', 'pageview');
+		</script><script src="blog-content/plugins/jetpack/_inc/build/infinite-scroll/infinity.min.js@ver=15.2-is5.0.1" id="the-neverending-homepage-js"></script><script src="blog-content/mu-plugins/jp-lite-youtube-embed/lite-yt-embed.min.js@ver=0.3.2-5" id="jp-lite-youtube-embed-script-js" defer data-wp-strategy="defer"></script><script src="../../../s0.wp.com/wp-content/js/bilmur.min.js@m=202546&amp;ver=1" id="bilmur-js" defer data-wp-strategy="defer"></script><script src="blog-content/plugins/gutenberg/build/scripts/hooks/index.min.js@ver=1762354539632" id="wp-hooks-js"></script><script src="blog-content/plugins/gutenberg/build/scripts/i18n/index.min.js@ver=1762354541537" id="wp-i18n-js"></script><script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script><script src="blog-content/plugins/jetpack-boost/jetpack_vendor/automattic/jetpack-assets/build/i18n-loader.js@minify=true&amp;ver=517685b2423141b3a0a3" id="wp-jp-i18n-loader-js"></script><script id="wp-jp-i18n-loader-js-after">
+wp.jpI18nLoader.state = {"baseUrl":"https://ma.tt/blog-content/languages/","locale":"en_US","domainMap":{"jetpack-admin-ui":"plugins/jetpack-boost","jetpack-assets":"plugins/jetpack-boost","jetpack-boost-core":"plugins/jetpack-boost","jetpack-boost-speed-score":"plugins/jetpack-boost","jetpack-config":"plugins/jetpack-boost","jetpack-connection":"plugins/jetpack","jetpack-explat":"plugins/jetpack-boost","jetpack-image-cdn":"plugins/jetpack-boost","jetpack-ip":"plugins/jetpack-boost","jetpack-jitm":"plugins/jetpack-boost","jetpack-licensing":"plugins/jetpack-boost","jetpack-my-jetpack":"plugins/jetpack","jetpack-password-checker":"plugins/jetpack-boost","jetpack-plugin-deactivation":"plugins/jetpack-boost","jetpack-plugins-installer":"plugins/jetpack-boost","jetpack-protect-models":"plugins/jetpack-boost","jetpack-protect-status":"plugins/jetpack-boost","jetpack-schema":"plugins/jetpack-boost","jetpack-sync":"plugins/jetpack","jetpack-wp-js-data-sync":"plugins/jetpack-boost","jetpack-post-list":"plugins/jetpack","jetpack-publicize-pkg":"plugins/jetpack","jetpack-account-protection":"plugins/jetpack","jetpack-backup-pkg":"plugins/jetpack","jetpack-blaze":"plugins/jetpack","jetpack-block-delimiter":"plugins/jetpack","jetpack-classic-theme-helper":"plugins/jetpack","jetpack-compat":"plugins/jetpack","jetpack-external-connections":"plugins/jetpack","jetpack-external-media":"plugins/jetpack","jetpack-forms":"plugins/jetpack","jetpack-import":"plugins/jetpack","jetpack-jwt":"plugins/jetpack","jetpack-masterbar":"plugins/jetpack","jetpack-paypal-payments":"plugins/jetpack","jetpack-search-pkg":"plugins/jetpack","jetpack-stats":"plugins/jetpack","jetpack-stats-admin":"plugins/jetpack","jetpack-subscribers-dashboard":"plugins/jetpack","jetpack-videopress-pkg":"plugins/jetpack","jetpack-waf":"plugins/jetpack","woocommerce-analytics":"plugins/jetpack"},"domainPaths":{"jetpack-admin-ui":"jetpack_vendor/automattic/jetpack-admin-ui/","jetpack-assets":"jetpack_vendor/automattic/jetpack-assets/","jetpack-boost-core":"jetpack_vendor/automattic/jetpack-boost-core/","jetpack-boost-speed-score":"jetpack_vendor/automattic/jetpack-boost-speed-score/","jetpack-config":"jetpack_vendor/automattic/jetpack-config/","jetpack-connection":"jetpack_vendor/automattic/jetpack-connection/","jetpack-explat":"jetpack_vendor/automattic/jetpack-explat/","jetpack-image-cdn":"jetpack_vendor/automattic/jetpack-image-cdn/","jetpack-ip":"jetpack_vendor/automattic/jetpack-ip/","jetpack-jitm":"jetpack_vendor/automattic/jetpack-jitm/","jetpack-licensing":"jetpack_vendor/automattic/jetpack-licensing/","jetpack-my-jetpack":"jetpack_vendor/automattic/jetpack-my-jetpack/","jetpack-password-checker":"jetpack_vendor/automattic/jetpack-password-checker/","jetpack-plugin-deactivation":"jetpack_vendor/automattic/jetpack-plugin-deactivation/","jetpack-plugins-installer":"jetpack_vendor/automattic/jetpack-plugins-installer/","jetpack-protect-models":"jetpack_vendor/automattic/jetpack-protect-models/","jetpack-protect-status":"jetpack_vendor/automattic/jetpack-protect-status/","jetpack-schema":"jetpack_vendor/automattic/jetpack-schema/","jetpack-sync":"jetpack_vendor/automattic/jetpack-sync/","jetpack-wp-js-data-sync":"jetpack_vendor/automattic/jetpack-wp-js-data-sync/","jetpack-post-list":"jetpack_vendor/automattic/jetpack-post-list/","jetpack-publicize-pkg":"jetpack_vendor/automattic/jetpack-publicize/","jetpack-account-protection":"jetpack_vendor/automattic/jetpack-account-protection/","jetpack-backup-pkg":"jetpack_vendor/automattic/jetpack-backup/","jetpack-blaze":"jetpack_vendor/automattic/jetpack-blaze/","jetpack-block-delimiter":"jetpack_vendor/automattic/block-delimiter/","jetpack-classic-theme-helper":"jetpack_vendor/automattic/jetpack-classic-theme-helper/","jetpack-compat":"jetpack_vendor/automattic/jetpack-compat/","jetpack-external-connections":"jetpack_vendor/automattic/jetpack-external-connections/","jetpack-external-media":"jetpack_vendor/automattic/jetpack-external-media/","jetpack-forms":"jetpack_vendor/automattic/jetpack-forms/","jetpack-import":"jetpack_vendor/automattic/jetpack-import/","jetpack-jwt":"jetpack_vendor/automattic/jetpack-jwt/","jetpack-masterbar":"jetpack_vendor/automattic/jetpack-masterbar/","jetpack-paypal-payments":"jetpack_vendor/automattic/jetpack-paypal-payments/","jetpack-search-pkg":"jetpack_vendor/automattic/jetpack-search/","jetpack-stats":"jetpack_vendor/automattic/jetpack-stats/","jetpack-stats-admin":"jetpack_vendor/automattic/jetpack-stats-admin/","jetpack-subscribers-dashboard":"jetpack_vendor/automattic/jetpack-subscribers-dashboard/","jetpack-videopress-pkg":"jetpack_vendor/automattic/jetpack-videopress/","jetpack-waf":"jetpack_vendor/automattic/jetpack-waf/","woocommerce-analytics":"jetpack_vendor/automattic/woocommerce-analytics/"}};
+//# sourceURL=wp-jp-i18n-loader-js-after
+</script><script src="blog/wp-includes/js/dist/vendor/wp-polyfill.min.js@ver=3.15.0" id="wp-polyfill-js"></script><script src="blog-content/plugins/gutenberg/build/scripts/url/index.min.js@ver=1762354541325" id="wp-url-js"></script><script id="jetpack-instant-search-js-before">
+var JetpackInstantSearchOptions=JSON.parse(decodeURIComponent("%7B%22overlayOptions%22%3A%7B%22colorTheme%22%3A%22light%22%2C%22enableInfScroll%22%3Atrue%2C%22enableFilteringOpensOverlay%22%3Atrue%2C%22enablePostDate%22%3Atrue%2C%22enableSort%22%3Atrue%2C%22highlightColor%22%3A%22%23FFC%22%2C%22overlayTrigger%22%3A%22submit%22%2C%22resultFormat%22%3A%22expanded%22%2C%22showPoweredBy%22%3Atrue%2C%22defaultSort%22%3A%22newest%22%2C%22excludedPostTypes%22%3A%5B%22attachment%22%5D%7D%2C%22homeUrl%22%3A%22https%3A%5C%2F%5C%2Fma.tt%22%2C%22locale%22%3A%22en-US%22%2C%22postsPerPage%22%3A20%2C%22siteId%22%3A1047865%2C%22postTypes%22%3A%7B%22post%22%3A%7B%22singular_name%22%3A%22Post%22%2C%22name%22%3A%22Posts%22%7D%2C%22page%22%3A%7B%22singular_name%22%3A%22Page%22%2C%22name%22%3A%22Pages%22%7D%2C%22attachment%22%3A%7B%22singular_name%22%3A%22Media%22%2C%22name%22%3A%22Media%22%7D%7D%2C%22webpackPublicPath%22%3A%22https%3A%5C%2F%5C%2Fma.tt%5C%2Fblog-content%5C%2Fplugins%5C%2Fjetpack%5C%2Fjetpack_vendor%5C%2Fautomattic%5C%2Fjetpack-search%5C%2Fbuild%5C%2Finstant-search%5C%2F%22%2C%22isPhotonEnabled%22%3Atrue%2C%22isFreePlan%22%3Afalse%2C%22apiRoot%22%3A%22https%3A%5C%2F%5C%2Fma.tt%5C%2Fwp-json%5C%2F%22%2C%22apiNonce%22%3A%2243b734f5af%22%2C%22isPrivateSite%22%3Afalse%2C%22isWpcom%22%3Afalse%2C%22hasOverlayWidgets%22%3Atrue%2C%22widgets%22%3A%5B%7B%22filters%22%3A%5B%7B%22name%22%3A%22People%22%2C%22type%22%3A%22taxonomy%22%2C%22taxonomy%22%3A%22people%22%2C%22count%22%3A5%2C%22widget_id%22%3A%22jetpack-search-filters-3%22%2C%22filter_id%22%3A%22taxonomy_0%22%7D%2C%7B%22name%22%3A%22Categories%22%2C%22type%22%3A%22taxonomy%22%2C%22taxonomy%22%3A%22category%22%2C%22count%22%3A5%2C%22widget_id%22%3A%22jetpack-search-filters-3%22%2C%22filter_id%22%3A%22taxonomy_1%22%7D%2C%7B%22name%22%3A%22Tags%22%2C%22type%22%3A%22taxonomy%22%2C%22taxonomy%22%3A%22post_tag%22%2C%22count%22%3A5%2C%22widget_id%22%3A%22jetpack-search-filters-3%22%2C%22filter_id%22%3A%22taxonomy_2%22%7D%2C%7B%22name%22%3A%22Year%22%2C%22type%22%3A%22date_histogram%22%2C%22count%22%3A5%2C%22field%22%3A%22post_date%22%2C%22interval%22%3A%22year%22%2C%22widget_id%22%3A%22jetpack-search-filters-3%22%2C%22filter_id%22%3A%22date_histogram_3%22%7D%5D%2C%22widget_id%22%3A%22jetpack-search-filters-3%22%7D%5D%2C%22widgetsOutsideOverlay%22%3A%5B%5D%2C%22hasNonSearchWidgets%22%3Afalse%2C%22preventTrackingCookiesReset%22%3Afalse%7D"));
+//# sourceURL=jetpack-instant-search-js-before
+</script><script src="blog-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/instant-search/jp-search.js@minify=false&amp;ver=16d95eb02fb5075e93e1" id="jetpack-instant-search-js"></script><script src="https://stats.wp.com/w.js?ver=202546" id="jp-tracks-js"></script><script id="iawm-link-fixer-front-link-checker-js-extra">
+var iawmlfArchivedLinks = {"links":"[{\"id\":9756,\"href\":\"https:\\/\\/bendingspoons.com\",\"archived_href\":\"http:\\/\\/web.archive.org\\/web\\/20251012141952\\/https:\\/\\/bendingspoons.com\\/\",\"redirect_href\":\"\",\"checks\":[{\"date\":\"2025-11-11 01:34:59\",\"http_code\":200}],\"broken\":false,\"last_checked\":{\"date\":\"2025-11-11 01:34:59\",\"http_code\":200},\"process\":\"done\"},{\"id\":9757,\"href\":\"https:\\/\\/evernote.com\",\"archived_href\":\"http:\\/\\/web.archive.org\\/web\\/20251110200035\\/https:\\/\\/evernote.com\\/\",\"redirect_href\":\"\",\"checks\":[{\"date\":\"2025-11-11 01:35:00\",\"http_code\":200}],\"broken\":false,\"last_checked\":{\"date\":\"2025-11-11 01:35:00\",\"http_code\":200},\"process\":\"done\"},{\"id\":9758,\"href\":\"https:\\/\\/www.meetup.com\",\"archived_href\":\"http:\\/\\/web.archive.org\\/web\\/20251109231203\\/https:\\/\\/www.meetup.com\\/\",\"redirect_href\":\"\",\"checks\":[{\"date\":\"2025-11-11 01:35:05\",\"http_code\":206}],\"broken\":false,\"last_checked\":{\"date\":\"2025-11-11 01:35:05\",\"http_code\":206},\"process\":\"done\"},{\"id\":9759,\"href\":\"https:\\/\\/automattic.space\",\"archived_href\":\"http:\\/\\/web.archive.org\\/web\\/20250917093614\\/https:\\/\\/automattic.space\\/\",\"redirect_href\":\"\",\"checks\":[{\"date\":\"2025-11-11 01:35:05\",\"http_code\":200}],\"broken\":false,\"last_checked\":{\"date\":\"2025-11-11 01:35:05\",\"http_code\":200},\"process\":\"done\"},{\"id\":9760,\"href\":\"https:\\/\\/techcrunch.com\\/2025\\/09\\/10\\/vimeo-to-be-acquired-by-bending-spoons-in-1-38b-all-cash-deal\",\"archived_href\":\"http:\\/\\/web.archive.org\\/web\\/20250919001021\\/https:\\/\\/techcrunch.com\\/2025\\/09\\/10\\/vimeo-to-be-acquired-by-bending-spoons-in-1-38b-all-cash-deal\\/\",\"redirect_href\":\"\",\"checks\":[{\"date\":\"2025-11-11 01:35:07\",\"http_code\":200}],\"broken\":false,\"last_checked\":{\"date\":\"2025-11-11 01:35:07\",\"http_code\":200},\"process\":\"done\"},{\"id\":9761,\"href\":\"https:\\/\\/techcrunch.com\\/2025\\/10\\/29\\/bending-spoons-to-acquire-aol\",\"archived_href\":\"http:\\/\\/web.archive.org\\/web\\/20251110063245\\/https:\\/\\/techcrunch.com\\/2025\\/10\\/29\\/bending-spoons-to-acquire-aol\\/\",\"redirect_href\":\"\",\"checks\":[{\"date\":\"2025-11-11 01:35:08\",\"http_code\":200}],\"broken\":false,\"last_checked\":{\"date\":\"2025-11-11 01:35:08\",\"http_code\":200},\"process\":\"done\"},{\"id\":9762,\"href\":\"https:\\/\\/en.wikipedia.org\\/wiki\\/The_Matrix\",\"archived_href\":\"http:\\/\\/web.archive.org\\/web\\/20251111013631\\/https:\\/\\/en.wikipedia.org\\/wiki\\/The_Matrix\",\"redirect_href\":\"\",\"checks\":[{\"date\":\"2025-11-11 01:49:56\",\"http_code\":200}],\"broken\":false,\"last_checked\":{\"date\":\"2025-11-11 01:49:56\",\"http_code\":200},\"process\":\"done\"}]","linkCheckAjax":"iawmlf_link_check_ajax","linkCheckNonce":"c03ba14a5e","linkDelayInDays":"7","fixerOption":"replace_link","ajaxUrl":"https://ma.tt/blog/wp-admin/admin-ajax.php"};
+//# sourceURL=iawm-link-fixer-front-link-checker-js-extra
+</script><script src="blog-content/plugins/internet-archive-wayback-machine-link-fixer/assets/js/build/front_link_checker.js@ver=303620b7df173cff6f89" id="iawm-link-fixer-front-link-checker-js"></script><script src="blog-content/plugins/wp-parsely/build/loader.js@ver=ecf94842061bea03d54b" id="wp-parsely-loader-js"></script><script data-parsely-site="ma.tt" src="../../../cdn.parsely.com/keys/ma.tt/p.js@ver=3.21.1.html" id="parsely-cfg"></script><script src="blog-content/themes/ma.tt/js/matt.js@ver=1752601059" id="matt-script-js" defer data-wp-strategy="defer"></script><script id="jetpack-carousel-js-extra">
+var jetpackSwiperLibraryPath = {"url":"https://ma.tt/blog-content/plugins/jetpack/_inc/blocks/swiper.js"};
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https://ma.tt/blog/wp-admin/admin-ajax.php","nonce":"e23a62e458","display_exif":"1","display_comments":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","image_label":"Open image in full-screen.","download_original":"View full size \u003Cspan class=\"photo-size\"\u003E{0}\u003Cspan class=\"photo-size-times\"\u003E\u00d7\u003C/span\u003E{1}\u003C/span\u003E","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https://ma.tt/blog/wp-login.php?redirect_to=https%3A%2F%2Fma.tt%2F2025%2F11%2Fbending-spoons%2F","blog_id":"1","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"]};
+//# sourceURL=jetpack-carousel-js-extra
+</script><script src="blog-content/plugins/jetpack/_inc/build/carousel/jetpack-carousel.min.js@ver=15.2" id="jetpack-carousel-js"></script><script src="blog-content/plugins/gravatar-enhanced/build/hovercards.js@ver=801f9da4ebe630b1776f" id="gravatar-enhanced-hovercards-js"></script><script src="blog-content/themes/ma.tt/js/base-functions.js@ver=6.9-RC1-61214" id="matt-base-theme-functions-js" defer data-wp-strategy="defer"></script><script src="blog-content/plugins/jetpack/_inc/build/tiled-gallery/tiled-gallery/tiled-gallery.min.js@ver=15.2" id="tiled-gallery-js" defer data-wp-strategy="defer"></script><script id="jetpack-stats-js-before">
+_stq = window._stq || [];
+_stq.push([ "view", JSON.parse("{\"v\":\"ext\",\"blog\":\"1047865\",\"post\":\"0\",\"tz\":\"-8\",\"srv\":\"ma.tt\",\"arch_home\":\"1\",\"j\":\"1:15.2\"}") ]);
+_stq.push([ "clickTrackerInit", "1047865", "0" ]);
+//# sourceURL=jetpack-stats-js-before
+</script><script src="https://stats.wp.com/e-202546.js" id="jetpack-stats-js" defer data-wp-strategy="defer"></script><script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=https://ma.tt/blog/wp-includes/js/wp-emoji-loader.min.js
+</script><script type="text/javascript">
+			(function() {
+				var extend = function(out) {
+					out = out || {};
+
+					for (var i = 1; i < arguments.length; i++) {
+						if (!arguments[i])
+						continue;
+
+						for (var key in arguments[i]) {
+						if (arguments[i].hasOwnProperty(key))
+							out[key] = arguments[i][key];
+						}
+					}
+
+					return out;
+				};
+				extend( window.infiniteScroll.settings.scripts, ["twitter-lazyload-js","plvt-view-transitions","the-neverending-homepage","jp-lite-youtube-embed-script","bilmur","wp-hooks","wp-i18n","wp-jp-i18n-loader","wp-polyfill","wp-url","jetpack-instant-search","jp-tracks","iawm-link-fixer-front-link-checker","wp-parsely-loader","wp-parsely-tracker","matt-script","jetpack-carousel","gravatar-enhanced-hovercards","matt-base-theme-functions","tiled-gallery","jetpack-stats"] );
+				extend( window.infiniteScroll.settings.styles, ["wp-img-auto-sizes-contain","the-neverending-homepage","wp-emoji-styles","wp-block-library","classic-theme-styles","gravatar-enhanced-patterns-shared","gravatar-enhanced-patterns-edit","jp-lite-youtube-embed-style","gravatar-enhanced-patterns-view","plvt-view-transitions","twentythirteen-fonts","genericons","twentythirteen-style","twentythirteen-block-style","jetpack-swiper-library","jetpack-carousel","tiled-gallery","gravatar-enhanced-hovercards","infinity-twentythirteen","wp-block-embed","wp-block-embed-theme","wp-block-list-item","wp-block-list-item-theme","wp-block-paragraph","wp-block-paragraph-theme","wp-block-quote","wp-block-quote-theme","wp-block-image","wp-block-image-theme","wp-block-list","wp-block-list-theme","global-styles","core-block-supports-duotone"] );
+			})();
+		</script></body>
+</html>
+
+<!-- Dynamic page generated in 0.294 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2025-11-12 07:12:20 -->
+
+<!-- Compression = gzip -->
+<!-- super cache -->

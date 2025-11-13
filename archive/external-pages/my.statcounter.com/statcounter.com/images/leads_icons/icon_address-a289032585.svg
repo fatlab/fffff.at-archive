@@ -1,0 +1,31 @@
+<svg width="18" height="19" viewBox="0 0 18 19" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Slice</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-715 343)">
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M -56 -816L 1304 -816L 1304 504L -56 504L -56 -816Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Leads" clip-path="url(#clip-0)">
+<path d="M -56 -816L 1304 -816L 1304 504L -56 504L -56 -816Z" fill="#E7EFF5"/>
+<g id="Subtract">
+<use xlink:href="#path0_fill" transform="matrix(-1 0 0 1 1283 -642)" fill="#FCFDFE"/>
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="matrix(-1 0 0 1 1283 -642)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="matrix(-1 0 0 1 1283 -642)" fill="#AEC4DB"/>
+</g>
+</g>
+<g id="Icon &#226;&#128;&#148; Building">
+<g id="Subtract">
+<use xlink:href="#path2_fill" transform="translate(717 -342)" fill="#064685"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 665 1015L 665 0L 4 0C 1.79089 0 0 1.79083 0 4L 0 1011C 0 1013.21 1.79089 1015 4 1015L 665 1015Z"/>
+<path id="path1_stroke_2x" d="M 665 1015L 665 1016L 666 1016L 666 1015L 665 1015ZM 665 0L 666 0L 666 -1L 665 -1L 665 0ZM 666 1015L 666 0L 664 0L 664 1015L 666 1015ZM 4 1L 665 1L 665 -1L 4 -1L 4 1ZM 1 4C 1 2.34313 2.34317 1 4 1L 4 -1C 1.23862 -1 -1 1.23854 -1 4L 1 4ZM 1 1011L 1 4L -1 4L -1 1011L 1 1011ZM 4 1014C 2.34317 1014 1 1012.66 1 1011L -1 1011C -1 1013.76 1.23861 1016 4 1016L 4 1014ZM 665 1014L 4 1014L 4 1016L 665 1016L 665 1014Z"/>
+<path id="path2_fill" fill-rule="evenodd" d="M 1.5 17L 1.5 7.4762L 0 7.4762L 0 6.33334L 7 0L 14 6.33334L 14 7.4762L 12.5 7.4762L 12.5 17L 1.5 17ZM 4 7L 6 7L 6 9L 4 9L 4 7ZM 10 7L 8 7L 8 9L 10 9L 10 7ZM 4 10L 6 10L 6 12L 4 12L 4 10ZM 10 10L 8 10L 8 12L 10 12L 10 10ZM 4 13L 6 13L 6 15L 4 15L 4 13ZM 10 13L 8 13L 8 15L 10 15L 10 13Z"/>
+</defs>
+</svg>

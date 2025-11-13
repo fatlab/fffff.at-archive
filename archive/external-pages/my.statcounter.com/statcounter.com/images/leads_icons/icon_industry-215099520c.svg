@@ -1,0 +1,31 @@
+<svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Slice</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-715 538)">
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M -56 -816L 1304 -816L 1304 504L -56 504L -56 -816Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Leads" clip-path="url(#clip-0)">
+<path d="M -56 -816L 1304 -816L 1304 504L -56 504L -56 -816Z" fill="#E7EFF5"/>
+<g id="Subtract">
+<use xlink:href="#path0_fill" transform="matrix(-1 0 0 1 1283 -642)" fill="#FCFDFE"/>
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="matrix(-1 0 0 1 1283 -642)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="matrix(-1 0 0 1 1283 -642)" fill="#AEC4DB"/>
+</g>
+</g>
+<g id="Icon &#226;&#128;&#148; Tag">
+<g id="Subtract">
+<use xlink:href="#path2_fill" transform="matrix(0.707107 0.707107 -0.707107 0.707107 720.828 -540)" fill="#064685"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 665 1015L 665 0L 4 0C 1.79089 0 0 1.79083 0 4L 0 1011C 0 1013.21 1.79089 1015 4 1015L 665 1015Z"/>
+<path id="path1_stroke_2x" d="M 665 1015L 665 1016L 666 1016L 666 1015L 665 1015ZM 665 0L 666 0L 666 -1L 665 -1L 665 0ZM 666 1015L 666 0L 664 0L 664 1015L 666 1015ZM 4 1L 665 1L 665 -1L 4 -1L 4 1ZM 1 4C 1 2.34313 2.34317 1 4 1L 4 -1C 1.23862 -1 -1 1.23854 -1 4L 1 4ZM 1 1011L 1 4L -1 4L -1 1011L 1 1011ZM 4 1014C 2.34317 1014 1 1012.66 1 1011L -1 1011C -1 1013.76 1.23861 1016 4 1016L 4 1014ZM 665 1014L 4 1014L 4 1016L 665 1016L 665 1014Z"/>
+<path id="path2_fill" fill-rule="evenodd" d="M 4.88519 0C 4.36694 0 3.86993 0.203449 3.50343 0.565634L 0.572329 3.46229C -0.190755 4.21649 -0.190798 5.43921 0.572329 6.19336L 3.50347 9.09006C 3.86993 9.4522 4.36694 9.65565 4.88519 9.65565L 13.8461 9.65569C 14.9253 9.65569 15.8002 8.7911 15.8002 7.72457L 15.8002 1.93116C 15.8002 0.864635 14.9253 1.13687e-13 13.8462 1.13687e-13L 4.88519 0ZM 4.82783 7.02226C 6.0398 7.02226 7.02226 6.0398 7.02226 4.82783C 7.02226 3.61585 6.03976 2.63335 4.82779 2.63335C 3.61581 2.63335 2.63336 3.61581 2.63336 4.82778C 2.63336 6.03976 3.61586 7.02226 4.82783 7.02226Z"/>
+</defs>
+</svg>

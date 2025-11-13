@@ -1,0 +1,195 @@
+/* stuff from the old pidgin.im */
+.donate-button {
+	display: inline-block;
+	border-radius: 25px;
+	color: rgb(0, 0, 0) !important;
+	background: #fff;
+	padding: 10px;
+	width: 100%;
+	text-align: center;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+/*****************************************************************************
+ * Visual fixes
+ *****************************************************************************/
+
+#body .padding {
+	max-width: 900px;
+	margin: auto;
+	padding: 1rem 1rem;
+}
+
+#body-inner li p {
+	/* This is to fix the unwanted p-tags that blackfriday adds */
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
+#body-inner li pre {
+	margin: 1rem 0;
+}
+
+#body-inner li {
+	margin-block-start: 0.3rem;
+	margin-block-end: 0.3rem;
+}
+
+#body-inner {
+	margin-bottom: 0;
+}
+
+nav#TableOfContents ul code + .copy-to-clipboard {
+	/* Make titles with code snippets look nicer */
+	display: none;
+}
+
+#body del a.highlight, #body del a.highlight:hover, #body del a.highlight:focus {
+    text-decoration: inherit;
+}
+
+/*****************************************************************************
+ * Footline
+ *****************************************************************************/
+
+#footline {
+	background: rgb(246, 246, 246);
+	text-align: center;
+	margin-left: 300px;
+	margin-top: 15px;
+	padding: 1rem;
+}
+@media only all and (max-width: 59.938em) {
+	#footline {
+		margin-left: 230px;
+	}
+}
+@media only all and (max-width: 47.938em) {
+	#footline {
+		margin-left: 0;
+		width: 100%;
+	}
+}
+
+.footline-block {
+	margin-block-end: 1rem;
+	margin-top: 0;
+}
+
+.footline-block:last-child {
+	margin-block-end: 0;
+}
+
+#page-info {
+	padding: 10px;
+}
+
+#page-info > div {
+	display: inline-block;
+	width: 49%;
+}
+
+.footline-columns {
+	vertical-align: top;
+	padding: 0;
+}
+
+.footline-columns > li {
+	display: inline-block;
+	list-style-type: none;
+}
+
+.footline-columns > li::after {
+	content: "\00b7";
+}
+
+.footline-columns > li:last-child::after {
+	content: "";
+}
+
+.footline-old-site-info > ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.footline-old-site-info > ul > li {
+	list-style-type: none;
+}
+
+.copyright-text {
+	font-size: x-small;
+}
+
+/*****************************************************************************
+ * Supporters
+ *****************************************************************************/
+
+.supporters {
+	padding: 7px;
+	text-align: center;
+}
+
+.supporters a {
+	display: inline-block;
+	margin: 0 5px;
+	max-height: 40px;
+	max-width: 190px;
+	vertical-align: middle;
+}
+
+.supporters img {
+	display: inline-block !important;
+	margin: 0 !important;
+	width: auto;
+}
+
+/*****************************************************************************
+ * Plugin Table
+ *****************************************************************************/
+
+.plugin-icon {
+	vertical-align: top;
+	padding: 0.25rem !important;
+	text-align: center;
+}
+
+.plugin-icon img {
+	margin: 0 !important;
+	min-width: 48px !important;
+	height: 48px;
+	width: 48px;
+}
+
+.plugin-heading,
+.plugin-publisher,
+.plugin-type,
+.plugin-info,
+.plugin-repo {
+	vertical-align: top;
+}
+
+.plugin-publisher {
+	text-align: center;
+	padding: 0.25rem !important;
+}
+
+div.item-nav::after {
+	clear: both;
+	display: block;
+	content: "";
+}
+
+div.next {
+	text-align: right;
+	float: right;
+}
+
+div.prev {
+	text-align: left;
+	float: left;
+}
+
+/*****************************************************************************
+ * End of structure 
+ *****************************************************************************/

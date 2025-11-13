@@ -1,0 +1,72 @@
+
+
+
+/* preload print image */	
+body::before {
+  content: url(../../images/hdv3-img/hd-header-logo-2c.svg);
+  position: absolute;
+  top: -9999rem;
+  left: -9999rem;
+  opacity: 0;
+}	
+
+@media print {
+	/* general site */
+	footer { display:none !important; }
+	section.admin-panel { display:none !important; }
+	#phoneSystemDownDivID { display:none !important; }
+	div.navBurger { display:none !important; }
+
+	/* no work ,, div.ai-center { display:none !important; } */
+	a.logo {margin-left:0px; }
+	
+	a.logo img {
+		content: url(../../images/hdv3-img/hd-header-logo-2c.svg);
+	}
+
+	
+	nav.navbar { display:none !important; }
+	div.js-overlay-modal { display:none !important; }
+	div.overlay-modal { display:none !important; }
+
+
+	/* receipt */	
+	div.print-block { display:none !important; }
+	div.ifo-footer { display:none !important; }
+	.order-title { padding-top:20px; padding-bottom:0px; }
+	
+	div.bQQQilling-info {  break-inside: avoid; }
+	section.biling-info-section div.info-row {  break-inside: avoid; }
+
+	
+	section.biling-info-section div.pdf-info { display:none !important; }
+	
+	div.cky-btn-revisit-wrapper { display:none !important; }
+	div.fab-btn-wrap  { display:none !important; }
+	
+	
+	/* general no print */
+	.noPrint { display:none !important; }
+	.noLeftPadPrint {padding-left:0px !important; }
+	.noTopPadPrint {padding-top:0px !important; }
+	.noBottomBorderPrint {border-bottom:0xp !important; }
+	
+	
+	.noLeftPadDownDivPrint div {padding-left:0px !important; }
+
+	/* remove all header	
+		header#header {display:none;} */
+
+	/* removes the bottom border on header */
+	header#header { border-bottom:0px !important;
+			
+		position:relative !important;
+	 } 
+
+	main.site-main  {
+		padding-top:0px !important;
+	}	
+
+	
+	
+}

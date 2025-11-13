@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+Disallow: /author/
+Disallow: /*/trackback
+Disallow: /tag/
+Disallow: /*/feed
+Disallow: /?s=*
+Disallow: /attachment/
+Disallow: /*?utm_source
+Disallow: /*&utm_source
+
+# Allow Facebook scraper
+User-agent: facebookexternalhit
+Allow: /
+
+Sitemap: https://ineer.org/sitemap.xml
+test02

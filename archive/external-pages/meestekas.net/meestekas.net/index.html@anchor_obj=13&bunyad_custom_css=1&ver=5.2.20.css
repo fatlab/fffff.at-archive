@@ -1,0 +1,98 @@
+.post .post-content > p:first-child { font-size: inherit; color: inherit; }
+
+.navigation { background-color: #141d24; }
+
+@media only screen and (max-width: 799px) { .navigation .menu > li:hover > a, .navigation .menu > .current-menu-item > a, 
+.navigation .menu > .current-menu-parent > a { background-color: #141d24; } }
+
+.navigation.sticky { background: rgb(20,29,36); background: rgba(20,29,36, 0.9); }
+
+.navigation .menu > li:hover, .navigation .menu li li:hover, .navigation .menu li li.current-menu-item,
+.navigation .mega-menu .sub-nav li:hover, .navigation .menu .sub-nav li.current-menu-item { background-color: #19232d; }
+
+@media only screen and (max-width: 799px) { .navigation .menu > li:hover > a, .navigation .menu > .current-menu-item > a, 
+.navigation .menu > .current-menu-parent > a, .navigation .mega-menu.links > li:hover,
+.navigation .menu > .current-menu-ancestor > a, .navigation .menu li.active { background-color: #19232d; } }
+
+.main .sidebar .widgettitle, .tabbed .tabs-list { background-color: #141d24; }
+
+.main-footer { background-color: #141d24; background-image: none; }
+
+body { background-image: url(wp-content/uploads/2019/09/engine-924811_1920.jpg);background-repeat: no-repeat; background-attachment: fixed; background-position: center center; -webkit-background-size: cover; -moz-background-size: cover;-o-background-size: cover; background-size: cover; }
+
+body.boxed { background-image: url(wp-content/uploads/2019/09/engine-924811_1920.jpg);background-repeat: no-repeat; background-attachment: fixed; background-position: center center; -webkit-background-size: cover; -moz-background-size: cover;-o-background-size: cover; background-size: cover; }
+
+
+.cat-11, .cat-title.cat-11 { background: #0093c9; }
+.navigation .menu .menu-cat-11 .mega-menu { border-bottom-color: #0093c9; }
+.news-focus .heading.cat-11 .subcats .active, .news-focus .heading.cat-11, .cat-text-11 {  color: #0093c9;  }
+
+.navigation .menu > .menu-cat-11:hover > a, .navigation .menu > .menu-cat-11.current-menu-item > a, .navigation .menu > .menu-cat-11.current-menu-parent > a {
+	border-bottom-color: #0093c9;
+}
+
+
+.cat-12, .cat-title.cat-12 { background: #81d742; }
+.navigation .menu .menu-cat-12 .mega-menu { border-bottom-color: #81d742; }
+.news-focus .heading.cat-12 .subcats .active, .news-focus .heading.cat-12, .cat-text-12 {  color: #81d742;  }
+
+.navigation .menu > .menu-cat-12:hover > a, .navigation .menu > .menu-cat-12.current-menu-item > a, .navigation .menu > .menu-cat-12.current-menu-parent > a {
+	border-bottom-color: #81d742;
+}
+
+
+.cat-4430, .cat-title.cat-4430 { background: #db009d; }
+.navigation .menu .menu-cat-4430 .mega-menu { border-bottom-color: #db009d; }
+.news-focus .heading.cat-4430 .subcats .active, .news-focus .heading.cat-4430, .cat-text-4430 {  color: #db009d;  }
+
+.navigation .menu > .menu-cat-4430:hover > a, .navigation .menu > .menu-cat-4430.current-menu-item > a, .navigation .menu > .menu-cat-4430.current-menu-parent > a {
+	border-bottom-color: #db009d;
+}
+
+body.boxed.category-4430 { background: url(wp-content/uploads/2019/03/adult-2807096_1920.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover;-o-background-size: cover; background-size: cover; }
+
+.cat-131, .cat-title.cat-131 { background: #dd9933; }
+.navigation .menu .menu-cat-131 .mega-menu { border-bottom-color: #dd9933; }
+.news-focus .heading.cat-131 .subcats .active, .news-focus .heading.cat-131, .cat-text-131 {  color: #dd9933;  }
+
+.navigation .menu > .menu-cat-131:hover > a, .navigation .menu > .menu-cat-131.current-menu-item > a, .navigation .menu > .menu-cat-131.current-menu-parent > a {
+	border-bottom-color: #dd9933;
+}
+
+::selection { background: #e54e53 }
+:-moz-selection { background: #e54e53 }
+.top-bar { border-top-color: #e54e53 }
+.trending-ticker .heading, .breadcrumbs .location, .news-focus .heading, .gallery-title, .related-posts .section-head, 
+.news-focus .heading .subcats a.active, .post-content a, .comments-list .bypostauthor .comment-author a, .error-page 
+.text-404, .main-color, .section-head.prominent, .block.posts .fa-angle-right, a.bbp-author-name, .main-stars span:before,
+.main-stars, .recentcomments  .url { color: #e54e53 }
+.navigation .menu > li:hover > a, .navigation .menu >.current-menu-item > a, .navigation .menu > .current-menu-parent > a,
+.navigation .menu > .current-menu-ancestor > a, .tabbed .tabs-list .active a,  
+.comment-content .reply, .sc-tabs .active a, .navigation .mega-menu { border-bottom-color: #e54e53 }
+.main-featured .cat, .main-featured .pages .flex-active, .rate-number .progress, .highlights .rate-number .progress, 
+.main-pagination .current, .main-pagination a:hover, .cat-title, .sc-button-default:hover, .drop-caps, .review-box .bar,
+.review-box .overall, .post .read-more a, .button, .post-pagination > span { background: #e54e53 }
+.post-content .wpcf7-not-valid-tip, .main-heading, .review-box .heading, .post-header .post-title:before, 
+.highlights h2:before, div.bbp-template-notice, div.indicator-hint, div.bbp-template-notice.info, 
+.modal-header .modal-title, .entry-title, .page-title { border-left-color: #e54e53 }
+@media only screen and (max-width: 799px) { .navigation .mobile .fa { background: #e54e53 } }
+
+.cat-13, .cat-title.cat-13 { background: #e54e53; }
+.navigation .menu .menu-cat-13 .mega-menu { border-bottom-color: #e54e53; }
+.news-focus .heading.cat-13 .subcats .active, .news-focus .heading.cat-13, .cat-text-13 {  color: #e54e53;  }
+
+.navigation .menu > .menu-cat-13:hover > a, .navigation .menu > .menu-cat-13.current-menu-item > a, .navigation .menu > .menu-cat-13.current-menu-parent > a {
+	border-bottom-color: #e54e53;
+}
+
+
+.cat-6395, .cat-title.cat-6395 { background: #4c4c4c; }
+.navigation .menu .menu-cat-6395 .mega-menu { border-bottom-color: #4c4c4c; }
+.news-focus .heading.cat-6395 .subcats .active, .news-focus .heading.cat-6395, .cat-text-6395 {  color: #4c4c4c;  }
+
+.navigation .menu > .menu-cat-6395:hover > a, .navigation .menu > .menu-cat-6395.current-menu-item > a, .navigation .menu > .menu-cat-6395.current-menu-parent > a {
+	border-bottom-color: #4c4c4c;
+}
+
+
+.no-display { opacity: 1; } 

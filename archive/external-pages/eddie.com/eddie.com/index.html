@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="en-US" class="no-js" itemtype="https://schema.org/Blog" itemscope>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<title>Eddie.com</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel='dns-prefetch' href='http://secure.gravatar.com/' />
+<link rel='dns-prefetch' href='http://www.googletagmanager.com/' />
+<link rel='dns-prefetch' href='http://stats.wp.com/' />
+<link rel='dns-prefetch' href='http://v0.wordpress.com/' />
+<link rel='dns-prefetch' href='http://widgets.wp.com/' />
+<link rel='dns-prefetch' href='http://s0.wp.com/' />
+<link rel='dns-prefetch' href='http://0.gravatar.com/' />
+<link rel='dns-prefetch' href='http://1.gravatar.com/' />
+<link rel='dns-prefetch' href='http://2.gravatar.com/' />
+<link rel='preconnect' href='http://i0.wp.com/' />
+<link rel='preconnect' href='http://c0.wp.com/' />
+<link rel="alternate" type="application/rss+xml" title="Eddie.com &raquo; Feed" href="https://eddie.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Eddie.com &raquo; Comments Feed" href="https://eddie.com/comments/feed/" />
+			<script>document.documentElement.classList.remove( 'no-js' );</script>
+					<!-- This site uses the Google Analytics by MonsterInsights plugin v9.9.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+							<script src="../../../www.googletagmanager.com/gtag/js@id=G-S2TLHZTGHM"  data-cfasync="false" data-wpfc-render="false" async></script>
+			<script data-cfasync="false" data-wpfc-render="false">
+				var mi_version = '9.9.0';
+				var mi_track_user = true;
+				var mi_no_track_reason = '';
+								var MonsterInsightsDefaultLocations = {"page_location":"https:\/\/eddie.com\/","page_referrer":"http:\/\/eddie.com\/"};
+								MonsterInsightsDefaultLocations.page_location = window.location.href;
+								if ( typeof MonsterInsightsPrivacyGuardFilter === 'function' ) {
+					var MonsterInsightsLocations = (typeof MonsterInsightsExcludeQuery === 'object') ? MonsterInsightsPrivacyGuardFilter( MonsterInsightsExcludeQuery ) : MonsterInsightsPrivacyGuardFilter( MonsterInsightsDefaultLocations );
+				} else {
+					var MonsterInsightsLocations = (typeof MonsterInsightsExcludeQuery === 'object') ? MonsterInsightsExcludeQuery : MonsterInsightsDefaultLocations;
+				}
+
+								var disableStrs = [
+										'ga-disable-G-S2TLHZTGHM',
+									];
+
+				/* Function to detect opted out users */
+				function __gtagTrackerIsOptedOut() {
+					for (var index = 0; index < disableStrs.length; index++) {
+						if (document.cookie.indexOf(disableStrs[index] + '=true') > -1) {
+							return true;
+						}
+					}
+
+					return false;
+				}
+
+				/* Disable tracking if the opt-out cookie exists. */
+				if (__gtagTrackerIsOptedOut()) {
+					for (var index = 0; index < disableStrs.length; index++) {
+						window[disableStrs[index]] = true;
+					}
+				}
+
+				/* Opt-out function */
+				function __gtagTrackerOptout() {
+					for (var index = 0; index < disableStrs.length; index++) {
+						document.cookie = disableStrs[index] + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+						window[disableStrs[index]] = true;
+					}
+				}
+
+				if ('undefined' === typeof gaOptout) {
+					function gaOptout() {
+						__gtagTrackerOptout();
+					}
+				}
+								window.dataLayer = window.dataLayer || [];
+
+				window.MonsterInsightsDualTracker = {
+					helpers: {},
+					trackers: {},
+				};
+				if (mi_track_user) {
+					function __gtagDataLayer() {
+						dataLayer.push(arguments);
+					}
+
+					function __gtagTracker(type, name, parameters) {
+						if (!parameters) {
+							parameters = {};
+						}
+
+						if (parameters.send_to) {
+							__gtagDataLayer.apply(null, arguments);
+							return;
+						}
+
+						if (type === 'event') {
+														parameters.send_to = monsterinsights_frontend.v4_id;
+							var hookName = name;
+							if (typeof parameters['event_category'] !== 'undefined') {
+								hookName = parameters['event_category'] + ':' + name;
+							}
+
+							if (typeof MonsterInsightsDualTracker.trackers[hookName] !== 'undefined') {
+								MonsterInsightsDualTracker.trackers[hookName](parameters);
+							} else {
+								__gtagDataLayer('event', name, parameters);
+							}
+							
+						} else {
+							__gtagDataLayer.apply(null, arguments);
+						}
+					}
+
+					__gtagTracker('js', new Date());
+					__gtagTracker('set', {
+						'developer_id.dZGIzZG': true,
+											});
+					if ( MonsterInsightsLocations.page_location ) {
+						__gtagTracker('set', MonsterInsightsLocations);
+					}
+										__gtagTracker('config', 'G-S2TLHZTGHM', {"forceSSL":"true","link_attribution":"true"} );
+										window.gtag = __gtagTracker;										(function () {
+						/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+						/* ga and __gaTracker compatibility shim. */
+						var noopfn = function () {
+							return null;
+						};
+						var newtracker = function () {
+							return new Tracker();
+						};
+						var Tracker = function () {
+							return null;
+						};
+						var p = Tracker.prototype;
+						p.get = noopfn;
+						p.set = noopfn;
+						p.send = function () {
+							var args = Array.prototype.slice.call(arguments);
+							args.unshift('send');
+							__gaTracker.apply(null, args);
+						};
+						var __gaTracker = function () {
+							var len = arguments.length;
+							if (len === 0) {
+								return;
+							}
+							var f = arguments[len - 1];
+							if (typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function') {
+								if ('send' === arguments[0]) {
+									var hitConverted, hitObject = false, action;
+									if ('event' === arguments[1]) {
+										if ('undefined' !== typeof arguments[3]) {
+											hitObject = {
+												'eventAction': arguments[3],
+												'eventCategory': arguments[2],
+												'eventLabel': arguments[4],
+												'value': arguments[5] ? arguments[5] : 1,
+											}
+										}
+									}
+									if ('pageview' === arguments[1]) {
+										if ('undefined' !== typeof arguments[2]) {
+											hitObject = {
+												'eventAction': 'page_view',
+												'page_path': arguments[2],
+											}
+										}
+									}
+									if (typeof arguments[2] === 'object') {
+										hitObject = arguments[2];
+									}
+									if (typeof arguments[5] === 'object') {
+										Object.assign(hitObject, arguments[5]);
+									}
+									if ('undefined' !== typeof arguments[1].hitType) {
+										hitObject = arguments[1];
+										if ('pageview' === hitObject.hitType) {
+											hitObject.eventAction = 'page_view';
+										}
+									}
+									if (hitObject) {
+										action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
+										hitConverted = mapArgs(hitObject);
+										__gtagTracker('event', action, hitConverted);
+									}
+								}
+								return;
+							}
+
+							function mapArgs(args) {
+								var arg, hit = {};
+								var gaMap = {
+									'eventCategory': 'event_category',
+									'eventAction': 'event_action',
+									'eventLabel': 'event_label',
+									'eventValue': 'event_value',
+									'nonInteraction': 'non_interaction',
+									'timingCategory': 'event_category',
+									'timingVar': 'name',
+									'timingValue': 'value',
+									'timingLabel': 'event_label',
+									'page': 'page_path',
+									'location': 'page_location',
+									'title': 'page_title',
+									'referrer' : 'page_referrer',
+								};
+								for (arg in args) {
+																		if (!(!args.hasOwnProperty(arg) || !gaMap.hasOwnProperty(arg))) {
+										hit[gaMap[arg]] = args[arg];
+									} else {
+										hit[arg] = args[arg];
+									}
+								}
+								return hit;
+							}
+
+							try {
+								f.hitCallback();
+							} catch (ex) {
+							}
+						};
+						__gaTracker.create = newtracker;
+						__gaTracker.getByName = newtracker;
+						__gaTracker.getAll = function () {
+							return [];
+						};
+						__gaTracker.remove = noopfn;
+						__gaTracker.loaded = true;
+						window['__gaTracker'] = __gaTracker;
+					})();
+									} else {
+										console.log("");
+					(function () {
+						function __gtagTracker() {
+							return null;
+						}
+
+						window['__gtagTracker'] = __gtagTracker;
+						window['gtag'] = __gtagTracker;
+					})();
+									}
+			</script>
+			
+							<!-- / Google Analytics by MonsterInsights -->
+		<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/eddie.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.3"}};
+/*! This file is auto-generated */
+!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='../../../c0.wp.com/c/6.8.3/wp-includes/css/dist/block-library/style.min.css' media='all' />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link rel='stylesheet' id='mediaelement-css' href='../../../c0.wp.com/c/6.8.3/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css' href='../../../c0.wp.com/c/6.8.3/wp-includes/js/mediaelement/wp-mediaelement.min.css' media='all' />
+<style id='jetpack-sharing-buttons-style-inline-css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--theme-palette-1: #2B6CB0;--wp--preset--color--theme-palette-2: #215387;--wp--preset--color--theme-palette-3: #1A202C;--wp--preset--color--theme-palette-4: #2D3748;--wp--preset--color--theme-palette-5: #4A5568;--wp--preset--color--theme-palette-6: #718096;--wp--preset--color--theme-palette-7: #EDF2F7;--wp--preset--color--theme-palette-8: #F7FAFC;--wp--preset--color--theme-palette-9: #ffffff;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 14px;--wp--preset--font-size--medium: 24px;--wp--preset--font-size--large: 32px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--larger: 40px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='cptch_stylesheet-css' href='wp-content/plugins/captcha/css/front_end_style.css@ver=4.4.5.css' media='all' />
+<link rel='stylesheet' id='dashicons-css' href='../../../c0.wp.com/c/6.8.3/wp-includes/css/dashicons.min.css' media='all' />
+<link rel='stylesheet' id='cptch_desktop_style-css' href='wp-content/plugins/captcha/css/desktop_style.css@ver=4.4.5.css' media='all' />
+<link rel='stylesheet' id='kadence-global-css' href='wp-content/themes/kadence/assets/css/global.min.css@ver=1.1.50.css' media='all' />
+<style id='kadence-global-inline-css'>
+/* Kadence Base CSS */
+:root{--global-palette1:#2B6CB0;--global-palette2:#215387;--global-palette3:#1A202C;--global-palette4:#2D3748;--global-palette5:#4A5568;--global-palette6:#718096;--global-palette7:#EDF2F7;--global-palette8:#F7FAFC;--global-palette9:#ffffff;--global-palette9rgb:255, 255, 255;--global-palette-highlight:var(--global-palette1);--global-palette-highlight-alt:var(--global-palette2);--global-palette-highlight-alt2:var(--global-palette9);--global-palette-btn-bg:var(--global-palette1);--global-palette-btn-bg-hover:var(--global-palette2);--global-palette-btn:var(--global-palette9);--global-palette-btn-hover:var(--global-palette9);--global-body-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";--global-heading-font-family:inherit;--global-primary-nav-font-family:inherit;--global-fallback-font:sans-serif;--global-display-fallback-font:sans-serif;--global-content-width:1290px;--global-content-narrow-width:842px;--global-content-edge-padding:1.5rem;--global-content-boxed-padding:2rem;--global-calc-content-width:calc(1290px - var(--global-content-edge-padding) - var(--global-content-edge-padding) );--wp--style--global--content-size:var(--global-calc-content-width);}.wp-site-blocks{--global-vw:calc( 100vw - ( 0.5 * var(--scrollbar-offset)));}:root body.kadence-elementor-colors{--e-global-color-kadence1:var(--global-palette1);--e-global-color-kadence2:var(--global-palette2);--e-global-color-kadence3:var(--global-palette3);--e-global-color-kadence4:var(--global-palette4);--e-global-color-kadence5:var(--global-palette5);--e-global-color-kadence6:var(--global-palette6);--e-global-color-kadence7:var(--global-palette7);--e-global-color-kadence8:var(--global-palette8);--e-global-color-kadence9:var(--global-palette9);}body{background:var(--global-palette8);}body, input, select, optgroup, textarea{font-weight:400;font-size:17px;line-height:1.6;font-family:var(--global-body-font-family);color:var(--global-palette4);}.content-bg, body.content-style-unboxed .site{background:var(--global-palette9);}h1,h2,h3,h4,h5,h6{font-family:var(--global-heading-font-family);}h1{font-weight:700;font-size:32px;line-height:1.5;color:var(--global-palette3);}h2{font-weight:700;font-size:28px;line-height:1.5;color:var(--global-palette3);}h3{font-weight:700;font-size:24px;line-height:1.5;color:var(--global-palette3);}h4{font-weight:700;font-size:22px;line-height:1.5;color:var(--global-palette4);}h5{font-weight:700;font-size:20px;line-height:1.5;color:var(--global-palette4);}h6{font-weight:700;font-size:18px;line-height:1.5;color:var(--global-palette5);}.entry-hero .kadence-breadcrumbs{max-width:1290px;}.site-container, .site-header-row-layout-contained, .site-footer-row-layout-contained, .entry-hero-layout-contained, .comments-area, .alignfull > .wp-block-cover__inner-container, .alignwide > .wp-block-cover__inner-container{max-width:var(--global-content-width);}.content-width-narrow .content-container.site-container, .content-width-narrow .hero-container.site-container{max-width:var(--global-content-narrow-width);}@media all and (min-width: 1520px){.wp-site-blocks .content-container  .alignwide{margin-left:-115px;margin-right:-115px;width:unset;max-width:unset;}}@media all and (min-width: 1102px){.content-width-narrow .wp-site-blocks .content-container .alignwide{margin-left:-130px;margin-right:-130px;width:unset;max-width:unset;}}.content-style-boxed .wp-site-blocks .entry-content .alignwide{margin-left:calc( -1 * var( --global-content-boxed-padding ) );margin-right:calc( -1 * var( --global-content-boxed-padding ) );}.content-area{margin-top:5rem;margin-bottom:5rem;}@media all and (max-width: 1024px){.content-area{margin-top:3rem;margin-bottom:3rem;}}@media all and (max-width: 767px){.content-area{margin-top:2rem;margin-bottom:2rem;}}@media all and (max-width: 1024px){:root{--global-content-boxed-padding:2rem;}}@media all and (max-width: 767px){:root{--global-content-boxed-padding:1.5rem;}}.entry-content-wrap{padding:2rem;}@media all and (max-width: 1024px){.entry-content-wrap{padding:2rem;}}@media all and (max-width: 767px){.entry-content-wrap{padding:1.5rem;}}.entry.single-entry{box-shadow:0px 15px 15px -10px rgba(0,0,0,0.05);}.entry.loop-entry{box-shadow:0px 15px 15px -10px rgba(0,0,0,0.05);}.loop-entry .entry-content-wrap{padding:2rem;}@media all and (max-width: 1024px){.loop-entry .entry-content-wrap{padding:2rem;}}@media all and (max-width: 767px){.loop-entry .entry-content-wrap{padding:1.5rem;}}.has-sidebar:not(.has-left-sidebar) .content-container{grid-template-columns:1fr 60%;}.has-sidebar.has-left-sidebar .content-container{grid-template-columns:60% 1fr;}button, .button, .wp-block-button__link, input[type="button"], input[type="reset"], input[type="submit"], .fl-button, .elementor-button-wrapper .elementor-button{box-shadow:0px 0px 0px -7px rgba(0,0,0,0);}button:hover, button:focus, button:active, .button:hover, .button:focus, .button:active, .wp-block-button__link:hover, .wp-block-button__link:focus, .wp-block-button__link:active, input[type="button"]:hover, input[type="button"]:focus, input[type="button"]:active, input[type="reset"]:hover, input[type="reset"]:focus, input[type="reset"]:active, input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active, .elementor-button-wrapper .elementor-button:hover, .elementor-button-wrapper .elementor-button:focus, .elementor-button-wrapper .elementor-button:active{box-shadow:0px 15px 25px -7px rgba(0,0,0,0.1);}.kb-button.kb-btn-global-outline.kb-btn-global-inherit{padding-top:calc(px - 2px);padding-right:calc(px - 2px);padding-bottom:calc(px - 2px);padding-left:calc(px - 2px);}@media all and (min-width: 1025px){.transparent-header .entry-hero .entry-hero-container-inner{padding-top:calc(25px + 0px);}}@media all and (max-width: 1024px){.mobile-transparent-header .entry-hero .entry-hero-container-inner{padding-top:0px;}}@media all and (max-width: 767px){.mobile-transparent-header .entry-hero .entry-hero-container-inner{padding-top:0px;}}.wp-site-blocks .post-archive-title h1{color:var(--global-palette1);}.post-archive-title .kadence-breadcrumbs{color:var(--global-palette3);}.post-archive-title .archive-description{color:var(--global-palette3);}
+/* Kadence Header CSS */
+@media all and (max-width: 1024px){.mobile-transparent-header #masthead{position:absolute;left:0px;right:0px;z-index:100;}.kadence-scrollbar-fixer.mobile-transparent-header #masthead{right:var(--scrollbar-offset,0);}.mobile-transparent-header #masthead, .mobile-transparent-header .site-top-header-wrap .site-header-row-container-inner, .mobile-transparent-header .site-main-header-wrap .site-header-row-container-inner, .mobile-transparent-header .site-bottom-header-wrap .site-header-row-container-inner{background:transparent;}.site-header-row-tablet-layout-fullwidth, .site-header-row-tablet-layout-standard{padding:0px;}}@media all and (min-width: 1025px){.transparent-header #masthead{position:absolute;left:0px;right:0px;z-index:100;}.transparent-header.kadence-scrollbar-fixer #masthead{right:var(--scrollbar-offset,0);}.transparent-header #masthead, .transparent-header .site-top-header-wrap .site-header-row-container-inner, .transparent-header .site-main-header-wrap .site-header-row-container-inner, .transparent-header .site-bottom-header-wrap .site-header-row-container-inner{background:transparent;}}.site-branding a.brand img{max-width:28px;}.site-branding a.brand img.svg-logo-image{width:28px;}@media all and (max-width: 1024px){.site-branding a.brand img{max-width:25px;}.site-branding a.brand img.svg-logo-image{width:25px;}}@media all and (max-width: 767px){.site-branding a.brand img{max-width:22px;}.site-branding a.brand img.svg-logo-image{width:22px;}}.site-branding{padding:0px 0px 0px 0px;}.site-branding .site-title{font-style:normal;font-weight:700;font-size:24px;text-transform:none;color:var(--global-palette3);}.site-branding .site-title:hover{color:#ae0c37;}#masthead, #masthead .kadence-sticky-header.item-is-fixed:not(.item-at-start):not(.site-header-row-container):not(.site-main-header-wrap), #masthead .kadence-sticky-header.item-is-fixed:not(.item-at-start) > .site-header-row-container-inner{background:#dadada;}.site-main-header-wrap .site-header-row-container-inner{border-top:0px none transparent;border-bottom:2px dotted #b30000;}.site-main-header-inner-wrap{min-height:25px;}@media all and (max-width: 1024px){.site-main-header-inner-wrap{min-height:25px;}}@media all and (max-width: 767px){.site-main-header-inner-wrap{min-height:25px;}}.site-main-header-wrap .site-header-row-container-inner>.site-container{padding:0px 0px 0px 0px;}.site-bottom-header-inner-wrap{min-height:0px;}#masthead .kadence-sticky-header.item-is-fixed:not(.item-at-start) .site-branding .site-title, #masthead .kadence-sticky-header.item-is-fixed:not(.item-at-start) .site-branding .site-description{color:#000000;}.header-navigation[class*="header-navigation-style-underline"] .header-menu-container.primary-menu-container>ul>li>a:after{width:calc( 100% - 1.2em);}.main-navigation .primary-menu-container > ul > li.menu-item > a{padding-left:calc(1.2em / 2);padding-right:calc(1.2em / 2);padding-top:0.6em;padding-bottom:0.6em;color:var(--global-palette5);}.main-navigation .primary-menu-container > ul > li.menu-item .dropdown-nav-special-toggle{right:calc(1.2em / 2);}.main-navigation .primary-menu-container > ul > li.menu-item > a:hover{color:var(--global-palette-highlight);}.main-navigation .primary-menu-container > ul > li.menu-item.current-menu-item > a{color:var(--global-palette3);}.header-navigation .header-menu-container ul ul.sub-menu, .header-navigation .header-menu-container ul ul.submenu{background:var(--global-palette3);box-shadow:0px 2px 13px 0px rgba(0,0,0,0.1);}.header-navigation .header-menu-container ul ul li.menu-item, .header-menu-container ul.menu > li.kadence-menu-mega-enabled > ul > li.menu-item > a{border-bottom:1px solid rgba(255,255,255,0.1);}.header-navigation .header-menu-container ul ul li.menu-item > a{width:200px;padding-top:1em;padding-bottom:1em;color:var(--global-palette8);font-size:12px;}.header-navigation .header-menu-container ul ul li.menu-item > a:hover{color:var(--global-palette9);background:var(--global-palette4);}.header-navigation .header-menu-container ul ul li.menu-item.current-menu-item > a{color:var(--global-palette9);background:var(--global-palette4);}.mobile-toggle-open-container .menu-toggle-open, .mobile-toggle-open-container .menu-toggle-open:focus{color:var(--global-palette5);padding:0.4em 0.6em 0.4em 0.6em;font-size:14px;}.mobile-toggle-open-container .menu-toggle-open.menu-toggle-style-bordered{border:1px solid currentColor;}.mobile-toggle-open-container .menu-toggle-open .menu-toggle-icon{font-size:20px;}.mobile-toggle-open-container .menu-toggle-open:hover, .mobile-toggle-open-container .menu-toggle-open:focus-visible{color:var(--global-palette-highlight);}.mobile-navigation ul li{font-size:14px;}.mobile-navigation ul li a{padding-top:1em;padding-bottom:1em;}.mobile-navigation ul li > a, .mobile-navigation ul li.menu-item-has-children > .drawer-nav-drop-wrap{color:var(--global-palette8);}.mobile-navigation ul li.current-menu-item > a, .mobile-navigation ul li.current-menu-item.menu-item-has-children > .drawer-nav-drop-wrap{color:var(--global-palette-highlight);}.mobile-navigation ul li.menu-item-has-children .drawer-nav-drop-wrap, .mobile-navigation ul li:not(.menu-item-has-children) a{border-bottom:1px solid rgba(255,255,255,0.1);}.mobile-navigation:not(.drawer-navigation-parent-toggle-true) ul li.menu-item-has-children .drawer-nav-drop-wrap button{border-left:1px solid rgba(255,255,255,0.1);}#mobile-drawer .drawer-header .drawer-toggle{padding:0.6em 0.15em 0.6em 0.15em;font-size:24px;}#main-header .header-button{margin:0px 0px 0px 0px;border:2px none transparent;box-shadow:0px 0px 0px -7px rgba(0,0,0,0);}#main-header .header-button:hover{box-shadow:0px 15px 25px -7px rgba(0,0,0,0.1);}.header-html{font-style:normal;font-weight:normal;font-size:14px;margin:0px 0px 0px 0px;}.header-social-wrap .header-social-inner-wrap{font-size:1em;gap:0.3em;}.header-social-wrap .header-social-inner-wrap .social-button{border:2px none transparent;border-radius:3px;}.mobile-header-button-wrap .mobile-header-button-inner-wrap .mobile-header-button{border:2px none transparent;box-shadow:0px 0px 0px -7px rgba(0,0,0,0);}.mobile-header-button-wrap .mobile-header-button-inner-wrap .mobile-header-button:hover{box-shadow:0px 15px 25px -7px rgba(0,0,0,0.1);}.mobile-html{font-style:normal;font-weight:normal;font-size:14px;}@media all and (max-width: 767px){.mobile-html{font-size:12px;}}
+/* Kadence Footer CSS */
+.site-bottom-footer-inner-wrap{padding-top:30px;padding-bottom:30px;grid-column-gap:30px;}.site-bottom-footer-inner-wrap .widget{margin-bottom:30px;}.site-bottom-footer-inner-wrap .site-footer-section:not(:last-child):after{right:calc(-30px / 2);}
+</style>
+<link rel='stylesheet' id='kadence-header-css' href='wp-content/themes/kadence/assets/css/header.min.css@ver=1.1.50.css' media='all' />
+<link rel='stylesheet' id='kadence-content-css' href='wp-content/themes/kadence/assets/css/content.min.css@ver=1.1.50.css' media='all' />
+<link rel='stylesheet' id='kadence-footer-css' href='wp-content/themes/kadence/assets/css/footer.min.css@ver=1.1.50.css' media='all' />
+<link rel='stylesheet' id='jetpack_likes-css' href='../../../c0.wp.com/p/jetpack/15.2/modules/likes/style.css' media='all' />
+<script src="wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend-gtag.min.js@ver=9.9.0" id="monsterinsights-frontend-script-js" async data-wp-strategy="async"></script>
+<script data-cfasync="false" data-wpfc-render="false" id='monsterinsights-frontend-script-js-extra'>var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/eddie.com","hash_tracking":"false","v4_id":"G-S2TLHZTGHM"};</script>
+<script src="wp-content/plugins/stop-user-enumeration/frontend/js/frontend.js@ver=1.7.5" id="stop-user-enumeration-js" defer data-wp-strategy="defer"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script src="../../../www.googletagmanager.com/gtag/js@id=GT-M6JTGPB" id="google_gtagjs-js" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["eddie.com"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-M6JTGPB");
+ window._googlesitekit = window._googlesitekit || {}; window._googlesitekit.throttledEvents = []; window._googlesitekit.gtagEvent = (name, data) => { var key = JSON.stringify( { name, data } ); if ( !! window._googlesitekit.throttledEvents[ key ] ) { return; } window._googlesitekit.throttledEvents[ key ] = true; setTimeout( () => { delete window._googlesitekit.throttledEvents[ key ]; }, 5 ); gtag( "event", name, { ...data, event_source: "site-kit" } ); };
+</script>
+<link rel="https://api.w.org/" href="https://eddie.com/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://eddie.com/xmlrpc.php?rsd" />
+<link rel='shortlink' href='https://wp.me/49uqz' />
+<meta name="generator" content="Site Kit by Google 1.165.0" />	<style>img#wpstats{display:none}</style>
+		<meta name="generator" content="Elementor 3.33.0; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Eddie.com" />
+<meta property="og:url" content="https://eddie.com/" />
+<meta property="og:site_name" content="Eddie.com" />
+<meta property="og:image" content="https://i0.wp.com/eddie.com/wp-content/uploads/2025/01/cropped-ekai_thingiverse_nobg.png?fit=339%2C396&#038;ssl=1" />
+<meta property="og:image:width" content="339" />
+<meta property="og:image:height" content="396" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@ekai" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="../../../i0.wp.com/eddie.com/wp-content/uploads/2025/01/cropped-ekai_thingiverse_nobg-1.png@fit=32,32&amp;ssl=1" sizes="32x32" />
+<link rel="icon" href="../../../i0.wp.com/eddie.com/wp-content/uploads/2025/01/cropped-ekai_thingiverse_nobg-1.png@fit=192,192&amp;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://i0.wp.com/eddie.com/wp-content/uploads/2025/01/cropped-ekai_thingiverse_nobg-1.png?fit=180%2C180&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i0.wp.com/eddie.com/wp-content/uploads/2025/01/cropped-ekai_thingiverse_nobg-1.png?fit=270%2C270&#038;ssl=1" />
+</head>
+
+<body class="home blog wp-custom-logo wp-embed-responsive wp-theme-kadence hfeed footer-on-bottom hide-focus-outline link-style-standard content-title-style-hide content-width-narrow content-style-boxed content-vertical-padding-show non-transparent-header mobile-non-transparent-header kadence-elementor-colors fpt-template-kadence elementor-default elementor-kit-584838">
+<div id="wrapper" class="site wp-site-blocks">
+			<a class="skip-link screen-reader-text scroll-ignore" href="index.html#main">Skip to content</a>
+		<header id="masthead" class="site-header" role="banner" itemtype="https://schema.org/WPHeader" itemscope>
+	<div id="main-header" class="site-header-wrap">
+		<div class="site-header-inner-wrap kadence-sticky-header" data-reveal-scroll-up="false" data-shrink="false">
+			<div class="site-header-upper-wrap">
+				<div class="site-header-upper-inner-wrap">
+					<div class="site-main-header-wrap site-header-row-container site-header-focus-item site-header-row-layout-contained" data-section="kadence_customizer_header_main">
+	<div class="site-header-row-container-inner">
+				<div class="site-container">
+			<div class="site-main-header-inner-wrap site-header-row site-header-row-has-sides site-header-row-center-column">
+									<div class="site-header-main-section-left site-header-section site-header-section-left">
+						<div class="site-header-item site-header-focus-item" data-section="title_tagline">
+	<div class="site-branding branding-layout-standard"><a class="brand has-logo-image" href="https://eddie.com/" rel="home"><img fetchpriority="high" width="339" height="396" src="../../../i0.wp.com/eddie.com/wp-content/uploads/2025/01/cropped-ekai_thingiverse_nobg.png@fit=339,396&amp;ssl=1" class="custom-logo" alt="Eddie.com" decoding="async" /><div class="site-title-wrap"><p class="site-title">Eddie.com</p></div></a></div></div><!-- data-section="title_tagline" -->
+							<div class="site-header-main-section-left-center site-header-section site-header-section-left-center">
+															</div>
+												</div>
+													<div class="site-header-main-section-center site-header-section site-header-section-center">
+						<div class="site-header-item site-header-focus-item" data-section="kadence_customizer_header_social">
+	<div class="header-social-wrap"><div class="header-social-inner-wrap element-social-inner-wrap social-show-label-false social-style-filled"><a href="https://bsky.app/profile/eddie.com" aria-label="Blue Sky" target="_blank" rel="noopener noreferrer"  class="social-button header-social-item social-link-custom1 has-custom-image"><img width="1200" height="1060" src="../../../i0.wp.com/eddie.com/wp-content/uploads/2024/12/Bluesky_Logo.svg_.png@fit=1200,1060&amp;ssl=1" class="social-icon-image" alt="Blue Sky logo" style="max-width:24px" decoding="async" /></a><a href="https://www.instagram.com/ekai/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"  class="social-button header-social-item social-link-instagram"><span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-instagram-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><title>Instagram</title><path d="M21.138 0.242c3.767 0.007 3.914 0.038 4.65 0.144 1.52 0.219 2.795 0.825 3.837 1.821 0.584 0.562 0.987 1.112 1.349 1.848 0.442 0.899 0.659 1.75 0.758 3.016 0.021 0.271 0.031 4.592 0.031 8.916s-0.009 8.652-0.030 8.924c-0.098 1.245-0.315 2.104-0.743 2.986-0.851 1.755-2.415 3.035-4.303 3.522-0.685 0.177-1.304 0.26-2.371 0.31-0.381 0.019-4.361 0.024-8.342 0.024s-7.959-0.012-8.349-0.029c-0.921-0.044-1.639-0.136-2.288-0.303-1.876-0.485-3.469-1.784-4.303-3.515-0.436-0.904-0.642-1.731-0.751-3.045-0.031-0.373-0.039-2.296-0.039-8.87 0-2.215-0.002-3.866 0-5.121 0.006-3.764 0.037-3.915 0.144-4.652 0.219-1.518 0.825-2.795 1.825-3.833 0.549-0.569 1.105-0.975 1.811-1.326 0.915-0.456 1.756-0.668 3.106-0.781 0.374-0.031 2.298-0.038 8.878-0.038h5.13zM15.999 4.364v0c-3.159 0-3.555 0.014-4.796 0.070-1.239 0.057-2.084 0.253-2.824 0.541-0.765 0.297-1.415 0.695-2.061 1.342s-1.045 1.296-1.343 2.061c-0.288 0.74-0.485 1.586-0.541 2.824-0.056 1.241-0.070 1.638-0.070 4.798s0.014 3.556 0.070 4.797c0.057 1.239 0.253 2.084 0.541 2.824 0.297 0.765 0.695 1.415 1.342 2.061s1.296 1.046 2.061 1.343c0.74 0.288 1.586 0.484 2.825 0.541 1.241 0.056 1.638 0.070 4.798 0.070s3.556-0.014 4.797-0.070c1.239-0.057 2.085-0.253 2.826-0.541 0.765-0.297 1.413-0.696 2.060-1.343s1.045-1.296 1.343-2.061c0.286-0.74 0.482-1.586 0.541-2.824 0.056-1.241 0.070-1.637 0.070-4.797s-0.015-3.557-0.070-4.798c-0.058-1.239-0.255-2.084-0.541-2.824-0.298-0.765-0.696-1.415-1.343-2.061s-1.295-1.045-2.061-1.342c-0.742-0.288-1.588-0.484-2.827-0.541-1.241-0.056-1.636-0.070-4.796-0.070zM14.957 6.461c0.31-0 0.655 0 1.044 0 3.107 0 3.475 0.011 4.702 0.067 1.135 0.052 1.75 0.241 2.16 0.401 0.543 0.211 0.93 0.463 1.337 0.87s0.659 0.795 0.871 1.338c0.159 0.41 0.349 1.025 0.401 2.16 0.056 1.227 0.068 1.595 0.068 4.701s-0.012 3.474-0.068 4.701c-0.052 1.135-0.241 1.75-0.401 2.16-0.211 0.543-0.463 0.93-0.871 1.337s-0.794 0.659-1.337 0.87c-0.41 0.16-1.026 0.349-2.16 0.401-1.227 0.056-1.595 0.068-4.702 0.068s-3.475-0.012-4.702-0.068c-1.135-0.052-1.75-0.242-2.161-0.401-0.543-0.211-0.931-0.463-1.338-0.87s-0.659-0.794-0.871-1.337c-0.159-0.41-0.349-1.025-0.401-2.16-0.056-1.227-0.067-1.595-0.067-4.703s0.011-3.474 0.067-4.701c0.052-1.135 0.241-1.75 0.401-2.16 0.211-0.543 0.463-0.931 0.871-1.338s0.795-0.659 1.338-0.871c0.41-0.16 1.026-0.349 2.161-0.401 1.073-0.048 1.489-0.063 3.658-0.065v0.003zM16.001 10.024c-3.3 0-5.976 2.676-5.976 5.976s2.676 5.975 5.976 5.975c3.3 0 5.975-2.674 5.975-5.975s-2.675-5.976-5.975-5.976zM16.001 12.121c2.142 0 3.879 1.736 3.879 3.879s-1.737 3.879-3.879 3.879c-2.142 0-3.879-1.737-3.879-3.879s1.736-3.879 3.879-3.879zM22.212 8.393c-0.771 0-1.396 0.625-1.396 1.396s0.625 1.396 1.396 1.396 1.396-0.625 1.396-1.396c0-0.771-0.625-1.396-1.396-1.396v0.001z"></path>
+				</svg></span></a><a href="https://www.linkedin.com/in/eddiecodel/" aria-label="Linkedin" target="_blank" rel="noopener noreferrer"  class="social-button header-social-item social-link-linkedin"><span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-linkedin-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><title>Linkedin</title><path d="M3.703 22.094h3.609v-10.844h-3.609v10.844zM7.547 7.906c-0.016-1.062-0.781-1.875-2.016-1.875s-2.047 0.812-2.047 1.875c0 1.031 0.781 1.875 2 1.875h0.016c1.266 0 2.047-0.844 2.047-1.875zM16.688 22.094h3.609v-6.219c0-3.328-1.781-4.875-4.156-4.875-1.937 0-2.797 1.078-3.266 1.828h0.031v-1.578h-3.609s0.047 1.016 0 10.844v0h3.609v-6.062c0-0.313 0.016-0.641 0.109-0.875 0.266-0.641 0.859-1.313 1.859-1.313 1.297 0 1.813 0.984 1.813 2.453v5.797zM24 6.5v15c0 2.484-2.016 4.5-4.5 4.5h-15c-2.484 0-4.5-2.016-4.5-4.5v-15c0-2.484 2.016-4.5 4.5-4.5h15c2.484 0 4.5 2.016 4.5 4.5z"></path>
+				</svg></span></a><a href="https://www.youtube.com/user/ekai" aria-label="YouTube" target="_blank" rel="noopener noreferrer"  class="social-button header-social-item social-link-youtube"><span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-youtube-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>YouTube</title><path d="M11.109 17.625l7.562-3.906-7.562-3.953v7.859zM14 4.156c5.891 0 9.797 0.281 9.797 0.281 0.547 0.063 1.75 0.063 2.812 1.188 0 0 0.859 0.844 1.109 2.781 0.297 2.266 0.281 4.531 0.281 4.531v2.125s0.016 2.266-0.281 4.531c-0.25 1.922-1.109 2.781-1.109 2.781-1.062 1.109-2.266 1.109-2.812 1.172 0 0-3.906 0.297-9.797 0.297v0c-7.281-0.063-9.516-0.281-9.516-0.281-0.625-0.109-2.031-0.078-3.094-1.188 0 0-0.859-0.859-1.109-2.781-0.297-2.266-0.281-4.531-0.281-4.531v-2.125s-0.016-2.266 0.281-4.531c0.25-1.937 1.109-2.781 1.109-2.781 1.062-1.125 2.266-1.125 2.812-1.188 0 0 3.906-0.281 9.797-0.281v0z"></path>
+				</svg></span></a><a href="https://vimeo.com/ekai" aria-label="Vimeo" target="_blank" rel="noopener noreferrer"  class="social-button header-social-item social-link-vimeo"><span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-vimeo-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>Vimeo</title><path d="M26.703 8.094c-0.109 2.469-1.844 5.859-5.187 10.172-3.469 4.484-6.375 6.734-8.781 6.734-1.484 0-2.734-1.375-3.75-4.109-0.688-2.5-1.375-5.016-2.063-7.531-0.75-2.734-1.578-4.094-2.453-4.094-0.187 0-0.844 0.391-1.984 1.188l-1.203-1.531c1.25-1.109 2.484-2.234 3.719-3.313 1.656-1.469 2.922-2.203 3.766-2.281 1.984-0.187 3.187 1.156 3.656 4.047 0.484 3.125 0.844 5.078 1.031 5.828 0.578 2.594 1.188 3.891 1.875 3.891 0.531 0 1.328-0.828 2.406-2.516 1.062-1.687 1.625-2.969 1.703-3.844 0.141-1.453-0.422-2.172-1.703-2.172-0.609 0-1.234 0.141-1.891 0.406 1.25-4.094 3.641-6.078 7.172-5.969 2.609 0.078 3.844 1.781 3.687 5.094z"></path>
+				</svg></span></a><a href="https://www.imdb.com/name/nm1780114/" aria-label="IMDB" target="_blank" rel="noopener noreferrer"  class="social-button header-social-item social-link-imdb"><span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-imdb-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><title>IMDB</title><path d="M14.406 12.453v2.844c0 0.562 0.109 1.078-0.594 1.062v-4.828c0.688 0 0.594 0.359 0.594 0.922zM19.344 13.953v1.891c0 0.313 0.094 0.828-0.359 0.828-0.094 0-0.172-0.047-0.219-0.141-0.125-0.297-0.063-2.547-0.063-2.578 0-0.219-0.063-0.734 0.281-0.734 0.422 0 0.359 0.422 0.359 0.734zM2.812 17.641h1.906v-7.375h-1.906v7.375zM9.594 17.641h1.656v-7.375h-2.484l-0.438 3.453c-0.156-1.156-0.313-2.312-0.5-3.453h-2.469v7.375h1.672v-4.875l0.703 4.875h1.188l0.672-4.984v4.984zM16.234 12.875c0-0.469 0.016-0.969-0.078-1.406-0.25-1.297-1.813-1.203-2.828-1.203h-1.422v7.375c4.969 0 4.328 0.344 4.328-4.766zM21.187 15.953v-2.078c0-1-0.047-1.734-1.281-1.734-0.516 0-0.859 0.156-1.203 0.531v-2.406h-1.828v7.375h1.719l0.109-0.469c0.328 0.391 0.688 0.562 1.203 0.562 1.141 0 1.281-0.875 1.281-1.781zM24 4.5v19c0 1.375-1.125 2.5-2.5 2.5h-19c-1.375 0-2.5-1.125-2.5-2.5v-19c0-1.375 1.125-2.5 2.5-2.5h19c1.375 0 2.5 1.125 2.5 2.5z"></path>
+				</svg></span></a></div></div></div><!-- data-section="header_social" -->
+					</div>
+													<div class="site-header-main-section-right site-header-section site-header-section-right">
+													<div class="site-header-main-section-right-center site-header-section site-header-section-right-center">
+															</div>
+							<div class="site-header-item site-header-focus-item site-header-item-main-navigation header-navigation-layout-stretch-false header-navigation-layout-fill-stretch-false" data-section="kadence_customizer_primary_navigation">
+		<nav id="site-navigation" class="main-navigation header-navigation nav--toggle-sub header-navigation-style-underline header-navigation-dropdown-animation-none" role="navigation" aria-label="Primary Navigation">
+				<div class="primary-menu-container header-menu-container">
+			<ul id="primary-menu" class="menu"><li id="menu-item-1197" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-1197"><a href="https://eddie.com/about/">About Eddie.com</a></li>
+<li id="menu-item-1196" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1196"><a href="https://eddie.com/contact/">Contact Eddie</a></li>
+<li id="menu-item-595823" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-595823"><a href="https://daily.eddie.com">Eddie of the Day</a></li>
+</ul>		</div>
+	</nav><!-- #site-navigation -->
+	</div><!-- data-section="primary_navigation" -->
+					</div>
+							</div>
+		</div>
+	</div>
+</div>
+				</div>
+			</div>
+			<div class="site-bottom-header-wrap site-header-row-container site-header-focus-item site-header-row-layout-standard" data-section="kadence_customizer_header_bottom">
+	<div class="site-header-row-container-inner">
+				<div class="site-container">
+			<div class="site-bottom-header-inner-wrap site-header-row site-header-row-has-sides site-header-row-center-column">
+									<div class="site-header-bottom-section-left site-header-section site-header-section-left">
+						<div class="site-header-item site-header-focus-item" data-section="kadence_customizer_header_html">
+	<div class="header-html inner-link-style-plain"><div class="header-html-inner">Drone Cinematography + Live Video Streaming</div></div></div><!-- data-section="header_html" -->
+							<div class="site-header-bottom-section-left-center site-header-section site-header-section-left-center">
+															</div>
+												</div>
+													<div class="site-header-bottom-section-center site-header-section site-header-section-center">
+						<div class="site-header-item site-header-focus-item" data-section="kadence_customizer_header_button">
+	<div class="header-button-wrap"><div class="header-button-inner-wrap"><a href="https://daily.eddie.com" target="_blank" rel="noopener noreferrer" class="button header-button button-size-small button-style-filled">Eddie of the Day</a></div></div></div><!-- data-section="header_button" -->
+					</div>
+													<div class="site-header-bottom-section-right site-header-section site-header-section-right">
+													<div class="site-header-bottom-section-right-center site-header-section site-header-section-right-center">
+															</div>
+												</div>
+							</div>
+		</div>
+	</div>
+</div>
+		</div>
+	</div>
+	
+<div id="mobile-header" class="site-mobile-header-wrap">
+	<div class="site-header-inner-wrap">
+		<div class="site-header-upper-wrap">
+			<div class="site-header-upper-inner-wrap">
+			<div class="site-main-header-wrap site-header-focus-item site-header-row-layout-contained site-header-row-tablet-layout-default site-header-row-mobile-layout-default ">
+	<div class="site-header-row-container-inner">
+		<div class="site-container">
+			<div class="site-main-header-inner-wrap site-header-row site-header-row-has-sides site-header-row-no-center">
+									<div class="site-header-main-section-left site-header-section site-header-section-left">
+						<div class="site-header-item site-header-focus-item" data-section="title_tagline">
+	<div class="site-branding mobile-site-branding branding-layout-standard branding-tablet-layout-inherit branding-mobile-layout-inherit"><a class="brand has-logo-image" href="https://eddie.com/" rel="home"><img fetchpriority="high" width="339" height="396" src="../../../i0.wp.com/eddie.com/wp-content/uploads/2025/01/cropped-ekai_thingiverse_nobg.png@fit=339,396&amp;ssl=1" class="custom-logo" alt="Eddie.com" decoding="async" /><div class="site-title-wrap"><div class="site-title vs-md-false">Eddie.com</div></div></a></div></div><!-- data-section="title_tagline" -->
+					</div>
+																	<div class="site-header-main-section-right site-header-section site-header-section-right">
+						<div class="site-header-item site-header-focus-item site-header-item-navgation-popup-toggle" data-section="kadence_customizer_mobile_trigger">
+		<div class="mobile-toggle-open-container">
+						<button id="mobile-toggle" class="menu-toggle-open drawer-toggle menu-toggle-style-default" aria-label="Open menu" data-toggle-target="#mobile-drawer" data-toggle-body-class="showing-popup-drawer-from-right" aria-expanded="false" data-set-focus=".menu-toggle-close"
+					>
+						<span class="menu-toggle-icon"><span class="kadence-svg-iconset"><svg aria-hidden="true" class="kadence-svg-icon kadence-menu-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Toggle Menu</title><path d="M3 13h18c0.552 0 1-0.448 1-1s-0.448-1-1-1h-18c-0.552 0-1 0.448-1 1s0.448 1 1 1zM3 7h18c0.552 0 1-0.448 1-1s-0.448-1-1-1h-18c-0.552 0-1 0.448-1 1s0.448 1 1 1zM3 19h18c0.552 0 1-0.448 1-1s-0.448-1-1-1h-18c-0.552 0-1 0.448-1 1s0.448 1 1 1z"></path>
+				</svg></span></span>
+		</button>
+	</div>
+	</div><!-- data-section="mobile_trigger" -->
+					</div>
+							</div>
+		</div>
+	</div>
+</div>
+			</div>
+		</div>
+		<div class="site-bottom-header-wrap site-header-focus-item site-header-row-layout-standard site-header-row-tablet-layout-default site-header-row-mobile-layout-default ">
+	<div class="site-header-row-container-inner">
+		<div class="site-container">
+			<div class="site-bottom-header-inner-wrap site-header-row site-header-row-has-sides site-header-row-no-center">
+									<div class="site-header-bottom-section-left site-header-section site-header-section-left">
+						<div class="site-header-item site-header-focus-item" data-section="kadence_customizer_mobile_html">
+	<div class="mobile-html inner-link-style-normal"><div class="mobile-html-inner"><p>Drone Cinematography + Live Video Streaming</p>
+</div></div></div><!-- data-section="mobile_html" -->
+					</div>
+																	<div class="site-header-bottom-section-right site-header-section site-header-section-right">
+						<div class="site-header-item site-header-focus-item" data-section="kadence_customizer_mobile_button">
+	<div class="mobile-header-button-wrap"><div class="mobile-header-button-inner-wrap"><a href="https://daily.eddie.com" target="_blank" rel="noopener noreferrer" class="button mobile-header-button button-size-small button-style-filled">Eddie of the Day</a></div></div></div><!-- data-section="mobile_button" -->
+					</div>
+							</div>
+		</div>
+	</div>
+</div>
+	</div>
+</div>
+</header><!-- #masthead -->
+
+	<div id="inner-wrap" class="wrap hfeed kt-clear">
+		<div id="primary" class="content-area">
+	<div class="content-container site-container">
+		<main id="main" class="site-main" role="main">
+							<div id="archive-container" class="content-wrap grid-cols post-archive item-content-vertical-align-top grid-sm-col-1 grid-lg-col-1 item-image-style-beside">
+					
+<article class="entry content-bg loop-entry post-591424 post type-post status-publish format-standard sticky hentry category-aerial-cinema category-san-francisco category-self-promotion tag-drones tag-reel tag-sanfrancisco tag-video">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/aerial-cinema/" rel="tag">Aerial Cinema</a> | <a href="https://eddie.com/category/san-francisco/" rel="tag">San Francisco</a> | <a href="https://eddie.com/category/self-promotion/" rel="tag">Self Promotion</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2024/07/29/drone-reel/" rel="bookmark">Drone Reel 2025</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		
+<p>Here&#8217;s a compilation of some of my recent aerial cinematography work around the San Francisco Bay Area and beyond. Need some drone work done? <a href="https://eddie.com/contact/" data-type="page" data-id="1167">Reach out</a>.</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-vimeo wp-block-embed-vimeo wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Eddie.com Drone Reel 2024" src="https://player.vimeo.com/video/991133889?dnt=1&amp;app_id=122963" width="720" height="405" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"></iframe>
+</div></figure>
+
+
+
+<p></p>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+
+<article class="entry content-bg loop-entry post-595783 post type-post status-publish format-standard hentry category-drones-2 category-video tag-drones tag-philadelphia tag-video">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/drones-2/" rel="tag">Drones</a> | <a href="https://eddie.com/category/video/" rel="tag">Video</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2025/02/02/philadelphia-medical-transport-jet-crash-site/" rel="bookmark">Philadelphia Medical Transport Jet Crash Site</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		
+<p>Here&#8217;s a bit of eerie drone footage of the area in Philadelphia where the unfortunate Jet Rescue Air Ambulance Learjet 55 (registration XA-UCI) slammed into the ground less than a minute after take off on January 31, 2025. Sadly, all 6 passengers and crew lost there lives immediately on impact. At least one person on the ground was killed and 19 others injured in the accident. This footage was legally captured the day after the accident by <a href="https://www.youtube.com/@billykyle">Billy Kyle</a>, a licensed professional drone pilot and YouTuber based in the Philadelphia area.</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="The first light this morning exposed the damage of an unimaginable tragedy in Philadelphia" width="720" height="405" src="../../../www.youtube.com/embed/Y0U6kTnfx8c@feature=oembed.html" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p></p>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+
+<article class="entry content-bg loop-entry post-581156 post type-post status-publish format-standard hentry category-aerial-cinema category-drones-2 category-san-francisco tag-aerial-imagery tag-alameda tag-drones">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/aerial-cinema/" rel="tag">Aerial Cinema</a> | <a href="https://eddie.com/category/drones-2/" rel="tag">Drones</a> | <a href="https://eddie.com/category/san-francisco/" rel="tag">San Francisco</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2023/05/16/cinematic-scenery-around-sf/" rel="bookmark">Cinematic scenery around SF</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		
+<p>I’m really digging the compression of the 70mm and 165mm equivalent lenses on the new DJI Mavic 3 Pro. It’s really getting into Inspire cinematic territory. Parallaxes are fun!</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-instagram wp-block-embed-instagram"><div class="wp-block-embed__wrapper">
+<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/CsU7HwNrTiZ/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/CsU7HwNrTiZ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/CsU7HwNrTiZ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Eddie Codel (@ekai)</a></p></div></blockquote><script async src="../../../platform.instagram.com/en_US/embeds.js"></script>
+</div></figure>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+
+<article class="entry content-bg loop-entry post-570914 post type-post status-publish format-standard hentry category-aerial-cinema category-drones-2 tag-cranes tag-drones tag-port-of-oakland">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/aerial-cinema/" rel="tag">Aerial Cinema</a> | <a href="https://eddie.com/category/drones-2/" rel="tag">Drones</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2021/04/13/new-cranes-come-to-port-of-oakland/" rel="bookmark">New Cranes Come to Port of Oakland</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		
+<p>The beginning of the year brought 3 new massive container cranes to the Port of Oakland, able accommodate the largest container ships this planet has to offer. Maybe even the Ever Was, if it&#8217;s ever released from the Suez Canal.</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="New massive tall cranes arrive at Port of Oakland" width="720" height="405" src="../../../www.youtube.com/embed/N4yHdH00CrQ@feature=oembed.html" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+
+<article class="entry content-bg loop-entry post-570909 post type-post status-publish format-standard hentry category-aerial-cinema category-drones-2 category-pinball tag-drones tag-pinball">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/aerial-cinema/" rel="tag">Aerial Cinema</a> | <a href="https://eddie.com/category/drones-2/" rel="tag">Drones</a> | <a href="https://eddie.com/category/pinball/" rel="tag">Pinball</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2021/03/30/droning-the-pacific-pinball-museum-annex/" rel="bookmark">Droning the Pacific Pinball Museum Annex</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		
+<p>This was a fun day! So many pinball machines and never enough quarters.</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-instagram wp-block-embed-instagram"><div class="wp-block-embed__wrapper">
+<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/CM078CoJbCv/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/CM078CoJbCv/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/CM078CoJbCv/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Eddie Codel (@ekai)</a></p></div></blockquote><script async src="../../../platform.instagram.com/en_US/embeds.js"></script>
+</div></figure>
+
+
+
+<p></p>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+
+<article class="entry content-bg loop-entry post-564823 post type-post status-publish format-standard hentry category-crowdfunding category-projects category-video tag-dungeons-and-dragons tag-filmmaking tag-kickstarter tag-rpg">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/crowdfunding/" rel="tag">Crowdfunding</a> | <a href="https://eddie.com/category/projects/" rel="tag">Projects</a> | <a href="https://eddie.com/category/video/" rel="tag">Video</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2019/07/16/lets-play-dd-in-us-prisons/" rel="bookmark">Let&#8217;s Play: D&#038;D in US Prisons</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		
+<iframe width="640" height="360" src="https://www.kickstarter.com/projects/kleercreative/lets-play-dungeons-and-dragons-behind-bars/widget/video.html" frameborder="0" scrolling="no"> </iframe>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>I was asked by documentary filmmaker and producer <a href="https://www.imdb.com/name/nm4203164/">Elisabeth de Kleer</a> if I would be willing to help create a Kickstarter video for her upcoming documentary film on inmates who play Dungeon and Dragons in the American prison system.  Being a bit of a D&amp;D nerd myself, this was an easy call. The <a href="http://kck.st/2k402v2">Let&#8217;s Play: Dungeons &amp; Dragons Behind Bars</a> project went live today.</p>
+
+
+
+<p>Her documentary will tell the story of how inmates and ex-cons are using role playing games to survive inside prison and how these games are used as tools to prepare for life on the outside. In the US, where the notion of rehabilitation is a joke, role playing games offer a very real way for inmates to find focus, meaning and community in their lives which goes a long way to reducing recidivism.  Breaking the cycle of reoffending is a goal that benefits everyone. If you feel the same, please consider <a href="http://kck.st/2k402v2">backing</a> this worthwhile project.</p>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+
+<article class="entry content-bg loop-entry post-562456 post type-post status-publish format-standard hentry category-video tag-gravity-industries tag-jetpack tag-takeongravity tag-the-future">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/video/" rel="tag">Video</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2018/08/24/they-promised-us-jetpacks/" rel="bookmark">They Promised Us Jetpacks</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		<p>Here&#8217;s your real life Tony Stark flying his jet suit around Hiller yesterday. Richard Browning of <a href="https://www.facebook.com/takeongravity/" data-hovercard="/ajax/hovercard/page.php?id=272905416485503&amp;extragetparams=%7B%22directed_target_id%22%3Anull%2C%22groups_location%22%3Anull%7D" data-hovercard-prefer-more-content-show="1">Gravity Industries</a>, British inventor of the Daedalus Flight Pack, is as close to Iron Man as anyone has gotten. Just don&#8217;t ask how he scratches his nose.</p>
+<div class="entry-content-asset videofit">
+<div class="jetpack-video-wrapper"><iframe title="Gravity Industries Jet Suit" width="720" height="405" src="../../../www.youtube.com/embed/DzN6zQ9dTJ8@feature=oembed.html" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+</div>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+
+<article class="entry content-bg loop-entry post-561911 post type-post status-publish format-standard hentry category-drones-2 category-friff category-san-francisco category-self-promotion tag-drones tag-film-festival tag-friff">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/drones-2/" rel="tag">Drones</a> | <a href="https://eddie.com/category/friff/" rel="tag">FRiFF</a> | <a href="https://eddie.com/category/san-francisco/" rel="tag">San Francisco</a> | <a href="https://eddie.com/category/self-promotion/" rel="tag">Self Promotion</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2017/11/15/the-3rd-annual-friff/" rel="bookmark">The 3rd Annual FRiFF</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		<p><img data-recalc-dims="1" decoding="async" class="size-full wp-image-561912 aligncenter" src="../../../i0.wp.com/eddie.com/wp-content/uploads/2017/11/FRiFF2017-Tix-On-Sale-v1_600x.jpg@resize=600,429" alt="" width="600" height="429" srcset="../i0.wp.com/eddie.com/wp-content/uploads/2017/11/FRiFF2017-Tix-On-Sale-v1_600x.jpg@w=600&amp;ssl=1sl=1 60../i0.wp.com/eddie.com/wp-content/uploads/2017/11/FRiFF2017-Tix-On-Sale-v1_600x.jpg@resize=300,215&amp;ssl=1mp;ssl=1 300w" sizes="(max-width: 600px) 100vw, 600px" /></p>
+<p>The <a href="http://friff.co/" target="_blank" rel="noopener">Flying Robot international Film Festival</a>, the drone film festival I started 3 years ago, returns to the historic Roxie Theater in San Francisco on November 16th. This event is always a culmination of a ton of work and passion, and that includes all the submitting filmmakers. We&#8217;re looking at a sold out show and several participating filmmakers coming in from out of town. I&#8217;m super stoked to see the audience reaction to several of the films that made the cut. My long time friend and collaborator, <a href="http://superbarn.com/">Ryan Junell</a>, outdid himself on the title animation sequence, which I&#8217;ll post after the festival.  So much to love about this year!</p>
+<p>&nbsp;</p>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+
+<article class="entry content-bg loop-entry post-561885 post type-post status-publish format-standard hentry category-drones-2 category-san-francisco category-self-promotion category-video tag-aerial-imagery tag-dorkbot tag-dorkbotsf tag-drone-video tag-drones tag-presentation">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/drones-2/" rel="tag">Drones</a> | <a href="https://eddie.com/category/san-francisco/" rel="tag">San Francisco</a> | <a href="https://eddie.com/category/self-promotion/" rel="tag">Self Promotion</a> | <a href="https://eddie.com/category/video/" rel="tag">Video</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2017/10/10/aerial-imagery-presentation-at-dorkbot/" rel="bookmark">Aerial Imagery Presentation at Dorkbot</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		<p>I was invited to give a presentation on advanced aerial imagery techniques using drones at <a href="http://dorkbotsf.org/archive/201709/" target="_blank" rel="noopener">dorkbotSF</a> on September 20, 2017. Here&#8217;s the recored presentation, thanks to dorkbot videographer James Young.</p>
+<p><iframe src="https://player.vimeo.com/video/236095154?color=ff9933&#038;byline=0&#038;portrait=0" width="600" height="222" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></p>
+<p><a href="https://vimeo.com/236095154">Eddie Codel, Advanced Aerial Imagery Techniques with Drones, Dorkbot-SF, 2017-09-20</a>.</p>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+
+<article class="entry content-bg loop-entry post-561823 post type-post status-publish format-standard hentry category-self-promotion category-video tag-aura-frames tag-pets tag-product-video tag-smart-frame">
+		<div class="entry-content-wrap">
+		<header class="entry-header">
+
+			<div class="entry-taxonomies">
+			<span class="category-links term-links category-style-normal">
+				<a href="https://eddie.com/category/self-promotion/" rel="tag">Self Promotion</a> | <a href="https://eddie.com/category/video/" rel="tag">Video</a>			</span>
+		</div><!-- .entry-taxonomies -->
+		<h2 class="entry-title"><a href="https://eddie.com/2017/06/28/aura-pet-collections/" rel="bookmark">Aura Pet Collections</a></h2></header><!-- .entry-header -->
+	<div class="entry-summary">
+		<p><a href="https://auraframes.com/" target="_blank" rel="noopener noreferrer">Aura</a> is a beautifully designed connected picture frame.  We created this promotional video for the introduction of Aura&#8217;s new <a href="https://blog.auraframes.com/pet-collections-now-available-on-aura-788da0b150fa" target="_blank" rel="noopener noreferrer">pet collections</a> feature.</p>
+<div class="entry-content-asset videofit">
+<div class="jetpack-video-wrapper"><iframe title="Pet Collections Available On Aura!" src="https://player.vimeo.com/video/219925110?dnt=1&amp;app_id=122963" width="720" height="405" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"></iframe></div>
+</div>
+	</div><!-- .entry-summary -->
+	<footer class="entry-footer">
+	</footer><!-- .entry-footer -->
+	</div>
+</article>
+				</div>
+				
+	<nav class="navigation pagination" aria-label="Page navigation">
+		<h2 class="screen-reader-text">Page navigation</h2>
+		<div class="nav-links"><span aria-current="page" class="page-numbers current">1</span>
+<a class="page-numbers" href="https://eddie.com/page/2/">2</a>
+<a class="page-numbers" href="https://eddie.com/page/3/">3</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://eddie.com/page/38/">38</a>
+<a class="next page-numbers" href="https://eddie.com/page/2/"><span class="screen-reader-text">Next Page</span><span class="kadence-svg-iconset svg-baseline"><svg aria-hidden="true" class="kadence-svg-icon kadence-arrow-right-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Next</title><path d="M9.707 18.707l6-6c0.391-0.391 0.391-1.024 0-1.414l-6-6c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414l5.293 5.293-5.293 5.293c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0z"></path>
+				</svg></span></a></div>
+	</nav>		</main><!-- #main -->
+			</div>
+</div><!-- #primary -->
+	</div><!-- #inner-wrap -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="site-footer-wrap">
+		<div class="site-bottom-footer-wrap site-footer-row-container site-footer-focus-item site-footer-row-layout-standard site-footer-row-tablet-layout-default site-footer-row-mobile-layout-default" data-section="kadence_customizer_footer_bottom">
+	<div class="site-footer-row-container-inner">
+				<div class="site-container">
+			<div class="site-bottom-footer-inner-wrap site-footer-row site-footer-row-columns-1 site-footer-row-column-layout-row site-footer-row-tablet-column-layout-default site-footer-row-mobile-column-layout-row ft-ro-dir-row ft-ro-collapse-normal ft-ro-t-dir-default ft-ro-m-dir-default ft-ro-lstyle-plain">
+									<div class="site-footer-bottom-section-1 site-footer-section footer-section-inner-items-1">
+						
+<div class="footer-widget-area site-info site-footer-focus-item content-align-default content-tablet-align-default content-mobile-align-default content-valign-default content-tablet-valign-default content-mobile-valign-default" data-section="kadence_customizer_footer_html">
+	<div class="footer-widget-area-inner site-info-inner">
+		<div class="footer-html inner-link-style-normal"><div class="footer-html-inner"><p>&copy; 2025 Eddie.com - WordPress Theme by <a href="https://www.kadencewp.com/" rel="nofollow noopener" target="_blank">Kadence WP</a></p>
+</div></div>	</div>
+</div><!-- .site-info -->
+					</div>
+								</div>
+		</div>
+	</div>
+</div>
+	</div>
+</footer><!-- #colophon -->
+
+</div><!-- #wrapper -->
+
+			<script>document.documentElement.style.setProperty('--scrollbar-offset', window.innerWidth - document.documentElement.clientWidth + 'px' );</script>
+			<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/kadence\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+			<script>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+				<div id="mobile-drawer" class="popup-drawer popup-drawer-layout-sidepanel popup-drawer-animation-fade popup-drawer-side-right" data-drawer-target-string="#mobile-drawer"
+			>
+		<div class="drawer-overlay" data-drawer-target-string="#mobile-drawer"></div>
+		<div class="drawer-inner">
+						<div class="drawer-header">
+				<button class="menu-toggle-close drawer-toggle" aria-label="Close menu"  data-toggle-target="#mobile-drawer" data-toggle-body-class="showing-popup-drawer-from-right" aria-expanded="false" data-set-focus=".menu-toggle-open"
+							>
+					<span class="toggle-close-bar"></span>
+					<span class="toggle-close-bar"></span>
+				</button>
+			</div>
+			<div class="drawer-content mobile-drawer-content content-align-left content-valign-top">
+								<div class="site-header-item site-header-focus-item site-header-item-mobile-navigation mobile-navigation-layout-stretch-false" data-section="kadence_customizer_mobile_navigation">
+		<nav id="mobile-site-navigation" class="mobile-navigation drawer-navigation drawer-navigation-parent-toggle-false" role="navigation" aria-label="Primary Mobile Navigation">
+				<div class="mobile-menu-container drawer-menu-container">
+			<ul id="mobile-menu" class="menu has-collapse-sub-nav"><li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-1197"><a href="https://eddie.com/about/">About Eddie.com</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1196"><a href="https://eddie.com/contact/">Contact Eddie</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-595823"><a href="https://daily.eddie.com">Eddie of the Day</a></li>
+</ul>		</div>
+	</nav><!-- #site-navigation -->
+	</div><!-- data-section="mobile_navigation" -->
+							</div>
+		</div>
+	</div>
+	<link rel='stylesheet' id='jetpack-responsive-videos-css' href='wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-classic-theme-helper/dist/responsive-videos/responsive-videos.css@minify=false&amp;ver=4fbf400e55121e7e87cb.css' media='all' />
+<script id="disqus_count-js-extra">
+var countVars = {"disqusShortname":"eddiedotcom"};
+</script>
+<script src="wp-content/plugins/disqus-comment-system/public/js/comment_count.js@ver=3.1.3" id="disqus_count-js"></script>
+<script id="kadence-navigation-js-extra">
+var kadenceConfig = {"screenReader":{"expand":"Child menu","expandOf":"Child menu of","collapse":"Child menu","collapseOf":"Child menu of"},"breakPoints":{"desktop":"1024","tablet":768},"scrollOffset":"0"};
+</script>
+<script src="wp-content/themes/kadence/assets/js/navigation.min.js@ver=1.1.50" id="kadence-navigation-js" async></script>
+<script src="wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-wpforms-ed443a3a3d45126a22ce.js" id="googlesitekit-events-provider-wpforms-js" defer></script>
+<script id="jetpack-stats-js-before">
+_stq = window._stq || [];
+_stq.push([ "view", JSON.parse("{\"v\":\"ext\",\"blog\":\"61367263\",\"post\":\"0\",\"tz\":\"-8\",\"srv\":\"eddie.com\",\"arch_home\":\"1\",\"j\":\"1:15.2\"}") ]);
+_stq.push([ "clickTrackerInit", "61367263", "0" ]);
+</script>
+<script src="https://stats.wp.com/e-202546.js" id="jetpack-stats-js" defer data-wp-strategy="defer"></script>
+<script src="../../../c0.wp.com/c/6.8.3/wp-includes/js/dist/vendor/wp-polyfill.min.js" id="wp-polyfill-js"></script>
+<script src="../../../c0.wp.com/c/6.8.3/wp-includes/js/dist/hooks.min.js" id="wp-hooks-js"></script>
+<script src="../../../c0.wp.com/c/6.8.3/wp-includes/js/dist/i18n.min.js" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script src="wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-classic-theme-helper/dist/responsive-videos/responsive-videos.js@minify=false&amp;ver=4fbf400e55121e7e87cb" id="jetpack-responsive-videos-js"></script>
+</body>
+</html>

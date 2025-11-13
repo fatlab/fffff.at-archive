@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /aggregator
+Disallow: /tracker
+Disallow: /comment/reply
+Disallow: /node/add
+Disallow: /user
+Disallow: /files
+Disallow: /search
+Disallow: /book/print
+User-agent: ia_archiver
+Disallow: /

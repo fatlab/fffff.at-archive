@@ -1,0 +1,20 @@
+User-agent: *
+Disallow: /mt/
+Disallow: /profile/
+Disallow: /search?
+Disallow: /search/
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ChatGPT
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+Sitemap: https://gothamist.com/sitemap.xml
+Sitemap: https://gothamist.com/sitemap-news.xml

@@ -1,0 +1,203 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, b, cite, code, del, dfn, em, i, img, ins, kbd, q, samp, strike, strong, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+html { font-size: 100.01%; }
+caption, cite, code, dfn, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+blockquote, q { quotes: none; }
+blockquote:before {
+  content: '';
+  content: none;
+}
+blockquote:after {
+  content: '';
+  content: none;
+}
+q:before {
+  content: '';
+  content: none;
+}
+q:after {
+  content: '';
+  content: none;
+}
+:focus { outline: 0; }
+ins { text-decoration: underline; }
+del { text-decoration: line-through; }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+@font-face {
+  font-family: 'HelsinkiRegular';
+  src: url('type/helsinki-webfont.eot');
+  src: local('☺'), url('type/helsinki-webfont.woff') format('woff'), url('type/helsinki-webfont.ttf') format('truetype'), url('type/helsinki-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MuseoSlab500';
+  src: url('type/museo_slab_500-webfont.eot');
+  src: local('☺'), url('type/museo_slab_500-webfont.woff') format('woff'), url('type/museo_slab_500-webfont.ttf') format('truetype'), url('type/museo_slab_500-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MuseoSlab500Italic';
+  src: url('type/museo_slab_500italic-webfont.eot');
+  src: local('☺'), url('type/museo_slab_500italic-webfont.woff') format('woff'), url('type/museo_slab_500italic-webfont.ttf') format('truetype'), url('type/museo_slab_500italic-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+html { background-color: #231b1e; }
+body {
+  background-color: #231b1e;
+  color: #c1b8b8;
+  font: 500 1em/1.5 'MuseoSlab500', Georgia, serif;
+  text-rendering: optimizeLegibility;
+  text-shadow: #120a0d 0 1px 2px;
+  -webkit-text-stroke: 1px transparent;
+  -webkit-tap-highlight-color: #876d6e;
+}
+#page { padding: 2em 3em; }
+#content {
+  margin: 0 auto;
+  max-width: 36em;
+}
+#footer {
+  clear: both;
+  color: #876d6e;
+  font-size: 0.9em;
+  line-height: 1.6;
+  padding: 1.6em 0;
+}
+#footer p { margin: 0; }
+#footer a {
+  font-family: 'MuseoSlab500', Georgia, serif;
+  font-weight: 500;
+}
+#footer img { vertical-align: baseline; }
+#footer .no-fontface .fontface-info { display: none; }
+a:link {
+  color: #b7b67e;
+  font-family: 'HelsinkiRegular', 'Gill Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+a:visited {
+  color: #b7b67e;
+  font-family: 'HelsinkiRegular', 'Gill Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+a:hover {
+  color: #776b54;
+  -webkit-transition: none;
+}
+h1 {
+  font: 700 2.5em/1.2 'HelsinkiRegular', 'Gill Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  text-transform: uppercase;
+}
+h2 {
+  color: #c1b8b8;
+  letter-spacing: 0.1em;
+  word-spacing: 0.1em;
+  margin: 0 0 0.25em;
+  text-transform: uppercase;
+}
+p, ul, ol { margin-bottom: 1.5em; }
+blockquote { margin: 0 2em 1.5em; }
+.header { margin-bottom: 1.5em; }
+.header .byline {
+  color: #876d6e;
+  margin: 0;
+}
+.header .byline .author {
+  font-family: 'MuseoSlab500', Georgia, serif;
+  font-style: normal;
+}
+.col {
+  float: left;
+  display: inline;
+  width: 17em;
+}
+ul.links { list-style: none; }
+.album-preview {
+  float: right;
+  display: inline;
+  margin: 0 0 1.5em 1.5em;
+  padding: 5px;
+  width: 160px;
+}
+.album-preview object {
+  background: #000000;
+  border: 5px solid #000000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.album-preview embed {
+  background: #000000;
+  border: 5px solid #000000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.album-preview a img {
+  border: 0.25em solid #4c2925;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+}
+.album-preview a:hover img { border-color: #2d1e24; }
+i, em {
+  font-style: italic;
+  font-family: 'MuseoSlab500Italic', Georgia, serif;
+}
+small, .minor {
+  color: #876d6e;
+  font-size: inherit;
+}
+.minor a:link {
+  font-family: 'MuseoSlab500', Georgia, serif;
+  font-weight: 400;
+}
+.minor a:visited {
+  font-family: 'MuseoSlab500', Georgia, serif;
+  font-weight: 400;
+}
+a.minor:link {
+  font-family: 'MuseoSlab500', Georgia, serif;
+  font-weight: 400;
+}
+a.minor:visited {
+  font-family: 'MuseoSlab500', Georgia, serif;
+  font-weight: 400;
+}
+.amp {
+  font-style: italic;
+  font-family: 'Palatino', 'Palatino Linotype', 'MuseoSlab500Italic', Georgia, serif;
+  line-height: 1;
+}
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.flip {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}

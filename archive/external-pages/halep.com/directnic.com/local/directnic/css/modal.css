@@ -1,0 +1,43 @@
+#modal  .close-reveal-modal {
+ background-color:#222222;
+ padding:0px 10px 10px 10px;
+ margin:0px;
+ height:40px;
+ line-height:40px;
+ display:inline-block;
+ top:0px;
+ right:0px;
+ font-size:12px;
+}
+#modal #modal-topbox {
+ background-color:#222222;
+ margin:0px;
+ padding:0;
+ color:#FFF;
+ height:40px;
+ font-size:20px;
+}
+
+
+
+#modal-confirm #modal-confirm-topbox {
+ background-color:#222222;
+ margin:0px;
+ padding:7px 0px 3px 10px;
+ color:#FFF;
+ height:40px;
+ font-size:20px;
+ text-align:center;
+}
+#modal-confirm-container{
+
+	padding:10px 5px;
+}
+
+#transfer_coupon.modalUpdate .coupon_pic {
+	background-image: url(https://directnic.com/local/directnic/img/promo/transfer_coupon@2x.jpg);
+	background-size: cover;
+	border:2px dashed #fff;
+}
+
+#transfer_coupon.modalUpdate .coupon_pic h1 { font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif; font-size: 52px;}

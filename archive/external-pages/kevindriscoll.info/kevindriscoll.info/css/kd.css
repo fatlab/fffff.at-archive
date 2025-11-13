@@ -1,0 +1,38 @@
+.row-fluid {
+    width: 100%;
+}
+h2 {
+    // background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAN0lEQVQYlWP49u3bf1z4zJkz/xnwSX779g27ApgkVgXIkhgKzpw5g1sBsgSGFei6UByJTRJZEQCJF/JZBWTdhQAAAABJRU5ErkJggg==) repeat;
+    background: url("../img/h2bg.png") repeat;
+    color: rgb(51, 51, 51);
+    margin-bottom: 0;
+}
+h2 a {
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+}
+h3 {
+    // border-top: thin solid rgb(51, 51, 51);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 20px;
+}
+h3.notop {
+    border-top: 0;
+}
+img.polaroid {
+    width: 90%;
+    height: auto;
+}
+ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    indent-left: -1em;
+}
+i {
+    margin-right: 10px;
+}
+cite {
+    font-style: italic;
+}

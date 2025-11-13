@@ -1,0 +1,45 @@
+/* ::::: http://www.eyewriter.org/wp-content/themes/eyewriter/style.css ::::: */
+
+body { width: 960px; padding: 0pt; margin: 0 auto; background: none repeat scroll 0% 0% rgb(255, 255, 255); font-size: 62.5%; font-family: Helvetica,'Lucida Grande',Verdana,Arial,Sans-Serif; color: rgb(0, 0, 0); }
+div { clear: both; display: block; }
+a:link { color: rgb(51, 51, 51); font-weight: bold; text-decoration: none; }
+a:visited { color: rgb(51, 51, 51); font-weight: bold; text-decoration: none; }
+a:hover { color: rgb(51, 51, 51); background-color: yellow; text-decoration: none; }
+a:active { color: rgb(51, 51, 51); font-weight: bold; text-decoration: none; }
+.c:after { content: "."; clear: both; display: block; visibility: hidden; height: 0pt; font-size: 0pt; line-height: 0; }
+.left { clear: none; float: left; }
+.right { clear: none; float: right; }
+.rel { position: relative; }
+h1, h2, h3, h4, h5, h6, p, code, pre, q, blockquote, dl, ul, ol { padding: 0pt 0pt 8px; margin: 0pt; font-size: 1em; line-height: 1.25em; font-family: Helvetica,'Lucida Grande',Verdana,Arial,Sans-Serif; vertical-align: baseline; color: rgb(0, 0, 0); font-weight: normal; }
+h1, h2, h3, h4, h5, h6, dl dt { font-weight: bold; }
+h4 { font-size: 1.8em; }
+p { font-size: 1.3em; }
+dl, ul, ol {  }
+dl dt, dl dd, ul li, ol li {  }
+img { border: medium none; }
+.tpl_box { margin: 0px 0px 0px 20px; width: 940px; }
+#navigation { text-align: right; padding: 50px 20px 0px 0px; margin: 0pt; }
+.nav_all { height: 36px; padding-left: 8px; font-size: 1.2em; }
+.nav_all a { text-decoration: none; color: rgb(255, 255, 255); font-weight: bold; }
+.nav_all a:hover { color: rgb(255, 255, 255); background-color: rgb(51, 51, 51); text-decoration: none; }
+#header_area { background: url('siteImg/header_img.png') no-repeat scroll 30px 0px rgb(0, 0, 0); height: 77px; width: 960px; }
+#header h4#logo { position: absolute; top: 10px; left: 780px; color: rgb(255, 255, 255); padding: 0pt; margin: 0pt; vertical-align: top; width: 150px; }
+#header h4#logo a { font-size: 0.75em; display: block; color: rgb(255, 255, 255); background: url('siteImg/eyelogo.png') no-repeat scroll 0pt 0pt transparent; height: 28px; text-decoration: none; }
+#content_area p { padding: 0px 0px 20px 0pt; }
+#content_area { padding: 40px 0pt 0pt; }
+#header h4#logo a span { visibility: hidden; }
+#sidebar { width: 200px; font-size: 1.1em; line-height: 1.2em; }
+#sidebar ul { list-style: none outside none; padding: 0pt 0pt 8px; margin: 0pt; }
+#sidebar ul li { margin: 0pt; padding: 2px 0pt 4px; color: rgb(68, 68, 68); }
+#sidebar ul li form {  }
+#sidebar ul li form label { display: none; }
+#sidebar ul li form input[type="text"] {  }
+#sidebar ul li { padding: 0pt 0pt 15px; }
+#container { margin: 0 auto; background: none repeat scroll 0% 0% rgb(255, 255, 255); min-height: 450px; padding: 0pt 0pt 30px; }
+#content { width: 650px; padding: 0pt 20px; }
+#footer_area { padding: 44px 0pt 15px; background: none repeat scroll 0% 0% rgb(238, 238, 238); width: 960px; }
+#footer {  }
+#footer p { font-size: 1.2em; line-height: 1.25em; font-style: italic; color: rgb(68, 68, 68); }
+#footer p strong { font-style: normal; }
+#footer .left { width: 260px; padding: 41px 0pt 0pt 40px; }
+#footer .right { width: 580px; padding: 0pt 40px 0pt 0pt; }

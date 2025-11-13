@@ -1,0 +1,282 @@
+/*
+Theme Name:     Bimber Child Theme
+Theme URI:      http://bimber.bringthepixel.com
+Description:    Got questions? Visit our <a href="http://bringthepixel.com/support/">support forum</a>.
+Author:         bring the pixel
+Author URI:     http://www.bringthepixel.com/
+Template:       bimber
+Version:        1.0
+Tags:           fluid-layout, custom-colors, custom-menu, featured-images, post-formats, theme-options, threaded-comments, translation-ready
+*/
+
+/* Place all your CSS modifications below */
+
+/* == Modifications from Bimber Team == */
+
+/* Video Player Fix */
+/*.wpb_video_widget .g1-fluid-wrapper-inner[style] {
+position: static;
+padding-bottom: 0;
+width: auto;
+height: auto;
+}
+*/
+/* Logo Display Fix */
+
+.g1-logo-small-wrapper .g1-logo-small {
+    width: 100%;
+}
+
+/* Header Menu */
+/*
+.g1-header .current-menu-item > a{
+    color:#283449;
+    background-color:#ccc;
+}
+.g1-body-inner .g1-primary-nav-menu > .menu-item > a {
+    padding: 22px 10px;
+}
+
+.g1-header .menu-item > a:hover {
+    color: #283449;
+    background-color: #ccc;
+}
+.g1-header-smiley .g1-id {
+    margin-right: 0px;
+}
+
+.g1-body-inner .g1-primary-nav-menu > .menu-item {
+    margin-right: -4px;
+}
+*/
+/* Make items disappear as browser gets too small */
+/*
+@media only screen and (max-width: 1153px){
+.g1-header-smiley #g1-primary-nav{
+    display: none;
+}
+.g1-header-smiley .g1-hamburger {
+    display: block;
+}
+}
+@media only screen and (max-width: 872px){
+.g1-header-smiley #g1-social-icons-1{
+    display: none;
+}}
+
+@media only screen and (max-width: 678px){
+.g1-header-smiley .g1-drop-the-search{
+    display: none;
+}}
+
+@media only screen and (max-width: 618px){
+.g1-header-smiley #mailinglist_nav{
+    display: none;}
+}
+
+@media only screen and (max-width:618px) and (min-width:450px){
+    .g1-header .g1-id{margin-left:calc( 50% - 220px);}
+}
+*/
+
+/* Fix for Popup Maker from: http://docs.wppopupmaker.com/article/314-why-does-my-site-shift-jump-or-skip-when-a-popup-is-triggered*/
+
+/*Restore value of 'margin-right' property to 17px from 0px.*/
+.pum-open-overlay.pum-open-scrollable {
+margin-right: 17px;
+position: relative;
+}
+
+/*change value of 'padding-right' property from 'inherit' to 0 px.*/
+html.pum-open.pum-open-overlay.pum-open-scrollable body>[aria-hidden] {
+padding-right: 0px;
+}
+
+/* Remove Search Bar on Search Results Page */
+
+.search .archive-header{display:none;}
+
+/* Remove Second Search Logo */
+
+.g1-header-smiley .search-form .search-submit{display:none;}
+
+/* Remove Featured Image from Pages */
+
+.page .entry-featured-media-main{
+	display:none;
+	margin-bottom: 0px;
+}
+
+/* Remove Featured Image from Pages */
+.page .has-post-thumbnail .entry-featured-media-main{display:none;}
+.page .has-post-thumbnail .entry-content p:first-child{margin-bottom:0px;}
+
+/* Footer Megaphone Logo Alignment Fix */
+
+#menu-item-9752 img{
+	margin-bottom:-13px;
+}
+
+/* == Modifications from Andrew == */
+
+.client-logo.wpb_single_image img{
+	height: 75px;
+	width: 75px;
+}
+
+.client-logo.wpb_content_element {
+	margin-bottom: 15px;
+}
+
+.full-logo.wpb_single_image img{
+	height: 100%;
+	width: 100%;
+}
+
+.stats-box h2, h4{
+	margin-bottom:0px;
+}
+
+.stats-box h2{
+	font-size: 100%;
+}
+
+.stats-box h4{
+	font-size: 75%;
+}
+
+.post-9242 h1, .post-9242 h2, .post-9242 h3, .post-9242 h4 {
+	color: white; 
+}
+
+.post-9242 .black h1, .post-9242 .black h2, .post-9242 .black h3, .post-9242 .black h4 {
+	color: black; 
+}
+/* Work with us template */
+
+.work_with_us h1, .work_with_us p {
+	color: white; 
+	text-align: center;
+}
+
+.templatera_shortcode {
+	background-color: #283449;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+#secondary .widget {
+    margin: 0em;
+}
+
+.archive-body {
+	padding-top:0px;
+}
+
+/* Hide "More" link on homepage (and archive?) posts */
+
+.g1-link-more{display:none;}
+
+
+#webform_submit_button {
+	padding: 8px;
+}
+
+#signup_email {
+	border-color: #283449;
+}
+
+/* Button */
+[type=submit]:disabled, [type=reset]:disabled, [type=button]:disabled, button:disabled, .g1-button:disabled {
+    filter: none;
+}
+
+
+.entry-content a {
+	background: linear-gradient(to bottom,transparent 0,transparent 80%,#fdca4c 80%,#fdca4c 100%);
+	border-bottom: 2px #fdca4c solid;
+}
+
+
+/* Raphael's fix for VC video embed issue: 
+.wpb_video_widget.vc_video-aspect-ratio-169 .wpb_video_wrapper{padding-top:0px !important;}
+.wpb_video_widget .g1-fluid-wrapper {
+    width: 100% !important;
+    height: 100%;
+    display: block;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*/
+
+/* The below is a work in progress to improve the defauls spinner with Gravity Forms. See changes also in functions.php
+.gform_ajax_spinner {
+	margin-left: 20px;				/* give it some space from the Submit button 
+	border: 4px solid rgba(255, 255, 255, 0.3);	/* match with border-left 
+	border-left: 4px solid gold;
+	animation: spinner 1.1s infinite linear;
+	border-radius: 50%;
+	width: 30px;					/* match with height for a circle 
+	height: 30px;
+}
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+*/
+
+/* Mailing List Tooltip */
+/*
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    width: 200px;
+    background-color: #fff;
+    color: #28344A;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    opacity: 1;
+}
+*/
+
+/* I want to hide the Facebook Comments link */
+/* 
+
+._5lm5._2pi3._3-8y {
+	display: none;
+}
+*/

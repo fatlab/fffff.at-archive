@@ -1,0 +1,867 @@
+
+<html>
+<head>
+<title>36 24 7</title>
+<script src="../soundManager/script/soundmanager2.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+soundManager.url = 'soundManager/'; // directory where SM2 .SWFs live
+
+function Set_Cookie( name, value, expires, path, domain, secure ) 
+{
+// set time, it's in milliseconds
+var today = new Date();
+today.setTime( today.getTime() );
+
+/*
+if the expires variable is set, make the correct 
+expires time, the current script below will set 
+it for x number of days, to make it for hours, 
+delete * 24, for minutes, delete * 60 * 24
+*/
+if ( expires )
+{
+expires = expires * 1000 * 60 * 60 * 24;
+}
+var expires_date = new Date( today.getTime() + (expires) );
+
+document.cookie = name + "=" +escape( value ) +
+( ( expires ) ? ";expires=" + expires_date.toGMTString() : "" ) + 
+( ( path ) ? ";path=" + path : "" ) + 
+( ( domain ) ? ";domain=" + domain : "" ) +
+( ( secure ) ? ";secure" : "" );
+}
+
+// this fixes an issue with the old method, ambiguous values 
+// with this test document.cookie.indexOf( name + "=" );
+function Get_Cookie( check_name ) {
+	// first we'll split this cookie up into name/value pairs
+	// note: document.cookie only returns name=value, not the other components
+	var a_all_cookies = document.cookie.split( ';' );
+	var a_temp_cookie = '';
+	var cookie_name = '';
+	var cookie_value = '';
+	var b_cookie_found = false; // set boolean t/f default f
+	
+	for ( i = 0; i < a_all_cookies.length; i++ )
+	{
+		// now we'll split apart each name=value pair
+		a_temp_cookie = a_all_cookies[i].split( '=' );
+		
+		
+		// and trim left/right whitespace while we're at it
+		cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');
+	
+		// if the extracted name matches passed check_name
+		if ( cookie_name == check_name )
+		{
+			b_cookie_found = true;
+			// we need to handle case where cookie has no value but exists (no = sign, that is):
+			if ( a_temp_cookie.length > 1 )
+			{
+				cookie_value = unescape( a_temp_cookie[1].replace(/^\s+|\s+$/g, '') );
+			}
+			// note that in cases where cookie is initialized but no value, null is returned
+			return cookie_value;
+			break;
+		}
+		a_temp_cookie = null;
+		cookie_name = '';
+	}
+	if ( !b_cookie_found )
+	{
+		return null;
+	}
+}				
+	
+
+var randomTrack = null;
+var numTracksListened = Get_Cookie("pct36"); 
+var mafiaList = new Array();
+var total = 719;
+var track = "";
+
+	mafiaList[0]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/01-chrome-so_fresh.mp3";
+mafiaList[1]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/02-chrome-bussem_up.mp3";
+mafiaList[2]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/03-chrome-money_for_crack.mp3";
+mafiaList[3]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/04-chrome-i_learned_(feat._boogie_mane).mp3";
+mafiaList[4]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/05-chrome-inhale.mp3";
+mafiaList[5]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/06-chrome-money_by_da_bags.mp3";
+mafiaList[6]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/07-chrome-1g_oz.mp3";
+mafiaList[7]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/08-chrome-straight_to_da_pros.mp3";
+mafiaList[8]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/09-chrome-quarter_key.mp3";
+mafiaList[9]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/10-chrome-classic_chick.mp3";
+mafiaList[10]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/11-chrome-get_they_ass_kick_(feat._lil_scrappy_and_lil_wyte).mp3";
+mafiaList[11]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/12-chrome-i_smoke_weed_(feat._boogie_mane_and_crunchy_black).mp3";
+mafiaList[12]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/13-chrome-23_and_1.mp3";
+mafiaList[13]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/14-chrome-what_cha_need.mp3";
+mafiaList[14]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/15-chrome-this_is_my_life.mp3";
+mafiaList[15]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/16-chrome-if_we_was_cool.mp3";
+mafiaList[16]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/17-chrome-gutta_mane.mp3";
+mafiaList[17]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/18-chrome-h.c.p.mp3";
+mafiaList[18]="Three6Mafia-HypnotizeMindsDiscography/Chrome-Straight_To_The_Pros-2005-RRR/19-chrome-outro.mp3";
+mafiaList[19]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Back Da Fuck Back.mp3";
+mafiaList[20]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Beat Down Intro.mp3";
+mafiaList[21]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Beatin These Hoes Down.mp3";
+mafiaList[22]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Break Da Law.mp3";
+mafiaList[23]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Cyoazzndalot.mp3";
+mafiaList[24]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - D.J. Paul.mp3";
+mafiaList[25]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Flaugin Azz NiggasBitches.mp3";
+mafiaList[26]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Glock in my Draws.mp3";
+mafiaList[27]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Kickin in Doe  I Think They Scared.mp3";
+mafiaList[28]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - King of Kings.mp3";
+mafiaList[29]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Outro.mp3";
+mafiaList[30]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Still Gettin my Dick Suck.mp3";
+mafiaList[31]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Twist it, Hit it, Lite it.mp3";
+mafiaList[32]="Three6Mafia-HypnotizeMindsDiscography/DJ Paul - Underground Vol. 16, For Da Summa/Dj Paul - Where is Da Bud Part II.mp3";
+mafiaList[33]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Bay Area.mp3";
+mafiaList[34]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Bloody Murder.mp3";
+mafiaList[35]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Chewin'.mp3";
+mafiaList[36]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Closed Mouth.mp3";
+mafiaList[37]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Coming Attractions.mp3";
+mafiaList[38]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Dog Azz Nigga.mp3";
+mafiaList[39]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Every Day Thang.mp3";
+mafiaList[40]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Flickin'.mp3";
+mafiaList[41]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Gone on That Bay.mp3";
+mafiaList[42]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - H.C.P.mp3";
+mafiaList[43]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Hydro Weed.mp3";
+mafiaList[44]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - I Had to Get'm.mp3";
+mafiaList[45]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - I'll Bring Da Weed.mp3";
+mafiaList[46]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Nan Notha'.mp3";
+mafiaList[47]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Niggaz Wild Throwin' Bows.mp3";
+mafiaList[48]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Ooh Wee.mp3";
+mafiaList[49]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Pistol Playa.mp3";
+mafiaList[50]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - She Swallowed it.mp3";
+mafiaList[51]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Walk a Mile.mp3";
+mafiaList[52]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Watcin' Me.mp3";
+mafiaList[53]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Wish a Mutha Would.mp3";
+mafiaList[54]="Three6Mafia-HypnotizeMindsDiscography/Frayser Boy - Gone On That Bay/Frayser Boy - Young Niggaz.mp3";
+mafiaList[55]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Can I Get Paid.mp3";
+mafiaList[56]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Chop Shop.mp3";
+mafiaList[57]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Dont Stand so Close.mp3";
+mafiaList[58]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Good & Hi.mp3";
+mafiaList[59]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Hard Not to Kill.mp3";
+mafiaList[60]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - I Faked it Last Night.mp3";
+mafiaList[61]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - I Thought you Knew.mp3";
+mafiaList[62]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Intro.mp3";
+mafiaList[63]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Love Dont Live Here.mp3";
+mafiaList[64]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - M-Town.mp3";
+mafiaList[65]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Mask 2 my Face.mp3";
+mafiaList[66]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Outro.mp3";
+mafiaList[67]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Same Block.mp3";
+mafiaList[68]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - They Dont Love Me.mp3";
+mafiaList[69]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Victim of Yo Own Shit.mp3";
+mafiaList[70]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Wut you Niggas Want.mp3";
+mafiaList[71]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Both Worlds, 69/Gansta Boo - Your Girls Man.mp3";
+mafiaList[72]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Be Real Featuring (Crunchy Black).mp3";
+mafiaList[73]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Da Ones Close, Know Most.mp3";
+mafiaList[74]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Don't Stand so Close.mp3";
+mafiaList[75]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Enquiring Minds.mp3";
+mafiaList[76]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Fuck you (Featuring the Prophet Posse).mp3";
+mafiaList[77]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - High Off That Weed.mp3";
+mafiaList[78]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - I'll Be the Other Women.mp3";
+mafiaList[79]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Intro.mp3";
+mafiaList[80]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Kill, Kill, Kill, Murder, Murder, Murder.mp3";
+mafiaList[81]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Life in the Metro (Featuring the Kaze).mp3";
+mafiaList[82]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Money and Powder.mp3";
+mafiaList[83]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Nasty Trick.mp3";
+mafiaList[84]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Nigga Yeah Know (Featuring T. Rock).mp3";
+mafiaList[85]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Oh No (Featuring Fatal Hussein).mp3";
+mafiaList[86]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Only you (Featuring T. Rock).mp3";
+mafiaList[87]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Suck a Little Dick.mp3";
+mafiaList[88]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - This is Personal (Featuring Project Pat).mp3";
+mafiaList[89]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Wanna Go to War.mp3";
+mafiaList[90]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Where Dem Dollas at (Featuring D.J. Paul and Juicy J).mp3";
+mafiaList[91]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Where Dem Dollas at - Bass Remix.mp3";
+mafiaList[92]="Three6Mafia-HypnotizeMindsDiscography/Gangsta Boo - Enquiring Minds/Gangsta Boo - Who We Be (Featuring Prophet Posse).mp3";
+mafiaList[93]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Ain't No Bitch in my Blood.mp3";
+mafiaList[94]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Ashes to Ashes (Ft. Da Koopsta Knicca).mp3";
+mafiaList[95]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Big Boy Shit.mp3";
+mafiaList[96]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Break the Law '98 (Ft. Dj Paul, Juicy J, & T-Rock).mp3";
+mafiaList[97]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Can you Feel Me.mp3";
+mafiaList[98]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Cleopatra.mp3";
+mafiaList[99]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Da Calendar.mp3";
+mafiaList[100]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Dead Men Don't Talk (Ft. Project Pat).mp3";
+mafiaList[101]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Fall Up Off Me Ho.mp3";
+mafiaList[102]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Fly Straight (Ft. Three 6 Mafia & Da Prophet Posse).mp3";
+mafiaList[103]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Fuck What you Heard (Ft. Tear Da Club Up Thugs).mp3";
+mafiaList[104]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Ghetto Party.mp3";
+mafiaList[105]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - My Niggas Crazy (Ft. Dj Paul & Juicy J).mp3";
+mafiaList[106]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Prophet Hataz (Ft. Gangsta Boo).mp3";
+mafiaList[107]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Remember Me Ballin' (Ft. Gangsta Boo).mp3";
+mafiaList[108]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Tear Da Club Up Thugs (Intro).mp3";
+mafiaList[109]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Throw Them Thangs (Ft. Three 6 Mafia).mp3";
+mafiaList[110]="Three6Mafia-HypnotizeMindsDiscography/Indo G - Angel Dust/Indo G - Will a Nigga Make it.mp3";
+mafiaList[111]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Buck Gangsta Beat.mp3";
+mafiaList[112]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Dick Suckin Hoez.mp3";
+mafiaList[113]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Gimme Head.mp3";
+mafiaList[114]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Gimme Sum.mp3";
+mafiaList[115]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Killa Klan.mp3";
+mafiaList[116]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Like a Pimp.mp3";
+mafiaList[117]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Mafia Niggaz.mp3";
+mafiaList[118]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Name it After Me.mp3";
+mafiaList[119]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - North North Pt. 2.mp3";
+mafiaList[120]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Pimp Talk.mp3";
+mafiaList[121]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Pimptro.mp3";
+mafiaList[122]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Smoke Dat Weed.mp3";
+mafiaList[123]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Soldiers From the Northside.mp3";
+mafiaList[124]="Three6Mafia-HypnotizeMindsDiscography/Juicy J - The Chronicles Of The Juiceman/Juicy J. - Who Da Buckest.mp3";
+mafiaList[125]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Anna Got Me Clickin.mp3";
+mafiaList[126]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Bustaz Betta Make Way.mp3";
+mafiaList[127]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Crucifix (Ft. Dj Paul).mp3";
+mafiaList[128]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Front a Busta.mp3";
+mafiaList[129]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Judgement Nite.mp3";
+mafiaList[130]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Now I'm Hi (Pt. 2).mp3";
+mafiaList[131]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Purple Thang.mp3";
+mafiaList[132]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Ready 2 Ride (Ft. Dj Paul & Crunchy Black).mp3";
+mafiaList[133]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Robbers.mp3";
+mafiaList[134]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Smoking on a J.mp3";
+mafiaList[135]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Stash Pot (Original).mp3";
+mafiaList[136]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Stash Pot (Remix).mp3";
+mafiaList[137]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Talkin.mp3";
+mafiaList[138]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Torture Chamber.mp3";
+mafiaList[139]="Three6Mafia-HypnotizeMindsDiscography/Koopsta Knicca - Da Devil's Playground/Koopsta Knicca - Whatcha Gonna Do.mp3";
+mafiaList[140]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - A Crumb 2 a Brick.mp3";
+mafiaList[141]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Ain't No Nigga.mp3";
+mafiaList[142]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Don't Sang it.mp3";
+mafiaList[143]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Ghetto Ballin.mp3";
+mafiaList[144]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - I Claimin your Real.mp3";
+mafiaList[145]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - I Don't Trust Dem Boys.mp3";
+mafiaList[146]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Intro.mp3";
+mafiaList[147]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Luv 2 Get High.mp3";
+mafiaList[148]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Make Somethin.mp3";
+mafiaList[149]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Nigga Comin Clean.mp3";
+mafiaList[150]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Outroduction.mp3";
+mafiaList[151]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Peanut Butter.mp3";
+mafiaList[152]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Salk Shakers.mp3";
+mafiaList[153]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Salt Shakers Hotline.mp3";
+mafiaList[154]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Slob on my Cat Intro.mp3";
+mafiaList[155]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Slob on my Cat.mp3";
+mafiaList[156]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Smoke Witcha.mp3";
+mafiaList[157]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - What Kinda Bitch Do you Want.mp3";
+mafiaList[158]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Wolf Pack.mp3";
+mafiaList[159]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - Yeah, I Rod.mp3";
+mafiaList[160]="Three6Mafia-HypnotizeMindsDiscography/La Chat - Murder She Spoke/La Chat - You Ain't Mad Iz Ya.mp3";
+mafiaList[161]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Acid.mp3";
+mafiaList[162]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Blame it on Da Bay.mp3";
+mafiaList[163]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Com'n Yo Direction.mp3";
+mafiaList[164]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Crash Da Club (Remix - Featuring Juvenile).mp3";
+mafiaList[165]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Death and Life (Skit).mp3";
+mafiaList[166]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Dont Take Those (Skit).mp3";
+mafiaList[167]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Doubt Me Now.mp3";
+mafiaList[168]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Drop it Off.mp3";
+mafiaList[169]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Get High to this.mp3";
+mafiaList[170]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Good Dope.mp3";
+mafiaList[171]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Homicidal, Suicidal ( Featuring Outlaw Josey Scoot and Chris D).mp3";
+mafiaList[172]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - I Know you Strapped.mp3";
+mafiaList[173]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - In Here.mp3";
+mafiaList[174]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - In the Streets.mp3";
+mafiaList[175]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - My Smokin Song.mp3";
+mafiaList[176]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Oxy Cotton.mp3";
+mafiaList[177]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Players in Da Atmosphere.mp3";
+mafiaList[178]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Shit Faced (Skit).mp3";
+mafiaList[179]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Ten Toes Tall.mp3";
+mafiaList[180]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - The Relacement (Outro).mp3";
+mafiaList[181]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - We Aint Playing.mp3";
+mafiaList[182]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Doubt Me Now/Lil Wyte - Zero Tolerance(Fuck Them Laws).mp3";
+mafiaList[183]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Acid 2004.mp3";
+mafiaList[184]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Bald Head Hoe's.mp3";
+mafiaList[185]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Bay Area.mp3";
+mafiaList[186]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Big Ass Guns.mp3";
+mafiaList[187]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - By 2 Da Bad Guy.mp3";
+mafiaList[188]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Crazy.mp3";
+mafiaList[189]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Drinking Song.mp3";
+mafiaList[190]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Everybody Gettin Crunk.mp3";
+mafiaList[191]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Hoods Run Down.mp3";
+mafiaList[192]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - I Did' Em Wrong.mp3";
+mafiaList[193]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - I Sho Will.mp3";
+mafiaList[194]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Icy White Soulja's.mp3";
+mafiaList[195]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Look Like you.mp3";
+mafiaList[196]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - My Cutlass.mp3";
+mafiaList[197]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Outro.mp3";
+mafiaList[198]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Phinally Phamous.mp3";
+mafiaList[199]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Possie Song.mp3";
+mafiaList[200]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Smoke my Dro.mp3";
+mafiaList[201]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - Static Addict.mp3";
+mafiaList[202]="Three6Mafia-HypnotizeMindsDiscography/Lil Wyte - Phinally Phamous/Lil Wyte - U.S. Soldier Boy.mp3";
+mafiaList[203]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - 528-Cash.mp3";
+mafiaList[204]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Ballers.mp3";
+mafiaList[205]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - BallersOutro Cash Money.mp3";
+mafiaList[206]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Choices.mp3";
+mafiaList[207]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Choppers.mp3";
+mafiaList[208]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Ghetty Green.mp3";
+mafiaList[209]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Gold Shine.mp3";
+mafiaList[210]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Niggas Got Me Fucked Up.mp3";
+mafiaList[211]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - North Memphis.mp3";
+mafiaList[212]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Out There.mp3";
+mafiaList[213]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Represent it.mp3";
+mafiaList[214]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Rinky Dink IIWe're Gonna Rumble.mp3";
+mafiaList[215]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Rinky DinkWhatever Ho.mp3";
+mafiaList[216]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Run a Train.mp3";
+mafiaList[217]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Shack That Ass.mp3";
+mafiaList[218]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Slangin' Rocks.mp3";
+mafiaList[219]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Stabbers.mp3";
+mafiaList[220]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Sucks on Dick.mp3";
+mafiaList[221]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - Up There.mp3";
+mafiaList[222]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Ghetty Green/Project Pat - You Know the Biss.mp3";
+mafiaList[223]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - 90 Days.mp3";
+mafiaList[224]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Choose U.mp3";
+mafiaList[225]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - County Jail.mp3";
+mafiaList[226]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Fight.mp3";
+mafiaList[227]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - I'm Mo.mp3";
+mafiaList[228]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - MC Flyjo.mp3";
+mafiaList[229]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Make Dat Azz Clap (Back Clap) feat. Juvenile.mp3";
+mafiaList[230]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - On Nigga.mp3";
+mafiaList[231]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Outro.mp3";
+mafiaList[232]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Posse Song.mp3";
+mafiaList[233]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Show Dem Golds.mp3";
+mafiaList[234]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Shut Ya Mouth, Bitch.mp3";
+mafiaList[235]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Smoke & Get High.mp3";
+mafiaList[236]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Smokin' Out.mp3";
+mafiaList[237]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Still Ridin' Clean.mp3";
+mafiaList[238]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Take Da Charge.mp3";
+mafiaList[239]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - That Drank.mp3";
+mafiaList[240]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - The Porch 3.mp3";
+mafiaList[241]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - This Pimp.mp3";
+mafiaList[242]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Laying Da Smack Down/Project Pat - Weak Niggaz.mp3";
+mafiaList[243]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - 201 Phone Call Skit.mp3";
+mafiaList[244]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Aggravated Robbery.mp3";
+mafiaList[245]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Break Da Law 2001.mp3";
+mafiaList[246]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Cheese and Dope.mp3";
+mafiaList[247]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Chickenhead.mp3";
+mafiaList[248]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Don't Save Her.mp3";
+mafiaList[249]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Fuckin With the Best.mp3";
+mafiaList[250]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Gorilla Pimp.mp3";
+mafiaList[251]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - If you Ain't From my Hood.mp3";
+mafiaList[252]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Life We Live.mp3";
+mafiaList[253]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Mista Don't Play - 20 - Mission Impossible (Pt. 5 Million) Outro.mp3";
+mafiaList[254]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - North North.mp3";
+mafiaList[255]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Ohh Nuthin'.mp3";
+mafiaList[256]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Out There Part 2 (Skit).mp3";
+mafiaList[257]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Ski Mask.mp3";
+mafiaList[258]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - So Ho.mp3";
+mafiaList[259]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - We Ain't Scared Hoe.mp3";
+mafiaList[260]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - We Can Get Gangsta.mp3";
+mafiaList[261]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Whole Lotta Weed.mp3";
+mafiaList[262]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Mista Don't Play/Project Pat - Y'all Niggaz Ain't No Killaz, Yall Niggaz Some Hoes.mp3";
+mafiaList[263]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - Bitch Smackin Killa.mp3";
+mafiaList[264]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - Easily Executed.mp3";
+mafiaList[265]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - Fuck a Bitch.mp3";
+mafiaList[266]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - I Get Da Chewin'.mp3";
+mafiaList[267]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - Murderers & Robbers.mp3";
+mafiaList[268]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - North North.mp3";
+mafiaList[269]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - Outhro.mp3";
+mafiaList[270]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - Pimptro.mp3";
+mafiaList[271]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - Puttin Hoez on Da House.mp3";
+mafiaList[272]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - Red Rum.mp3";
+mafiaList[273]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - Riding on Chrome.mp3";
+mafiaList[274]="Three6Mafia-HypnotizeMindsDiscography/Project Pat - Murderers & Robbers/Project Pat - This Ain't No Game.mp3";
+mafiaList[275]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - After Dark (Juicy J).mp3";
+mafiaList[276]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - All For One (Gangsta Boo).mp3";
+mafiaList[277]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Bitches on my Jock (D.J. Paul, Indo G & Gangsta Boo).mp3";
+mafiaList[278]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Bout the South (Tha Kaze & Dayton Family).mp3";
+mafiaList[279]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Bullet With Yo Name on it (T-Rock Da Rocafella).mp3";
+mafiaList[280]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Catch a Blast (T-Rock Da Rocafela & M-Child).mp3";
+mafiaList[281]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Drinkin' N Thinkin' (Indo G & K-Rock).mp3";
+mafiaList[282]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Favorite Scary Movie (Three 6 Mafia).mp3";
+mafiaList[283]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Judgement Night (Koopsta Knicca).mp3";
+mafiaList[284]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Left 'em Dead (Crunchy Black; 3-6 & Tha Kaze).mp3";
+mafiaList[285]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Life in Bondage (Koopsta Knicca).mp3";
+mafiaList[286]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Murder, Robber (Tha Kaze).mp3";
+mafiaList[287]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Notha Nigga CarClothes (Three 6 Mafia & Tha Kaze).mp3";
+mafiaList[288]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Nothin' But Pimp Shit (Droopy Drew Dog).mp3";
+mafiaList[289]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Orange Mound (M-Child).mp3";
+mafiaList[290]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Smoked Out, Loced Out (Three 6 Mafia, K-Rock & Tha Kaze).mp3";
+mafiaList[291]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Talkin' Shit (D.J. Paul & Juicy J).mp3";
+mafiaList[292]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Triple Six Club House (Lord Infamous; 3-6).mp3";
+mafiaList[293]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Turn Into Killaz (D.J. Paul; 3-6).mp3";
+mafiaList[294]="Three6Mafia-HypnotizeMindsDiscography/Prophet Posse - Body Parts/Prophet Posse - Wha's Next (D.J. Paul & Juicy J).mp3";
+mafiaList[295]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - A Niggas Worst Downfall.mp3";
+mafiaList[296]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - All Dirty Hoes Featuring Gangsta Boo.mp3";
+mafiaList[297]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Big Business.mp3";
+mafiaList[298]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Comin' Up Next.mp3";
+mafiaList[299]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Dalazdayz.mp3";
+mafiaList[300]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Elbow a Nigga Featuring Project Pat.mp3";
+mafiaList[301]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Get Buck, Get Wild Featuring Crunchy Black.mp3";
+mafiaList[302]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Hell Naw.mp3";
+mafiaList[303]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Hypnotize Cash Money Featuring Hot Boyz, Juvenile, Bg, and the Big Tymers.mp3";
+mafiaList[304]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Hypnotize MindsProfit Posse.mp3";
+mafiaList[305]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - I'm Losing it.mp3";
+mafiaList[306]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - On Da Block.mp3";
+mafiaList[307]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Paper Chase Featuring Fatal Hussein.mp3";
+mafiaList[308]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Push 'em Off.mp3";
+mafiaList[309]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Slob on my Nob.mp3";
+mafiaList[310]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Smoked Out Featuring Twista.mp3";
+mafiaList[311]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Throw your Sets Featuring Crucial Conflict.mp3";
+mafiaList[312]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Triple Six Clubhouse Featuring Lord Infamous.mp3";
+mafiaList[313]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Undercover Freaks Featuring Too Short and T-Rock.mp3";
+mafiaList[314]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Wet Party Featuring Spice-1.mp3";
+mafiaList[315]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - What you Lookin' For Featuring Project Pat.mp3";
+mafiaList[316]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - When God Calls Time Out.mp3";
+mafiaList[317]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - When It's on It's Murder.mp3";
+mafiaList[318]="Three6Mafia-HypnotizeMindsDiscography/Tear Da Club Up Thugs - CrazyNDaLazDayz/Tear Da Club Up Thugs - Who Da Crunkest Featuring Project Pat.mp3";
+mafiaList[319]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 01 - Next.mp3";
+mafiaList[320]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 02 - Move Mutha Fucka.mp3";
+mafiaList[321]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 03 - Hard Not To Kill.mp3";
+mafiaList[322]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 04 - Crackin Jaws.mp3";
+mafiaList[323]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 05 - On My Ass.mp3";
+mafiaList[324]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 06 - Pure Anna.mp3";
+mafiaList[325]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 07 - Ain't No Klan.mp3";
+mafiaList[326]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 08 - Niggas Got Me Fucked Up.mp3";
+mafiaList[327]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 09 - Felt The Pain.mp3";
+mafiaList[328]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 10 - Like To Get Away.mp3";
+mafiaList[329]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 11 - All About My Hustle.mp3";
+mafiaList[330]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 12 - Itchy Finger.mp3";
+mafiaList[331]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 13 - Situation Gone Bad.mp3";
+mafiaList[332]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 14 - Lock Down.mp3";
+mafiaList[333]="Three6Mafia-HypnotizeMindsDiscography/The Kaze - Kamakaze, Timez Up/The Kaze - Kamakaze, Timez Up - 15 - Timez Up.mp3";
+mafiaList[334]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Crap Table.mp3";
+mafiaList[335]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Crown Me.mp3";
+mafiaList[336]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Get the Fuck Out of my Face.mp3";
+mafiaList[337]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Gone Be Sum Shit.mp3";
+mafiaList[338]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Hands on Ya.mp3";
+mafiaList[339]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Head Bussaz.mp3";
+mafiaList[340]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - How to Get Rid of a Dead Body.mp3";
+mafiaList[341]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Hypnotize Minds & Fiend Ent..mp3";
+mafiaList[342]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - It's Bought to Happen To'm.mp3";
+mafiaList[343]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Powder Cake.mp3";
+mafiaList[344]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Ruffest Niggaz Out.mp3";
+mafiaList[345]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Smoke If U Got it.mp3";
+mafiaList[346]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Thats How it Happen To'm.mp3";
+mafiaList[347]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - U See We Poe (Screwed).mp3";
+mafiaList[348]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - U See We Poe.mp3";
+mafiaList[349]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia & Fiend Presents... Da Headbussaz/Three 6 Mafia - Where They Hang.mp3";
+mafiaList[350]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 01 - Smoked Out, Loced Out.mp3";
+mafiaList[351]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 02 - Break A Ho.mp3";
+mafiaList[352]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 17 - Runnin Lip.mp3";
+mafiaList[353]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 03 - Body Full Of Bullet Holes.mp3";
+mafiaList[354]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 18 - Hi, I'm Chucky (Bonus Track).mp3";
+mafiaList[355]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 04 - Come & Get Yo Wig Split.mp3";
+mafiaList[356]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 05 - Take Care Ya Bizness.mp3";
+mafiaList[357]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 06 - 1000 Blunts.mp3";
+mafiaList[358]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 07 - Drop It Off Yo Ass.mp3";
+mafiaList[359]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 08 - Try To Run.mp3";
+mafiaList[360]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 09 - Drinkin' On The Alize.mp3";
+mafiaList[361]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 10 - Killa Klan.mp3";
+mafiaList[362]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 11 - Beat Them Hoes Down.mp3";
+mafiaList[363]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 12 - Everthang's Bizness.mp3";
+mafiaList[364]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 13 - Go To Church.mp3";
+mafiaList[365]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 14 - Murder On The Menu.mp3";
+mafiaList[366]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 15 - I Thought You Knew.mp3";
+mafiaList[367]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon)/Three 6 Mafia - 3-6 Feet Underground (The Unreleased Demon) - 16 - Slangin' Rocks.mp3";
+mafiaList[368]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Gettin Real Buck.mp3";
+mafiaList[369]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - I Sho Will (Intro).mp3";
+mafiaList[370]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - I Sho Will (Remix).mp3";
+mafiaList[371]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Intro.mp3";
+mafiaList[372]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - It's Whateva Wit Us Ft. Youngbloodz & D-Rock of the Ying Yang Twins.mp3";
+mafiaList[373]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Official Crunk Junt.mp3";
+mafiaList[374]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - One Hit Quitta.mp3";
+mafiaList[375]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Outro.mp3";
+mafiaList[376]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - P.I.M.P..mp3";
+mafiaList[377]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Pass Dat Shit.mp3";
+mafiaList[378]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Posse Song.mp3";
+mafiaList[379]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Shoot Up Da Club.mp3";
+mafiaList[380]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Skit 1.mp3";
+mafiaList[381]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Skit 2.mp3";
+mafiaList[382]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Skit 3.mp3";
+mafiaList[383]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Squeeze it.mp3";
+mafiaList[384]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Stanky Stanky.mp3";
+mafiaList[385]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Who Da Fuck you Playin Wit.mp3";
+mafiaList[386]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Who I is Ft. Trillville & Lil Wyte.mp3";
+mafiaList[387]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Choices II/Three 6 Mafia - Yeah I Rob Ft. Mr. Bigg.mp3";
+mafiaList[388]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Body Parts.mp3";
+mafiaList[389]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Destruction Terror.mp3";
+mafiaList[390]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Gette'm Crunk.mp3";
+mafiaList[391]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Good Stuff.mp3";
+mafiaList[392]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Gotcha Shakin.mp3";
+mafiaList[393]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - I Aint Goin.mp3";
+mafiaList[394]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - In-2-Deep.mp3";
+mafiaList[395]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Last Man Standing.mp3";
+mafiaList[396]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Late Night Tip.mp3";
+mafiaList[397]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Life Or Death.mp3";
+mafiaList[398]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Money Flow.mp3";
+mafiaList[399]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Our Arrival.mp3";
+mafiaList[400]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Stomp.mp3";
+mafiaList[401]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - The End.mp3";
+mafiaList[402]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Walk Up 2 Yo House.mp3";
+mafiaList[403]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Where Da Killaz Hang.mp3";
+mafiaList[404]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 1, The End/Three 6 Mafia - Where's Da Bud.mp3";
+mafiaList[405]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - 3-6 in the Morning.mp3";
+mafiaList[406]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Anyone Out There.mp3";
+mafiaList[407]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Are U Ready 4 Us.mp3";
+mafiaList[408]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Bodyparts 2.mp3";
+mafiaList[409]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Flashes.mp3";
+mafiaList[410]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Gunclaps.mp3";
+mafiaList[411]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Hit a Muthafucka.mp3";
+mafiaList[412]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - I Ain't Cha Friend.mp3";
+mafiaList[413]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Land of the Lost.mp3";
+mafiaList[414]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Late Nite Tip.mp3";
+mafiaList[415]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Motivated.mp3";
+mafiaList[416]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - N 2 Deep.mp3";
+mafiaList[417]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Neighborhood Hoe.mp3";
+mafiaList[418]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Prophet Posse.mp3";
+mafiaList[419]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Spill my Blood.mp3";
+mafiaList[420]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Studio Time.mp3";
+mafiaList[421]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Tear Da Club Up '97.mp3";
+mafiaList[422]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - We Are Waiting.mp3";
+mafiaList[423]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Weed is Got Me High.mp3";
+mafiaList[424]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Whatcha Do.mp3";
+mafiaList[425]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Who Got Dem 9's.mp3";
+mafiaList[426]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Chpt. 2, World Domination/Three 6 Mafia - Will Blast.mp3";
+mafiaList[427]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Beat Down.mp3";
+mafiaList[428]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Blow a Niggas Ass Off.mp3";
+mafiaList[429]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Droppin' Dat Shit.mp3";
+mafiaList[430]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Fuck Dat Nigga.mp3";
+mafiaList[431]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Fuck Dat Shit.mp3";
+mafiaList[432]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Funky Town.mp3";
+mafiaList[433]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Get Buck Muthafucka (Original).mp3";
+mafiaList[434]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Half on a Sack Or Blow.mp3";
+mafiaList[435]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Lick my Nuts.mp3";
+mafiaList[436]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Liquor & Dat Bud.mp3";
+mafiaList[437]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Long & Hard (Original).mp3";
+mafiaList[438]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Nine to Yo Dome.mp3";
+mafiaList[439]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - No Im Not Dat Nigga.mp3";
+mafiaList[440]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - North Memphis Area.mp3";
+mafiaList[441]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Slob on my Knob (Pt. 2).mp3";
+mafiaList[442]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - South Memphis Representin.mp3";
+mafiaList[443]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Suck a Nigga Dick (Pt. 2).mp3";
+mafiaList[444]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Tear Da Club Up (Original).mp3";
+mafiaList[445]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Club Memphis, Underground Vol. 2/Triple Six Mafia - Y'all Ready For this.mp3";
+mafiaList[446]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Beatem to Da Floor.mp3";
+mafiaList[447]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Bin Laden.mp3";
+mafiaList[448]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Dangerous Posse.mp3";
+mafiaList[449]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Fuck That Shit.mp3";
+mafiaList[450]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Ghetto Chick.mp3";
+mafiaList[451]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Let's Start a Riot.mp3";
+mafiaList[452]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Like a Pimp.mp3";
+mafiaList[453]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Money Didn't Change Me.mp3";
+mafiaList[454]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Mosh Pit.mp3";
+mafiaList[455]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Outro.mp3";
+mafiaList[456]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Put Cha D. in Her Mouth.mp3";
+mafiaList[457]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Rainbow Colors.mp3";
+mafiaList[458]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Ridin Spinners.mp3";
+mafiaList[459]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Shake Dat Jelly.mp3";
+mafiaList[460]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Testin my Gangsta.mp3";
+mafiaList[461]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - They Bout to Find Yo Body.mp3";
+mafiaList[462]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Try Somethin.mp3";
+mafiaList[463]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - Wolf Wolf.mp3";
+mafiaList[464]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Da Unbreakables/Three 6 Mafia - You Scared Part II.mp3";
+mafiaList[465]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Da Summa (Remix).mp3";
+mafiaList[466]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Fuck What U Heard.mp3";
+mafiaList[467]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Grab Tha Gauge.mp3";
+mafiaList[468]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Jealous Azz Bitch.mp3";
+mafiaList[469]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Lock Down.mp3";
+mafiaList[470]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Love to Make a Stang.mp3";
+mafiaList[471]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - M.E.M.P.H.I.S. (Remix).mp3";
+mafiaList[472]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Mindstate.mp3";
+mafiaList[473]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Niggaz Down 2 Make Some Endz.mp3";
+mafiaList[474]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Pass That Junt.mp3";
+mafiaList[475]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Powder (the Higher Version).mp3";
+mafiaList[476]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Sleep.mp3";
+mafiaList[477]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Smokin on Da Dro.mp3";
+mafiaList[478]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - South Memphis Bitch.mp3";
+mafiaList[479]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Talkin.mp3";
+mafiaList[480]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Kings Of Memphis, Underground Vol. 3/Triple 6 Mafia - Wonabees.mp3";
+mafiaList[481]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Live By Yo Rep/Three 6 Mafia - A New Nightmare.mp3";
+mafiaList[482]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Live By Yo Rep/Three 6 Mafia - Be a Witness (Killa Klan Kaze).mp3";
+mafiaList[483]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Live By Yo Rep/Three 6 Mafia - Live By Yo Rep (Radio).mp3";
+mafiaList[484]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Live By Yo Rep/Three 6 Mafia - Live By Yo Rep (Screwed).mp3";
+mafiaList[485]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Live By Yo Rep/Three 6 Mafia - Slippin' (Koopsta Knicca).mp3";
+mafiaList[486]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Live By Yo Rep/Three 6 Mafia - Tear Da Club Up (Da Real).mp3";
+mafiaList[487]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Live By Yo Rep/Three 6 Mafia - Throw Yo Sets in Da Air.mp3";
+mafiaList[488]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Live By Yo Rep/Three 6 Mafia - Triple 6 Mafia.mp3";
+mafiaList[489]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 01 - Chickenhead (Instrumental).mp3";
+mafiaList[490]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 02 - Goldshine (Instrumental).mp3";
+mafiaList[491]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 08 - Can I Get Paid (Instrumental).mp3";
+mafiaList[492]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 03 - Da Summa [Remix] (Instrumental).mp3";
+mafiaList[493]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 04 - Hit Em (Instrumental).mp3";
+mafiaList[494]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 05 - Late Night Tip [Remix] (Instrumental).mp3";
+mafiaList[495]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 06 - Push Em Off (Instrumental).mp3";
+mafiaList[496]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 09 - You Scared, Pt. 2 (Instrumental).mp3";
+mafiaList[497]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 07 - Sippin On Some Syrup (Instrumental).mp3";
+mafiaList[498]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 10 - Go To Sleep (Instrumental).mp3";
+mafiaList[499]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 08 - Tear Da Club Up 97 (Instrumental).mp3";
+mafiaList[500]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 09 - Tounge Ring (Instrumental).mp3";
+mafiaList[501]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 10 - The End (Instrumental).mp3";
+mafiaList[502]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 11 - Hard Not To Kill (Instrumental).mp3";
+mafiaList[503]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 1 - 11 - Late Night Tip (Instrumental).mp3";
+mafiaList[504]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 12 - Gel & Weave (Instrumental).mp3";
+mafiaList[505]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 01 - Ridin' Spinners (Instrumental).mp3";
+mafiaList[506]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 02 - Love Don't Live (Instrumental).mp3";
+mafiaList[507]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 03 - Ooh Nuthin (Instrumental).mp3";
+mafiaList[508]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 04 - Who Da Crunkest (Instrumental).mp3";
+mafiaList[509]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 05 - Where Dem Dollars At (Instrumental).mp3";
+mafiaList[510]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 06 - Ass & Titties (Instrumental).mp3";
+mafiaList[511]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Memphis Instrumentals, Vol. 1/Three 6 Mafia - Memphis Instrumentals, Vol. 2 - 07 - Back Clap (Instrumental).mp3";
+mafiaList[512]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/01 Most Known Unknown Hits.mp3";
+mafiaList[513]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/02 Know Tha Black Off Yo Ass Feat.mp3";
+mafiaList[514]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/03 Roll With It Feat Project Pat.mp3";
+mafiaList[515]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/04 Side 2 Side.mp3";
+mafiaList[516]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/05 Dont Violate Feat Frayser Boy.mp3";
+mafiaList[517]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/06 Got It 4 Sale Feat Chrome.mp3";
+mafiaList[518]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/07 Aint Got Time For Gamez.mp3";
+mafiaList[519]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/08 Hard Hittaz Feat Boogiemane.mp3";
+mafiaList[520]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/09 Dont Cha Get Mad Feat Ll Flip.mp3";
+mafiaList[521]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/10 Dancin On A Pole Feat Chrome.mp3";
+mafiaList[522]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/11 Hard Hittaz Featuring Boogiema.mp3";
+mafiaList[523]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/12 Poppin My Collar.mp3";
+mafiaList[524]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/13 When I pull Up At The Club.mp3";
+mafiaList[525]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/14 Swervin Feat Mike Jones And Pa.mp3";
+mafiaList[526]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/15 Half On A Sack.mp3";
+mafiaList[527]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/16 Pussy Got Ya Hooked Feat Remy.mp3";
+mafiaList[528]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/17 Stay Fly Feat Young Buck Eight.mp3";
+mafiaList[529]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/18 Interlude.mp3";
+mafiaList[530]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/19 Outro.mp3";
+mafiaList[531]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown ( Screwed & Chopped )/20 Body Parts 3 Featuring HCP.mp3";
+mafiaList[532]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/01 Most Known Unknown Hits.mp3";
+mafiaList[533]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/02 Stay Fly (Ft.Young Buck Eightb.mp3";
+mafiaList[534]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/03 Roll With It (Ft.Project Pat).mp3";
+mafiaList[535]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/04 Dont Violate (Ft.Frayser Boy).mp3";
+mafiaList[536]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/05 Swervin (Ft.Mike Jones & Paul.mp3";
+mafiaList[537]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/06 Knock The Black Off Yo Ass (Ft.mp3";
+mafiaList[538]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/07 Poppin My Collar.mp3";
+mafiaList[539]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/08 Hard Hittaz (Ft.Boogiemane).mp3";
+mafiaList[540]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/09 Side 2 Side.mp3";
+mafiaList[541]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/10 Half On A Sack.mp3";
+mafiaList[542]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/11 Skit.mp3";
+mafiaList[543]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/12 When I Pull Up At The Club (Ft.mp3";
+mafiaList[544]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/13 Pussy Got Ya Hooked (Ft.Remy M.mp3";
+mafiaList[545]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/14 Dont Cha Get Mad (Ft.Lil Flip).mp3";
+mafiaList[546]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/15 Body Parts 3 (Ft.Hypnotize Cam.mp3";
+mafiaList[547]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/16 Stay Fly Remix (Ft.Slim Thug T.mp3";
+mafiaList[548]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/17 Outro.mp3";
+mafiaList[549]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/18 Got It 4 Sale (Ft.Chrome).mp3";
+mafiaList[550]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/19 Lets Plan A Robbery.mp3";
+mafiaList[551]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/20 Dancin On A Pole (Ft.Chrome).mp3";
+mafiaList[552]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Most Known Unknown/21 Aint Got Time For Gamez.mp3";
+mafiaList[553]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - All Or Nothin.mp3";
+mafiaList[554]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Back Against Da Wall.mp3";
+mafiaList[555]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Big Bizness (Screwed).mp3";
+mafiaList[556]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Break Da Law '95'.mp3";
+mafiaList[557]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Da Begining.mp3";
+mafiaList[558]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Da Summa.mp3";
+mafiaList[559]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Fuckin Wit Dis Click.mp3";
+mafiaList[560]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Gotta Touch 'em (Pt. 2).mp3";
+mafiaList[561]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - In Da Game.mp3";
+mafiaList[562]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Live By Yo Rep (Bone Dis).mp3";
+mafiaList[563]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Long Nite.mp3";
+mafiaList[564]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Mystic Styles.mp3";
+mafiaList[565]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Now I'm Hi Pt. 3.mp3";
+mafiaList[566]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Porno Movie.mp3";
+mafiaList[567]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Sweet Robbery (Pt. 2).mp3";
+mafiaList[568]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Mystic Stylez/Three 6 Mafia - Tear Da Club Up.mp3";
+mafiaList[569]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 01 - Triple 6 Hotline.mp3";
+mafiaList[570]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 02 - Victim Of A Drive By.mp3";
+mafiaList[571]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 03 - Smoked Out, Loced Out.mp3";
+mafiaList[572]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 04 - Interlude.mp3";
+mafiaList[573]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 05 - Beat Hoes Down.mp3";
+mafiaList[574]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 06 - Now I'm High.mp3";
+mafiaList[575]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 07 - Triple 6 Hotline Pt. 2.mp3";
+mafiaList[576]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 08 - Niggaz Ain't Barrin Dat.mp3";
+mafiaList[577]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 09 - Stash Pot.mp3";
+mafiaList[578]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 10 - Victim Of This Hit.mp3";
+mafiaList[579]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 11 - Pimpin & Robbin.mp3";
+mafiaList[580]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 12 - Fuck All Dem Hoes.mp3";
+mafiaList[581]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 13 - Krank Dis Bitch Up.mp3";
+mafiaList[582]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 14 - Outro.mp3";
+mafiaList[583]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 15 - Flaugin Azz Nigga.mp3";
+mafiaList[584]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 16 - Squeeze My Nuts Mix.mp3";
+mafiaList[585]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Smoked Out, Loced Out/Three 6 Mafia - Smoked Out, Loced Out - 17 - Triple 6 Hotline Pt. 3.mp3";
+mafiaList[586]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Charging These Hoes.mp3";
+mafiaList[587]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Don't Be Scared.mp3";
+mafiaList[588]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Fuck all Dem Hoes.mp3";
+mafiaList[589]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Mask and Da Glock.mp3";
+mafiaList[590]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Niggaz Ain't Barin' Dat.mp3";
+mafiaList[591]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Now I'm High, Really High.mp3";
+mafiaList[592]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Paul, With Da 45.mp3";
+mafiaList[593]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Playa Hataz.mp3";
+mafiaList[594]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Ridin' Da Chevy.mp3";
+mafiaList[595]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Sucks on Dick.mp3";
+mafiaList[596]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Talk Ya Ass Off.mp3";
+mafiaList[597]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Time For Da Juice Mane.mp3";
+mafiaList[598]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Walk Up to your House.mp3";
+mafiaList[599]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Where Da Bud at.mp3";
+mafiaList[600]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - Underground Vol. 1/Triple 6 Mafia - Yeah, They Done Fucked Up.mp3";
+mafiaList[601]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 01 - Move Bitch.mp3";
+mafiaList[602]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 02 - Face Down.mp3";
+mafiaList[603]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 03 - Step Up, Run Up.mp3";
+mafiaList[604]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 04 - We Got Da Dope.mp3";
+mafiaList[605]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 05 - Where It'z Goin' Down.mp3";
+mafiaList[606]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 06 - Born In The Ghetto.mp3";
+mafiaList[607]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 07 - Threesixafix.mp3";
+mafiaList[608]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 08 - 2 Bogus.mp3";
+mafiaList[609]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 09 - Runnin'.mp3";
+mafiaList[610]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 10 - Don't Start Nothin'.mp3";
+mafiaList[611]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 11 - 2 Live Party.mp3";
+mafiaList[612]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 12 - What They Do.mp3";
+mafiaList[613]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 13 - Azz & Tittyz (C-Wiz Remix).mp3";
+mafiaList[614]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 14 - Go To Sleep.mp3";
+mafiaList[615]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 15 - Armageddon Comes.mp3";
+mafiaList[616]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 16 - Everything's Bizness.mp3";
+mafiaList[617]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 17 - Real Down Here.mp3";
+mafiaList[618]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 1/Three 6 Mafia - We Never Sleep, Vol. 1 - 18 - 48 Hours To Respond.mp3";
+mafiaList[619]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 01 - Put Ya Guns In Da Air.mp3";
+mafiaList[620]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 02 - Tear Da Club Up (YSP Remix).mp3";
+mafiaList[621]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 03 - Lookin 4 Da Chewin.mp3";
+mafiaList[622]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 05 - Sippin On Some Syrup (C-Wiz Freaky Tales Remix).mp3";
+mafiaList[623]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 06 - Like A Pimp.mp3";
+mafiaList[624]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 07 - Real Niggaz.mp3";
+mafiaList[625]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 08 - They Don't Fuck Wit U.mp3";
+mafiaList[626]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 09 - Life Or Death.mp3";
+mafiaList[627]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 10 - B.W.A.mp3";
+mafiaList[628]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 11 - Respect.mp3";
+mafiaList[629]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 12 - Rush.mp3";
+mafiaList[630]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 13 - How U Like It.mp3";
+mafiaList[631]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 14 - Don't Save Her (Radio Remix).mp3";
+mafiaList[632]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 15 - Still M.E.M.P.H.I.S..mp3";
+mafiaList[633]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 16 - Get It Started.mp3";
+mafiaList[634]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 17 - Tongue Ring (Remix).mp3";
+mafiaList[635]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 Mafia - We Never Sleep, Vol. 2 - 18 - Hard Not To Kill (Remix).mp3";
+mafiaList[636]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - We Never Sleep, Vol. 2/Three 6 mafia - We Never Sleep, Vol. 2 - 04 - Purple Stuff.mp3";
+mafiaList[637]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - 44 Killers (Interlude).mp3";
+mafiaList[638]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Act Like you Know Me (Point 'em Out).mp3";
+mafiaList[639]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Barrin' you Bitches.mp3";
+mafiaList[640]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - From Da Back.mp3";
+mafiaList[641]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Fuck Y'all Hoes.mp3";
+mafiaList[642]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Hook Up W Hoes (Skit).mp3";
+mafiaList[643]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - I'm so High.mp3";
+mafiaList[644]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Intro.mp3";
+mafiaList[645]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Just Anotha Crazy Click Featuring Insane Clown Posse & Twiztid.mp3";
+mafiaList[646]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Just Like Us.mp3";
+mafiaList[647]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - M.E.M.P.H.I.S..mp3";
+mafiaList[648]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Mafia Niggaz.mp3";
+mafiaList[649]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Put Ya Signs.mp3";
+mafiaList[650]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Sippin' on Some Syrup Featuring Ugk & Project Pat.mp3";
+mafiaList[651]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Take a Bump.mp3";
+mafiaList[652]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Touched Wit it Featuring Mr. Serv-On, Fiend, & La Chat.mp3";
+mafiaList[653]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Tounge Ring.mp3";
+mafiaList[654]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Weak Azz Bitch Featuring La Chat.mp3";
+mafiaList[655]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - What's Next (Outro).mp3";
+mafiaList[656]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Whatcha Know Featuring Big Gipp of the Goodie Mob.mp3";
+mafiaList[657]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Where Da Cheese at.mp3";
+mafiaList[658]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia - When The Smoke Clears, Sixty 6 Sixty 1/Three Six Mafia - Who Run it.mp3";
+mafiaList[659]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Crunchy, Black & La ChatPass Me.mp3";
+mafiaList[660]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - D.J. Paul & Juicy JTalkin'.mp3";
+mafiaList[661]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Gangsta Boo, Crunchy & Black LordWe Shootin' 1st.mp3";
+mafiaList[662]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Hypnotize Camp PosseMafia.mp3";
+mafiaList[663]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Lord InfamousO.V.mp3";
+mafiaList[664]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - N.L. (A Hustlers Theme)I Ain't Goin'.mp3";
+mafiaList[665]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Project Pat feat. Ludacris & CrunchyDis Bitch Dat Hoe.mp3";
+mafiaList[666]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Project PatRidin' on Chrome.mp3";
+mafiaList[667]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Skit1st Crime Scene.mp3";
+mafiaList[668]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - SkitBig Pats Warehouse.mp3";
+mafiaList[669]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - SkitHow it Went Down.mp3";
+mafiaList[670]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Skitthe Restaurant Scene.mp3";
+mafiaList[671]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - T-RockSlang and Serve.mp3";
+mafiaList[672]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Tear Da Club Up Thugs feat. T-RockWona Get Some I Got Some.mp3";
+mafiaList[673]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Three 6 Mafia F La ChatU Got Da Game Wrong.mp3";
+mafiaList[674]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Three 6 Mafia feat. La Chat2-Way Freak.mp3";
+mafiaList[675]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Three 6 Mafia feat. La ChatBaby Mama.mp3";
+mafiaList[676]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Three 6 Mafia feat. La ChatMean Mug.mp3";
+mafiaList[677]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Three 6 Mafia feat. La ChatWar Wit Us.mp3";
+mafiaList[678]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Three 6 MafiaGangsta Niggaz.mp3";
+mafiaList[679]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Choices, The Album/Various - Three 6 MafiaThey Dont Fuck Wit U.mp3";
+mafiaList[680]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Azz & Tittiez.mp3";
+mafiaList[681]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Big Mouth, Big Talk.mp3";
+mafiaList[682]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - D-Suckin'-H.mp3";
+mafiaList[683]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Da First Date.mp3";
+mafiaList[684]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Die a Soldier.mp3";
+mafiaList[685]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Don't Make Me Kill.mp3";
+mafiaList[686]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Don't Trust 'em.mp3";
+mafiaList[687]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Drive By.mp3";
+mafiaList[688]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Fie it on Up.mp3";
+mafiaList[689]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Hoes Can Be Like Niggaz.mp3";
+mafiaList[690]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Outro.mp3";
+mafiaList[691]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Project Hoes.mp3";
+mafiaList[692]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Rinky Dink Records.mp3";
+mafiaList[693]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - We 'bout to Ride.mp3";
+mafiaList[694]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - We Ain't Playin'.mp3";
+mafiaList[695]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - What's Going on.mp3";
+mafiaList[696]="Three6Mafia-HypnotizeMindsDiscography/Three 6 Mafia Presents... Hypnotize Camp Posse/Three 6 Mafia - Who Run it.mp3";
+mafiaList[697]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/001-three_6_mafia-intro-(copthat.com).mp3";
+mafiaList[698]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/002-three_6_mafia-i_told_em-(copthat.com).mp3";
+mafiaList[699]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/003-three_6_mafia-trap_boom_(feat._project_pat)-(copthat.com).mp3";
+mafiaList[700]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/004-three_6_mafia-playstation-(copthat.com).mp3";
+mafiaList[701]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/005-three_6_mafia-i_got_(feat._pimp_c_and_project_pat)-(copthat.com).mp3";
+mafiaList[702]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/006-three_6_mafia-id_rather_(feat._unk)-(copthat.com).mp3";
+mafiaList[703]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/007-three_6_mafia-thats_right_(feat._akon)-(copthat.com).mp3";
+mafiaList[704]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/008-three_6_mafia-corner_man-(copthat.com).mp3";
+mafiaList[705]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/009-three_6_mafia-weed_blow_pills-(copthat.com).mp3";
+mafiaList[706]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/010-three_6_mafia-dsx_talk-(copthat.com).mp3";
+mafiaList[707]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/011-three_6_mafia-hood_star_(feat._lyfe_jennings)-(copthat.com).mp3";
+mafiaList[708]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/012-three_6_mafia-get_ya_rob_(feat._project_pat)-(copthat.com).mp3";
+mafiaList[709]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/013-three_6_mafia-on_some_chrome_(feat._ugk)-(copthat.com).mp3";
+mafiaList[710]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/014-three_6_mafia-rollin_(feat._lil_wyte)-(copthat.com).mp3";
+mafiaList[711]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/015-three_6_mafia-click_bang-(copthat.com).mp3";
+mafiaList[712]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/016-three_6_mafia-my_own_way_(feat._good_charlotte)-(copthat.com).mp3";
+mafiaList[713]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/017-three_6_mafia-dirty_bitch_(feat._project_pat)-(copthat.com).mp3";
+mafiaList[714]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/022-three_6_mafia-my_own_way_(remix)_(feat._good_charlotte)-(copthat.com).mp3";
+mafiaList[715]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/018-three_6_mafia-first_48_(feat._project_pat_spanish_fly_al_kapone_eightball_mjg)-(copthat.com).mp3";
+mafiaList[716]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/019-three_6_mafia-outro-(copthat.com).mp3";
+mafiaList[717]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/020-three_6_mafia-lolli_lolli_(pop_that_body)_intro-(copthat.com).mp3";
+mafiaList[718]="Three6Mafia-HypnotizeMindsDiscography/Three_6_Mafia-Last_2_Walk-2008/021-three_6_mafia-lolli_lolli_(pop_that_body)_(feat._project_pat_young_d_superpower)-(copthat.com).mp3";
+
+function random36song(){
+	var rand_no = Math.floor(total*Math.random());
+	return mafiaList[rand_no];
+}
+
+function setName(trackName, artist, album, year){
+
+	if(year == null)year = ' ';
+	
+
+       var handle = document.getElementById('disp');
+	handle.innerHTML = "  <span class='small'></span>&nbsp;"+artist+" <span class='small'>album: </span>"+album+" <span class='small'>track: </span> "+trackName +" <span class='small'>year: </span>"+year;
+}
+
+function newTrack(){
+
+     track = random36song();
+
+     if( randomTrack != null) soundManager.destroySound('randomTrack');
+
+     randomTrack = soundManager.createSound({id:'randomTrack', url:track, onfinish:function() {newTrack();}, onid3:function(){ setName(this.id3['TIT2'], this.id3['TPE1'], this.id3['TALB'], this.id3['TYER']); } });
+
+     soundManager.play('randomTrack');
+     numTracksListened++;
+
+     var percent = 100.0 * (numTracksListened/697);
+
+     Set_Cookie("pct36", numTracksListened, 365);
+
+     var handle = document.getElementById('more');
+     handle.innerHTML = percent.toFixed(2)+"% of 36 Mafia<br>";
+
+     handle = document.getElementById('dl');
+     handle.innerHTML = "&nbsp;<a target='_blank' href='https://fffff.at/36/&quot;+track+&quot;'><img src='36-like-sm-bw-dn2.png' border='0'></a>";
+     
+      handle = document.getElementById('disp');
+      handle.innerHTML = " &nbsp;<span class='small'>  loading track data...</span>";
+}
+
+// disable debug mode after development/testing..
+ soundManager.debugMode = false;
+
+soundManager.onload = function() {
+  newTrack(); 
+}
+
+</script>
+<style type="text/css">
+body{ background-image:url(../../../bg3.png); margin:0px; padding:0px; }
+a:focus{-moz-outline:none; outline:none;}
+a{text-decoration:none;}
+input,form{font-size:9px;}
+.large{font-size:100px; color:#771100;}
+.small{font-size:12px;}
+h1{background-color:white; border:0px; padding:0px;}
+.cent{position:relative; width:380px; height:300px;  top:200px; margin-left: auto; margin-right: auto;}
+</style>
+</head>
+<body style="font-size:10px; font-family:Geneva,arial,sans;">
+<h1> <span id="more"></span><span id="disp"></span>   </h1>
+<div class="cent"><span id="dl"></span><a href="javascript:;" onclick="newTrack();"><img border="0" src="../36-wot-sm-bw-cn.png"/></a></div>
+<br/><br/>
+</body>
+</html>

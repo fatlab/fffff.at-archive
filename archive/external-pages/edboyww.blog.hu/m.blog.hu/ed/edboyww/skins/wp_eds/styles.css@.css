@@ -1,0 +1,616 @@
+@import url(https://m.blog.hu/rsc/css/basic.css);	/* Import basic styles */
+@import url(https://m.blog.hu/rsc/css/forms.css);	/* Import basic styles */
+@import url(https://m.blog.hu/rsc/css/comments.css);	/* Import basic styles */
+
+/********** =defaults **********/
+
+
+/*## Body ## Body class attributes */
+
+body
+{
+
+	font-family: Verdana;
+	font-size: 12px;
+	background: #ffffff;
+	background: url('img/body_bg.gif');
+	background-repeat: repeat-x;
+	margin: 0;
+	padding: 0;
+	color: #666666;
+}
+/*## General tags ##  */
+
+div { padding:0px; margin:0px; }
+
+hr { display:none; }
+a { text-decoration:none; }
+a:link, a:visited { color:#DF7E00;}
+a:hover { text-decoration:none; }
+
+p, li, blockquote, dd, dt { line-height:135%; }
+
+blockquote 
+{
+	background-color: #F7F7F7;
+	border: 0px;
+	border-left : 2px solid #D9D9D9;
+	padding: 10px 20px 10px 10px;
+}
+
+blockquote p 
+{
+  color:#333;
+/*  font-style:italic;*/
+  margin:0;
+}
+
+p 
+{
+  margin:0 0 15px 0;
+  color:#444;
+  display: block;
+}
+
+ul, li 
+{
+  list-style-type:disc;
+  color:#444;
+  margin:0;
+  padding:0;
+}
+
+ol li 
+{
+  list-style-type:decimal;
+}
+
+li { margin-left: 32px; }
+ul { margin-bottom: 8px; }
+
+code 
+{
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  color:#333;
+  display:block;
+  margin: 20px 25px;
+  padding: 10px 10px 10px 21px;
+}
+
+h1, h2, h3 { letter-spacing:-1px; margin:0px; }
+
+h1 
+{
+	text-align: left;
+	letter-spacing: 1px;
+	padding-top: 10px;
+	
+
+}  
+
+h2 
+{
+	text-align: left;
+	margin-left: 0px;
+	font: 18px Verdana;
+
+}
+
+h3 
+{
+  color:#bbb;
+  margin-top:0px;
+  margin-bottom:6px;
+  font-size:18px;
+  float: none;
+}
+
+h1 a:link,h1 a:visited {
+	color: #fff;
+	}
+
+h1 a:hover {
+	text-decoration:none;
+	color: #FFFFFF;
+	}	
+
+h2, h2 a { color:#594E42; text-decoration:none; }
+h2 a:hover { color: #FF9F1E }
+
+h3 a { color: #999999; text-decoration:none; }
+h3 a:hover { color: #FF9F1E }
+
+dt { font-weight:normal; }
+dd { margin:3px 0 10px 0; }
+/*## Page Header ## Styles for page header */
+
+div#pageHeader {
+        background: url('img/header3.jpg') no-repeat bottom center;
+        width: 824px;
+	height: 200px;
+	padding: 0px;
+}
+
+div#pageHeader a { 
+width: 300px;
+height: 200px
+float: left;
+}
+
+div#pageHeader a span { display: none; }
+
+/* div#pageHeader h1 {
+	position: relative;
+	top: 100px;
+	float: right;
+	color: #FFFFFF;
+	font: 32px Verdana;
+	padding-right: 70px;
+	padding-bottom: 3px;
+	}
+
+div#pageHeader h1 a, div#pageHeader h1 a:visited { 
+	color: #fff;
+	text-decoration: none;
+	}
+
+div#pageHeader h1 a:hover { 
+	color: #fff;
+	text-decoration: underline;
+	}
+	
+div#pageHeader h3 { 
+	font-size: 14px;
+	font-weight: normal;
+	text-align: left;
+	position: relative;
+	top: 160px;
+	left: 130px;
+	float: right;
+	color: #FFFF66;
+	font-family: Verdana; 
+	border: red solid 0px;
+	height: 40px;
+}
+div#pageHeader div.notes {
+    display: none;
+	font-size: 12px;
+	padding: 0px;
+	margin: 0px;
+    float: right;
+    color: #000;
+	border: red solid 0px;
+}
+div#pageHeader div.notes a {
+    color: #0f0;
+} */
+/*## Page Layout ##  */
+
+div#wrapper /* Main white content zone */
+{
+	width: 824px;
+	margin: 0px;
+	margin: 0 auto;
+	padding: 0px;
+    background-image: url('img/page_bg.gif');
+	background-repeat: repeat-y;
+	overflow: auto;
+}
+
+div#leftWrapper  {
+    width: 0px;
+    border: 0px;
+    float:left; 
+    display: none;
+}
+div#mainWrapper  {
+    width: 580px;
+    border: 0px solid blue;
+    float:right;
+	padding-top: 20px;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+div#rightWrapper {
+    width: 220px;
+    border: 0px solid green;
+    float:right;
+	padding-right: 10px;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+
+div.leftIn  { background-color: #fff; padding: 8px; display: none; }
+div.rightIn { 
+	padding: 10px;
+	font-size: 12px 
+	}
+div.mainIn  { 
+	width: 520px;
+	padding: 8px; padding-left:0px; padding-right: 24px; 
+	margin-left: 16px;
+	border: 0px solid #0f0;
+	overflow: hidden;
+	word-wrap: break-word;
+	}
+
+div#pageFooter {
+
+	background: url('img/footer.gif') no-repeat;
+	background-color: #fff;
+	padding: 0;
+	padding-bottom: 20px;
+	margin: 0;
+	height: 50px;
+	width: 800px;
+	}
+/*## Post ## attributes for blog posts  */
+
+div.post 
+{ 
+	margin-bottom: 40px; 
+	overflow: hidden;
+	word-wrap: break-word;
+	padding-left: 30px;
+}
+
+div.post h2 { 
+	padding-bottom: 20px;
+	padding-top: 5px;
+	font-size: 20px;
+}
+
+div.post h3 { 
+	font-size: 12px;
+	color: #999999; 
+	padding-bottom: 10px;
+	padding-top: 0px;
+	display:inline;
+	letter-spacing: 0.3px;
+}
+
+div.post h3.date {
+	display: block;
+	font-weight: normal;
+	font-family: Verdana; 
+	font-size: 11pt; 
+	padding-bottom: 2px; 
+	color: #E6A487;	
+	border-bottom: #e8e8e8 1px solid; 
+	text-align: right;
+	text-transform: uppercase;
+}
+
+div.post a {  text-decoration:none; }
+div.post a:hover {  color:#FF9F1D; }
+
+
+div.post h3.tags a {
+    color:#E6A487;
+    text-decoration:none;
+    font-weight: normal;
+}
+div.post h3.tags a:hover { color: #FF9F1D; }
+
+div.post img { text-align: left; margin: 12px; margin-left: 0px; margin-top: 4px; margin-bottom: 4px; border:1px solid #e0e0f0; }
+
+div.post img.imgright  { text-align: right; float:right; margin-right: 0px; margin-left: 12px; }
+div.post img.imgleft   { text-align: left; float:left; margin-left: 0px; }
+div.post img.imgnotext { text-align: middle; float:none; margin: 0px;  }
+
+div.post div.entry { 
+	margin-bottom: 6px; 
+	font-size: 1em;
+	line-height: 1.4em;	
+	}
+
+div.entry {
+	font-size: 1em;
+	line-height: 1.4em;
+	border-bottom: 1px solid #e8e8e8;
+	padding-bottom: 10px;
+	}
+
+	
+div.entry h3 {
+	font-size: 1em;
+	line-height: 1.4em;
+	display: block;
+	padding-top: 10px;
+	color: #666666;
+	}
+	
+div.entry ul li{
+	list-style-type: none;
+
+}
+
+div.entry ol li {
+	list-style: decimal outside;
+	margin-left: 10px;
+}
+
+	
+
+/*## Pager ## */
+
+div.pager {
+    font-weight: normal;
+    display: inline;
+}
+
+div.prev {
+    float: left;
+}
+
+div.next {
+    float: right;
+}
+/*## Sideboxes ## Styles for sideboxes */
+
+div.box 
+{ 
+	
+	font-family: Verdana;
+	font-size: 11px;
+	overflow:hidden; word-wrap: break-word;
+	margin-bottom: 16px; 
+	margin-right: 10px;
+        padding: 0px 10px 5px 0px;
+}
+div.box h3 
+{ 
+/* border: 1px solid #7F7F7F; */
+/* background: url('img/h2bg.gif') no-repeat; */
+border-bottom: #e8e8e8 1px solid;
+height: 20px;
+text-align: left;
+font-size: 14px;
+padding: 3px 0px 0px 0px;
+font-weight: normal;
+color: #666666;
+float: none;
+}
+
+div.box a {
+
+	text-decoration: none;
+        display: inline;
+/*	padding: 0px 0 1px 8px; */
+
+}
+
+div.box li { 
+	margin-left: 0px; 
+	list-style-type: none;
+	padding-left: 0;
+	text-indent: 0;
+	color: #666666;;
+}
+div.box ul {
+	margin-left: 0px;
+	padding-left: 0px;
+	padding-right: 4px;
+	margin-bottom: 8px;
+	color: #3A1B07;
+}
+div.box ul ul{
+	margin-left: 5px;
+	padding: 0;
+}
+div.box form {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+div.box .dimmed
+{
+	color: #aaa;
+	font-size: 100%;
+	display: inline;
+}
+
+div.box input.SearchField
+{
+	background-color: #f4ecec;
+	border: 1px solid #ccb9b9;
+	padding: 2px;
+	width: 92%;
+}
+
+div.inbox {
+	padding-left: 7px;
+	padding-right: 10px;
+	padding-top: 3px;
+	}
+
+div.inbox p {
+	margin: 0;
+	}
+/*## Calendar ## Styles for calendar */
+
+/* Calendar: */
+caption.bCalendarCaption { border: 1px solid #ccb9b9; background-color: #efe6e6; border-bottom: 0px; }
+table.bCalendarTable     { border: 1px solid #ccb9b9; border-collapse: separate; }
+table.bCalendarTable a { color:#8a2602; text-decoration:none; }
+table.bCalendarTable a:hover { background-color: #8a2602; color: #ffffff}
+table.bCalendarTable tfoot td {	background-color: #efe6e6;	border-top: 1px solid #ccc; }
+table.bCalendarTable tfoot a { text-decoration: none; }
+table.bCalendarTable tfoot a:hover { background-color: #8a2602; color: #ffffff }
+th.bCalendarHeaderCell { color: #ccb9b9; font-weight:normal; }
+#bCalendarToday { background-color: #8a2602; color: #fff; }
+/*## Comments ## Styles for comment area */
+
+div.commentsBg {
+	margin-bottom: 16px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	width: 480px;
+	text-align: left;
+}
+
+div.comment {
+
+	border: 0px solid #B6B6B6;
+	text-align: left;
+	margin: 25px 0px 20px 0px;
+	padding: 4px;
+	width: 480px;
+	color: #a94418;
+	font-family: Verdana;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: left;
+	line-height: 135%;
+}
+
+div.owncomment
+{
+	background-color: #fafafa;
+}
+
+.comment h1 {
+
+	border-bottom: 1px solid #B6B6B6;
+	width: 450px;
+	font-size: 11px;
+	font-weight: bold;	
+	padding: 0px 0px 2px 2px;
+	color: #E2AF0D;
+}
+
+.comment h1 a {
+	font-family: Verdana;
+	color: #E6A487; 
+
+}
+
+div.post h3.comment {
+	color: #E2AF0D;
+	font-size: 15px;
+	letter-spacing: 0px;
+	font-weight: normal;
+}
+
+div.info {
+	margin-top:5px;
+	margin-left: 10px;
+	}
+
+div .label {
+	font-family: Verdana; min-height: 30px; * height: 30px; min-width: 100px; width: 100px; letter-spacing: -1px; float: none; clear: both;
+}
+
+.commentHeadURL { font-weight: normal; font-family: helvetica, arial, sans-serif; font-size: 11px; color: white;}
+
+/*
+div.commentsBg h1 { font-size: 14px; font-weight:700; letter-spacing:normal }
+div.commentsBg h1, div.commentsBg h1 a { color:#87c900; text-decoration:none; }
+div.commentsBg h1 a:hover { background-color:#87c900; color: #f0fff0; text-decoration:none; }
+
+span.commentTime a { font-weight: normal; font-size: 11px; color: #aaa;}
+span.commentTime a:hover { color: #f0fff0; background-color: #aaa}
+span.commentTime a:visited {  color: #aaa;}
+*/
+div.commentText { 
+	margin-top: 4px;
+	margin-bottom: 8px;
+	font-family: Verdana;
+	font-size: 13px;	
+}
+
+div.editComment {
+	font-size: 11px;
+	letter-spacing: 0px;
+	}
+
+div.commentFoot {
+	padding-top: 30px;
+	}
+
+div.commentFooter a, div.commentFooter a:visited {
+	font-size: 11px;
+	letter-spacing: 0px;
+	}
+
+input {
+	background-color: #f4ecec;
+	border: 1px solid #ccb9b9;
+	padding: 2px;
+	}
+
+input.bComment,
+textarea.bComment
+{
+	font: 0.9em Verdana;
+	background-color: #f4ecec;
+	border: 1px solid #ccb9b9;
+	padding: 2px;
+	margin: 0;
+}
+textarea.bComment { width: 94% }
+
+select.bComment  /* Used by the profile form */
+{
+	background-color: #eee;
+	border: 1px solid #ccc;
+	padding: 1px;
+	margin: 0ex;
+}
+
+form.bComment /* New comment form */
+{
+	margin: 1ex 2ex;
+	padding: 0 1ex;
+	border: 0px;
+}
+
+input.submit {
+	background-color: #b9844a;
+	border: 1px solid #98652e;
+	color: #fff;
+	margin-top: 3px;
+	padding: 1px;
+	}
+
+.SaveButton {
+	background-color: #b9844a;
+	border: 1px solid #98652e;
+	color: #fff;
+	padding: 1px;
+	width: 100px;
+	}
+
+.ResetButton {
+	background-color: #b9844a;
+	border: 1px solid #98652e;
+	color: #fff;
+	padding: 1px;
+	width: 100px;
+	}
+
+div.input {
+	width: 250px;
+	text-align: left;
+	}
+
+div.input input.bComment {
+	margin: 0;
+	float: none;
+	clear: both;
+	}
+
+fieldset {
+	clear: both;
+	}
+
+.checkbox {
+	border: none;
+	background-color: transparent;
+	}
+
+.input_text {
+	text-align: left;
+	}
+
+.bComment a { line-height: 100% }

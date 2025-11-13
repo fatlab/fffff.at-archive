@@ -1,0 +1,1374 @@
+<!DOCTYPE html><script>var __pbpa = true;</script><script>var translated_warning_string = 'Warning: Never enter your Tumblr password unless \u201chttps://www.tumblr.com/login\u201d\x0ais the address in your web browser.\x0a\x0aYou should also see a green \u201cTumblr, Inc.\u201d identification in the address bar.\x0a\x0aSpammers and other bad guys use fake forms to steal passwords.\x0a\x0aTumblr will never ask you to log in from a user\u2019s blog.\x0a\x0aAre you absolutely sure you want to continue?';</script><script type="text/javascript" language="javascript" src="https://assets.tumblr.com/assets/scripts/pre_tumblelog.js?_v=b9f848c06fcba7eaf305d4a7cb7a1b98"></script><!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="" lang="en"> <!--<![endif]-->
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+ <!-- CMPNDM THEME //CMPNDMEngine2
+ Last Revision: December 18, 2011 
+ by Danny Cohen @ dco1.com -->
+ 
+<title> NOT SAFE FOR ʍORK</title>
+<meta name="description" content="hi أفضل اللحوم ن الردف" />
+
+<style>figure{margin:0}.tmblr-iframe{position:absolute}.tmblr-iframe.hide{display:none}.tmblr-iframe--amp-cta-button{visibility:hidden;position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:100}.tmblr-iframe--amp-cta-button.tmblr-iframe--loaded{visibility:visible;animation:iframe-app-cta-transition .2s ease-out}</style><link rel="stylesheet" media="screen" href="https://assets.tumblr.com/client/prod/standalone/blog-network-npf/index.build.css?_v=f085dde138e244526309d4673db67b4c"><link rel="shortcut icon" href="https://64.media.tumblr.com/avatar_0e8a595cde55_128.pnj" />
+<link rel="apple-touch-icon" href="https://64.media.tumblr.com/avatar_0e8a595cde55_128.pnj"/>
+<link rel="alternate" type="application/rss+xml" href="https://notsafeformork.tumblr.com/rss" />
+
+<meta name="color:Background" content="#E3E3E3" />
+<meta name="color:Top Border Color" content="#f9382d" />
+<meta name="color:Body Text" content="#373737" />
+<meta name="color:Link Color" content="#3e8fa0" />
+  
+<meta name="color:Triangle One Color" content="#66a22c" />
+<meta name="color:Triangle Two Color" content="#ffdc24" />
+
+<meta name="if:Show Tags" content="1" />
+<meta name="if:Show Album Art on Audio Posts" content="1" />
+<meta name="if:Multiple Columns" content="1"/>
+<meta name="if:Infinite Scroll" content="0"/>
+<meta name="if:Photosets as Slideshows" content="1" />
+
+<meta name="text:Bottom Triangle Colors" content="'#f9382d','#1b7d8d','#303030','#050f15'" />
+
+<meta name="text:Disqus Shortname" content="" />
+<meta name="text:Copyright Information" content="Powered by Tumblr. &copy; 2011" />
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Vollkorn:400italic,400|Signika:400,600,300" />
+  
+<!--[if IE]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+// You may specify partial version numbers, such as "1" or "1.3",
+//  with the same result. Doing so will automatically load the 
+//  latest version matching that partial revision pattern 
+//  (e.g. 1.3 would load 1.3.2 today and 1 would load 1.4.1).
+
+google.load("jquery", "1.6");
+google.load("jqueryui", "1.6");
+google.setOnLoadCallback(function() {
+
+
+
+ $.Isotope.prototype._getCenteredMasonryColumns = function() {
+    this.width = this.element.width();
+    
+    var parentWidth = this.element.parent().width();
+    
+                  // i.e. options.masonry && options.masonry.columnWidth
+    var colW = this.options.masonry && this.options.masonry.columnWidth ||
+                  // or use the size of the first item
+                  this.$filteredAtoms.outerWidth(true) ||
+                  // if there's no items, use size of container
+                  parentWidth;
+    
+    var cols = Math.floor( parentWidth / colW );
+    cols = Math.max( cols, 1 );
+
+    // i.e. this.masonry.cols = ....
+    this.masonry.cols = cols;
+    // i.e. this.masonry.columnWidth = ...
+    this.masonry.columnWidth = colW;
+
+  };
+  
+  $.Isotope.prototype._masonryReset = function() {
+    // layout-specific props
+    this.masonry = {};
+    // FIXME shouldn't have to call this again
+    this._getCenteredMasonryColumns();
+    var i = this.masonry.cols;
+    this.masonry.colYs = [];
+    while (i--) {
+      this.masonry.colYs.push( 0 );
+    }
+    
+  };
+
+  $.Isotope.prototype._masonryResizeChanged = function() {
+    var prevColCount = this.masonry.cols;
+    // get updated colCount
+    this._getCenteredMasonryColumns();
+    
+    return ( this.masonry.cols !== prevColCount );
+  };
+  
+  $.Isotope.prototype._masonryGetContainerSize = function() {
+    var unusedCols = 0,
+        i = this.masonry.cols;
+    // count unused columns
+    while ( --i ) {
+      if ( this.masonry.colYs[i] !== 0 ) {
+        break;
+      }
+      unusedCols++;
+    }
+    
+    return {
+          height : Math.max.apply( Math, this.masonry.colYs ),
+          // fit container to columns that have been used;
+          width : (this.masonry.cols - unusedCols) * this.masonry.columnWidth
+        };
+  };
+
+
+
+
+
+
+
+// $('#posts').isotope({itemSelector: 'article'});
+var $postcontainer = $('#posts');
+
+function page_action() {
+    if ( $('body').hasClass('columns') ) {
+        $postcontainer.imagesLoaded(function(){
+            $postcontainer.isotope({
+                 itemSelector: 'article',
+                 transformsEnabled: false,
+                 },  function() {
+                 $("#container").css('opacity', 1);
+            });
+            resizefooterandheader();
+        
+        });
+    }  else { 
+        $('#container, footer').css({'width':  '500px' });     $("#container").css('opacity', 1); 
+    }
+};
+
+
+page_action(); 
+top_triangle();
+bottom_triangle();
+
+
+function top_triangle(){
+
+ $('header').prepend('<canvas id="top_triangle" width="0" height="0"/>');
+var canvas = $('header').find('canvas')[0];  
+var ctx = canvas.getContext('2d');  
+ $('h1').find('canvas').height('100px');
+ 
+ctx.beginPath();
+ctx.moveTo(180,0.0);
+ctx.lineTo(120,105);
+ctx.lineTo(120,105);
+ctx.lineTo(0,105);
+ctx.lineTo(60,0);
+ctx.lineTo(60,0);
+ctx.lineTo(180,0.0);
+ctx.fillStyle = "#66a22c";  
+ctx.fill();  
+ctx.beginPath();
+ctx.moveTo(181,0.0);
+ctx.lineTo(61,0);
+ctx.lineTo(60,0);
+ctx.lineTo(121,106);
+ctx.fillStyle = "#ffdc24";  
+ctx.fill();  
+
+
+}
+
+function bottom_triangle(){
+var colors = ['#f9382d','#1b7d8d','#303030','#050f15'];
+var fillone = choose(colors);
+colors = $.grep(colors, function(value) {
+    return value != fillone;
+});
+var filltwo = choose(colors);	
+
+ $('footer').prepend('<canvas id="footer_triangle" width="0" height="0"/>');
+var canvas = $('footer').find('canvas')[0];  
+var ctx = canvas.getContext('2d');  
+ $('h1').find('canvas').height('50px');
+
+
+
+ctx.scale(.5,.5);
+
+ctx.beginPath();
+ctx.moveTo(180,0.0);
+ctx.lineTo(120,105);
+ctx.lineTo(120,105);
+ctx.lineTo(0,105);
+ctx.lineTo(60,0);
+ctx.lineTo(60,0);
+ctx.lineTo(180,0.0);
+ctx.fillStyle = fillone;  
+ctx.fill();  
+ctx.beginPath();
+ctx.moveTo(180,0.0);
+ctx.lineTo(60,0);
+ctx.lineTo(60,0);
+ctx.lineTo(121,105);
+ctx.fillStyle = filltwo;  
+ctx.fill();  
+
+
+}
+
+
+
+$(window).smartresize( function(){
+    resizefooterandheader();
+});
+   
+function resizefooterandheader(){
+    var isotopeInstance = $postcontainer.data('isotope');
+    $postcontainer.isotope('reLayout', function(){ 
+        var newboxwidth = ( isotopeInstance.masonry.cols * isotopeInstance.masonry.columnWidth ) - 20; 
+        $('header').width( newboxwidth );  $('footer').width( newboxwidth ); $('.navigation').width( newboxwidth );
+    }); 
+}
+
+
+
+
+
+   
+function choose (set) {
+    return set[Math.floor(Math.random() * set.length)];
+}
+   
+});
+
+</script>
+<script type="text/javascript" src="https://static.tumblr.com/tlev6ur/shTlvwodz/jquery.isotope.min.js"></script>
+
+
+
+<style>
+* {  margin:0;  padding:0;  border:0;  outline:0;  font-size:100%;  vertical-align:baseline;  background:transparent;}                  
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block;}
+
+   ::-moz-selection { color:rgba(255,255,255,.8); background:#000;}
+        ::selection { color:rgba(255,255,255,.8); background:#000;}
+                       a:link { -webkit-tap-highlight-color: #000; } 
+
+
+h1, h2, h3, h4, h5, h6 {font-weight:normal;}
+a {text-decoration:none; outline: none;}
+
+.hide {display:none;}
+hr.foot {border:0px;clear: both;display: block;	overflow: hidden;visibility: hidden;width: 0px; margin:0;padding:0;	height: 0px;}
+
+.left {float:left;} .right {float:right;} 
+/* Layout */
+body {margin: 0 ;padding: 0; margin-bottom:30px; min-width:540px;}
+
+#container {opacity:0;
+
+  -webkit-transition: opacity 0.3s ease-out;  
+     -moz-transition: opacity 0.3s ease-out;  
+      -ms-transition: opacity 0.3s ease-out;  
+       -o-transition: opacity 0.3s ease-out;  
+          transition: opacity 0.3s ease-out;
+}
+
+header , footer , .navigation {margin:0 auto;  width:100%; padding:16px 0; position:relative; }
+footer { margin-bottom:30px; min-height:55px; width:500px;}
+.navigation  {padding:0;}
+
+canvas { position:absolute;  }
+
+h1 {display: block; }
+h1 a {width: 100%; height: 104px; position:relative;z-index:9;
+display:table-cell; font-weight:100;
+vertical-align:middle;
+font-family: 'LetterGothicStd',LetterGothicStd,'Orator Std', 'Droid Sans Mono', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+text-decoration: none;
+color: #2c2c2c;
+opacity:.9;
+font-size: 46.83px;
+text-transform: uppercase;
+
+line-height:76.0%;
+padding-top:5px;
+
+word-spacing:-15px;
+
+}
+
+h1 a:hover {opacity:1;}
+
+header input {background:rgba(255,255,255,.6); padding:3px; height:12px; margin:0; display:inline-block;vertical-align:middle;}
+header [type="submit"] {cursor:pointer;  height:18px; text-shadow:0px 1px 2px rgba(0,0,0,.3);}
+header [type="submit"]:hover { background:rgba(0,0,0,.5); color:white; position:relative; z-index:11; }
+
+
+#navbar {width:100%; margin-bottom:10px; font-size: 20px; color:#fff;}
+            #navbar ul {display:block; margin:10px 0; padding:0; list-style:none; line-height:18px;}
+            #navbar li {display:inline;}
+            #navbar a {float:left; display:block; margin-right:10px;}  
+            #navbar a:hover {text-decoration:underline;} 
+
+
+.navigation a {padding: 5px 0px; text-transform:lowercase;
+text-decoration: none;
+margin-left: 0px;
+display: block;
+
+  -webkit-transition: all 0.3s;  
+     -moz-transition: all 0.3s;  
+      -ms-transition: all 0.3s;  
+       -o-transition: all 0.3s;  
+          transition: all 0.3s;
+
+}
+.navigation a:hover {padding: 5px 10px;}
+
+#posts, #container { margin:0 auto; position:relative; }
+#posts {margin-top:1.5empx; margin-left:-10px;}
+.columns #posts {margin-left:auto;}
+.infinitescroll #bottomnav {display:none;}
+
+footer canvas {right:0; bottom:0; margin-bottom:10px; position:absolute; 
+-moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+-o-transform: scale(-1, 1);
+transform: scale(-1, 1);
+filter: FlipH;
+}
+.footercontent {margin-right:80px;}
+footer a, footer p {display:table-cell; padding-right:15px; vertical-align:top; height:55px;}
+
+    /* Posts, Articles */
+article {width:500px; padding:10px; font-size:13px;}
+
+article p {margin-bottom:1em; }
+article img {max-width:100%;}
+article ul, article ol {margin:1.3em 0;} article ul {list-style:none;} article .copy ul li:before{content:"\25B4"; padding-right:.4em; color:#f9382d; }
+article .copy blockquote {margin:1.3em 0; padding-left:1.5em; border-left: solid 4px #dedddd; line-height:175%; color:#2c2c2c;}
+a.highres {text-align:right; display:block; font-weight:bold;}
+
+.photoset {margin-bottom:1em;}
+
+.tags {display:block;}
+    .post .chat {margin-left:0; list-style:none;} .post .chat .li:before {content:""; padding-right:0;}
+    .post .chat li {display:table-row; padding:2px 1px;}
+    .post .chat .label {display:table-cell; padding-right:7px; text-align:right; font-weight:bold;}
+    .post .chat .user_1  {border-bottom:1px solid #66a22c;}
+    .post .chat .user_2  {border-bottom:1px solid #ffdc24;}
+    
+    
+.answer .question { background: rgba(255,255,255,.8);-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;margin: 0 0 15px 0;padding: 1em; position: relative; font-size:129%;}
+.post .answer .copy  { color: #2c2c2c;font-size: 16px;font-weight: bold;}
+.post .question .source {font-size:11px; text-align:right; display:block; vertical-align:middle;}
+.post .question .source img {vertical-align:middle;}
+.post .asker_container {margin:29px 0px 0px;}
+.post .asker_container img {margin: 0 10px -7px 0;}
+.post .asker_container a.asker {color: #2c2c2c;}
+
+   
+ol.notes {background: #eaeaea; -moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius: 4px;font-size: 11px;color: #666;padding:10px ;list-style-type: none;font-size: 11px; margin:10px 0;}
+ol.notes a {color: #666;text-decoration: underline;}
+ol.notes li.note {padding: 5px;}
+ol.notes li.note img.avatar {vertical-align: -4px; margin-right: 10px; width: 16px;height: 16px;}
+ol.notes li.note span.action, ol.notes li.note .answer_content  {font-weight: normal;}
+ol.notes li.note blockquote { border-left: 2px solid #666; padding: 4px 10px; margin: 10px 0px 0px 25px;                                           }
+ol.notes li.note blockquote a { text-decoration: none;}
+
+
+/* Colors */
+body {background: #ebe6e6; color: #2c2c2c; border-top: 28px solid #f9382d;}
+a {color: #fafbfc;}
+
+.navigation a {color: #2c2c2c;}
+.navigation a:hover {color: #ebe6e6; background: #2c2c2c;}
+footer a, h1 a {
+-webkit-transition: all 0.3s ease-out;  
+   -moz-transition: all 0.3s ease-out;  
+    -ms-transition: all 0.3s ease-out;  
+     -o-transition: all 0.3s ease-out;  
+        transition: all 0.3s ease-out;
+text-shadow:0px 0px 0px rgba(0,0,0,.2);}
+footer a:hover { color:#2c2c2c; }
+    /* Post, Articles */ 
+        article {background: none;}
+    article h3 a:hover { color:#2c2c2c; text-decoration:none; }
+    article h3 a span { color:#f9382d; font-weight:bold; } 
+    .quote .post {color:#f9382d;}
+    
+    .post .question {  background: rgba(255,255,255,.8);
+                        -moz-border-radius: 8px;
+                        -webkit-border-radius: 8px;
+                        border-radius: 8px;
+                        margin: 0 0 15px 0;
+                        padding: 15px 20px;
+                        position: relative;
+                    }
+
+    .postmeta a { color:#2c2c2c; text-decoration:none; }
+        .postmeta .tags a {color: #fafbfc; padding-bottom:1px;}
+
+    .postmeta .date {float:left;}
+    .postmeta .notes {float:right;}
+    
+    
+
+/* Fonts */
+body {font-size: 14px; font-weight:400; font-family: 'Signika','Droid Sans', arial, serif;text-rendering: optimizelegibility !important;}
+
+article a:hover {text-decoration:underline;}
+
+.postmeta {font-size:11px;}
+
+#navbar {font-size: 16px; display:block; 
+font-weight: bold;
+font-family:Helvetica, Arial, sans;
+text-align: right;
+text-transform: uppercase;
+}
+    /* Post, Articles */
+    article {font-size:13px; text-align: justify; margin-bottom:2em;}
+    article h3 {font-size:22px; font-family:'Vollkorn', arial, serif; }
+    
+    article strong, article b {font-weight:600;}
+    
+    .quote blockquote {color:#f9382d; font-weight: 900;}  
+    .quote .short  { font-size: 33px; line-height: 35px; }
+    .quote .medium { font-size: 25px;line-height: 28px; }
+    .quote .long   { font-size: 18px; line-height: 22px; }
+
+    .postmeta {font-weight:300;}
+    
+
+footer small {
+   font-family: Baskerville, 'Goudy Old Style', Palatino, 'Book Antiqua', 'Warnock Pro', serif;
+font-size: 2em;
+font-style: italic;
+font-weight: normal;
+line-height: 2em;
+text-transform: lowercase;
+}
+    
+
+/* Isotope */
+
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+
+body {
+    background-image: url("http://www.alanbutler.info/glitchrainbow.gif");
+    background-position: 0 0;
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+z-index:-10000;
+}
+
+
+
+</style>
+
+<link rel="alternate" href="android-app://com.tumblr/tumblr/x-callback-url/blog?blogName=notsafeformork" /><link rel="alternate" href="ios-app://305343404/tumblr/x-callback-url/blog?blogName=notsafeformork" /><script
+    defer
+    type="application/javascript"
+    id="bilmur"
+    data-provider="tumblr.com"
+    data-service="blognetwork"
+    data-customproperties='{"theme": ""}'
+    nonce="ncSsRMOHtZciGRj7VsB6F0IDM"
+    src="https://s0.wp.com/wp-content/js/bilmur.min.js?m=202546"
+  ></script><script src="https://assets.tumblr.com/assets/scripts/tumblelog_post_message_queue.js?_v=a8fadfa499d8cb7c3f8eefdf0b1adfdd"></script><link rel="stylesheet" type="text/css" href="https://assets.tumblr.com/fonts/gibson/stylesheet.css?v=3"><meta name="keywords" content="photography,art,gtaphotographers,gaming,homeless" /><!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS --><!-- If you'd like to specify your own Open Graph tags, define the og:url and og:title tags in your theme's HTML. --><!-- Read more: http://ogp.me/ --><meta property="fb:app_id" content="48119224995" /><meta property="og:site_name" content="Tumblr" /><meta property="og:title" content="NOT SAFE FOR ʍORK" /><meta property="og:url" content="https://notsafeformork.tumblr.com/?og=1" /><meta property="og:description" content="hi أفضل اللحوم ن الردف" /><meta property="og:type" content="profile" /><meta property="og:image" content="https://64.media.tumblr.com/avatar_0e8a595cde55_128.pnj" /><meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName=notsafeformork" /><meta property="al:ios:app_name" content="Tumblr" /><meta property="al:ios:app_store_id" content="305343404" /><meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName=notsafeformork" /><meta property="al:android:app_name" content="Tumblr" /><meta property="al:android:package" content="com.tumblr" /><!-- END TUMBLR FACEBOOK OPENGRAPH TAGS --><!-- TWITTER TAGS --><meta charset="utf-8"><meta name="twitter:site" content="tumblr" /><meta name="twitter:card" content="summary" /><meta name="twitter:description" content="hi أفضل اللحوم ن الردف" /><meta name="twitter:title" content="NOT SAFE FOR ʍORK" /><meta name="twitter:app:name:iphone" content="Tumblr" /><meta name="twitter:app:name:ipad" content="Tumblr" /><meta name="twitter:app:name:googleplay" content="Tumblr" /><meta name="twitter:app:id:iphone" content="305343404" /><meta name="twitter:app:id:ipad" content="305343404" /><meta name="twitter:app:id:googleplay" content="com.tumblr" /><meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName=notsafeformork&amp;referrer=twitter-cards" /><meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName=notsafeformork&amp;referrer=twitter-cards" /><meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName=notsafeformork&amp;referrer=twitter-cards" /><!-- GOOGLE CAROUSEL --><script type="application/ld+json">
+	{"@type":"ItemList","url":"https:\/\/notsafeformork.tumblr.com","itemListElement":[{"@type":"ListItem","position":1,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142361694147\/downandoutinlossantos-portrait-of-a-sex-worker"},{"@type":"ListItem","position":2,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142361670537\/downandoutinlossantos-portrait-of-women-in"},{"@type":"ListItem","position":3,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142361659157\/downandoutinlossantos-closing-eyes"},{"@type":"ListItem","position":4,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142361653157\/downandoutinlossantos-dawn-near-el-rancho-blvd"},{"@type":"ListItem","position":5,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142361646982\/downandoutinlossantos-eye-contact"},{"@type":"ListItem","position":6,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142361624917\/vagrant-fashion"},{"@type":"ListItem","position":7,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142121805222\/downandoutinlossantos-portrait-of-a-sex-worker"},{"@type":"ListItem","position":8,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142121792202\/downandoutinlossantos-near-rancho-follow-on"},{"@type":"ListItem","position":9,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142121779332\/downandoutinlossantos-view-down-from"},{"@type":"ListItem","position":10,"url":"https:\/\/notsafeformork.tumblr.com\/post\/142121772807\/downandoutinlossantos-warm-evening-follow"},{"@type":"ListItem","position":11,"url":"https:\/\/notsafeformork.tumblr.com\/post\/141969188787\/women-at-the-train-station"},{"@type":"ListItem","position":12,"url":"https:\/\/notsafeformork.tumblr.com\/post\/141942089512\/sex-worker-downtown"},{"@type":"ListItem","position":13,"url":"https:\/\/notsafeformork.tumblr.com\/post\/141942052652\/downandoutinlossantos-portrait-of-woman-at"},{"@type":"ListItem","position":14,"url":"https:\/\/notsafeformork.tumblr.com\/post\/141863036407\/previewnot-officially-launched-yet-but-heres-a"},{"@type":"ListItem","position":15,"url":"https:\/\/notsafeformork.tumblr.com\/post\/129068463667\/its-been-a-while-new-hillary-clinton-gif"}],"@context":"http:\/\/schema.org"}</script><link rel="canonical" href="https://www.tumblr.com/notsafeformork" /></head>
+
+<body class="index  columns ">
+
+<div id="container">
+<header class="isotope">
+    <h1 class="sitetitle"><a href="index.html">NOT SAFE FOR ʍORK</a></h1>
+
+    <div id="navbar">
+        <ul>
+            <li><a href="https://notsafeformork.tumblr.com/alan">Alan Butler (or what I really do)</a></li>
+            <li><a href="https://notsafeformork.tumblr.com/archive">Archive</a></li>
+             
+             <li><a href="https://notsafeformork.tumblr.com/ask">HATE</a></li> 
+            <li><a href="https://notsafeformork.tumblr.com/rss">RSS</a></li>
+              <li><a href="https://twitter.com/alan_butler" target="_blank">TWITTER: @alan_butler</a></li>
+        </ul>
+      
+       
+    </div>
+</header>
+<div class="navigation isotope" id="topnav">
+ 
+         <a href="https://notsafeformork.tumblr.com/page/2" class="oldernav right"><span class="navword">Older</span>&nbsp;&rarr;</a>
+         
+        <hr class="foot" />
+</div>
+
+
+
+  <div id="posts">  
+        <article id="post_142361694147" data-postid="142361694147" class="photo highres" rel="reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142361694147"><img src="https://64.media.tumblr.com/a5cbfe1eed1a36c851b6439983a7f33a/tumblr_o4srpcawZm1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Portrait of a sex worker near modernist sculpture.
+&rdquo;" class="normalres"/> <a href="https://64.media.tumblr.com/a5cbfe1eed1a36c851b6439983a7f33a/tumblr_o4srpcawZm1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Portrait of a sex worker near modernist sculpture.
+&rdquo;" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142073615154" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Portrait of a sex worker near modernist sculpture.</p></blockquote></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142361694147/downandoutinlossantos-portrait-of-a-sex-worker">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142361694147/downandoutinlossantos-portrait-of-a-sex-worker#notes">10 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_142361670537" data-postid="142361670537" class="photo highres" rel="reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142361670537"><img src="https://64.media.tumblr.com/8ceb2aac614e698d24b120842db09ea4/tumblr_o4sth1t7jb1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Portrait of women in industrial area.
+&rdquo;" class="normalres"/> <a href="https://64.media.tumblr.com/8ceb2aac614e698d24b120842db09ea4/tumblr_o4sth1t7jb1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Portrait of women in industrial area.
+&rdquo;" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142247285152" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Portrait of women in industrial area.</p></blockquote></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142361670537/downandoutinlossantos-portrait-of-women-in">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142361670537/downandoutinlossantos-portrait-of-women-in#notes">6 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_142361659157" data-postid="142361659157" class="photo highres" rel="reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142361659157"><img src="https://64.media.tumblr.com/dc291f4da8e10ab16f2ad44683ac35ef/tumblr_o4strlbzvU1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Closing eyes.
+&rdquo;" class="normalres"/> <a href="https://64.media.tumblr.com/dc291f4da8e10ab16f2ad44683ac35ef/tumblr_o4strlbzvU1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Closing eyes.
+&rdquo;" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142295080494" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Closing eyes.</p></blockquote></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142361659157/downandoutinlossantos-closing-eyes">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142361659157/downandoutinlossantos-closing-eyes#notes">2 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_142361653157" data-postid="142361653157" class="photo highres" rel="reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142361653157"><img src="https://64.media.tumblr.com/aaebe68956941ebf28ae548b8e65423a/tumblr_o4stvgW64N1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Dawn near El Rancho Blvd.
+&rdquo;" class="normalres"/> <a href="https://64.media.tumblr.com/aaebe68956941ebf28ae548b8e65423a/tumblr_o4stvgW64N1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Dawn near El Rancho Blvd.
+&rdquo;" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142299056579" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Dawn near El Rancho Blvd.</p></blockquote></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142361653157/downandoutinlossantos-dawn-near-el-rancho-blvd">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142361653157/downandoutinlossantos-dawn-near-el-rancho-blvd#notes">2 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_142361646982" data-postid="142361646982" class="photo highres" rel="reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142361646982"><img src="https://64.media.tumblr.com/09736ad53f68f57dd960d10f036c5205/tumblr_o4stsfOYET1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Eye contact.
+&rdquo;" class="normalres"/> <a href="https://64.media.tumblr.com/09736ad53f68f57dd960d10f036c5205/tumblr_o4stsfOYET1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Eye contact.
+&rdquo;" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142307712070" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Eye contact.</p></blockquote></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142361646982/downandoutinlossantos-eye-contact">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142361646982/downandoutinlossantos-eye-contact#notes">1 note</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_142361624917" data-postid="142361624917" class="photo highres" rel="reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142361624917"><img src="https://64.media.tumblr.com/fc7dd89b0b7558db4518e981c99157d9/tumblr_o4su0vGRyF1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Vagrant fashion.
+&rdquo;" class="normalres"/> <a href="https://64.media.tumblr.com/fc7dd89b0b7558db4518e981c99157d9/tumblr_o4su0vGRyF1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Vagrant fashion.
+&rdquo;" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142357949732" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Vagrant fashion.</p></blockquote></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142361624917/vagrant-fashion">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142361624917/vagrant-fashion#notes">2 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_142121805222" data-postid="142121805222" class="photo highres" rel="photography gtaphotographers gaming homeless capitalism videogames art contemporaryart gta gtav night_photography  reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142121805222"><img src="https://64.media.tumblr.com/a5cbfe1eed1a36c851b6439983a7f33a/tumblr_o4srpcawZm1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Portrait of a sex worker near modernist sculpture.
+&rdquo;
+Follow on instagram too&hellip;
+https://www.instagram.com/downandoutinlossantos/" class="normalres"/> <a href="https://64.media.tumblr.com/a5cbfe1eed1a36c851b6439983a7f33a/tumblr_o4srpcawZm1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Portrait of a sex worker near modernist sculpture.
+&rdquo;
+Follow on instagram too&hellip;
+https://www.instagram.com/downandoutinlossantos/" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142073615154" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Portrait of a sex worker near modernist sculpture.</p></blockquote><p>Follow on instagram too&hellip;<br /><a href="https://www.instagram.com/downandoutinlossantos/" target="_blank">https://www.instagram.com/downandoutinlossantos/</a><br /></p></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 <p class="tags"># <a href="https://notsafeformork.tumblr.com/tagged/photography">photography</a> <a href="https://notsafeformork.tumblr.com/tagged/gtaphotographers">gtaphotographers</a> <a href="https://notsafeformork.tumblr.com/tagged/gaming">gaming</a> <a href="https://notsafeformork.tumblr.com/tagged/homeless">homeless</a> <a href="https://notsafeformork.tumblr.com/tagged/capitalism">capitalism</a> <a href="https://notsafeformork.tumblr.com/tagged/videogames">videogames</a> <a href="https://notsafeformork.tumblr.com/tagged/art">art</a> <a href="https://notsafeformork.tumblr.com/tagged/contemporaryart">contemporaryart</a> <a href="https://notsafeformork.tumblr.com/tagged/gta">gta</a> <a href="https://notsafeformork.tumblr.com/tagged/gtav">gtav</a> <a href="https://notsafeformork.tumblr.com/tagged/night%20photography">night photography</a> </p>  
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142121805222/downandoutinlossantos-portrait-of-a-sex-worker">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142121805222/downandoutinlossantos-portrait-of-a-sex-worker#notes">10 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_142121792202" data-postid="142121792202" class="photo highres" rel="photography gtaphotographers gaming homeless capitalism videogames art contemporaryart gta gtav night_photography  reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142121792202"><img src="https://64.media.tumblr.com/d1965890a171a6e89c7c1ea25f9d399b/tumblr_o4ssi5wNfg1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Near Rancho.
+&rdquo;
+Follow on instagram too&hellip;
+https://www.instagram.com/downandoutinlossantos/" class="normalres"/> <a href="https://64.media.tumblr.com/d1965890a171a6e89c7c1ea25f9d399b/tumblr_o4ssi5wNfg1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Near Rancho.
+&rdquo;
+Follow on instagram too&hellip;
+https://www.instagram.com/downandoutinlossantos/" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142119470462" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Near Rancho.</p></blockquote><p>Follow on instagram too&hellip;<br /><a href="https://www.instagram.com/downandoutinlossantos/" target="_blank">https://www.instagram.com/downandoutinlossantos/</a><br /></p></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 <p class="tags"># <a href="https://notsafeformork.tumblr.com/tagged/photography">photography</a> <a href="https://notsafeformork.tumblr.com/tagged/gtaphotographers">gtaphotographers</a> <a href="https://notsafeformork.tumblr.com/tagged/gaming">gaming</a> <a href="https://notsafeformork.tumblr.com/tagged/homeless">homeless</a> <a href="https://notsafeformork.tumblr.com/tagged/capitalism">capitalism</a> <a href="https://notsafeformork.tumblr.com/tagged/videogames">videogames</a> <a href="https://notsafeformork.tumblr.com/tagged/art">art</a> <a href="https://notsafeformork.tumblr.com/tagged/contemporaryart">contemporaryart</a> <a href="https://notsafeformork.tumblr.com/tagged/gta">gta</a> <a href="https://notsafeformork.tumblr.com/tagged/gtav">gtav</a> <a href="https://notsafeformork.tumblr.com/tagged/night%20photography">night photography</a> </p>  
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142121792202/downandoutinlossantos-near-rancho-follow-on">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142121792202/downandoutinlossantos-near-rancho-follow-on#notes">3 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_142121779332" data-postid="142121779332" class="photo highres" rel="reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142121779332"><img src="https://64.media.tumblr.com/b1b4bb6fb03dd17d26c1f6e582457ce7/tumblr_o4ss5e3IQv1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; View down from dumpster.
+&rdquo;
+Follow on instagram too&hellip;
+https://www.instagram.com/downandoutinlossantos/" class="normalres"/> <a href="https://64.media.tumblr.com/b1b4bb6fb03dd17d26c1f6e582457ce7/tumblr_o4ss5e3IQv1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; View down from dumpster.
+&rdquo;
+Follow on instagram too&hellip;
+https://www.instagram.com/downandoutinlossantos/" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142104618217" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>View down from dumpster.</p></blockquote><p>Follow on instagram too&hellip;<br /><a href="https://www.instagram.com/downandoutinlossantos/" target="_blank">https://www.instagram.com/downandoutinlossantos/</a><br /></p></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142121779332/downandoutinlossantos-view-down-from">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142121779332/downandoutinlossantos-view-down-from#notes">1 note</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_142121772807" data-postid="142121772807" class="photo highres" rel="reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/142121772807"><img src="https://64.media.tumblr.com/e715f41a691ada61d48f34961154e892/tumblr_o4ss6282ka1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Warm evening.
+&rdquo;
+Follow on instagram too&hellip;
+https://www.instagram.com/downandoutinlossantos/" class="normalres"/> <a href="https://64.media.tumblr.com/e715f41a691ada61d48f34961154e892/tumblr_o4ss6282ka1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Warm evening.
+&rdquo;
+Follow on instagram too&hellip;
+https://www.instagram.com/downandoutinlossantos/" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/142108695994" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Warm evening.</p></blockquote><p>Follow on instagram too&hellip;<br /><a href="https://www.instagram.com/downandoutinlossantos/" target="_blank">https://www.instagram.com/downandoutinlossantos/</a><br /></p></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/142121772807/downandoutinlossantos-warm-evening-follow">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/142121772807/downandoutinlossantos-warm-evening-follow#notes">36 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_141969188787" data-postid="141969188787" class="photo highres" rel="photography gtaphotographers gaming homeless capitalism videogames art contemporaryart gta gtav night_photography  reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/141969188787"><img src="https://64.media.tumblr.com/1c93def5997c9a40bc5feb2e5285d83c/tumblr_o4sqcx3T7B1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo; Women at the train station.
+&rdquo;" class="normalres"/> <a href="https://64.media.tumblr.com/1c93def5997c9a40bc5feb2e5285d83c/tumblr_o4sqcx3T7B1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo; Women at the train station.
+&rdquo;" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a class="tumblr_blog" href="http://downandoutinlossantos.tumblr.com/post/141969115432" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Women at the train station.</p></blockquote></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 <p class="tags"># <a href="https://notsafeformork.tumblr.com/tagged/photography">photography</a> <a href="https://notsafeformork.tumblr.com/tagged/gtaphotographers">gtaphotographers</a> <a href="https://notsafeformork.tumblr.com/tagged/gaming">gaming</a> <a href="https://notsafeformork.tumblr.com/tagged/homeless">homeless</a> <a href="https://notsafeformork.tumblr.com/tagged/capitalism">capitalism</a> <a href="https://notsafeformork.tumblr.com/tagged/videogames">videogames</a> <a href="https://notsafeformork.tumblr.com/tagged/art">art</a> <a href="https://notsafeformork.tumblr.com/tagged/contemporaryart">contemporaryart</a> <a href="https://notsafeformork.tumblr.com/tagged/gta">gta</a> <a href="https://notsafeformork.tumblr.com/tagged/gtav">gtav</a> <a href="https://notsafeformork.tumblr.com/tagged/night%20photography">night photography</a> </p>  
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/141969188787/women-at-the-train-station">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/141969188787/women-at-the-train-station#notes">1 note</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_141942089512" data-postid="141942089512" class="photo highres" rel="photography photooftheday gaming contemporary art gtaphotographers  reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/141942089512"><img src="https://64.media.tumblr.com/95df636cd09bbc4512d19b35f1599ecb/tumblr_o4sph5uknr1vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo;Sex-worker downtown.
+&rdquo;
+New project over at https://downandoutinlossantos.tumblr.com" class="normalres"/> <a href="https://64.media.tumblr.com/95df636cd09bbc4512d19b35f1599ecb/tumblr_o4sph5uknr1vp5q4fo1_1280.jpg"  alt="downandoutinlossantos:
+&ldquo;Sex-worker downtown.
+&rdquo;
+New project over at https://downandoutinlossantos.tumblr.com" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a href="http://downandout.in-los-santos.com/post/141938862418/sex-worker-downtown" class="tumblr_blog" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Sex-worker downtown.</p></blockquote><p>New project over at <a href="https://downandoutinlossantos.tumblr.com" target="_blank">https://downandoutinlossantos.tumblr.com</a></p></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 <p class="tags"># <a href="https://notsafeformork.tumblr.com/tagged/photography">photography</a> <a href="https://notsafeformork.tumblr.com/tagged/photooftheday">photooftheday</a> <a href="https://notsafeformork.tumblr.com/tagged/gaming">gaming</a> <a href="https://notsafeformork.tumblr.com/tagged/contemporary">contemporary</a> <a href="https://notsafeformork.tumblr.com/tagged/art">art</a> <a href="https://notsafeformork.tumblr.com/tagged/gtaphotographers">gtaphotographers</a> </p>  
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/141942089512/sex-worker-downtown">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/141942089512/sex-worker-downtown#notes">1 note</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_141942052652" data-postid="141942052652" class="photo highres" rel="photography art portrait gaming gta  reblog" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <a href="https://notsafeformork.tumblr.com/image/141942052652"><img src="https://64.media.tumblr.com/928e4c31e665e985ae717828a760481d/tumblr_o4u6xvOIZ61vp5q4fo1_500.jpg" alt="downandoutinlossantos:
+&ldquo;Portrait of woman at dusk.
+&rdquo;
+New project over at https://downandoutinlossantos.tumblr.com" class="normalres"/> <a href="https://64.media.tumblr.com/928e4c31e665e985ae717828a760481d/tumblr_o4u6xvOIZ61vp5q4fo1_640.jpg"  alt="downandoutinlossantos:
+&ldquo;Portrait of woman at dusk.
+&rdquo;
+New project over at https://downandoutinlossantos.tumblr.com" target="_blank" class="highres">View Larger</a></a>          <div class="caption copy"><p><a href="http://downandout.in-los-santos.com/post/141941051484/portrait-of-woman-at-dusk" class="tumblr_blog" target="_blank">downandoutinlossantos</a>:</p><blockquote><p>Portrait of woman at dusk.</p></blockquote><p>New project over at <a href="https://downandoutinlossantos.tumblr.com" target="_blank">https://downandoutinlossantos.tumblr.com</a></p></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 <p class="tags"># <a href="https://notsafeformork.tumblr.com/tagged/photography">photography</a> <a href="https://notsafeformork.tumblr.com/tagged/art">art</a> <a href="https://notsafeformork.tumblr.com/tagged/portrait">portrait</a> <a href="https://notsafeformork.tumblr.com/tagged/gaming">gaming</a> <a href="https://notsafeformork.tumblr.com/tagged/gta">gta</a> </p>  
+                     <span class="date"> 
+                                        <a href="https://notsafeformork.tumblr.com/post/141942052652/downandoutinlossantos-portrait-of-woman-at">Reblogged 9 years ago from downandoutinlossantos</a> 
+                                    
+                                    
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/141942052652/downandoutinlossantos-portrait-of-woman-at#notes">3 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_141863036407" data-postid="141863036407" class="photo" rel="photography artists_on_tumblr art gtaphotographers gta_v capitalism simulation homeless poverty" > 
+            
+            
+                
+            
+            
+              
+                
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <div id="photoset_141863036407" class="html_photoset">    <iframe
+                id="photoset_iframe_141863036407" name="photoset_iframe_141863036407"
+                class="photoset" scrolling="no" frameborder="0"
+                height="868" width="500" style="border:0; background-color:transparent; overflow:hidden;" src="https://notsafeformork.tumblr.com/post/141863036407/photoset_iframe/notsafeformork/tumblr_o4rtc2Yyyr1qiseoh/500/false"
+                onload=""
+            ></iframe></div>
+                     <div class="caption copy"><h2><b>PREVIEW:</b></h2>Not officially launched yet, but here&rsquo;s a sneak peek at a new project called:<br /><p></p><h2><b><a href="http://downandoutinlossantos.tumblr.com" target="_blank">Down and Out in Los Santos</a></b></h2><br />Using in-game photography to document homelessness and poverty in Grand Theft Auto V, this project explores contemporary contexts of photography and simulation.<br /><br />Check it out and Follow here:<br /><h2><a href="http://downandoutinlossantos.tumblr.com" target="_blank"><b><i></i></b></a><a href="http://downandoutinlossantos.tumblr.com" target="_blank">http://downandoutinlossantos.tumblr.com</a></h2><br />More to follow. :)<p><br /></p><p>x</p></div>
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 <p class="tags"># <a href="https://notsafeformork.tumblr.com/tagged/photography">photography</a> <a href="https://notsafeformork.tumblr.com/tagged/artists%20on%20tumblr">artists on tumblr</a> <a href="https://notsafeformork.tumblr.com/tagged/art">art</a> <a href="https://notsafeformork.tumblr.com/tagged/gtaphotographers">gtaphotographers</a> <a href="https://notsafeformork.tumblr.com/tagged/gta%20v">gta v</a> <a href="https://notsafeformork.tumblr.com/tagged/capitalism">capitalism</a> <a href="https://notsafeformork.tumblr.com/tagged/simulation">simulation</a> <a href="https://notsafeformork.tumblr.com/tagged/homeless">homeless</a> <a href="https://notsafeformork.tumblr.com/tagged/poverty">poverty</a> </p>  
+                     <span class="date"> 
+                                    
+                                    
+                                        <a href="https://notsafeformork.tumblr.com/post/141863036407/previewnot-officially-launched-yet-but-heres-a">Posted 9 years ago</a>
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/141863036407/previewnot-officially-launched-yet-but-heres-a#notes">1 note</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+ 
+        <article id="post_129068463667" data-postid="129068463667" class="photo" rel="gif hillary_clinton rainbow swipe nose" > 
+            
+            
+                
+            
+            
+                   
+              
+            
+            	
+                <div class="post ">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                     <img src="https://64.media.tumblr.com/7e93378599d6e00c8c253ad580c0fd3d/tumblr_nuo1ofl2XT1qiseoho1_500.gifv" alt="It&rsquo;s been a while&hellip; New Hillary Clinton GIF." class="normalres"/>          <div class="caption copy"><p>It&rsquo;s been a while&hellip; New Hillary Clinton GIF.<br /></p></div>       
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <hr class="foot" />
+                <div class="postmeta">
+                 <p class="tags"># <a href="https://notsafeformork.tumblr.com/tagged/gif">gif</a> <a href="https://notsafeformork.tumblr.com/tagged/hillary%20clinton">hillary clinton</a> <a href="https://notsafeformork.tumblr.com/tagged/rainbow">rainbow</a> <a href="https://notsafeformork.tumblr.com/tagged/swipe">swipe</a> <a href="https://notsafeformork.tumblr.com/tagged/nose">nose</a> </p>  
+                     <span class="date"> 
+                                    
+                                    
+                                        <a href="https://notsafeformork.tumblr.com/post/129068463667/its-been-a-while-new-hillary-clinton-gif">Posted 10 years ago</a>
+                                    
+</span>
+                     <span class="notes"><a href="https://notsafeformork.tumblr.com/post/129068463667/its-been-a-while-new-hillary-clinton-gif#notes">26 notes</a>  </span>
+                                
+                </div>
+                  
+                   
+
+        </article>
+</div> 
+    </div><!-- #posts -->
+<div class="navigation isotope" id="bottomnav">
+ 
+         <a href="https://notsafeformork.tumblr.com/page/2" class="oldernav right"><span class="navword">Older</span>&nbsp;&rarr;</a>
+         
+        <hr class="foot" />
+</div>
+
+    <footer class="isotope"><div class="footercontent">
+<a href="http://dco1.com/">CMPNDM&nbsp;Theme&nbsp;<small>by</small>&nbsp;Danny</a> Theme hacked by <a href="http://www.alanbutler.info">alan butler</a> <p class="description">hi أفضل اللحوم ن الردف</p></div>
+    </footer>
+  </div> <!-- end of #container -->
+    
+ 
+
+  <!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setCookieDomain", "*.notsafeformork.tumblr.com"]);
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://www.alanbutler.info/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "2"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+<iframe scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0; z-index:9999;" id="ga_target"></iframe><script type="text/javascript">
+    (function(){
+        var analytics_frame = document.getElementById('ga_target');
+        var analytics_iframe_loaded;
+        var user_logged_in;
+        var blog_is_nsfw = 'Yes';
+
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent,function(e) {
+            var message = (e.data && e.data.split) ? e.data.split(';') : '';
+            switch (message[0]) {
+                case 'analytics_iframe_loaded':
+                    analytics_iframe_loaded = true;
+                    postCSMessage();
+                    postGAMessage();
+                    break;
+                case 'user_logged_in':
+                    user_logged_in = message[1];
+                    postGAMessage();
+                    break;
+            }
+        }, false);
+
+        analytics_frame.src = "https://assets.tumblr.com/analytics.html?_v=9f5febfd57a8a649c598d888f2d9e062#" +
+                              "https://notsafeformork.tumblr.com";
+        function postGAMessage() {
+            if (analytics_iframe_loaded && user_logged_in) {
+                var is_ajax = false;
+                analytics_frame.contentWindow.postMessage(['tick_google_analytics', is_ajax, user_logged_in, blog_is_nsfw, '/?route=%2F'].join(';'), analytics_frame.src.split('/analytics.html')[0]);
+            }
+        }
+        function postCSMessage() {
+            COMSCORE = true;
+            analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
+        }
+    })();
+</script><script type="text/javascript" nonce="ncSsRMOHtZciGRj7VsB6F0IDM">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1762971883&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDovL25vdHNhZmVmb3Jtb3JrLnR1bWJsci5jb20vIiwicmVxdHlwZSI6MCwicm91dGUiOiIvIn0=&U=LHFEGBFECJ&K=cca2d9ce8d314fbfab8ea5f1b9dc57fcd390d9a7b0818b67e4c0af064b96b3e2&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1762971883&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDovL25vdHNhZmVmb3Jtb3JrLnR1bWJsci5jb20vIiwicmVxdHlwZSI6MCwicm91dGUiOiIvIiwibm9zY3JpcHQiOjF9&U=LHFEGBFECJ&K=022e2146743ca56feca3fd4af17be1b8c72fb3f6d6a7aaceee82e19c1e9d00f5&R="></noscript><script type="text/javascript" nonce="ncSsRMOHtZciGRj7VsB6F0IDM">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1762971883&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9ub3RzYWZlZm9ybW9yay50dW1ibHIuY29tLyIsInJlcXR5cGUiOjAsInJvdXRlIjoiLyIsInBvc3RzIjpbeyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMDczNjE1MTU0IiwicG9zdGlkIjoiMTQyMzYxNjk0MTQ3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMjQ3Mjg1MTUyIiwicG9zdGlkIjoiMTQyMzYxNjcwNTM3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMjk1MDgwNDk0IiwicG9zdGlkIjoiMTQyMzYxNjU5MTU3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMjk5MDU2NTc5IiwicG9zdGlkIjoiMTQyMzYxNjUzMTU3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMzA3NzEyMDcwIiwicG9zdGlkIjoiMTQyMzYxNjQ2OTgyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMzU3OTQ5NzMyIiwicG9zdGlkIjoiMTQyMzYxNjI0OTE3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMDczNjE1MTU0IiwicG9zdGlkIjoiMTQyMTIxODA1MjIyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM31dfQ==&U=AHDEEAOBOF&K=f5e8d31de92e0e726ae228b5014c359c2e346631ee1b24b19d09ef18a6c266b2&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1762971883&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9ub3RzYWZlZm9ybW9yay50dW1ibHIuY29tLyIsInJlcXR5cGUiOjAsInJvdXRlIjoiLyIsInBvc3RzIjpbeyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMDczNjE1MTU0IiwicG9zdGlkIjoiMTQyMzYxNjk0MTQ3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMjQ3Mjg1MTUyIiwicG9zdGlkIjoiMTQyMzYxNjcwNTM3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMjk1MDgwNDk0IiwicG9zdGlkIjoiMTQyMzYxNjU5MTU3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMjk5MDU2NTc5IiwicG9zdGlkIjoiMTQyMzYxNjUzMTU3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMzA3NzEyMDcwIiwicG9zdGlkIjoiMTQyMzYxNjQ2OTgyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMzU3OTQ5NzMyIiwicG9zdGlkIjoiMTQyMzYxNjI0OTE3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMDczNjE1MTU0IiwicG9zdGlkIjoiMTQyMTIxODA1MjIyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM31dLCJub3NjcmlwdCI6MX0=&U=AHDEEAOBOF&K=98e5b5b66321228f20d8cbc3f71aa937936ecbc17eaf81a2416aa643821ca69e&R="></noscript><script type="text/javascript" nonce="ncSsRMOHtZciGRj7VsB6F0IDM">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1762971883&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9ub3RzYWZlZm9ybW9yay50dW1ibHIuY29tLyIsInJlcXR5cGUiOjAsInJvdXRlIjoiLyIsInBvc3RzIjpbeyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMTE5NDcwNDYyIiwicG9zdGlkIjoiMTQyMTIxNzkyMjAyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMTA0NjE4MjE3IiwicG9zdGlkIjoiMTQyMTIxNzc5MzMyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMTA4Njk1OTk0IiwicG9zdGlkIjoiMTQyMTIxNzcyODA3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQxOTY5MTE1NDMyIiwicG9zdGlkIjoiMTQxOTY5MTg4Nzg3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQxOTM4ODYyNDE4IiwicG9zdGlkIjoiMTQxOTQyMDg5NTEyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQxOTQxMDUxNDg0IiwicG9zdGlkIjoiMTQxOTQyMDUyNjUyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJwb3N0aWQiOiIxNDE4NjMwMzY0MDciLCJibG9naWQiOjE1NjQ1OTc4LCJzb3VyY2UiOjMzfSx7InBvc3RpZCI6IjEyOTA2ODQ2MzY2NyIsImJsb2dpZCI6MTU2NDU5NzgsInNvdXJjZSI6MzN9XX0=&U=BJPFBJLFFL&K=8a828c007cfb155dc2e288b3fdc843a26edda46b6875445440beac0fabf0b47f&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1762971883&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9ub3RzYWZlZm9ybW9yay50dW1ibHIuY29tLyIsInJlcXR5cGUiOjAsInJvdXRlIjoiLyIsInBvc3RzIjpbeyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMTE5NDcwNDYyIiwicG9zdGlkIjoiMTQyMTIxNzkyMjAyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMTA0NjE4MjE3IiwicG9zdGlkIjoiMTQyMTIxNzc5MzMyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQyMTA4Njk1OTk0IiwicG9zdGlkIjoiMTQyMTIxNzcyODA3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQxOTY5MTE1NDMyIiwicG9zdGlkIjoiMTQxOTY5MTg4Nzg3IiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQxOTM4ODYyNDE4IiwicG9zdGlkIjoiMTQxOTQyMDg5NTEyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJyb290X2Jsb2dpZCI6IjI4NTU3OTE5NiIsInJvb3RfcG9zdGlkIjoiMTQxOTQxMDUxNDg0IiwicG9zdGlkIjoiMTQxOTQyMDUyNjUyIiwiYmxvZ2lkIjoxNTY0NTk3OCwic291cmNlIjozM30seyJwb3N0aWQiOiIxNDE4NjMwMzY0MDciLCJibG9naWQiOjE1NjQ1OTc4LCJzb3VyY2UiOjMzfSx7InBvc3RpZCI6IjEyOTA2ODQ2MzY2NyIsImJsb2dpZCI6MTU2NDU5NzgsInNvdXJjZSI6MzN9XSwibm9zY3JpcHQiOjF9&U=BJPFBJLFFL&K=7d764c551559251ca380fda182ebbcb8bd4a49a9528e8e65af539e0568ebe79d&R="></noscript><iframe
+    id="blue-space-api-calls-iframe"
+    src="https://www.tumblr.com/dashboard/iframe/monetization?tumblelog=notsafeformork&src=https%3A%2F%2Fnotsafeformork.tumblr.com%2F"
+    style="display: none;"
+    sandbox="allow-scripts allow-same-origin"></iframe><script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" crossorigin="anonymous" nonce="ncSsRMOHtZciGRj7VsB6F0IDM"></script><!--
+Open GAM console on the page:
+1. Open browser JS console
+2. Run `googletag.openConsole()`
+3. GAM debug UI should appear and tell some more info on the ad itself and its fulfillment status
+--><noscript id="bootloader" data-bootstrap="{&quot;Components&quot;:{&quot;PostActivity&quot;:[],&quot;NotificationPoller&quot;:{&quot;messaging_keys&quot;:[],&quot;token&quot;:&quot;&quot;,&quot;inbox_unread&quot;:0},&quot;DesktopDashboardLogo&quot;:{&quot;animations&quot;:[[&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1.png?_v=161861acded461bb6e995593a3bae835&quot;,&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1@2x.png?_v=496a774637302a598c851381d00009b0&quot;]]},&quot;Monetization&quot;:{&quot;client_side_waterfall&quot;:false,&quot;no_demand_reason&quot;:null},&quot;TumblelogIframe&quot;:{&quot;variant&quot;:null,&quot;isCompact&quot;:true,&quot;tumblelogBundleSrc&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/standalone\/tumblelog\/index.build.js?_v=4a1639e90881218a9d0826bd29b5b53a&quot;,&quot;tumblelogName&quot;:&quot;notsafeformork&quot;,&quot;isLoggedIn&quot;:false,&quot;isFriend&quot;:false,&quot;formKey&quot;:&quot;&quot;,&quot;canSubscribe&quot;:false,&quot;isSubscribed&quot;:false,&quot;tumblelogTitle&quot;:&quot;NOT SAFE FOR \u028dORK&quot;,&quot;tumblelogAvatar&quot;:&quot;https:\/\/64.media.tumblr.com\/avatar_0e8a595cde55_64.pnj&quot;,&quot;tumblelogAvatar128&quot;:&quot;https:\/\/64.media.tumblr.com\/avatar_0e8a595cde55_128.pnj&quot;,&quot;tumblelogHost&quot;:&quot;https:\/\/notsafeformork.tumblr.com&quot;,&quot;hasCustomDomain&quot;:false,&quot;isOptica&quot;:false,&quot;isCustomTheme&quot;:true,&quot;themeHeaderImage&quot;:&quot;https:\/\/assets.tumblr.com\/images\/default_header\/optica_pattern_13_focused_v3.png?_v=2f4063be1dd2ee91e4eca54332e25191&quot;,&quot;themeBackgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;themeTitleColor&quot;:&quot;#000000&quot;,&quot;themeAccentColor&quot;:&quot;#00B8FF&quot;,&quot;brag&quot;:true,&quot;canShowAd&quot;:false,&quot;isPremium&quot;:false,&quot;geminiSectionCodeDesktop&quot;:&quot;a10bca9c-0c5d-4a02-ab13-14ab8513d81d&quot;,&quot;geminiSectionCodeMobile&quot;:&quot;ced63809-b609-4aca-96a0-abc099acba6b&quot;,&quot;currentPageType&quot;:&quot;blog&quot;,&quot;currentPage&quot;:1,&quot;searchQuery&quot;:&quot;&quot;,&quot;tag&quot;:&quot;&quot;,&quot;query&quot;:&quot;&quot;,&quot;chrono&quot;:false,&quot;postId&quot;:&quot;&quot;,&quot;src&quot;:&quot;https:\/\/notsafeformork.tumblr.com\/&quot;,&quot;postUrl&quot;:&quot;&quot;,&quot;openInPeeprUrl&quot;:&quot;https:\/\/www.tumblr.com\/notsafeformork&quot;,&quot;isBlocked&quot;:null,&quot;isAdmin&quot;:false,&quot;lookupButtonUrl&quot;:&quot;&quot;,&quot;showSpamButton&quot;:false,&quot;showRootPostButton&quot;:false,&quot;rootPostUrl&quot;:&quot;&quot;,&quot;showRadarPostButton&quot;:false,&quot;radarKeys&quot;:&quot;&quot;,&quot;isUniblocked&quot;:false,&quot;isNsfw&quot;:false,&quot;isAdult&quot;:false,&quot;isSpam&quot;:false,&quot;isPrimaryBlog&quot;:false,&quot;canEdit&quot;:false,&quot;showRemoveAdsCta&quot;:false,&quot;canReblogSelf&quot;:false,&quot;showLikeButton&quot;:false,&quot;showReblogButton&quot;:false,&quot;reblogUrl&quot;:&quot;&quot;,&quot;showMessagingButton&quot;:false,&quot;loginCheckIframeSrc&quot;:&quot;https:\/\/assets.tumblr.com\/assets\/html\/iframe\/login_check.html?_v=3de94a184d600617102ddd5b48fb36e9&quot;,&quot;appInstallUrls&quot;:{&quot;android&quot;:&quot;https:\/\/play.google.com\/store\/apps\/details?id=com.tumblr\u0026referrer=utm_source%3Dtumblr%26utm_medium%3Diframe%26utm_campaign%3Dbn_continue_or_install_cta&quot;,&quot;ios&quot;:&quot;https:\/\/apps.apple.com\/app\/apple-store\/id305343404?pt=212308\u0026ct=bn_continue_or_install_cta\u0026mt=8&quot;},&quot;appOpenReferrer&quot;:&quot;bn_header_open_btn&quot;,&quot;isShowSearch&quot;:true,&quot;supplyLogging&quot;:[],&quot;secondsSinceLastActivity&quot;:-1,&quot;installUrlOpenFailed&quot;:{&quot;android&quot;:&quot;https:\/\/play.google.com\/store\/apps\/details?id=com.tumblr\u0026referrer=utm_source%3Dtumblr%26utm_medium%3Diframe%26utm_campaign%3Dbn_header_app_open_failed&quot;,&quot;ios&quot;:&quot;https:\/\/apps.apple.com\/app\/apple-store\/id305343404?pt=212308\u0026ct=bn_header_app_open_failed\u0026mt=8&quot;},&quot;loginWallVariant&quot;:&quot;small_center&quot;},&quot;CommunityLabels&quot;:{&quot;has_community_label&quot;:false,&quot;is_single&quot;:false,&quot;redirect_target&quot;:null}},&quot;Flags&quot;:{&quot;features&quot;:&quot;eyJmaWx0ZXJfbnNmdyI6dHJ1ZSwibW9iaWxlX3dlYl9nYXRlIjp0cnVlLCJzYWZlX21vZGUiOnRydWUsInNhZmVfbW9kZV9lbmFibGVkIjp0cnVlLCJrZXljb21tYW5kX2F1dG9fcGFnaW5hdGUiOnRydWUsImxvZ2dlZF9vdXRfc2VhcmNoIjp0cnVlLCJrcmFrZW5fd2ViX2xvZ2dpbmdfbGlicmFyeSI6dHJ1ZSwibGl2ZXBob3Rvc193ZWIiOnRydWUsInVzZXJfdGFnX2ZpbHRlcmluZyI6dHJ1ZSwic2FmZV9tb2RlX293bl9wb3N0Ijp0cnVlLCJwcm9qZWN0X3hfYXBwZWFsIjp0cnVlLCJtb2JpbGVfd2ViX3Bob3Rvc2V0cyI6dHJ1ZSwiaGlkZV9kZWZhdWx0X2hlYWRlcnNfYmxvZ19jYXJkcyI6dHJ1ZSwibm90aWZpY2F0aW9uX3JlcGx5X2xpbmtfdG9fbm90ZXMiOnRydWUsInR5cGluZ19pbmRpY2F0b3Jfd3JpdGUiOnRydWUsInR1bWJscl92aWRlb19zcG9uc29yZWRfZGF5Ijp0cnVlLCJjYXB0Y2hhOnVzZV9yZWNhcHRjaGEyIjp0cnVlLCJsaXR0bGVfc2lzdGVyIjp0cnVlLCJsb2dfbGFkeSI6dHJ1ZSwicmVkcG9wX3Bvc3RfZm9ybV9tb2JpbGVfY3JlYXRlIjp0cnVlLCJsZWdhY3lfcG9zdF9mb3JtX2J1dHRvbnNfbGlua190b19yZWRwb3AiOnRydWUsInNob3dfdHNwX2NsaWNrX3Rocm91Z2hfdG9nZ2xlIjp0cnVlLCJkYXJsYV9hZF9mZWVkYmFjayI6dHJ1ZSwic3RhdHVzX2luZGljYXRvciI6dHJ1ZSwiY29udmVyc2F0aW9uYWxfbm90aWZpY2F0aW9ucyI6dHJ1ZSwiZGlzYWJsZV95YWhvb19iX2Nvb2tpZSI6dHJ1ZSwibGl2ZXBob3RvcyI6dHJ1ZSwiY29tbXVuaXR5X2xhYmVscyI6dHJ1ZSwibW9uZXRpemF0aW9uIjp0cnVlfQ==&quot;},&quot;Context&quot;:{&quot;name&quot;:&quot;default&quot;,&quot;time&quot;:1762971883000,&quot;userinfo&quot;:{&quot;primary&quot;:&quot;&quot;,&quot;name&quot;:&quot;&quot;,&quot;channels&quot;:[]},&quot;hosts&quot;:{&quot;assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;secure_assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;secure_www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;embed_host&quot;:&quot;https:\/\/embed.tumblr.com&quot;,&quot;safe_host&quot;:&quot;https:\/\/safe.txmblr.com&quot;,&quot;platform_host&quot;:&quot;https:\/\/platform.tumblr.com&quot;},&quot;language&quot;:&quot;en_US&quot;,&quot;language_simple&quot;:&quot;en&quot;,&quot;assets&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/&quot;},&quot;Translations&quot;:{&quot;%1$sReport %2$s&#039;s post?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;,&quot;%1$sReport %2$s&#039;s reply?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;,&quot;%1$sDelete your tip??%2$s&quot;:&quot;%1$sDelete your tip?%2$s&quot;,&quot;Deleting your tip&quot;:&quot;Deleting your tip will only remove it from the replies tab and notes. %1$sYou won&#039;t receive a refund of your tip.%2$s For further help contact %3$sTumblr Support%4$s.&quot;}}"></noscript><script src="https://assets.tumblr.com/client/prod/standalone/tumblelog/index.build.js?_v=4a1639e90881218a9d0826bd29b5b53a"></script></body>
+</html>

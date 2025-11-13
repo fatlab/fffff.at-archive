@@ -1,0 +1,660 @@
+/*
+Theme Name: Terminally
+Description: HTML5 and CSS3 Theme for Geeks inspired by the popular Mac SSH client, Terminal!
+Author: Stinkyink
+Version: 2.0.0
+Tags: black, green, dark, one-column, two-columns, fixed-width, right-sidebar, custom-background, editor-style, threaded-comments, sticky-post
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+@import url('../../../../fonts.googleapis.com/css@family=Droid+Sans+Mono.css');
+
+header, footer, section, aside, nav, article, figure{
+  display: block;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+html {
+ padding: 0;
+ margin: 0; 
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Droid Sans Mono', monaco, 'courier new', courier, monospaced;
+	color: #efefef;
+	background-color: #006309;
+	position: relative;
+	font-size: 14px;
+	line-height: 1.7em;
+	background-size: 100%;
+	min-height: 100%;
+}
+
+.content a {
+	color: #fff;
+}
+
+a:hover {
+	color: #fff;
+}
+
+mark {
+	background-color: #fff;
+	font-weight: bold;
+	color: #000;
+}
+
+#wrapper {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.header {
+	padding: 10px 0 10px 0;
+	margin: 0 0 30px 0;
+	display: block;
+	clear: both;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.7);
+	border-bottom: 10px solid rgba(0,0,0,0.8);
+}
+
+.header h1 {
+	text-align: left;
+	font-size: 30px;
+	font-weight: bold;
+	letter-spacing: -0.06em;
+	line-height: 30px;
+	width: 930px;
+	margin: 0 auto 5px auto;
+}
+
+.header h1 a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.header p {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	letter-spacing: 0em;
+	width: 930px;
+	margin: 0 auto;
+	
+}
+
+body.has_sidebar .content {
+	width: 720px;
+	margin: 0 auto;
+	position: relative;
+	float: left;
+}
+
+
+section {
+	display: block;
+}
+
+article.post, article.page, nav aside, .comments {
+	border: 3px solid #efefef;
+	display: block;
+	padding: 0;
+	margin: 0 0 30px 0;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.7);
+	box-shadow: 0 10px 10px rgba(0,0,0,0.7);
+	border-radius: 3px;
+}
+
+
+article.post header, nav aside header, .comments header, article.page header {
+  background: #efefef; /* Old browsers */
+  background: -moz-linear-gradient(top, #efefef 0%, #c1c1c1 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efefef), color-stop(100%,#c1c1c1)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #efefef 0%,#c1c1c1 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #efefef 0%,#c1c1c1 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, #efefef 0%,#c1c1c1 100%); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#c1c1c1',GradientType=0 ); /* IE6-9 */
+  background: linear-gradient(top, #efefef 0%,#c1c1c1 100%); /* W3C */  
+  text-align: center;
+  padding: 5px;
+  font-family: helvetica, arial, sans-serif;
+}
+
+article.post header h2, article.post header h1, article.page header h1, nav aside h3, .comments h2 {
+  font-weight: bold;
+	color: #000;
+	font-size: 12px;
+	margin: 0 0 0 0;
+	text-shadow: 1px 1px 2px #fff;
+}
+
+article.post header h2 a, article.post header h1 a {
+	display: block;
+ color: inherit !important;
+ text-decoration: none; 
+}
+
+article.post header h2 a:hover,  article.post header h1 a:hover {
+	color: #999;
+	background-color: transparent;
+}
+
+article.post section,  article.page section, nav aside ul {
+ padding: 15px; 
+}
+
+
+.post a:hover {
+	background-color: #fff;
+	color: #000;
+	text-decoration: none;
+}
+
+.post a img {
+	border: 1px solid #ccc;
+	padding: 5px;
+}
+
+.post a:hover img {
+	border-color: black;
+}
+
+
+.post time a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+blockquote {
+  padding: 0 40px;
+  position: relative;
+  border: 1px dashed #ccc;
+  margin: 0 0 20px 0;
+}
+
+blockquote cite {
+ font-weight: bold; 
+}
+
+blockquote:before {
+  content: '\201C';
+  font-size: 55px;
+  color: #ccc;
+  position: absolute;
+  top: 0px;
+  left: 10px;
+}
+blockquote:after {
+  content: '\201D';
+  font-size: 55px;
+  color: #ccc;
+  position: absolute;
+  bottom: -30px;
+  right: 10px;
+}
+
+
+table {
+ width: 100%;
+ border: 1px solid #ccc; 
+ font-size: 12px;
+ margin-bottom: 20px;
+}
+
+th {
+ background-color: #666;
+ color: #fff;
+ text-align: left; 
+}
+
+th, td {
+ padding: 5px; 
+}
+
+dl {
+ font-size: 12px; 
+}
+
+dt {
+ font-weight: bold; 
+}
+
+dd {
+ margin-bottom: 5px;
+ margin-left: 10px; 
+}
+
+address {
+ font-size: 12px; 
+}
+
+acronym {
+ border-bottom: 1px dashed #ccc; 
+}
+
+s, strike, del {
+  text-decoration: line-through; 
+}
+
+.size-full {
+ max-width: 550px;
+ height: auto;
+ overflow: hidden; 
+}
+
+
+
+
+
+
+
+
+
+
+
+footer {
+	text-align: center;
+	color: #999;
+	padding: 10px 0;
+	display: block;
+	clear: both;
+	background-color: rgb(0,0,0);	
+	background-color: rgba(0,0,0,0.7);
+	border-top: 10px solid rgba(0,0,0,0.8);
+}
+
+footer p {
+  	padding: 0 220px 0 0;
+	margin: 0 0 0 0;
+}
+
+footer a {
+	color: inherit;
+}
+
+
+
+
+
+nav {
+	display: block;
+	text-align: left;
+	font-size: 12px;
+	width: 200px;
+	float: right;
+}
+
+
+
+
+
+nav ul {
+	list-style: none;
+	line-height: 1.6em;
+	padding: 0;
+	margin: 0 0 0 0;
+	color: #666;
+}
+
+nav a {
+	color: #999;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #fff;
+}
+
+/* comments */
+
+#comments, .nocomments {
+ clear: both; 
+}
+
+.commentlist {
+	list-style: none;
+	padding: 15px 15px 0 15px;
+	margin: 0;
+}
+
+.children {
+ list-style: none; 
+}
+
+.comment {
+	padding: 0;
+	position: relative;
+	min-height: 60px;
+	border-bottom: 1px dotted #fff;
+	margin-bottom: 20px;
+}
+
+.comment-body {
+ padding-left: 90px; 
+ margin-top: 0px;
+}
+
+
+.comment p {
+	font-size: 12px;
+	line-height: 1.6em;
+	margin-bottom: 10px;
+}
+
+.vcard {
+	font-size: 12px;
+	line-height: 1.6em;
+}
+
+.commentmetadata {
+	font-size: 12px;
+	line-height: 1.6em;
+}
+
+
+
+
+.even {
+}
+
+.avatar {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+
+/* ping backs */
+
+.pingback, .trackback {
+	padding: 0;
+	position: relative;
+	min-height: 60px;
+	border-bottom: 1px dotted #fff;
+	margin-bottom: 20px;
+
+}
+
+.pingback p, .trackback p {
+	font-size: 12px;
+	line-height: 1.6em;
+	margin-bottom: 10px;
+}
+
+
+div.reply {
+ padding-bottom: 10px;
+ clear: both; 
+}
+
+a.comment-reply-link {
+ font-size: 12px;
+ font-weight: bold; 
+}
+
+
+
+
+
+/* comment form */
+
+#respond {
+ clear: both; 
+ padding: 15px 15px 15px 15px;
+}
+
+#respond h3 {
+	margin: 0 0 15px 0;
+	padding: 0 0 0 0;
+}
+
+#commentform p {
+ clear: both;
+}
+
+#commentform p input, #commentform p textarea {
+  width: 400px;
+  float: right;
+}
+
+p.form-allowed-tags {
+ clear: both;
+ padding-top: 20px;
+ color: #999; 
+}
+
+p.form-submit input {
+ width: auto !important; 
+}
+
+/* archive thumbnail thingy */
+
+#archive article {
+	position: relative;
+}
+
+#archive article div {
+	margin: 0 0 0 130px;
+}
+
+#archive article img {
+	position: absolute;
+	padding: 5px;
+	border: 1px solid #eee !important;
+	top: 75px;
+	left: 0px;
+}
+
+
+
+/* footer nav thingy */
+
+.prevnext {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	font-size: 12px;
+	padding: 30px 0 30px 0;
+	width: 720px;
+}
+
+.prevnext a {
+	color: #fff;
+	background-color: #000;
+	text-decoration: none;
+	padding: 3px 5px;
+}
+
+.prevnext a:hover {
+	color: #999;
+}
+
+.prevnext li {
+	display: inline;
+	padding: 10px;
+}
+
+/* compulsory wordpress stuff */
+
+.wp-caption {
+	margin-bottom: 20px;
+	text-align: center;
+	overflow: hidden;
+	max-width: 528px !important;
+	height: auto;
+}
+.wp-caption img {
+	margin: 5px;
+	border: none;
+  margin: 0 0 2px 0;
+}
+.wp-caption p.wp-caption-text {
+	color: #888;
+	font-size: 12px;
+	margin: 5px 0 5px 0;
+}
+
+.gallery .gallery-caption {
+	color: #888;
+	font-size: 12px;
+	margin: 0 0 12px;
+}
+
+.alignleft,
+img.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 24px;
+	margin-top: 4px;
+}
+.alignright,
+img.alignright {
+	display: inline;
+	float: right;
+	margin-left: 24px;
+	margin-top: 4px;
+}
+
+.aligncenter,
+img.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+img.alignleft,
+img.alignright,
+img.aligncenter {
+	margin-bottom: 12px;
+}
+
+.sticky {
+ border: 1px dashed #ccc;
+ padding: 10px;
+}
+
+.commentlist .bypostauthor {
+  font-weight: bold;
+}
+
+hr.clearfix {
+ clear: both;
+ visibility: hidden; 
+}
+
+
+
+
+
+
+/* widgets */
+
+.widget_rss {
+	position: relative;
+}
+
+.widget_rss ul a {
+ display: block; 
+}
+
+.widget_rss ul li {
+  margin-bottom: 10px;
+}
+
+.widget_rss .rss-date {
+  color: #ccc;
+  display: block;
+}
+
+.widget_rss .rssSummary {
+  line-height: 1.6em;   
+}
+
+a.rsswidget  img {
+	position: absolute;
+	top: 5px;
+	left: 15px;
+	opacity: 0.5;
+}
+
+
+
+
+.widget_text div {
+ 	color: #999;
+	padding: 15px;
+}
+
+.widget_tag_cloud .tagcloud {
+	padding: 15px;
+	font-size: 0.9em;
+}
+
+
+.widget_recent_comments ul li a {
+  display: block;
+}
+
+
+.widget_search form {
+	padding: 15px;
+	text-align: right;
+}
+
+.widget_search form label {
+	display: none;
+}
+
+.widget_search form input#s {
+	background-color: #000;
+	border: 1px solid #666;
+	padding: 5px;
+	width: 150px;
+	color: #fff;
+}
+
+
+
+.widget_pages ul.children {
+	padding: 0 0 0 15px !important;
+	margin: 0 0 0 0 !important;
+}
+
+
+
+#wp-calendar {
+ font-size: 0.8em;
+ width: 140px; 
+ border-collapse: collapse;
+}
+
+#wp-calendar td, #wp-calendar th {
+  padding: 0px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+#wp-calendar td {
+ color: #999; 
+}
+
+
+#wp-calendar caption {
+ font-weight: bold; 
+}

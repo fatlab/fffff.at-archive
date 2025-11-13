@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>The Laboratory of Manuel Bürger</title>
+        <base href="">
+        <meta name="description" content="OUR DESIGN SOLUTIONS EMBRACE THE DISCOURSE OF SOCIAL AND CULTURAL SITUATIONS. The Laboratory of Manuel Bürger / Collaboratoires MB. Berlin / Paris. Visual Identities. Artdirection. Design." />
+        <style type="text/css">
+            
+html, body {
+    min-height:100%;
+}
+
+body {
+    font: 11px/14px "Arial", sans-serif;
+    overflow: hidden;   
+
+    background: #ffffff;
+    color: #000000;
+}
+
+a {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #000000;
+}
+    #main a.active {background: #d2d2d2 !important}
+
+a.inactive {
+    opacity: 0.4;
+}
+
+a img {
+    border: none;
+}
+
+
+h1, h2, h3, h4 {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #000000;
+}
+
+h1 {margin-bottom: 14px; text-transform: uppercase;}
+
+p {padding: 0; margin: 0 0 14px 0;}
+
+ul {
+    margin: 0 0 14px 14px;
+    padding: 0;
+}
+    ul ul {
+        margin-bottom: 0;
+    }
+
+big, .bigger {
+    font-size: 22px;
+    line-height: 28px;
+}
+
+.big {
+    font-size: 16px; 
+    line-height: 21px;
+}
+
+img, iframe {
+    display: block;
+}
+
+
+#main {
+    position: absolute;
+    top: 19px;
+    bottom: 0px;
+    left: 314px;
+    right: 157px;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 12px 8px;
+    background-image: url();
+}
+
+    #main a.tag {
+        background: #9d9d9c;
+    }
+
+    #main h2 {
+        text-transform: uppercase;
+    }
+    
+    #doc-tags > h3 {
+            margin-top: 14px;
+        }
+    
+    #doc-tags > div {
+        float: left;
+        width: 100%;
+    }
+    
+        #doc-tags > div > label {
+            width: 110px;
+            float: left;
+        }
+            #doc-tags > div > label:after {content: ':'}
+        
+        #doc-tags > div > ul {
+            float: left;
+            margin: 0;
+            width: 390px;
+        }
+        
+        #doc-tags li:before {
+            content: '' !important;
+        }
+        
+    #wrap {
+        width: 500px;
+    }
+    
+    #wrap div.cols {
+        float: left;
+    }
+        #wrap div.cols > div {
+            float: left;
+            width: 245px;
+        }
+        #wrap div.cols > div:first-child {
+            margin-right: 10px;
+        }
+
+    *.caption {text-transform: uppercase;}
+    *.w400 {width: 400px;}
+    *.w550 {width: 550px;}
+    *.w600 {width: 600px;}
+    
+    #reception ul > li,
+    #wrap ul > li {
+        list-style: none;
+        position: relative;
+    }
+        #reception ul > li:before,
+        #wrap ul > li:before {
+            position: absolute;
+            left: -14px;
+            content: '✔';
+        }
+    
+
+
+div.col {
+    position: absolute;
+    top: 19px;
+    bottom: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 12px 8px;
+}
+
+ul.tags {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+    
+    ul.tags > li {
+        float: left;
+        list-style: none;
+        margin-right: 3px;
+    }
+    ul.tags > li:after {content: ', '}
+    ul.tags > li:last-child:after {content: ''}
+    
+
+#reception {
+    right: 0px;
+    width: 141px;
+    z-index: 1024;
+    
+    background: #000000;
+    background-image: url();
+    color: #ffffff;
+}
+    #reception a {
+        color: #ffffff;
+    }
+        #reception a.active {background: #d2d2d2;}
+    
+    #reception h1, #reception h2, #reception h3, #reception h4 {
+        color: #ffffff;
+    }   
+    
+
+#nav {
+    left: 0px;
+    width: 141px;
+    
+    background: #000000;
+    background-image: url();
+    color: #ffffff;
+}
+
+    #nav a {
+        color: #ffffff;
+    }
+    
+        #nav a.active {
+            background: #d2d2d2;
+        }
+        
+        #nav #tags-reset.active {
+            background: inherit;
+            font-weight: bold;
+        }
+    
+    #nav h1, #nav h2, #nav h3, #nav h4 {
+        color: #ffffff;
+    }
+    
+        #nav h3 {
+            clear: left;
+            margin-top: 14px;
+        }
+    
+        #nav h3:after {content: ':'}
+        #nav ul.tags {
+            margin-bottom: 14px;
+        }
+        
+    #random {
+        /* height: 126px; */
+        overflow: hidden;
+        margin-bottom: 14px;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+             -o-user-select: none;
+                user-select: none;
+    }
+    
+    #nav ul.tags > li.expand {font-weight: bold}
+        #nav ul.tags > li.expand:after {content: ''}
+    
+    
+
+    
+#date {
+    left: 157px;
+    width: 141px;
+    
+    background: #a0a0a0;
+    background-image: url();
+    color: #000000;
+}
+    #date h3 {
+        margin-top: 14px;
+        color: #ffffff;
+    }
+        #date h3:first-child{ margin: 0}
+        
+    #date span {
+        color: #000000;
+        display: block;
+    }
+
+        #date a {
+            color: #000000;
+        }
+    
+        #date a.inactive {
+            opacity: 0.4;
+        }
+        
+        #date a.current {
+            background: #ffffff;
+            text-decoration: none !important;
+            cursor: default !important;
+        }
+
+.slideshow {
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+}
+
+    .slideshow > * {
+        display: block;
+        position: absolute;
+    }
+
+        .slideshow.flash > * {
+            -webkit-transition-property: opacity;
+               -moz-transition-property: opacity;
+                -ms-transition-property: opacity;
+                 -o-transition-property: opacity;
+                    transition-property: opacity;
+            -webkit-transition-duration: 0.8s;
+               -moz-transition-duration: 0.8s;
+                -ms-transition-duration: 0.8s;
+                 -o-transition-duration: 0.8s;
+                    transition-duration: 0.8s;
+        }
+        .slideshow.flash > .visible {
+            opacity: 1;
+        }
+        .slideshow.flash > .hidden {
+            opacity: 0;
+        }
+        
+        .slideshow.slide-left > .container > *,
+        .slideshow.slide-right > .container > * {
+            position: absolute;
+        }
+        .slideshow.slide-left > .animated,
+        .slideshow.slide-right > .animated {
+            -webkit-transition-property: left;
+               -moz-transition-property: left;
+                -ms-transition-property: left;
+                 -o-transition-property: left;
+                    transition-property: left;
+            -webkit-transition-duration: 0.8s;
+               -moz-transition-duration: 0.8s;
+                -ms-transition-duration: 0.8s;
+                 -o-transition-duration: 0.8s;
+                    transition-duration: 0.8s;
+        }
+    
+.overlay {
+    z-index: 666;
+    position: fixed;
+    cursor: pointer;
+    box-shadow: rgba(0,0,0,0.3) 0px 0px 12px
+}
+    .overlay.animated {
+        -webkit-transition-property: top right bottom left;
+           -moz-transition-property: top right bottom left;
+            -ms-transition-property: top right bottom left;
+             -o-transition-property: top right bottom left;
+                transition-property: top right bottom left;
+        -webkit-transition-duration: 0.8s;
+           -moz-transition-duration: 0.8s;
+            -ms-transition-duration: 0.8s;
+             -o-transition-duration: 0.8s;
+                transition-duration: 0.8s;
+    }
+
+    .overlay > p {width: inherit;}
+
+    .overlay > .closer {
+        width: 13px;
+        height: 13px;
+        background: #fff url(static/css/images/close-x-white.png);
+        position: absolute;
+    }
+
+        .overlay.left > .closer {right: 0;}
+        .overlay.right > .closer {left: 0;}
+        .overlay.top > .closer {bottom: -13px;}
+        .overlay.bottom > .closer {top: -13px;}
+
+#worldtime {
+    position: absolute;
+    z-index: 666;
+    background: rgb(15,15,15);
+    color: #fff;
+    top: 0;
+    height: 19px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 19px;
+    font-size: 11px;
+    font-family: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;
+}
+    #worldtime > .cities {
+        display: block;
+        position: absolute;
+        left: 0; top: 0;
+        padding: 0 0 0 8px;
+    }
+        #worldtime > .cities > .city {
+            display: block;
+            float: left;
+            padding-right: 30px;
+        }
+            #worldtime > .cities > .city > .time {
+                color: red;
+            }
+
+    #worldtime > .corner {
+        position: absolute;
+        top: 0;
+        right: 4px;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+    }
+
+/* an album page looks quite differently! */
+
+#album {
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    top: 19px;
+    bottom: 19px;
+}
+
+    #caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 19px;
+        line-height: 19px;
+        background: #fff;
+        color: #000;
+        overflow: hidden;
+    }
+        #caption > p {
+            text-align: right;
+            padding-right: 8px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: 0;
+            background: #fff;
+            -webkit-transition-property: opacity;
+               -moz-transition-property: opacity;
+                -ms-transition-property: opacity;
+                 -o-transition-property: opacity;
+                    transition-property: opacity;
+            -webkit-transition-duration: 0.4s;
+               -moz-transition-duration: 0.4s;
+                -ms-transition-duration: 0.4s;
+                 -o-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+        }
+            #caption > p.fadeIn {
+                opacity: 1;
+            }
+
+            #caption > p > span.pagecount {
+                color: red;
+                padding-left: 1ex;
+            }
+
+
+    #album > .container {
+        position: absolute;
+        width: 100%;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        -webkit-transition-property: right;
+           -moz-transition-property: right;
+            -ms-transition-property: right;
+             -o-transition-property: right;
+                transition-property: right;
+        -webkit-transition-duration: 0.6s;
+           -moz-transition-duration: 0.6s;
+            -ms-transition-duration: 0.6s;
+             -o-transition-duration: 0.6s;
+                transition-duration: 0.6s;
+    }
+
+        #album > .container.move {
+            right: 100%;
+        }
+
+        #album > .container > .slide {
+            display: block;
+            background-size: cover;
+            background-position: 50% 50%;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+        }
+
+        </style>
+        <script src="static/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="static/js/date.js" type="text/javascript" charset="utf-8"></script>
+        <script src="static/js/worldtime.js" type="text/javascript" charset="utf-8"></script>
+        <script src="static/js/album.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    
+    <body>
+        <div id="album" class="col">
+            <a href="https://manuelbuerger.com/welcome" data-delay="3000">
+
+
+<img src="static/97d71a1667b83f9a691576d42692367c/manuel_buerger_2025_start.jpg" width="3000" height="2000">
+<p>Welcome to the Laboratory of Manuel Buerger</p>
+
+<img src="static/97d71a1667b83f9a691576d42692367c/manuel_buerger_2025_nuitblanche.jpg" width="3000" height="2137">
+<p>Key Visual for Nuit Blanche 2017, Paris, with Pierre Vanni </p>
+
+
+<img src="static/97d71a1667b83f9a691576d42692367c/manuel_buerger_2025_symbol-world-2.jpg" width="3000" height="2000">
+<p>Key Visual for Nuit Blanche 2017, Paris, with Pierre Vanni </p>
+
+<img src="static/97d71a1667b83f9a691576d42692367c/manuel_buerger_2025_theoryofthebench.jpg" width="3000" height="2022">
+<p>Theory Of The Bench - The Inverted Dérive, with Thomas Jeppe</p>
+
+<img src="static/97d71a1667b83f9a691576d42692367c/manuel_buerger_2025_buildingworlds-2.jpg" width="3000" height="2000">
+<p>Building Worlds <> Making Relations</p>
+
+</a>
+
+<!-- 
+    1. Mark as "Album Page" with checkbox above "Preview" button
+
+    2. Untick the checkbox "Listed in Index" below the "Save" button,
+       otherwise album will appear in the year based navigation and
+       confuse users.
+
+    3. Declare images and captions. Each <img> must be followed
+       by one <p>
+    
+    4. Wrap everything in one link <a href="/lolwut">
+       Don't forget the / at the beginning of the URL.
+-->
+        </div>
+        <div id="caption">
+        </div>
+
+        <div id="worldtime">
+            <span class="cities"></span>
+            <span class="corner"></span>
+        </div>
+        
+    </body>
+</html>

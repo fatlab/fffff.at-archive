@@ -1,0 +1,84 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+	const accounttoggle = document.querySelector('#reg_email');
+	if( accounttoggle ) {
+		accounttoggle.addEventListener( 'click', function (event) {
+			let accountform = document.querySelector('#account-form');
+			accountform.classList.remove('hidden');
+		});
+	}
+	
+	const url = new URL(window.location.href);
+	if(url.searchParams.has('trcksgnp')) {
+		url.searchParams.delete('trcksgnp');
+		window.history.pushState({}, '', url);
+	}
+	
+	const menutoggle = document.querySelector('#menutoggle');
+	menutoggle.addEventListener( 'click', function (event) {
+		event.preventDefault();
+		let pagemenu = document.querySelector('#pagemenu');
+		let menuopen = document.querySelector('#menuopen');
+		let menuclose = document.querySelector('#menuclose');
+		pagemenu.classList.toggle('hidden');
+		menuopen.classList.toggle('hidden');
+		menuclose.classList.toggle('hidden');
+	});
+
+	const variations = document.querySelectorAll('.varation-select');
+	variations.forEach( (variation ) => {
+		variation.addEventListener( 'click', function (event) {
+			const form = event.target.closest('form');
+			const variationInput = form.querySelector('.varation-input');
+			form.querySelectorAll('li.active').forEach(node => {
+				node.classList.remove('active');
+			});
+			variation.classList.add('active');
+			variationInput.value = variation.dataset.value;
+		});
+	});
+	
+	const alignright = document.querySelectorAll('.alignright');
+	alignright.forEach( (item) => {
+		item.parentElement.classList.add('has-alignright');
+	});
+
+	Plyr.setup(
+		'.plyr_video_embed',
+		{
+			'controls' : ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'captions' ],
+			'settings' : ['captions', 'quality', 'speed', 'loop'],
+			'captions': { active: true, language: 'sv', update: false }
+		}
+	);
+
+	Plyr.setup(
+		'.plyr_audio_embed',
+		{
+			'controls' : ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume']
+		}
+	);
+});
+
+window.addEventListener("load", event => {
+	let image = document.querySelector('.single figure .right-13 img');
+	if ( image ) {
+		let isLoadedSuccessfully = image.complete && image.naturalWidth !== 0;
+		if ( isLoadedSuccessfully ) {
+			image.style.marginRight = "-33vw";
+		}
+	}
+});
+
+// Load more buttons.
+const loadmoreButtons = document.querySelectorAll('.load-more');
+loadmoreButtons.forEach( (loadmoreButton ) => {
+	loadmoreButton.addEventListener( 'click', function (event) {
+		const target = loadmoreButton.dataset.target;
+		const article = document.querySelector('#'+target);
+		if ( article ) {
+			article.classList.add('open');
+			window.history.pushState( null, null, loadmoreButton.dataset.url );
+		}
+	});
+});

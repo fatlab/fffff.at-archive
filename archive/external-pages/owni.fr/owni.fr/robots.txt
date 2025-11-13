@@ -1,0 +1,12 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: *
+Disallow: /style.php
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cgi-bin/
+Disallow: /hidden/
+Disallow: /config.php
+
+Sitemap: http://owni.fr/sitemap.xml

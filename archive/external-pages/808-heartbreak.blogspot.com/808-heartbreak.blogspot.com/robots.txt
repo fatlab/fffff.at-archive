@@ -1,0 +1,10 @@
+User-agent: Mediapartners-Google
+Disallow: 
+
+User-agent: *
+Disallow: /search
+Disallow: /share-widget
+Allow: /
+
+Sitemap: http://808-heartbreak.blogspot.com/sitemap.xml
+

@@ -1,0 +1,1 @@
+(()=>{"use strict";const n=window.wp.i18n,a=window.wp.data,i=window.wp.coreData;(0,a.dispatch)(i.store).addEntities([{name:"donation",kind:"givewp",baseURL:"/givewp/v3/donations",baseURLParams:{includeSensitiveData:!0,anonymousDonations:"include"},plural:"donations",label:(0,n.__)("Donation","give"),supportsPagination:!0}])})();

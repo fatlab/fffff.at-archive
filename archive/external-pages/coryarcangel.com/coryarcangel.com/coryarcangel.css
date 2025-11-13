@@ -1,0 +1,108 @@
+/* General */
+body 
+{
+	font-family: TimesNewRoman,Times New Roman,Times,Baskerville,Georgia,serif;
+	font-size: 16px;
+}
+/*
+@media screen and (min-width: 300px) {
+	    body {
+	        font-size: 20px;
+	    }
+}
+@media screen and (min-width: 600px) {
+	    body {
+	        font-size: 24px;
+	    }
+}
+@media screen and (min-width: 1200px) {
+	    body {
+	        font-size: 28px;
+	    }
+}
+@media screen and (min-width: 1600px) {
+	    body {
+	        font-size: 32px;
+	    }
+}
+*/
+
+/* HTML */
+p 
+{
+	margin: 0px;
+	max-width: 75%;
+	clear: both;
+}
+h1 
+{
+	/* font-size: 16px;
+	font-weight: normal; */
+	margin-bottom: 0px;
+}
+h2 
+{
+	font-size: 16px;
+	font-weight: normal;
+	margin-bottom: 0px;
+}
+ul
+{
+
+}
+li
+{
+
+}
+br
+{
+
+}
+
+/* Images */
+img
+{	
+	float: left;
+	max-width: 100%;
+	height: auto;
+}
+.thumbs img
+{	
+}
+
+/* IBM */
+.TXT {
+    clear: both;
+    .thumbs img {
+    	max-height: 150px;
+    	}
+}
+
+/* Logo */
+.fix_img
+{
+    	position:fixed; 
+    	bottom:1%; 
+    	right:1%; 
+    	max-width:30%;
+    	max-height:30%;
+}
+/* Print */
+@media print 
+{
+  	body {
+	font-size: 16px;
+  	}
+  	img
+	{	
+	max-width: 45%;
+	max-height: 45%;
+	}
+  	.thumbs img {
+    	max-height: 150px;
+    	}
+	.fix
+	{
+    	width:10%;
+	}
+}

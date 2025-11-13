@@ -1,0 +1,28 @@
+##ACAP version=1.0
+
+# robots.txt for http://www.episodique.com/
+
+User-agent: *
+Disallow: / 
+Disallow: /blo/
+Disallow: /css/
+Disallow: /js/
+Disallow: /images/
+Disallow: /php/
+
+
+# robots.txt for http://www.episodique.com/
+ACAP-crawler: *
+# User-agent: *
+ACAP-allow-crawl: /
+# Disallow: /
+ACAP-disallow-crawl: /css/
+# Disallow: /blo/
+ACAP-allow-crawl: /blo/
+# Disallow: /css/
+ACAP-disallow-crawl: /js/
+# Disallow: /js/
+ACAP-disallow-crawl: /images/
+# Disallow: /images/
+ACAP-disallow-crawl: /php/
+# Disallow: /php/

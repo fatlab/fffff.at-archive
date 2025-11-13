@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /search?q=*
+Disallow: /my
+Disallow: /cart
+
+User-Agent: Googlebot
+Allow: .js
+Allow: .css

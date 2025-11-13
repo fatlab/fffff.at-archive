@@ -1,0 +1,365 @@
+/*-----------------------------------------------
+## Sprite Sheets
+-----------------------------------------------*/
+.sprite-sheet tr {
+    border: 1px solid #000;
+    height: 130px;
+}
+.team-sheet tr {
+    height: 188px;
+}
+.sprite-sheet.framework-sheet tr,
+.sprite-sheet tr.framework-sheet,
+.sprite-sheet.changelog-sheet tr {
+    height: 109px;
+}
+.commerce-sheet tr {
+    height: 95px;
+}
+.sprite-sheet td {
+    padding: 10px;
+}
+table.sprite-sheet {
+    margin-top: 15px;
+}
+.sprite-shortcode {
+    display: block;
+}
+
+/* Sheets */
+.team-profile,
+.hosting-icons,
+.builder-icons,
+.framework-icons,
+.section-icons,
+.plugin-icons,
+.commerce-icons,
+.backup-icons,
+.other-plugin-icons,
+.changelog-icons,
+.drag-drop {
+    background-repeat: no-repeat;
+    display: block;
+}
+ 
+/* Team Icons */
+.team-profile {
+    background-image: url(../images/spritesheets/spritesheet-the-team.png);
+}
+.team-profile-brad,
+.team-profile-joe,
+.team-profile-nicole,
+.team-profile-rafael,
+.team-profile-tim,
+.team-profile-todd {
+    width: 190px;
+    height: 274px;
+}
+.team-profile-brad   { background-position: -5px -5px; }
+.team-profile-joe    { background-position: -5px -289px; }
+.team-profile-nicole { background-position: -5px -573px; }
+.team-profile-rafael { background-position: -5px -857px; }
+.team-profile-tim    { background-position: -5px -1141px; }
+.team-profile-todd   { background-position: -5px -1425px; }
+
+/* Hosting Icons */
+.hosting-icons {
+    background-image: url(../images/spritesheets/spritesheet-hosting-icons.png);
+}
+.hosting-icons-beginner,
+.hosting-icons-handshake,
+.hosting-icons-support,
+.hosting-icons-open-source,
+.hosting-icons-revenue,
+.hosting-icons-value,
+.builder-icons-framework,
+.builder-icons-infinite,
+.builder-icons-mouse,
+.builder-icons-pencil-eraser,
+.builder-icons-servers,
+.builder-icons-stage-lights,
+.builder-icons-themes,
+.builder-icons-tools,
+.builder-icons-cloud,
+.framework-icons-responsive,
+.framework-icons-streamline,
+.section-icons-block,
+.section-icons-ellipsis,
+.section-icons-key,
+.section-icons-layers,
+.section-icons-procamera,
+.section-icons-stopwatch {
+    height: 120px;
+    margin: 0 auto;
+    width: 120px;
+}
+.hosting-icons-beginner { background-position: -5px -5px; }
+.hosting-icons-handshake { background-position: -5px -135px; }
+.hosting-icons-support { background-position: -5px -265px; }
+.hosting-icons-open-source { background-position: -5px -395px; }
+.hosting-icons-revenue { background-position: -5px -525px; }
+.hosting-icons-value { background-position: -5px -655px; }
+
+/* Builder Icons */
+.builder-icons {
+    background-image: url(../images/spritesheets/spritesheet-builder-icons.png);
+}
+.builder-icons-framework { background-position: -5px -5px; }
+.builder-icons-infinite { background-position: -5px -135px; }
+.builder-icons-mouse { background-position: -5px -265px; }
+.builder-icons-pencil-eraser { background-position: -5px -395px; }
+.builder-icons-servers { background-position: -5px -525px; }
+.builder-icons-stage-lights { background-position: -5px -655px; }
+.builder-icons-themes { background-position: -5px -785px; }
+.builder-icons-tools { background-position: -5px -915px; }
+.builder-icons-cloud { background-position: -5px -1035px; }
+
+/* Framework Icons */
+.framework-icons {
+    background-image: url(../images/spritesheets/spritesheet-framework-icons.png);
+}
+.framework-icons-custom-branding-icon,
+.framework-icons-earn-more-revenue-icon,
+.framework-icons-staging-icon,
+.framework-icons-staging-icon-edit,
+.framework-icons-staging-icon-update,
+.framework-icons-unlimited-site-icon {
+    height: 99px;
+    margin: 0 auto;
+}
+.framework-icons-responsive { background-position: -5px -223px; }
+.framework-icons-streamline { background-position: -5px -353px; }
+
+.framework-icons-custom-branding-icon {
+    width: 116px;
+    background-position: -5px -5px;
+}
+.framework-icons-earn-more-revenue-icon {
+    width: 122px;
+    background-position: -5px -114px;
+}
+.framework-icons-staging-icon {
+    width: 105px;
+    background-position: -5px -483px;
+}
+.framework-icons-staging-icon-edit {
+    width: 99px;
+    background-position: -5px -592px;
+}
+.framework-icons-staging-icon-update {
+    width: 99px;
+    background-position: -5px -701px;
+}
+.framework-icons-unlimited-site-icon {
+    width: 88px;
+    background-position: -5px -810px;
+}
+
+/* Section Icons */
+.section-icons {
+    background-image: url(../images/spritesheets/spritesheet-section-icons.png);
+}
+
+.section-icons-block { background-position: -5px -5px; }
+.section-icons-ellipsis { background-position: -5px -135px; }
+.section-icons-key { background-position: -5px -265px; }
+.section-icons-layers { background-position: -5px -395px; }
+.section-icons-procamera { background-position: -5px -525px; }
+.section-icons-stopwatch { background-position: -5px -655px; }
+
+/* Plugin Icons */
+/*
+.plugin-icons {
+    background-image: url(../images/spritesheets/spritesheet-plugin-icons-2.png);
+    background-size: 100%;
+    max-width: 100%;
+}
+
+.plugin-icons-boldgrid-backup,
+.plugin-icons-boldgrid-editor,
+.plugin-icons-boldgrid-woocommerce,
+.plugin-icons-boldgrid-wpforms {
+    height: 128px;
+    width: 129px;
+}
+.plugin-icons-boldgrid-gallery,
+.plugin-icons-boldgrid-inspirations,
+.plugin-icons-boldgrid-seo {
+    height: 128px;
+    width: 128px;
+}
+.plugin-icons-boldgrid-staging {
+    height: 129px;
+    width: 129px;
+}
+
+.plugin-icons-boldgrid-backup { background-position: -5px -5px; }
+.plugin-icons-boldgrid-editor { background-position: -5px -143px; }
+.plugin-icons-boldgrid-woocommerce { background-position: -5px -834px; }
+.plugin-icons-boldgrid-wpforms { background-position: -5px -972px; }
+.plugin-icons-boldgrid-gallery {background-position: -5px -281px; }
+.plugin-icons-boldgrid-inspirations {background-position: -5px -419px; }
+.plugin-icons-boldgrid-seo {background-position: -5px -557px; }
+.plugin-icons-boldgrid-staging {background-position: -5px -695px; } */
+
+/* Commerce Icons */
+.commerce-icons {
+    background-image: url(../images/spritesheets/spritesheet-commerce-icons.png);
+    margin: 0 auto;
+}
+.commerce-icons-client-icon {
+    width: 89px;
+    height: 87px;
+    background-position: -5px -5px;
+}
+.commerce-icons-onboarding-icon {
+    width: 85px;
+    height: 87px;
+    background-position: -5px -102px;
+}
+.commerce-icons-retention-icon {
+    width: 86px;
+    height: 86px;
+    background-position: -5px -199px;
+}
+.commerce-icons-security-icon {
+    width: 113px;
+    height: 88px;
+    background-position: -5px -295px;
+}
+.commerce-icons-support-icon {
+    width: 84px;
+    height: 84px;
+    background-position: -5px -393px;
+}
+.commerce-icons-value-icon {
+    width: 106px;
+    height: 85px;
+    background-position: -5px -487px;
+}
+
+/* Backup Icons */
+.backup-icons {
+    background-image: url(../images/spritesheets/spritesheet-backup-icons.png);
+}
+.backup-icons-automation,
+.backup-icons-easy,
+.backup-icons-larger,
+.backup-icons-migrate,
+.backup-icons-retention,
+.backup-icons-schedule {
+    height: 92px;
+    margin: 0 auto;
+}
+.backup-icons-automation {
+    width: 99px;
+    background-position: -5px -5px;
+}
+.backup-icons-easy {
+    width: 90px;
+    background-position: -5px -107px;
+}
+.backup-icons-larger {
+    width: 80px;
+    background-position: -5px -209px;
+}
+.backup-icons-migrate {
+    width: 84px;
+    background-position: -5px -311px;
+}
+.backup-icons-retention {
+    width: 108px;
+    background-position: -5px -413px;
+}
+.backup-icons-schedule {
+    width: 79px;
+    background-position: -5px -515px;
+}
+
+/* Other Plugins Icons */
+.other-plugin-icons {
+    background-image: url(../images/spritesheets/spritesheet-other-plugins-icons.png);
+    margin: 0 auto;
+}
+.other-plugin-icons-contact-customize,
+.other-plugin-icons-contact-integrate,
+.other-plugin-icons-contact-time {
+    width: 99px;
+    height: 99px;
+}
+.other-plugin-icons-optimization,
+.other-plugin-icons-wcommerce {
+    width: 120px;
+    height: 120px;
+}
+.other-plugin-icons-cloud-wordpress {
+    width: 98px;
+    height: 93px;
+    background-position: -5px -5px;
+}
+.other-plugin-icons-contact-customize { background-position: -5px -108px; }
+.other-plugin-icons-contact-integrate { background-position: -5px -217px; }
+.other-plugin-icons-contact-time { background-position: -5px -326px; }
+.other-plugin-icons-optimization { background-position: -5px -435px; }
+.other-plugin-icons-wcommerce { background-position: -5px -565px; }
+
+/* Changelog Icons */
+.changelog-icons {
+    background-image: url(../images/spritesheets/spritesheet-changelog-icons.png);
+    margin: 0 auto;
+}
+.changelog-icons-customizer,
+.changelog-icons-editor,
+.changelog-icons-forms,
+.changelog-icons-framework,
+.changelog-icons-gallery,
+.changelog-icons-inspirations,
+.changelog-icons-seo,
+.changelog-icons-staging {
+    width: 260px;
+    height: 217px;
+}
+.changelog-icons-customizer { background-position: -5px -5px; }
+.changelog-icons-editor { background-position: -5px -232px; }
+.changelog-icons-forms { background-position: -5px -459px; }
+.changelog-icons-framework { background-position: -5px -686px; }
+.changelog-icons-gallery { background-position: -5px -913px; }
+.changelog-icons-inspirations { background-position: -5px -1140px; }
+.changelog-icons-seo { background-position: -5px -1367px; }
+.changelog-icons-staging { background-position: -5px -1594px; }
+
+/* Drag & Drop Icons */
+.drag-drop {
+	background-image: url(../images/spritesheets/spritesheet-drag-drop-icons.png);
+	margin-top: 30px;
+}
+.drag-drop-icon-123 {
+	width: 35px;
+	height: 35px;
+	background-position: -5px -5px;
+}
+.drag-drop-icon-drag {
+	width: 42px;
+	height: 42px;
+	background-position: -5px -50px;
+}
+.drag-drop-icon-images {
+	width: 42px;
+	height: 37px;
+	background-position: -5px -102px;
+}
+.drag-drop-icon-layout {
+	width: 46px;
+	height: 38px;
+	background-position: -5px -149px;
+}
+.drag-drop-icon-phone {
+	width: 24px;
+	height: 48px;
+	background-position: -5px -197px;
+}
+.drag-drop-icon-white-tools {
+    width: 34px;
+    height: 47px;
+    background-position: -5px -255px;
+}

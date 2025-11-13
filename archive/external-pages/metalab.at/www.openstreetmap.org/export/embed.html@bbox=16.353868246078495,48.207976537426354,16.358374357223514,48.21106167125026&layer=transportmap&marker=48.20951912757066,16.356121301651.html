@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <title>OpenStreetMap Embedded</title>
+    <link rel="stylesheet" href="../../../../assets/embed-77057075ea83e10bdb8d46904695d79d76a9b847ce4069227f2c13fe82938d8f.css" media="screen" />
+    <script src="../../../../assets/embed-f334486a1f37795eb3930afd97384e5fca802b2a116cab59f4f0156149687fdd.js"></script>
+  </head>
+  <body>
+    <div id="map">
+      <svg width="0" height="0" class="end-100 position-absolute">
+  <defs>
+    <linearGradient id="fill" x1="0" x2="0" y1="0" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#aaa6" />
+      <stop offset="1" stop-color="#2224" />
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" x2="0" y1="0" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6666" />
+      <stop offset="1" stop-color="#4448" />
+    </linearGradient>
+    <clipPath id="pin-clip">
+      <path id="pin-path" d="M12.5 40 2.94 21.6448C1.47 18.8224 0 16 0 12.5a12.5 12.5 0 0 1 25 0c0 3.5-1.47 6.3224-2.94 9.1448z" />
+    </clipPath>
+    <image id="pin-shadow" x="-1" href="/assets/leaflet/dist/images/marker-shadow-a2d94406ba198f61f68a71ed8f9f9c701122c0c33b775d990edceae4aece567f.png" />
+
+
+      <path id="dot-path" stroke-linecap="round" fill="#fff" d="M11.5 10a1 1 0 0 0 2 5 1 1 0 0 0-2-5" />
+      <g id="pin-dot" clip-path="url(#pin-clip)">
+        <use href="#pin-path" fill="currentColor" />
+        <use href="#pin-path" fill="url(#fill)" />
+        <g stroke="#fff" opacity="0.122">
+          <use href="#pin-path" fill="none" stroke-width="4.4" />
+          <use href="#dot-path" stroke-width="7.2" />
+        </g>
+        <g stroke="currentColor">
+          <use href="#pin-path" fill="none" stroke-width="2.2" />
+          <use href="#dot-path" stroke-width="5" />
+        </g>
+        <g stroke="url(#stroke)">
+          <use href="#pin-path" fill="none" stroke-width="2.2" />
+          <use href="#dot-path" stroke-width="5" />
+        </g>
+        <use href="#dot-path" stroke="#fff" stroke-width="2.8" />
+      </g>
+  </defs>
+</svg>
+
+    </div>
+  </body>
+</html>

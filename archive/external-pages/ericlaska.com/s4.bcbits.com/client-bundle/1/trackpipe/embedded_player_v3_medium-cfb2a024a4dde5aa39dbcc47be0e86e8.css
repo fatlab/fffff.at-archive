@@ -1,0 +1,1055 @@
+/* trackpipe/public/playerlayouts/v3_medium.css */
+#player {
+    vertical-align: top;
+    font-size: 0;
+    min-width: 250px;
+}
+
+#artarea {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    vertical-align: top;
+    position: absolute;
+}
+
+#nonartarea {
+    display: inline-block;
+    height: 120px;
+    border: 1px solid #d2d2d2;
+    width: 100%;
+    padding: 0;
+}
+
+#infolayer.fixed {
+    position: relative;
+}
+
+#infolayer .art {
+/*    width: 120px;
+    height: 120px;*/
+}
+#nonartarea {
+    border: none;
+}
+
+.smallartwork #infolayer .info {
+    border: 1px solid #d2d2d2;
+    border-left: none;
+    top: 0px;
+    left: 120px;
+}
+.noartwork #infolayer .info {
+    border: 1px solid #d2d2d2;
+    display: block;
+    top: 0;
+    left: 0;
+}
+
+#currenttitlerow {
+    width: 100%;
+    padding: 5px 2.86% 0 67px;
+}
+
+#currenttitle {
+    width: 70%;
+}
+
+#currenttimeblock {
+    width: 30%;
+}
+
+#timelinecontainer {
+    padding: 0 0 0 67px;
+}
+
+.standalonetrackplayer #currenttitlerow {
+    padding-top: 17px;
+}
+
+#big_play_button {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    position: absolute;
+    left: auto;
+    bottom: 13px;
+    right: -177px;
+    z-index: 100;
+    width: 46px;
+    height: 46px;
+}
+.noartwork #big_play_button {
+    right: -57px;
+}
+
+#big_play_button:hover {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    background: transparent;
+}
+
+#artarea:hover #big_play_button {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.big #big_play_button {
+
+}
+
+/* turn off artarea art */
+#art {
+    display: none;
+}
+#artarea {
+    width: 0px;
+}
+
+#big_play_icon {
+    border-color: transparent transparent transparent #333;
+    border-style: dashed dashed dashed solid; /* dashed for smooth rendering in ff */
+    border-width: 10px 0px 10px 18px;
+    margin: 12px auto;
+    padding: 12px auto;
+}
+
+.playing #big_play_icon {
+    margin: 12px auto;
+    border-style: solid;
+    border-width: 0px 6px 0px 6px;
+    border-color: #333;
+    width: 16px;
+    height: 20px;
+    left: 0;
+}
+
+#progbar_fill_played {
+    width: 0px;
+    display: block;
+    background: #888;
+}
+
+#linkareaalt {
+    display: none;
+}
+
+/* albumtrackplayer */
+
+.albumtrackplayer #album {
+    display: inline;
+    width: auto;
+    padding: 0;
+}
+
+.albumtrackplayer #artist {
+    display: inline;
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.albumtrackplayer #artist:before {
+    content: '\00a0 by ';
+    color: #999;
+    color: rgba(0,0,0,0.4);
+}
+.albumtrackplayer #album:before {
+    content: 'from ';
+    color: #999;
+    color: rgba(0,0,0,0.4);
+}
+
+.albumtrackplayer #album,
+.albumtrackplayer #artist {
+    line-height: 18px;
+}
+
+.albumtrackplayer #albumtrackartistrow {
+    padding: 0 2.86% 0 2.86%;
+    width: 98%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 0 18px;
+}
+
+.albumtrackplayer #big_play_icon {
+    margin: 10px auto;
+}
+
+.albumtrackplayer.playing #big_play_icon {
+    margin: 10px auto;
+}
+
+
+
+/* no artwork */
+
+.art {
+    display: block;
+}
+.noartwork #artlink,
+.noartwork .art {
+    display: none;
+}
+
+.noartwork #artarea {
+    width: 1px;
+}
+
+.noartwork #nonartarea {
+    padding: 0;
+}
+
+
+/* sizing */
+
+#maintext {
+    width: 40%;
+}
+
+#linkarea {
+    width: 30%;
+}
+
+
+
+.noartwork #maintext {
+    width: 56%;
+}
+
+.noartwork #linkarea {
+    width: 29%;
+}
+
+.noartwork.albumtrackplayer #timelinecontainer {
+    width: 75%;
+}
+.noartwork.albumtrackplayer #currenttimeblock {
+    margin-left: 67%;
+    width: 33%;
+}
+.noartwork #currenttitle {
+    width: 68%;
+}
+.noartwork #currenttitle_title {
+    width: 90%;
+    min-width: 90%;
+}
+.noartwork #currenttimeblock {
+    width: 32%;
+}
+.noartwork #prevnext {
+    width: 26%;
+}
+.noartwork #timelinecontainer {
+    width: 74%;
+}
+
+
+@media (max-width: 299px) {
+    /* size up to 299 */
+
+    /* hide artwork */
+
+     #artlink,
+     .art {
+        display: none;
+    }
+     #artarea {
+        width: 1px;
+    }
+     #nonartarea {
+        padding: 0;
+    }
+
+    /* hide logo */
+    .smallartwork #infolayer .logo,
+    .noartwork #infolayer .logo {
+        display: none;
+    }
+
+    /* scale elements */
+
+     .smallartwork #maintext,
+     .noartwork #maintext {
+        width: 62%;
+        padding-right: 0;
+    }
+     .download #maintext,
+     .noartwork.download #maintext {
+        width: 52%;
+    }
+
+    .smallartwork .exclusive #maintext {
+        width: 69%;
+    }
+
+     .smallartwork #linkarea,
+     .noartwork #linkarea {
+        width: 35%;
+        margin: 0 0 0 3px;
+        text-align: right;
+    }
+
+     .smallartwork.download #linkarea,
+     .noartwork.download #linkarea {
+         width: 45%;
+         margin: 0 0 0 2%;
+    }
+
+     #currenttitle,
+     .noartwork #currenttitle {
+        width: 64%;
+    }
+     #currenttitle_title,
+     .noartwork #currenttitle_title {
+        width: 90%;
+        min-width: 90%;
+    }
+     #currenttimeblock,
+     .noartwork #currenttimeblock {
+        width: 32%;
+    }
+     #prevnext,
+     .noartwork #prevnext {
+        width: 30%;
+    }
+     #timelinecontainer,
+     .noartwork #timelinecontainer {
+        width: 70%;
+    }
+     .standalonetrackplayer #timelinecontainer,
+     .albumtrackplayer #timelinecontainer,
+     .noartwork.standalonetrackplayer #timelinecontainer,
+     .noartwork.albumtrackplayer #timelinecontainer {
+        width: 68%;
+    }
+    .standalonetrackplayer #currenttimeblock,
+    .albumtrackplayer #currenttimeblock,
+    .noartwork.standalonetrackplayer #currenttimeblock,
+    .noartwork.albumtrackplayer #currenttimeblock {
+        margin-left: 63%;
+        width: 32%;
+    }
+
+    /* hiding artwork causes adjustments to placement of info and playbutton */
+    .smallartwork #infolayer .info {
+        left: 0;
+        border-left: 1px solid #d2d2d2;
+    }
+    .smallartwork #big_play_button {
+        right: -57px;
+    }
+} /* end 299 */
+
+@media (min-width: 300px) and (max-width: 329px) {
+    /* size 300 to 329 */
+
+    /* hide artwork */
+
+     #artlink,
+     .art {
+        display: none;
+    }
+     #artarea {
+        width: 1px;
+    }
+     #nonartarea {
+        padding: 0;
+    }
+
+    /* hide logo */
+    .smallartwork #infolayer .logo,
+    .noartwork #infolayer .logo {
+        display: none;
+    }
+
+    /* scale elements */
+
+     #maintext,
+     .noartwork #maintext {
+        width: 70%;
+    }
+     .download #maintext,
+     .noartwork.download #maintext {
+        width: 61%;
+    }
+    .download #linkarea,
+    .noartwork.download #linkarea {
+        width: 37%;
+    }
+     #linkarea,
+     .noartwork #linkarea {
+        width: 28%;
+        padding: 0;
+    }
+
+     #currenttitle,
+     .noartwork #currenttitle {
+        width: 68%;
+    }
+     #currenttitle_title,
+     .noartwork #currenttitle_title {
+        width: 90%;
+        min-width: 90%;
+    }
+     #currenttimeblock,
+     .noartwork #currenttimeblock {
+        width: 32%;
+    }
+     #prevnext,
+     .noartwork #prevnext {
+        width: 30%;
+    }
+     #timelinecontainer,
+     .noartwork #timelinecontainer {
+        width: 70%;
+    }
+     .standalonetrackplayer #timelinecontainer,
+     .albumtrackplayer #timelinecontainer,
+     .noartwork.standalonetrackplayer #timelinecontainer,
+     .noartwork.albumtrackplayer #timelinecontainer {
+        width: 72%;
+    }
+     .standalonetrackplayer #currenttimeblock,
+     .albumtrackplayer #currenttimeblock,
+     .noartwork.standalonetrackplayer #currenttimeblock,
+     .noartwork.albumtrackplayer #currenttimeblock {
+        margin-left: 69%;
+        width: 32%;
+    }
+
+    /* hiding artwork causes adjustments to placement of info and playbutton */
+    .smallartwork #infolayer .info {
+        left: 0;
+        border-left: 1px solid #d2d2d2;
+    }
+    .smallartwork #big_play_button {
+        right: -57px;
+    }
+} /* end 300-329 */
+
+@media (min-width: 330px) and (max-width: 369px) {
+    /* size 330 to 369 */
+
+    /* hide artwork */
+
+     #artlink,
+     .art {
+        display: none;
+    }
+     #artarea {
+        width: 1px;
+    }
+     #nonartarea {
+        padding: 0;
+    }
+
+    /* scale elements */
+
+     #maintext,
+     .noartwork #maintext {
+        width: 58%;
+    }
+     .download #maintext,
+     .noartwork.download #maintext {
+        width: 50%;
+    }
+     #linkarea,
+     .noartwork #linkarea {
+        width: 26%;
+        padding: 0;
+    }
+    .download #linkarea,
+    .noartwork.download #linkarea {
+        width: 34%;
+    }
+
+     #currenttitle,
+     .noartwork #currenttitle {
+        width: 68%;
+    }
+     #currenttitle_title,
+     .noartwork #currenttitle_title {
+        width: 90%;
+        min-width: 90%;
+    }
+     #currenttimeblock,
+     .noartwork #currenttimeblock {
+        width: 32%;
+    }
+     #prevnext,
+     .noartwork #prevnext {
+        width: 30%;
+    }
+     #timelinecontainer,
+     .noartwork #timelinecontainer {
+        width: 70%;
+    }
+     .standalonetrackplayer #timelinecontainer,
+     .albumtrackplayer #timelinecontainer,
+     .noartwork.standalonetrackplayer #timelinecontainer,
+     .noartwork.albumtrackplayer #timelinecontainer {
+        width: 72%;
+    }
+     .standalonetrackplayer #currenttimeblock,
+     .albumtrackplayer #currenttimeblock,
+     .noartwork.standalonetrackplayer #currenttimeblock,
+     .noartwork.albumtrackplayer #currenttimeblock {
+        margin-left: 69%;
+        width: 32%;
+    }
+    /* hiding artwork causes adjustments to placement of info and playbutton */
+    .smallartwork #infolayer .info {
+        left: 0;
+        border-left: 1px solid #d2d2d2;
+    }
+    .smallartwork #big_play_button {
+        right: -57px;
+    }
+
+} /* end 330-369 */
+
+@media (min-width: 370px) and (max-width: 399px) {
+    /* size 370 to 399 */
+
+    /* shows artwork */
+
+    /* scale elements */
+
+     #maintext {
+        width: 47%;
+    }
+     .download #maintext {
+        width: 39%;
+        margin-right: 1%;
+    }
+
+     #linkarea {
+        width: 25%;
+    }
+
+     #currenttitle {
+        width: 63%;
+    }
+     #currenttitle_title {
+        width: 90%;
+        min-width: 90%;
+    }
+     #currenttimeblock {
+        width: 32%;
+    }
+     #prevnext {
+        width: 30%;
+    }
+     #timelinecontainer {
+        width: 70%;
+    }
+     .standalonetrackplayer #timelinecontainer,
+     .albumtrackplayer #timelinecontainer,
+     .noartwork.standalonetrackplayer #timelinecontainer,
+     .noartwork.albumtrackplayer #timelinecontainer {
+        width: 66%;
+    }
+     .standalonetrackplayer #currenttimeblock,
+     .albumtrackplayer #currenttimeblock,
+     .noartwork.standalonetrackplayer #currenttimeblock,
+     .noartwork.albumtrackplayer #currenttimeblock {
+        margin-left: 63%;
+        width: 32%;
+    }
+
+    .noartwork #maintext {
+        width: 61%;
+    }
+    .noartwork.download #maintext {
+        width: 54%;
+    }
+    .noartwork #linkarea {
+        width: 27%;
+    }
+    .noartwork.download #linkarea {
+        width: 32%;
+    }
+
+
+} /* end 370-399 */
+
+@media (min-width: 400px) and (max-width: 449px) {
+
+
+
+     #maintext {
+        width: 48%;
+    }
+     .download #maintext {
+        width: 38%;
+    }
+     #linkarea {
+        width: 34%;
+    }
+     .download #linkarea {
+        width: 44%;
+        padding-left: 2%;
+    }
+
+     .standalonetrackplayer #timelinecontainer,
+     .albumtrackplayer #timelinecontainer {
+        width: 70%;
+    }
+     .standalonetrackplayer #currenttimeblock,
+     .albumtrackplayer #currenttimeblock {
+        margin-left: 67%;
+        width: 33%;
+    }
+     #currenttitle {
+        width: 68%;
+    }
+     #currenttitle_title {
+        width: 90%;
+        min-width: 90%;
+    }
+     #currenttimeblock {
+        width: 32%;
+    }
+     #prevnext {
+        width: 26%;
+    }
+     #timelinecontainer {
+        width: 74%;
+    }
+
+
+
+     .noartwork #maintext {
+        width: 61%;
+    }
+     .noartwork.download #maintext {
+        width: 56%;
+    }
+     .noartwork #linkarea {
+        width: 27%;
+    }
+     .noartwork.download #linkarea {
+        width: 32%;
+    }
+     .noartwork #prevnext {
+        width: 23%;
+    }
+     .noartwork #prev {
+        padding-left: 10%;
+    }
+     .noartwork #currenttitle {
+        width: 76%;
+    }
+     .noartwork #currenttimeblock {
+        width: 24%;
+    }
+     .noartwork #timelinecontainer {
+        width: 77%;
+    }
+     .noartwork.standalonetrackplayer #currenttimeblock {
+        margin-left: 77%;
+        width: 23%;
+    }
+
+} /* end 400-449 */
+
+@media (min-width: 450px) and (max-width: 499px) {
+
+     #maintext {
+        width: 54%;
+    }
+     .download #maintext {
+        width: 45%;
+    }
+     #linkarea {
+        width: 31%;
+    }
+     .download #linkarea {
+        width: 40%;
+        padding-left: 2%;
+    }
+     .standalonetrackplayer #timelinecontainer,
+     .albumtrackplayer #timelinecontainer {
+        width: 74%;
+    }
+     .standalonetrackplayer #currenttimeblock,
+     .albumtrackplayer #currenttimeblock {
+        margin-left: 74%;
+        width: 26%;
+    }
+     #prevnext {
+        width: 26%;
+    }
+     #timelinecontainer {
+        width: 74%;
+    }
+
+
+     .noartwork #maintext {
+        width: 64%;
+    }
+     .noartwork.download #maintext {
+        width: 59%;
+    }
+     .noartwork #linkarea {
+        width: 25%;
+    }
+     .noartwork.download #linkarea {
+        width: 30%;
+    }
+     .noartwork #prevnext {
+        width: 21%;
+    }
+     .noartwork #currenttitle {
+        width: 78%;
+    }
+     .noartwork #currenttimeblock {
+        width: 22%;
+    }
+     .noartwork #timelinecontainer {
+        width: 79%;
+    }
+     .noartwork.standalonetrackplayer #currenttimeblock {
+        margin-left: 79%;
+        width: 21%;
+    }
+
+
+} /* end 450-499 */
+
+@media (min-width: 500px) and (max-width: 549px) {
+
+     #maintext {
+        width: 60%;
+    }
+     .download #maintext {
+        width: 52%;
+    }
+     #linkarea {
+        width: 27%;
+    }
+     .download #linkarea {
+        width: 35%;
+        padding-left: 2%;
+    }
+     #currenttitle {
+        width: 68%;
+    }
+     #currenttimeblock {
+        width: 32%;
+    }
+     .standalonetrackplayer #timelinecontainer,
+     .albumtrackplayer #timelinecontainer {
+        width: 78%;
+    }
+     .standalonetrackplayer #currenttimeblock,
+     .albumtrackplayer #currenttimeblock {
+        margin-left: 78%;
+        width: 22%;
+    }
+     #prevnext {
+        width: 26%;
+    }
+     #timelinecontainer {
+        width: 75%;
+    }
+
+
+     .noartwork #maintext {
+        width: 65%;
+    }
+     .download.noartwork #maintext {
+        width: 63%;
+    }
+     .noartwork #linkarea {
+        width: 25%;
+    }
+     .download.noartwork #linkarea {
+        width: 27%;
+    }
+     .noartwork #prevnext {
+        width: 19%;
+    }
+     .noartwork #timelinecontainer {
+        width: 81%;
+    }
+     .noartwork #currenttitle {
+        width: 80%;
+    }
+     .noartwork #currenttimeblock {
+        width: 19%;
+    }
+     .noartwork.standalonetrackplayer #currenttimeblock {
+        margin-left: 81%;
+    }
+
+} /* end 500-549 */
+
+@media (min-width: 550px) and (max-width: 600px) {
+
+
+     #maintext {
+        width: 63%;
+    }
+     .download #maintext {
+        width: 58%;
+    }
+     #linkarea {
+        width: 25%;
+    }
+     .download #linkarea {
+        width: 30%;
+        padding-left: 2%;
+    }
+     .standalonetrackplayer #timelinecontainer,
+     .albumtrackplayer #timelinecontainer {
+        width: 80%;
+    }
+     .standalonetrackplayer #currenttimeblock,
+     .albumtrackplayer #currenttimeblock {
+        margin-left: 81%;
+        width: 19%;
+    }
+     #prevnext {
+        width: 22%;
+    }
+     #currenttitle {
+        width: 78%;
+    }
+     #currenttimeblock {
+        width: 22%;
+    }
+     #timelinecontainer {
+        width: 78%;
+    }
+
+
+     .noartwork #maintext {
+        width: 71%;
+    }
+     .noartwork.download #maintext {
+        width: 67%;
+    }
+     .noartwork #linkarea {
+        width: 20%;
+    }
+     .noartwork.download #linkarea {
+        width: 24%;
+    }
+     .noartwork #prevnext {
+        width: 17%;
+    }
+     .noartwork #currenttitle {
+        width: 83%;
+    }
+     .noartwork #currenttimeblock {
+        width: 16%;
+    }
+     .noartwork #timelinecontainer {
+        width: 83%;
+    }
+     .noartwork.standalonetrackplayer #currenttimeblock {
+        margin-left: 84%;
+    }
+
+} /* end 550-600 */
+
+@media (min-width: 601px) {
+
+     #maintext {
+        width: 68%;
+    }
+     .download #maintext {
+        width: 65%;
+    }
+     #linkarea {
+        width: 22%;
+    }
+     .download #linkarea {
+        width: 25%;
+        padding-left: 2px;
+    }
+     .standalonetrackplayer #timelinecontainer,
+     .albumtrackplayer #timelinecontainer {
+        width: 82%;
+    }
+     .standalonetrackplayer #currenttimeblock,
+     .albumtrackplayer #currenttimeblock {
+        margin-left: 83%;
+        width: 17%;
+    }
+     #prevnext {
+        width: 20%;
+    }
+     #currenttitle {
+        width: 80%;
+    }
+     #currenttimeblock {
+        width: 20%;
+    }
+     #timelinecontainer {
+        width: 80%;
+    }
+
+
+     .noartwork #maintext {
+        width: 73%;
+    }
+     .noartwork.download #maintext {
+        width: 71%;
+    }
+     .noartwork #linkarea {
+        width: 18%;
+    }
+     .noartwork.download #linkarea {
+        width: 21%;
+    }
+     .noartwork #prevnext {
+        width: 17%;
+    }
+     .noartwork #currenttitle {
+        width: 85%;
+    }
+     .noartwork #currenttimeblock {
+        width: 15%;
+    }
+     .noartwork #timelinecontainer {
+        width: 83%;
+    }
+     .noartwork.standalonetrackplayer #currenttimeblock {
+        margin-left: 85%;
+    }
+} /* end 601px and up */
+
+
+/* theme dark */
+
+.theme-dark #nonartarea{
+    border: 0;
+    background-color: #303030;
+}
+
+.theme-dark #infolayer .info,
+.theme-dark #infolayer .info {
+    border-color:#262626;
+    border-color:rgba(255,255,255,0.15);
+}
+
+.theme-dark .art {
+    outline: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-dark #artist,
+.theme-dark #album {
+    color: #999;
+}
+
+.theme-dark.albumtrackplayer #artist:before {
+    content: '\00a0 by ';
+    color: #777;
+    color: rgba(255,255,255,0.25);
+}
+.theme-dark.albumtrackplayer #album:before {
+    content: 'from ';
+    color: #777;
+    color: rgba(255,255,255,0.25);
+}
+
+.theme-dark #big_play_button,
+.theme-dark #artarea:hover #big_play_button {
+    background: #474747;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.theme-dark #big_play_button:hover {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #474747;
+}
+
+.theme-dark #big_play_icon {
+    border-color: transparent transparent transparent #d3d3d2;
+    border-style: dashed dashed dashed solid; /* dashed for smooth rendering in ff */
+    border-width: 10px 0px 10px 18px;
+    margin: 12px auto;
+    padding: 12px auto;
+}
+
+.theme-dark.playing #big_play_icon {
+    margin: 12px auto;
+    border-style: solid;
+    border-width: 0px 6px 0px 6px;
+    border-color: #d3d3d2;
+    width: 16px;
+    height: 20px;
+    left: 0;
+}
+
+.theme-dark #prev:hover .icon {
+    border-color: transparent #ccc transparent transparent;
+}
+.theme-dark #prev:hover .icon:before {
+    border-color: transparent #ccc transparent transparent;
+}
+.theme-dark #prev:hover .icon:after {
+    background-color:#ccc;
+}
+.theme-dark #next:hover .icon:before {
+    border-color: transparent transparent transparent #ccc;
+}
+.theme-dark #next:hover .icon:after {
+    background-color:#ccc;
+}
+.theme-dark #next:hover .icon {
+    border-color: transparent transparent transparent #ccc;
+}
+
+.theme-dark #currenttitlerow,
+.theme-dark #currenttitle_title,
+.theme-dark #currenttime,
+.theme-dark #totaltime,
+.theme-dark.inline_player #totaltime:before  {
+    color: #666;
+    color: rgba(255,255,255,0.3);
+}
+
+.theme-dark.inline_player .progbar_empty {
+    border-color: #393939;
+}
+
+.theme-dark.inline_player.playing .progbar_empty {
+    border-color: #474747;
+}
+
+.theme-dark.inline_player .progbar_fill {
+    background: #222;
+}
+
+.theme-dark.inline_player .thumb {
+    background: #474747;
+    border-color: #525252;
+}
+
+.theme-dark.playing .thumb {
+    background: #888;
+    border-color: #888;
+}
+
+.theme-dark.thumb.ui-draggable-dragging {
+    border: solid 1px #0687f5;
+    background: #fff;
+}
+
+.theme-dark #progbar_fill_played {
+    background: #111;
+}
+
+.theme-dark.thumb.ui-draggable-dragging {
+    border: solid 1px #0687f5;
+    background: #fff;
+}
+
+.theme-dark #progbar_fill_played {
+    background: #1b1b1b;
+}
+

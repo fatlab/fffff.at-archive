@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Выполнить вход – CopyBaseServer</title>
+    <link href="Content/css@v=UqrqqVCNKUGYScBb-2LFolWCAsh7kN3MoZx9Fo2GdTk1.css" rel="stylesheet"/>
+
+    <script src="bundles/modernizr@v=wBEWDufH_8Md-Pbioxomt90vm6tJN2Pyy9u9zHtWsPo1"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a href="http://copybase.ru/" class="navbar-brand" style="outline:none;"><span class="glyphicon glyphicon-home" style="margin-right:10px;"></span>CopyBase</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                
+                
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div id="wrap">
+            
+
+
+<h3 style="margin-top: 10px;margin-bottom: 0px;">Выполнить вход</h3>
+<div class="row" >
+    <div class="col-md-12">
+        <section id="loginForm">
+<form action="index.html@p=111.html" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="HFk2KpVhHeP_B-1PgwnXvudh7OIWmz8v_oFDfO9KxXvhyoUXowZii2nqbRF29wo-Y_0lXAPQKL4Iu36VD4GJRg_QidxLPjDcnolO9g-GDuY1" />                
+                
+                <hr />
+                
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="UserName">Логин</label>
+                    <div class="col-md-10">
+                        <input class="form-control" data-val="true" data-val-required="Введите логин." id="UserName" name="UserName" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Password">Пароль</label>
+                    <div class="col-md-10">
+                        <input class="form-control" data-val="true" data-val-required="Введите пароль." id="Password" name="Password" type="password" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Войти" class="btn btn-primary" />
+                    </div>
+                </div>
+                
+                
+</form>        </section>
+    </div>
+</div>
+
+
+
+            <div id="push"></div>
+        </div>
+
+        <footer style="clear:both">
+            <hr />
+            <p><h5><small> &copy; 2025 CopyBaseServer - v.3.7.0.0.</small></h5></p>
+        </footer>
+        
+    </div>
+
+    
+    <div id="modalWindow" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div id="modalDialog" class="modal-dialog">
+        </div>
+    </div>
+
+    <script src="bundles/jquery@v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
+
+    <script src="bundles/bootstrap@v=AgQKzhqRGwOfX8Dqf0KTDUKe0dS_aeDCHxvs8ERMIto1"></script>
+
+    <script src="bundles/msg@v=CxBgz4gYQe8bY5EHq74wJunFbVGg3DMQCHUc76Zj7j01"></script>
+
+    <script src="bundles/toastr@v=nU7i1d5lsXeim4T9MB2Gdegj9fc8yXl1nK6hEZMOAm81"></script>
+
+    
+    <script src="bundles/jqueryval@v=2UULTpyQqj87zXFcTi0GVUQKiy5dUNDxRWz619UOidw1"></script>
+
+    <script type="text/javascript">
+            document.getElementById('UserName').focus();
+    </script>
+
+
+    <script type="text/javascript">
+
+        function OnSuccessGet(data, status) {
+            $('#modalWindow').modal('show');
+            //jQuery('#modalWindow').modal({
+            //    keyboard: true,
+            //    backdrop: true,
+            //    show: true
+            //});
+        }
+
+        function OnSuccessPost(data, status, request) {
+            if (status == "success") {
+                if (request.getResponseHeader('X-Status') != null) {
+                    $('#modalWindow').modal('hide');
+                    location.reload();
+                }
+            }
+        }
+
+        function OnError(response, status, err) {
+            //alert(status + " " + response.status + "\n\n" + err); //status - error, response.status - 500, err - Internal Server Error
+            $("#modalDialog").html(response.responseText);
+            $('#modalWindow').modal('show'); // если ошибка в результате get запроса, то нужно открыть окно, чтобы её отобразить
+        }
+
+    </script>
+</body>
+</html>

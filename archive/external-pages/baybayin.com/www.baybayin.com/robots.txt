@@ -1,0 +1,14 @@
+Sitemap: https://www.baybayin.com/sitemap.xml
+
+User-agent: NerdyBot
+Disallow: /
+
+User-agent: *
+Disallow: /ajax/
+Disallow: /apps/
+Disallow: /http://blog.baybayin.com/about
+Disallow: /http://blog.baybayin.com
+Disallow: /http://blog.baybayin.com/tutorials
+Disallow: /http://blog.baybayin.com/events
+Disallow: /http://blog.baybayin.com/downloads
+Disallow: /http://www.kabuay.com

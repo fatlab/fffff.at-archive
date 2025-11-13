@@ -1,0 +1,740 @@
+var active_viewer_image;
+var validate = {
+	email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+	phone: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/
+}
+
+$(function() {
+	$('#overlay, #overlay-close').click(function() {
+		$('#overlay, #overlay-close, #overlay-content').fadeOut(250, function() {
+			$('#overlay-content').remove();
+		});
+		return false;
+	});
+	
+	/* --- Custom Form Functionality --- */
+	
+	var invalid_strings = ['waitfordelay', '../', 'eval(', 'cast(', 'php.ini', 'boot.ini', 'select chr', '<script', '>', '<?', '.php', '.js', 'exec(', '.html', 'password', 'etc/', 'iframe', 'src'];
+	$('form.custom .submit').click(function() {
+		if (!$(this).hasClass('submitted')) {
+			var error = false;
+			
+			$(this).closest('form.custom').find('input, textarea').each(function() {
+				if ($(this).attr('id') != 'recaptcha-token') {
+					for (pos in invalid_strings) {
+						if ($(this).val().toLowerCase().indexOf(invalid_strings[pos]) > -1) {
+							alert('Invalid text found: ' + invalid_strings[pos]);
+							error = true;
+							return false;	
+						}
+					}
+				}
+			});
+			if (error) return false;
+							
+			// check for required fields
+			$('[data-required=1]').each(function() {
+				if ($(this).hasClass('check-group')) {
+					if (!$(this).find('input:checked').length) {
+						alert('Missing required field: ' + $(this).prev('label').text());
+						error = true;
+						return false;
+					}
+				} else {
+					if (!$(this).val()) {
+						alert('Missing required field: ' + $(this).prev('label').text());
+						$(this).focus();
+						error = true;
+						return false;
+					}
+				}
+			});
+			if (error) return false;
+			
+			// does this form have captcha?
+			if ($(this).closest('form').find('.g-recaptcha').length) {
+				if (grecaptcha.getResponse().length == 0) {
+					alert('Please verify your identity');
+					error = true;
+				}
+			}
+			
+			if (!error) {
+				// validate fields
+				$('[data-validate]').each(function() {
+					if (!validate[$(this).data('validate')].test($(this).val())) {
+						alert('Invalid format: ' + $(this).prev('label').text());
+						$(this).focus();
+						error = true;
+						return false;
+					}
+				});
+				
+				if (!error) {
+					// add a class of "submitted" to prevent double click/submit
+					$(this).addClass('submitted').text('Please wait...');
+			
+					if (typeof ga !== 'undefined') ga('send', 'event', 'Forms', 'Submit', $(this).closest('form').data('title'));
+					$(this).closest('form').submit();
+				}
+			}
+		}
+		return false;
+	});
+	
+	/* --- Patch for floating form labels --- */
+	
+	$('.floating-labels').on('focus', 'input, select, textarea', function() {
+		$(this).prev('label').addClass('show');
+	});
+	$('.floating-labels').on('blur', 'input, select, textarea', function() {
+		if (!$(this).val()) $(this).prev('label').removeClass('show');
+	});
+	
+	/* --- Lucy Interaction Events --- */
+	
+	/*$('a[data-lucy-owner]').click(function(e) {
+		var $link = $(this);
+		$.post('/inc/tracking.php', {
+			module: $(this).data('lucy-module'),
+			owner: $(this).data('lucy-owner'),
+			location: $(this).data('lucy-location'),
+			promoted: $(this).data('lucy-promoted'),
+			tags: $(this).data('lucy-tags')
+		}, function(data) {
+			location.href = $link.attr('href')
+		});
+		return false;
+	});*/
+	
+	/* --- Google Analytics Events --- */
+	
+	$('a[data-tracking-category]').click(function() {
+		ga('send', 'event', $(this).data('tracking-category'), $(this).data('tracking-action'), $(this).attr('title'));
+	});
+	
+	/* --- JQuery Plugins --- */
+	
+	// image scrubber plugin
+	$.fn.formScrubber = function() {
+		var container = $(this);
+		var width = container.width();
+		var children = container.children();
+		var length = children.length;
+		var size = width / length;
+		var sectors = [];
+		
+		if (length > 1) {
+			for (var i = 0; i < length; i++) {
+				sectors.push(i * size);
+			}
+			sectors.push(width);
+			
+			// when the user leaves the area, show the first image
+			container.mouseleave(function() {
+				children.hide().eq(0).show();
+			});
+			
+			container.mousemove(function(e) {
+				var x = Math.abs(e.offsetX);
+				for (i = 0; i < length; i++) {
+					if (x >= sectors[i] && (i == length - 1 || x <= sectors[i+1])) var index = i;
+				}
+				children.hide().eq(index).show();
+			});
+		}
+	    return this;
+	}
+	
+	// custom dropdowns
+	$.fn.lucyDropdown = function() {
+		$(this).each(function() {
+			// verify that the element is a <select> dropdown
+			if ($(this)[0].tagName == 'SELECT') {
+				// get the name and id of the <select> element
+				var id = $(this).prop('id');
+				var name = $(this).prop('name');
+				var active_text = $(this)[0].options[$(this).prop('selectedIndex')].text;
+				var active_value = $(this)[0].options[$(this).prop('selectedIndex')].value;
+				
+				// create the dropdown shell
+				var dropdown = $("<div class=\"lucy-dropdown\" id=\"" + (id + '-dropdown') + "\"></div>");
+				dropdown.append("<span>" + active_text + "</span>");
+				dropdown.append("<input type=\"hidden\" name=\"" + name + "\" id=\"" + id + "\" value=\"" + active_value + "\">");
+				
+				// create the list and add the list items
+				var ul = $('<ul></ul>');
+				var options = $(this)[0].options;
+				for (var i = 0; i < options.length; i++) {
+					ul.append("<li data-value=\"" + options[i].value + "\">" + options[i].text + "</li>");
+				}
+				dropdown.append(ul);
+				
+				// add the dropdown to the page
+				$(this).replaceWith(dropdown);
+			}
+		});
+		
+		// collect all the new dropdowns
+		var dropdowns = $('.lucy-dropdown');
+		
+		dropdowns.each(function(index) {
+			$(this).css({ zIndex: dropdowns.length - index });
+			$(this).find('span').click(function() {
+				$(this).closest('.lucy-dropdown').toggleClass('active');
+			});
+			$(this).delegate('li', 'click', function() {
+				$(this).siblings().removeClass('selected');
+				$(this).addClass('selected');
+				$(this).closest('.lucy-dropdown').removeClass('active').find('span').html($(this).html()).next('input').val($(this).data('value')).trigger('change');
+			});
+		});	
+		
+		$(document).click(function(event) {
+			var element = $(event.target);
+			var dropdown = element.closest('.lucy-dropdown');
+			if (dropdowns.length) {
+				dropdowns.each(function() {
+					if (!$(this).is(dropdown)) $(this).removeClass('active');
+				});
+			} else dropdowns.removeClass('active');
+		});
+		
+		return dropdowns;
+	}
+	$('.lucy-dropdown').lucyDropdown();
+	
+	// custom radio buttons
+	$.fn.lucyRadio = function() {
+		$(this).each(function() {
+			if ($(this)[0].tagName == 'INPUT' && $(this).prop('type') == 'radio') {
+				var radio = $("<div class=\"lucy-radio\"></div>");
+				if ($(this).prop('checked')) radio.addClass('checked');
+				$(this).before(radio).hide().removeClass('lucy-radio');
+			}
+		});
+		
+		$('.lucy-radio').click(function() {
+			var input = $(this).next('input[type=radio]');
+			var name = input.prop('name');
+			
+			// update the selected state of other radio buttons with the same name
+			$('input[name=' + name + ']').each(function() {
+				$(this).prev('.lucy-radio').removeClass('checked');
+			});
+			
+			input.prop('checked', true);
+			$(this).addClass('checked');
+		});
+	}
+	$('.lucy-radio').lucyRadio();
+	
+	// custom check boxes
+	$.fn.lucyCheck = function() {
+		$(this).each(function() {
+			if ($(this)[0].tagName == 'INPUT' && $(this).prop('type') == 'checkbox') {
+				var check = $("<div class=\"lucy-check\"></div>");
+				if ($(this).prop('checked')) check.addClass('checked');
+				$(this).before(check).hide().removeClass('lucy-check');
+			}
+		});
+		
+		$('.lucy-check').click(function() {
+			var new_value = $(this).hasClass('checked') ? 0 : 1;
+			$(this).next('input[type=checkbox]').prop('checked', new_value);
+			$(this).toggleClass('checked');
+		});
+	}
+	$('.lucy-check').lucyCheck();
+	
+	// check to see if an html element is on screen
+	$.fn.isOnScreen = function(){
+		var win = $(window);
+		
+		var viewport = {
+			top : win.scrollTop(),
+			left : win.scrollLeft()
+		};
+		viewport.right = viewport.left + win.width();
+		viewport.bottom = viewport.top + win.height();
+		
+		var bounds = this.offset();
+		bounds.right = bounds.left + this.outerWidth();
+		bounds.bottom = bounds.top + this.outerHeight();
+		
+		if (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom)) {
+			var start = this.offset().top - $(window).height();
+			var end = start + $(window).height() + this.height();				
+			return ($(window).scrollTop() - start) / (end - start);
+			return percent;
+		}
+		return false;
+	};
+	
+	// check to see if an html element is at the top of screen
+	$.fn.isAtPositionOrGreater = function(offset){
+		if (typeof offset == undefined) var offset = 0;
+		var win = $(window);
+		
+		var viewport = {
+			top : win.scrollTop(),
+			left : win.scrollLeft()
+		};
+		viewport.right = viewport.left + win.width();
+		viewport.bottom = viewport.top + win.height();
+		
+		var bounds = this.offset();
+		bounds.right = bounds.left + this.outerWidth();
+		bounds.bottom = bounds.top + this.outerHeight();
+		
+		return ((viewport.top + offset) >= bounds.top);
+	};
+	
+	// check to see if an html element is *fully* on screen
+	$.fn.isFullyOnScreen = function(){
+		var win = $(window);
+		
+		var viewport = {
+			top : win.scrollTop(),
+			left : win.scrollLeft()
+		};
+		viewport.right = viewport.left + win.width();
+		viewport.bottom = viewport.top + win.height();
+		
+		var bounds = this.offset();
+		bounds.right = bounds.left + this.outerWidth();
+		bounds.bottom = bounds.top + this.outerHeight();
+		
+		if (viewport.bottom > bounds.bottom) {
+			var start = this.offset().top - $(window).height();
+			var end = start + $(window).height() + this.height();				
+			return ($(window).scrollTop() - start) / (end - start);
+		}
+		return false;
+	};
+	
+	// check to see if an html element is half way on screen
+	$.fn.isHalfOnScreen = function(){
+		var win = $(window);
+		
+		var viewport = {
+			top : win.scrollTop(),
+			left : win.scrollLeft()
+		};
+		viewport.right = viewport.left + win.width();
+		viewport.bottom = viewport.top + win.height();
+		
+		var bounds = this.offset();
+		bounds.right = bounds.left + this.outerWidth();
+		bounds.bottom = bounds.top + (this.outerHeight() / 2);
+		
+		if (viewport.bottom > bounds.bottom) {
+			var start = this.offset().top - $(window).height();
+			var end = start + $(window).height() + this.height();				
+			return ($(window).scrollTop() - start) / (end - start);
+		}
+		return false;
+	};
+	
+	/* --- Lucy Slideshow --- */
+	
+	var LucySlideshow = function(el, options) {
+		// create new instances for multiples
+		if (el.length > 1) {
+			new LucySlideshow(el.slice(1), options);
+			el = el.eq(0);
+		}
+		
+		var $this = this;
+		var $element = el;
+		var $count = $element.find('.slide').length;
+		var $thumbs = $element.find('.thumbs .image');
+		var $dots = $element.find('.dots .dot');
+		var $loop = ($element.data('loop'));
+		var $last_pos = 1;
+		var $pos = 1;
+		var $locked = false;
+		
+		if ($loop) {
+			if ($thumbs.length || $dots.length) alert('Looping is disabled for slideshows with thumbnails or control dots');
+			$element.find('.slider').addClass('no-transition'); // we need to handle the transitions ourself
+		}
+							
+		// previous button click
+		$element.find('.previous').click(function(){
+			$this.previous().pause();
+			return false;	
+		});
+										
+		// next button click
+		$element.find('.next').click(function(){
+			$this.next().pause();
+			return false;	
+		});
+		
+		// thumbnail click
+		$thumbs.click(function(){
+			$pos = $(this).index() + 1;
+			$this.update().pause();
+			return false;	
+		});
+		
+		// dot click
+		$dots.click(function(){
+			$pos = $(this).index() + 1;
+			$this.update().pause();
+			return false;	
+		});
+										
+		// previous slide
+		this.previous = function(){
+			if ($loop) {
+				// move the last slide to the beginning
+				var $move = $element.find('.slide').last();
+				$element.find('.slider').prepend($move);
+				$element.find('.slider').css({ left: '-100%' });
+				$element.find('.slider').animate({ left: 0 }, $element.data('transition-speed') || 400, 'swing');
+				
+				// load the image before it
+				$prev_slide = $element.find('.slide').last().find('[data-img]');
+				if ($prev_slide.length) $this.load_image($prev_slide);
+				
+				return $this;
+			} else {
+				$pos = ($pos > 1) ? $pos - 1 : $count;
+				return $this.update();
+			}
+		};
+		
+		// next slide
+		this.next = function() {
+			if ($loop) {
+				$element.find('.slider').animate({ left: '-100%' }, $element.data('transition-speed') || 400, 'swing', function() {
+					// move the first slide to the end
+					var $move = $element.find('.slide').first();
+					$element.find('.slider').append($move);
+					
+					// shift the slider back
+					$element.find('.slider').css({ left: 0 });
+					
+					// load the image after it
+					$next_slide = $element.find('.slide').first().next().find('[data-img]');
+					if ($next_slide.length) $this.load_image($next_slide);
+				});
+				return $this;
+			} else {
+				$pos = ($pos < $count) ? $pos + 1 : 1;
+				return $this.update();
+			}
+		};
+		
+		this.load_image = function($slide) {
+			$slide.after('<img src="' + $slide.attr('data-img') + '" alt="' + $slide.attr('data-alt') + '">');
+			$slide.remove();
+		};
+										
+		// update the position of the slideshow
+		this.update = function() {
+			$element.removeClass().addClass('lucy-slideshow').addClass('position' + $pos);
+			
+			// update thumbnail selection
+			$thumbs.removeClass('selected').eq($pos - 1).addClass('selected');
+			$dots.removeClass('selected').eq($pos - 1).addClass('selected');
+			
+			return $this;
+		};
+		
+		// auto play slideshow
+		if ($element.data('autoplay')) {
+			var $timer = setInterval(function() {
+				$this.next();
+			}, $element.data('speed') || 3000);
+		}
+		
+		// pause the autoplay feature
+		this.pause = function(){
+			clearInterval($timer);
+		};
+	};
+	new LucySlideshow($('.lucy-slideshow'));
+	
+	/* --- Breakpoints --- */
+	
+	if (typeof show_breakpoints != 'undefined') {
+		$('body').append("<div id=\"breakpoints\"></div>");
+		$.each(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge'], function(index, value) {
+			$('#breakpoints').append("<span class=\"breakpoint " + value + "\">" + value + "</span>");
+		});
+		$.each(['mobile', 'tablet', 'desktop', 'desktop-medium', 'desktop-large'], function(index, value) {
+			$('#breakpoints').append("<span class=\"breakpoint " + value + "\">" + value + "</span>");
+		});
+		$('#breakpoints').append("<span id=\"breakpoint-width\"></span>");
+		$(window).resize(function() {
+			$('#breakpoint-width').text(', ' + $(window).width() + 'x' + $(window).height());
+		}).resize();
+	}
+	
+	/* --- Image Viewer --- */
+	
+	$('.gallery img').click(function(e) {
+		viewer_images = $(this).closest('.gallery').find('img');
+		
+		$('#viewer-image').css({ backgroundImage: 'url(' + $(this).attr('src').replace('gallery/', '') + ')' });
+		$('#viewer').css({ top: 0 });
+								
+		// set active image
+		active_viewer_image = $(this);
+		
+		// update the viewer title
+		$('#viewer h2').text($(this).data('label'));
+		
+		if (viewer_images.length > 1) {
+			//get position of current image
+			var pos = viewer_images.index(active_viewer_image);
+			
+			// update counter
+			$('#viewer-pos').text(pos + 1);
+			$('#viewer-count').text(viewer_images.length);
+			$('#viewer-header p, #viewer-previous, #viewer-next').show();
+		} else $('#viewer-header p, #viewer-previous, #viewer-next').hide();
+		
+		e.stopPropagation();
+	});
+	
+	$('#viewer-close').click(function() {
+		$('#viewer').css({ top: '100%' });
+		active_viewer_image = undefined;
+	});
+	
+	$(window).resize(function() {
+		$('#viewer-image').css({ height: $('#viewer').height() - 60 });
+	}).resize();
+	
+	$('#viewer-previous').click(function() {
+		// get position of current image
+		var pos = viewer_images.index(active_viewer_image);
+		if (pos > 0) pos--;
+		else pos = viewer_images.length - 1;
+		viewer_images.eq(pos).click();
+	});
+	
+	$('#viewer-next').click(function() {
+		// get position of current image
+		var pos = viewer_images.index(active_viewer_image);
+		if (pos < viewer_images.length - 1) pos++;
+		else pos = 0;
+		viewer_images.eq(pos).click();
+	});
+	
+	$(document).keydown(function(e) {
+		if (active_viewer_image != undefined) {
+			switch(e.which) {
+				case 27: 
+					// escape
+					$('#viewer-close').click();
+					break;
+				case 37:
+					// left
+					$('#viewer-previous').click();
+					break;						
+				case 39:
+					// right
+					$('#viewer-next').click();
+					break;						
+				default: return;
+			}
+			e.preventDefault();
+		}
+	});
+});
+
+/* --- Google Address Autocomplete --- */
+	
+var GOOGLE_API_KEY = 'AIzaSyDE5joIQ4vqrSYjXa4gvizEORAsTmnfGQc';
+var lucy_address_fields;
+$(function() {
+	// look for address fields and add attributes accordingly
+	$('#billing-address, #shipping-address, #notification-address').each(function() {
+		if (!$(this).data('address-field')) {
+			// add the main address attribute
+			$(this).attr('data-address-field', 'address');
+			var prefix = $(this).attr('id').replace('-address', '');
+			
+			var fields = ['city', 'state', 'zip', 'country'];
+			for (field in fields) {
+				$('#' + prefix + '-' + fields[field]).attr('data-address-field', fields[field]);
+			}
+		}
+	});
+	
+	lucy_address_fields = $('[data-address-field=address]');
+	if (lucy_address_fields.length) {
+		// add a default (empty) placeholder so it doesn't change to "Enter a location"
+		lucy_address_fields.each(function() {
+			if (!$(this).attr('placeholder')) $(this).attr('placeholder', '');
+		});
+		
+		// if there are address fields, include the google api
+		var script = document.createElement('script');
+		script.src = '//maps.googleapis.com/maps/api/js?libraries=places&key=' + GOOGLE_API_KEY;
+		script.onreadystatechange = lucy_google_address_ready;
+		script.onload = lucy_google_address_ready;
+		document.head.appendChild(script);
+	}
+});
+
+function lucy_google_address_ready() {
+	lucy_address_fields.each(function() {
+		// work around for the plugin switching autocomplete to "off" on init
+		$(this).focus(function() { $(this).attr('autocomplete', 'new-password'); });
+		var $address = $(this);
+		
+		var address_auto = new google.maps.places.Autocomplete(document.getElementById($(this).attr('id')));
+		google.maps.event.addListener(address_auto, 'place_changed', function() {
+	        var place = address_auto.getPlace();
+	        var pieces = place.address_components;
+	        
+	        var address_parts = new Array();
+			for (piece in pieces) {
+				if (pieces[piece].types.indexOf('street_number') > -1) address_parts['street_number'] = pieces[piece].short_name;
+				if (pieces[piece].types.indexOf('route') > -1) {
+					address_parts['address'] = address_parts['street_number'] + ' ' + pieces[piece].short_name;
+					delete address_parts['street_number'];
+				}
+				if (pieces[piece].types.indexOf('locality') > -1) address_parts['city'] = pieces[piece].short_name;
+				if (pieces[piece].types.indexOf('political') > -1 && pieces[piece].types.indexOf('administrative_area_level_1') > -1) address_parts['state'] = pieces[piece].short_name;
+				if (pieces[piece].types.indexOf('postal_code') > -1) address_parts['zip'] = pieces[piece].short_name;
+				if (pieces[piece].types.indexOf('country') > -1) address_parts['country'] = pieces[piece].long_name;
+			}
+	        
+	        var group_rule = ($address.data('address-group')) ? "[data-address-group='" + $address.data('address-group') + "']" : '';
+	        for (part in address_parts) {
+				$("[data-address-field='" + part + "']" + group_rule).val(address_parts[part]).prev('label').addClass('show');
+	        }			    	    	
+	    });
+	});
+}
+
+/* --- Form Validation --- */
+
+function validate_form(form) {
+	var validate = {
+		email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+		phone: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/
+	}
+
+	var error = false;
+	
+	// check for required fields
+	form.find('[data-required=1]').each(function() {
+		if (!$.trim($(this).val())) {
+			alert('Missing required field: ' + $(this).prev('label').text());
+			$(this).focus();
+			error = true;
+			return false;
+		}
+	});
+	
+	if (!error) {
+		// validate fields
+		form.find('[data-validate]').each(function() {
+			if (!validate[$(this).data('validate')].test($(this).val())) {
+				alert('Invalid format: ' + $(this).prev('label').text());
+				$(this).focus();
+				error = true;
+				return false;
+			}
+		});
+		
+		if (!error) return true;
+	}
+	return false;
+}
+
+/* --- Vimeo Functionality --- */
+
+function play_vimeo_video(id) {
+	$('#overlay, #overlay-close').fadeIn(250);
+	$('body').append("<div id=\"overlay-content\"><div class=\"video-wrapper\"><iframe src=\"//player.vimeo.com/video/" + id + "?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1\" width=\"100%\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></div>");
+	
+	var content = $('#overlay-content');
+	content.css({
+		top: '50%',
+		marginTop: content.height() / -2,
+		marginLeft: content.width() / -2
+	});
+}
+
+/* --- YouTube Functionality --- */
+
+// This code loads the IFrame Player API code asynchronously
+/*var tag = document.createElement('script');
+tag.src = '//www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);*/
+
+
+if (!window['YT']) {var YT = {loading: 0,loaded: 0};}if (!window['YTConfig']) {var YTConfig = {'host': 'http://www.youtube.com'};}if (!YT.loading) {YT.loading = 1;(function(){var l = [];YT.ready = function(f) {if (YT.loaded) {f();} else {l.push(f);}};window.onYTReady = function() {YT.loaded = 1;for (var i = 0; i < l.length; i++) {try {l[i]();} catch (e) {}}};YT.setConfig = function(c) {for (var k in c) {if (c.hasOwnProperty(k)) {YTConfig[k] = c[k];}}};var a = document.createElement('script');a.type = 'text/javascript';a.id = 'www-widgetapi-script';a.src = 'https://s.ytimg.com/yts/jsbin/www-widgetapi-vflkAsU_-/www-widgetapi.js';a.async = true;var c = document.currentScript;if (c) {var n = c.nonce || c.getAttribute('nonce');if (n) {a.setAttribute('nonce', n);}}var b = document.getElementsByTagName('script')[0];b.parentNode.insertBefore(a, b);})();}
+
+function onYouTubeIframeAPIReady(event) {
+	var videos = document.getElementsByClassName('yt-video');
+	for (var i = 0; i < videos.length; i++) {
+		new YT.Player(videos[i], {
+			events: {
+				'onStateChange': youtube_state_change
+			}
+		});
+	}
+}
+
+function youtube_state_change(event) {
+	var title = event.target.getVideoData().title;
+	
+	// track when user clicks to Play
+	if (event.data == YT.PlayerState.PLAYING) ga('send', 'event', 'Videos', 'Play', title);
+	
+	// track when video ends
+	if (event.data == YT.PlayerState.ENDED) ga('send', 'event', 'Videos', 'Finished', title);
+}
+
+function play_youtube_video(id) {
+	$('#overlay, #overlay-close').fadeIn(250);
+	$('body').append("<div id=\"overlay-content\"><div class=\"video-wrapper\"><iframe src=\"//youtube.com/embed/" + id + "?enablejsapi=1&autoplay=1\" width=\"100%\" frameborder=\"0\"></iframe></div></div>");
+	
+	// initialize the new video
+	new YT.Player($('#overlay-content').find('iframe')[0], {
+		events: {
+			'onStateChange': youtube_state_change
+		}
+	});
+		
+	var content = $('#overlay-content');
+	content.css({
+		top: '50%',
+		marginTop: content.height() / -2,
+		marginLeft: content.width() / -2
+	});
+}
+
+/* --- Cookie Functionality --- */
+	
+function set_cookie(name, value, expiration) {
+	var exp_date = new Date();
+	exp_date.setDate(exp_date.getDate() + expiration);
+	var cookie_string = name + "=" + escape(value) + ((expiration == null) ? "" : ";expires=" + exp_date.toUTCString());
+	cookie_string += ';path=/';
+	document.cookie = cookie_string;
+}
+
+function get_cookie(name) {
+	if (document.cookie.length > 0) {
+		start = document.cookie.indexOf(name + "=");
+		if (start != -1) {
+			start += name.length + 1;
+			end = document.cookie.indexOf(";", start);
+			if (end == -1) end = document.cookie.length;
+			return unescape(document.cookie.substring(start, end));
+		}
+	}
+	return "";
+}

@@ -1,0 +1,7 @@
+User-Agent: *
+
+Disallow: /page/pricing_new
+Disallow: /static/pricing_new
+Disallow: /registration/kaywa
+
+Allow: /

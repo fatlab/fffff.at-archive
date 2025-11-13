@@ -1,0 +1,64 @@
+User-agent: *
+Crawl-delay: 60
+
+Disallow: /wp/
+Disallow: /wp/about-2
+Disallow: /wp/ar
+Disallow: /wp/bg
+Disallow: /wp/ca
+Disallow: /wp/calendar
+Disallow: /wp/cs
+Disallow: /wp/da
+Disallow: /wp/de
+Disallow: /wp/el
+Disallow: /wp/es
+Disallow: /wp/et
+Disallow: /wp/featuretest/
+Disallow: /wp/forum/
+Disallow: /wp/fi
+Disallow: /wp/fr
+Disallow: /wp/gl
+Disallow: /wp/hi
+Disallow: /wp/hr
+Disallow: /wp/hu
+Disallow: /wp/id
+Disallow: /wp/it
+Disallow: /wp/iw
+Disallow: /wp/ja
+Disallow: /wp/ko
+Disallow: /wp/lt
+Disallow: /wp/lv
+Disallow: /wp/mt
+Disallow: /wp/nl
+Disallow: /wp/no
+Disallow: /wp/pl
+Disallow: /wp/pt
+Disallow: /wp/ro
+Disallow: /wp/ru
+Disallow: /wp/sk
+Disallow: /wp/sl
+Disallow: /wp/sq
+Disallow: /wp/sr
+Disallow: /wp/sv
+Disallow: /wp/th
+Disallow: /wp/tl
+Disallow: /wp/tr
+Disallow: /wp/uk
+Disallow: /wp/vi
+Disallow: /wp/zh-CN
+Disallow: /wp/zh-TW
+Disallow: images.fnewsmagazine.com
+Disallow: ../images
+
+
+
+Allow: /
+Sitemap: http://www.fnewsmagazine.com/sitemap.xml
+
+User-agent: 
+
+facebookexternalhit/1.0
+facebookexternalhit/1.1
+
+
+Allow: /

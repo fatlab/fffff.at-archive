@@ -1,0 +1,46 @@
+var $j = jQuery.noConflict();
+
+
+
+/*
+This makes the project banner fade in.
+This works, but css has to be set to visibility:none
+*/
+$j(document).ready(function () {;
+    $j('#project-banner').hide()
+    $j('#project-banner').fadeIn(2000);
+
+
+	});
+
+
+/*
+This makes comments, trackbacks, and comment-form show/hide
+*/
+$j(document).ready(function(){
+
+	$j("#comments-list.comments h3").click(function(){
+	  $j("#comments-list ol").slideToggle("slow");
+	  $j(this).toggleClass("active");
+	});
+	
+	});
+	
+$j(document).ready(function(){
+
+	$j("#trackbacks-list.comments h3").click(function(){
+	  $j("#trackbacks-list ol").slideToggle("slow");
+	  $j(this).toggleClass("active");
+	});
+	
+	});
+	
+$j(document).ready(function(){
+
+	$j("#respond h3").click(function(){
+	  $j("#respond form#commentform").slideToggle("slow");
+	  $j(this).toggleClass("active");
+	});
+	
+	});
+

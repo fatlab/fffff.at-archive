@@ -1,0 +1,70 @@
+body {
+	--fsAddBuffer: 0px;
+}
+[id='boingboing_728x90_970x90_970x250_320x50_ATF'],
+[id='boingboing_300x250_300x600_Right_1'],
+[id='boingboing_300x250_300x600_Right_2'],
+[id='boingboing_1x1_gumgum-inimage'],
+[id='boingboing_300x250_300x600_Right_3'],
+[id='boingboing_incontent_dynamic'],
+[id='boingboing_970x250_btf'],
+[id='boingboing_pushdown-pushdown-cls'],
+[id='boingboing_mobile_incontent_BTF'],
+[id='boingboing_smartnews_300X250'] {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	min-height: calc(var(--height) + var(--fsAddBuffer));
+	height: calc(var(--height) + var(--fsAddBuffer));
+	width: 100%;
+}
+[id='boingboing_300x250_300x600_Right_2'] {
+		--height: 280px;
+}
+[id='boingboing_300x250_300x600_Right_3'] {
+		--height: 280px;
+}
+[id='boingboing_incontent_dynamic'] {
+		--height: 280px;
+}
+[id='boingboing_mobile_incontent_BTF'] {
+		--height: 280px;
+}
+[id='boingboing_pushdown-pushdown-cls'] {
+		--height: 100px;
+}
+[id='boingboing_smartnews_300X250'] {
+		--height: 250px;
+}
+@media only screen and (min-width: 768px) {
+	[id='boingboing_300x250_300x600_Right_1'] {
+		--height: 600px;
+	}
+	[id='boingboing_300x250_300x600_Right_2'] {
+		--height: 600px;
+	}
+	[id='boingboing_300x250_300x600_Right_3'] {
+		--height: 600px;
+	}
+	[id='boingboing_728x90_970x90_970x250_320x50_ATF'] {
+		--height: 250px;
+	}
+	[id='boingboing_970x250_btf'] {
+		--height: 250px;
+	}
+	[id='boingboing_incontent_dynamic'] {
+		--height: 280px;
+	}
+	[id='boingboing_mobile_incontent_BTF'] {
+		display: none; 
+	}
+	[id='boingboing_pushdown-pushdown-cls'] {
+		--height: 90px;
+	}
+}
+@media only screen and (min-width: 970px) {
+	[id='boingboing_pushdown-pushdown-cls'] {
+		--height: 90px;
+	}
+}

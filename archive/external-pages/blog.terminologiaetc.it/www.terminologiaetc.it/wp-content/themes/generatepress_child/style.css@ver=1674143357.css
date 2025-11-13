@@ -1,0 +1,536 @@
+/*
+ Theme Name:   GeneratePress Child
+ Theme URI:    https://generatepress.com
+ Description:  Generatepress child theme
+ Author:       Tom Usborne
+ Author URI:   
+ Template:     generatepress
+ Version:      0.1
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+
+/*--------------------------------------------------------------
+# Layout:
+--------------------------------------------------------------*/
+
+.site-wrapper {
+    background-color:#ffffff;
+}
+
+
+/*--------------------------------------------------------------
+# Typography: 
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+textarea {/*font-size: 18px;font-size: 1.125rem;*/}
+
+h1 {/*font-size: 32px;font-size: 2rem;    */}
+h2 {/*font-size: 28px;font-size: 1.75rem; */}
+h3 {/*font-size: 24px;font-size: 1.5rem;  */}
+h4 {font-size: 22px;font-size: 1.375rem;    }
+h5 {font-size: 20px;font-size: 1.25rem;     }
+h6 {font-size: 18px;font-size: 1.125rem;    }
+
+.widget-title {/*font-size: 20px;font-size: 1.25rem;*/}
+.site-header .main-title{/*font-size:38px;font-size: 2.375rem;*/}
+.site-description,.entry-meta {font-size:15px;font-size: 0.938rem;}
+
+
+#main .entry-meta a,
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a{
+    text-decoration: none !important;
+    font-weight:600;
+}
+
+/*h4, h5, h6 {
+    margin-bottom: 10px;
+}*/
+
+hr {background-color: rgba(0,0,0,.35);}
+
+/*--------------------------------------------------------------
+# Forms: 
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Links:
+--------------------------------------------------------------*/
+#main a{
+    text-decoration: underline;
+}
+
+#main a:hover{
+    text-decoration: none;
+}
+
+.sidebar a{
+    text-decoration: none;
+}
+
+.sidebar a:hover{
+    text-decoration: underline;
+}
+
+
+/*--------------------------------------------------------------
+## Menus: -- ALL
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+# Widgets: 
+--------------------------------------------------------------*/
+.widget-title {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.widget ul li {
+    margin-bottom: 0em;
+}
+
+.widget .tagcloud{
+    line-height: 1.3 !important;
+}
+.widget_categories{
+    color:#cccccc;
+}
+
+.sidebar .widget.widget_recent_entries ul li:before {
+    color: #507fa3;
+    content: '\e90d';
+    font-family: 'fontello';
+    font-style: normal;
+    font-weight: normal;
+    width: 15px;
+    height: 15px;
+    display: block;
+    /*margin-right: 10px;
+    margin-left: 2px;*/
+    opacity: 1;
+    font-size: 15px;
+    font-size: 0.9375rem;
+    /*position: relative;
+    bottom: -4px;
+    float: left;*/
+    position: absolute;
+    left:0;
+    top:4px;
+    line-height: 15px;
+    transform: rotate(180deg) scaleX(-1);
+}
+.sidebar .widget.widget_recent_entries ul li{
+    padding-left: 22px;
+}
+
+.widget_recent_comments .comment-author-link{
+    font-weight:600;
+} 
+
+.widget .search-form button.search-submit {
+    margin-left:4px;
+}
+
+
+/*--------------------------------------------------------------
+# Content: 
+--------------------------------------------------------------*/
+/* Page Hero
+--------------------------------------------------------------*/
+.gb-container-bc2e09f4 {
+    /*max-width: 1150px;*/
+    margin-left: 60px;
+    margin-right: 60px;
+    /*background-color: #ffffff;
+    color: transparent;
+    background-image: url(http://www.gpniche.my/wp-content/uploads/2022/12/terminologia_base_1.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 280px;*/
+}
+
+.gb-container-bc2e09f4 img {    
+    border: 1px solid #ddd
+}
+
+
+/*--------------------------------------------------------------
+## Content-area: 
+--------------------------------------------------------------*/
+.one-container.archive .post:not(:last-child):not(.is-loop-template-item), 
+.one-container.blog .post:not(:last-child):not(.is-loop-template-item) {
+    padding-bottom: 30px;
+}
+
+table, td, th {
+    border: 1px solid rgba(0,0,0,0);
+}
+
+table.tbl-white, table.tbl-white td, table.tbl-white th {
+    border: 1px solid rgba(0,0,0,0);
+}
+
+#main ul {
+  list-style: none;
+}
+
+#main ul li::before {
+	content: "\2022";  /*Code/unicode for a bullet */
+	color: #507FA3; 
+	font-weight: bold;
+	display: inline-block; 
+	width: 0.8em;
+	margin-left: -0.8em;
+	font-size: 1.3em;
+}
+
+
+/* Comments
+--------------------------------------------------------------*/
+.comment-author-info {
+    display: flex;
+    vertical-align: middle;
+    justify-content: space-between;
+}
+
+.comment-content {
+    padding: 0;
+    border: none;/*1px solid rgba(0,0,0,.05);*/
+}
+
+.comment-content p:first-of-type{
+    display:none
+}
+
+.comment-body {
+    padding: 30px;
+    border: 1px solid #dddddd;
+    margin-bottom: 15px;
+}
+
+.thread-even .comment-body{
+    background-color: #eaf3fd80;
+}
+
+.thread-odd .comment-body{
+    background-color: #f5f5f5c7;
+}
+
+.comment-form-cookies-consent {
+    align-items: baseline;
+}
+
+#cerber-recaptcha{
+	margin-bottom:25px;
+}
+
+
+/* Header entry-meta
+--------------------------------------------------------------*/
+
+
+/* Footer entry-meta Post navigation
+--------------------------------------------------------------*/
+.paging-navigation a,
+.paging-navigation span.current {
+    min-width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 3px;
+    background: transparent;
+    display: block;
+    float: left;
+    padding: 0px 5px;
+    margin-left: 5px;
+    border: 1px solid #999999;
+    text-decoration: none !important;
+    /*color: #999999 !important;*/
+    font-size: 14px;
+    font-size: 0.875rem;
+    padding: 0 8px;
+}
+
+.paging-navigation a:hover,
+.paging-navigation span.current {
+    background: #507fa3;
+    color: #fff !important;
+}
+
+.paging-navigation span.dots {
+    display: block;
+    float: left;
+    padding: 1px 4px;
+    margin-left: 5px;
+}
+
+.page-links .current {
+    min-width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 0px 5px;
+    margin-left: 5px;
+    border: 1px solid #507fa3;
+    color: #466da8 !important;
+    font-size: 14px;
+    font-size: 0.875rem;
+    padding: 0 8px;
+    font-weight: 500;
+}
+
+.page-links a {
+    min-width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 0px 5px;
+    margin-left: 5px;
+    border: 1px solid #cccccc;
+    text-decoration: none;
+    color: #cccccc !important;
+    font-size: 14px;
+    font-size: 0.875rem;
+    padding: 0 8px;
+}
+
+.page-links a:hover {
+    border: 1px solid #85a0cd;
+    color: #85a0cd !important;
+}
+
+
+/* Archive
+--------------------------------------------------------------*/
+.archive.category .page-title:before{
+    content: "Categoria: ";
+    display: inline-block;
+    margin-right: 10px; 
+}
+.archive.tag .page-title:before{
+    content: "Tag: ";
+    display: inline-block;
+    margin-right: 10px; 
+}
+
+.archive.category .page-header h1,
+.archive.tag .page-header h1{
+    color: #ccc;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* Search
+--------------------------------------------------------------*/
+.search-results footer.entry-meta {
+   /* margin-top: 1.5em;
+    border-top: 1px solid #ddd;
+    padding-top: 0.5em;*/
+}
+
+.search-results .entry-summary:not(:first-child) {
+    margin-top: 1em;
+}
+
+
+/*--------------------------------------------------------------
+## Sidebar:  
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+## Footer: 
+--------------------------------------------------------------*/
+.site-footer{
+    padding: 0 60px;
+}
+
+.site-info{
+    border-top:2px solid #dddddd;;
+}
+
+.site-info .post-rss,
+.site-info .commenti-rss{
+    position: relative;
+    padding-left: 17px;
+}
+
+.site-info .post-rss:before,
+.site-info .commenti-rss:before{
+    content: '\e921';
+    font-family: 'fontello';
+    color: #666;
+    font-style: normal;
+    font-weight: normal;
+    width: 15px;
+    height: 15px;
+    display: block;
+    opacity: 1;
+    font-size: 15px;
+    /*font-size: 0.9375rem;*/
+    position: absolute;
+    left: 0;
+    top: 2px;
+    line-height: 15px;
+}
+
+@-moz-document url-prefix() { 
+  .site-info .post-rss:before,
+  .site-info .commenti-rss:before{
+        /* top: 2px;*/
+  }
+}
+
+.site-info .post-rss:hover:before,
+.site-info .commenti-rss:hover:before{
+    color: #507fa3;
+}
+
+
+/*--------------------------------------------------------------
+# Media Queries
+--------------------------------------------------------------*/
+/* BOOTSTRAP 5 
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) { ... }
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { ... }
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) { ... }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { ... }
+
+// X-Large devices (large desktops, less than 1400px)
+@media (max-width: 1399.98px) { ... }
+
+// XX-Large devices (larger desktops)
+// No media query since the xxl breakpoint has no upper bound on its width */
+
+
+/*-------------------------------------------------------------------------
+  # XXL: -- Very Extra Large device (large desktops, TV)
+-------------------------------------------------------------------------*/
+@media (min-width: 1980px) {}
+
+
+/*--------------------------------------------------------------
+# XL: -- Extra large devices (large desktops, 1200px and up)
+--------------------------------------------------------------*/
+@media (max-width: 1279.98px) {}
+
+
+/*--------------------------------------------------------------
+# LG: -- Large devices (desktops, 992px and up)
+--------------------------------------------------------------*/
+@media (max-width: 1024px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 975px){
+    .site-wrapper {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        border-radius: 2px;
+        box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    }
+}
+
+/*--------------------------------------------------------------
+# MD: -- Medium devices (tablets, 768px and up)
+--------------------------------------------------------------*/
+/*@media (min-width: 769px) {*/
+@media (min-width: 768px) {}
+
+
+/*--------------------------------------------------------------
+# SM: -- Small devices (landscape phones, 576px and up)
+---------------------------------------------------------------*/
+/*@media (max-width: 768px) {*/
+@media (max-width: 767.98px) {
+    .gb-container-bc2e09f4 {
+        margin-left: 30px !important;
+        margin-right: 30px !important;
+    }
+
+    .is-left-sidebar.sidebar, .is-right-sidebar.sidebar {
+        margin-top:60px;
+    }
+	.inside-header {
+		padding: 20px 30px;
+	}
+
+	.site-footer {
+		padding: 0 30px;
+	}
+	
+	#search-2{
+		padding: 30px
+	}	
+
+}
+
+
+/*--------------------------------------------------------------
+# XS: -- Extra small devices (portrait phones, less than 576px)
+€--------------------------------------------------------------*/
+@media (max-width: 575.98px) {
+    html {
+        font-size: 13px;
+    } 
+
+   /*max-width: 560px*/
+    .site-branding{
+        width:80%
+    }
+
+	.one-container .site-content {
+		padding: 20px;
+	}
+
+    .gb-container-bc2e09f4 {
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+    }
+
+	.inside-header {
+		padding: 20px 20px;
+	}
+	
+	.site-footer {
+		padding: 0 20px;
+	}
+	
+	#search-2{
+		padding: 30px 20px;
+	}
+	
+	.site-main > * {
+		margin-bottom: 30px;
+	}	
+	
+}
+
+@media only screen and (max-width: 379.98px) {}

@@ -1,0 +1,5 @@
+Sitemap: https://alexweber.is/sitemap.xml
+Sitemap: https://alexweber.is/news-sitemap.xml
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php

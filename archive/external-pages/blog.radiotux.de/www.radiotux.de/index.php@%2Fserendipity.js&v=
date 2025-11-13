@@ -1,0 +1,9 @@
+
+jQuery(function() {
+    jQuery('input[type="url"]').change(function() {
+        if (this.value != '' && ! (this.value.substr(0,7) == 'http://' || this.value.substr(0,8) == 'https://')) {
+            this.value = 'http://' + this.value;
+        }
+    });
+})
+

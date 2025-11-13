@@ -1,0 +1,327 @@
+User-agent: *
+Disallow: /w/
+Disallow: /wiki/Special:Search
+Disallow: /wiki/Special:Random
+Disallow: /wiki/Special:ViewXML
+Disallow: /wiki/Special:SearchByProperty
+
+
+########################### via totalism.org
+
+User-agent: Semrush
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: Semrushbot-SA
+Disallow: /
+
+User-agent: Semrushbot-SI
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: linkdexbot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MBCrawler
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot-BA
+Disallow: /
+
+User-agent: SemrushBot-SA
+Disallow: /
+
+User-agent: semrush*
+Disallow: /
+
+User-agent: Semrush*
+Disallow: /
+
+User-agent: Adsbot*
+Disallow: /
+
+User-agent: Adsbot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Gowikibot
+Disallow: /
+
+User-agent: Adsbot
+Disallow: /
+
+User-agent: BLEXbot
+Disallow: /
+
+User-agent: aiHitBot
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: panscient.com
+Disallow: /
+
+
+######################### https://www.semantic-mediawiki.org/robots.txt
+######################### (only removed "sitemap")
+
+#
+# robots.txt for https://www.semantic-mediawiki.org
+#
+#
+User-agent: wget
+Disallow: /
+#
+User-agent: AhrefsBot
+Disallow: /
+#
+User-agent: BLEXBot
+Disallow: /
+#
+User-agent: MJ12bot
+Disallow: /
+#
+User-agent: SearchmetricsBot
+Disallow: /
+#
+User-agent: seoscanners.net
+Disallow: /
+#
+User-agent: UbiCrawler
+Disallow: /
+#
+User-agent: DOC
+Disallow: /
+#
+User-agent: Zao
+Disallow: /
+#
+User-agent: sitecheck.internetseer.com
+Disallow: /
+#
+User-agent: Zealbot
+Disallow: /
+#
+User-agent: Mediapartners-Google
+Disallow: /
+#
+User-agent: MSIECrawler
+Disallow: /
+#
+User-agent: SiteSnagger
+Disallow: /
+#
+User-agent: WebStripper
+Disallow: /
+#
+User-agent: WebCopier
+Disallow: /
+#
+User-agent: Fetch
+Disallow: /
+#
+User-agent: Offline Explorer
+Disallow: /
+#
+User-agent: Teleport
+Disallow: /
+#
+User-agent: TeleportPro
+Disallow: /
+#
+User-agent: WebZIP
+Disallow: /
+#
+User-agent: linko
+Disallow: /
+#
+User-agent: HTTrack
+Disallow: /
+#
+User-agent: Microsoft.URL.Control
+Disallow: /
+#
+User-agent: Xenu
+Disallow: /
+#
+User-agent: larbin
+Disallow: /
+#
+User-agent: libwww
+Disallow: /
+#
+User-agent: ZyBORG
+Disallow: /
+#
+User-agent: Download Ninja
+Disallow: /
+#
+User-agent: Pixray-Seeker
+Disallow: /
+#
+User-agent: DotBot
+Disallow: /
+#
+User-agent: SemrushBot
+Disallow: /
+#
+User-agent: SemrushBot-SA
+Disallow: /
+#
+User-agent: SEOkicks-Robot
+Disallow: /
+#
+User-agent: MegaIndex.ru
+Disallow: /
+#
+User-agent: MegaIndex.ru/2.0
+Disallow: /
+#
+User-agent: megaindex.com
+Disallow: /
+#
+User-agent: sogou spider
+Disallow: /
+#
+User-agent: *
+Allow: /w/load.php?
+Disallow: /w/
+#
+# Single pages
+Disallow: /index.php/Semantic-mediawiki.org:About
+Disallow: /index.php?title=Semantic-mediawiki.org:About
+Disallow: /wiki/Semantic-mediawiki.org:About
+Disallow: /index.php/Impressum
+Disallow: /index.php?title=Impressum
+Disallow: /wiki/Impressum
+#
+# Talk
+Disallow: /wiki/Talk:
+Disallow: /wiki/Talk%3A
+#
+# User talk
+Disallow: /wiki/User_talk:
+Disallow: /wiki/User_talk%3A
+#
+# Project talk
+Disallow: /wiki/Semantic-mediawiki.org_talk:
+Disallow: /wiki/Semantic-mediawiki.org_talk%3A
+#
+# File talk
+Disallow: /wiki/File_talk:
+Disallow: /wiki/File_talk%3A
+#
+# MediaWiki and MediaWiki talk
+Disallow: /wiki/MediaWiki:
+Disallow: /wiki/MediaWiki%3A
+Disallow: /wiki/MediaWiki_talk:
+Disallow: /wiki/MediaWiki_talk%3A
+#
+# Template and Template talk
+Disallow: /wiki/Template:
+Disallow: /wiki/Template%3A
+Disallow: /wiki/Template_talk:
+Disallow: /wiki/Template_talk%3A
+#
+# Property talk
+Disallow: /wiki/Property_talk:
+Disallow: /wiki/Property_talk%3A
+#
+# Form talk
+Disallow: /wiki/Form_talk:
+Disallow: /wiki/Form_talk%3A
+#
+# Concept talk
+Disallow: /wiki/Concept_talk:
+Disallow: /wiki/Concept_talk%3A
+#
+# smw/schema talk
+Disallow: /wiki/smw/schema_talk:
+Disallow: /wiki/smw/schema_talk%3A
+#
+# Rule talk
+Disallow: /wiki/Rule_talk:
+Disallow: /wiki/Rule_talk%3A
+#
+# Print and print talk
+Disallow: /wiki/Print:
+Disallow: /wiki/Print%3A
+Disallow: /wiki/Print_talk:
+Disallow: /wiki/Print_talk%3A
+#
+# Demo talk
+Disallow: /wiki/Demo_talk:
+Disallow: /wiki/Demo_talk%3A
+#
+# Extension talk
+Disallow: /wiki/Extension_talk:
+Disallow: /wiki/Extension_talk%3A
+#
+# Meta and Meta talk
+Disallow: /wiki/Meta:
+Disallow: /wiki/Meta%3A
+Disallow: /wiki/Meta_talk:
+Disallow: /wiki/Meta_talk%3A
+#
+# Archive talk
+Disallow: /wiki/Archive_talk:
+Disallow: /wiki/Archive_talk%3A
+#
+# Site talk
+Disallow: /wiki/Site_talk:
+Disallow: /wiki/Site_talk%3A
+#
+# Support talk
+Disallow: /wiki/Support_talk:
+Disallow: /wiki/Support_talk%3A
+#
+# Widget talk
+Disallow: /wiki/Widget_talk:
+Disallow: /wiki/Widget_talk%3A
+#
+# GeoJson talk
+Disallow: /wiki/GeoJson_talk:
+Disallow: /wiki/GeoJson_talk%3A
+#
+# Module talk
+Disallow: /wiki/Module_talk:
+Disallow: /wiki/Module_talk%3A
+#
+# Translations talk
+Disallow: /wiki/Translations_talk:
+Disallow: /wiki/Translations_talk%3A
+#
+# Gadget talk
+Disallow: /wiki/Gadget_talk:
+Disallow: /wiki/Gadget_talk%3A
+#
+# Gadget defintion and Gadget defintion talk
+Disallow: /wiki/Gadget_defintion:
+Disallow: /wiki/Gadget_defintion%3A
+Disallow: /wiki/Gadget_defintion_talk:
+Disallow: /wiki/Gadget_defintion_talk%3A
+#
+# Special pages
+Disallow: /wiki/Special:
+Disallow: /wiki/Special%3A
+#
+
+
+########################### fin
+

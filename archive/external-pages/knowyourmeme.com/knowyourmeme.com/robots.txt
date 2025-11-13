@@ -1,0 +1,39 @@
+User-agent: *
+Disallow: /comments
+Disallow: */comments$
+Disallow: */comments.js
+Disallow: */editorships
+Disallow: /edits
+Disallow: */edits$
+Disallow: */edits?*$
+Disallow: */edits/
+Disallow: */embed/
+Disallow: */gallery.js
+Disallow: /p/
+Disallow: */suggestions/new
+Disallow: /search
+Disallow: /thumbs
+Disallow: /users
+Disallow: /forums*
+
+Disallow: *gallery_cache_key=
+Disallow: *offsetter_id=
+Disallow: *spots_shown=
+Disallow: *_gl=
+
+Disallow: */photos*?*grid=
+Disallow: */photos*?*infinite=
+Disallow: */photos*?*list=
+Disallow: */photos*?*nsfw=
+Disallow: */photos*?*subcultures=
+Disallow: */videos*?*list=
+
+Disallow: */page/
+
+Sitemap: https://knowyourmeme.com/sitemap.xml
+
+Sitemap: https://knowyourmeme.com/memes/confirmed/sitemap.xml
+
+Sitemap: https://knowyourmeme.com/photos/trending/sitemap.xml
+
+Sitemap: https://knowyourmeme.com/videos/trending/sitemap.xml

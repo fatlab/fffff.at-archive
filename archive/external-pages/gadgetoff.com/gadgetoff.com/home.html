@@ -1,0 +1,227 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Gadgetoff - Home</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<script language=javascript>
+<!--
+textLines=new Array(	
+	"\"...the smartest tinkers and thinkers...for a throwdown of ideas\"</b><hr width=15%><i>Forbes, Bruce Upbin</i>",
+	"\"If someone bombed Gadgetoff the future might cease to exist...\"<hr width=15%><i>New Yorker Magazine, Nick Paumgarten</i>",
+	"\"What a mind torching adventure, a safari into a<br>wonderful world of gadgets...\"<hr width=15%><i>DesignVerb, Aaron Tang</i>",
+	"\"...people who really can and will change the world\"<hr width=15%><i>BuzzMachine, Jeff Jarvis</i>",
+	"\"...individuals rifling with excitement on anything cool...\"<hr width=15%><i>DesignVerb, Aaron Tang</i>",	
+	"\"A breathtaking array of ideas and technology...smart dominated\"<hr width=15%><i>Forbes, Bruce Upbin</i>",
+	"\"Gadgetoff perhaps the coolest geek conference on the planet\"<hr width=15%><i>Wired, Nick Thompson</i>",
+	"\"Gadgetoff was awesome\"<hr width=25%><i>Sifry Alerts, David Sifry</i>",
+	"\"How wonderful it was to be in the company of<br>innovators and inventors\"<hr width=15%><i>BuzzMachine, Jeff Jarvis</i>",
+	"\"A confluence of brilliant new technology, funky robots, cool art and wonderful goofiness\"<hr width=15%><i>Wired, Nick Thompson</i>",
+	"\"...real science...mixed with offbeat humor...\"<hr width=15%><i>New York Times, Saul Hansel</i>",	
+	"\"Woa, bang, boom, yikes, aha!\"<hr width=15%><i>DesignVerb, Aaron Tang</i>",
+	"\"There are very few places where people who do radical, dangerous things can get together and share them\"<hr width=15%><i>Forbes, Bruce Upbin</i>",
+	"\"...a geekfest storming the town\"<hr width=15%><i>DesignVerb, Aaron Tang</i>",
+	"\"...a smashing event...great exhibitors and demonstrators.<br>Really well done.\"<hr width=15%><i>Sifry Alerts, David Sifry</i>",
+	"\"...a blinding array of presentations...\"<hr width=15%><i>New York Times, Saul Hansel</i>",	
+	"\"...where bananas roasted under a flamethrower were served\"<hr width=15%><i>Wired, Nick Thompson</i>",
+	"\"Gadgetoff's spontaneous flow of events kept you on your feet...\"<hr width=15%><i>DesignVerb, Aaron Tang</i>",
+	"\"The possibilities for mischief are endless...\"<hr width=15%><i>New York Times, Saul Hansel</i>",	
+	"\"It's like <i>Real Genius</i> come to life\"<hr width=15%><i>New York Magazine, Tim Murphy</i>"
+);
+
+
+numOn=0;		// The Text Line to start on (The first line is line 0).
+delay=3.5;		// Set the delay time inbetween each change (in seconds, decimal values can be used).
+stopOK=1;		// Set this variable to 0 to stop mouse overs from stopping the text from changing.
+change=1;
+
+function start(){
+  setTimeout("Change()",1);
+}
+
+function Change(){
+
+// Check to see if the user has their mouse over the text.
+ if(change==1){
+
+// Make sure we are on a valid Line Number and if not, set it to
+// the starting line.
+  if(numOn>=textLines.length||numOn<0){numOn=0}
+
+// Set the text inside the <div> to the specified line number.
+  textChanger.innerHTML=textLines[numOn];
+
+// Increase the line number by one to get the next string.
+  numOn++;
+ }
+
+// Call this function again to write the string to the <div>.
+  setTimeout("Change()",delay*1000);
+}
+
+//
+//  Photo flipping code
+//
+var timeDelay = 2; // change delay time in seconds
+var Pix = new Array
+("images/logos/bestbuy.gif" 
+,"images/logos/lenovo.gif" 
+,"images/logos/nokia.gif" 
+,"images/logos/datapipe.gif" 
+,"images/logos/lime.gif" 
+,"images/logos/innovation.gif" 
+,"images/logos/irobot.gif" 
+,"images/logos/dotcom.gif" 
+);
+var howMany = Pix.length;
+timeDelay *= 1000;
+var PicCurrentNum = 0;
+var PicCurrent = new Image();
+PicCurrent.src = Pix[PicCurrentNum];
+function startPix() {
+setInterval("slideshow()", timeDelay);
+}
+function slideshow() {
+PicCurrentNum++;
+if (PicCurrentNum == howMany) {
+PicCurrentNum = 0;
+}
+PicCurrent.src = Pix[PicCurrentNum];
+document["ChangingPix"].src = PicCurrent.src;
+}
+// -->
+</script>
+<body onLoad="start();startPix()">
+
+<table cellSpacing="0" cellPadding="0" border="0" id="table1">
+	<tr>
+		<td>
+		<img height="128" src="images/logo1.gif" width="119"><img height="128" src="images/logo2.gif" width="483"></td>
+	</tr>
+	<tr>
+	    <td>
+	    	<table cellpadding=0 cellspacing=0>
+				<tr>
+					<td><img height="49" src="images/logo3.gif" width="119"></td>
+					<td><a href="home.html"><img border=0 height="48" src="images/Nav/homeON.gif" width="71"></a></td>
+					<td><a href="http://gadgetoff.com/2007/video.html"><img border="0" src="images/Nav/videoOFF2.gif" width="76" height="48"></a></td>
+					<td><a href="http://gadgetoff.com/2009/home.html"><img border=0 height="48" src="images/Nav/09OFF2.gif" width="137"></a></td>
+					<td><a href="http://gadgetoff.com/past-gadgetoffs.html"><img border=0 height="48" src="images/Nav/pasOFF2.gif" width="147"></a></td>
+					<td><a href="http://gadgetoff.com/weblog/"><img border=0 height="48" src="images/Nav/blogOFF2.gif" width="70"></a></td>
+					<td><a href="http://gadgetoff.com/friends.html"><img border=0 height="48" src="images/Nav/friendsOFF2.gif" width="79"></a></td>
+					<td><a href="http://gadgetoff.com/contact.html"><img border=0 height="48" src="images/Nav/conOFF2.gif" width="92"></a></td>
+			    </tr>
+	    	</table>
+	    </td>
+	</tr>
+	<tr>
+		<td>
+			<table cellpadding=0 cellspacing=0>
+				<tr>
+					<td valign=top>
+					<img height="240" src="images/circ2.gif" width="119"></td>
+					<td valign=top width=750>
+						<p>
+                 		<table border=0>
+                 		 <tr>
+                 		  <td valign=top>
+                 		   <table bgcolor="#f0fff0" width="100%">
+                 		   	<tr width="100%">
+                 		   	 <td height="80">
+                 		   	  <center><font face="Georgia, Times, Times New Roman, Arial" size="3"><div id="textChanger" onMouseOver="if(stopOK==1){change=0}" onMouseOut="change=1"></div></font></center>
+                 		   	 </td>
+                 		   	</tr>
+                 		   </table>
+
+                 		  	<p>
+						<font face="Arial" size="4" color="#28752B">
+                 		Welcome to Gadgetoff!</font></p>
+							<p>Gadgetoff is an invitation-only event that takes place 
+							annually in and around New York City. Our early focus on 
+							gadgets has dramatically expanded and we are now a celebration of technical and artistic innovation 
+							and a salon to ponder the future. All of our guests participate and include inventors, entrepreneurs, 
+							educators, artists, creators, visionaries and geniuses.</font></p>
+
+							<p><b>Events: <a href="http://gadgetoff.com/2009/home.html">Gadgetoff 2009
+							</a></b>was our last event and it was held on 
+							September 25th, 2009.&nbsp; It was completely sold 
+							out and viewed by many to be our &quot;best event ever&quot;.&nbsp; 
+							We are still recovering from Gadgetoff 2009 and have 
+							not started planning a future event at this time.</p>
+							<p><b>Previous Event:</b>
+							<b><a href="http://gadgetoff.com/2007/home.html">Gadgetoff 2007</a></b>, held on September 28<sup>th</sup>, 
+							ferried more than 300 participants from 
+							the ultra-mod IAC building in New York to 
+							New Jersey’s Liberty State Park and the 
+							newly reopened Liberty Science Center. It 
+							was an exhilarating opportunity to have the 
+							most disruptive thinkers, the most daring 
+							scientists, the looniest designers, 
+							courageous explorers--- innovators young and 
+							old--- see the latest robots, craziest 
+							vehicles, “hottest” flaming art, wildest 
+							displays, newest gadgets, and to sample the 
+							strangest, new-fangled foods and drinks.</p>
+							<p>We were dazzled by more than 40 
+							presentations: from the head of DARPA to the 
+							most notorious hackers and electronic graffiti 
+							artists; from experts in prolonging life to 
+							those engineering new life (both “virtual” and 
+							very real.) Galleries were filled with sneak 
+							previews of the latest jaw-dropping technology 
+							and demonstrations fresh from the lab or the 
+							garage! Guests carried home literally tons of 
+							goodies in their mind-numbing &quot;Gadgetbags.&quot; More 
+							wonderfully, they shared their ideas and talents 
+							with a community of friends and collaborators 
+							who will help them design the future.</p>
+							<p>We invite you to take a look at 
+							the latest Gadgetoff:</p>
+							<ul>
+								<li>See an <b>
+								<a href="http://gadgetoff.com/2007/video-overview.html">overview of 
+								the event</a></b></li>
+								<li>Watch the <b> <a href="http://gadgetoff.com/2007/video.html">terrific presentations</a></b>.</li>
+								<li>Friends are putting up <b> <a href="http://gadgetoff.com/2007/photos.html">amazing photos</a></b> of the event on Flickr.</li>
+								<li>Read the 
+								<b> 
+								<a href="http://gadgetoff.com/2007/quotes.html">press coverage</a></b> by 
+								Forbes, 
+								WIRED, the 
+								New York Times, and by 
+								many bloggers in attendance.</li>
+							</ul>
+							</p>
+							<p>Read our blog of 
+							<b><a href="http://gadgetoff.com/weblog/">Things We like</a></b>.</p>
+							<p>
+							&nbsp;</td>
+                 		  <td valign=top width=240>
+                 		   <a href="http://gadgetoff.com/2007/video-overview.html">
+                 		   <img border="0" src="2007/images/flame_grill.jpg" width="240" height="180"></a><img name="ChangingPix" src="images/logos/lenovo.gif" width="240" height="180" border="0">&nbsp;
+							<a href="http://gadgetoff.com/2007/video-overview.html">
+                 		   <img border="0" src="2007/images/auditorium.jpg" width="240" height="160"></a>
+							<a href="http://gadgetoff.com/2007/video-overview.html">
+                 		   <img border="0" src="2007/images/trio.jpg" width="240" height="160"></a>
+                 		  </td>
+                 		 </tr>
+                 		</table>
+                 	</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+<!--webbot bot="Include" U-Include="footer.html" TAG="BODY" startspan -->
+	<tr><td>&nbsp;</td></tr>
+	<tr><td><img border="0" src="images/circ3.gif" width="98" height="27" align=absmiddle><img border="0" src="images/circ3.gif" width="98" height="27" align=absmiddle><img border="0" src="images/circ3.gif" width="98" height="27" align="absmiddle">
+		<font face="Arial" size="2" color="#28752B">© 2001-2007 Gadgetoff, Inc.</font> <img border="0" src="images/circ3.gif" width="98" height="27" align=absmiddle><img border="0" src="images/circ3.gif" width="98" height="27" align="absmiddle"><img border="0" src="images/circ3.gif" width="98" height="27" align="absmiddle"></td>
+	</tr>
+<!--webbot bot="Include" i-checksum="25409" endspan --></table>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

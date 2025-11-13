@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poietic Generator Player</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23888' d='M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../poietic-generator.net/css/player-style.css@v=%253C%25=%20Time.utc.to_unix%20%25%253E.css">
+    <link rel="stylesheet" href="../poietic-generator.net/css/share-dialog.css@v=%253C%25=%20Time.utc.to_unix%20%25%253E.css">
+    <script type="module" src="../poietic-generator.net/js/poietic-player.js@v=%253C%25=%20Time.utc.to_unix%20%25%253E"></script>
+    <script type="module" src="../poietic-generator.net/js/poietic-player-share.js@v=%253C%25=%20Time.utc.to_unix%20%25%253E"></script>
+    <script src="../html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Colonne gauche / Partie haute -->
+        <div class="control-panel left-panel">
+            
+            <!-- Conteneur pour les outils de SELECTION de session (initialement caché) -->
+            <div id="session-selection-tools" class="panel-section" style="display: none;">
+                <!-- Filtres de date uniquement -->
+                <div class="filters-container">
+                    <div class="filter-row">
+                        <div style="text-align: center; margin-bottom: 0.3rem; font-size: 0.8rem; color: #ccc;">Select date</div>
+                    </div>
+                    <div class="filter-row">
+                        <select id="filter-year" class="filter-select">
+                            <option value="">Year</option>
+                        </select>
+                        <select id="filter-month" class="filter-select">
+                            <option value="">Month</option>
+                            <option value="1">Jan</option>
+                            <option value="2">Feb</option>
+                            <option value="3">Mar</option>
+                            <option value="4">Apr</option>
+                            <option value="5">May</option>
+                            <option value="6">Jun</option>
+                            <option value="7">Jul</option>
+                            <option value="8">Aug</option>
+                            <option value="9">Sep</option>
+                            <option value="10">Oct</option>
+                            <option value="11">Nov</option>
+                            <option value="12">Dec</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Message d'erreur pour les filtres -->
+                <div id="filter-message" class="filter-message" style="display: none;"></div>
+                
+                <!-- Pagination harmonisée -->
+                <div class="pagination-controls">
+                    <button id="prev-page" disabled>&laquo; Prev</button>
+                    <span id="page-info">Page 1 / 1</span>
+                    <button id="next-page" disabled>Next &raquo;</button>
+                </div>
+            </div>
+
+            <!-- Conteneur pour les outils de LECTURE (initialement caché) -->
+            <div id="replay-export-tools" class="panel-section" style="display: none;">
+                <div class="current-session-info">
+                    <div class="session-header">
+                        <div class="section-title">Current Session</div>
+                        <div class="session-meta">
+                            <span id="current-session-date">--</span> | <span id="current-session-duration">--:--</span>
+                        </div>
+                    </div>
+                    <div class="session-actions">
+                        <span class="session-action inactive" id="export-image-action">EXPORT IMAGE</span>
+                        <span class="session-action" id="export-video-action">EXPORT VIDEO</span>
+                    </div>
+                    <div class="session-change">
+                        <span class="session-action" id="change-session-action">CHANGE SESSION</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zone centrale (grille ET liste des sessions) -->
+            <div class="main-zone">
+            <!-- Overlay de démarrage/fin -->
+            <div id="player-overlay" class="visible">
+                    <div class="player-overlay-title">Poietic Generator</div>
+                <div class="player-overlay-subtitle">Pixel Love since 1986</div>
+                    <div class="player-overlay-message">
+                    History files <br>
+                    Available sessions: <span id="total-sessions-display-overlay">0</span>
+                        <br>
+                    <button id="btn-select-session-overlay" class="replay-link">-> Replay a session</button>
+                    <div class="player-overlay-message-details">
+                    <a href="https://poietic-generator.net/" class="replay-link">-> Back to play</a>
+                    </div>
+                </div>
+                <div class="player-overlay-footer">Copyleft, Free Art License</div>
+            </div>
+
+            <!-- Conteneur pour la grille et la liste des sessions -->
+            <div id="poietic-grid-container" class="grid-container">
+                <div id="poietic-grid"></div> <!-- La grille elle-même -->
+            </div>
+            <ul id="session-list-ul" class="session-list-overlay"></ul> <!-- La liste des sessions, maintenant en dehors du container de grille -->
+        </div>
+
+        <!-- Colonne droite / Partie basse -->
+        <div class="control-panel right-panel">
+            <!-- Conteneur pour les filtres de durée et utilisateurs (initialement caché) -->
+            <div id="session-selection-filters-right" class="panel-section" style="display: none;">
+                <!-- Filtres de durée et utilisateurs -->
+                <div class="filters-container">
+                    <div class="filter-row">
+                        <div style="text-align: center; margin-bottom: 0.3rem; font-size: 0.8rem; color: #ccc;">Select duration and number of users</div>
+                    </div>
+                    <div class="filter-row">
+                        <div class="range-container">
+                            <label class="range-label" id="duration-label">Duration: 0-60+ min</label>
+                            <div class="dual-range-wrapper">
+                                <input type="range" id="duration-min" class="range-input range-min" min="0" max="60" value="0">
+                                <input type="range" id="duration-max" class="range-input range-max" min="0" max="60" value="60">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-row">
+                        <div class="range-container">
+                            <label class="range-label" id="users-label">Users: 1-200+</label>
+                            <div class="dual-range-wrapper">
+                                <input type="range" id="users-min" class="range-input range-min" min="1" max="200" value="1">
+                                <input type="range" id="users-max" class="range-input range-max" min="1" max="200" value="200">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Conteneur pour les outils de LECTURE (initialement caché) -->
+            <div id="replay-playback-controls" class="panel-section" style="display: none;">
+                <div class="progress-row">
+                    <span class="elapsed-time" id="current-time">00:00</span>
+                    <input type="range" id="progress-bar" min="0" max="100" value="0" class="progress">
+                    <span class="total-time" id="total-time">00:00</span>
+                </div>
+                <div class="playback-and-speed-row">
+            <div class="playback-controls">
+                <button id="btn-reset" class="control-btn">⏮</button>
+                <button id="btn-play" class="control-btn">▶</button>
+                <button id="btn-pause" class="control-btn">⏸</button>
+            </div>
+                    <div class="speed-control">
+                        <button class="speed-btn" data-speed="1">x1</button>
+                        <button class="speed-btn" data-speed="2">x2</button>
+                        <button class="speed-btn" data-speed="5">x5</button>
+                        <button class="speed-btn" data-speed="10">x10</button>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

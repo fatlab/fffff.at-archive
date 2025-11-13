@@ -1,0 +1,1153 @@
+/*
+Theme Name: White as Milk
+Theme URI: http://www.azeemazeez.com/blogs/white-as-milk/
+Description: White as Milk is a clean template that puts focus on the content rather than the design.
+Version: 1.8
+Author: Azeem Azeez
+Author URI: http://azeemazeez.com
+Tags: blue, white, fixed width, two columns, widgets, clean
+
+	White as Milk 1.8
+	 http://www.azeemazeez.com/blogs/white-as-milk/
+  
+  White as Milk is a clean template that puts focus on the content rather than the design. The top part
+  of this stylesheet contains elements which makes it easier for designers to customize their design.
+  
+	The CSS, XHTML and design is released under GPL: http://www.opensource.org/licenses/gpl-license.php*/
+
+
+/*=-=-=-=-=-=-=-=-=-=-= BEGIN CUSTOMIZATION =-=-=-=-=-=-=-=-=-=-=*/
+
+/*Background Color of the page*/
+  body {background-color:#D4D0C8;}
+
+/*Body text color*/
+  body {color:#000000;}
+
+/*Text color of the blog title in the header*/
+  #header h1 a {color:#000000;}
+
+/*Text color of the blog description in the header*/
+  .description {color:#000000;}
+
+/*Links color*/
+  a {color:#000000}
+
+/*Links hover color*/
+  a:hover {color:#000000}
+
+/*Headings color*/
+  .post h2 a, #sidebar h2 {color:#000000;}
+
+/*Headings hover color*/
+  .post h2 a:hover {color:#000000;}
+
+
+/*Width of the entire page. You can
+  also use a flexible width like so:
+  #page {width:64em;}
+*/
+  #page {width:100%}
+
+
+/*IT'S ADVISED *NOT* TO CHANGE THESE, IF POSSIBLE*/
+/*Width of the content area*/
+  #content {width: 710;}
+
+/*Width of the sidebar*/
+  #sidebar {width:200px;}
+
+
+
+/*Position of the footer from the left edge.*/
+  #footer p {padding-left:15px;}
+
+/*=-=-=-=-=-=-=-=-=-=-=- END CUSTOMIZATION -=-=-=-=-=-=-=-=-=-=-=*/
+
+
+
+/*
+THE FOLLOWING CODE IS DERIVED FROM THE DEFAULT "KUBRICK" THEME.
+THE STRUCTURE AND LAYOUT IS IN MY OPINION, NOT THE WAY CSS SHOULD
+BE ORGANIZED, BUT FOR NOW I AM LEAVING IT THE WAY IT IS TO KEEP
+IT CONSISTENT.
+*/
+
+/* Begin Typography & Colors */
+body {
+	font-size: 12px;
+	font-family:  Arial, Sans-Serif;
+	}
+
+#page {
+	text-align: left;
+	}
+
+#header {}
+#headerimg {}
+
+#content {
+width: 710px;
+	font-size: 12px;
+	}
+
+#content .entry p {
+
+	font-size: 12px;
+        margin-top:0px;
+        margin-bottom:5px;
+
+
+
+	}
+
+#content .entry, #content .entry {
+
+
+
+margin: 10px;
+
+
+
+
+
+	}
+
+br { margin-bottom:5px;}
+
+#content {
+	line-height: 
+padding-top: 0px;
+margin-top: 0px;
+	}
+
+#content .postmetadata {
+
+margin-top: 2px;
+margin-bottom: 30px;
+}
+
+.alt {
+	background-color: #D4D0C8;
+	border-top: 0px solid #ddd;
+	border-bottom: 0px solid #ddd;
+	}
+
+#footer {
+	border: none;
+	}
+
+
+em, i {
+padding:0px;
+}
+
+
+small {
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: 12px;
+	
+	}
+
+h1, h2, h3 {
+	font-family: Arial, Sans-Serif;
+	}
+
+#header h1 {
+	font-size:12px;
+	}
+
+.description {
+  font-size:10px;
+
+	}
+
+h2 {
+	font-size: 12px;
+	}
+
+h2.pagetitle {
+  padding-top:1px;
+  padding-bottom:1px;
+background-color: #D4D0C8;
+border:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+  padding-left: 0px;
+  padding-right: 0px;
+margin-bottom: 2px;
+font-weight: normal;
+margin-top:16px;
+	}
+
+#sidebar h2 {
+	font-family: 'Lucida Grande', Verdana, Sans-Serif;
+	font-size: 1.2em;
+	}
+
+h3 {
+  padding-top:1px;
+  padding-bottom:1px;
+
+  padding-left: 10px;
+  padding-right: 10px;
+margin-top: 0px;
+font-weight: normal;
+margin-bottom:16px;
+font-size: 12px;
+	}
+
+h1, h1 a, h1 a:hover, h1 a:visited, #headerimg{
+	text-decoration: none;
+	color: #3b6ea5;
+	}
+
+h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited {
+	/*color: #333;*/
+	}
+
+h2, h2 a, h2 a:hover, h2 a:visited, h3, h3 a, h3 a:hover, h3 a:visited, #sidebar h2, #wp-calendar caption, cite {
+	text-decoration: none;
+	}
+
+.entry p a:visited {
+	color: #000000;
+	}
+
+.commentlist li, #commentform input, #commentform textarea {
+	font: Arial, Sans-Serif;
+	}
+
+.commentlist li {
+border:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+	}
+
+
+
+.commentlist cite, .commentlist cite a {
+
+	font-style: normal;
+
+	}
+
+.commentlist p {
+	font-weight: normal;
+
+	text-transform: none;
+	}
+
+#commentform p {
+	font-family: Arial, Sans-Serif;
+
+
+	}
+
+.commentmetadata {
+	font-weight: normal;
+	}
+
+#sidebar {
+
+	font: Arial, Sans-Serif;
+	}
+
+small, #sidebar ul ul li, #sidebar ul ol li, .nocomments, .postmetadata, blockquote, strike {
+	/*color: #000000;*/
+        font-size: 12px;
+        padding-top: 5px;
+        padding-bottom: 0px;
+	}
+
+code {
+	font: 1.1em 'Courier New', Courier, Fixed;
+	}
+
+acronym, abbr, span.caps
+{
+	font-size: 0.9em;
+	letter-spacing: .07em;
+	}
+
+a, h2 a:hover, h3 a:hover {
+/*	color: #06c;*/
+	text-decoration: underline;
+	}
+
+#sidebar a,
+.postmetadata a,
+.navigation a,
+ol.commentlist cite a,
+.commentmetadata a {
+       text-decoration:none;
+}
+
+a:hover {
+	/*color: #147;*/
+	text-decoration: underline;
+	}
+
+#wp-calendar #prev a, #wp-calendar #next a {
+	font-size: 9pt;
+	}
+
+#wp-calendar a {
+	text-decoration: none;
+	}
+
+#wp-calendar caption {
+	font: 1.3em 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	text-align: center;
+	}
+
+#wp-calendar th {
+	font-style: normal;
+	text-transform: capitalize;
+	}
+/* End Typography & Colors */
+
+
+/* Begin Structure */
+
+/* Always show the scrollbar */
+html {height: 100%;margin-bottom: 1px;}
+
+body {
+	margin: 0 0 20px 0;
+	padding: 0;
+	}
+
+#page {
+	margin: 0px auto;
+	padding: 0;
+	}
+
+#header {
+	margin: 15px;
+	padding: 0;
+}
+
+#sidebar {
+text-align:left;
+position: absolute;
+float: left;
+
+
+}
+
+#content {
+
+	padding: 0px;
+	margin: 0px 0px 0;
+position: absolute;
+float: left;
+
+overflow: visible;
+	}
+
+
+
+.post {
+  border-bottom:0px solid #000000;
+  padding-bottom:0px;
+	}
+
+.post h2 {
+padding-top:1px;
+padding-bottom:10px;
+margin-left: 10px;
+margin-bottom: 2px;
+font-weight: bold;
+
+
+}
+
+.post hr {
+  display: block;
+}
+
+#content .post {
+  margin: 0;
+}
+
+#content .postmetadata {
+
+  padding: 0px;
+padding-top: 1px;
+padding-bottom: 1px;
+
+margin-top: 2px;
+margin-bottom: 30px;
+
+}
+
+#tags {
+font-size:12px !important;
+color:#000000;
+}
+
+#content .postmetadata {
+
+  padding: 10px;
+padding-top: 1px;
+padding-bottom: 1px;
+margin-top: 2px;
+margin-bottom: 30px;
+font-style: italic; 
+	}
+
+#content .smallattachment {
+	text-align: center;
+	float: left;
+	width: 128px;
+	margin: 5px 5px 5px 0px;
+}
+
+#content .attachment {
+	text-align: center;
+	margin: 5px 0px;
+}
+
+.postmetadata {
+	clear: both;
+}
+
+.clear {
+	clear: both;
+}
+
+#footer {
+	padding: 0;
+	margin: 0 auto;
+	width: 100%;
+	clear: both;
+	}
+
+#footer p {
+	margin: 0;
+	padding-bottom:24px;
+}
+
+/* End Structure */
+
+
+
+/*	Begin Headers */
+h1 {
+	margin: 0;
+	}
+
+h2 {
+	margin: 0px 0 0 0;
+	}
+
+h2.pagetitle {
+
+}
+
+#sidebar h2 {
+	margin: 5px 0 0;
+	padding: 0;
+	}
+
+h3 {
+
+	}
+
+h3.comments {
+	padding: 0;
+	margin: 40px auto 20px ;
+	}
+/* End Headers */
+
+
+
+/* Begin Images */
+p img {
+
+
+padding: 0px;
+margin-bottom:5px;
+margin-top:0px;
+
+	}
+
+/*	Using 'class="alignright"' on an image will (who would've
+	thought?!) align the image to the right. And using 'class="centered',
+	will of course center the image. This is much better than using
+	align="center", being much more futureproof (and valid) */
+
+img.centered {
+
+border:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px;
+margin-bottom:1px;
+margin-top:1px;
+
+	}
+
+img.alignright {
+border:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+	padding: 0px;
+	margin: 0 0 2px 7px;
+	display: inline;
+margin-bottom:1px;
+margin-top:1px;
+	}
+
+img.alignleft {
+border:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+	padding: 0px;
+	margin: 0 7px 2px 0;
+	display: inline;
+margin-bottom:1px;
+margin-top:1px;
+	}
+
+.alignright {
+	float: right;
+	}
+
+.alignleft {
+	float: left
+	}
+/* End Images */
+
+
+
+/* Begin Lists
+
+	Special stylized non-IE bullets
+	Do not work in Internet Explorer, which merely default to normal bullets. */
+
+html>body .entry ul {
+	margin-left: 0px;
+	padding: 0 0 0 30px;
+	list-style: none;
+	padding-left: 0px;
+	text-indent: -10px;
+	}
+
+html>body .entry li {
+	margin: 7px 0 8px 10px;
+	}
+
+.entry ul li:before, #sidebar ul ul li:before {
+	content: "\00BB \0020";
+	}
+
+.entry ol {
+	padding: 0 0 0 35px;
+	margin: 0;
+	}
+
+.entry ol li {
+	margin: 0;
+	padding: 0;
+	}
+
+.postmetadata ul, .postmetadata li {
+	display: inline;
+	list-style-type: none;
+	list-style-image: none;
+	}
+
+#sidebar ul, #sidebar ul ol {
+	margin: 0;
+	padding: 0;
+	}
+
+#sidebar ul li {
+	list-style-type: none;
+	list-style-image: none;
+	margin-bottom: 15px;
+	}
+
+#sidebar ul p, #sidebar ul select {
+width: 176px;
+margin-top: 0px;
+	}
+
+#sidebar ul ul, #sidebar ul ol {
+	margin: 5px 0 0 10px;
+	}
+
+#sidebar ul ul ul, #sidebar ul ol {
+	margin: 0 0 0 10px;
+	}
+
+ol li, #sidebar ul ol li {
+	list-style: decimal outside;
+	}
+
+#sidebar ul ul li, #sidebar ul ol li {
+	margin: 3px 0 0;
+	padding: 0;
+	}
+/* End Entry Lists */
+
+
+
+/* Begin Form Elements */
+#searchform {
+	margin: 10px auto;
+	padding: 5px 0px 5px 3px;
+	}
+
+#sidebar #searchform #s {
+	width: 108px;
+	padding: 1px;
+	}
+
+#sidebar #searchsubmit {
+	padding: 1px;
+	}
+
+.entry form { /* This is mainly for password protected posts, makes them look better. */
+	text-align:center;
+	}
+
+select {
+
+	}
+
+#commentform input {
+	width: 170px;
+	padding: 2px;
+	margin: 5px 5px 1px 0;
+	}
+
+#commentform textarea {
+	width: 703px;
+	padding: 2px;
+        margin-left: 10px;
+	}
+
+#commentform #submit {
+	margin-bottom: 5px;
+	margin-top: 1px;
+margin-left: 10px;
+
+padding: 0px;
+	}
+/* End Form Elements */
+
+
+
+/* Begin Comments*/
+.alt {
+	margin: 0;
+	padding: 10px;
+	}
+
+.commentlist {
+	padding: 0;
+margin:0px;
+	text-align: justify;
+	}
+
+.commentlist li {
+	margin: 15px 0 3px;
+	padding: 5px 10px 3px;
+	list-style: none;
+	}
+
+.commentlist p {
+	margin: 10px 5px 10px 0;
+	}
+
+#commentform p {
+	margin-top: 10px;
+        padding-top: 1px
+        margin-left: 10px;
+	}
+
+.nocomments {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	}
+
+.commentmetadata {
+	margin: 0;
+	display: block;
+	}
+/* End Comments */
+
+
+
+/* Begin Sidebar */
+#sidebar {
+	padding: 0px 0px 0px 0;
+
+margin-left:15px;
+	}
+
+#sidebar form {
+	margin: 0;
+padding: 0;
+	}
+/* End Sidebar */
+
+
+
+/* Begin Calendar */
+#wp-calendar {
+	empty-cells: show;
+	margin: 10px auto 0;
+	width: 155px;
+	}
+
+#wp-calendar #next a {
+	padding-right: 10px;
+	text-align: right;
+	}
+
+#wp-calendar #prev a {
+	padding-left: 10px;
+	text-align: left;
+	}
+
+#wp-calendar a {
+	display: block;
+	}
+
+#wp-calendar caption {
+	text-align: center;
+	width: 100%;
+	}
+
+#wp-calendar td {
+	padding: 3px 0;
+	text-align: center;
+	}
+
+#wp-calendar td.pad:hover { /* Doesn't work in IE */
+	background-color: #D4D0C8; }
+/* End Calendar */
+
+
+
+/* Begin Various Tags & Classes */
+acronym, abbr, span.caps {
+	cursor: help;
+	}
+
+acronym, abbr {
+	border-bottom: 1px dashed #999;
+	}
+
+blockquote {
+	margin: 0px 0px 0 0px;
+	padding-left: 0px;
+	border-left: 0px solid #ddd;
+	}
+
+blockquote cite {
+	margin: 5px 0 0;
+	display: block;
+	}
+
+.center {
+	text-align: center;
+	}
+
+.hidden {
+	display: none;
+	}
+
+hr {
+	display: none;
+	}
+
+a img {
+border:solid 0px #292929;
+border-right:solid 0px #EAE8E3;
+border-bottom:solid 0px #EAE8E3;
+margin-bottom:0px;
+margin-top:0px;
+margin-left:2px;
+	padding: 0px;
+	}
+
+.navigation {
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+  /*height:40px;*/
+  padding:2px 0px 10px 0px;
+	}
+
+.navigation .alignleft{
+  padding-right:4px;}
+
+/* End Various Tags & Classes*/
+
+
+/* Captions */
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption {
+	border: 1px solid #ddd;
+	text-align: center;
+	background-color: #f3f3f3;
+	padding-top: 4px;
+	margin: 10px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.wp-caption img {
+	margin: 0;
+	padding: 0
+border:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+margin-bottom:3px;
+margin-top:2px;
+}
+
+.wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	padding: 0 4px 5px;
+	margin: 0;
+}
+
+.leaveareply {
+
+background-color:#D4D0C8;
+border-color:#292929 #EAE8E3 #EAE8E3 #292929;
+border-style:solid;
+border-width:1px;
+padding:1px 10px;
+margin-top: 15px;
+margin-left: 10px;
+}
+
+.responses {
+
+background-color:#D4D0C8;
+border-color:#292929 #EAE8E3 #EAE8E3 #292929;
+border-style:solid;
+border-width:1px;
+padding:1px 10px;
+margin-top: 15px;
+
+}
+
+
+.entryabout {}
+
+
+.entryabout ul {
+
+padding:1px 10px;
+margin-top: 2px;
+margin-bottom: 0px;
+margin-right: 0px;
+margin-left: 0px;
+	}
+
+.entryabout ol {
+
+
+padding:10px 10px 0px 10px;
+margin-top: 2px;
+margin-bottom: 0px;
+margin-right: 0px;
+margin-left: 0px;
+
+margin-top: 2px;
+	}
+
+
+
+
+
+.entryabout li {
+	padding: 0 0 0 95px;
+	margin: 0;
+	}
+
+
+.postwork {
+  border-bottom:0px solid #000000;
+  padding-bottom:0px;
+	}
+
+
+.postwork h2 {
+  padding-top:1px;
+  padding-bottom:1px;
+background-color: #D4D0C8;
+border:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+  padding-left: 10px;
+  padding-right: 10px;
+margin-bottom: 2px;
+font-weight: normal;
+}
+
+
+.entrywork {}
+
+
+.entrywork ul {
+
+padding:1px 10px;
+margin-top: 2px;
+margin-bottom: 0px;
+margin-right: 0px;
+margin-left: 0px;
+	}
+
+.entrywork ol {
+
+padding:10px 10px 0px 10px;
+margin-top: 2px;
+margin-bottom: 0px;
+margin-right: 0px;
+margin-left: 0px;
+
+
+margin-top: 2px;
+	}
+
+.nonunder a {text-decoration: none;}
+.nonunder {margin-bottom: 5px !important;}
+.sixhundret {
+    width: 710px;
+    padding-left: 10px;
+}
+
+.entrywork li {
+background-color: #D4D0C8;
+list-style-type:none;
+border: none;
+	}
+
+.spanclass {
+padding-top:1px;
+padding-bottom:1px;
+padding-left: 5px;
+padding-right: 5px;
+background-color: #D4D0C8;
+border-left:solid 1px #292929;
+border-top:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+margin-bottom:3px;
+margin-top:5px;
+font-weight: normal;
+}
+
+
+.spanclasstext {
+padding-top:1px;
+padding-bottom:1px;
+background-color: #D4D0C8;
+border:solid 1px #292929;
+border-top:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+padding-left: 10px;
+padding-right: 10px;
+margin-bottom:5px;
+margin-top:5px;
+font-weight: normal;
+}
+
+
+.dummy{
+padding-top:0px;
+padding-bottom:0px;
+}
+.embed
+{
+width: 600px;
+
+background-color: #D4D0C8;
+border:solid 1px #292929;
+border-top:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+
+margin-bottom:5px;
+margin-top:5px;
+font-weight: normal;
+}
+
+.ididit
+{
+width: 500px;
+
+background-color: #D4D0C8;
+border:solid 1px #292929;
+border-top:solid 1px #292929;
+border-right:solid 1px #EAE8E3;
+border-bottom:solid 1px #EAE8E3;
+
+margin-bottom:5px;
+margin-top:5px;
+font-weight: normal;
+border-bottom:solid 1px #EAE8E3;
+}
+
+
+
+
+.sixhundret
+{
+width: 710px;
+
+}
+
+
+
+
+
+
+
+.feeds {}
+
+
+.feeds ul {
+
+
+padding:10px 10px 10px 10px;
+margin-top: 2px;
+margin-bottom: 0px;
+margin-right: 0px;
+margin-left: 0px;
+	}
+
+.feeds ol {
+
+
+
+padding:1px 10px;
+margin-top: 2px;
+margin-bottom: 0px;
+margin-right: 0px;
+margin-left: 0px;
+
+
+margin-top: 2px;
+	}
+
+
+
+
+
+.feeds li {
+background-color: #D4D0C8;
+list-style-type:none;
+border: 0px;
+	}
+
+.images
+{
+	padding: 0px;
+margin: 0px;
+}
+
+.hundred{
+width: 100%;
+height: 100%;
+background-color: #D4D0C8;
+margin-left:10px;
+}
+
+
+
+
+
+
+
+.aggregator {
+width: 60%;
+margin: 10px;
+line-height: 1.4;
+padding-bottom: 20px;
+}
+
+
+.aggregator ul {
+
+
+}
+
+.aggregator ol 
+{
+
+padding:1px 10px;
+margin-top: 2px;
+margin-bottom: 0px;
+margin-right: 0px;
+margin-left: 0px;
+margin-top: 2px;
+}
+
+.aggregator li {
+list-style-type:none;
+border: 0px;
+}
+
+
+
+
+
+.navigator {
+
+margin: 10px;
+margin-bottom: 40px;
+
+}
+
+
+
+
+
+
+
+
+
+/* End captions */
+
+
+.input {     
+margin-top: 3px;
+
+ } 
+
+
+.navigator2 {
+
+float: right;
+margin-top:-15px;
+
+}
+
+.navigator1 {
+
+
+}

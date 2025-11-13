@@ -1,0 +1,17 @@
+User-agent: Twitterbot
+Disallow:
+ 
+User-agent: *
+Disallow: /index.html?
+Disallow: /?
+Disallow: /os/download
+Allow: /os/download/media/devuan.mp3
+Allow: /os/download/media/devuan.wav
+Allow: /os/download/media/devuan_press_kit.zip
+Allow: /os/download/report/devuan_financial_report_2014.pdf
+Allow: /os/download/report/devuan_financial_report_2015.pdf
+Allow: /os/download/releases/devuan_jessie_1.0_beta.torrent
+Disallow: /ui
+Allow: /ui/img/devuan-emblem.png
+Allow: /ui/img/devuan-logo.png
+Sitemap: /sitemap.xml

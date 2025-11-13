@@ -1,0 +1,584 @@
+@media screen and (max-width:1000px) {
+    .container {
+        padding: 0 10px;
+        max-width: 1000px;
+    }
+
+    .section__second__information,
+    .section__second__instructions,
+    .add__information,
+    .section__third__functions,
+    .section__third__statistic,
+    .section__third__conditions,
+    .section__fourth__attention,
+    .section__second__instructions,
+    .section__sixth__instructions,
+    .section__seventh__win__instructions,
+    .section__fourth__win__conditions {
+        flex-direction: column;
+    }
+
+    .section__second__information-title,
+    .section__second__information__text,
+    .section__second__instructions__items,
+    .add__information-title,
+    .add__information-text,
+    .section__second__information-title,
+    .section__second__information__text,
+    .section__third__functions-image,
+    .section__third__functions__descr,
+    .section__third__statistic-title,
+    .section__third__statistic-text,
+    .section__third__conditions-items,
+    .section__fourth__attention-title,
+    .section__fourth__attention__information,
+    .section__fifth__information-subtitle,
+    .section__seventh__information__items,
+    .section__eighth__information-title,
+    .section__eighth__information-text,
+    .section__seventh__win__instructions__items,
+    .section__fourth__win__conditions-items,
+    .section__fourth__strategy__text,
+    .section__fourth__strategy__information__block
+     {
+        width: 100%;
+    }
+
+    .section__first {
+        padding-top: 16px;
+        padding-bottom: 54px;
+    }
+
+    .section__first-image img {
+        width: 35%;
+    }
+
+    .section__first-title {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .section__first-text {
+        width: 90%;
+        margin-top: 10px;
+    }
+
+    .section__first__btn {
+        margin-bottom: 45px;
+    }
+
+    .section__second__information__text {
+        padding-top: 30px;
+    }
+
+    .section__second__information__text-descr {
+        margin-top: 20px;
+    }
+
+    .section__second__strategy__information-text {
+        width: 100%;
+    }
+
+    .section__second__instructions__items {
+        padding: 30px 20px;
+    }
+
+    .section__second__instructions {
+        margin-top: 25px;
+    }
+
+    .section__second__instructions__items:nth-child(3) {
+        padding-top: 35px;
+    }
+
+    .section__second__instructions__items:nth-child(4) {
+        padding-top: 30px;
+    }
+
+    .section__second__instructions__items:nth-child(5) {
+        padding: 35px 20px;
+    }
+
+    .section__second__instructions__items:nth-child(6) img {
+        min-height: 188px;
+        width: 100%;
+    }
+
+    .section__second__btn {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .add__information {
+        margin-bottom: 50px;
+    }
+
+    .add__information-text p:nth-child(1) {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .add__information-text p:nth-child(2) {
+        margin-top: 0;
+    }
+
+    .section__third__information__text {
+        padding-top: 0;
+    }
+
+    .section__third__functions__descr-top {
+        padding: 15px 20px 55px 20px;
+    }
+
+    .section__third__functions__descr-down {
+        padding: 40px 20px 20px 20px;
+    }
+
+    .section__third__functions__desrc-text {
+        margin-top: 5px;
+    }
+
+    .section__third__functions-image img {
+        min-height: 262px;
+    }
+
+    .section__third__functions {
+        margin-bottom: 25px;
+    }
+
+    .section__third__statistic-text {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .section__third__conditions {
+        margin-bottom: 0;
+    }
+
+    .slider__information {
+        padding-top: 20px;
+    }
+
+    .section__third__conditions-items p {
+        margin-top: 15px;
+    }
+
+    .section__third__conditions-items {
+        margin-bottom: 25px;
+    }
+
+    .section__forth__text {
+        margin-top: 0;
+        padding-top: 20px;
+        white-space: pre-line;
+    }
+
+    .section__fourth__attention-title br {
+        display: none;
+    }
+
+    .section__fourth__description {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 25px;
+        margin-bottom: 0;
+    }
+
+    .section__fourth__description-blue  {
+        left: 0;
+        right: 0;
+    }
+
+
+    .section__fourth__description-blue p {
+        position: relative;
+        top: 50%;
+        width: 80%;
+    }
+
+    .section__fourth__description-grey {
+        left: 0;
+        top: -40px;
+        right: 0;
+        
+    }
+
+
+
+    .section__fourth__description-black {
+        position: relative;
+        top: -85px;
+        right: 0;
+        right: 0;
+    }
+
+    .section__fourth__attention {
+        margin-top: -60px;
+    }
+
+    .section__third__1xbet__attention {
+        margin-top: 0;
+    }
+
+    .section__third__win {
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .section__fourth__attention__information {
+        margin-top: 20px;
+    }
+
+    .section__second__mostbet__attention {
+        margin-top: 0;
+    }
+
+    .section__fourth {
+        margin-bottom: 55px;
+    }
+
+    .section__slider-title {
+        padding-top: 45px;
+        padding-bottom: 20px;
+    }
+
+    .slider__information__text {
+        padding-top: 20px;
+    }
+
+    .owl-carousel {
+        margin-top: 20px;
+    }
+
+    .owl-items {
+        padding: 30px 20px 40px 20px;
+        height: auto;
+        width: 95%;
+        margin: auto;
+    }
+
+    .owl-items-icon {
+        width: 50px;
+        height: 50px;
+        padding: 20px;
+    }
+
+    .owl-items-icon-img {
+        width: 13px;
+
+    }
+
+    .owl-items-title {
+        margin-top: 20px;
+    }
+
+    .section__fifth {
+        margin-top: 40px;
+    }
+
+    .section__fifth__information-subtitle {
+        margin-top: 20px;
+    }
+
+    /* .section__fifth__information {
+        margin-bottom: -10px;
+    } */
+
+    .section__fifth__text-mobile {
+        display: block;
+        margin-top: 0;
+    }
+
+    .section__fifth__text-desktop {
+        display: none;
+    }
+
+
+    .section__sixth__instructions__items:nth-child(1) {
+        order: 2;
+    }
+
+    .section__seventh__information__items-title {
+        margin-bottom: 20px;
+    }
+
+    .section__seventh__information__items-text p:nth-child(1) {
+        margin-top: 25px;
+        padding-bottom: 0;
+    }
+
+    .section__seventh__information__items-text p:nth-child(1) {
+        padding-bottom: 0;
+        margin-top: 20px;
+    }
+
+    .section__eighth {
+        margin-top: 45px;
+    }
+
+    .section__eighth__information-text:nth-child(3) {
+        margin-top: 10px;
+    }
+
+    .section__eighth__information {
+        margin-bottom: 20px;
+    }
+    .section__eighth__information-notice {
+        padding: 40px 20px;
+    }
+
+    .footer {
+        padding: 45px 10px 45px 10px;
+    }
+
+    .footer__menu {
+        width: 100% !important;
+    }
+
+    .footer__menu ul {
+     justify-content: start;
+    }
+
+    .footer__menu li  {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        
+        margin-left: 0;
+    }
+
+    .footer__menu li {
+       padding: 0px 15px;
+           margin-right: 10px;
+    }
+    
+    .footer__section-image {
+    max-width: 175px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+    .footer__menu li:nth-child(1) a,
+    .footer__menu li:nth-child(2) a  {
+        padding: 5px 35px;
+    }
+    .footer__menu li:nth-child(3) a {
+        padding: 5px 40px;
+    }
+
+    .footer__menu li:nth-child(4) a,
+    .footer__menu li:nth-child(6) a {
+        padding: 5px 25px;
+    }
+    .footer__menu li:nth-child(5) a {
+        padding: 5px 15px;
+    }
+
+    .section__fourth__win__conditions-items:nth-child(3) {
+        order: 3;
+     }
+    
+    .section__fourth__win__conditions-items:last-child {
+       order: 4;
+    
+    }
+    .section__sixth__win,
+    .section__seventh,
+    .section__sixth__win {
+        margin-top: 50px;
+    }
+
+    .section__second__mostbet__attention-image {
+        order: 2;
+    }
+
+    .section__second__win-subtitle {
+        margin-bottom: 20px;
+    }
+
+    .section__second__win-subtitle br {
+        display: block;
+    }
+
+    .section__fourth__win__functions__desrc-title {
+        line-height: 21px;
+    margin-bottom: 10px;
+    letter-spacing: -0.06em;
+    margin-top: 20px;
+    }
+
+    .section__third__functions__desrc-title {
+        line-height: 120%;
+        letter-spacing: -0.06em;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .owl-items-icon {
+        position: relative;
+    }
+
+    .owl-items-icon-img {
+        position: absolute;
+        /* transform: translate(-50%, -50%); */
+    }
+    .section__fourth__attention-title {
+        margin-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 0;
+        white-space: pre-line;
+    }
+
+    .section__seventh__win__instructions__items-title  {
+        line-height: 120%;
+        letter-spacing: -0.06em;
+        margin-top: 20px;
+    }
+
+    .section__seventh__win__instructions__items {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .section__second__pinup,
+    .section__fourth__pinup,
+    .section__seventh__pinup,
+    .section__third__strategy,
+    .section__third__comments
+     {
+        margin-top: 50px;
+    }
+
+    .section__fifth__mostbet__information-text,
+    .section__third__comments {
+        margin-bottom: 50px;
+    }
+
+    .section__third__strategy__information-title {
+        margin-bottom: 20px;
+    }
+
+    .section__third__tivit__registration {
+        flex-direction: column;
+    }
+
+    .section__fourth__tivit__deposit {
+        width: 100%;
+    }
+    .section__third__tivit-subtitle {
+        margin-top: 20px;
+    }
+    .section__third__tivit-descr {
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+    }
+
+    .section__third__titiv-information {
+        order: 1;
+        margin-top: 0;
+        
+    }
+    .section__third__tivit__registration-items {
+        order: 2;
+        margin-top: 40px;
+    }
+    .section__third__tivit-text {
+        margin-bottom: 20px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+.section__fourth__tivit__deposit-info {
+    margin-top: 20px;
+}
+.section__fouth__tivit-descr {
+    margin-bottom: 0;
+}
+.section__fifth__tivit-subtitle {
+    margin-top: 20px;   
+}
+/*chillbet*/
+.section__second__information-chillbet {
+    width:100%;
+}
+.section__fourth__chillbet__subtitle {
+    margin-top:20px;
+}
+}
+
+@media (min-width: 1001px) and (max-width: 1379px ){
+.space-header-menu ul.main-menu li a {
+    margin-left: 5px !important;
+}
+
+    .section__second__information__text {
+        width: 45%;
+    }
+
+    .section__second__instructions__items:nth-child(5) {
+        padding-bottom: 15px;
+    }
+
+    .section__second__instructions__items:nth-child(6) {
+        height: auto;
+    }
+
+    .section__second__instructions__items:nth-child(6) img {
+        height: 100%;
+    }
+    .section__fourth__strategy__text {
+        width: 100%;
+    }
+
+    .section__sixth__information-title {
+        width: 80%;
+    }
+
+    .section__sixth__instructions__items img {
+        height: 100%;
+    }
+
+    .section__seventh__information__items img {
+        height: 100%;
+    }
+
+    .footer__menu li {
+        margin-bottom: 10px;
+    }
+
+    .footer__menu {
+        width: 100% !important;
+    }
+    .section__third__tivitbet__registration-items {
+        width: 45%;
+    }
+
+}
+
+@media (min-width: 1380px ) {
+    .container {
+        max-width: 1180px;
+    }
+    .owl-carousel {
+        max-width: 1180px;
+    }
+    .section__third__tivitbet__registration-items {
+        width: 45%;
+    }
+}
+
+@media (min-width: 1750px) {
+    .section__title {
+        font-size: 54px;
+    }
+} 
+
+@media (min-width: 560px) and (max-width: 990px) {
+    .footer__menu {
+        width: 50% !important;
+    }
+ 
+}
+

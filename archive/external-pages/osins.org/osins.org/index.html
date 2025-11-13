@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="preload"
+      href="../../../www.osins.org/e8c13e0f24bd93dbdf01cbf2c573cd58.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="../../../www.osins.org/60010342f9b55c5a247a6feee057de0d.woff"
+      as="font"
+      type="font/woff"
+      crossorigin="anonymous"
+    />
+    <link rel="preload" href="https://www.osins.org/photos/000039740006.jpg" />
+    <link rel="preload" href="https://www.osins.org/photos/000018050002.jpg" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="name" content="Rūdolfs Ošiņš" />
+    <title>RUDOLFS OSINS</title>
+    <link href="../../../www.osins.org/favicon.ico" rel="shortcut icon" />
+
+    <style>
+      /* This CSS resource incorporates links to font software which is the
+         valuable copyrighted property of Monotype and/or its suppliers.
+         You may not attempt to copy, install, redistribute, convert, modify or
+         reverse engineer this font software. Please contact Monotype with any
+         questions regarding Web Fonts:  https://www.linotype.com */
+      @font-face {
+        font-family: "helvetica";
+        src: url("../www.osins.org/e8c13e0f24bd93dbdf01cbf2c573cd58.woff2") format("woff2"),
+          url("../www.osins.org/60010342f9b55c5a247a6feee057de0d.woff") format("woff");
+      }
+
+      ::-moz-selection {
+        color: black;
+        background: white;
+      }
+
+      ::selection {
+        color: black;
+        background: white;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: black;
+        background: white;
+      }
+
+      html {
+        -ms-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: 100%;
+        font-family: helvetica;
+        color: white;
+        background-color: black;
+        text-transform: uppercase;
+        scroll-snap-type: y mandatory;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      header {
+        position: fixed;
+        mix-blend-mode: difference;
+      }
+
+      footer {
+        scroll-snap-align: end;
+      }
+
+      .landscape .container {
+        scroll-snap-align: start;
+        display: flex;
+      }
+
+      .landscape img {
+        display: flex;
+        max-width: 50vw;
+      }
+
+      .portrait img {
+        display: flex;
+        max-width: 100vw;
+        scroll-snap-align: center;
+      }
+
+      @media (min-width: 1201px) {
+        html {
+          font-size: 15px;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        html {
+          font-size: 13px;
+        }
+      }
+
+      @media screen and (orientation: portrait) {
+        .portrait {
+          display: block;
+        }
+        .landscape {
+          display: none;
+        }
+      }
+
+      @media screen and (orientation: landscape) {
+        .landscape {
+          display: block;
+        }
+        .portrait {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>Rudolfs Osins</div>
+      <div><a href="https://www.instagram.com/rudolfs">Instagram</a></div>
+    </header>
+
+    <div class="landscape">
+      <div class="images">
+        <div class="container">
+          <img src="../../../www.osins.org/photos/000039740004.jpg" />
+          <img src="../../../www.osins.org/photos/000039740007.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <div class="portrait">
+      <div class="images">
+        <img src="../../../www.osins.org/photos/000039740004.jpg" />
+        <img src="../../../www.osins.org/photos/000039740007.jpg" />
+      </div>
+    </div>
+  </body>
+</html>

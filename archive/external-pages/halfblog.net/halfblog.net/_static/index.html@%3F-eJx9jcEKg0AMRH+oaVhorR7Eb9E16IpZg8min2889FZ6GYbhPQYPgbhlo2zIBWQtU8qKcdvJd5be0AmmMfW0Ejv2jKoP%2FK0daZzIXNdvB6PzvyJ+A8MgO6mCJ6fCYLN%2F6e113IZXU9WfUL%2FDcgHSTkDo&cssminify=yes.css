@@ -1,0 +1,75 @@
+
+
+.wp-playlist-light {
+	color: #000;
+}
+
+.wp-playlist-light .wp-playlist-item {
+	color: #333;
+}
+
+.wp-playlist-light .wp-playlist-playing {
+	background: #fff;
+	color: #000;
+}
+
+.wp-playlist-dark .wp-playlist-item .wp-playlist-caption {
+	color: #fff;
+}
+
+.wp-playlist-caption {
+	display: block;
+}
+
+.widget.widget_text {
+	word-wrap: break-word;
+}
+
+.widget.widget_text ul,
+.widget.widget_text ol {
+	margin-bottom: 1em;
+	margin-left: .875em;
+	padding-left: .875em;
+}
+
+.widget.widget_text li ul,
+.widget.widget_text li ol {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
+.widget.widget_text ul {
+	list-style: disc outside none;
+}
+
+.widget.widget_text ol {
+	list-style: decimal outside none;
+}
+
+.widget.widget_text ul li,
+.widget.widget_text ol li {
+	border: 0;
+	list-style: inherit;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+.widget.widget_text ul li:before {
+	content: "";
+}
+
+.widget.widget_text p {
+	margin-bottom: 1em;
+}
+.bbp-staff-role {
+	color: #f1831e;
+}
+
+.bbp-a8c-reply {
+	background: #e9eff3 !important;
+	border: 1px solid #c8d7e1;
+	width: 98% !important;
+}

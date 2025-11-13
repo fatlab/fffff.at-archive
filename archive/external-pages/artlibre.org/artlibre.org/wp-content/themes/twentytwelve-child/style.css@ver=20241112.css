@@ -1,0 +1,439 @@
+/*
+ Theme Name:     Twenty Twelve Child
+ Theme URI:      http://example.com/twenty-twelve-child/
+ Description:    wenty Twelve Child Theme
+ Author:         Bertrand Keller
+ Author URI:     http://example.com
+ Template:       twentytwelve
+ Version:        1.0.0
+*/
+
+@import url("twentytwelve.css");
+
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+.site-header .logo {
+	margin-right: 1em;
+}
+
+.site-header hgroup {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.site-info,
+.widget-area {
+	display: inline-block;
+	margin: 0;
+}
+
+.site-info {
+	float: right;
+}
+
+.menu-toggle,
+.menu-toggle:hover,
+.menu-toggle.toggled-on {
+  width: 100%;
+  font-size: 1.5rem;
+  color: #fff;
+  border: none;
+  background: none;
+}
+
+.menu-toggle.toggled-on {
+	box-shadow: none;
+}
+
+.main-navigation li {
+	margin: 0;
+	padding: 0.1rem 0 0.4rem;
+}
+
+.main-navigation a {
+	font-size: 1rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.main-navigation a:hover {	
+  color: #fff;
+  text-decoration: underline;
+}
+
+
+
+/* Artlibre list
+-------------------------------------------------------------- */
+
+.entry-content p.entry-meta {
+	margin: 0;
+} 
+
+.date {
+	font-weight: bold;
+	color: #555;
+}
+
+
+/* Nav
+-------------------------------------------------------------- */
+
+.nav-submenu {
+	margin-bottom: 1.5em;
+}
+
+#colophon li,
+.nav-submenu li {
+	display: inline-block;
+	margin-right: .5em;
+}
+
+.nav-submenu a {
+	display: block;
+	margin: 0 .3em .6em;
+	padding: .5em 1em;
+	text-decoration: none;
+	background: #f1f1f1;
+}
+
+
+/* List category
+-------------------------------------------------------------- */
+
+.block-search {
+	margin: 0 0 1em;
+}
+
+.block-search label {
+	display: block;
+	width: 100%;
+	padding: .3em 0;
+	font-size: 1.2em;
+}
+
+.block-search input {
+	width: 30%;
+	min-width: 300px;
+	font-size: 1.2em;
+}
+
+.nav-tabs,
+.list-category {
+	margin-bottom: 1.5em;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+.nav-tabs ul,
+.list-category ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-tabs li,
+.list-category li {
+	display: inline-block;
+	margin: 0;
+}
+
+.nav-tabs li a,
+.list-category li a {
+	display: block;
+	margin: 1em .5em 0 0;
+	padding: .5em 1em;
+	text-decoration: none;
+	font-size: 1rem;
+	color: #444;
+	border-bottom: 3px solid #aaa;
+}
+
+.nav-tabs li a:hover,
+.list-category li a:hover {
+	color: #444;
+	border-bottom: 3px solid #555;
+}
+
+.list-category li.current-cat a {
+	border-bottom: 3px solid #000;
+}
+
+
+/* List / user
+-------------------------------------------------------------- */
+
+.author-info {
+	border-bottom: 1px solid #ededed;
+	margin: 10px 0 0;
+	margin: 0.857142857rem 0 1.5em;
+	padding: 12px;
+	padding: 0.857142857rem 0.857142857rem 1.714285714rem;
+	overflow: hidden;
+}
+
+.single-artlibre_oeuvre .author-avatar {
+	margin: 0 .5em 0 0;
+}
+
+.single-artlibre_oeuvre .author-avatar img {
+	border-radius: none;
+}
+
+.list-users,
+.oeuvre-list,
+.single-artlibre_oeuvre .entry-meta {
+	margin-left: -1%;
+}
+
+.list-users ul,
+.oeuvre-list ul {
+	margin-left: 0;
+}
+
+.list-users .pagination,
+.oeuvre-list .pagination,
+.list-users .block-search,
+.oeuvre-list .block-search {
+	margin-left: 1%;
+}
+
+.single-artlibre_oeuvre .author-info {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.single-artlibre_oeuvre .author-info,
+.archive .artlibre_oeuvre,
+.list-users .list li {
+	display: inline-block;
+	margin: 0 0 2% 1%;
+	/*width: 24%;*/
+	text-align: left;
+	vertical-align: top;
+	background: rgba(15, 71, 105,.06);
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+.single-artlibre_oeuvre .info:hover
+.list-users .list li:hover {
+	cursor: pointer;
+	background: rgba(15, 71, 155,.1);
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+}
+
+.list-users li a,
+.artlibre_oeuvre h2 a {
+	text-decoration: none;
+	text-transform: capitalize;
+}
+
+.artlibre_oeuvre {
+	margin-bottom: 1em !important;
+}
+
+.single-artlibre_oeuvre h1 {
+	margin-bottom: .2em;
+}
+
+.list-users .list-user_img {
+	float: right;
+	display: block;
+	margin-right: 1em;
+}
+
+.artlibre_oeuvre h2,
+.list-users .list-user_name,
+.single-artlibre_oeuvre .author-info h2 {
+	overflow: hidden;
+	clear: none;
+	display: table;
+	margin: 0.5em .8em;
+	line-height: 1.2;
+	min-height: 2em;
+	font-size: 1.2rem !important;
+	font-weight: bold !important;
+}
+
+.artlibre_oeuvre h2 a,
+.list-users .list-user_name a,
+.single-artlibre_oeuvre .author-info h2 a {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+/* Pagination
+-------------------------------------------------------------- */
+
+.pagination {
+	display: block;
+	margin: 2em 0;
+}
+
+.pagination li {
+	display: inline-block;
+}
+
+.pagination li a {
+	margin: 0 .3em 0 0;
+	padding: .3em .8em;
+	font-size: 1.5em;
+	background: #f1f1f1;
+}
+
+.ap_pagination {
+	margin-bottom: 1em;
+}
+
+.home .ap_pagination,
+.category .ap_pagination,
+.archive .ap_pagination {
+	display: none !important;
+}
+
+.tax-artlibre_type .ap_pagination,
+.post-type-archive-artlibre_oeuvre .ap_pagination,
+.post-type-category-artlibre_oeuvre .ap_pagination {
+	display: block !important;
+}
+
+/* Teaser
+-------------------------------------------------------------- */
+
+.site-teaser {
+	margin-top: -.5em;
+	padding: 1em .5em;
+	box-shadow: inset 5px 5px 50px 10px rgba(0,0,0,0.1);
+}
+
+.site-teaser .teaser-illus {
+	float: left;
+	margin: 1em;
+}
+
+.site-teaser .teaser-description {
+	display: block;
+	float: left;
+	max-width: 50%;
+	margin-top: 1em;
+	padding-right: 1em;
+	font-size: 1.05rem;
+	line-height: 1.2;
+	font-weight: bold;
+}
+
+.site-teaser .teaser-link a {
+	max-width: 40%;
+	float: left;
+	margin-top: 1em;
+	padding: .5em 1em;
+	color: #fff;
+	text-decoration: none;
+	background: black;
+	border-radius: 5px;
+}
+
+.site-teaser .teaser-link a:hover {
+	background: #0F4769;
+}
+
+.site-teaser .teaser-link span {
+	margin: 0;
+	display: inline-block;
+}
+
+.site-teaser .teaser-link #svg-link {
+	fill: white;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.site-teaser-auteur h2 {
+	margin: .5em 0;
+	line-height: 1;
+}
+
+.site-teaser-auteur .wrapper > a {
+	display: block;
+}
+
+.site-teaser-auteur .wrapper {
+	padding: .5em 0;
+	border-bottom: 1px solid #999;
+}
+
+.site-teaser-auteur .wrapper > h2 {
+	display: block;
+	margin-right: 1em;
+}
+
+.site-teaser-auteur .teaser-description {
+	overflow: hidden;
+	display: block;
+	vertical-align: top;
+}
+
+.site-teaser-auteur .teaser-description h2 {
+	font-size: 1.3em !important;
+	display: inline-block;
+	padding: .1em .5em;
+	margin: 0 0 .5em 0;
+	border-left: 2px solid;
+}
+
+.site-teaser-auteur .teaser-description h2 a {
+	text-decoration: none;
+}
+
+.site-teaser-auteur .wrapper > a:hover {
+	background: #C6EAFF;
+}
+
+.site-teaser-auteur img {
+	float: right;
+	margin-right: 1em;
+}
+
+/* Connexion
+-------------------------------------------------------------- */
+
+.login form p {
+	overflow: hidden;
+	display: inline-block;
+	margin: 0 1% 1em 0;
+	width: 40%;
+	vertical-align: top;
+}
+
+.login form p:first-child,
+.login form .forgetmenot {
+	display: block;
+}
+
+.login form .forgetmenot label,
+.login form .forgetmenot input {
+	width: auto;
+}
+
+.login form p.submit {
+	width: 88%;
+}
+
+#description-p {
+	width: 82%;
+}
+
+.login form label {
+	font-weight: bold;
+}
+
+.login form input {
+	width: 90%;
+}
+.login form textarea {
+	width: 95%;
+}

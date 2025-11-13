@@ -1,0 +1,194 @@
+/* Consolidated Dev Styles */
+
+.reveal-modal{
+    background-color: #FFF !important;
+/*
+    min-width: 66%;
+    margin-left: -33%;
+*/
+}
+
+#modal-container{
+  background-color: #FFF;
+  clear: both;
+}
+
+#modal-container .row{
+}
+
+#modal #modal-topbox {
+   padding: 0;
+}
+
+#modal #modal-topbox .stepIndicator li {
+   color: white;
+}
+
+#modal a.close-reveal-modal {
+    top: 0;
+    right: 0;
+    background-color: #222222;
+    font-size: 20px;
+    font-weight: normal;
+    margin-left: -1px;
+    padding: 0px 18px 0px 18px;
+    line-height: 40px;
+    color: #999999;
+    text-decoration: none;
+    height: 40px;
+}
+#modal a.close-reveal-modal:hover {
+    color: #efefef;
+    background-color: #333333;
+}
+.myDomains .columns{
+    text-align: center
+}
+
+#modal-container .myDomains {
+    background: none repeat scroll 0 0 #EEEEEE;
+    margin: 10px 10px 30px 0;
+    padding: 15px;
+}
+
+#modal-container .myDomains h6{
+    margin: 0 5px 15px;
+}
+
+#modal-container .domainChoice {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.domainChoice ul {
+    margin-bottom: 0;
+}
+
+.domainChoice li {
+    margin-bottom: 0;
+}
+
+.domainChoice label {
+    margin-bottom: 0;
+}
+
+.directnicRecommends {
+    width: 898px;
+}
+.planAddOns ul {
+    padding-left: 45px;
+    margin-top: -2px;
+}
+.planAddOns .ten.columns.right {
+    width: 150px;
+}
+.total {
+    margin-top: 20px;
+}
+.planAddOns h4 {
+    margin-top: -5px;
+}
+.planAddOns h4, .planAddOns p {
+    margin-left: 80px;
+}
+.planAddOns h4.right {
+    margin-left: 0;
+}
+.planAddOns.privacy  {
+    background: url(https://directnic.com/local/directnic/img/icon-addon-privacy.png) 10px 8px no-repeat;
+}
+.planAddOns.sitelock {
+    background: url(https://directnic.com/local/directnic/img/icon-addon-sitelock.png) 10px 12px no-repeat;
+}
+.planAddOns.email {
+    background: url(https://directnic.com/local/directnic/img/icon-addon-email.png) 15px 12px no-repeat;
+}
+
+/* Style Placeholder text in input fields */
+
+.signUp, .access ::-webkit-input-placeholder {
+   color: #333333;
+}
+
+.signUp, .access :-moz-placeholder { /* Firefox 18- */
+   color: #000000;
+   font-family: Arial,Helvetica,sans-serif;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #000000;
+   font-family: Arial,Helvetica,sans-serif;
+}
+
+.signUp, .access :-ms-input-placeholder {
+   color: #333333;
+}
+
+/* Notification Messages/Alerts */
+	#modal #modal-topbox {
+		padding-left: 15px;
+		padding-top: 7px;
+		font-weight: bold;
+		font-size: 18px;
+	}
+	.notificationAlerts {
+		padding: 15px;
+	}
+	.notificationAlerts h5 {
+		margin-top: 25px;
+		margin-bottom: 10px;
+	}
+	.notificationAlerts .timestamp {
+		margin-top: 10px;
+		margin-bottom: 0;
+	}
+
+/* End Notification Messages/Alerts */
+
+/* Manage Hosting Options */
+
+.hostingOptions .eight.columns {
+	padding: 5px 5px;
+	width: 335px;
+}
+
+/* End Manage Hosting Options */
+
+/* Bulk Update - Contacts, Auto Renew Nameservers */
+
+/* End Modal forms for Domain Details, Hosting Details */
+
+/* IE8 fixes */
+
+.ie8 .stepIndicator ul li.close a {
+    padding: 5px 15px 5px 15px;
+}
+.ie8 .stepIndicator ul li.close:hover a {
+    color: #00abee;
+    background-color: #cccccc;
+    padding: 19px 15px 15px 15px;
+}
+
+/* Firefox fixes */
+
+@-moz-document url-prefix() {
+		.stepIndicator li {
+			padding-bottom: 14px;
+		}
+		.stepIndicator ul li.close > a {
+			padding-bottom: 15px;
+			padding-top: 19px;
+		}
+
+	}
+
+
+@media only screen and (min-width: 1200px){
+	.reveal-modal {
+/*
+		width: 970px;
+		margin-left: -485px !important;
+*/
+/* 		max-width:970px; */
+	}
+}

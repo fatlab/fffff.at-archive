@@ -1,0 +1,1963 @@
+body,table,td,tr,div,p,pre,h1,h2,h3,h4,h5,ul {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; color: #2f2f2f;}
+body,td,div,p,pre,ul {font-size: 11px;color: #2f2f2f;}
+/*BODY {background-color:#f1f1ed;}*/
+/*BODY {background-color:#F2F2F2;}*/
+
+
+BODY {background-color:#f4f4f2;} 
+
+/* BODY {background-color:#F3F1ED;} */
+
+/*BODY { background-image: url("pattern.gif") }*/
+
+h1 {font-size: 18px;}
+h2 {font-size: 16px;}
+h3 {font-size: 13px;}
+h5 {font-size: 8px; color: #6b6a6a; text-transform: uppercase;}
+
+
+.menue {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 11px;color: #000000;}
+.sidemenu {font-size: 12px; color: #2f2f2f; text-transform: uppercase; font-weight: bold;}
+.bodycopy {font-size: 12px; color: #2f2f2f; font-family: times;}
+
+div.homesub {
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; color: #333333;
+}
+
+
+div.header {
+	z-index:500;
+}
+
+.header { display:block; position:relative; height:20px; }
+#menu-container { display:block; position:relative; width:503px; margin:0px auto 0px; font-size:11px; }
+#drop_down_menu { display:block; position:absolute; clear:both; margin:0px; padding:0px; text-align:left; list-style-type:none; width:500px; float:none; left:0px; top:0px; }
+#drop_down_menu li { font-size:11px; font-weight:bold; float:left; color:#000; padding-top:0px; padding:5px; cursor:pointer; background:#fff; width:156px; }
+#drop_down_menu li ul { margin:0px; padding:0px; list-style-type:none; padding-top:10px; }
+#drop_down_menu li ul li { display:block; float:none; clear:both;  }
+#drop_down_menu li ul li a { color:#000; font-weight:normal; text-decoration:none; display:block; }
+#drop_down_menu li ul li a:HOVER {text-decoration: none; color: #fff;
+background-color: #000000; text-decoration: none;
+padding-left: 0px; padding-right: 2px}
+
+
+
+
+.invert {color: #000000;background-color:#E0E2D4; font-weight : bold; letter-spacing : 2px; font-size: 15px}
+
+a {font-size: 11px; text-decoration: none; font-weight : bold;}
+
+a:link { text-decoration: none; color: #000000; }
+a:visited { text-decoration: none; color: #000000; }
+a:hover { text-decoration: none; color: #1e1e1e; }
+a:active { text-decoration: none; color: #FF0000; }
+
+
+
+/* .button3 means the "button1" class*/
+
+a.button3 {font-size: 8px;
+			text-decoration: none; color: #6b6a6a;
+		    background-color: #fff; text-decoration: none;
+		    padding-left: 0px; padding-right: 2px}
+
+a:visited.button3 {font-size: 8px;
+							text-decoration: none; color: #2f2f2f;
+		             		background-color: #fff; text-decoration: none;
+		             		padding-left: 0px; padding-right: 2px}
+
+/* You need to specify identical formats for a.button and a:visited.button in order to keep appearance the same */
+
+a:hover.button3 {font-size: 8px;
+					text-decoration: none; color: #fff;
+		            background-color: #1e1e1e; text-decoration: none;
+		            padding-left: 0px; padding-right: 2px}
+		
+		
+
+
+
+/* .button1 means the "button1" class*/
+
+a.button1 {font-size: 11px;
+					text-decoration: none; color: #2f2f2f;
+		            background-color: #fff; text-decoration: none;
+		            padding-left: 0px; padding-right: 2px}
+
+a:visited.button1 {font-size: 11px;
+							text-decoration: none; color: #2f2f2f;
+		             		background-color: #fff; text-decoration: none;
+		             		padding-left: 0px; padding-right: 2px}
+
+/* You need to specify identical formats for a.button and a:visited.button in order to keep appearance the same */
+
+a:hover.button1 {font-size: 11px;
+							text-decoration: none; color: #fff;
+		             		background-color: #1e1e1e; text-decoration: none;
+		             		padding-left: 0px; padding-right: 2px}
+		
+		
+		
+		
+		
+							/* .button2 means the "button2" class*/
+
+							a.button2 {font-size: 11px;
+												text-decoration: none; color: #6d6d6d;
+									            background-color: #fff; text-decoration: none;
+									            padding-left: 0px; padding-right: 2px}
+
+							a:visited.button2 {font-size: 11px;
+														text-decoration: none; color: #6d6d6d;
+									             		background-color: #fff; text-decoration: none;
+									             		padding-left: 0px; padding-right: 2px}
+
+							/* You need to specify identical formats for a.button and a:visited.button in order to keep appearance the same */
+
+							a:hover.button2 {font-size: 11px;
+														text-decoration: none; color: #fff;
+									             		background-color: #1e1e1e; text-decoration: none;
+									             		padding-left: 0px; padding-right: 2px}
+		
+		
+		
+
+
+							#harddrivin
+							{
+							display: block;
+							width: 210px;
+							height: 131px;
+							background: url("projects/harddrivin.jpg") no-repeat 0 0;
+							}
+
+							#harddrivin:hover
+							{ 
+							background-position: 0 -131px;
+							}
+
+							#harddrivin span
+							{
+							display: none;
+							}		
+							
+							
+								#harddrivin_alt
+								{
+								display: block;
+								width: 99px;
+								height: 62px;
+								background: url("projects/harddrivin_alt.jpg") no-repeat 0 -62px;
+								}
+
+								#harddrivin_alt:hover
+								{ 
+								background-position: 0 0;
+								}
+
+								#harddrivin_alt span
+								{
+								display: none;
+								}
+		
+		
+							#hardwarehck
+							{
+							display: block;
+							width: 210px;
+							height: 131px;
+							background: url("projects/hardwarehck.jpg") no-repeat 0 0;
+							}
+
+							#hardwarehck:hover
+							{ 
+							background-position: 0 -131px;
+							}
+
+							#hardwarehck span
+							{
+							display: none;
+							}		
+							
+								#hardwarehck_alt
+								{
+								display: block;
+								width: 99px;
+								height: 62px;
+								background: url("projects/hardwarehck_alt.jpg") no-repeat 0 -62px;
+								}
+
+								#hardwarehck_alt:hover
+								{ 
+								background-position: 0 0;
+								}
+
+								#hardwarehck_alt span
+								{
+								display: none;
+								}
+		
+							#refunctmedia
+							{
+							display: block;
+							width: 210px;
+							height: 131px;
+							background: url("projects/refunctmedia.jpg") no-repeat 0 0;
+							}
+							
+							#refunctmedia:hover
+							{ 
+							background-position: 0 -131px;
+							}
+
+							#refunctmedia span
+							{
+							display: none;
+							}
+							
+								#refunctmedia_alt
+								{
+								display: block;
+								width: 99px;
+								height: 62px;
+								background: url("projects/refunctmedia_alt.jpg") no-repeat 0 -62px;
+								}
+
+								#refunctmedia_alt:hover
+								{ 
+								background-position: 0 0;
+								}
+
+								#refunctmedia_alt span
+								{
+								display: none;
+								}
+							
+		
+
+								#twopointfourwksp
+								{
+								display: block;
+								width: 210px;
+								height: 131px;
+								background: url("projects/twopointfourwksp.jpg") no-repeat 0 0;
+								}
+
+								#twopointfourwksp:hover
+								{ 
+								background-position: 0 -131px;
+								}
+
+								#twopointfourwksp span
+								{
+								display: none;
+								}
+								
+								#twopointfourwksp_alt
+								{
+								display: block;
+								width: 99px;
+								height: 62px;
+								background: url("projects/twopointfourwksp_alt.jpg") no-repeat 0 -62px;
+								}
+
+								#twopointfourwksp_alt:hover
+								{ 
+								background-position: 0 0;
+								}
+
+								#twopointfourwksp_alt span
+								{
+								display: none;
+								}
+								
+		
+#missioncreep
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/missioncreep.jpg") no-repeat 0 0;
+}
+
+#missioncreep:hover
+{ 
+background-position: 0 -131px;
+}
+
+#missioncreep span
+{
+display: none;
+}
+
+#missioncreep_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/missioncreep_alt.jpg") no-repeat 0 -62px;
+}
+
+#missioncreep_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#missioncreep_alt span
+{
+display: none;
+}							
+							
+#madetobreak
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/madetobreak.jpg") no-repeat 0 0;
+}
+
+#madetobreak:hover
+{ 
+background-position: 0 -131px;
+}
+
+#madetobreak span
+{
+display: none;
+}
+
+
+
+#madetobreak_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/madetobreak_alt.jpg") no-repeat 0 -62px;
+}
+
+#madetobreak_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#madetobreak_alt span
+{
+display: none;
+}
+
+
+								
+						
+#corrupt
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/corrupt.jpg") no-repeat 0 0;
+}
+
+#corrupt:hover
+{ 
+background-position: 0 -131px;
+}
+
+#corrupt span
+{
+display: none;
+}
+							
+#corrupt_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/corrupt_alt.jpg") no-repeat 0 -62px;
+}
+
+#corrupt_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#corrupt_alt span
+{
+display: none;
+}
+
+
+#randomme
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/randomme.jpg") no-repeat 0 0;
+}
+
+#randomme:hover
+{ 
+background-position: 0 -131px;
+}
+
+#randomme span
+{
+display: none;
+}
+
+
+#randomme_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/randomme_alt.jpg") no-repeat 0 -62px;
+}
+
+#randomme_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#randomme_alt span
+{
+display: none;
+}
+
+
+		
+#deponggame
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/depong.jpg") no-repeat 0 0;
+}
+
+#deponggame:hover
+{ 
+background-position: 0 -131px;
+}
+
+#deponggame span
+{
+display: none;
+}
+		
+
+
+		
+#deponggame_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/depong_alt.jpg") no-repeat 0 -62px;
+}
+
+#deponggame_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#deponggame_alt span
+{
+display: none;
+}		
+		
+		
+#twopointfour
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/twopointfour.jpg") no-repeat 0 0;
+}
+
+#twopointfour:hover
+{ 
+background-position: 0 -131px;
+}
+
+#twopointfour span
+{
+display: none;
+}
+								
+		
+
+
+		#twopointfour_alt
+		{
+		display: block;
+		width: 99px;
+		height: 62px;
+		background: url("projects/twopointfour_alt.jpg") no-repeat 0 -62px;
+		}
+
+		#twopointfour_alt:hover
+		{ 
+		background-position: 0 0;
+		}
+
+		#twopointfour_alt span
+		{
+		display: none;
+		}
+								
+								
+#printball
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/printball.jpg") no-repeat 0 0;
+}
+
+#printball:hover
+{ 
+background-position: 0 -131px;
+}
+
+#printball span
+{
+display: none;
+}
+								
+								
+								
+#printball_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/printball_alt.jpg") no-repeat 0 -62px;
+}
+
+#printball_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#printball_alt span
+{
+display: none;
+}
+								
+								
+								
+								
+#theres
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/theres.jpg") no-repeat 0 0;
+}
+
+#theres:hover
+{ 
+background-position: 0 -131px;
+}
+
+#theres span
+{
+display: none;
+}
+								
+								
+								
+								
+
+
+								#theres_alt
+								{
+								display: block;
+								width: 99px;
+								height: 62px;
+								background: url("projects/theres_alt.jpg") no-repeat 0 -62px;
+								}
+
+								#theres_alt:hover
+								{ 
+								background-position: 0 0;
+								}
+
+								#theres_alt span
+								{
+								display: none;
+								}
+
+
+
+								
+								
+#grone
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/grone.jpg") no-repeat 0 0;
+}
+
+#grone:hover
+{ 
+background-position: 0 -131px;
+}
+
+#grone span
+{
+display: none;
+}
+								
+	
+	
+	
+
+								#grone_alt
+								{
+								display: block;
+								width: 99px;
+								height: 62px;
+								background: url("projects/grone_alt.jpg") no-repeat 0 -62px;
+								}
+
+								#grone_alt:hover
+								{ 
+								background-position: 0 0;
+								}
+
+								#grone_alt span
+								{
+								display: none;
+								}
+							
+#ewaste
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/ewaste.jpg") no-repeat 0 0;
+}
+
+#ewaste:hover
+{ 
+background-position: 0 -131px;
+}
+
+#ewaste span
+{
+display: none;
+}
+									
+
+#ewaste_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/ewaste_alt.jpg") no-repeat 0 -62px;
+}
+
+#ewaste_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#ewaste_alt span
+{
+display: none;
+}
+									
+									
+							
+#digitalrecycling
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/dr.jpg") no-repeat 0 0;
+}
+
+#digitalrecycling:hover
+{ 
+background-position: 0 -131px;
+}
+
+#digitalrecycling span
+{
+display: none;
+}
+								
+								
+	
+							#digitalrecycling_alt
+							{
+							display: block;
+							width: 99px;
+							height: 62px;
+							background: url("projects/dr_alt.jpg") no-repeat 0 -62px;
+							}
+
+							#digitalrecycling_alt:hover
+							{ 
+							background-position: 0 0;
+							}
+
+							#digitalrecycling_alt span
+							{
+							display: none;
+							}
+
+					
+#mess
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/mess.jpg") no-repeat 0 0;
+}
+
+#mess:hover
+{ 
+background-position: 0 -131px;
+}
+
+#mess span
+{
+display: none;
+}
+
+#mess_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/mess_alt.jpg") no-repeat 0 -62px;
+}
+
+#mess_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#mess_alt span
+{
+display: none;
+}
+
+#lsd
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/lsd.jpg") no-repeat 0 0;
+}
+
+#lsd:hover
+{ 
+background-position: 0 -131px;
+}
+
+#lsd span
+{
+display: none;
+}
+
+
+
+#lsd_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/lsd_alt.jpg") no-repeat 0 -62px;
+}
+
+#lsd_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#lsd_alt span
+{
+display: none;
+}
+
+
+
+
+
+#lsd2
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/lsd2.jpg") no-repeat 0 0;
+}
+
+#lsd2:hover
+{ 
+background-position: 0 -131px;
+}
+
+#lsd2 span
+{
+display: none;
+}
+
+
+
+#lsd2_alt
+{
+display: block;
+width: 99px;
+height: 62px;
+background: url("projects/lsd2_alt.jpg") no-repeat 0 -62px;
+}
+
+#lsd2_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#lsd2_alt span
+{
+display: none;
+}
+
+
+
+
+#defekt
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/defekt.jpg") no-repeat 0 0;
+}
+
+#defekt:hover
+{ 
+background-position: 0 -131px;
+}
+
+#defekt span
+{
+display: none;
+}
+
+
+#leftmenu
+{
+font-size: 9px;
+}
+
+#defekt_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/defekt_alt.jpg") no-repeat 0 -62px;
+}
+
+#defekt_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#defekt_alt span
+{
+display: none;
+}
+
+
+
+#resmini
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/resmini.jpg") no-repeat 0 0;
+}
+
+#resmini:hover
+{ 
+background-position: 0 -131px;
+}
+
+#resmini span
+{
+display: none;
+}
+
+
+#resmini_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/resmini_alt.jpg") no-repeat 0 -62px;
+}
+
+#resmini_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#resmini_alt span
+{
+display: none;
+}
+
+
+
+#masterclass
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/masterclass.jpg") no-repeat 0 0;
+}
+
+#masterclass:hover
+{ 
+background-position: 0 -131px;
+}
+
+#masterclass span
+{
+display: none;
+}
+
+
+#masterclass_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/masterclass_alt.jpg") no-repeat 0 -62px;
+}
+
+#masterclass_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#masterclass_alt span
+{
+display: none;
+}
+
+
+
+#corruptimator
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/corruptimator.jpg") no-repeat 0 0;
+}
+
+#corruptimator:hover
+{ 
+background-position: 0 -131px;
+}
+
+#corruptimator span
+{
+display: none;
+}
+
+
+#corruptimator_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/corruptimator_alt.jpg") no-repeat 0 -62px;
+}
+
+#corruptimator_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#corruptimator_alt span
+{
+display: none;
+}
+
+
+
+
+
+#banff
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/banff.jpg") no-repeat 0 0;
+}
+
+#banff:hover
+{ 
+background-position: 0 -131px;
+}
+
+#banff span
+{
+display: none;
+}
+
+
+#banff_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/banff_alt.jpg") no-repeat 0 -62px;
+}
+
+#banff_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#banff_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+
+#abstractris
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/abstractris.jpg") no-repeat 0 0;
+}
+
+#abstractris:hover
+{ 
+background-position: 0 -131px;
+}
+
+#abstractris span
+{
+display: none;
+}
+
+
+#abstractris_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/abstractris_alt.jpg") no-repeat 0 -62px;
+}
+
+#abstractris_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#abstractris_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+#refunctv2
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/refunctv2.jpg") no-repeat 0 0;
+}
+
+#refunctv2:hover
+{ 
+background-position: 0 -131px;
+}
+
+#refunctv2 span
+{
+display: none;
+}
+
+
+#refunctv2_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/refunctv2_alt.jpg") no-repeat 0 -62px;
+}
+
+#refunctv2_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#refunctv2_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+
+#lp
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/lp_home.jpg") no-repeat 0 0;
+}
+
+#lp:hover
+{ 
+background-position: 0 -131px;
+}
+
+#lp span
+{
+display: none;
+}
+
+
+#lp_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/lp_alt.jpg") no-repeat 0 -62px;
+}
+
+#lp_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#lp_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+#rf3
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/refunct3.jpg") no-repeat 0 0;
+}
+
+#rf3:hover
+{ 
+background-position: 0 -131px;
+}
+
+#rf3 span
+{
+display: none;
+}
+
+
+#rf3_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/refunct3_alt.jpg") no-repeat 0 -62px;
+}
+
+#rf3_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#rf3_alt span
+{
+display: none;
+}
+
+
+
+#uglitch
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/uglitch.gif") no-repeat 0 0;
+}
+
+#uglitch:hover
+{ 
+background-position: 0 -131px;
+}
+
+#uglitch span
+{
+display: none;
+}
+
+
+#uglitch_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/uglitch_alt.gif") no-repeat 0 -62px;
+}
+
+#uglitch_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#uglitch_alt span
+{
+display: none;
+}
+
+
+
+
+#desktop
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/corrupt_desktop.jpg") no-repeat 0 0;
+}
+
+#desktop:hover
+{ 
+background-position: 0 -131px;
+}
+
+#desktop span
+{
+display: none;
+}
+
+
+#desktop_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/corrupt_desktop_alt.jpg") no-repeat 0 -62px;
+}
+
+#desktop_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#desktop_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+
+
+
+#refunctv4
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/refunctv4.jpg") no-repeat 0 0;
+}
+
+#refunctv4:hover
+{ 
+background-position: 0 -131px;
+}
+
+#refunctv4 span
+{
+display: none;
+}
+
+
+#refunctv4_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/refunct_alt.jpg") no-repeat 0 -62px;
+}
+
+#refunctv4_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#refunctv4_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+
+#kindle
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/kindle.jpg") no-repeat 0 0;
+}
+
+#kindle:hover
+{ 
+background-position: 0 -131px;
+}
+
+#kindle span
+{
+display: none;
+}
+
+
+#kindle_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/kindle_alt.jpg") no-repeat 0 -62px;
+}
+
+#kindle_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#kindle_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+#twopointv2
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/towpint_v2.jpg") no-repeat 0 0;
+}
+
+#twopointv2:hover
+{ 
+background-position: 0 -131px;
+}
+
+#twopointv2 span
+{
+display: none;
+}
+
+
+#twopointv2_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/towpint_v2_alt.jpg") no-repeat 0 -62px;
+}
+
+#twopointv2_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#twopointv2_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+
+#kindleglitcher
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/kindleglitcher.png") no-repeat 0 0;
+}
+
+#kindleglitcher:hover
+{ 
+background-position: 0 -131px;
+}
+
+#kindleglitcher span
+{
+display: none;
+}
+
+
+#kindleglitcher_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/kindleglitcher_alt.png") no-repeat 0 -62px;
+}
+
+#kindleglitcher_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#kindleglitcher_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+#rf5
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/rf5.jpg") no-repeat 0 0;
+}
+
+#rf5:hover
+{ 
+background-position: 0 -131px;
+}
+
+#rf5 span
+{
+display: none;
+}
+
+
+#rf5_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/rf_alt.jpg") no-repeat 0 -62px;
+}
+
+#rf5_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#rf5_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+#rf6
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/rf6.png") no-repeat 0 0;
+}
+
+#rf6:hover
+{ 
+background-position: 0 -131px;
+}
+
+#rf6 span
+{
+display: none;
+}
+
+
+#rf6_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/rf6_alt.png") no-repeat 0 -62px;
+}
+
+#rf6_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#rf6_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+#sonic
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/sonic.jpg") no-repeat 0 0;
+}
+
+#sonic:hover
+{ 
+background-position: 0 -131px;
+}
+
+#sonic span
+{
+display: none;
+}
+
+
+#sonic_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/sonic_alt.jpg") no-repeat 0 -62px;
+}
+
+#sonic_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#sonic_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+#corruptyourself
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/corruptyourself.jpg") no-repeat 0 0;
+}
+
+#corruptyourself:hover
+{ 
+background-position: 0 -131px;
+}
+
+#corruptyourself span
+{
+display: none;
+}
+
+
+#corruptyourself_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/corruptyourself_alt.jpg") no-repeat 0 -62px;
+}
+
+#corruptyourself_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#corruptyourself_alt span
+{
+display: none;
+}
+
+
+
+
+
+#hotelglitch
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/hotelglitch.png") no-repeat 0 0;
+}
+
+#hotelglitch:hover
+{ 
+background-position: 0 -131px;
+}
+
+#hotelglitch span
+{
+display: none;
+}
+
+
+#hotelglitch_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/hotelglitch_alt.png") no-repeat 0 -62px;
+}
+
+#hotelglitch_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#hotelglitch_alt span
+{
+display: none;
+}
+
+
+
+
+#autocomplete
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/autocomplete_home.png") no-repeat 0 0;
+}
+
+#autocomplete:hover
+{ 
+background-position: 0 -131px;
+}
+
+#autocomplete span
+{
+display: none;
+}
+
+
+#autocomplete_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/autocomplete_alt.png") no-repeat 0 -62px;
+}
+
+#autocomplete_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#autocomplete_alt span
+{
+display: none;
+}
+
+
+
+
+
+#bbb
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/bbb_home.png") no-repeat 0 0;
+}
+
+#bbb:hover
+{ 
+background-position: 0 -131px;
+}
+
+#bbb span
+{
+display: none;
+}
+
+
+#bbb_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/bbb_alt.png") no-repeat 0 -62px;
+}
+
+#bbb_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#bbb_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+#faceglitch
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/faceglitch.png") no-repeat 0 0;
+}
+
+#faceglitch:hover
+{ 
+background-position: 0 -131px;
+}
+
+#faceglitch span
+{
+display: none;
+}
+
+
+#faceglitch_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/faceglitch_alt.png") no-repeat 0 -62px;
+}
+
+#faceglitch_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#faceglitch_alt span
+{
+display: none;
+}
+
+
+
+
+#rf7
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/rf7.png") no-repeat 0 0;
+}
+
+#rf7:hover
+{ 
+background-position: 0 -131px;
+}
+
+#rf7 span
+{
+display: none;
+}
+
+
+#rf7_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/rf7_alt.png") no-repeat 0 -62px;
+}
+
+#rf7_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#rf7_alt span
+{
+display: none;
+}
+
+
+
+
+
+#modular
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/menu_modular.png") no-repeat 0 0;
+}
+
+#modular:hover
+{ 
+background-position: 0 -131px;
+}
+
+#modular span
+{
+display: none;
+}
+
+
+#modular_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/menu_modular_alt.png") no-repeat 0 -62px;
+}
+
+#modular_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#modular_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+#broken
+{
+display: block;
+width: 210px;
+height: 131px;
+background: url("projects/menu_broken.png") no-repeat 0 0;
+}
+
+#broken:hover
+{ 
+background-position: 0 -131px;
+}
+
+#broken span
+{
+display: none;
+}
+
+
+#broken_alt
+{
+display: block;
+font-size: 9px;
+width: 99px;
+height: 62px;
+background: url("projects/menu_broken_alt.png") no-repeat 0 -62px;
+}
+
+#broken_alt:hover
+{ 
+background-position: 0 0;
+}
+
+#broken_alt span
+{
+display: none;
+}
+
+
+
+
+
+
+
+
+p#projectTitle {
+font-family: Helvetica, Arial, Sans-Serif;
+font-weight: bold;
+color: #333;
+font-size: 20px;
+line-height: 20px;
+letter-spacing: -1px;
+text-align: left;
+margin-bottom: 0px;
+}

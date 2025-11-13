@@ -1,0 +1,17 @@
+
+a { text-decoration: underline }
+
+#web2icons ul {
+margin: 0;
+padding: 1em 1em;
+list-style-type: none;
+}
+#web2icons ul li 
+{ 
+display: inline; 
+}
+#web2icons ul li a 
+{
+text-decoration: none;
+padding: .2em 1em;
+}

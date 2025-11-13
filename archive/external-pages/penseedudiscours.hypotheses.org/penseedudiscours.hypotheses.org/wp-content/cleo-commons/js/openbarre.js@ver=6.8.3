@@ -1,0 +1,59 @@
+if (document.querySelector("#all-oe-button")) {
+    const button = document.querySelector("#all-oe-button");
+    const menu = document.querySelector("#all-oe-menu");
+
+    button.addEventListener("mousedown",  () => {
+        if (!button.classList.contains("opened")) {
+            button.classList.add("opened");
+            menu.classList.add("visible");
+        } else {
+            button.classList.remove("opened");
+            menu.classList.remove("visible");
+        }
+    });
+
+    document.body.addEventListener("mousedown", (e) => {
+        let isClickInsideButton = button.contains(e.target);
+        let isClickInsideMenu = menu.contains(e.target);
+
+        if (!isClickInsideButton && !isClickInsideMenu) {
+            button.classList.remove("opened");
+            menu.classList.remove("visible");
+        }
+    });
+}
+
+// Targets OpenEdition Search with its background in DOM.
+const oeSearchModal = document.querySelector("#oesearch-modal");
+const oeSearchModalBackground = document.querySelector("#oesearch-modal-bg");
+
+if (oeSearchModal) {
+    // Displays OpenEdition Search modal.
+    document.querySelectorAll(".oesearch__button").forEach(function(button) {
+        button.addEventListener("click", function() {
+        oeSearchModal.hidden = false;
+        oeSearchModalBackground.hidden = false;
+        });
+    });
+
+    // Closes OpenEdition Search modal with "Escape".
+    document.onkeydown = function() {
+        const e = window.event;
+        if (e.key === "Escape") {
+            oeSearchModal.hidden = true;
+            oeSearchModalBackground.hidden = true;
+        }
+    };
+
+    // Closes OpenEdition Search modal with "Close" button.
+    document.querySelector("#oesearch-modal-close").addEventListener("click", function() {
+        oeSearchModal.hidden = true;
+        oeSearchModalBackground.hidden = true;
+    });
+
+    // Closes OpenEdition Search modal when clicking on the background.
+    oeSearchModalBackground.addEventListener("click", function() {
+        oeSearchModal.hidden = true;
+        oeSearchModalBackground.hidden = true;
+    });
+}

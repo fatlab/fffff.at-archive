@@ -1,0 +1,13 @@
+#content { max-width: 72em; }
+#col1 {
+  float: left;
+  display: inline;
+  width: 46%;
+}
+#col2 {
+  float: right;
+  display: inline;
+  width: 46%;
+}
+.album-thumbnail { max-width: 30%; }
+#o_o a.blocklink { font-size: 24px; }

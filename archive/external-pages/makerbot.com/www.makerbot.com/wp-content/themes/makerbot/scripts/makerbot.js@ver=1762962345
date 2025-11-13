@@ -1,0 +1,235 @@
+function load_mb_marketoForms() {
+  //var loadedForms = [];
+
+  if (jQuery(".page-form").length > 0) {
+    jQuery(".page-form").each(function () {
+      var thisForm = jQuery(this);
+      //var formMktId = jQuery(this).attr("id");
+      var formID = thisForm.data("id");
+      formID = parseInt(formID);
+
+      thisForm.attr("id", "mktoForm_" + formID);
+
+      var thankYouPage =
+        mb_object.site_url +
+        "/contact-us/thank-you-for-requesting-a-quote-confirmation";
+
+      if (typeof thisForm.data("thankyou") !== "undefined") {
+        thankYouPage = thisForm.data("thankyou");
+      }
+
+      console.log("Thank You Page");
+      console.log(thankYouPage);
+
+      // console.log("FormID");
+      // console.log(typeof formID);
+
+      // console.log("Array Include");
+      // console.log(loadedForms.includes(formID));
+
+      //if (loadedForms.includes(formID) === false) {
+      // console.log("Running");
+      // //loadedForms.push(formID);
+
+      // loadedForms.push(formID);
+
+      //alert("Loading");
+
+      MktoForms2.loadForm(
+        "//pages.makerbot.com",
+        "444-ZTM-866",
+        formID,
+        function (form) {
+          jQuery(`${"#mktoForm_" + formID} [name=referrer_URL]`).val(
+            window.location.href
+          );
+          form.onSuccess(function (values, followUpUrl) {
+            location.href = thankYouPage;
+            return false;
+
+            // 	if (jQuery('#overlayBG').length > 0) {
+
+            // 		thisForm.html("");
+
+            // 		jQuery("#overlayBG,#confirmation").show();
+
+            // 		return false;
+
+            // 	}
+          });
+        }
+      );
+      // }
+    });
+  }
+}
+
+function loadPopUpForm(modalForm) {
+  var formId = modalForm.data("id");
+  var thankYouPage =
+    mb_object.site_url +
+    "/contact-us/thank-you-for-requesting-a-quote-confirmation";
+
+  if (typeof modalForm.data("thankyou") !== "undefined") {
+    thankYouPage = modalForm.data("thankyou");
+  }
+
+  if (jQuery(".page-form").length > 0) {
+    jQuery(".page-form").each(function () {
+      jQuery(this).html("");
+      jQuery(this).removeAttr("id");
+      var fid = jQuery(this).data("id");
+
+      if (jQuery(`[data-id = ${fid}].page-form`).length > 1) {
+        jQuery(`[data-id = ${fid}].page-form`)[1].remove();
+      }
+    });
+  }
+
+  // if (jQuery("#mktoForm_" + formId + ".page-form").length > 0) {
+  //   jQuery("#mktoForm_" + formId + ".page-form").html("");
+  //   jQuery("#mktoForm_" + formId + ".page-form").removeAttr("id");
+
+  // }
+
+  modalForm.attr("id", "mktoForm_" + formId);
+
+  MktoForms2.loadForm(
+    "//pages.makerbot.com",
+    "444-ZTM-866",
+    formId,
+    function (form) {
+      jQuery(`${"#mktoForm_" + formId} [name=referrer_URL]`).val(
+        window.location.href
+      );
+      form.onSuccess(function (values, followUpUrl) {
+        location.href = thankYouPage;
+        return false;
+      });
+    }
+  );
+}
+
+function closePopUpForm(formModal) {
+  if (formModal.length > 0) {
+    formModal.html("");
+    formModal.removeAttr("id");
+  }
+
+  load_mb_marketoForms();
+}
+
+jQuery(function ($) {
+  jQuery("li.header__title_sub_link > a").hover(
+    function () {
+      // console.log("hovered");
+      // Get the data-src value of the hovered LI
+      var dataSrc = jQuery(this).parent("li").data("src");
+
+      // Change the image in the container based on data-src
+
+      if (dataSrc) {
+        jQuery(this)
+          .closest(".content_card")
+          .find(".img_card > a > img")
+          .attr("src", dataSrc);
+      }
+    },
+    function () {
+      let sourceImageSrc = jQuery(this)
+        .closest(".content_card")
+        .find(".img_card > a > img")
+        .data("src");
+
+      jQuery(this)
+        .closest(".content_card")
+        .find(".img_card > a > img")
+        .attr("src", sourceImageSrc);
+    }
+  );
+
+  // for search submit
+  jQuery("#search-form").on("submit", function (event) {
+    event.preventDefault();
+
+    // Loop through each input field
+    jQuery(this)
+      .find("input[type='hidden']")
+      .each(function () {
+        const inputValue = jQuery(this).val().trim(); // Get the trimmed value
+        // Disable the input if it's empty
+        if (inputValue === "") {
+          jQuery(this).prop("disabled", true);
+        }
+      });
+
+    // Submit the form (after disabling empty fields)
+    this.submit();
+  });
+
+  //*********end search submit
+
+  if (jQuery(".content__popup--link").length > 0) {
+    jQuery(".content__popup--link").magnificPopup({
+      type: "inline",
+      midClick: true,
+      callbacks: {
+        open: function () {
+          closeBtn();
+        },
+        close: function () {
+          var formModal = jQuery(this.content).find("form");
+          console.log("Form Modal");
+          console.log(formModal);
+
+          closePopUpForm(formModal);
+        },
+      },
+    });
+  }
+
+  jQuery(".content__popup--link").on("click", function () {
+    var hrefAttr = $(this).attr("href");
+    var modalId = hrefAttr.substring(1);
+    var modalForm = jQuery("#" + modalId + " form");
+    loadPopUpForm(modalForm);
+  });
+
+  load_mb_marketoForms();
+
+  if (
+    jQuery(".tab-nav").length > 0 &&
+    jQuery(".tab-nav li.active").length == 0
+  ) {
+    jQuery(".tab-nav li:first-child").addClass("active");
+    jQuery(".tab-data-block").addClass("tab-hidden");
+    jQuery(".tab-data-block:first").removeClass("tab-hidden");
+  }
+
+  if (jQuery(".visual-module .forward__hyperlink").length > 0) {
+    jQuery(".visual-module .forward__hyperlink").on("click", function () {
+      let tabId = jQuery(this).data("tab-id");
+
+      if (jQuery(`li[data-tab=${tabId}]`).length > 0) {
+        jQuery(`li[data-tab=${tabId}]`).trigger("click");
+      }
+    });
+  }
+
+  if (jQuery(".gsap-sec .firstView").length > 0) {
+    jQuery(".scroll-tab").on("click", function () {
+      let tabId = $(this).data("id");
+      jQuery("html, body").animate(
+        {
+          scrollTop: jQuery(".gsap-sec .firstView").offset().top + 20,
+        },
+        500
+      );
+      jQuery(`[data-tab-slide=${tabId}]`).trigger("click");
+    });
+  }
+
+  // if (jQuery(".mb-lazy").length > 0) {
+  //   jQuery(".mb-lazy").lazyload();
+  // }
+});

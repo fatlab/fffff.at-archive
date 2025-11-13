@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "tm Genova";
+  src: url("../../fonts/tmGenovaVF.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+0020-007F, U+00A0-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2000-206F, U+20A0-20CF, U+2100-214F;
+}
+
+:root {
+  /* default styles */
+
+  font-family: "tm Genova", GenevaRegular, "Geneva", Genova, Arial, sans-serif;
+  letter-spacing: 0.05ex;
+
+  /* named colors */
+
+  --color-dunkelgrau: #333333;
+  --color-rosa1: #f0a0be;
+  --color-rosa1light: #ebbacd;
+  --color-flieder1: #bfaafa;
+  --color-flieder1light: #d2cdfa;
+  --color-flieder2: #786eff;
+  --color-magentarot: #ff5573;
+  --color-hellgruen: #78ff78;
+  --color-schwarz: #000000;
+  --color-weiss: #ffffff;
+  --color-ecogruen: #b1fca3;
+  --color-etwasweiss: #FFFFFF0D;
+
+  /* shadows and gradients */
+
+  --shadow-glow-white: 0px 0px 25px 5px #fff;
+  --shadow-glow-green: 0px 0px 25px 5px #6fa864;
+  --shadow-screen-inside: inset 0px 0px var(--spacing-l) var(--color-background);
+  --shadow-screen-outside: 0px 0px var(--spacing-m) #fff6;
+
+  /* theme colors: 
+  
+    see /css/themes/ 
+    
+  */
+
+  /* derived functional colors */
+
+  --color-link: var(--color-text);
+  --color-link-mouseover: var(--color-akzent1-mouseover);
+
+  /* spacings */
+
+  --spacing-block-side: 20px;
+  --spacing-container-top: 35px;
+
+  --spacing-xs: 5px;
+  --spacing-s: 10px;
+  --spacing-m: 20px;
+  --spacing-ml: 30px;
+  --spacing-l: 40px;
+  --spacing-xl: 80px;
+
+  --layout-maxwidth: 1400px;
+
+  /* typography */
+
+  --font-fix-top: -0.1ex + 3px;
+  --font-fix-bottom: 0.33ex + 3px;
+
+  /* defaults */
+
+  background-color: var(--color-background);
+  color: var(--color-text);
+}

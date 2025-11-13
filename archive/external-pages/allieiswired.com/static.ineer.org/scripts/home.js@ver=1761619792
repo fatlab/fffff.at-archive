@@ -1,0 +1,653 @@
+const getImageUrl = (type, id) => {
+    return `https://imgts.sportpulseapiz.com/football/${type}/${id}/image/small`;
+};
+
+
+// START:Tab
+jQuery( document ).ready( function(){
+	jQuery('body').on('click','.toggle-btn', function(){
+		jQuery(this).closest('.gmd-match-footer__streamer').toggleClass('active')
+	})
+	jQuery('.btn-livescore').on('click',function(){
+        jQuery(this).toggleClass('active')
+		if( jQuery(this).hasClass('active') ){
+			showLiveScore();
+        }else{
+			hideLiveScore();
+		}
+	})
+	jQuery('.sports-bars .nav-link').on('click',function(){
+		hideLiveScore();
+	})
+	function hideLiveScore(){
+		// Tab Nav
+		jQuery('.sports-bars .nav-link').removeClass('active');
+		jQuery('#football-tab').addClass('active');
+		// Tab Pane
+		jQuery('.tab-pane').removeClass('active show');
+		jQuery('#football').addClass('active show');
+		jQuery('#livescore_iframe').attr('src','');
+        jQuery('.filter-row').attr('style','');
+        jQuery('.btn-livescore').removeClass('active');
+	}
+	function showLiveScore(){
+		jQuery('#football-tab').removeClass('active');
+		jQuery('.tab-pane').removeClass('active show');
+		jQuery('#livescore').addClass('active show');
+		jQuery('#livescore_iframe').attr('src',jQuery('#livescore_iframe').data('src') );
+		jQuery('.filter-row').hide();
+	}
+})
+// END: tab
+
+// START: Hover
+jQuery(document).ready(function () {
+    // Start: statistics
+    const techKind = {
+        ball_possession: 'TL kiểm soát bóng',
+        corner_kicks: 'Phạt góc',
+        goals: 'Bàn thắng',
+        penalty: 'Phạt đền',
+        assists: 'Kiến tạo',
+        red_cards: 'Thẻ đỏ',
+        yellow_cards: 'Thẻ vàng',
+        shots: 'Sút bóng',
+        shots_on_target: 'Sút cầu môn',
+        passes: 'Chuyền bóng',
+        passes_accuracy: 'Chuyền bóng thành công',
+        dribble: 'Rê bóng',
+        dribble_succ: 'Rê bóng thành công',
+        clearances: 'Đánh chặn',
+        blocked_shots: 'Cản bóng',
+        shots_off_target: 'Sút ngoài cầu môn',
+        attacks: 'Tấn công',
+        dangerous_attack: 'Tấn công nguy hiểm',
+        interceptions: 'Cắt bóng',
+        tackles: 'Tắc bóng',
+        key_passes: 'Chuyền bóng quan trọng',
+        crosses: 'Tạt bóng',
+        crosses_accuracy: 'Tạt bóng thành công',
+        long_balls: 'Chuyền dài',
+        long_balls_accuracy: 'Chuyền dài chính xác',
+        duels: 'Đối đầu',
+        duels_won: 'Đối đầu thành công',
+        fouls: 'Phạm lỗi',
+        was_fouled: 'Bị phạm lỗi',
+        goals_against: 'Bàn thua',
+        offsides: 'Việt vị',
+        yellow2red_cards: 'Thẻ vàng biến thành thẻ đỏ',
+        freekicks: 'Đá phạt trực tiếp',
+        freekick_goals: 'Bàn từ đá phạt',
+        hit_woodwork: 'Sút trúng cột dọc',
+        fastbreaks: 'Phản công nhanh',
+        fastbreak_shots: 'Sút trong phản công nhanh',
+        fastbreak_goals: 'Bàn từ phản công nhanh',
+        poss_losts: 'Mất bóng',
+    };
+
+    function buildTags(htmlTemple, data) {
+        return htmlTemple.replace(/\{\$(\w+)\}/g, function (a, b) {
+          return b in data ? data[b] : '';
+        });
+    }
+
+    function getTabLabel (type) {
+        switch (type) {
+            case 0:
+                return 'Tất cả';
+            case 1:
+                return 'Hiệp 1';
+            case 2:
+                return 'Hiệp 2';
+            case 3:
+                return 'Hiệp Phụ 1';
+            case 4:
+                return 'Hiệp Phụ 2';
+            default:
+                return 'Unknown';
+        }
+    }
+
+    function calculatePercentage(value, total) {
+        if (total === 0) return '0%';
+        return `${((value / total) * 100).toFixed(2)}%`;
+    }
+
+    function getProcessedStats (statistics, statisticAll, homeTeamId, awayTeamId) {
+        const homeStat = statistics.stats.find(
+          (stat) => stat.team_id === homeTeamId
+        );
+        const awayStat = statistics.stats.find(
+          (stat) => stat.team_id === awayTeamId
+        );
+
+        // const homeStatAll = statisticAll.stats.find(
+        //   (stat) => stat.team_id === homeTeamId
+        // );
+        // const awayStatAll = statisticAll.stats.find(
+        //   (stat) => stat.team_id === awayTeamId
+        // );
+
+        if (!homeStat || !awayStat) return [];
+
+        return Object.keys(techKind).map((key) => ({
+            key,
+            type: techKind[key],
+            home: key === 'ball_possession' ? `${homeStat[key]}%` : homeStat[key],
+            away: key === 'ball_possession' ? `${awayStat[key]}%` : awayStat[key],
+            showHomePre: calculatePercentage(
+              Number(homeStat[key]),
+              Number(homeStat[key]) + Number(awayStat[key])
+            ),
+            showAwayPre: calculatePercentage(
+              Number(awayStat[key]),
+              Number(homeStat[key]) + Number(awayStat[key])
+            ),
+            winHome:
+              Number(homeStat[key]) > Number(awayStat[key])
+                ? 'hpu-stats__home-win'
+                : '',
+            winAway:
+              Number(awayStat[key]) > Number(homeStat[key])
+                ? 'hpu-stats__away-win'
+                : '',
+        }))
+        .filter((stat) => {
+            if (
+              stat.key === 'ball_possession' &&
+              homeStat[stat.key] !== undefined &&
+              awayStat[stat.key] !== undefined
+            ) {
+              return true;
+            }
+
+            if(homeStat[stat.key] === 0 && awayStat[stat.key] === 0) {
+                return false;
+            }
+
+            // if (
+            //   !homeStatAll ||
+            //   !awayStatAll ||
+            //   (homeStatAll[stat.key] === 0 && awayStatAll[stat.key] === 0)
+            // ) {
+            //   return false;
+            // }
+
+            return !isNaN(Number(stat.home)) && !isNaN(Number(stat.away));
+        });
+    }
+    // End: statistics
+
+    // Start: incidents
+    const iconMapIncidents = {
+        1: {
+            icon: "#icon-goal",
+            width: "25px",
+            height: "25px",
+        },
+        3: {
+            icon: "#icon-yellow-card",
+            width: "11px",
+            height: "13px",
+        },
+        4: {
+            icon: "#icon-red-card",
+            width: "11px",
+            height: "13px",
+        },
+        8: {
+            icon: "#icon-Penalty",
+            width: "20px",
+            height: "20px",
+        },
+        9: {
+            icon: "#icon-substitution",
+            width: "14px",
+            height: "18px",
+        },
+        15: {
+            icon: "#icon-twoyellow-red",
+            width: "20px",
+            height: "20px",
+        },
+        16: {
+            icon: "#icon-PenaltySaved",
+            width: "20px",
+            height: "20px",
+        },
+        17: {
+            icon: "#icon-soccer",
+            width: "20px",
+            height: "20px",
+        },
+        21: {
+            icon: "#icon-shots-on-target",
+            width: "19px",
+            height: "14px",
+        },
+        28: {
+            icon: "#icon-var",
+            width: "20px",
+            height: "13px",
+        },
+        29: {
+            icon: "#icon-Penalty",
+            width: "20px",
+            height: "20px",
+        },
+        30: {
+            icon: "#icon-PenaltySaved",
+            width: "20px",
+            height: "20px",
+        },
+    };
+
+    const getEventClass = (incident) => {
+        if (incident.position === 1) {
+            return 'hpu-summary-block__event--home';
+        } else if(incident.position === 2) {
+            return 'hpu-summary-block__event--away';
+        }
+
+        return '';
+    };
+
+    const formatTitle = (type) => {
+        const titles = {
+          11: "HT",
+          12: "FT",
+          26: "ET",
+          27: "PEN",
+        };
+
+        return titles[type] || "Unknown";
+    };
+
+    function getDisplayTime(incident, currentStatus, isShowTimePlus ) {
+        let displayTime = incident.time;
+        let injuryStartTime = null;
+        let extraTime = false;
+        switch (incident.type) {
+            case 19: // Injury time start
+            injuryStartTime = incident.time;
+            break;
+            case 11: // First half end
+            case 12: // Second half end
+            injuryStartTime = null;
+            extraTime = incident.time >= 105;
+            break;
+        }
+
+        // fix lỗi hiệp 1 lại hiển thị số phút lớn hơn 45
+        if (isShowTimePlus && ![11, 12, 26].includes(incident.type) && incident.time > 45) {
+            // if (currentStatus === 26 && incident.time > 120) {
+            //   displayTime = `120 + ${incident.time - 120}`;
+            // } else if (incident.time > 105 && incident.time < 108) {
+            //   displayTime = `105 + ${incident.time - 105}`;
+            // } else
+            if (currentStatus === 11 && incident.time > 90) {
+            displayTime = `90 + ${incident.time - 90}`;
+            } else if (currentStatus === 0 && incident.time > 45) {
+            displayTime = `45 + ${incident.time - 45}`;
+            }
+        }
+
+        if ([11, 12, 26].includes(incident.type)) {
+            displayTime = "";
+        } else if (injuryStartTime !== null && !extraTime) {
+            // Calculate added time if in injury time
+            let addedTime = Math.abs(incident.time - (injuryStartTime ?? 0));
+            displayTime =
+            addedTime === 0
+                ? injuryStartTime
+                : `${Math.min(injuryStartTime ?? 0, incident.time)}+${addedTime}`;
+        }
+
+        return displayTime;
+    }
+
+    const getPlayerName = (incident) => {
+        let str = null;
+        if (incident.player) {
+          str = incident.player.short_name || incident.player.name;
+        }
+        if (incident.playerIn) {
+          str = incident.playerIn.short_name || incident.playerIn.name;
+        }
+        if (incident.playerOut) {
+          str = incident.playerOut.short_name || incident.playerOut.name;
+        }
+
+        return str ? str : '';
+    };
+
+    const getPlayerName1 = (incident, type) => {
+        switch (type) {
+            case "in":
+              return incident.playerIn ? incident.playerIn.short_name || incident.playerIn.name : "";
+            case "out":
+              return incident.playerOut ? incident.playerOut.short_name || incident.playerOut.name : "";
+            default:
+              return incident.player ? incident.player.short_name || incident.player.name : "";
+          }
+    };
+
+    const getPlayerImageUrl = (incident, type) => {
+        switch (type) {
+          case "in":
+            return getImageUrl('player', incident.playerIn ? incident.playerIn.id : 'default');
+          case "out":
+            return getImageUrl('player', incident.playerOut ? incident.playerOut.id: 'default');
+          default:
+            return getImageUrl('player', incident.player ? incident.player.id: 'default');
+        }
+    };
+
+    function getProcessedIncidents(incidentData) {
+        let tempHomeScore = 0;
+        let tempAwayScore = 0;
+        let currentStatus = 0;
+
+        // check lỗi 2 ht
+        const incidents = [];
+        for (const incident of incidentData) {
+            if(incident.type === 11) {
+                const check = incidents.find((ind) => ind.type === 11);
+                if(!check) {
+                    incidents.push(incident);
+                }
+            } else {
+                incidents.push(incident);
+            }
+        }
+        
+        const incidentsPlus = incidents.filter((incident) => [11, 12, 26].includes(incident.type));
+        const isShowTimePlus = incidentsPlus.length > 0 ? true : false;
+
+        return incidents
+            .filter((incident) => incident.type !== 19) // Ensuring `incident` is treated as IIncident
+            .map((incident) => {
+                if (![11, 12, 26, 27].includes(incident.type)) {
+                    tempHomeScore = incident.home_score || tempHomeScore;
+                    tempAwayScore = incident.away_score || tempAwayScore;
+                } else {
+                    incident.home_score = tempHomeScore;
+                    incident.away_score = tempAwayScore;
+                    currentStatus = incident.type;
+                }
+
+                return {
+                    ...incident,
+                    displayTime: getDisplayTime(incident, currentStatus, isShowTimePlus),
+                };
+            })
+            .reverse();
+    };
+
+    const shouldShowScore = (incident) => incident.type && [1, 8, 7, 29, 17, 16, 30].includes(incident.type);
+
+    // End: incidents
+    var matchIdHover = null;
+    var activeHoverPopup = false;
+    var hoverType = null;
+    var scrollTop = 0
+
+    function getStatistics() {
+        if(!matchIdHover || hoverType != 'statistics') {
+            return;
+        }
+
+        const homeTeamId = jQuery(`#match-child-${matchIdHover}`).attr('data-home-team-id');
+        const awayTeamId = jQuery(`#match-child-${matchIdHover}`).attr('data-away-team-id');
+        const url = `${sport_data.football.api}/match/${matchIdHover}/statistics`;
+        jQuery.getJSON(url, (rs) => {
+            const statistics = rs.data;
+            const statisticAll = statistics ? statistics.find((item) => item.type === 0) : null;
+            let check = false;
+            if (statisticAll) {
+                for (const stats of statisticAll.stats) {
+                    if(check) {
+                        break;
+                    }
+                    for (const [key, value] of Object.entries(stats)) {
+                        if(key !== 'team_id' && value != 0) {
+                            check = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if(check) {
+                let tabHtml = '';
+                let contentHtml = [];
+                const statisticsTemplate = jQuery('#statisticsTemplate').html();
+                const statisticsContentTemplate = jQuery('#statisticsContentTemplate').html();
+                const statisticsItemTemplate = jQuery('#statisticsItemTemplate').html();
+                const elementId = `#match-popup-${matchIdHover}`;
+                let dataType = jQuery(`${elementId} .statics-popup .hpu-nav-item .active`).attr('data-type');
+                let activeType = 0;
+                if(dataType) {
+                    activeType = dataType;
+                }
+
+                for (const statis of statistics) {
+                    tabHtml += `
+                        <li class='hpu-nav-item nav-item'>
+                            <a 
+                                class='nav-link ${statis.type == activeType ? 'active' : '' }' 
+                                data-target="#statistics-${matchIdHover}-${statis.type}" 
+                                data-type="${statis.type}" 
+                                data-toggle="tab"
+                            >
+                                ${ getTabLabel(statis.type) }
+                            </a>
+                        </li>
+                    `;
+                    const processedStats = getProcessedStats(statis, statisticAll, homeTeamId, awayTeamId);
+                    let lineHtml = [];
+                    for (const line of processedStats) {
+                        lineHtml.push(buildTags(statisticsItemTemplate, line));
+                    }
+                    contentHtml.push(buildTags(statisticsContentTemplate, {
+                        id: `statistics-${matchIdHover}-${statis.type}`,
+                        class: statis.type == activeType ? 'fade show active' : '',
+                        listItem: lineHtml.join(''),
+                    }));
+                }
+                jQuery(`${elementId} .statics-popup`).html(buildTags(statisticsTemplate, {
+                    tabList: tabHtml,
+                    tabContent: contentHtml.join(''),
+                }));
+
+                // scroll lại vị trí cũ sau khi thay html
+                jQuery(`${elementId} .hpu-home-scrollable-content`).scroll(function (event) {
+                    scrollTop = jQuery(this).scrollTop();
+                });
+                jQuery(`${elementId} .hpu-home-scrollable-content`).scrollTop(scrollTop);
+
+                jQuery(`${elementId} .statics-popup`).removeClass('d-none');
+                jQuery(`${elementId} .incident-popup`).addClass('d-none');
+                jQuery(`${elementId}`).addClass('statistic-section');
+                // ẩn toàn bộ popup trừ item đang hover
+                jQuery('.match-popup').each(function() {
+                    const itemId = jQuery(this).attr('id');
+                    if( `#${itemId}` != elementId) {
+                        jQuery(this).addClass('d-none');
+                    }
+                })
+                jQuery(`${elementId}`).removeClass('d-none');
+            }
+
+            setTimeout(() => {
+                getStatistics()
+            }, 20000);
+        })
+    }
+
+    jQuery(document).on('mouseenter', '.icon-haflt', function() {
+        if (jQuery(window).width() < 768) return;
+        matchIdHover = jQuery(this).attr('data-fid');
+        const status = jQuery(`#match-child-${matchIdHover}`).attr('data-status');
+        if(status == 1) {
+            return;
+        }
+        hoverType = 'statistics';
+
+        getStatistics();
+    });
+
+    jQuery(document).on('mouseleave', '.icon-haflt', function() {
+		if (jQuery(window).width() < 768) return;
+        matchIdHover = jQuery(this).attr('data-fid');
+        setTimeout(() => {
+            if (!activeHoverPopup) {
+                jQuery(`#match-popup-${matchIdHover}`).addClass('d-none');
+                matchIdHover = null;
+                scrollTop = 0;
+            }
+        }, 50);
+    });
+
+    function getIncidents() {
+        if(!matchIdHover || hoverType != 'incidents') {
+            return;
+        }
+
+        const url = `${sport_data.football.api}/match/${matchIdHover}/incidents`;
+        jQuery.getJSON(url, (rs) => {
+            const incidents = rs.data;
+            const incidentsTemplate = jQuery('#incidentsTemplate').html();
+            const incidentsItemTemplate = jQuery('#incidentsItemTemplate').html();
+
+            const processedIncidents = getProcessedIncidents(incidents);
+            if(processedIncidents.length === 0) {
+                return
+            }
+            const listHtml = [];
+            for (const incident of processedIncidents) {
+                const playerImage =getPlayerImageUrl(incident);
+                const playerName = getPlayerName1(incident);
+                const playerImageIn = getPlayerImageUrl(incident, 'in');
+                const playerNameIn = getPlayerName1(incident, 'in');
+                const playerImageOut = getPlayerImageUrl(incident, 'out');
+                const playerNameOut = getPlayerName1(incident, 'out');
+
+                const data = {
+                    displayTime: incident.displayTime ? incident.displayTime + "'" : "",
+                    eventClass: getEventClass(incident),
+                    scoreShowBtn: shouldShowScore(incident) ? '' : 'd-none',
+                    homeScore: incident.home_score || 0,
+                    awayScore: incident.away_score || 0,
+                    scoreShow: incident.type && [11, 12, 26, 27].includes(incident.type) ? 'd-flex' : 'd-none',
+                    scorClass: incident.home_score < incident.away_score ? 'hpu-summary-block__midfield-away' : '',
+                    title: formatTitle(incident.type),
+                    type: incident.type,
+                    icon: iconMapIncidents[incident.type]?.icon,
+                    iconClass: incident.type && ![11, 12, 26, 27].includes(incident.type) ? '' : 'd-none',
+                    iconWidth: iconMapIncidents[incident.type]?.width,
+                    iconHeight: iconMapIncidents[incident.type]?.height,
+                    playerClass: incident.type && [1, 8, 7, 29, 28, 17, 16, 3, 4].includes(incident.type) ? '' : 'd-none',
+                    playerImage,
+                    playerName,
+                    playerClassIn: incident.type !== 9 || !incident.playerIn ? 'd-none' : '',
+                    playerImageIn,
+                    playerNameIn,
+                    playerClassOut: incident.type !== 9 || !incident.playerOut ? 'd-none' : '',
+                    playerImageOut,
+                    playerNameOut,
+                    playerName1: playerNameIn ? playerNameIn : getPlayerName(incident),
+                    playerClassOut1: !incident.playerOut ? 'd-none' : '',
+                }
+
+                listHtml.push(buildTags(incidentsItemTemplate, data));
+            }
+            const elementId = `#match-popup-${matchIdHover}`;
+            jQuery(`${elementId} .incident-popup`).html(buildTags(incidentsTemplate, {
+                incidentsList: listHtml.join(''),
+                classIconStart: processedIncidents.length === 0 ? 'd-none' : ''
+            }));
+            
+            // scroll lại vị trí cũ sau khi thay html
+            jQuery(`${elementId} .hpu-home-scrollable-content`).scroll(function (event) {
+                scrollTop = jQuery(this).scrollTop();
+            });
+            jQuery(`${elementId} .hpu-home-scrollable-content`).scrollTop(scrollTop);
+
+            jQuery(`${elementId} .statics-popup`).addClass('d-none');
+            jQuery(`${elementId} .incident-popup`).removeClass('d-none');
+            jQuery(`${elementId}`).removeClass('statistic-section');
+            // ẩn toàn bộ popup trừ item đang hover
+            jQuery('.match-popup').each(function() {
+                const itemId = jQuery(this).attr('id');
+                if( `#${itemId}` != elementId) {
+                    jQuery(this).addClass('d-none');
+                }
+            })
+            jQuery(`${elementId}`).removeClass('d-none');
+
+            setTimeout(() => {
+                getIncidents()
+            }, 20000);
+        })
+    }
+
+    jQuery(document).on('mouseenter', '.grid-match__status', function() {
+		if (jQuery(window).width() < 768) return;
+        matchIdHover = jQuery(this).attr('data-fid');
+        const status = jQuery(`#match-child-${matchIdHover}`).attr('data-status');
+        if(status == 1) {
+            return;
+        }
+        hoverType = 'incidents';
+        getIncidents();
+    });
+    
+    jQuery(document).on('mouseleave', '.grid-match__status', function() {
+		if (jQuery(window).width() < 768) return;
+        matchIdHover = jQuery(this).attr('data-fid');
+        setTimeout(() => {
+            if (!activeHoverPopup) {
+                jQuery(`#match-popup-${matchIdHover}`).addClass('d-none');
+                matchIdHover = null;
+                scrollTop = 0;
+            }
+        }, 50);
+    });
+
+    jQuery(document).on('mouseenter', '.match-popup', function() {
+		if (jQuery(window).width() < 768) return;
+        activeHoverPopup = true;
+    });
+
+    jQuery(document).on('mouseleave', '.match-popup', function() {
+		if (jQuery(window).width() < 768) return;
+        activeHoverPopup = false;
+        jQuery(`#match-popup-${matchIdHover}`).addClass('d-none');
+        matchIdHover = null;
+        scrollTop = 0;
+    });
+});
+// END: Hover
+
+function popup_check_mobile(){
+	let is_mobile = false;
+	if (jQuery(window).width() < 768) {
+        return;
+    }
+}
+
+jQuery(document).on('click', '.sports-bars .nav-item .nav-link', function() {
+    setTimeout(() => {
+        const target = document.querySelector('.nav-item .nav-link.active');
+        if (target && (target.id === 'tennis-tab' || target.id === 'basketball-tab' || target.id === 'football-tab')) {
+            jQuery('.nav.nav-tabs').addClass('hide-blur');
+        } else {
+            jQuery('.nav.nav-tabs').removeClass('hide-blur');
+        }
+
+        if(!target) {
+            return;
+        }
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+   }, 300);
+})

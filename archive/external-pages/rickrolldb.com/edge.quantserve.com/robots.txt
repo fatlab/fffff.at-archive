@@ -1,0 +1,10 @@
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: AdsBot-Google
+User-agent: GoogleOther
+Disallow: /
+Allow: /quant.js
+Allow: /.well-known/privacy-sandbox-attestations.json
+
+User-agent: *
+Disallow: /

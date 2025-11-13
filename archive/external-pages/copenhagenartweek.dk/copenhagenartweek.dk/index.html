@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Copenhagen Art Week En Kulturel Renæssance i Den Danske Hovedstad | Beregner.org</title>
+	
+	<script async src="../../../pagead2.googlesyndication.com/pagead/js/adsbygoogle.js@client=ca-pub-1439594428948409"
+	   crossorigin="anonymous"></script>
+	   
+	   <script type="text/javascript" async src="../../../hb-targa.s3.us-east-2.amazonaws.com/targa-calculator/beregner.org/asc_prebid.js"></script>
+	   
+
+	   <script>
+	     (function (s, t, a, y, twenty, two) {
+	       s.Stay22 = s.Stay22 || {};
+	       s.Stay22.params = { lmaID: '68cc0d311a56293ee6b07942' };
+	       twenty = t.createElement(a);
+	       two = t.getElementsByTagName(a)[0];
+	       twenty.async = 1;
+	       twenty.src = y;
+	       two.parentNode.insertBefore(twenty, two);
+	     })(window, document, 'script', 'https://scripts.stay22.com/letmeallez.js');
+	   </script>
+	   
+		
+	<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+	<script type="text/javascript" async=true>
+	(function() {
+	  var host = 'beregner.org';
+	  var element = document.createElement('script');
+	  var firstScript = document.getElementsByTagName('script')[0];
+	  var url = 'https://cmp.inmobi.com'
+	    .concat('/choice/', '2MMzmDKaU6zew', '/', host, '/choice.js?tag_version=V3');
+	  var uspTries = 0;
+	  var uspTriesLimit = 3;
+	  element.async = true;
+	  element.type = 'text/javascript';
+	  element.src = url;
+
+	  firstScript.parentNode.insertBefore(element, firstScript);
+
+	  function makeStub() {
+	    var TCF_LOCATOR_NAME = '__tcfapiLocator';
+	    var queue = [];
+	    var win = window;
+	    var cmpFrame;
+
+	    function addFrame() {
+	      var doc = win.document;
+	      var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+	      if (!otherCMP) {
+	        if (doc.body) {
+	          var iframe = doc.createElement('iframe');
+
+	          iframe.style.cssText = 'display:none';
+	          iframe.name = TCF_LOCATOR_NAME;
+	          doc.body.appendChild(iframe);
+	        } else {
+	          setTimeout(addFrame, 5);
+	        }
+	      }
+	      return !otherCMP;
+	    }
+
+	    function tcfAPIHandler() {
+	      var gdprApplies;
+	      var args = arguments;
+
+	      if (!args.length) {
+	        return queue;
+	      } else if (args[0] === 'setGdprApplies') {
+	        if (
+	          args.length > 3 &&
+	          args[2] === 2 &&
+	          typeof args[3] === 'boolean'
+	        ) {
+	          gdprApplies = args[3];
+	          if (typeof args[2] === 'function') {
+	            args[2]('set', true);
+	          }
+	        }
+	      } else if (args[0] === 'ping') {
+	        var retr = {
+	          gdprApplies: gdprApplies,
+	          cmpLoaded: false,
+	          cmpStatus: 'stub'
+	        };
+
+	        if (typeof args[2] === 'function') {
+	          args[2](retr);
+	        }
+	      } else {
+	        if(args[0] === 'init' && typeof args[3] === 'object') {
+	          args[3] = Object.assign(args[3], { tag_version: 'V3' });
+	        }
+	        queue.push(args);
+	      }
+	    }
+
+	    function postMessageEventHandler(event) {
+	      var msgIsString = typeof event.data === 'string';
+	      var json = {};
+
+	      try {
+	        if (msgIsString) {
+	          json = JSON.parse(event.data);
+	        } else {
+	          json = event.data;
+	        }
+	      } catch (ignore) {}
+
+	      var payload = json.__tcfapiCall;
+
+	      if (payload) {
+	        window.__tcfapi(
+	          payload.command,
+	          payload.version,
+	          function(retValue, success) {
+	            var returnMsg = {
+	              __tcfapiReturn: {
+	                returnValue: retValue,
+	                success: success,
+	                callId: payload.callId
+	              }
+	            };
+	            if (msgIsString) {
+	              returnMsg = JSON.stringify(returnMsg);
+	            }
+	            if (event && event.source && event.source.postMessage) {
+	              event.source.postMessage(returnMsg, '*');
+	            }
+	          },
+	          payload.parameter
+	        );
+	      }
+	    }
+
+	    while (win) {
+	      try {
+	        if (win.frames[TCF_LOCATOR_NAME]) {
+	          cmpFrame = win;
+	          break;
+	        }
+	      } catch (ignore) {}
+
+	      if (win === window.top) {
+	        break;
+	      }
+	      win = win.parent;
+	    }
+	    if (!cmpFrame) {
+	      addFrame();
+	      win.__tcfapi = tcfAPIHandler;
+	      win.addEventListener('message', postMessageEventHandler, false);
+	    }
+	  };
+
+	  makeStub();
+
+	  function makeGppStub() {
+	    const CMP_ID = 10;
+	    const SUPPORTED_APIS = [
+	      '2:tcfeuv2',
+	      '6:uspv1',
+	      '7:usnatv1',
+	      '8:usca',
+	      '9:usvav1',
+	      '10:uscov1',
+	      '11:usutv1',
+	      '12:usctv1'
+	    ];
+
+	    window.__gpp_addFrame = function (n) {
+	      if (!window.frames[n]) {
+	        if (document.body) {
+	          var i = document.createElement("iframe");
+	          i.style.cssText = "display:none";
+	          i.name = n;
+	          document.body.appendChild(i);
+	        } else {
+	          window.setTimeout(window.__gpp_addFrame, 10, n);
+	        }
+	      }
+	    };
+	    window.__gpp_stub = function () {
+	      var b = arguments;
+	      __gpp.queue = __gpp.queue || [];
+	      __gpp.events = __gpp.events || [];
+
+	      if (!b.length || (b.length == 1 && b[0] == "queue")) {
+	        return __gpp.queue;
+	      }
+
+	      if (b.length == 1 && b[0] == "events") {
+	        return __gpp.events;
+	      }
+
+	      var cmd = b[0];
+	      var clb = b.length > 1 ? b[1] : null;
+	      var par = b.length > 2 ? b[2] : null;
+	      if (cmd === "ping") {
+	        clb(
+	          {
+	            gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+	            cmpStatus: "stub", // possible values: stub, loading, loaded, error
+	            cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+	            signalStatus: "not ready", // possible values: not ready, ready
+	            supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+	            cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+	            sectionList: [],
+	            applicableSections: [-1],
+	            gppString: "",
+	            parsedSections: {},
+	          },
+	          true
+	        );
+	      } else if (cmd === "addEventListener") {
+	        if (!("lastId" in __gpp)) {
+	          __gpp.lastId = 0;
+	        }
+	        __gpp.lastId++;
+	        var lnr = __gpp.lastId;
+	        __gpp.events.push({
+	          id: lnr,
+	          callback: clb,
+	          parameter: par,
+	        });
+	        clb(
+	          {
+	            eventName: "listenerRegistered",
+	            listenerId: lnr, // Registered ID of the listener
+	            data: true, // positive signal
+	            pingData: {
+	              gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+	              cmpStatus: "stub", // possible values: stub, loading, loaded, error
+	              cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+	              signalStatus: "not ready", // possible values: not ready, ready
+	              supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+	              cmpId: CMP_ID, // list of supported APIs
+	              sectionList: [],
+	              applicableSections: [-1],
+	              gppString: "",
+	              parsedSections: {},
+	            },
+	          },
+	          true
+	        );
+	      } else if (cmd === "removeEventListener") {
+	        var success = false;
+	        for (var i = 0; i < __gpp.events.length; i++) {
+	          if (__gpp.events[i].id == par) {
+	            __gpp.events.splice(i, 1);
+	            success = true;
+	            break;
+	          }
+	        }
+	        clb(
+	          {
+	            eventName: "listenerRemoved",
+	            listenerId: par, // Registered ID of the listener
+	            data: success, // status info
+	            pingData: {
+	              gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+	              cmpStatus: "stub", // possible values: stub, loading, loaded, error
+	              cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+	              signalStatus: "not ready", // possible values: not ready, ready
+	              supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+	              cmpId: CMP_ID, // CMP ID
+	              sectionList: [],
+	              applicableSections: [-1],
+	              gppString: "",
+	              parsedSections: {},
+	            },
+	          },
+	          true
+	        );
+	      } else if (cmd === "hasSection") {
+	        clb(false, true);
+	      } else if (cmd === "getSection" || cmd === "getField") {
+	        clb(null, true);
+	      }
+	      //queue all other commands
+	      else {
+	        __gpp.queue.push([].slice.apply(b));
+	      }
+	    };
+	    window.__gpp_msghandler = function (event) {
+	      var msgIsString = typeof event.data === "string";
+	      try {
+	        var json = msgIsString ? JSON.parse(event.data) : event.data;
+	      } catch (e) {
+	        var json = null;
+	      }
+	      if (typeof json === "object" && json !== null && "__gppCall" in json) {
+	        var i = json.__gppCall;
+	        window.__gpp(
+	          i.command,
+	          function (retValue, success) {
+	            var returnMsg = {
+	              __gppReturn: {
+	                returnValue: retValue,
+	                success: success,
+	                callId: i.callId,
+	              },
+	            };
+	            event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+	          },
+	          "parameter" in i ? i.parameter : null,
+	          "version" in i ? i.version : "1.1"
+	        );
+	      }
+	    };
+	    if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+	      window.__gpp = window.__gpp_stub;
+	      window.addEventListener("message", window.__gpp_msghandler, false);
+	      window.__gpp_addFrame("__gppLocator");
+	    }
+	  };
+
+	  makeGppStub();
+
+	  var uspStubFunction = function() {
+	    var arg = arguments;
+	    if (typeof window.__uspapi !== uspStubFunction) {
+	      setTimeout(function() {
+	        if (typeof window.__uspapi !== 'undefined') {
+	          window.__uspapi.apply(window.__uspapi, arg);
+	        }
+	      }, 500);
+	    }
+	  };
+
+	  var checkIfUspIsReady = function() {
+	    uspTries++;
+	    if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+	      console.warn('USP is not accessible');
+	    } else {
+	      clearInterval(uspInterval);
+	    }
+	  };
+
+	  if (typeof window.__uspapi === 'undefined') {
+	    window.__uspapi = uspStubFunction;
+	    var uspInterval = setInterval(checkIfUspIsReady, 6000);
+	  }
+	})();
+	</script>
+	<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="https://beregner.org/static/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../../../beregner.org/static/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../../../beregner.org/static/favicon-16x16.png">
+	<link rel="icon" type="image/x-icon" href="../../../beregner.org/static/favicon.ico">
+	<link rel="shortcut icon" href="../../../beregner.org/static/favicon.ico">
+	<link rel="manifest" href="../../../beregner.org/static/site.webmanifest">
+
+    <!-- Meta Description -->
+    <meta name="description" content="
+  
+  
+    Oplev En Kulturel Renæssance i Den Danske Hovedstad
+  
+">
+    
+    <!-- Robots Tag (defaults to 'index, follow') -->
+    <meta name="robots" content="index, follow">
+    
+    <!-- Canonical URL -->
+	<link rel="canonical" href="index.html">
+    
+    
+	
+    <!-- Font Awesome for Icons -->
+    <link href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<script async data-id="101474080" src="../../../static.getclicky.com/js"></script>
+ 
+	
+	
+    <!-- Bootstrap CSS -->
+    <link href="../../../cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../beregner.org/static/css/styles.css">
+	<!-- Font Awesome for Icons -->
+	<link href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+		<script src="../../../cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	
+
+    <style>
+	    .hidden-main {
+	        display: none;
+	    }
+        /* Ensure body and html take up the full height of the page */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+			padding: 0rem !important;
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+		.container-fluid {
+		
+			padding-right: 0px !important;
+			padding-left: 0px !important;
+
+		}
+        .navbar {
+            width: 100%;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #ddd;
+			padding: 5px 0 0 0px !important;
+        }
+
+        /* Style for the burger menu icon with equal margins */
+        .navbar-toggler {
+            margin: 5px;
+        }
+
+        .nav-tabs {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .nav-tabs .nav-link {
+            background: linear-gradient(to bottom, #f8f9fa, white);
+            border: 1px solid #ddd;
+            border-bottom: none;
+            margin-right: 2px;
+            border-radius: 0.25rem 0.25rem 0 0;
+            padding: 8px 16px;
+            color: #555;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #007bff;
+            border-color: #007bff #007bff #fff;
+            color: white;
+        }
+
+        .nav-tabs .nav-link:hover {
+            background-color: #e9ecef;
+        }
+
+        .navbar .navbar-brand {
+            color: inherit;
+			margin-left: 5px;
+        }
+
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+            width: 100%;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            clear: both;
+        }
+
+        /* Mobile view styling */
+        @media (max-width: 992px) {
+            /* Stack the nav items vertically when in mobile view */
+            .nav-tabs .nav-item {
+                width: 100%;
+            }
+
+            .nav-tabs .nav-link {
+                display: block;
+                width: 100%;
+                text-align: left;
+                padding: 10px 16px;
+                border-radius: 0;
+                border: 1px solid #ddd;
+                margin-bottom: 2px;
+            }
+        }
+    </style>
+	
+
+	<style>
+	/* General container styling */
+	#main-calculator-container {
+	    display: flex;
+	}
+
+	/* Content sections for inputs and results */
+	.content-half {
+	    flex: 1 1 350px;
+	    max-width: 350px;
+	}
+
+
+	/* General container styling */
+	/* General container styling */
+	#popular-section {
+	    background-color: beige;
+	    border: 1px solid darkgoldenrod;
+	    padding: 20px;
+	    margin-top: 20px;
+	    border-radius: 0px;
+	    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Slight shadow */
+	    flex-basis: 350px; /* Fixed width */
+	    flex-grow: 0; /* Prevent it from growing larger */
+	    flex-shrink: 0; /* Prevent it from shrinking */
+	    height: auto; /* Ensure height adjusts based on content */
+	    margin-left: 10px;  Optional: Add spacing between sections */
+	}
+
+
+
+	/* Remove margin-left for mobile screens */
+	@media (max-width: 768px) {
+	    #main-calculator-container {
+	        flex-direction: column;
+	        align-items: center;
+	    }
+
+	    #popular-section {
+	        margin-left: 0; /* Remove left margin */
+	        width: 100%; /* Full width for mobile */
+	    }
+	}
+
+	/* Tooltip styling remains unchanged */
+	.tooltip-container {
+	    position: relative;
+	    display: inline-block;
+	    cursor: pointer;
+	    text-decoration: underline dotted grey;
+	    text-underline-offset: 2px; /* Adjust the space between text and the underline */
+	}
+
+	.tooltip-container .tooltip-text {
+	    visibility: hidden;
+	    width: 200px;
+	    background-color: black;
+	    color: #fff;
+	    text-align: center;
+	    border-radius: 5px;
+	    padding: 5px 10px;
+	    position: absolute;
+	    z-index: 1;
+	    bottom: 100%; /* Position above the text */
+	    left: 50%;
+	    margin-left: -100px;
+	    opacity: 0;
+	    transition: opacity 0.3s;
+	}
+
+	.tooltip-container:hover .tooltip-text {
+	    visibility: visible;
+	    opacity: 1;
+	}
+	</style>
+	
+	<style>
+		/* Styles for the print button and date */
+		.header-anchor-links-left {
+		    display: flex;
+		    align-items: center;
+		    gap: 10px;
+		    margin-bottom: 3px; /* Optional: Add spacing below */
+		}
+
+		.header-anchor-links-left button {
+			flex: none !important;
+			width: auto !important;
+		    background: none;
+		    border: none;
+		    color: inherit;
+		    font: inherit;
+		    text-decoration: none;
+		    cursor: pointer;
+		    padding: 0;
+		    margin: 0;
+		    display: inline-flex; /* Align icon and text horizontally */
+		    align-items: center;
+		}
+
+		.header-anchor-links-left button:hover {
+		    text-decoration: underline;
+		}
+
+		.header-anchor-links-left .print-date {
+		    font-size: 14px;
+		    color: #555; /* Optional: Different color for date */
+		}
+
+		/* Styles for Cite, Link, Share buttons */
+		.header-anchor-links-right {
+		    display: flex;
+		    align-items: center;
+		    gap: 10px;
+		}
+
+		.header-anchor-links-right button {
+			flex: none !important;
+			width: auto !important;
+		    background: none;
+		    border: none;
+		    color: inherit;
+		    font: inherit;
+		    text-decoration: none;
+		    cursor: pointer;
+		    padding: 0;
+		    margin: 0;
+		    display: inline-flex;
+		    align-items: center;
+		}
+
+		.header-anchor-links-right button:hover {
+		    text-decoration: underline;
+		}
+
+		.header-anchor-links-right | {
+		    color: #ccc; /* Color for pipe separators */
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/* Remove button styles and make them look like links */
+		.header-anchor-links button {
+		    background: none !important;       /* No background */
+		    border: none !important;           /* Remove border */
+		    color: inherit !important;         /* Use the color of the surrounding text */
+		    font: inherit !important;          /* Inherit the font from the parent element */
+		    text-decoration: none !important;  /* Remove any text decoration */
+		    cursor: pointer !important;       /* Show pointer cursor to indicate clickable element */
+		    padding: 0 !important;             /* Remove any padding */
+		    margin: 0 !important;              /* Remove any margin */
+		    display: inline !important;        /* Ensure they are inline with text */
+		}
+
+		/* Optional: Styling to add hover effect like links */
+		.header-anchor-links button:hover {
+		    text-decoration: underline !important;  /* Underline on hover to resemble links */
+		}
+		
+		.header-hidden {
+		    display: none !important;
+		}
+		/* Info Layer Styling */
+		#citeLayer {
+		    background-color: #f8f9fa; /* Light gray background */
+		    border: 1px solid #ccc; /* Light border */
+		    padding: 10px; /* Add some padding */
+		    margin-top: 10px; /* Space below the link */
+		    border-radius: 5px; /* Rounded corners */
+		    position: relative; /* Ensure it appears below the clicked link */
+		    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+			transition: background-color 0.3s ease;
+			
+		}
+		/* Hide the 'X' icon when the layer is closed */
+		#citeLayer.hidden {
+		    display: none;
+		}
+
+		.info-layer p {
+		    margin: 0; /* Remove default margins */
+		}
+
+		.info-layer button {
+		    margin-top: 5px; /* Space between text and button */
+		    background-color: #007bff; /* Blue button */
+		    color: white; /* White text */
+		    border: none; /* No border */
+		    padding: 5px 10px; /* Button padding */
+		    border-radius: 3px; /* Rounded corners */
+		    cursor: pointer; /* Pointer cursor */
+		}
+
+		.info-layer button:hover {
+		    background-color: #0056b3; /* Darker blue on hover */
+		}
+		
+		
+		.grey-divider {
+		    border: 1px solid #dddddd !important; /* Add a grey top border */
+		    width: 100%;                /* Ensure it spans the full width */
+		    margin: 20px 0;             /* Optional: Add vertical spacing */
+		}
+		/* Ensure links are inline */
+		.header-anchor-links {
+		    display: flex !important; /* Use flexbox for layout */
+		    gap: 10px !important; /* Add spacing between items */
+		}
+
+		.header-anchor-links a {
+		    text-decoration: none !important; /* Remove underlines */
+		    color: inherit !important; /* Use the parent color */
+		    font-size: 16px !important; /* Adjust font size */
+		}
+
+		.header-anchor-links a:hover {
+		    text-decoration: underline !important; /* Optional: Add underline on hover */
+		}
+	/* Cite Button Styling */
+	.cite-button {
+		margin-bottom: 10px;
+	}
+
+	.cite-button a {
+	    display: inline-flex;
+	    align-items: center;
+	    background-color: #f8f9fa;
+	    padding: 8px 12px;
+	    border-radius: 5px;
+		
+	    text-decoration: none;
+	    font-size: 14px;
+	    font-weight: 500;
+	    transition: background-color 0.2s ease;
+	}
+
+	.cite-button a:hover {
+	    background-color: #e9ecef;
+	    text-decoration: none;
+	}
+	/* Close button (X) */
+	.close-btn {
+	    position: absolute;
+	    top: 5px;
+	    right: 8px;
+	    cursor: pointer;
+	    font-size: 12px;
+	    color: #cccccc;
+	}
+
+	/* Styling for the copy button */
+	#copyButton {
+		display: block;
+	    background-color: #808080;  /* Default grey color */
+	    border: none;
+	    padding: 5px 10px;
+	    cursor: pointer;
+	    font-weight: bold;
+	    border-radius: 5px;
+	    transition: background-color 0.3s ease, color 0.3s ease;
+	    margin-left: 0px;
+		  
+	}
+
+	/* When the copy button text changes to 'COPIED' */
+	#copyButton.copied {
+	    background-color: #d3d3d3;  /* Darker grey when clicked */
+	    color: #fff;
+	}
+	
+	#copyButton.hidden {
+	    display: none !important;
+	}
+	@media (max-width: 480px) {
+	    .last-updated {
+	        display: none;
+	    }
+	}
+	
+	
+	/* General styles for the themes list */
+	.themes-list {
+	    font-family: Arial, sans-serif;
+	    margin: 0px;
+	    line-height: 1.4; /* Adjusted for readability */
+	}
+
+	/* Theme section container */
+	.theme-section {
+	    margin-bottom: 0px; /* Spacing between themes */
+	}
+
+	/* H2 for theme titles */
+	.theme-section h2 {
+	    font-size: 1.5rem; /* Slightly larger font for H2 */
+	    font-weight: bold;
+	    margin: 0px 0; /* Spacing above and below */
+	}
+
+	/* H3 for categories */
+	.theme-section h3 {
+	    font-size: 1.2rem; /* Smaller than H2 */
+	    font-weight: normal;
+	    margin: 0; /* No additional margin */
+	    display: inline-block; /* Ensures inline display for categories */
+	}
+
+	/* Links inside H2 and H3 */
+	.theme-section h2 a,
+	.theme-section h3 a {
+	    text-decoration: none; /* Remove underline */
+	}
+
+	.theme-section h2 a:hover,
+	.theme-section h3 a:hover {
+	    text-decoration: underline; /* Add underline on hover for accessibility */
+	}
+
+	/* Hidden-main class styling */
+	.hidden-main {
+	    font-size: 0.9rem; /* Slightly smaller for the extra text */
+	    color: #777; /* Muted text color */
+	    font-weight: normal;
+	}
+	
+	
+	
+	
+	
+	
+	/* TWO COLUMN IN CATEGORY */
+	.calculators-two-col {
+		
+		margin-bottom: 0.5rem;
+	}
+	
+	.calculators-two-col ul {
+	  /* Enable bullet points */
+	  list-style-type: disc;
+  
+	  /* Provide space for bullets */
+	  margin: 0;
+  
+	  /* Single column by default (mobile) */
+	  column-count: 1;
+	  column-gap: 1rem;
+	}
+
+	.calculators-two-col ul li {
+	}
+
+	/* For desktop screens */
+	@media (min-width: 768px) {
+	  .calculators-two-col ul {
+	    column-count: 2; /* Switch to two columns on larger screens */
+	  }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* --- START: Add/Modify these styles for Search --- */
+
+	    /* Style for the full-width search bar below the nav */
+	    #full-width-search-bar {
+	        /* Visible by default on larger screens, hidden on mobile via media query */
+	        padding: 15px 10px;
+	        background: linear-gradient(to bottom, white, #f8f9fa);
+	        border-bottom: 1px solid #ddd;
+	        margin-bottom: 0px; /* Optional spacing below search bar */
+	    }
+	    #full-width-search-bar .input-group .btn {
+	         flex-shrink: 0; /* Prevent button shrinking */
+	    }
+
+	    /* Container for mobile search in dropdown */
+	    .mobile-search-container {
+	        display: none; /* Hidden by default, shown on mobile via media query */
+	        padding: 10px 15px; /* Spacing within the dropdown */
+	    }
+	    .mobile-search-container input {
+	         width: 100%;
+	         padding: 8px 12px;
+	         border: 1px solid #ccc;
+	         border-radius: 0.25rem;
+	    }
+
+	    /* Responsive adjustments - MODIFY existing @media query */
+	    @media (max-width: 991.98px) { /* Match Bootstrap LG breakpoint */
+	        /* Keep existing mobile styles for .nav-tabs .nav-item and .nav-tabs .nav-link */
+	        .nav-tabs .nav-item {
+	            width: 100%;
+	        }
+	        .nav-tabs .nav-link {
+	            display: block;
+	            width: 100%;
+	            text-align: left;
+	            padding: 10px 16px;
+	            border-radius: 0;
+	            border: 1px solid #ddd;
+	            margin-bottom: -1px; /* Overlap borders slightly */
+	            margin-right: 0;
+	            white-space: normal; /* Allow text wrapping in mobile tabs */
+	        }
+	         .nav-tabs .nav-link.active {
+	             /* Ensure active border is visible if needed, e.g.: */
+	             border-color: #007bff;
+	         }
+
+	        /* ADD these rules inside this existing media query */
+	        #full-width-search-bar {
+	             display: none !important; /* Hide desktop bar on mobile */
+	        }
+	        .mobile-search-container {
+	             display: block !important; /* Show mobile bar in dropdown */
+	        }
+	    }
+
+	    /* ADD this new media query for desktop */
+	    @media (min-width: 992px) {
+	         /* Hide mobile search container on desktop */
+	         .mobile-search-container {
+	              display: none !important;
+	         }
+	         /* Ensure desktop search bar is visible (optional reinforcement) */
+	         #full-width-search-bar {
+	              display: block; /* Or flex if using flex layout inside */
+	         }
+	    }
+	    /* --- END: Add/Modify these styles for Search --- */
+	
+	
+		.mobile-search-container .input-group .btn.btn-outline-secondary {
+		    border-color: #ced4da !important; /* Match default form-control border color. Use !important to be sure. */
+		}
+
+		/* Optional: Keep border color consistent on hover too */
+		/* If you want the border to stay light grey even when hovering over the button */
+		/* Remove this block if you prefer the button border to darken on hover */
+		.mobile-search-container .input-group .btn.btn-outline-secondary:hover {
+		     border-color: #ced4da !important;
+		     /* Keep default hover background/text for visual feedback */
+		     color: #fff;
+		     background-color: #6c757d;
+		}
+	
+	</style>
+	
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//tracking.beregner.org/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '83']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+</head>
+<body>
+
+    <!-- Navbar with logo on the left and folder tabs on the right -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Logo, left-aligned -->
+            <a class="navbar-brand fw-bold" href="https://beregner.org/">
+                🧮 Beregner.org 
+            </a>
+			
+			
+
+            <!-- Toggle button for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#themeMenu" aria-controls="themeMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Folder tab navigation for themes, collapsible in mobile view -->
+            <div class="collapse navbar-collapse" id="themeMenu">
+				
+                <ul class="nav nav-tabs ms-auto">
+					
+					
+					
+					
+
+                    <!-- START: Mobile Search Item (Moved Here) -->
+                     <li class="nav-item mobile-search-list-item d-lg-none"> <!-- Added helper class & d-lg-none to hide LI on desktop -->
+						 <div class="mobile-search-container">
+						                               <form action="https://beregner.org/search" method="get" role="search">
+						                                   <!-- Use input-group to place button next to input -->
+						                                   <div class="input-group">
+						                                       <input type="search" name="q" class="form-control" placeholder="Søg..." aria-label="Søg">
+						                                       <button class="btn btn-outline-secondary" type="submit" aria-label="Søg">
+						                                            <i class="fas fa-search"></i>
+						                                       </button>
+						                                   </div>
+						                               </form>
+						                          </div>
+                    </li>
+                    <!-- END: Mobile Search Item -->
+					
+					
+					
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " 
+                           href="https://beregner.org/temaer/sundhed/">
+                           🚑 Sundhed
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " 
+                           href="https://beregner.org/temaer/matematik/">
+                           📐 Matematik
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " 
+                           href="https://beregner.org/temaer/andet/">
+                           📁 Andet
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " 
+                           href="https://beregner.org/temaer/videnskab/">
+                           🔬  Videnskab
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " 
+                           href="https://beregner.org/temaer/finansiel/">
+                           💰 Finansiel
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " 
+                           href="https://beregner.org/temaer/mad/">
+                           👩‍🍳 Mad
+                        </a>
+                    </li>
+                    
+					
+					<!-- Statisk nyeste fane -->
+					<li class="nav-item">
+					    <a class="nav-link " 
+					       href="https://beregner.org/nyt/">
+					       🆕 Nyeste
+					    </a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link " 
+					       href="https://beregner.org/blog/">
+					       📚 Blog
+					    </a>
+					</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+	
+	
+
+    <!-- Full Width Search Bar -->
+	<div id="full-width-search-bar" class="container">
+	     <form action="https://beregner.org/search" method="get" role="search">
+	         <div class="input-group">
+	            <input type="search" name="q" id="full-width-search-input" class="form-control form-control-lg" placeholder="Søg Beregner.org..." aria-label="Search site">
+	            <!-- MODIFIED: Replaced text with icon -->
+                <button class="btn btn-secondary" type="submit" aria-label="Søg">
+                    <i class="fas fa-search"></i>
+                </button>
+	         </div>
+	     </form>
+	</div>
+	<!-- END Full Width Search Bar -->
+	
+	
+	
+
+    <!-- Main Content -->
+    <main class="container">
+        
+  <article class="article-detail">
+
+    <section class="article-body">
+      
+      <h1>Copenhagen Art Week En Kulturel Renæssance i Den Danske Hovedstad</h1>
+<p>I hjertet af Danmarks levende hovedstad har <strong>Copenhagen Art Week</strong> etableret sig som en af Nordeuropas mest ventede kulturbegivenheder siden dens begyndelse i september 2013. Denne årlige fejring af samtidskunst forvandler byen til et omfattende lærred, der inviterer både lokale og internationale besøgende til at opleve den rige mangfoldighed af dansk og international kunstnerisk udtryk.</p>
+<h2>Et Årti med Kunstnerisk Excellence</h2>
+<p>Siden lanceringen i 2013 er Copenhagen Art Week vokset eksponentielt i både omfang og betydning. Det, der begyndte som en beskeden samling af gallerier, har udviklet sig til en omfattende festival med udstillinger, performances, installationer og interaktive oplevelser på tværs af flere venues. Kunstentusiaster fra hele verden planlægger nu deres kulturelle rejser for at opleve denne transformerende uge i den danske hovedstad.</p>
+<p>"Copenhagen Art Week repræsenterer en unik mulighed for at opleve bredden og dybden af den samtidige kunstscene i Danmark," bemærker festivalens kreative direktør. "Fra etablerede institutioner til nye gallerier, fra traditionelle udstillinger til eksperimentelle <em>performances og servering</em>, stræber vi efter at skabe et program, der udfordrer opfattelser og inviterer til dialog."</p>
+<h2>Beregning af Indflydelsen</h2>
+<p>Den økonomiske indflydelse af Copenhagen Art Week strækker sig langt ud over det æstetiske. Ved hjælp af en grundlæggende <a href="https://beregner.org/investering-kalkulator/"><strong>investeringsberegner</strong></a> anslår økonomer, at hver dansk krone investeret i festivalen genererer cirka 3,5 DKK i lokal økonomisk aktivitet. For deltagende gallerier afslører en simpel <a href="https://beregner.org/profitberegner/"><strong>profitberegner</strong></a>, at mange oplever en 25-40% stigning i salg i festivalperioden sammenlignet med typiske månedlige gennemsnit.</p>
+<p>For besøgende, der planlægger deres deltagelse, tilbydes forskellige planlægningsværktøjer. En handy <a href="https://beregner.org/budget-kalkulator/"><strong>budgetkalkulator</strong></a> hjælper deltagere med at estimere deres udgifter, mens en <a href="https://beregner.org/alder-beregner/"><strong>aldersberegner</strong></a> afgør berettigelse til ungdomsrabatter. Internationale besøgende kan finde <a href="https://beregner.org/konverteringsberegner/"><strong>konverteringsberegneren</strong></a> særlig nyttig til at navigere i priser i danske kroner.</p>
+<h2>Kunstnerisk Mangfoldighed på Display</h2>
+<p>Årets program byder på en imponerende række udstillinger, herunder "<strong>Painting as Shooting</strong>," "<strong>Red Poppies</strong>" og "<strong>In the Eye of the Beholder</strong>," der viser forskellige kunstneriske tilgange. Den meget ventede "<strong>Black Summer</strong>" udstilling på Louisiana Museum of Modern Art præsenterer en kraftfuld refleksion over klimaforandringer gennem samtidskunst.</p>
+<p>Bemærkelsesværdige gallerier, der deltager i <strong>Gallery Night i København City og Kødbyen</strong>, inkluderer David Risley Gallery, Galleri Susanne Ottesen og V1 Gallery. For dem, der søger mere eksperimenterende tilgange, præsenterer "<strong>Alt_Cph 16</strong>" alternativ kunstmesse grænseoverskridende værker fra nye kunstnere.</p>
+<p>Besøgende bør ikke gå glip af muligheden for at opleve "<strong>HØRT: Hjem til Blågården</strong>," en deltagerorienteret lydrejse gennem et af Københavns mest mangfoldige kvarterer. Denne fordybende installation inviterer deltagerne til at opleve byen gennem en helt anden sensorisk dimension.</p>
+<h2>Planlægning af Dit Besøg</h2>
+<p>Ifølge besøgsdata er antallet af besøgende steget støt, med over 28.000 deltagere registreret i de seneste år. Festivalens arrangører har implementeret en sofistikeret <a href="https://beregner.org/tidsvarighedsberegner/"><strong>tidsvarighedsberegner</strong></a> for at hjælpe besøgende med at optimere deres oplevelse, så de kan beregne, hvor meget tid de har brug for ved hver udstilling.</p>
+<p>"Vi anbefaler besøgende at planlægge cirka 45-60 minutter til større udstillinger og 20-30 minutter til mindre gallerier," råder festivalkoordinatoren. "Med vores <a href="https://beregner.org/dato-kalkulator/"><strong>dato-kalkulator</strong></a> kan du effektivt planlægge hver dag af dit besøg for at maksimere din kunstoplevelse."</p>
+<p>Overnatningspriserne stiger typisk under festivalen, men en <a href="https://beregner.org/leje-kalkulator/"><strong>lejeberegner</strong></a> kan hjælpe besøgende med at finde overkommelige muligheder. Mange hoteller tilbyder særlige pakker, og en <a href="https://beregner.org/rabatberegner/"><strong>rabatberegner</strong></a> kan hjælpe med at bestemme de mest omkostningseffektive bookingmuligheder.</p>
+<h2>Transport og Tilgængelighed</h2>
+<p>At komme rundt i København under Art Week gøres enkelt med byens effektive offentlige transportsystem. Besøgende kan bruge <a href="https://beregner.org/afstand-mellem-to-punkter-kalkulator/"><strong>afstandsberegneren</strong></a> til at kortlægge ruter mellem venues, mens <a href="https://beregner.org/tidsberegner/"><strong>tidsberegneren</strong></a> giver estimerede rejsetider. For de miljøbevidste sammenligner en <a href="https://beregner.org/husholdningens-carbon-fodaftryk-kalkulator/"><strong>carbon fodaftryk-kalkulator</strong></a> emissionspåvirkningen af forskellige transportmetoder rundt i byen.</p>
+<p>"Vi er forpligtet til at gøre kunsten tilgængelig for alle," udtaler tilgængelighedskoordinatoren. "Vores ruteplanlæggere hjælper besøgende med mobilitetsudfordringer med at planlægge den mest tilgængelige vej mellem venues."</p>
+<h2>Digital Engagement</h2>
+<p>I år introduceres forbedrede digitale elementer, med QR-koder ved hver udstilling, der linker til "<strong>Come Undone</strong>" digitale katalog. En <a href="https://beregner.org/realkreditberegner/"><strong>realkreditberegner</strong></a> kan virke malplaceret i en kunstkontekst, men den er en del af en interaktiv installation, der udforsker forholdet mellem kunstvurdering og ejendomsmarkeder.</p>
+<p>Festivalens Instagram-tilstedeværelse er vokset betydeligt, og en <a href="https://beregner.org/return-on-investment-roi-lommeregner/"><strong>ROI-beregner</strong></a> viser, at digitale markedsføringsindsatser har givet et afkast på 320% for deltagende gallerier.</p>
+<h2>Ud Over Udstillingerne</h2>
+<p>Copenhagen Art Week handler ikke kun om passiv observation—det handler om aktiv deltagelse. Workshops som "<strong>BERMUDA</strong>" inviterer deltagerne til at skabe deres egen kunst, mens paneldiskussioner som "<strong>Talk: On the exhibition Retrospektiv and the work of Roger Ballen</strong>" giver intellektuel kontekst.</p>
+<p>Mad spiller en vigtig rolle i festivaloplevelsen med "<strong>Kunsttur: Smag på maden i Nordvest</strong>", der kombinerer kulinarisk og visuel kunst. Ved hjælp af en <a href="https://beregner.org/kalorieberegner/"><strong>kalorieberegner</strong></a> har arrangørerne endda skabt en "galleri-gå-tur" rute, der forbrænder cirka 250 kalorier i timen.</p>
+<p>Festivalen kulminerer med "<strong>LÆS MERE OM ONE NIGHT ONLY</strong>" afslutningsfesten, der historisk set har tiltrukket over 1.200 deltagere. Til denne store finale sikrer en <a href="https://beregner.org/kvadratmeterberegner/"><strong>kvadratmeterberegner</strong></a> venues kapacitetssikkerhed, samtidig med at den festlige atmosfære opretholdes.</p>
+<h2>Fremtidsudsigter</h2>
+<p>Efterhånden som Copenhagen Art Week fortsætter med at udvikle sig, bruger arrangørerne en <a href="https://beregner.org/befolkningsv-kstrate-kalkulator/"><strong>vækstrateberegner</strong></a> til at projicere fremtidig deltagelse og planlægge i overensstemmelse hermed. Baseret på nuværende tendenser forventer de at nå 35.000 besøgende inden 2026.</p>
+<p>"Fremtiden for Copenhagen Art Week handler om at uddybe forbindelser—mellem kunstnere og publikum, mellem forskellige kunstneriske discipliner og mellem København og det globale kunstfællesskab," forklarer festivaldirektøren. "Vi ønsker at skabe oplevelser, der resonerer længe efter ugen afsluttes."</p>
+<p>For dem, der ikke kan deltage personligt, tilbyder "<strong>Frydefuld Gysen</strong>" en virtual reality-komponent, der er tilgængelig online. Ved hjælp af en <a href="https://beregner.org/frekvensberegner/"><strong>frekvensberegner</strong></a> kan besøgende afgøre, om deres internetforbindelse understøtter denne fordybende digitale oplevelse.</p>
+<p>Uanset om du er en erfaren kunstkender eller en nysgerrig nybegynder, tilbyder Copenhagen Art Week en unik dansk tilgang til samtidskunst—tankevækkende, innovativ og tilgængelig. Efterhånden som festivalen fortsætter med at vokse, forbliver den tro mod sin mission om at bringe kunst i dialog med byen og dens mennesker.</p>
+<p>For komplette programdetaljer, kig efter "<strong>Download hele programmet her</strong>" knappen for at få adgang til årets komplette programguide og tidsplan.</p>
+    </section>
+    
+    <footer class="article-footer">
+      <p>
+        <a href="https://beregner.org/blog/" class="back-link">&larr; Tilbage til bloggen</a>
+      </p>
+    </footer>
+  </article>
+
+    </main>
+
+   <!-- Footer -->
+   <footer class="text-left py-3">
+       
+        
+
+       
+       
+           
+               <a href="https://beregner.org/info/om-beregner-org">Om Beregner.org</a>
+               
+                |
+           
+       
+
+       
+       <a href="https://beregner.org/populaere/">Populære Beregnere</a>
+	   | <a href="https://omregner.com" target="_blank" title="Populære Enhedskonverterer">Omregnere</a>
+       
+   
+			
+        <p>2025 &copy; Beregner.org 🇩🇰 - ⌚ <a href="https://klokken.net" style="text-decoration: none; color: inherit;"  title="Klokken lige nu"><span id="time-now"></span></a>
+		
+		
+        
+        
+        
+
+        
+            
+        
+            
+                 | <a href="https://kalkylator.pro" target="_blank" rel="noopener noreferrer">Kalkylatorer</a> 🇸🇪
+        
+            
+                 | <a href="https://kalkulator.guru" target="_blank" rel="noopener noreferrer">Kalkulatorer</a> 🇳🇴
+        
+            
+                 | <a href="https://laskuri.info" target="_blank" rel="noopener noreferrer">Laskimet</a> 🇫🇮
+        
+            
+                 | <a href="https://berekenen.org" target="_blank" rel="noopener noreferrer">Berekenen</a> 🇳🇱
+        
+            
+                 | <a href="https://calculatrice.now" target="_blank" rel="noopener noreferrer">Calculatrice</a> 🇫🇷
+        
+            
+                 | <a href="https://rechner.now" target="_blank" rel="noopener noreferrer">Rechner</a> 🇩🇪
+        
+            
+                 | <a href="https://calcolatrice.now" target="_blank" rel="noopener noreferrer">Calcolatrice</a> 🇮🇹
+        
+            
+                 | <a href="https://kalkulator.best" target="_blank" rel="noopener noreferrer">Kalkulator</a> 🇵🇱
+        
+            
+                 | <a href="https://calculator.cat" target="_blank" rel="noopener noreferrer">Calculator</a> 🇷🇴
+        
+            
+                 | <a href="https://calculadora.lol" target="_blank" rel="noopener noreferrer">Calculadora</a> 🇧🇷🇵🇹
+        
+        
+        </p>
+		
+		<script>
+		  // Update the time every second
+		  function updateTime() {
+		    const now = new Date();
+		    const hours   = String(now.getHours()).padStart(2, '0');
+		    const minutes = String(now.getMinutes()).padStart(2, '0');
+		    const seconds = String(now.getSeconds()).padStart(2, '0');
+		    document.getElementById('time-now').textContent = 'Klokken lige nu er ' 
+		      + hours + ':' + minutes + ':' + seconds;
+		  }
+
+		  // Set initial time, then update every second
+		  updateTime();
+		  setInterval(updateTime, 1000);
+		</script>
+	    
+		
+		
+		<div class="about-section">
+		    
+		        <p>
+		            
+		            
+		        </p>
+		    
+		</div>
+		
+		
+		
+    </footer>
+
+    <!-- jQuery, Popper.js, and Bootstrap JS -->
+    <!-- Ensure jQuery is loaded first, then Popper.js, then Bootstrap JS -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-K+ctZL3fZ6qXbf8+WEOXc1aDz3VbA5wg7B4/fgj+J+GxUMXvfV6Viw7hE+3VUxD+0u+3pbd4uZZ+bL/wMG6mZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+    <script src="../../../cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" integrity="sha512-+V7zqQKxslJHKxOWsBztPtMj9xnzYphN6LcdHcL3Cr1nGfXj0s5amBkQ4awA7Z9epP5SXfh4vEZ2l4z9quXc6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-+YM+N5jImWzvKcR+HyODyVpwkjwBz6BOCz67bKVa3X+kL5g2mmv2Mj45tYHkgytAQMVX/QE3Hw6x4kG+Oe5C1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+	
+
+    <!-- Bootstrap JS and dependencies (Popper) -->
+    <script src="../../../cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

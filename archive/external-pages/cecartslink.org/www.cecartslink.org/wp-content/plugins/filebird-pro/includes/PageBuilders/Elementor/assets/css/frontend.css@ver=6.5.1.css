@@ -1,0 +1,56 @@
+/* FileBird Elementor Frontend Styles */
+.filebird-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+}
+
+.filebird-gallery-item {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.filebird-gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.filebird-gallery-item a {
+    display: block;
+    overflow: hidden;
+}
+
+.filebird-gallery-item a:hover img {
+    transform: scale(1.05);
+}
+
+.filebird-gallery-error,
+.filebird-gallery-empty {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .filebird-gallery-columns-4 .filebird-gallery-item,
+    .filebird-gallery-columns-5 .filebird-gallery-item,
+    .filebird-gallery-columns-6 .filebird-gallery-item {
+        width: 33.33%;
+    }
+}
+
+@media (max-width: 480px) {
+    .filebird-gallery-columns-2 .filebird-gallery-item,
+    .filebird-gallery-columns-3 .filebird-gallery-item,
+    .filebird-gallery-columns-4 .filebird-gallery-item,
+    .filebird-gallery-columns-5 .filebird-gallery-item,
+    .filebird-gallery-columns-6 .filebird-gallery-item {
+        width: 50%;
+    }
+} 

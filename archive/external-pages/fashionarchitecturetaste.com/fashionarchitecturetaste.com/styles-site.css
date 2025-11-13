@@ -1,0 +1,750 @@
+body {
+		margin:0px 0px 0px 0px;
+		);		
+		}
+	A 			{ color: #003366; text-decoration: underline; }
+	A:link		{ color:#FF1493; text-decoration: underline; }
+	A:visited	{ color: #FF1493; text-decoration: underline; }
+	A:active	{ color: #999999;  }
+	A:hover		{ color: #999999;  }
+
+img { border: none;}
+
+
+	h1, h2, h3, h4, h5 {
+padding-top:5px;
+		margin: 0px;
+
+background:#FFF;
+	}
+
+	#banner {
+		font-family: times, 'Times New Roman', serif;
+		color:#333;
+
+		font-size:x-large;
+		font-weight:normal;	
+  		padding:5px;
+		}
+
+	#banner a,
+        #banner a:link,
+        #banner a:visited,
+        #banner a:active,
+        #banner a:hover {
+		font-family: times, 'Times New Roman', serif;
+		font-size: xx-large;
+		color: #333;
+		text-decoration: none;
+		}
+
+	.description {
+		font-family: times, 'Times New Roman', serif;
+		color:#333;
+		font-size:small;
+  		text-transform:none;	
+		}
+				
+	#content {
+		position:absolute;
+align:center;
+		margin-bottom:1px;
+		border:5px;
+		width: 100%;
+		}
+
+	#container {
+
+		border:5px;		
+		}
+
+	#links {	
+		padding:1px;				
+		border:1px;
+		width:200px;			
+		}
+		
+
+
+		.blog {
+
+  		padding-left:35px;
+padding-top:38px;
+border:0px;
+}
+
+
+		.frontgrid {
+position:absolute;
+	top:200px; /* in conjunction with left property, decides the text position */
+	left:350px;
+	width:800px; /* optional, though better have one */
+  		padding-left:35px;
+padding-top:0px;
+border:0px;
+}
+
+
+.aboutblock {
+position:absolute;
+	top:170px; /* in conjunction with left property, decides the text position */
+	left:350px;
+	width:800px; /* optional, though better have one */
+  		padding-left:35px;
+padding-top:0px;
+border:0px;
+font-family: helvetica, arial sans-serif;
+}
+
+
+
+
+	.architecturegrid {
+position:absolute;
+	top:250px; /* in conjunction with left property, decides the text position */
+	left:350px;
+	width:800px; /* optional, though better have one */
+  		padding-left:0px;
+padding-top:0px;
+border:0px;
+		}
+
+.newarchgrid {
+position:absolute;
+	top:190px; /* in conjunction with left property, decides the text position */
+	left:345px;
+	width:800px; /* optional, though better have one */
+  		padding-left:0px;
+padding-top:0px;
+border:0px;
+
+		}
+
+.slider {
+position:absolute;
+	top:170px; /* in conjunction with left property, decides the text position */
+	left:345px;
+	width:600px; /* optional, though better have one */
+  		padding-left:0px;
+padding-top:0px;
+border:0px;
+
+		}
+
+
+
+
+
+.intgrid{
+position:absolute;
+	top:425px; /* in conjunction with left property, decides the text position */
+	left: 0px;
+	width:800px; /* optional, though better have one */
+  		padding-left:0px;
+padding-top:0px;
+border:0px;
+display:block;
+float: left;
+		}
+
+.designgrid{
+position:absolute;
+	top:760px; /* in conjunction with left property, decides the text position */
+	left: 0px;
+	width:800px; /* optional, though better have one */
+  		padding-left:0px;
+padding-top:0px;
+border:0px;
+display:block;
+float: left;
+		}
+
+
+	.menubar {
+  		padding-left:35px;
+padding-top:25px;
+border:1px;
+color:#FF1493;
+font-family: helvetica, arial sans-serif;
+ 
+
+
+		}
+
+.archtitle {
+position:absolute;
+	top:150px; /* in conjunction with left property, decides the text position */
+	left:322px;
+	width:800px; /* optional, though better have one */
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+padding-top:0px;
+width:670px;	
+margin-left:30px;
+		}
+
+.abouttitle {
+position:absolute;
+	top:210px; /* in conjunction with left property, decides the text position */
+	left:322px;
+	width:800px; /* optional, though better have one */
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+padding-top:0px;
+width:300px;	
+margin-left:30px;
+		}
+
+.newabouttitle {
+position:absolute;
+	top:150px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+
+		}
+
+.urbtitle {
+position:absolute;
+	top:1110px; /* in conjunction with left property, decides the text position */
+	left:350px;
+	width:800px; /* optional, though better have one */
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+padding-top:0px;
+width:670px;	
+margin-left:30px;
+		}
+
+
+.inttitle {
+position:absolute;
+	top:375px; /* in conjunction with left property, decides the text position */
+	left:-25px;
+	width:800px; /* optional, though better have one */
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+padding-top:0px;
+width:670px;	
+margin-left:30px;
+		}
+
+.designtitle {
+position:absolute;
+	top:720px; /* in conjunction with left property, decides the text position */
+	left:-25px;
+	width:800px; /* optional, though better have one */
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+padding-top:0px;
+width:670px;	
+margin-left:30px;
+		}
+
+.image {
+	position:relative;
+	float:left; /* optional */
+}
+
+.image .text {
+	position:absolute;
+	top:98px; /* in conjunction with left property, decides the text position */
+	left:140px;
+	width:800px; /* optional, though better have one */
+font-family: helvetica, arial sans-serif;
+color:#FF1493;
+}
+
+.projectpage {
+	position:relative;
+	float:left; /* optional */
+}
+
+.projectpage .image {
+	position:absolute;
+	top:98px; /* in conjunction with left property, decides the text position */
+	left:140px;
+	width:800px; /* optional, though better have one */
+font-family: helvetica, arial sans-serif;
+color:#FF1493;
+}
+
+
+
+
+.catagory {
+
+padding-bottom:20px;
+padding-top:5px;
+padding-left:35px;
+
+background:#FFF;
+		font-family: times, 'Times New Roman', serif;
+		color:#333;
+		font-size:small;
+		font-weight:normal;
+  		line-height:100%;
+		}
+
+	.blogbody {
+
+
+border: 1px dotted black;
+
+padding-left:10px;
+padding-right:10px;
+margin-right:10px;
+margin-bottom:10px;
+background:#FFF;
+		font-family: times, 'Times New Roman', serif;
+		color:#333;
+		font-size:small;
+		font-weight:normal;
+  		line-height:100%;
+
+float: left;
+
+		}
+
+	.blogbody a,
+	.blogbody a:link,
+	.blogbody a:visited,
+	.blogbody a:active,
+	.blogbody a:hover {
+		font-weight: normal;
+		text-decoration: underline;
+	}
+
+	.title	{
+		font-family:  helvetica, arial sans-serif;
+		font-size: 8pt;
+		color: #666;
+margin-bottom:0px;
+margin-top:0px;
+font-weight:normal;
+		}	
+
+.newsbody {
+
+
+padding-bottom:10px;  
+padding-left:5px;
+padding-right:5px;
+padding-top:5px;
+border-bottom: 1px dotted black;
+
+background:#FFF;
+		font-family: times, 'Times New Roman', serif;
+		color:#333;
+		font-size:small;
+		font-weight:normal;
+  		line-height:120%;
+width:400px;	
+
+		}		
+
+.newsheadline {
+padding-top:10px;
+padding-left:5px;
+padding-bottom:5px;  
+background:#FFF;
+		font-family: times, 'Times New Roman', serif;
+		color:#666;
+		font-size:small;
+		font-weight:bold;
+  		line-height:120%;
+width:400px;	
+float: left;
+
+		}		
+.pagetitle {
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+
+  		line-height:120%;
+padding-top:0px;
+width:1025px;	
+margin-left:30px;
+		}	
+
+.shorttitle {
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+padding-top:0px;
+width:300px;	
+margin-left:30px;
+		}	
+
+.newshorttitle {
+position:absolute;
+	top:550px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+display:block;
+float: left;
+
+
+		}	
+
+
+.contacttitle {
+position:absolute;
+	top:950px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+display:block;
+float: left;
+
+
+		}	
+
+.quotehighlight {
+
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		
+		font-size:10pt;
+  		line-height:120%;
+padding-top:0px;
+width:300px;	
+margin-left:30px;
+		}	
+
+
+
+
+.categorytitle {
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+padding-top:0px;
+width:300px;	
+margin-left:30px;
+		}	
+
+
+	#menu {
+  		margin-bottom:1px;
+		background:#FFF;
+		text-align:center;
+		}		
+
+	.date	{ 
+		font-family: times, 'Times New Roman', serif; 
+		font-size: large; 
+		color: #333; 
+		border-bottom:1px solid #999;
+		margin-bottom:5px;
+		font-weight:bold;
+		}			
+		
+	.posted	{ 
+		font-family: helvetica, arial sans-serif;
+		font-size: xx-small; 
+		color: #333; 
+		margin-bottom:0px;
+
+		}
+
+	.extended	{ 
+		font-family: times, 'Times New Roman', serif;
+		font-size: xx-small; 
+		color: #000000; 
+		margin-bottom:0px;
+margin-top:0px;
+margin-left:15px;
+margin-right:15px;
+		}
+		
+		
+	
+.introbody {
+padding-left:30px;
+padding-right:20px;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#333;
+		font-size:small;
+		font-weight:normal;
+  		line-height:120%;
+padding-top:20px;
+width: 300px;
+display:block;
+float: left;
+
+		}
+
+.aboutintrobody {
+
+
+position:absolute;
+	top:300px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+
+
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#333;
+		font-size:small;
+		font-weight:normal;
+  		line-height:120%;
+padding-top:20px;
+width: 300px;
+display:block;
+float: left;
+
+		}
+
+.newintrobody {
+position:absolute;
+	top:200px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:small;
+		
+  		line-height:120%;
+display:block;
+float: left;
+
+		}
+
+
+.pressbody {
+position:absolute;
+	top:400px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color: #FF1493;
+		font-size:small;
+		
+  		line-height:120%;
+display:block;
+float: left;
+
+		}
+
+.aboutpressbody {
+position:absolute;
+	top:200px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color: #FF1493;
+		font-size:small;
+		
+  		line-height:120%;
+display:block;
+float: left;
+
+		}
+
+
+
+.contactbody {
+position:absolute;
+	top:1000px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:small;
+		
+  		line-height:120%;
+display:block;
+float: left;
+
+		}
+
+
+.projectimage {
+padding-left:500px;
+padding-right:20px;
+background:#FFF;
+		font-family: times, 'Times New Roman', serif;
+		color:#333;
+		font-size:small;
+		font-weight:normal;
+  		line-height:120%;
+padding-top:20px;
+width: 600px;
+display:block;
+float: left;
+
+		}
+
+.projectbody {
+
+
+
+
+padding-left:5px;
+padding-right:5px;
+background:#FFF;
+		font-family: times, 'Times New Roman', serif;
+		color:#333;
+		font-size:small;
+		font-weight:normal;
+  		line-height:120%;
+width: 400px;
+display:block;
+
+float: left;
+
+		}
+
+.floatpicleft {
+ float: left;
+ margin-top: 5px;
+ margin-right: 5px;
+ margin-bottom:5px;
+ } 
+
+#twitter ul {
+padding-left:30px;
+font-family: times, 'Times New Roman', serif;
+		color:#333;
+		font-size:small;
+width:300px;
+  list-style: none;
+}
+
+.newtwitter {
+position:absolute;
+	top:1000px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+border-bottom: 1px dotted black;
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:large;
+		
+  		line-height:120%;
+display:block;
+float: left;
+
+}
+
+A 			{ color: #333; text-decoration: none; }
+	A:link		{ color:#333; text-decoration: none; }
+	A:visited	{ color: ##333; text-decoration: none; }
+	A:active	{ color: #333;  }
+	A:hover		{ color: #FF1493;  }
+
+li { 
+margin-bottom:1em; 
+} 
+
+img.floatright { 
+    float: left; 
+    margin: 300px; 
+}
+
+img.floatRightClear { 
+    float: right; 
+    clear: right; 
+    margin: 10px; 
+}
+
+.menubar {
+position:absolute;
+	top:70px; /* in conjunction with left property, decides the text position */
+	left:320px;
+	width:800px; /* optional, though better have one */
+
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color: #FF1493;
+font-size:large;
+		
+  		line-height:120%;
+
+
+		}
+
+.logoblock {
+position:absolute;
+	top:15px; /* in conjunction with left property, decides the text position */
+	left:30px;
+	width:300px; /* optional, though better have one */
+
+background:#FFF;
+		font-family: helvetica, arial sans-serif;
+		color:#666;
+		font-size:small;
+		
+  		line-height:120%;
+display:block;
+float: left;
+
+		}

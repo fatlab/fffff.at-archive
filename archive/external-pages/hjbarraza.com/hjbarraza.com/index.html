@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>hj barraza - Fractional AI & Growth </title>
+    <meta name="title" content="hj barraza • Fractional AI & Growth ">
+    <meta name="description" content="Building proprietary AI systems to generate advantages and growth for companies. Founder of Yuno - AI ventures holding company.">
+    <meta name="keywords" content="AI architect, growth lead, AI systems, Yuno, AI consulting, business intelligence, AI transformation, HJ Barraza">
+    <meta name="author" content="hj barraza">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hjbarraza.com/">
+    <meta property="og:title" content="hj barraza - Fractional AI & Growth ">
+    <meta property="og:description" content="Building proprietary AI systems to generate advantages and growth for companies. Founder of Yuno - AI ventures holding company.">
+    <meta property="og:image"i content="https://i1.sndcdn.com/avatars-000239190362-uv7nsd-t1080x1080.jpg">
+    <meta property="og:site_name" content="hj barraza">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hjbarraza.com/">
+    <meta property="twitter:title" content="hj barraza - Fractional AI & Growth ">
+    <meta property="twitter:description" content="Building proprietary AI systems to generate advantages and growth for companies. Founder of Yuno - AI ventures holding company.">
+    <meta property="twitter:image" content="https://i1.sndcdn.com/avatars-000239190362-uv7nsd-t1080x1080.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hjbarraza.com/">
+    
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="../../../cdn.usefathom.com/script.js" data-site="CXYTNZFX" defer></script>
+    <!-- / Fathom -->
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "hj barraza",
+        "jobTitle": "Fractional AI & Growth ",
+        "description": "Building proprietary AI systems to generate advantages and growth for companies",
+        "url": "https://hjbarraza.com",
+        "image": "https://i1.sndcdn.com/avatars-000239190362-uv7nsd-t1080x1080.jpg",
+        "sameAs": [
+            "https://www.linkedin.com/in/barraza/",
+            "https://yuno.to"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Yuno",
+            "description": "AI ventures holding company",
+            "url": "https://yuno.to"
+        },
+        "workLocation": [
+            {
+                "@type": "City",
+                "name": "Paris"
+            },
+            {
+                "@type": "City",
+                "name": "Barcelona"
+            },
+            {
+                "@type": "City",
+                "name": "Mexico City"
+            }
+        ],
+        "knowsAbout": ["AI Systems", "Growth Strategy", "Business Intelligence", "AI Transformation", "Process Automation"],
+        "email": "mailto:hjbarraza@digifolkmedia.com"
+    }
+    </script>
+    
+    <script src="../../../cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('../fonts.googleapis.com/css2@family=Inter%253Awght@400%3B500%3B600%3B700&display=swap.css');
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Light mode selection */
+        ::selection { background: #1a1a1a; color: white; }
+        
+        /* Dark mode selection */
+        @media (prefers-color-scheme: dark) {
+            ::selection { background: white; color: #1a1a1a; }
+        }
+        
+        /* City links styling */
+        .city-link {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .city-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        
+        /* 8-bit mode styles */
+        .pixel-mode {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            font-family: 'Courier New', monospace !important;
+            position: relative;
+        }
+        
+        /* CRT terminal colors */
+        .crt-terminal {
+            background: #000000 !important;
+            color: #00ff00 !important;
+        }
+        
+        .crt-terminal * {
+            color: #00ff00 !important;
+            border-color: #00ff00 !important;
+        }
+        
+        .crt-terminal a:hover {
+            color: #00ff88 !important;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        
+        /* CRT scanlines overlay */
+        .crt-effect::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 10000;
+        }
+        
+        /* CRT screen curve effect */
+        .crt-effect::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse at center,
+                transparent 0%,
+                transparent 60%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+            pointer-events: none;
+            z-index: 10001;
+        }
+        
+        /* Text glow effect */
+        .crt-terminal h1, .crt-terminal h2, .crt-terminal h3 {
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        }
+        
+        .pixel-text {
+            font-family: 'Courier New', monospace !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.98; }
+            100% { opacity: 1; }
+        }
+        
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+        }
+        
+        /* Screen flash effect */
+        @keyframes screenFlash {
+            0% { filter: brightness(1) contrast(1); }
+            50% { filter: brightness(2) contrast(0.5) saturate(0); }
+            100% { filter: brightness(1) contrast(1); }
+        }
+        
+        .screen-flash {
+            animation: screenFlash 0.2s ease-out !important;
+        }
+        
+        /* Pixel character */
+        .pixel-character {
+            position: fixed;
+            bottom: 100px;
+            width: 40px;
+            height: 40px;
+            z-index: 9999;
+            image-rendering: pixelated;
+            transition: none;
+            cursor: pointer;
+        }
+        
+        @keyframes walk {
+            0% { transform: scaleX(1); }
+            50% { transform: scaleX(1) translateY(-4px); }
+            100% { transform: scaleX(1); }
+        }
+        
+        @keyframes jump {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+        
+        @keyframes dance {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        .walking {
+            animation: walk 0.5s infinite;
+        }
+        
+        .jumping {
+            animation: jump 0.6s ease-out;
+        }
+        
+        .dancing {
+            animation: dance 0.2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-black text-black dark:text-white min-h-screen flex flex-col transition-colors">
+    <div class="w-full flex flex-col min-h-screen">
+        <!-- Hero Section - Top -->
+        <header class="pt-16 pb-12 px-4 md:px-8 lg:px-12">
+            <h1 class="text-[15vw] md:text-[12vw] lg:text-[10vw] font-bold tracking-tighter mb-8 leading-none">hj barraza</h1>
+            <p class="text-[5vw] md:text-[4vw] lg:text-[3.5vw] text-black dark:text-white font-medium mb-10 leading-tight">
+                Fractional AI & Growth | <a href="https://yuno.to" target="_blank">Yuno Producto Studio</a>
+            </p>
+            <p class="text-[3.5vw] md:text-[3vw] lg:text-[2.5vw] leading-relaxed text-black dark:text-white font-normal">
+                I help companies build proprietary AI systems to generate advantages and growth.
+            </p>
+        </header>
+
+        <!-- Main Grid - Middle (flex-grow to push footer down) -->
+        <main class="flex-grow flex items-center px-4 md:px-8 lg:px-12">
+            <div class="w-full max-w-7xl">
+                <!-- Yuno Header -->
+                <div class="mb-8 pb-8 border-b border-gray-100 dark:border-gray-800">
+                    <h2 class="text-xl font-bold text-black dark:text-white mb-2">
+                        <a href="https://yuno.to" target="_blank" rel="noopener noreferrer" class="hover:underline">Yuno</a>
+                    </h2>
+                    <p class="text-base text-gray-600 dark:text-gray-400">AI ventures holding company</p>
+                </div>
+                
+                <!-- Three Column Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <!-- Products -->
+                    <div>
+                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">Products</h3>
+                            <div class="space-y-3">
+                                <a href="https://astraed.co" target="_blank" rel="noopener noreferrer" class="block group">
+                                    <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">Astraed</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Consulting excellence platform</p>
+                                </a>
+                                <a href="https://catalogiq.to" target="_blank" rel="noopener noreferrer" class="block group">
+                                    <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">CatalogIQ</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Sales intelligence system</p>
+                                </a>
+                                <a href="https://hybridpersonas.com" target="_blank" rel="noopener noreferrer" class="block group">
+                                    <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">Hybrid Personas™</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Behavior prediction models</p>
+                                </a>
+                                <a href="https://path.mba" target="_blank" rel="noopener noreferrer" class="block group">
+                                    <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">PathMBA</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Business intelligence copilot</p>
+                                </a>
+                            </div>
+                    </div>
+                    
+                    <!-- Advisory -->
+                    <div>
+                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">Advisory</h3>
+                            <div class="space-y-3">
+                                <a href="https://yuno.to/axia" target="_blank" rel="noopener noreferrer" class="block group">
+                                    <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">Axia</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">AI transformation consulting</p>
+                                </a>
+                                <a href="https://www.tryautomatique.com" target="_blank" rel="noopener noreferrer" class="block group">
+                                    <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">Automatique</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Process automation optimization</p>
+                                </a>
+                                <a href="https://yuno.to/form-ai" target="_blank" rel="noopener noreferrer" class="block group">
+                                    <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">Form AI</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400"> AI training</p>
+                                </a>
+                                <a href="https://digifolkmedia.com" target="_blank" rel="noopener noreferrer" class="block group">
+                                    <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">Digifolk Media</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Technology content publishing</p>
+                                </a>
+                            </div>
+                    </div>
+
+                    <!-- Other Links -->
+                    <div>
+                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">Other Links</h3>
+                    <div class="space-y-3">
+                        <a href="https://contxto.com" target="_blank" rel="noopener noreferrer" class="block group">
+                            <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">Contxto</span>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Latin America tech news</p>
+                        </a>
+                        <a href="https://whitepaper.mx" target="_blank" rel="noopener noreferrer" class="block group">
+                            <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">Whitepaper</span>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Mexico business intelligence</p>
+                        </a>
+                        <a href="https://thebooksummaries.com" target="_blank" rel="noopener noreferrer" class="block group">
+                            <span class="text-sm font-semibold text-black dark:text-white group-hover:underline">TheBookSummaries</span>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Business book insights</p>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- City Facts Display -->
+        <div class="w-full px-4 md:px-8 lg:px-12">
+            <div id="city-fact" class="text-right py-4 text-sm text-gray-500 dark:text-gray-400 font-light min-h-[24px] transition-all duration-500"></div>
+        </div>
+        
+        <!-- Footer - Bottom -->
+        <footer class="py-8 px-4 md:px-8 lg:px-12 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex justify-between items-center w-full">
+                <nav class="flex gap-6 text-sm">
+                    <a href="mailto:hjbarraza@digifolkmedia.com" class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition">Email</a>
+                    <a href="https://www.linkedin.com/in/barraza/" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition">LinkedIn</a>
+                    <a href="https://yuno.to" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition">Yuno</a>
+                </nav>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    <span class="city-link" data-city="paris">Paris</span>
+                    <span class="mx-1">·</span>
+                    <span class="city-link" data-city="barcelona">Barcelona</span>
+                    <span class="mx-1">·</span>
+                    <span class="city-link" data-city="mexico">CDMX</span>
+                </p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Console easter egg for developers
+        console.log('%c👋 Hey there, curious developer!', 'font-size: 20px; font-weight: bold; color: #1a1a1a;');
+        console.log('%cLooking for something interesting? Try the Konami code...', 'font-size: 12px; color: #666;');
+        console.log('%c(↑ ↑ ↓ ↓ ← → ← → B A)', 'font-size: 10px; color: #999;');
+        
+        // Konami code easter egg
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    activateEasterEgg();
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+        
+        function activateEasterEgg() {
+            console.log('%c> TERMINAL MODE ACTIVATED', 'font-size: 20px; color: #00ff00; font-weight: bold; background: #000; padding: 10px;');
+            console.log('%c> LOADING SYSTEM... OK', 'font-size: 14px; color: #00ff00; background: #000; padding: 5px;');
+            
+            // Add CRT terminal effects
+            document.body.classList.add('pixel-mode', 'crt-terminal', 'crt-effect', 'crt-flicker');
+            
+            // Add pixel text to all text elements
+            document.querySelectorAll('h1, h2, h3, p, a, span').forEach(el => {
+                el.classList.add('pixel-text');
+            });
+            
+            // Play 8-bit sound effect (using Web Audio API)
+            playChiptune();
+            
+            // Create pixel character
+            createPixelCharacter();
+            
+            // Remove effects after 20 seconds
+            setTimeout(() => {
+                document.body.classList.remove('pixel-mode', 'crt-terminal', 'crt-effect', 'crt-flicker');
+                document.querySelectorAll('.pixel-text').forEach(el => {
+                    el.classList.remove('pixel-text');
+                });
+                const character = document.querySelector('.pixel-character');
+                if (character) character.remove();
+                console.log('%c> SYSTEM SHUTDOWN... GOODBYE', 'font-size: 12px; color: #00ff00; background: #000;');
+            }, 20000);
+        }
+        
+        function playChiptune() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const notes = [440, 494, 523, 587, 659, 698, 784]; // A4 to G5
+            
+            notes.forEach((freq, i) => {
+                setTimeout(() => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.type = 'square'; // 8-bit square wave
+                    oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
+                    
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.2);
+                }, i * 100);
+            });
+        }
+        
+        function createPixelCharacter() {
+            const character = document.createElement('div');
+            character.className = 'pixel-character walking';
+            character.title = 'Catch me if you can!';
+            
+            // Create a green terminal dragon
+            const dragonSprite = `
+                <svg width="40" height="40" viewBox="0 0 10 10" style="width: 100%; height: 100%;">
+                    <!-- Dragon body -->
+                    <rect x="4" y="3" width="3" height="3" fill="#00ff00"/>
+                    <rect x="3" y="4" width="1" height="2" fill="#00ff00"/>
+                    <rect x="7" y="4" width="1" height="2" fill="#00ff00"/>
+                    
+                    <!-- Dragon head -->
+                    <rect x="5" y="2" width="2" height="1" fill="#00ff00"/>
+                    <rect x="4" y="2" width="1" height="1" fill="#00cc00"/>
+                    
+                    <!-- Eyes -->
+                    <rect x="4.5" y="2.5" width="0.5" height="0.5" fill="#ffffff"/>
+                    <rect x="6" y="2.5" width="0.5" height="0.5" fill="#ffffff"/>
+                    
+                    <!-- Wings -->
+                    <rect x="2" y="3" width="2" height="1" fill="#00ff44"/>
+                    <rect x="7" y="3" width="2" height="1" fill="#00ff44"/>
+                    
+                    <!-- Tail -->
+                    <rect x="5" y="6" width="1" height="2" fill="#00ff00"/>
+                    <rect x="4" y="7" width="1" height="1" fill="#00cc00"/>
+                    <rect x="6" y="7" width="1" height="1" fill="#00cc00"/>
+                    
+                    <!-- Spikes -->
+                    <rect x="5" y="1" width="1" height="1" fill="#00ff88"/>
+                    <rect x="5" y="8" width="1" height="1" fill="#00ff88"/>
+                </svg>
+            `;
+            character.innerHTML = dragonSprite;
+            
+            // Track character state
+            let position = -50;
+            let walkSpeed = 3;
+            let clickCount = 0;
+            let isFlying = false;
+            
+            // Start from left side
+            character.style.left = position + 'px';
+            document.body.appendChild(character);
+            
+            // Track mouse position for avoidance
+            let mouseX = 0;
+            let targetPosition = position;
+            let isRunningAway = false;
+            
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                const dragonX = position + 20; // Center of dragon
+                const distance = Math.abs(mouseX - dragonX);
+                
+                // If cursor is within 150px, run away!
+                if (distance < 150) {
+                    isRunningAway = true;
+                    // Run in opposite direction
+                    if (mouseX < dragonX) {
+                        targetPosition = position + 100; // Run right
+                    } else {
+                        targetPosition = position - 100; // Run left
+                    }
+                    
+                    // Keep within screen bounds
+                    targetPosition = Math.max(-50, Math.min(window.innerWidth - 50, targetPosition));
+                } else {
+                    isRunningAway = false;
+                }
+            });
+            
+            // Click interactions
+            character.addEventListener('click', (e) => {
+                e.stopPropagation();
+                clickCount++;
+                character.classList.remove('walking', 'jumping', 'dancing');
+                
+                // Screen flicker effect
+                document.body.classList.add('screen-flash');
+                setTimeout(() => {
+                    document.body.classList.remove('screen-flash');
+                }, 200);
+                
+                // Play zap sound effect
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Zap/laser sound
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(1000, audioContext.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                osc.connect(gain);
+                gain.connect(audioContext.destination);
+                osc.start();
+                osc.stop(audioContext.currentTime + 0.2);
+                
+                // Fire projectile
+                createProjectile(character, clickCount);
+                
+                if (clickCount === 1) {
+                    // First click - jump
+                    character.classList.add('jumping');
+                    console.log('%c> HIT! 1/4 ⚡', 'color: #00ff00; background: #000;');
+                    setTimeout(() => {
+                        character.classList.remove('jumping');
+                        character.classList.add('walking');
+                    }, 600);
+                } else if (clickCount === 2) {
+                    // Second click - dance
+                    character.classList.add('dancing');
+                    console.log('%c> COMBO! 2/4 ⚡⚡', 'color: #00ff00; background: #000;');
+                    setTimeout(() => {
+                        character.classList.remove('dancing');
+                        character.classList.add('walking');
+                    }, 1000);
+                } else if (clickCount === 3) {
+                    // Third click - speed boost
+                    walkSpeed = 6;
+                    console.log('%c> CRITICAL! 3/4 ⚡⚡⚡', 'color: #00ff00; background: #000;');
+                    setTimeout(() => {
+                        walkSpeed = 3;
+                    }, 3000);
+                } else if (clickCount >= 4) {
+                    // Fourth+ click - mega blast!
+                    console.log('%c> ULTRA COMBO! DRAGON MASTER! ⚡⚡⚡⚡', 'color: #00ff00; background: #000; font-size: 16px; padding: 5px;');
+                    // Fire multiple projectiles
+                    for (let i = 0; i < 3; i++) {
+                        setTimeout(() => createProjectile(character, 4), i * 100);
+                    }
+                    clickCount = 0;
+                }
+            });
+            
+            // Animate walking and avoidance
+            const walkInterval = setInterval(() => {
+                if (isRunningAway) {
+                    // Move faster when running away
+                    const diff = targetPosition - position;
+                    position += Math.sign(diff) * Math.min(Math.abs(diff), 8);
+                } else {
+                    // Normal walking
+                    position += walkSpeed;
+                    
+                    // Loop back to start
+                    if (position > window.innerWidth) {
+                        position = -50;
+                    }
+                }
+                
+                character.style.left = position + 'px';
+            }, 50);
+            
+            // Stop walking when removed
+            setTimeout(() => {
+                clearInterval(walkInterval);
+            }, 19900);
+        }
+        
+        function createProjectile(dragon, power = 1) {
+            const projectile = document.createElement('div');
+            const colors = ['#00ff00', '#00ff88', '#88ff00', '#00ffff'];
+            const color = colors[Math.min(power - 1, colors.length - 1)];
+            
+            projectile.style.cssText = `
+                position: fixed;
+                left: ${parseInt(dragon.style.left) + 40}px;
+                bottom: 115px;
+                width: ${20 + power * 5}px;
+                height: ${4 + power * 2}px;
+                background: ${color};
+                box-shadow: 0 0 ${10 * power}px ${color}, 0 0 ${20 * power}px ${color};
+                animation: projectileMove 0.6s forwards;
+                z-index: 9998;
+            `;
+            
+            // Create CSS animation if not exists
+            if (!document.querySelector('#projectileStyle')) {
+                const style = document.createElement('style');
+                style.id = 'projectileStyle';
+                style.textContent = `
+                    @keyframes projectileMove {
+                        0% { 
+                            transform: translateX(0) scale(1); 
+                            opacity: 1; 
+                        }
+                        100% { 
+                            transform: translateX(300px) scale(0.3); 
+                            opacity: 0; 
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(projectile);
+            
+            // Create pixel explosion at the end
+            setTimeout(() => {
+                createPixelExplosion(parseInt(dragon.style.left) + 340, 115);
+                projectile.remove();
+            }, 600);
+        }
+        
+        function createPixelExplosion(x, y) {
+            for (let i = 0; i < 8; i++) {
+                const pixel = document.createElement('div');
+                const angle = (i / 8) * Math.PI * 2;
+                pixel.style.cssText = `
+                    position: fixed;
+                    left: ${x}px;
+                    bottom: ${y}px;
+                    width: 4px;
+                    height: 4px;
+                    background: #00ff00;
+                    z-index: 9997;
+                `;
+                document.body.appendChild(pixel);
+                
+                // Animate pixel
+                let distance = 0;
+                const animatePixel = setInterval(() => {
+                    distance += 5;
+                    pixel.style.left = `${x + Math.cos(angle) * distance}px`;
+                    pixel.style.bottom = `${y + Math.sin(angle) * distance}px`;
+                    pixel.style.opacity = 1 - (distance / 50);
+                    
+                    if (distance >= 50) {
+                        clearInterval(animatePixel);
+                        pixel.remove();
+                    }
+                }, 30);
+            }
+        }
+        
+        
+        // City easter eggs
+        const cityData = {
+            paris: {
+                flag: '🇫🇷',
+                greetings: ['Bonjour!', 'Salut!', 'Bienvenue!', 'Enchanté!', 'Coucou!'],
+                facts: [
+                    '🗼 Home of 1,803 monuments',
+                    '🥐 450+ bakeries citywide', 
+                    '☕ 10,000+ café terraces',
+                    '🎨 130+ museums',
+                    '🚲 1,000km of bike lanes',
+                    '🌉 37 bridges across the Seine',
+                    '📚 Shakespeare and Company since 1951',
+                    '🚇 302 metro stations',
+                    '🌳 421 parks and gardens',
+                    '🍷 5,000+ restaurants',
+                    '💡 20,000 street lights on at dusk',
+                    '🎭 130 theaters',
+                    '📖 1,000+ bookstores',
+                    '🏛️ Louvre: 35,000 artworks',
+                    '🥖 33,000+ baguettes sold/hour',
+                    '🎪 6,100 streets to explore',
+                    '🏰 500+ filming locations/year',
+                    '🚶 10M tourists walk Champs-Élysées/year',
+                    '☂️ Lost & found: 100,000 items/year',
+                    '🗝️ Catacombs hold 6M skeletons',
+                    '🎼 400+ concerts every night',
+                    '🏛️ Notre-Dame: 14M visitors/year',
+                    '🚂 Gare du Nord: busiest in Europe',
+                    '🌹 2M love locks removed in 2015',
+                    '📸 Most photographed city worldwide',
+                    '🚖 17,000 taxis roam the streets',
+                    '🍾 30,000 bottles of champagne popped daily',
+                    '🐕 300,000 dogs live in Paris',
+                    '🏺 96 Wallace fountains for free water',
+                    '🎪 Moulin Rouge: 600,000 visitors/year',
+                    '🌸 42 million flowers planted annually',
+                    '⛪ 173 churches and chapels',
+                    '🏛️ Arc de Triomphe: 12 avenues converge',
+                    '📬 12 million letters delivered daily',
+                    '🎨 Mona Lisa: 6 million viewers/year',
+                    '🍞 1,200 types of cheese sold',
+                    '🚲 Vélib\': 20,000 bikes available',
+                    '🌙 City of Light has 33,000 lamp posts',
+                    '🏃 37,000 runners in Paris Marathon',
+                    '📡 Eiffel Tower shrinks 6 inches in winter',
+                    '🍽️ 44 Michelin 3-star restaurants',
+                    '🎬 800+ movies filmed here yearly',
+                    '📚 470 public libraries',
+                    '🏖️ Paris Plages: 3,500 tons of sand',
+                    '🚁 Heliport handles 7,000 flights/year',
+                    '🛍️ 17,500 shops and boutiques',
+                    '🎓 17 universities, 450,000 students',
+                    '⚡ 1 street lamp for every 4 Parisians',
+                    '🌐 #1 tourist destination globally',
+                    '🚌 347 bus lines cover 3,900km'
+                ],
+                timezone: 'Europe/Paris'
+            },
+            barcelona: {
+                flag: '🇪🇸',
+                greetings: ['¡Hola!', 'Bon dia!', 'Benvingut!', '¡Bienvenido!', 'Ei!'],
+                facts: [
+                    '🏖️ 4.5km of beaches',
+                    '🏗️ 9 UNESCO sites',
+                    '☀️ 2,524 hours of sun/year',
+                    '🍷 160+ year old market',
+                    '⚽ Camp Nou: 99,354 seats',
+                    '🏛️ Gaudí designed 7 buildings here',
+                    '🚴 200km of bike lanes',
+                    '🌡️ 300 days of sunshine/year',
+                    '🏪 La Rambla: 1.2km long',
+                    '⛪ Sagrada Familia since 1882',
+                    '🚇 12 metro lines, 189 stations',
+                    '🍽️ 20 Michelin-starred restaurants',
+                    '🎨 55 museums and galleries',
+                    '🌴 1.4 million trees',
+                    '🏔️ 512m above sea level',
+                    '🏖️ 10 beaches within city limits',
+                    '🎪 10 districts, 73 neighborhoods',
+                    '🚢 Europe\'s 9th busiest port',
+                    '📱 Mobile World Congress host',
+                    '🏃 Barcelona Marathon: 20,000 runners',
+                    '🎭 Liceu Opera: 2,292 seats',
+                    '🚡 6 cable car lines',
+                    '🍻 180+ craft beer spots',
+                    '🛴 50,000 e-scooter trips daily',
+                    '🌃 Named after Hannibal Barca',
+                    '🏰 Gothic Quarter: 2,000 years old',
+                    '🍊 280,000 orange trees line streets',
+                    '🏊 10 municipal swimming pools',
+                    '🎪 La Mercè festival: 2M attendees',
+                    '🚲 Bicing: 6,000 public bikes',
+                    '🎯 FC Barcelona: 100,000+ members',
+                    '🍤 400+ tapas bars',
+                    '🏛️ Picasso Museum: 4,251 works',
+                    '🌊 4 urban beaches, 7 total',
+                    '🚋 6 tram lines, 29km tracks',
+                    '📚 40 public libraries',
+                    '🎸 Primavera Sound: 220,000 attendees',
+                    '🏺 Roman walls still visible',
+                    '🛍️ 35,000 shops',
+                    '✈️ El Prat: 50M passengers/year',
+                    '🏨 75,000 hotel beds',
+                    '🎓 12 universities',
+                    '🚁 Tibidabo: 512m high',
+                    '🌺 7,000 species in Botanical Garden',
+                    '🎨 Joan Miró Foundation: 10,000 works',
+                    '🍷 23 municipal markets',
+                    '🏃 10K Cursa Bombers: 20,000 runners',
+                    '🎪 175 festivals annually',
+                    '🚌 109 bus routes',
+                    '🌅 4.2M cruise passengers/year'
+                ],
+                timezone: 'Europe/Madrid'
+            },
+            mexico: {
+                flag: '🇲🇽',
+                greetings: ['¡Hola!', '¡Órale!', '¡Qué onda!', '¡Bienvenido!', '¡Buenas!'],
+                facts: [
+                    '🏛️ 700+ years of history',
+                    '🌮 30,000+ taco stands',
+                    '🏔️ 2,240m altitude',
+                    '🚇 195 metro stations',
+                    '🎨 150+ museums',
+                    '🌳 Chapultepec: 686 hectares',
+                    '📚 Oldest university in Americas (1551)',
+                    '🏺 Built on ancient Tenochtitlan',
+                    '🚕 140,000+ taxis',
+                    '☕ 50,000+ cafés',
+                    '🎭 100+ theaters',
+                    '🌯 1 billion tacos eaten/year',
+                    '🏛️ 4 UNESCO World Heritage sites',
+                    '🌺 Xochimilco: 170km of canals',
+                    '📖 Central Library: 10M tile mural',
+                    '🎪 350 neighborhoods',
+                    '🍺 300+ pulquerías',
+                    '⛲ 280+ public markets',
+                    '🚁 Busiest airspace in Latin America',
+                    '🏟️ Azteca Stadium: 87,523 capacity',
+                    '🌶️ 64 varieties of chili peppers',
+                    '🎓 35+ universities',
+                    '🚊 12 Metrobús lines',
+                    '💀 Day of the Dead: 2,500 years old',
+                    '🏢 Torre Reforma: 246m tall',
+                    '🎨 Muralism capital of the world',
+                    '📻 500+ radio stations',
+                    '🌮 Tacos consumed: 4,500 per second',
+                    '🚲 140km of bike lanes',
+                    '🏛️ National Palace: 14th century',
+                    '🌋 Surrounded by volcanoes',
+                    '🎪 16 alcaldías (boroughs)',
+                    '🚌 1,400+ bus routes',
+                    '🏺 Templo Mayor discovered 1978',
+                    '🎨 Frida Kahlo Museum: Casa Azul',
+                    '🌮 Al pastor invented here in 1960s',
+                    '⛪ Metropolitan Cathedral: 240 years to build',
+                    '🏪 Central de Abasto: largest market in LatAm',
+                    '📺 Televisa: largest media company',
+                    '🚇 Metro: 5 million daily riders',
+                    '🎭 Bellas Artes: 1934 art nouveau palace',
+                    '🍺 Oldest cantina: 1870',
+                    '🏛️ Anthropology Museum: 23 exhibit halls',
+                    '🌳 18% of city is conservation land',
+                    '💧 Sinking 50cm per year',
+                    '🎬 Roma & Condesa: hipster havens',
+                    '🌮 Torta de tamal: carbs on carbs',
+                    '🚕 Pink taxis for women',
+                    '📚 Vasconcelos Library: 600,000 books',
+                    '🎪 Largest city square in LatAm',
+                    '🏺 21 million residents metro area',
+                    '☔ Rainy season: June to October',
+                    '🎨 Diego Rivera murals everywhere'
+                ],
+                timezone: 'America/Mexico_City'
+            }
+        };
+        
+        const cityLinks = document.querySelectorAll('.city-link');
+        const factDisplay = document.getElementById('city-fact');
+        let factTimeout;
+        let rotationInterval;
+        let currentFactIndex = 0;
+        
+        cityLinks.forEach(link => {
+            let clickTimeout;
+            let clickCounter = 0;
+            
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const city = link.dataset.city;
+                const data = cityData[city];
+                
+                // Clear rotation on click
+                clearInterval(rotationInterval);
+                
+                clickCounter++;
+                clearTimeout(clickTimeout);
+                
+                // Single click - show greeting and fact
+                if (clickCounter === 1) {
+                    const greeting = data.greetings[Math.floor(Math.random() * data.greetings.length)];
+                    const fact = data.facts[Math.floor(Math.random() * data.facts.length)];
+                    
+                    // Update the fact display area with flag
+                    updateFactDisplay(`${data.flag} ${greeting} ${fact}`);
+                    
+                    clickTimeout = setTimeout(() => {
+                        clickCounter = 0;
+                    }, 500);
+                }
+                
+                // Double click - show local time
+                else if (clickCounter === 2) {
+                    const time = new Date().toLocaleTimeString('en-US', {
+                        timeZone: data.timezone,
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    const cityName = city.charAt(0).toUpperCase() + city.slice(1);
+                    updateFactDisplay(`${data.flag} ⏰ ${cityName} local time: ${time}`);
+                    clickCounter = 0;
+                }
+            });
+            
+            // Hover - start rotating facts
+            link.addEventListener('mouseenter', () => {
+                const city = link.dataset.city;
+                const data = cityData[city];
+                
+                // Clear any existing rotation
+                clearInterval(rotationInterval);
+                
+                // Start with a random fact
+                currentFactIndex = Math.floor(Math.random() * data.facts.length);
+                updateFactDisplay(`${data.flag} ${data.facts[currentFactIndex]}`, true);
+                
+                // Rotate facts every 2.5 seconds while hovering
+                rotationInterval = setInterval(() => {
+                    currentFactIndex = (currentFactIndex + 1) % data.facts.length;
+                    updateFactDisplay(`${data.flag} ${data.facts[currentFactIndex]}`, true);
+                }, 2500);
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                // Stop rotating facts
+                clearInterval(rotationInterval);
+                clearTimeout(factTimeout);
+                
+                factTimeout = setTimeout(() => {
+                    factDisplay.style.opacity = '0';
+                    setTimeout(() => {
+                        factDisplay.textContent = '';
+                        factDisplay.style.opacity = '1';
+                    }, 300);
+                }, 2000);
+            });
+        });
+        
+        function updateFactDisplay(text, isHover = false) {
+            clearTimeout(factTimeout);
+            
+            // Fade out current content
+            factDisplay.style.opacity = '0';
+            
+            setTimeout(() => {
+                factDisplay.textContent = text;
+                factDisplay.style.opacity = '1';
+                
+                // Auto-clear after longer duration if not hover
+                if (!isHover) {
+                    factTimeout = setTimeout(() => {
+                        factDisplay.style.opacity = '0';
+                        setTimeout(() => {
+                            factDisplay.textContent = '';
+                            factDisplay.style.opacity = '1';
+                        }, 300);
+                    }, 5000);
+                }
+            }, 300);
+        }
+    </script>
+</body>
+</html>

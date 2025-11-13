@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /classes
+Disallow: /thesis/syllabus/
+Disallow: /thesisjournal*
+Disallow: /registration
+Allow: /registration/CourseInfo.php?course_id=*

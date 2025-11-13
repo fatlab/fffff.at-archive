@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+# Prevent crawling of duplicate, thin, or low-value pages
+Disallow: /cgi-bin/
+Disallow: /trackback/
+Disallow: /xmlrpc.php
+Disallow: /feed/
+Disallow: /comments/
+Disallow: /tag/
+Disallow: /search/
+
+# Sitemap (important for Rank Math)
+Sitemap: https://irelandiptv4k.irish/sitemap_index.xml

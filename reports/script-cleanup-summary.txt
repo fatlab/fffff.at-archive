@@ -1,0 +1,95 @@
+SCRIPT CLEANUP SUMMARY
+======================================================================
+
+## Actions Taken
+
+### Archived (Obsolete)
+Moved to scripts/archive-obsolete/:
+✓ 9-fix-gold-archive.py - Cleaned Wayback, but used clean backup instead
+✓ 10-download-gold-assets.sh - Downloaded assets, but used clean backup instead  
+✓ 12-deep-clean-gold.py - Never used, clean backup was better solution
+
+### Documented
+✓ Added warning to 4-fix-broken-links.py about path depth bug
+✓ Created scripts/README.md - Comprehensive documentation
+✓ Created scripts/QUICK-START.md - Essential commands only
+
+### Identified Issues
+- Script 4 preserves wrong ../ depth (documented, fixed by script 13)
+- Multiple scripts share same numbers (confusing but not breaking)
+- Recommended renumbering in audit (optional, not critical)
+
+## Current Active Scripts (Priority Order)
+
+### Essential (Run These)
+1. **8-recover-from-backup.py** - File recovery from dubtron
+2. **13-fix-relative-paths.py** - Fix broken navigation (always after bulk changes)
+3. **11-update-gold-links.py** - Update gold.fffff.at → /gold
+
+### Supporting
+- 1-mirror-site.sh - Initial wget mirror
+- 2-analyze-links.py - Link analysis
+- 3-recover-from-wayback.py - Wayback recovery
+- 4-fix-broken-links.py - Tag/category fixes (+ always run 13 after)
+- 5-manual-recovery.py - Manual Wayback tool
+- 7-download-missing-media.py - Image recovery
+- 11-update-reports.py - Report generation
+
+### Utilities
+- check-progress.sh, watch-progress.sh, commit-progress.sh
+
+## Script Organization Status
+
+**Before Cleanup:** 30 scripts, confusing numbering, duplicates
+**After Cleanup:** 
+- 3 obsolete scripts archived
+- 2 new documentation files
+- 1 bug documented
+- Clear usage instructions
+
+**Result:** Much clearer which scripts to use and when.
+
+## Recommendations for Future
+
+### High Priority
+- Run script 13 after ANY bulk link changes
+- Use script 8 for file recovery (most reliable)
+- Keep gold directory as clean backup copy
+
+### Medium Priority
+- Could renumber scripts for clarity (not urgent)
+- Could consolidate duplicate-numbered scripts
+- Could fix script 4's path depth bug (or just always run 13 after)
+
+### Low Priority
+- Archive other pre-existing scripts not used in this session
+- Create automated test suite
+- Add dry-run mode to all scripts
+
+## Files Created This Session
+
+Documentation:
+- scripts/README.md (comprehensive guide)
+- scripts/QUICK-START.md (essential commands)
+- reports/script-audit.md (detailed audit)
+- reports/script-cleanup-summary.txt (this file)
+
+Scripts Kept (Active):
+- scripts/8-recover-from-backup.py (recovery tool)
+- scripts/11-update-gold-links.py (gold link fixer)
+- scripts/13-fix-relative-paths.py (path depth fixer)
+
+Scripts Archived (Obsolete):
+- scripts/archive-obsolete/9-fix-gold-archive.py
+- scripts/archive-obsolete/10-download-gold-assets.sh
+- scripts/archive-obsolete/12-deep-clean-gold.py
+
+## Summary
+
+✓ Scripts organized and documented
+✓ Obsolete code archived (not deleted, for reference)
+✓ Known bugs documented
+✓ Usage patterns clear
+✓ Quick reference available
+
+The script collection is now much more maintainable and usable.

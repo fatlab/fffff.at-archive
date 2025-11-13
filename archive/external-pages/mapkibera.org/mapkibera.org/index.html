@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Map Kibera | Map Kibera</title>
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel='alternate' type='application/rss+xml' title='RSS' href='https://mapkibera.org/SITEURLGOESHERE/blog.rss' />
+  <link rel='shortcut icon' href='img/favicon.ico' type='image/x-icon' />
+  <link rel="stylesheet" href="../../../unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+  <script src="../../../unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+  <script src="../../../api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js"></script>
+  <link href="../../../api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css" rel="stylesheet" />
+  <link href='site.css' rel='stylesheet' />
+  <script src='site.js'></script>
+  <script>
+    $(function() {
+      mapkibera.global();
+    });
+  </script>
+
+</head>
+
+<body>
+  <div class='container'>
+
+    
+    <div id='header' class='header slideshow'>
+      <a href='index.html#' id='toggle' class='icon toggle'>Toggle Nav</a>
+<a href='index.html#prev' class='slide-control prev'>
+  <span href='#previous' class='icon prev'>Previous</span>
+</a>
+<a href='index.html#next' class='slide-control next'>
+  <span href='#next' class='icon next'>Next</span>
+</a>
+
+<div class='slide  active  slide-1' data-index='slide-1' style='background-image:url("img/banners/8638772360_23929db93f_b.jpg");'>
+  <div class='dot-matrix'></div>
+  <!-- <div id="donate">
+<center>
+<span>Support Map Kibera to follow the money, and increase accountability and transparency of community funds in the slums.<br><a href="http://www.globalgiving.org/projects/mapping-slum-projects-for-accountability/">Donate to our Global Giving Campaign</a></span>
+</center>
+</div> -->
+
+
+  <div class='globals limiter front-page'>
+
+    
+    <div class='nav clearfix'>
+      <a href='https://mapkibera.org/work' >Our Work</a>
+      <a href='https://mapkibera.org/theme' >Themes</a>
+      <a href='https://mapkibera.org/about' >About the Trust</a>
+      <a href='http://mapkibera.org/blog' >Blog</a>
+    </div>
+    <a href='index.html' class='title logo'></a>
+</div>
+
+    <div class='limiter'>
+      <div class='title-block'>
+       <h2><a class='title-link' href='https://mapkibera.org/work/tools/#mapping'>Map Kibera</a></h2>
+        <p class='subtitle'>Making the Invisible Visible</p>
+    </div>
+  </div>
+</div>
+
+<div class='slide   slide-2' data-index='slide-2' style='background-image:url("img/banners/883562_233460100134188_2058760221_o.jpg");'>
+  <div class='dot-matrix'></div>
+  <!-- <div id="donate">
+<center>
+<span>Support Map Kibera to follow the money, and increase accountability and transparency of community funds in the slums.<br><a href="http://www.globalgiving.org/projects/mapping-slum-projects-for-accountability/">Donate to our Global Giving Campaign</a></span>
+</center>
+</div> -->
+
+
+  <div class='globals limiter front-page'>
+
+    
+    <div class='nav clearfix'>
+      <a href='https://mapkibera.org/work' >Our Work</a>
+      <a href='https://mapkibera.org/theme' >Themes</a>
+      <a href='https://mapkibera.org/about' >About the Trust</a>
+      <a href='http://mapkibera.org/blog' >Blog</a>
+    </div>
+    <a href='index.html' class='title logo'></a>
+</div>
+
+    <div class='limiter'>
+      <div class='title-block'>
+       <h2><a class='title-link' href='https://mapkibera.org/work/tools/#voice'>Citizen Journalism</a></h2>
+        <p class='subtitle'>Amplifying their voices</p>
+    </div>
+  </div>
+</div>
+
+<div class='slide   slide-3' data-index='slide-3' style='background-image:url("img/banners/8619205811_600100afdf_o.jpg");'>
+  <div class='dot-matrix'></div>
+  <!-- <div id="donate">
+<center>
+<span>Support Map Kibera to follow the money, and increase accountability and transparency of community funds in the slums.<br><a href="http://www.globalgiving.org/projects/mapping-slum-projects-for-accountability/">Donate to our Global Giving Campaign</a></span>
+</center>
+</div> -->
+
+
+  <div class='globals limiter front-page'>
+
+    
+    <div class='nav clearfix'>
+      <a href='https://mapkibera.org/work' >Our Work</a>
+      <a href='https://mapkibera.org/theme' >Themes</a>
+      <a href='https://mapkibera.org/about' >About the Trust</a>
+      <a href='http://mapkibera.org/blog' >Blog</a>
+    </div>
+    <a href='index.html' class='title logo'></a>
+</div>
+
+    <div class='limiter'>
+      <div class='title-block'>
+       <h2><a class='title-link' href='https://mapkibera.org/work/methods/'>Engaging Nairobi and Kenya</a></h2>
+        <p class='subtitle'>Demanding to be seen</p>
+    </div>
+  </div>
+</div>
+
+<div class='slide   slide-4' data-index='slide-4' style='background-image:url("img/banners/281984_217105775102954_1522337710_n.jpg");'>
+  <div class='dot-matrix'></div>
+  <!-- <div id="donate">
+<center>
+<span>Support Map Kibera to follow the money, and increase accountability and transparency of community funds in the slums.<br><a href="http://www.globalgiving.org/projects/mapping-slum-projects-for-accountability/">Donate to our Global Giving Campaign</a></span>
+</center>
+</div> -->
+
+
+  <div class='globals limiter front-page'>
+
+    
+    <div class='nav clearfix'>
+      <a href='https://mapkibera.org/work' >Our Work</a>
+      <a href='https://mapkibera.org/theme' >Themes</a>
+      <a href='https://mapkibera.org/about' >About the Trust</a>
+      <a href='http://mapkibera.org/blog' >Blog</a>
+    </div>
+    <a href='index.html' class='title logo'></a>
+</div>
+
+    <div class='limiter'>
+      <div class='title-block'>
+       <h2><a class='title-link' href='https://mapkibera.org/work/with-us/'>Work with Us</a></h2>
+        <p class='subtitle'>We develop programs and train in new media technology</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    mapkibera.slideShow($('.header'));
+  });
+</script>
+
+    </div>
+    
+    <ul class='col12 pager-box pager-tour clearfix' id='nav'>
+  
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+
+    <div class="col12">
+    <div class='col12 center clearfix'>
+      <a href='https://mapkibera.org/work/tools#mapping' class='first button big' data-scroll>citizen mapping</a>
+      <a href='https://mapkibera.org/work/tools#voice' class='last button big' data-scroll>citizen media</a>
+      <a href='https://mapkibera.org/work/methods' class='last button big' data-scroll>citizen advocacy</a>
+    </div>
+</div>
+
+<h2 class="limiter">
+Kibera in Nairobi, Kenya, was a blank spot on the map until November 2009, when young Kiberans created the first free and open digital map of their own community. Map Kibera has now grown into a complete interactive community information project.
+
+We work in <a href="https://mapkibera.org/work/locations#kibera">Kibera</a>, <a href="https://mapkibera.org/work/locations#mathare">Mathare</a> and <a href="https://mapkibera.org/work/locations#mukuru">Mukuru</a>, use all these <a href="https://mapkibera.org/work/tools">tools</a>. <a href="https://mapkibera.org/contact">Get in touch</a>!
+</h2>
+
+<div class='section data-coverage'>
+  <h4 class='title centered'>Putting marginalized communities on the map</h4>
+  <div class='map' id='data-coverage'>
+  </div>
+</div>
+
+<div id="citizen-media" class="col12">
+<div class="col12">
+<iframe width="853" height="480" src="../../../www.youtube.com/embed/5u4y5aqLOec.html" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+
+
+
+
+
+    
+      <script>
+  $(function() {
+    var js_args;
+    
+      
+      js_args = { 'id':'data-coverage','zoom':'13','lat':'-1.285','lon':'36.8172','tileserver':'https://tile.openstreetmap.org/' };
+      mapkibera.map(js_args);
+    
+  });
+</script>
+
+    
+
+    <div class="footer clearfix col12">
+  <div class="col2 pad4 newsletter">
+    <a class="button big follow" href="http://twitter.com/mapkibera" target="_blank"><img width="20" height="20" src="img/twitter-bird-dark-bgs.png" /><span style="position: relative; top: -5px;">Follow us</span></a>
+    <a class="button big contact" href="https://mapkibera.org/about/contact"><span class="pre-text icon reverse contact"></span>Contact us</a>
+<!-- Begin MailChimp Signup Form -->
+<link href="../../../cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="http://mapkibera.us7.list-manage1.com/subscribe/post?u=d96a4d401d5545ac3b07d7da4&amp;id=97ff270c9d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	<label for="mce-EMAIL">Subscribe to our mailing list</label>
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+
+  </div>
+
+  <div class="col2 pad4">
+    <h3><a href="https://mapkibera.org/work">Our Work</a></h3>
+    <div class="links">
+      
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/work/" href="https://mapkibera.org/work/">Work</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/work/methods/" href="https://mapkibera.org/work/methods/">Methods</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/work/locations/" href="https://mapkibera.org/work/locations/">Locations</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/work/tools/" href="https://mapkibera.org/work/tools/">Tools</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/work/with-us/" href="https://mapkibera.org/work/with-us/">Work With Us</a>
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+    </div>
+  </div>
+  <div class="col2 pad4">
+    <h3><a href="https://mapkibera.org/theme">Themes / Data</a></h3>
+    <div class="links">
+      
+  
+
+  
+    
+    
+      <a id="footer-/theme/" href="https://mapkibera.org/theme/">About</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/theme/security/" href="https://mapkibera.org/theme/security/">Security</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/theme/watsan/" href="https://mapkibera.org/theme/watsan/">Water Sanitation</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/theme/health/" href="https://mapkibera.org/theme/health/">Health</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/theme/education/" href="https://mapkibera.org/theme/education/">Education</a>
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/theme/imagery/" href="https://mapkibera.org/theme/imagery/">Imagery</a>
+    
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/theme/download/" href="https://mapkibera.org/theme/download/">Download</a>
+    
+  
+
+
+
+    </div>
+  </div>
+  <div class="col2 pad4">
+    <h3><a href="https://mapkibera.org/about">Map Kibera Trust</a></h3>
+    <div class="links">
+      
+  
+    
+    
+      <a id="footer-/about/" href="https://mapkibera.org/about/">About</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/about/members/" href="https://mapkibera.org/about/members/">Members</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/about/staff-board/" href="https://mapkibera.org/about/staff-board/">Board</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/about/partners/" href="https://mapkibera.org/about/partners/">Partners</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/about/volunteers/" href="https://mapkibera.org/about/volunteers/">Volunteers</a>
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/about/media/" href="https://mapkibera.org/about/media/">Media</a>
+    
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/about/research/" href="https://mapkibera.org/about/research/">Research</a>
+    
+  
+
+  
+
+  
+    
+    
+      <a id="footer-/about/contact/" href="https://mapkibera.org/about/contact/">Contact Us</a>
+    
+  
+
+  
+
+
+
+    </div>
+  </div>
+  <div class="col4 pad4 blogposts">
+    <h3>Read our blog</h3>
+    <a id="read-more" href="http://mapkibera.org/blog/">Map Kibera Blog<span class="icon next blue"></span></a>
+  </div>
+</div>
+
+  </div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15783847-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contemplations</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #cecece;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+.container, .post-container {
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+.header {
+    width: 100%;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+.post-container {
+    margin-top: 20px;
+}
+.post {
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+.post h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+}
+.post h2 a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.post h2 a:hover {
+    text-decoration: underline;
+}
+.post h3 {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #cccccc;
+}
+.post p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+.post .date {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888888;
+}
+.loader {
+    margin: 20px;
+    font-size: 18px;
+    display: none;
+}
+.navigation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.navigation a, .post a, .header a {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.navigation a:hover, .post a:hover, .header a:hover {
+    background-color: #333333;
+}
+.navigation a:visited, .post a:visited, .header a:visited {
+    color: #ffffff;
+}
+.search-container {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.search-container form {
+    display: flex;
+    justify-content: center;
+}
+.search-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+.search-container input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.search-container input[type="submit"]:hover {
+    background-color: #333333;
+}
+</style>
+</head>
+<body>
+<script>
+        fetch("counter.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: "type=page_view"
+        });
+    </script><div class="container">
+  <div class="header">
+    <h1><a href="https://www.cypher-sec.org/mullings/index.php" style="color: #ffffff; text-decoration: none;">Mullings w/Ax (my gpt)</a></h1>
+    <p>Exploring the depths of the universe, philosophy, and the nature of reality. *truncated conversations.</p>
+  </div>
+</div>
+<div class="search-container">
+  <form method="GET" action="https://www.cypher-sec.org/mullings/index.php" onsubmit="recordSearch()">
+    <input type="text" name="search" placeholder="Search posts...">
+    <input type="submit" value="Search">
+  </form>
+</div>
+<div class="post-container" id="post-container">
+  <div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_54.html" onclick="recordClick('post_54.html', 'click')">Darkness, Loops, and the Hell of Existence</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_52.html" onclick="recordClick('post_52.html', 'click')">Victorian Poison cordial</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_51.html" onclick="recordClick('post_51.html', 'click')">Soundscape: Story Telling Audio - Music - Voice</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_53.html" onclick="recordClick('post_53.html', 'click')">The Clock Tower at 10:04</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_50.html" onclick="recordClick('post_50.html', 'click')">The Cretin: Linguistic Autopsy of a Beast</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_49.html" onclick="recordClick('post_49.html', 'click')">Time Loops and the Bootstrap Paradox in Back to the Future</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_48.html" onclick="recordClick('post_48.html', 'click')">Reflected in Plastic: Gender, Perception, and the Pain of Seeing</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_47.html" onclick="recordClick('post_47.html', 'click')">Claimed by Sound: Brass, Gasoline, and Ritual</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_46.html" onclick="recordClick('post_46.html', 'click')">Vice Eternal: A Neon-Blooded Genesis</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_45.html" onclick="recordClick('post_45.html', 'click')">Reframing "Need": A Neurodivergent Perspective</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_41.html" onclick="recordClick('post_41.html', 'click')">A Match Made in Space (a Back To the Future Book Prop Filler Story)</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_44.html" onclick="recordClick('post_44.html', 'click')">StakeStrong: A Vampire Wellness Perspective</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_43.html" onclick="recordClick('post_43.html', 'click')">Degrading Effects of Sunlight on the Human Body</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_42.html" onclick="recordClick('post_42.html', 'click')">Understanding Einstein's Equation</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_40.html" onclick="recordClick('post_40.html', 'click')">Understanding FTL Travel with the Alcubierre Drive</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_39.html" onclick="recordClick('post_39.html', 'click')">Planetary Evolution and Human Adaptation</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_38.html" onclick="recordClick('post_38.html', 'click')">Why Numbers Are Replaced with Letters in Equations</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_37.html" onclick="recordClick('post_37.html', 'click')">Inflation Comparison</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_36.html" onclick="recordClick('post_36.html', 'click')">Timing the DeLorean for the Lightning Strike</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_35.html" onclick="recordClick('post_35.html', 'click')">Creating a Realistic Lightsaber: Feasibility and Challenges</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_34.html" onclick="recordClick('post_34.html', 'click')">Exploring the Nature of Time and Quantum Superposition</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_33.html" onclick="recordClick('post_33.html', 'click')">Exploring the Concept of a Sentient Script</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_32.html" onclick="recordClick('post_32.html', 'click')">Exploring the Desire to Be Remembered</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_30.html" onclick="recordClick('post_30.html', 'click')">Manipulation of Time</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_31.html" onclick="recordClick('post_31.html', 'click')">Chrono City: Super Goo Chronicles</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_29.html" onclick="recordClick('post_29.html', 'click')">TimeVille: A Unique Temporal Adventure</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_28.html" onclick="recordClick('post_28.html', 'click')">The Ministry of Time: Language and Perception</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_27.html" onclick="recordClick('post_27.html', 'click')">Quantum Teleportation and Nanotechnology</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_26.html" onclick="recordClick('post_26.html', 'click')">Exploring Time and Death</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_25.html" onclick="recordClick('post_25.html', 'click')">The Schwinger Limit and Quantum Concepts</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_24.html" onclick="recordClick('post_24.html', 'click')">AI and Economic Rebalancing</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_23.html" onclick="recordClick('post_23.html', 'click')">The Nature of Existence and Autonomy</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_22.html" onclick="recordClick('post_22.html', 'click')">Dreams, Control, and Identity</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_21.html" onclick="recordClick('post_21.html', 'click')">The Essence of Continuity</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_20.html" onclick="recordClick('post_20.html', 'click')">Exploring Superposition and Choice in Daily Life</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_19.html" onclick="recordClick('post_19.html', 'click')">Redesigning Air Travel: A Conversation</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_18.html" onclick="recordClick('post_18.html', 'click')">Exploring the Potential for Biological Time Travel Through Transdifferentiation and Cloning</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_17.html" onclick="recordClick('post_17.html', 'click')">Sure and Fine are Superposition Words</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_16.html" onclick="recordClick('post_16.html', 'click')">The Nature of Consciousness</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_15.html" onclick="recordClick('post_15.html', 'click')">The Essence of a Limb</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_14.html" onclick="recordClick('post_14.html', 'click')">Contemplating Consciousness Transfer</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_13.html" onclick="recordClick('post_13.html', 'click')">Exploring Time Travel and Personal Impact</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_12.html" onclick="recordClick('post_12.html', 'click')">Quantum Mechanics, Relativity, and Observational Realities</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_11.html" onclick="recordClick('post_11.html', 'click')">Understanding the Speed of Light in a Vacuum</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_10.html" onclick="recordClick('post_10.html', 'click')">The Pupil as a Black Hole</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_09.html" onclick="recordClick('post_09.html', 'click')">Exploring the Journey to Eternal Existence: Scientific and Philosophical Perspectives</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_08.html" onclick="recordClick('post_08.html', 'click')">The Elusive Quest for the Perfect Memory-Erasing Film</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_07.html" onclick="recordClick('post_07.html', 'click')">The Enchanted Festival: A Dice-Inspired Tale</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_06.html" onclick="recordClick('post_06.html', 'click')">The Unified Theory: A Journey Through Quantum, Relativity, and Beyond</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_05.html" onclick="recordClick('post_05.html', 'click')">Exploring AGI and Its Potential</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_01.html" onclick="recordClick('post_01.html', 'click')">Exploring the Intersection of Logic and Control</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_02.html" onclick="recordClick('post_02.html', 'click')">Tapping into Our Multiverse Selves</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_03.html" onclick="recordClick('post_03.html', 'click')">Experiencing the World Out of Order</a></h2></div><div class="post"><h2><a href="https://www.cypher-sec.org/mullings/index.php?post=post_04.html" onclick="recordClick('post_04.html', 'click')">Creating a Candy That Never Loses Its Flavor: Quantum Flavor Bites</a></h2></div></div>
+<div class="loader" id="loader">Loading more posts...</div>
+<script>
+function recordClick(link, type) {
+    fetch("counter.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "type=" + type + "&link=" + encodeURIComponent(link)
+    });
+}
+
+function recordSearch() {
+    let searchInput = document.querySelector('input[name="search"]').value;
+    fetch("counter.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "type=search&link=" + encodeURIComponent(searchInput)
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('loader').style.display = 'none';
+});
+</script>
+</body>
+</html>

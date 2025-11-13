@@ -1,0 +1,36 @@
+/* WP-Table CSS File v1.50 */
+
+.wptable {
+ 
+	color: #444;
+	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	font-size: 12px;
+	border:		1px Solid ThreeDShadow;
+	background:	Window;
+	color:		WindowText;
+	border-collapse: collapse;	
+}
+
+/* header row*/
+.wptable th {
+ 
+	padding:	2px 5px;
+ 	border:		1px solid;
+	border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
+	cursor:		default;
+	background:	ButtonFace;
+	
+}
+
+/* normal row*/
+.wptable td {
+
+	padding:	3px;
+}
+
+/* alternative rwo */
+.wptable tr.alt {
+ 
+ 	background-color: #F4F4EC; 
+
+}

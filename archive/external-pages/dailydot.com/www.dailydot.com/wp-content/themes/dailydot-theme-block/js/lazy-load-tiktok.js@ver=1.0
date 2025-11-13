@@ -1,0 +1,24 @@
+const loadTikTokScript = (entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const script = document.createElement('script');
+      script.src = 'https://www.tiktok.com/embed.js';
+      script.async = true;
+      document.body.appendChild(script);
+
+      observer.disconnect();
+    }
+  });
+};
+
+const observer = new IntersectionObserver(loadTikTokScript, {
+  root: null,
+  rootMargin: '400px',
+  threshold: 0.1,
+});
+
+const container = document.querySelectorAll('.tiktok-embed');
+
+container.forEach((element) => {
+  observer.observe(element);
+});

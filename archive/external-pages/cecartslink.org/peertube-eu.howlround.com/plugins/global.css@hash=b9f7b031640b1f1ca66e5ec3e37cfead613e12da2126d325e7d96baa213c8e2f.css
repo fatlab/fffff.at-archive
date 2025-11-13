@@ -1,0 +1,1024 @@
+@charset "UTF-8";
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ Here we are getting some Peertube variables (see _variables.scss in Peertube source code):
+ */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+.peertube-plugin-livechat-experimental,
+.peertube-plugin-livechat-warning {
+  color: orange;
+}
+
+.peertube-plugin-livechat-error {
+  color: red;
+}
+
+.peertube-plugin-livechat-error-message {
+  /* display an error block (page not found, ...) */
+  display: block;
+  font-size: 20px;
+  padding-top: 50px;
+  text-align: center;
+  width: 100%;
+}
+
+.peertube-plugin-livechat-container .peertube-plugin-livechat-error-message {
+  max-width: 30vw;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024 Mehdi Benadel <https://mehdibenadel.com>
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/* We are disabling stylelint-disable custom-property-pattern so we can use Peertube var without warnings. */
+/* stylelint-disable custom-property-pattern */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024 Mehdi Benadel <https://mehdibenadel.com>
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/* We are disabling stylelint-disable custom-property-pattern so we can use Peertube var without warnings. */
+/* stylelint-disable custom-property-pattern */
+/*
+ * SPDX-FileCopyrightText: 2024 Mehdi Benadel <https://mehdibenadel.com>
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/* We are disabling stylelint-disable custom-property-pattern so we can use Peertube var without warnings. */
+/* stylelint-disable custom-property-pattern */
+livechat-dynamic-table-form {
+  display: block;
+  margin-bottom: 3rem;
+}
+livechat-dynamic-table-form table {
+  table-layout: fixed;
+  text-align: center;
+}
+livechat-dynamic-table-form table tr {
+  border: 1px var(--bg-secondary-400, var(--greyBackgroundColor)) solid;
+}
+livechat-dynamic-table-form table td,
+livechat-dynamic-table-form table th {
+  word-wrap: break-word;
+  vertical-align: top;
+  padding: 5px 7px;
+}
+livechat-dynamic-table-form table td:last-child {
+  vertical-align: middle;
+  min-width: 28px;
+}
+livechat-dynamic-table-form table td:last-child > input:not([type=checkbox]),
+livechat-dynamic-table-form table td:last-child textarea {
+  min-width: 150px;
+}
+livechat-dynamic-table-form table tbody tr:nth-child(odd) {
+  background-color: var(--bg-secondary-300, var(--greySecondaryBackgroundColor));
+}
+livechat-dynamic-table-form table .livechat-dynamic-table-form-description-header {
+  font-size: small;
+  font-weight: lighter;
+}
+livechat-dynamic-table-form .dynamic-table-add-row-cell {
+  text-align: left;
+}
+livechat-dynamic-table-form .dynamic-table-add-row {
+  line-height: 19px;
+  padding: 4px;
+  border: 0;
+  font-weight: 600;
+  border-radius: 3px !important;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: var(--bs-green);
+}
+livechat-dynamic-table-form .dynamic-table-add-row, livechat-dynamic-table-form .dynamic-table-add-row:active, livechat-dynamic-table-form .dynamic-table-add-row:focus {
+  color: #fff;
+  background-color: rgb(63.7604651163, 228.1953488372, 12.3046511628);
+}
+livechat-dynamic-table-form .dynamic-table-add-row:focus, livechat-dynamic-table-form .dynamic-table-add-row.focus-visible {
+  box-shadow: 0 0 0 0.2rem rgb(113.1674418605, 245.1255813953, 71.8744186047);
+}
+livechat-dynamic-table-form .dynamic-table-add-row:hover {
+  color: #fff;
+  background-color: rgb(75.688372093, 242.5162790698, 23.4837209302);
+}
+livechat-dynamic-table-form .dynamic-table-add-row[disabled], livechat-dynamic-table-form .dynamic-table-add-row.disabled {
+  cursor: default;
+  color: #fff;
+  background-color: var(--input-border-color, var(--inputBorderColor));
+}
+livechat-dynamic-table-form .dynamic-table-remove-row {
+  line-height: 19px;
+  padding: 4px;
+  border: 0;
+  font-weight: 600;
+  border-radius: 3px !important;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: var(--bs-orange);
+}
+livechat-dynamic-table-form .dynamic-table-remove-row, livechat-dynamic-table-form .dynamic-table-remove-row:active, livechat-dynamic-table-form .dynamic-table-remove-row:focus {
+  color: #fff;
+  background-color: var(--primary, var(--mainColor));
+}
+livechat-dynamic-table-form .dynamic-table-remove-row:focus, livechat-dynamic-table-form .dynamic-table-remove-row.focus-visible {
+  box-shadow: 0 0 0 0.2rem var(--mainHoverColor);
+}
+livechat-dynamic-table-form .dynamic-table-remove-row:hover {
+  color: #fff;
+  background-color: var(--fg-400, var(--mainHoverColor));
+}
+livechat-dynamic-table-form .dynamic-table-remove-row[disabled], livechat-dynamic-table-form .dynamic-table-remove-row.disabled {
+  cursor: default;
+  color: #fff;
+  background-color: var(--input-border-color, var(--inputBorderColor));
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+livechat-error {
+  color: red;
+  display: block;
+  padding: 50px;
+  text-align: center;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+livechat-help-button a {
+  height: 18px !important;
+  margin: 2px !important;
+  padding: 1px !important;
+  vertical-align: middle;
+}
+livechat-help-button svg {
+  display: block;
+  height: auto;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024 Mehdi Benadel <https://mehdibenadel.com>
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/* stylelint-disable custom-property-pattern */
+livechat-image-file-input img {
+  cursor: pointer;
+  max-height: 3em !important;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+livechat-share-chat {
+  display: block;
+  text-align: start;
+}
+livechat-share-chat > * {
+  margin-top: 10px;
+}
+livechat-share-chat .sub-menu-entry {
+  cursor: pointer;
+}
+livechat-share-chat .livechat-shareurl-copy {
+  display: flex;
+  flex-wrap: wrap;
+}
+livechat-share-chat .livechat-shareurl-copy button {
+  white-space: nowrap;
+}
+livechat-share-chat .livechat-shareurl-copy input {
+  flex-grow: 2;
+  width: auto !important;
+}
+livechat-share-chat .livechat-shareurl-block {
+  height: 300px;
+  overflow-y: scroll;
+}
+livechat-share-chat .livechat-shareurl-options input[type=checkbox],
+livechat-share-chat .livechat-shareurl-options input[type=radio] {
+  margin-right: 20px;
+}
+livechat-share-chat .livechat-shareurl-options label {
+  display: block;
+}
+livechat-share-chat .livechat-shareurl-options .livechat-shareurl-suboptions {
+  margin-left: 40px;
+}
+livechat-share-chat .livechat-shareurl-options .livechat-shareurl-suboptions > * {
+  display: block;
+}
+livechat-share-chat .livechat-shareurl-options .livechat-shareurl-suboptions.livechat-shareurl-suboptions-disabled label {
+  /* stylelint-disable-next-line custom-property-pattern */
+  color: var(--fg-400, var(--greyForegroundColor));
+}
+livechat-share-chat .livechat-shareurl-protocol {
+  display: flex;
+  flex-flow: row wrap;
+  column-gap: 30px;
+}
+livechat-share-chat .livechat-shareurl-protocol input[type=radio] {
+  margin-right: 10px;
+}
+livechat-share-chat .livechat-shareurl-tips {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+livechat-spinner,
+.livechat-spinner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+livechat-spinner div,
+.livechat-spinner div {
+  width: 48px;
+  height: 48px;
+  margin: 20px;
+  /* stylelint-disable-next-line custom-property-pattern */
+  border: 5px solid var(--bg-secondary-400, var(--greyBackgroundColor)) !important;
+  /* stylelint-disable-next-line custom-property-pattern */
+  border-bottom-color: var(--primary, var(--mainColor)) !important;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: livechatrotating 1s linear infinite;
+}
+@keyframes livechatrotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024 Mehdi Benadel <https://mehdibenadel.com>
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/* stylelint-disable custom-property-pattern */
+livechat-tags-input {
+  --tag-padding-vertical: 3px;
+  --tag-padding-horizontal: 6px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 320px;
+  /* stylelint-disable-next-line no-descending-specificity */
+}
+livechat-tags-input .livechat-tags-container {
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+livechat-tags-input input {
+  flex: 1;
+  border: none;
+  padding: 0;
+  color: inherit;
+  background-color: inherit;
+  width: 100%;
+  /* stylelint-disable-next-line no-descending-specificity */
+}
+livechat-tags-input input:focus {
+  outline: transparent;
+}
+livechat-tags-input .livechat-tags,
+livechat-tags-input .livechat-tags-searched {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: var(--tag-padding-vertical) 0;
+  max-height: 150px;
+  overflow-y: auto;
+  transition-property: height, margin;
+  transition-duration: 0.3s;
+}
+@supports (scrollbar-width: auto) {
+  livechat-tags-input .livechat-tags,
+  livechat-tags-input .livechat-tags-searched {
+    scrollbar-color: var(--fg-400, var(--greyForegroundColor)) transparent;
+    scrollbar-width: thin;
+  }
+}
+livechat-tags-input .livechat-tags-container,
+livechat-tags-input .livechat-tags-searched {
+  border-bottom: 1px dashed var(--fg-400, var(--greyForegroundColor));
+}
+livechat-tags-input .livechat-tags-container.livechat-empty,
+livechat-tags-input .livechat-tags-searched.livechat-empty {
+  height: 0;
+  margin: 0;
+  border: none;
+}
+livechat-tags-input .livechat-tags-searched::after {
+  content: "🔍";
+  flex-grow: 1;
+  text-align: right;
+}
+livechat-tags-input .livechat-tags-searched.livechat-empty::after {
+  display: none;
+}
+livechat-tags-input .livechat-tag,
+livechat-tags-input .livechat-tag-searched {
+  width: auto;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0 var(--tag-padding-horizontal);
+  font-size: 14px;
+  list-style: none;
+  border-radius: 3px;
+  margin: 0 3px 3px 0;
+  transition: 0.3s filter;
+}
+livechat-tags-input .livechat-tag .livechat-tag-close,
+livechat-tags-input .livechat-tag-searched .livechat-tag-close {
+  display: block;
+  width: 12px;
+  height: 12px;
+  line-height: 12px;
+  text-align: center;
+  font-size: 10px;
+  margin-left: var(--tag-padding-horizontal);
+  color: var(--primary, var(--mainColor));
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+livechat-tags-input .livechat-tag .livechat-tag-close::before,
+livechat-tags-input .livechat-tag-searched .livechat-tag-close::before {
+  content: "✕";
+}
+livechat-tags-input .livechat-tag, livechat-tags-input .livechat-tag:active, livechat-tags-input .livechat-tag:focus,
+livechat-tags-input .livechat-tag-searched,
+livechat-tags-input .livechat-tag-searched:active,
+livechat-tags-input .livechat-tag-searched:focus {
+  color: #fff;
+  background-color: var(--primary, var(--mainColor));
+}
+livechat-tags-input .livechat-tag .livechat-tag-close, livechat-tags-input .livechat-tag:active .livechat-tag-close, livechat-tags-input .livechat-tag:focus .livechat-tag-close,
+livechat-tags-input .livechat-tag-searched .livechat-tag-close,
+livechat-tags-input .livechat-tag-searched:active .livechat-tag-close,
+livechat-tags-input .livechat-tag-searched:focus .livechat-tag-close {
+  color: var(--primary, var(--mainColor));
+}
+livechat-tags-input .livechat-tag:hover,
+livechat-tags-input .livechat-tag-searched:hover {
+  color: #fff;
+  background-color: var(--fg-400, var(--mainHoverColor));
+}
+livechat-tags-input .livechat-tag:hover .livechat-tag-close,
+livechat-tags-input .livechat-tag-searched:hover .livechat-tag-close {
+  color: var(--fg-400, var(--mainHoverColor));
+}
+livechat-tags-input .livechat-tag[disabled], livechat-tags-input .livechat-tag.disabled,
+livechat-tags-input .livechat-tag-searched[disabled],
+livechat-tags-input .livechat-tag-searched.disabled {
+  cursor: default;
+  color: #fff;
+  background-color: var(--input-border-color, var(--inputBorderColor));
+}
+livechat-tags-input .livechat-tag[disabled] .livechat-tag-close, livechat-tags-input .livechat-tag.disabled .livechat-tag-close,
+livechat-tags-input .livechat-tag-searched[disabled] .livechat-tag-close,
+livechat-tags-input .livechat-tag-searched.disabled .livechat-tag-close {
+  color: var(--input-border-color, var(--inputBorderColor));
+}
+livechat-tags-input .livechat-tag .livechat-tag-name,
+livechat-tags-input .livechat-tag-searched .livechat-tag-name {
+  margin-top: 3px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 250px;
+}
+livechat-tags-input .livechat-tags.livechat-unfocused .livechat-tag {
+  filter: opacity(50%) grayscale(80%);
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024 Mehdi Benadel <https://mehdibenadel.com>
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/* We are disabling stylelint-disable custom-property-pattern so we can use Peertube var without warnings. */
+/* stylelint-disable custom-property-pattern */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+livechat-token-list table {
+  width: 100%;
+  table-layout: fixed;
+  text-align: center;
+}
+livechat-token-list table tr {
+  border: 1px var(--bg-secondary-400, var(--greyBackgroundColor)) solid;
+}
+livechat-token-list table td,
+livechat-token-list table th {
+  word-wrap: break-word;
+  vertical-align: top;
+  padding: 5px 7px;
+}
+livechat-token-list table td:last-child {
+  vertical-align: middle;
+  min-width: 28px;
+}
+livechat-token-list table td:last-child > input:not([type=checkbox]),
+livechat-token-list table td:last-child textarea {
+  min-width: 150px;
+}
+livechat-token-list table tbody tr:nth-child(odd) {
+  background-color: var(--bg-secondary-300, var(--greySecondaryBackgroundColor));
+}
+livechat-token-list table tr th:first-child,
+livechat-token-list table tr th:last-child {
+  width: 50px;
+}
+livechat-token-list table label {
+  font-weight: inherit;
+}
+livechat-token-list .livechat-create-token {
+  line-height: 19px;
+  padding: 4px;
+  border: 0;
+  font-weight: 600;
+  border-radius: 3px !important;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: var(--bs-green);
+}
+livechat-token-list .livechat-create-token, livechat-token-list .livechat-create-token:active, livechat-token-list .livechat-create-token:focus {
+  color: #fff;
+  background-color: rgb(63.7604651163, 228.1953488372, 12.3046511628);
+}
+livechat-token-list .livechat-create-token:focus, livechat-token-list .livechat-create-token.focus-visible {
+  box-shadow: 0 0 0 0.2rem rgb(113.1674418605, 245.1255813953, 71.8744186047);
+}
+livechat-token-list .livechat-create-token:hover {
+  color: #fff;
+  background-color: rgb(75.688372093, 242.5162790698, 23.4837209302);
+}
+livechat-token-list .livechat-create-token[disabled], livechat-token-list .livechat-create-token.disabled {
+  cursor: default;
+  color: #fff;
+  background-color: var(--input-border-color, var(--inputBorderColor));
+}
+livechat-token-list .livechat-revoke-token {
+  line-height: 19px;
+  padding: 4px;
+  border: 0;
+  font-weight: 600;
+  border-radius: 3px !important;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: var(--bs-orange);
+}
+livechat-token-list .livechat-revoke-token, livechat-token-list .livechat-revoke-token:active, livechat-token-list .livechat-revoke-token:focus {
+  color: #fff;
+  background-color: var(--primary, var(--mainColor));
+}
+livechat-token-list .livechat-revoke-token:focus, livechat-token-list .livechat-revoke-token.focus-visible {
+  box-shadow: 0 0 0 0.2rem var(--mainHoverColor);
+}
+livechat-token-list .livechat-revoke-token:hover {
+  color: #fff;
+  background-color: var(--fg-400, var(--mainHoverColor));
+}
+livechat-token-list .livechat-revoke-token[disabled], livechat-token-list .livechat-revoke-token.disabled {
+  cursor: default;
+  color: #fff;
+  background-color: var(--input-border-color, var(--inputBorderColor));
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+#peertube-plugin-livechat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#peertube-plugin-livechat-container .chatroom .box-flyout .chatroom-body .occupants {
+  min-width: min(200px, 50%);
+}
+
+/* Note: livechat-viewer-mode-content (the form where anonymous users can
+    choose nickname or log in with external account), can be something like
+    ~180px height (at time of writing).
+    We must ensure that the px height limit for converse-muc and converse-root is
+    always higher than livechat-viewer-mode-content max size.
+  Note: We also must ensure that when the user has choosen its nickname, and there is an
+    ongoing poll, the user can see the chat when the poll is folded.
+*/
+#peertube-plugin-livechat-container converse-root {
+  display: block;
+  border: 1px solid black;
+  min-height: max(30vh, 300px);
+  height: 100%;
+  min-width: min(400px, 25vw);
+}
+#peertube-plugin-livechat-container converse-root converse-muc {
+  min-height: max(30vh, 300px);
+}
+@media screen and (orientation: portrait) and (width <= 767px) {
+  #peertube-plugin-livechat-container converse-root {
+    /* On small screen, and when portrait mode, we are giving the chat more vertical space.
+        It should go under the video.
+     */
+    min-height: max(50vh, 300px);
+  }
+  #peertube-plugin-livechat-container converse-root converse-muc {
+    min-height: max(50vh, 300px);
+  }
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+.peertube-plugin-livechat-buttons,
+.livechat-mini-muc-bar-buttons {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  padding-right: 12px !important;
+}
+
+.peertube-plugin-livechat-button {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 36px !important;
+  margin: 5px !important;
+  padding: 2px !important;
+}
+.peertube-plugin-livechat-button svg {
+  height: auto;
+}
+
+.peertube-plugin-livechat-buttons-open .peertube-plugin-livechat-button,
+.livechat-mini-muc-bar-buttons .peertube-plugin-livechat-button {
+  height: 18px !important;
+  margin: 2px !important;
+  padding: 1px !important;
+}
+
+.peertube-plugin-livechat-buttons-cloned {
+  display: none;
+}
+
+[peertube-plugin-livechat-state=initializing] {
+  display: none;
+}
+
+[peertube-plugin-livechat-state=open] .peertube-plugin-livechat-button-open {
+  display: none;
+}
+
+[peertube-plugin-livechat-state=closed] .peertube-plugin-livechat-button-promote,
+[peertube-plugin-livechat-state=closed] .peertube-plugin-livechat-button-close {
+  display: none;
+}
+
+[peertube-plugin-livechat-state]:not([peertube-plugin-livechat-state=open]) .peertube-plugin-livechat-multi-button-main {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  margin-right: 0 !important;
+}
+[peertube-plugin-livechat-state]:not([peertube-plugin-livechat-state=open]) .peertube-plugin-livechat-multi-button-secondary {
+  border-radius: 0 !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  border-left: 1px solid currentcolor;
+}
+[peertube-plugin-livechat-state]:not([peertube-plugin-livechat-state=open]) .peertube-plugin-livechat-multi-button-last-secondary {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  margin-left: 0 !important;
+  border-left: 1px solid currentcolor;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/* stylelint-disable custom-property-pattern */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+livechat-channel-tabs {
+  display: block;
+  /* See Peertube sub-menu-h1 mixin */
+  margin-bottom: 30px;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/* stylelint-disable custom-property-pattern */
+livechat-configuration-section-header {
+  margin-top: 3rem;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+  These are styles to apply for the channel configuration pages.
+*/
+.peertube-plugin-livechat-configuration {
+  /* Channel configuration page */
+  /* Channel selection page */
+}
+.peertube-plugin-livechat-configuration h1 {
+  padding-top: 40px;
+  /* See Peertube sub-menu-h1 mixin */
+  font-size: 1.3rem;
+  border-bottom: 2px solid var(--bg-secondary-400, var(--greyBackgroundColor));
+  padding-bottom: 15px;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-channel-info {
+  /* stylelint-disable-next-line value-keyword-case */
+  color: var(--fg, var(--mainForegroundColor));
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-channel-info span:first-child {
+  /* See Peertube .video-channel-display-name */
+  font-weight: 600;
+  font-size: 18px;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-channel-info span:not(:first-child) {
+  /* See Peertube .video-channel-name */
+  margin-left: 5px;
+  font-size: 14px;
+  color: #777272;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel h2 {
+  text-transform: uppercase;
+  color: var(--primary, var(--mainColor));
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=submit],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=reset],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=submit],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=reset],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-actions button,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-tags-input-copy {
+  line-height: 19px;
+  padding: 4px 13px;
+  border: 0;
+  font-weight: 600;
+  border-radius: 3px !important;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=submit], .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=submit]:active, .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=submit]:focus,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=submit],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=submit]:active,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=submit]:focus,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-actions button,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-actions button:active,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-actions button:focus,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-tags-input-copy,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-tags-input-copy:active,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-tags-input-copy:focus {
+  color: #fff;
+  background-color: var(--primary, var(--mainColor));
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=submit]:hover,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=submit]:hover,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-actions button:hover,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-tags-input-copy:hover {
+  color: #fff;
+  background-color: var(--fg-400, var(--mainHoverColor));
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=submit][disabled], .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=submit].disabled,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=submit][disabled],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=submit].disabled,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-actions button[disabled],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-configuration-actions button.disabled,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-tags-input-copy[disabled],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel .peertube-plugin-livechat-tags-input-copy.disabled {
+  cursor: default;
+  color: #fff;
+  background-color: var(--input-border-color, var(--inputBorderColor));
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=reset],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=reset] {
+  background-color: var(--bg-secondary-400, var(--greyBackgroundColor));
+  color: var(--fg-400, var(--greyForegroundColor));
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=reset]:hover, .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=reset]:active, .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=reset]:focus, .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=reset][disabled], .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=reset].disabled,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=reset]:hover,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=reset]:active,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=reset]:focus,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=reset][disabled],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=reset].disabled {
+  color: var(--fg-400, var(--greyForegroundColor));
+  background-color: var(--bg-secondary-300, var(--greySecondaryBackgroundColor));
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=reset][disabled], .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel input[type=reset].disabled,
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=reset][disabled],
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-channel button[type=reset].disabled {
+  cursor: default;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels {
+  list-style-type: none;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li {
+  align-items: center;
+  gap: 15px;
+  /* See Peertube row-blocks mixin, used in video-channel */
+  display: flex;
+  min-height: 130px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  /* stylelint-disable-next-line value-keyword-case */
+  border-bottom: 1px solid var(--inputBorderColor);
+}
+@media screen and (max-width: 800px) {
+  .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+  }
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .avatar {
+  /* See Peertube CSS, class avatar and avatar-80 */
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .avatar.channel {
+  border-radius: 5px;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .avatar.initial {
+  /* See Peertube actor-avatar.component.scss */
+  background-color: #3c2109;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--initialFontSize);
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .avatar.initial.gray {
+  background-color: #939393;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .peertube-plugin-livechat-configuration-home-info {
+  flex-grow: 1;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .peertube-plugin-livechat-configuration-home-info a {
+  /* See Peertube .video-channel-names */
+  width: fit-content;
+  display: flex;
+  align-items: baseline;
+  /* stylelint-disable-next-line value-keyword-case */
+  color: var(--fg, var(--mainForegroundColor));
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .peertube-plugin-livechat-configuration-home-info a:hover, .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .peertube-plugin-livechat-configuration-home-info a:focus, .peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .peertube-plugin-livechat-configuration-home-info a:active {
+  text-decoration: none !important;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .peertube-plugin-livechat-configuration-home-info a:focus:not(.focus-visible) {
+  outline: none !important;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .peertube-plugin-livechat-configuration-home-info a div:first-child {
+  /* See Peertube .video-channel-display-name */
+  font-weight: 600;
+  font-size: 18px;
+}
+.peertube-plugin-livechat-configuration.peertube-plugin-livechat-configuration-home ul.peertube-plugin-livechat-configuration-home-channels li .peertube-plugin-livechat-configuration-home-info a div:not(:first-child) {
+  /* See Peertube .video-channel-name */
+  margin-left: 5px;
+  font-size: 14px;
+  color: #777272;
+}
+.peertube-plugin-livechat-configuration .peertube-livechat-emojis-col-sn {
+  width: 30%;
+}
+.peertube-plugin-livechat-configuration .peertube-livechat-emojis-col-file {
+  width: 65%;
+}
+.peertube-plugin-livechat-configuration .peertube-plugin-livechat-configuration-actions {
+  margin-bottom: 1rem;
+  text-align: right;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+/* stylelint-disable custom-property-pattern */
+.peertube-plugin-livechat-admin-firewall h1 {
+  padding-top: 40px;
+  /* See Peertube sub-menu-h1 mixin */
+  font-size: 1.3rem;
+  border-bottom: 2px solid var(--bg-secondary-400, var(--greyBackgroundColor));
+  padding-bottom: 15px;
+}
+.peertube-plugin-livechat-admin-firewall textarea[name^=_content_] {
+  min-height: 10rem;
+}
+.peertube-plugin-livechat-admin-firewall input[type=submit],
+.peertube-plugin-livechat-admin-firewall input[type=reset],
+.peertube-plugin-livechat-admin-firewall button[type=submit],
+.peertube-plugin-livechat-admin-firewall button[type=reset] {
+  line-height: 19px;
+  padding: 4px 13px;
+  border: 0;
+  font-weight: 600;
+  border-radius: 3px !important;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+}
+.peertube-plugin-livechat-admin-firewall input[type=submit], .peertube-plugin-livechat-admin-firewall input[type=submit]:active, .peertube-plugin-livechat-admin-firewall input[type=submit].active, .peertube-plugin-livechat-admin-firewall input[type=submit]:focus,
+.peertube-plugin-livechat-admin-firewall button[type=submit],
+.peertube-plugin-livechat-admin-firewall button[type=submit]:active,
+.peertube-plugin-livechat-admin-firewall button[type=submit].active,
+.peertube-plugin-livechat-admin-firewall button[type=submit]:focus {
+  color: var(--on-primary, #fff);
+  background-color: var(--primary, var(--mainColor));
+  border: 1px solid var(--primary, var(--mainColor));
+}
+.peertube-plugin-livechat-admin-firewall input[type=submit]:hover,
+.peertube-plugin-livechat-admin-firewall button[type=submit]:hover {
+  color: var(--on-primary, #fff);
+  background-color: var(--primary-400, var(--mainHoverColor));
+}
+.peertube-plugin-livechat-admin-firewall input[type=submit][disabled],
+.peertube-plugin-livechat-admin-firewall button[type=submit][disabled] {
+  pointer-events: none;
+  opacity: 0.6;
+}
+.peertube-plugin-livechat-admin-firewall input[type=reset],
+.peertube-plugin-livechat-admin-firewall button[type=reset] {
+  color: var(--fg, var(--mainForegroundColor));
+  background-color: transparent;
+  border: 1px solid var(--bg-secondary-500, var(--inputBorderColor)) !important;
+}
+.peertube-plugin-livechat-admin-firewall input[type=reset]:active, .peertube-plugin-livechat-admin-firewall input[type=reset].active, .peertube-plugin-livechat-admin-firewall input[type=reset]:focus, .peertube-plugin-livechat-admin-firewall input[type=reset]:focus-visible,
+.peertube-plugin-livechat-admin-firewall button[type=reset]:active,
+.peertube-plugin-livechat-admin-firewall button[type=reset].active,
+.peertube-plugin-livechat-admin-firewall button[type=reset]:focus,
+.peertube-plugin-livechat-admin-firewall button[type=reset]:focus-visible {
+  color: var(--fg, var(--mainForegroundColor));
+  background-color: var(--bg-secondary-500, var(--inputBorderColor));
+  border-color: var(--bg-secondary-500, var(--inputBorderColor));
+}
+.peertube-plugin-livechat-admin-firewall input[type=reset]:hover,
+.peertube-plugin-livechat-admin-firewall button[type=reset]:hover {
+  color: var(--fg, var(--mainForegroundColor));
+  background-color: var(--bg-secondary-450, var(--inputBorderColor));
+}
+.peertube-plugin-livechat-admin-firewall input[type=reset][disabled],
+.peertube-plugin-livechat-admin-firewall button[type=reset][disabled] {
+  pointer-events: none;
+  opacity: 0.8;
+}
+.peertube-plugin-livechat-admin-firewall .peertube-livechat-admin-firewall-col-name {
+  width: 25%;
+}
+.peertube-plugin-livechat-admin-firewall .peertube-livechat-admin-firewall-col-content {
+  width: 65%;
+}
+
+/*
+ * SPDX-FileCopyrightText: 2024-2025 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+table.peertube-plugin-livechat-prosody-list-rooms {
+  border: 1px solid black;
+  margin: 5px 0;
+}
+
+table.peertube-plugin-livechat-prosody-list-rooms tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+table.peertube-plugin-livechat-prosody-list-rooms tr:nth-child(even) {
+  background-color: #fff;
+}
+
+table.peertube-plugin-livechat-prosody-list-rooms th {
+  /* stylelint-disable-next-line custom-property-pattern */
+  background-color: var(--fg-400, var(--mainHoverColor));
+  border: 1px solid black;
+  /* stylelint-disable-next-line custom-property-pattern */
+  color: var(--mainBackgroundColor);
+  padding: 4px 5px;
+}
+
+table.peertube-plugin-livechat-prosody-list-rooms td {
+  border: 1px solid #555;
+  color: black;
+  padding: 4px 5px;
+}
+
+/*# sourceMappingURL=style.css.map */

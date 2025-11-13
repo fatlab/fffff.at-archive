@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html id="ie7" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="en">
+<![endif]-->
+<!--[if !(IE 7) & !(IE 8)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Valentine&#8217;s Day Tomorrow? Again? | Happy Holly Project</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://happyhollyproject.com/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="https://s2.wp.com/wp-content/themes/pub/chateau/js/html5.js?m=1315596887i" type="text/javascript"></script>
+<![endif]-->
+<meta name='robots' content='max-image-preview:large' />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.parentNode.removeChild( dom_node ); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[ i ].parentNode.removeChild( dom_nodes[ i ] );
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+					+ '//' + window.location.hostname
+					+ '&postid=9028'
+					+ '&is_singular=1';
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9oYXBweWhvbGx5cHJvamVjdC5jb20%3D"
+		+ "&wpcomid=37570255"
+		+ "&time=1762899216";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='https://s1.wp.com/' />
+<link rel='dns-prefetch' href='https://s2.wp.com/' />
+<link rel='dns-prefetch' href='https://widgets.wp.com/' />
+<link rel='dns-prefetch' href='../../../../../../../dailypost.files.wordpress.com/robots.txt.html' />
+<link rel='dns-prefetch' href='https://s0.wp.com/' />
+<link rel='dns-prefetch' href='https://af.pubmine.com/' />
+<link rel="alternate" type="application/rss+xml" title="Happy Holly Project &raquo; Feed" href="https://happyhollyproject.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Happy Holly Project &raquo; Comments Feed" href="https://happyhollyproject.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Happy Holly Project &raquo; Valentine&#8217;s Day Tomorrow?&nbsp;Again? Comments Feed" href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?m=1751981882i&ver=6.9-alpha-60991"}};
+/*! This file is auto-generated */
+!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-1' href='../../../../../../../_static/index.html@%253F-eJx9jFEKwjAQRC9kXKqV+iOeJSRLSbPJBndD6O1tpFAQ8WfgMTMPWjGOs2JWSNUUqnPIAi34GVUA69ZyDGjINlBMhayigOhKeHYiJ%252FgtWFCLdXFnSMw9fKXt%252FMIu8aaw6Bf9U1KIeIg%252F1OfP9Bim2%252FVyH6dhXN5pUk2g&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-2-1' href='../../../../../../../wp-content/plugins/gutenberg-core/v21.1.0/build/block-library/style.css@m=1762168648i&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-4-1' href='../../../../../../../_static/index.html@%253F-eJyVzDEOgCAMQNELiQU1Jg7Gs2AlDYpAaInx9ro5O%252F7hfbiywhTFRYEcKvnIQPXN1RVSa0h4MOxOssVDBXunKoqK34DlDq5F5gb+LIoVH4k%252FvpyzGYe+03oyw%252F4AcmU1KQ==&amp;cssminify=yes.css' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-6-1' href='../../../../../../../_static/index.html@%253F-eJzTLy%252FQzcxLzilNSS3WzyrWz01NyUxMzUnNTc0rQeEU5CRWphbp5qSmJyZX6uVm5uklFxfr6OPTDpRD5sM02efaGpoZmFkYGRuZGmQBAHPvL0Y=&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='jetpack-sharing-buttons-style-inline-css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-8-1' href='../../../../../../../_static/index.html@%253F-eJx9jcEKg0AMRH+oaVhorR7Eb9E16IpZg8min2889FZ6GYbhPQYPgbhlo2zIBWQtU8qKcdvJd5be0AmmMfW0Ejv2jKoP%252FK0daZzIXNdvB6PzvyJ+A8MgO6mCJ6fCYLN%252F6e113IZXU9WfUL%252FDcgHSTkDo&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--albert-sans: 'Albert Sans', sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda', serif;--wp--preset--font-family--bricolage-grotesque: 'Bricolage Grotesque', sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: 'Courier Prime', monospace;--wp--preset--font-family--crimson-pro: 'Crimson Pro', serif;--wp--preset--font-family--dm-mono: 'DM Mono', monospace;--wp--preset--font-family--dm-sans: 'DM Sans', sans-serif;--wp--preset--font-family--dm-serif-display: 'DM Serif Display', serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: 'EB Garamond', serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: 'Fira Sans', sans-serif;--wp--preset--font-family--fjalla-one: 'Fjalla One', sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono', monospace;--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans', sans-serif;--wp--preset--font-family--ibarra-real-nova: 'Ibarra Real Nova', serif;--wp--preset--font-family--instrument-serif: 'Instrument Serif', serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: 'Josefin Sans', sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: 'Noto Sans Mono', sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: 'Open Sans', sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: 'PT Serif', serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: 'Playfair Display', serif;--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: 'Roboto Slab', serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: 'Source Sans 3', sans-serif;--wp--preset--font-family--source-serif-4: 'Source Serif 4', serif;--wp--preset--font-family--space-mono: 'Space Mono', monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: 'Work Sans', sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-10-1' href='../../../../../../../wp-content/mu-plugins/jetpack-mu-wpcom-plugin/moon/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/verbum-comments/verbum-comments.css@m=1760027108i&amp;cssminify=yes.css' type='text/css' media='all' />
+<link rel='stylesheet' id='verbum-gutenberg-css-css' href='../../../../../../../widgets.wp.com/verbum-block-editor/block-editor.css@ver=1738686361.css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-12-1' href='../../../../../../../_static/index.html@%253F-eJyNjd0KgzAMhV9oXXCKsouxZ3ElaLRJC00R396IMMQr706+nB9YkvNRFEWBi0uhDCQZfGQ25ALNaFe+kKeRBxBIVLJ0%252FovjcerUEdkaUvmBH3vFvkDWNeAdI4k%252FzG5JNr9HvvypuqZq33X9aqcNhpVFtA==&amp;cssminify=yes.css' type='text/css' media='all' />
+<style id='jetpack_facebook_likebox-inline-css'>
+.widget_facebook_likebox {
+	overflow: hidden;
+}
+
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-14-1' href='../../../../../../../_static/index.html@%253F-eJzTLy%252FQTc7PK0nNK9HPLdUtyClNz8wr1i9KTcrJTwcy0%252FWTi5G5ekCujj52Temp+bo5+cmJJZn5eSgc3bScxMwikFb7XFtDE1NLExMLc0OTLACohS2q&amp;cssminify=yes.css' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='print-css-15-1' href='../../../../../../../wp-content/mu-plugins/global-print/global-print.css@m=1465851035i&amp;cssminify=yes.css' type='text/css' media='print' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-18-1' href='../../../../../../../_static/index.html@%253F-eJyNjcEKwjAQRH%252FIuFRT6kX8FNkmS5K6yQY3Qfx7bfEiXrwM82B4A49qnJRGpUHupnIPqSgs1Cq624chi6zhO5OCRryTR++fW00l7J3qDv43XVNxoOISsmEJol%252FwY2uR8vs3WggsM%252FI6uOTzMI3Hw8lOg11eUT1JKA==&amp;cssminify=yes.css' type='text/css' media='all' />
+<script type="text/javascript" id="jetpack_related-posts-js-extra">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="jetpack-mu-wpcom-settings-js-before">
+/* <![CDATA[ */
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https:\/\/s1.wp.com\/wp-content\/mu-plugins\/jetpack-mu-wpcom-plugin\/moon\/jetpack_vendor\/automattic\/jetpack-mu-wpcom\/src\/build\/"};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../_static/index.html@%253F%252Fwp-content%252Fmu-plugins%252Fjetpack-plugin%252Fmoon%252F_inc%252Fbuild%252Frelated-posts%252Frelated-posts.min.js,%252Fwp-content%252Fjs%252Frlt-proxy.js%253Fm=1755006225j'></script>
+<script type="text/javascript" id="rlt-proxy-js-after">
+/* <![CDATA[ */
+	rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
+/* ]]> */
+</script>
+<script type="text/javascript" src="../../../../../../../wp-content/plugins/gutenberg-core/v21.1.0/build/hooks/index.min.js@m=1762168648i&amp;ver=84e753e2b66eb7028d38" id="wp-hooks-js"></script>
+<script type="text/javascript" src="../../../../../../../wp-content/plugins/gutenberg-core/v21.1.0/build/i18n/index.min.js@m=1762168648i&amp;ver=bd5a2533e717a1043151" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<script type="text/javascript" id="wpcom-actionbar-placeholder-js-extra">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"37570255","postID":"9028","siteURL":"https:\/\/happyhollyproject.com","xhrURL":"https:\/\/happyhollyproject.com\/wp-admin\/admin-ajax.php","nonce":"88b328918f","isLoggedIn":"","statusMessage":"","subsEmailDefault":"instantly","proxyScriptUrl":"https:\/\/s0.wp.com\/wp-content\/js\/wpcom-proxy-request.js?ver=20211021","shortlink":"https:\/\/wp.me\/p2xDJR-2lC","i18n":{"followedText":"New posts from this site will now appear in your <a href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/\&quot;https:\/\/wordpress.com\/reader\&quot;">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Shortlink copied to clipboard."}};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../wp-content/blog-plugins/wordads-classes/js/cmp/v2/cmp-non-gdpr.js@m=1707933448i'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://happyhollyproject.wordpress.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://wp.me/p2xDJR-2lC' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fhappyhollyproject.com%2F2014%2F02%2F13%2Fvalentines-day-tomorrow-again%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fhappyhollyproject.com%2F2014%2F02%2F13%2Fvalentines-day-tomorrow-again%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Valentine&#8217;s Day Tomorrow? Again?" />
+<meta property="og:url" content="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/" />
+<meta property="og:description" content="Gosh tomorrow is Valentines Day. Oh joy. I can count the number of Valentines I&#8217;ve gotten in the last &#8230; hmm &#8230; thirty years maybe on one hand. I recall being in a room of people tw…" />
+<meta property="article:published_time" content="2014-02-13T16:32:10+00:00" />
+<meta property="article:modified_time" content="2014-02-13T16:32:24+00:00" />
+<meta property="og:site_name" content="Happy Holly Project" />
+<meta property="og:image" content="https://happyhollyproject.com/wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg?w=529" />
+<meta property="og:image:width" content="529" />
+<meta property="og:image:height" content="761" />
+<meta property="og:image:alt" content="1002208_10152013231048800_1293664621_n" />
+<meta property="og:locale" content="en_US" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+<meta name="twitter:creator" content="@h_holly_project" />
+<meta name="twitter:site" content="@h_holly_project" />
+<meta name="twitter:text:title" content="Valentine&#8217;s Day Tomorrow?&nbsp;Again?" />
+<meta name="twitter:image" content="https://happyhollyproject.com/wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg?w=640" />
+<meta name="twitter:image:alt" content="1002208_10152013231048800_1293664621_n" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=32" sizes="16x16" />
+<link rel="icon" type="image/x-icon" href="../../../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=32" sizes="16x16" />
+<link rel="apple-touch-icon" href="https://secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713?s=114" />
+<link rel='openid.server' href='https://happyhollyproject.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://happyhollyproject.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://happyhollyproject.com/osd.xml" title="Happy Holly Project" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<style>
+.milestone-widget {
+	--milestone-text-color: #333333;
+	--milestone-bg-color: #ffffff;
+	--milestone-border-color:#dddddd;
+}
+</style>
+		<meta name="description" content="Gosh tomorrow is Valentines Day. Oh joy. I can count the number of Valentines I&#039;ve gotten in the last ... hmm ... thirty years maybe on one hand. I recall being in a room of people twenty odd years ago (much younger and all the good stuff that goes with that) and saying &quot;And of&hellip;" />
+<script type="text/javascript">
+/* <![CDATA[ */
+var wa_client = {}; wa_client.cmd = []; wa_client.config = { 'blog_id': 37570255, 'blog_language': 'en', 'is_wordads': false, 'hosting_type': 0, 'afp_account_id': null, 'afp_host_id': 5038568878849053, 'theme': 'pub/chateau', '_': { 'title': 'Advertisement', 'privacy_settings': 'Privacy Settings' }, 'formats': [ 'inline', 'belowpost', 'bottom_sticky', 'sidebar_sticky_right', 'sidebar', 'gutenberg_rectangle', 'gutenberg_leaderboard', 'gutenberg_mobile_leaderboard', 'gutenberg_skyscraper' ] };
+/* ]]> */
+</script>
+		<script type="text/javascript">
+
+			window.doNotSellCallback = function() {
+
+				var linkElements = [
+					'a[href="https://wordpress.com/?ref=footer_blog"]',
+					'a[href="https://wordpress.com/?ref=footer_website"]',
+					'a[href="https://wordpress.com/?ref=vertical_footer"]',
+					'a[href^="https://wordpress.com/?ref=footer_segment_"]',
+				].join(',');
+
+				var dnsLink = document.createElement( 'a' );
+				dnsLink.href = 'https://wordpress.com/advertising-program-optout/';
+				dnsLink.classList.add( 'do-not-sell-link' );
+				dnsLink.rel = 'nofollow';
+				dnsLink.style.marginLeft = '0.5em';
+				dnsLink.textContent = 'Do Not Sell or Share My Personal Information';
+
+				var creditLinks = document.querySelectorAll( linkElements );
+
+				if ( 0 === creditLinks.length ) {
+					return false;
+				}
+
+				Array.prototype.forEach.call( creditLinks, function( el ) {
+					el.insertAdjacentElement( 'afterend', dnsLink );
+				});
+
+				return true;
+			};
+
+		</script>
+		<style type="text/css" id="custom-colors-css">	#menu li {
+		background: transparent;
+	}
+	#menu a {
+		border-color: transparent;
+	}
+	#search #s {
+		background: #fff;
+	}
+#menu a { color: #727272;}
+#menu ul ul a,#menu ul ul a:hover,#page #menu a:hover, .post-entry a:hover, .post-extras .post-edit-link:hover { color: #7F7F7F;}
+#main-title #site-title a, #more-posts-inner a { color: #000000;}
+.sticky .entry-format, .more-posts .sticky h2.entry-format, .more-posts h2.entry-format, .featured { color: #000000;}
+.post-date { color: #000000;}
+#page #menu a:hover, .post-entry a:hover, .post-extras .post-edit-link:hover { color: #000000;}
+a.entry-format-link, a.entry-format-link:visited { color: #000000;}
+.post-extras a:hover { color: #000000;}
+#comments h3 { color: #000000;}
+#comments li.pingback a,.comment-text p a:hover { color: #000000;}
+.comment-text .reply-link a { color: #000000;}
+.comment-author,.comment-author a { color: #000000;}
+#comments #reply-title a, #comment-nav-above a, #comment-nav-below a, .comment-text table a { color: #000000;}
+.comment-text p a:hover { color: #000000;}
+.post-entry .more-link { color: #000000;}
+.post-info a:hover { color: #000000;}
+.sidebar-widget a:hover { color: #000000;}
+.sidebar-widget { color: #000000;}
+.featured a { color: #000000;}
+#main-title #site-description { color: #555555;}
+.post-info { color: #555555;}
+.post-date span { color: #555555;}
+.post-info .post-com-count a { color: #555555;}
+#main-image { border-color: #ddd;}
+#main-image { border-color: rgba( 221, 221, 221, 0.3 );}
+#main-image img { border-color: #ddd;}
+#main-image img { border-color: rgba( 221, 221, 221, 0.3 );}
+.post-title h1 { border-color: #ddd;}
+.post-title h1 { border-color: rgba( 221, 221, 221, 0.3 );}
+#content,.content-sidebar #content { border-color: #ddd;}
+#content,.content-sidebar #content { border-color: rgba( 221, 221, 221, 0.3 );}
+.sidebar-widget li { border-color: #ddd;}
+.sidebar-widget li { border-color: rgba( 221, 221, 221, 0.3 );}
+.more-posts .page-title, .more-posts .notice { border-color: #ddd;}
+.more-posts .page-title, .more-posts .notice { border-color: rgba( 221, 221, 221, 0.3 );}
+#more-posts-inner span { border-color: #ddd;}
+#more-posts-inner span { border-color: rgba( 221, 221, 221, 0.3 );}
+#menu .current-menu-item > a, #menu .current_page_item > a, #menu .current-menu-ancestor > a { border-top-color: #ddd;}
+#menu .current-menu-item > a, #menu .current_page_item > a, #menu .current-menu-ancestor > a { border-top-color: rgba( 221, 221, 221, 0.3 );}
+.single .post { border-color: #ddd;}
+.single .post { border-color: rgba( 221, 221, 221, 0.3 );}
+.post-extras strong { border-color: #ddd;}
+.post-extras strong { border-color: rgba( 221, 221, 221, 0.3 );}
+.comment-text { border-color: #ddd;}
+.comment-text { border-color: rgba( 221, 221, 221, 0.3 );}
+#comments li { border-color: #ddd;}
+#comments li { border-color: rgba( 221, 221, 221, 0.3 );}
+.post-entry { color: #333333;}
+.sidebar-widget a { color: #333333;}
+.post-extras { color: #333333;}
+.post-extras p a { color: #333333;}
+#more-posts-inner article { color: #333333;}
+.comment-text p { color: #333333;}
+#menu .current-menu-item > a, #menu .current_page_item > a, #menu .current-menu-ancestor > a { border-bottom-color: #ccc;}
+#menu .current-menu-item > a, #menu .current_page_item > a, #menu .current-menu-ancestor > a { border-bottom-color: rgba( 204, 204, 204, 0.3 );}
+#comments #respond h3 { border-color: #ccc;}
+#comments #respond h3 { border-color: rgba( 204, 204, 204, 0.3 );}
+#comments h3 { border-bottom: #ccc;}
+#comments h3 { border-bottom: rgba( 204, 204, 204, 0.3 );}
+.sidebar-widget li  { color: #444444;}
+.wp-caption .wp-caption-text:before,.wp-caption .wp-caption-text, .gallery-caption { color: #636363;}
+.more-posts .page-title, .more-posts .notice { color: #636363;}
+#comments li.pingback .comment-text .edit-comment a { color: #636363;}
+#copyright a { color: #919191;}
+#page { background-image: #d0f6c5;}
+.sticky .entry-format, .more-posts .sticky h2.entry-format, .more-posts h2.entry-format, .featured { background-color: #d0f6c5;}
+.post-date em { background-color: #d0f6c5;}
+#main-image { border-color: #d0f6c5;}
+#main-image { border-color: rgba( 208, 246, 197, 0.1 );}
+</style>
+<script type="text/javascript">
+	window.google_analytics_uacct = "UA-52447-2";
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_gat._anonymizeIp']);
+	_gaq.push(['_setDomainName', 'none']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script>
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-9028 single-format-standard wp-theme-pubchateau customizer-styles-applied two-column content-sidebar jetpack-reblog-enabled">
+<div id="page" class="hfeed">
+		<div id="page-inner">
+		<header id="branding" role="banner">
+			<nav id="menu" role="navigation">
+				<ul id="menu-categories" class="menu clear-fix"><li id="menu-item-9660" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9660"><a href="https://happyhollyproject.com/about/">All About Holly</a>
+<ul class="sub-menu">
+	<li id="menu-item-9657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9657"><a href="https://happyhollyproject.com/friends-of-holly/">Friends of Holly</a>
+	<ul class="sub-menu">
+		<li id="menu-item-9679" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-9679"><a href="https://happyhollyproject.com/2012/09/22/friends-of-holly-part-i/">Friends of Holly &#8230; Part I</a></li>
+		<li id="menu-item-9678" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-9678"><a href="https://happyhollyproject.com/2012/09/23/friends-of-holly-part-ii/">Friends of Holly &#8230; Part II</a></li>
+		<li id="menu-item-9677" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-9677"><a href="https://happyhollyproject.com/2012/09/24/friends-of-holly-part-iii/">Friends of Holly &#8230; Part III</a></li>
+		<li id="menu-item-9676" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-9676"><a href="https://happyhollyproject.com/2012/08/08/the-story-of-kathy-and-holly-40-years-later/">The Story of Kathy and Holly &#8230; 40 years later</a></li>
+		<li id="menu-item-9673" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9673"><a href="https://happyhollyproject.com/friends-of-holly/texas-linda/">Texas Linda</a></li>
+		<li id="menu-item-9674" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9674"><a href="https://happyhollyproject.com/friends-of-holly/my-friend-ann/">My Friend Ann</a></li>
+		<li id="menu-item-9672" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9672"><a href="https://happyhollyproject.com/friends-of-holly/toozie-aka-2z/">Toozie aka 2Z</a></li>
+	</ul>
+</li>
+	<li id="menu-item-9658" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9658"><a href="https://happyhollyproject.com/pictures-of-holly/">Pictures of Holly</a></li>
+</ul>
+</li>
+<li id="menu-item-9675" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9675"><a href="https://happyhollyproject.com/but-what-about-the-blog/">But What About The Blog?</a>
+<ul class="sub-menu">
+	<li id="menu-item-9670" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-9670"><a href="https://happyhollyproject.com/2012/06/24/hello-world/">Hello world! or anyone listening &#8230;</a></li>
+	<li id="menu-item-9659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9659"><a href="https://happyhollyproject.com/contact-holly/">Contact Holly</a></li>
+	<li id="menu-item-9656" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9656"><a href="https://happyhollyproject.com/countries-that-have-seen-hollys-blog/">Countries Viewing Holly</a></li>
+</ul>
+</li>
+<li id="menu-item-9655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9655"><a href="https://happyhollyproject.com/categories-and-whatnot/">Categories And Whatnot</a>
+<ul class="sub-menu">
+	<li id="menu-item-10443" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10443"><a href="https://happyhollyproject.com/category/home-improvement-2/">Home Improvement</a></li>
+	<li id="menu-item-9152" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-9152"><a target="_blank" rel="noopener" href="https://happyhollyproject.com/category/humor-2/">Humor</a></li>
+	<li id="menu-item-9151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9151"><a target="_blank" rel="noopener" href="https://happyhollyproject.com/category/writing/">Writing</a></li>
+	<li id="menu-item-9150" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9150"><a target="_blank" rel="noopener" href="https://happyhollyproject.com/category/amish/">Amish</a></li>
+	<li id="menu-item-9153" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9153"><a target="_blank" rel="noopener" href="https://happyhollyproject.com/category/boomer-dating/">Boomer Dating</a></li>
+	<li id="menu-item-9156" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9156"><a target="_blank" rel="noopener" href="https://happyhollyproject.com/category/the-betta-fish/">The Betta Fish</a></li>
+	<li id="menu-item-10162" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-10162"><a target="_blank" rel="noopener" href="https://happyhollyproject.com/tag/nanowrimo/">NaNoWriMo</a></li>
+</ul>
+</li>
+</ul>			</nav><!-- end #menu -->
+
+			<div id="main-title">
+				<hgroup>
+					<h1 id="site-title"><a href="https://happyhollyproject.com/" title="Happy Holly Project" rel="home">Happy Holly Project</a></h1>
+												<h2 id="site-description">~ In which I do something each day purposely for no other reason than to make myself happy.</h2>
+									</hgroup>
+			</div><!-- end #main-title -->
+
+							<div id="search">
+					
+<form method="get" action="https://happyhollyproject.com//" >
+	<div>
+		<label for="s" class="assistive-text">Search:</label>
+		<input type="text" value="Search&hellip;" name="s" id="s" onfocus="this.value=''" />
+		<input type="submit" name="search" value="Go" />
+	</div>
+</form>
+				</div><!-- end #search -->
+			
+			<div id="main-image">
+							<a href="https://happyhollyproject.com/">
+													<img src="../../../../../../../wp-content/uploads/2015/01/cropped-10382453_10152792976206904_7127709473408657633_n.jpg" width="960" height="259" alt="Happy Holly Project" title="Happy Holly Project" />
+									</a>
+						</div><!-- end #main-image -->
+		</header><!-- #branding -->
+		<div id="main" class="clear-fix">
+
+	<div id="primary">
+		<div id="content" class="clear-fix">
+
+		
+			<article id="post-9028" class="post-9028 post type-post status-publish format-standard hentry category-humor-2 tag-cupid tag-humor tag-pinterest tag-relationship tag-valentines-day">
+	<header class="post-title">
+				<h1>Valentine&#8217;s Day Tomorrow?&nbsp;Again?</h1>			<a href="index.html" class="post-permalink">		<p class="post-date">
+			<strong>13</strong>
+			<em>Thursday</em>
+			<span>Feb 2014</span>
+		</p>
+	</a>
+	<div class="post-info clear-fix">
+		<p>
+			Posted <span class="by-author"> by <span class="author vcard"><a class="url fn n" href="https://happyhollyproject.com/author/happyhollyproject/" title="View all posts by the author" rel="author">the author</a></span></span> in <a href="https://happyhollyproject.com/category/humor-2/" rel="category tag">Humor</a>		</p>
+		<p class="post-com-count">
+			<strong>&asymp; <a href="index.html#comments">2 Comments</a></strong>
+		</p>
+	</div><!-- end .post-info -->
+	</header><!-- end .post-title -->
+
+	<div class="post-content clear-fix">
+			<div class="post-extras">
+				<p><strong>Tags</strong></p><p><a href="https://happyhollyproject.com/tag/cupid/" rel="tag">Cupid</a>, <a href="https://happyhollyproject.com/tag/humor/" rel="tag">humor</a>, <a href="https://happyhollyproject.com/tag/pinterest/" rel="tag">Pinterest</a>, <a href="https://happyhollyproject.com/tag/relationship/" rel="tag">relationship</a>, <a href="https://happyhollyproject.com/tag/valentines-day/" rel="tag">valentines day</a></p>	</div><!-- end .post-extras -->
+
+		<div class="post-entry">
+			<p><em><a href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/1002208_10152013231048800_1293664621_n/" rel="attachment wp-att-9030"><img data-attachment-id="9030" data-permalink="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/1002208_10152013231048800_1293664621_n/" data-orig-file="https://happyhollyproject.com/wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg" data-orig-size="620,893" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="1002208_10152013231048800_1293664621_n" data-image-description="" data-image-caption="" data-medium-file="https://happyhollyproject.com/wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg?w=208" data-large-file="https://happyhollyproject.com/wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg?w=529" class="aligncenter size-large wp-image-9030" alt="1002208_10152013231048800_1293664621_n" src="../../../../../../../wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg@w=529&amp;h=761" width="529" height="761" srcset="../../../../wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg@w=529 529w, ../../../../wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg@w=104 104w, ../../../../wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg@w=208 208w, ../../../../wp-content/uploads/2014/02/1002208_10152013231048800_1293664621_n.jpg 620w" sizes="(max-width: 529px) 100vw, 529px" /></a>Gosh tomorrow is Valentines Day. Oh joy. I can count the number of Valentines I&#8217;ve gotten in the last &#8230; hmm &#8230; thirty years maybe on one hand. </em></p>
+<p><em> I recall being in a room of people twenty odd years ago (much younger and all the good stuff that goes with that) and saying &#8220;And of course I didn&#8217;t get any Valentines again this year&#8221;. There was an audible gasp from the young men in the room.</em></p>
+<p><em> They were surprised, bless their souls. </em></p>
+<p><em> My friend the School Psychologist sent this to me. She knew I&#8217;d laugh. For any single friends I have &#8230; hold on to these.</em></p>
+<p><em> You will hear them. You will use them. </em></p>
+<p><em> Classic Dysfunction. Thanks Jeanne<a id="js_125" href="https://www.facebook.com/jeanne.donovic"></a>!</em></p>
+<h6 class="zemanta-related-title">Related articles</h6>
+<ul class="zemanta-article-ul zemanta-article-ul-image" style="margin:0;padding:0;overflow:hidden;">
+<li class="zemanta-article-ul-li-image zemanta-article-ul-li" style="padding:0;background:none;list-style:none;display:block;float:left;vertical-align:top;text-align:left;width:84px;font-size:11px;margin:2px 10px 10px 2px;"><a style="box-shadow:0 0 4px #999;padding:2px;display:block;border-radius:2px;text-decoration:none;" href="http://loveyouwrongtime.wordpress.com/2014/02/13/valentines-day-is-tomorrow-youll-never-guess-who-im-spending-it-with/" target="_blank"><img style="padding:0;margin:0;border:0;display:block;width:80px;max-width:100%;" alt="" src="https://i0.wp.com/i.zemanta.com/247793577_80_80.jpg" /></a><a style="display:block;overflow:hidden;text-decoration:none;line-height:12pt;height:80px;padding:5px 2px 0;" href="http://loveyouwrongtime.wordpress.com/2014/02/13/valentines-day-is-tomorrow-youll-never-guess-who-im-spending-it-with/" target="_blank">Valentine&#8217;s Day is tomorrow&#8230; You&#8217;ll never guess who I&#8217;m spending it with?!</a></li>
+<li class="zemanta-article-ul-li-image zemanta-article-ul-li" style="padding:0;background:none;list-style:none;display:block;float:left;vertical-align:top;text-align:left;width:84px;font-size:11px;margin:2px 10px 10px 2px;"><a style="box-shadow:0 0 4px #999;padding:2px;display:block;border-radius:2px;text-decoration:none;" href="http://hrncirwt2013.wordpress.com/2014/02/13/for-valentine-lovers-without-a-valentine-line/" target="_blank"><img style="padding:0;margin:0;border:0;display:block;width:80px;max-width:100%;" alt="" src="https://i0.wp.com/i.zemanta.com/247773077_80_80.jpg" /></a><a style="display:block;overflow:hidden;text-decoration:none;line-height:12pt;height:80px;padding:5px 2px 0;" href="http://hrncirwt2013.wordpress.com/2014/02/13/for-valentine-lovers-without-a-valentine-line/" target="_blank">For Valentine Lovers Without A Valentine Line</a></li>
+<li class="zemanta-article-ul-li-image zemanta-article-ul-li" style="padding:0;background:none;list-style:none;display:block;float:left;vertical-align:top;text-align:left;width:84px;font-size:11px;margin:2px 10px 10px 2px;"><a style="box-shadow:0 0 4px #999;padding:2px;display:block;border-radius:2px;text-decoration:none;" href="http://teewernshen.wordpress.com/2014/02/13/its-valentines-day-tomorrow/" target="_blank"><img style="padding:0;margin:0;border:0;display:block;width:80px;max-width:100%;" alt="" src="https://i0.wp.com/i.zemanta.com/247597028_80_80.jpg" /></a><a style="display:block;overflow:hidden;text-decoration:none;line-height:12pt;height:80px;padding:5px 2px 0;" href="http://teewernshen.wordpress.com/2014/02/13/its-valentines-day-tomorrow/" target="_blank">Its Valentine&#8217;s Day tomorrow!</a></li>
+<li class="zemanta-article-ul-li-image zemanta-article-ul-li" style="padding:0;background:none;list-style:none;display:block;float:left;vertical-align:top;text-align:left;width:84px;font-size:11px;margin:2px 10px 10px 2px;"><a style="box-shadow:0 0 4px #999;padding:2px;display:block;border-radius:2px;text-decoration:none;" href="http://fffff.at/valentines/" target="_blank" rel="nofollow"><img style="padding:0;margin:0;border:0;display:block;width:80px;max-width:100%;" alt="" src="https://i0.wp.com/i.zemanta.com/247757001_80_80.jpg" /></a><a style="display:block;overflow:hidden;text-decoration:none;line-height:12pt;height:80px;padding:5px 2px 0;" href="http://fffff.at/valentines/" target="_blank">Heads Up! Tomorrow is Valentines Day</a></li>
+<li class="zemanta-article-ul-li-image zemanta-article-ul-li" style="padding:0;background:none;list-style:none;display:block;float:left;vertical-align:top;text-align:left;width:84px;font-size:11px;margin:2px 10px 10px 2px;"><a style="box-shadow:0 0 4px #999;padding:2px;display:block;border-radius:2px;text-decoration:none;" href="http://theblogbybe.com/2014/02/13/valentines-all-the-time/" target="_blank" rel="nofollow"><img style="padding:0;margin:0;border:0;display:block;width:80px;max-width:100%;" alt="" src="https://i0.wp.com/i.zemanta.com/247737581_80_80.jpg" /></a><a style="display:block;overflow:hidden;text-decoration:none;line-height:12pt;height:80px;padding:5px 2px 0;" href="http://theblogbybe.com/2014/02/13/valentines-all-the-time/" target="_blank">Valentines all the time.</a></li>
+</ul>
+<div class="zemanta-pixie" style="margin-top:10px;height:15px;"><a class="zemanta-pixie-a" title="Enhanced by Zemanta" href="http://www.zemanta.com/?px" rel="nofollow"><img class="zemanta-pixie-img" style="border:none;float:right;" alt="Enhanced by Zemanta" src="https://i0.wp.com/img.zemanta.com/zemified_e.png" /></a></div>
+<div id="atatags-370373-6913b511065f9">
+		<script type="text/javascript">
+			__ATA = window.__ATA || {};
+			__ATA.cmd = window.__ATA.cmd || [];
+			__ATA.cmd.push(function() {
+				__ATA.initVideoSlot('atatags-370373-6913b511065f9', {
+					sectionId: '370373',
+					format: 'inread'
+				});
+			});
+		</script>
+	</div><span id="wordads-inline-marker" style="display: none;"></span><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Please feel free to share me with others::</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-facebook-9028"
+				class="share-facebook sd-button share-icon no-text"
+				href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/?share=facebook"
+				target="_blank"
+				aria-labelledby="sharing-facebook-9028"
+				>
+				<span id="sharing-facebook-9028" hidden>Click to share on Facebook (Opens in new window)</span>
+				<span>Facebook</span>
+			</a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-twitter-9028"
+				class="share-twitter sd-button share-icon no-text"
+				href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/?share=twitter"
+				target="_blank"
+				aria-labelledby="sharing-twitter-9028"
+				>
+				<span id="sharing-twitter-9028" hidden>Click to share on X (Opens in new window)</span>
+				<span>X</span>
+			</a></li><li><a href="index.html#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-print"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-print-9028"
+				class="share-print sd-button share-icon no-text"
+				href="index.html#print?share=print"
+				target="_blank"
+				aria-labelledby="sharing-print-9028"
+				>
+				<span id="sharing-print-9028" hidden>Click to print (Opens in new window)</span>
+				<span>Print</span>
+			</a></li><li class="share-email"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-email-9028"
+				class="share-email sd-button share-icon no-text"
+				href="mailto:?subject=%5BShared%20Post%5D%20Valentine%27s%20Day%20Tomorrow%3F%20Again%3F&#038;body=https%3A%2F%2Fhappyhollyproject.com%2F2014%2F02%2F13%2Fvalentines-day-tomorrow-again%2F&#038;share=email"
+				target="_blank"
+				aria-labelledby="sharing-email-9028"
+				data-email-share-error-title="Do you have email set up?" data-email-share-error-text="If you&#039;re having problems sharing via email, you might not have email set up for your browser. You may need to create a new email yourself." data-email-share-nonce="b5f24fccc5" data-email-share-track-url="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/?share=email">
+				<span id="sharing-email-9028" hidden>Click to email a link to a friend (Opens in new window)</span>
+				<span>Email</span>
+			</a></li><li class="share-pinterest"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-pinterest-9028"
+				class="share-pinterest sd-button share-icon no-text"
+				href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/?share=pinterest"
+				target="_blank"
+				aria-labelledby="sharing-pinterest-9028"
+				>
+				<span id="sharing-pinterest-9028" hidden>Click to share on Pinterest (Opens in new window)</span>
+				<span>Pinterest</span>
+			</a></li><li class="share-reddit"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-reddit-9028"
+				class="share-reddit sd-button share-icon no-text"
+				href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/?share=reddit"
+				target="_blank"
+				aria-labelledby="sharing-reddit-9028"
+				>
+				<span id="sharing-reddit-9028" hidden>Click to share on Reddit (Opens in new window)</span>
+				<span>Reddit</span>
+			</a></li><li class="share-tumblr"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-tumblr-9028"
+				class="share-tumblr sd-button share-icon no-text"
+				href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/?share=tumblr"
+				target="_blank"
+				aria-labelledby="sharing-tumblr-9028"
+				>
+				<span id="sharing-tumblr-9028" hidden>Click to share on Tumblr (Opens in new window)</span>
+				<span>Tumblr</span>
+			</a></li><li class="share-pocket"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-pocket-9028"
+				class="share-pocket sd-button share-icon no-text"
+				href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/?share=pocket"
+				target="_blank"
+				aria-labelledby="sharing-pocket-9028"
+				>
+				<span id="sharing-pocket-9028" hidden>Click to share on Pocket (Opens in new window)</span>
+				<span>Pocket</span>
+			</a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-linkedin-9028"
+				class="share-linkedin sd-button share-icon no-text"
+				href="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/?share=linkedin"
+				target="_blank"
+				aria-labelledby="sharing-linkedin-9028"
+				>
+				<span id="sharing-linkedin-9028" hidden>Click to share on LinkedIn (Opens in new window)</span>
+				<span>LinkedIn</span>
+			</a></li><li class="share-end"></li></ul></div></div></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-37570255-9028-6913b51106f93' data-src='//widgets.wp.com/likes/index.html?ver=20251111#blog_id=37570255&amp;post_id=9028&amp;origin=happyhollyproject.wordpress.com&amp;obj_id=37570255-9028-6913b51106f93&amp;domain=happyhollyproject.com' data-name='like-post-frame-37570255-9028-6913b51106f93' data-title='Like or Reblog'><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class='loading'>Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>					</div><!-- end .post-entry -->
+	</div><!-- end .post-content -->
+
+	</article><!-- #post-9028 -->
+
+			<nav id="nav-below" class="clear-fix">
+				<h1 class="assistive-text">Post navigation</h1>
+				<span class="nav-previous"><a href="https://happyhollyproject.com/2014/02/12/frozen-but-fine/" rel="prev">&larr; Previous post</a></span>
+				<span class="nav-next"><a href="https://happyhollyproject.com/2014/02/14/thoughts-on-a-valentine/" rel="next">Next post &rarr;</a></span>
+			</nav><!-- #nav-below -->
+
+			<div id="comments">
+	
+	
+			<h3 id="comments-title">
+			<span>2</span> thoughts on &ldquo;Valentine&#8217;s Day Tomorrow?&nbsp;Again?&rdquo;		</h3>
+
+		
+		<ol class="commentlist">
+						<li class="comment pingback">
+				<div class="comment-text">
+					<p>Pingback: <a href="https://happyhollyproject.com/2015/02/14/valentines-day-again/" class="url" rel="ugc">Valentine&#8217;s Day? Again? | Happy Holly Project</a></p>
+					<p class="edit-comment"></p>
+				</div>
+			</li><!-- #comment-## -->
+			<li class="comment pingback">
+				<div class="comment-text">
+					<p>Pingback: <a href="https://happyhollyproject.com/2014/02/14/thoughts-on-a-valentine/" class="url" rel="ugc">Thoughts On A Valentine &#8230; | Happy Holly Project</a></p>
+					<p class="edit-comment"></p>
+				</div>
+			</li><!-- #comment-## -->
+		</ol>
+
+		
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Please Feel Free to Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://happyhollyproject.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+
+
+<div class="comment-form__verbum transparent"></div><div class="verbum-form-meta"><input type='hidden' name='comment_post_ID' value='9028' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+
+			<input type="hidden" name="highlander_comment_nonce" id="highlander_comment_nonce" value="72aca458a6" />
+			<input type="hidden" name="verbum_show_subscription_modal" value="" /></div><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="13d355fce9" /></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="147"/><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+
+		
+		</div><!-- end #content -->
+	</div><!-- end #primary -->
+
+	
+	<div id="secondary" class="widget-area" role="complementary">
+		
+		<aside id="media_image-13" class="sidebar-widget widget_media_image"><h1 class="widget-title">Be part of those Polls that get in the news!!!</h1><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><a href="https://today.yougov.com/refer/z_oPSpjyC3RrlcFBgsNlng/"><img width="180" height="180" src="../../../../../../../wp-content/uploads/2016/05/yougov-squarelogo.png" class="image wp-image-11973 alignnone attachment-full size-full" alt="I&#039;ve done these for years. Eventually they even pay you!! Great fun to see what you&#039;ve answered in national headlines." decoding="async" loading="lazy" style="max-width: 100%; height: auto;" title="Sign Up! Be heard!" srcset="../../../../wp-content/uploads/2016/05/yougov-squarelogo.png 180w, ../../../../wp-content/uploads/2016/05/yougov-squarelogo.png@w=150&amp;h=150=150 150w" sizes="(max-width: 180px) 100vw, 180px" data-attachment-id="11973" data-permalink="https://happyhollyproject.com/2015/12/07/infinite-loop-solutions-1-50/yougov-squarelogo/" data-orig-file="https://happyhollyproject.com/wp-content/uploads/2016/05/yougov-squarelogo.png" data-orig-size="180,180" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="yougov-squarelogo" data-image-description="" data-image-caption="" data-medium-file="https://happyhollyproject.com/wp-content/uploads/2016/05/yougov-squarelogo.png?w=180" data-large-file="https://happyhollyproject.com/wp-content/uploads/2016/05/yougov-squarelogo.png?w=180" /></a></aside><aside id="archives-2" class="sidebar-widget widget_archive"><h1 class="widget-title">Pick A Month &#8230; Any Month</h1>		<label class="screen-reader-text" for="archives-dropdown-2">Pick A Month &#8230; Any Month</label>
+		<select id="archives-dropdown-2" name="archive-dropdown">
+			
+			<option value="">Select Month</option>
+				<option value='https://happyhollyproject.com/2018/11/'> November 2018 </option>
+	<option value='https://happyhollyproject.com/2018/05/'> May 2018 </option>
+	<option value='https://happyhollyproject.com/2018/03/'> March 2018 </option>
+	<option value='https://happyhollyproject.com/2017/12/'> December 2017 </option>
+	<option value='https://happyhollyproject.com/2017/10/'> October 2017 </option>
+	<option value='https://happyhollyproject.com/2017/08/'> August 2017 </option>
+	<option value='https://happyhollyproject.com/2017/03/'> March 2017 </option>
+	<option value='https://happyhollyproject.com/2017/02/'> February 2017 </option>
+	<option value='https://happyhollyproject.com/2017/01/'> January 2017 </option>
+	<option value='https://happyhollyproject.com/2016/11/'> November 2016 </option>
+	<option value='https://happyhollyproject.com/2016/10/'> October 2016 </option>
+	<option value='https://happyhollyproject.com/2016/09/'> September 2016 </option>
+	<option value='https://happyhollyproject.com/2016/08/'> August 2016 </option>
+	<option value='https://happyhollyproject.com/2016/06/'> June 2016 </option>
+	<option value='https://happyhollyproject.com/2016/05/'> May 2016 </option>
+	<option value='https://happyhollyproject.com/2016/04/'> April 2016 </option>
+	<option value='https://happyhollyproject.com/2016/01/'> January 2016 </option>
+	<option value='https://happyhollyproject.com/2015/12/'> December 2015 </option>
+	<option value='https://happyhollyproject.com/2015/11/'> November 2015 </option>
+	<option value='https://happyhollyproject.com/2015/10/'> October 2015 </option>
+	<option value='https://happyhollyproject.com/2015/09/'> September 2015 </option>
+	<option value='https://happyhollyproject.com/2015/08/'> August 2015 </option>
+	<option value='https://happyhollyproject.com/2015/06/'> June 2015 </option>
+	<option value='https://happyhollyproject.com/2015/05/'> May 2015 </option>
+	<option value='https://happyhollyproject.com/2015/04/'> April 2015 </option>
+	<option value='https://happyhollyproject.com/2015/03/'> March 2015 </option>
+	<option value='https://happyhollyproject.com/2015/02/'> February 2015 </option>
+	<option value='https://happyhollyproject.com/2015/01/'> January 2015 </option>
+	<option value='https://happyhollyproject.com/2014/12/'> December 2014 </option>
+	<option value='https://happyhollyproject.com/2014/11/'> November 2014 </option>
+	<option value='https://happyhollyproject.com/2014/10/'> October 2014 </option>
+	<option value='https://happyhollyproject.com/2014/09/'> September 2014 </option>
+	<option value='https://happyhollyproject.com/2014/08/'> August 2014 </option>
+	<option value='https://happyhollyproject.com/2014/07/'> July 2014 </option>
+	<option value='https://happyhollyproject.com/2014/06/'> June 2014 </option>
+	<option value='https://happyhollyproject.com/2014/05/'> May 2014 </option>
+	<option value='https://happyhollyproject.com/2014/04/'> April 2014 </option>
+	<option value='https://happyhollyproject.com/2014/03/'> March 2014 </option>
+	<option value='https://happyhollyproject.com/2014/02/'> February 2014 </option>
+	<option value='https://happyhollyproject.com/2014/01/'> January 2014 </option>
+	<option value='https://happyhollyproject.com/2013/12/'> December 2013 </option>
+	<option value='https://happyhollyproject.com/2013/11/'> November 2013 </option>
+	<option value='https://happyhollyproject.com/2013/10/'> October 2013 </option>
+	<option value='https://happyhollyproject.com/2013/09/'> September 2013 </option>
+	<option value='https://happyhollyproject.com/2013/08/'> August 2013 </option>
+	<option value='https://happyhollyproject.com/2013/07/'> July 2013 </option>
+	<option value='https://happyhollyproject.com/2013/06/'> June 2013 </option>
+	<option value='https://happyhollyproject.com/2013/05/'> May 2013 </option>
+	<option value='https://happyhollyproject.com/2013/04/'> April 2013 </option>
+	<option value='https://happyhollyproject.com/2013/03/'> March 2013 </option>
+	<option value='https://happyhollyproject.com/2013/02/'> February 2013 </option>
+	<option value='https://happyhollyproject.com/2013/01/'> January 2013 </option>
+	<option value='https://happyhollyproject.com/2012/12/'> December 2012 </option>
+	<option value='https://happyhollyproject.com/2012/11/'> November 2012 </option>
+	<option value='https://happyhollyproject.com/2012/10/'> October 2012 </option>
+	<option value='https://happyhollyproject.com/2012/09/'> September 2012 </option>
+	<option value='https://happyhollyproject.com/2012/08/'> August 2012 </option>
+	<option value='https://happyhollyproject.com/2012/07/'> July 2012 </option>
+	<option value='https://happyhollyproject.com/2012/06/'> June 2012 </option>
+
+		</select>
+
+			<script type="text/javascript">
+/* <![CDATA[ */
+
+(function() {
+	var dropdown = document.getElementById( "archives-dropdown-2" );
+	function onSelectChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value !== '' ) {
+			document.location.href = this.options[ this.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onSelectChange;
+})();
+
+/* ]]> */
+</script>
+</aside><aside id="categories-2" class="sidebar-widget widget_categories"><h1 class="widget-title">Or Pick A Category &#8230; Any Category</h1><form action="https://happyhollyproject.com" method="get"><label class="screen-reader-text" for="cat">Or Pick A Category &#8230; Any Category</label><select  name='cat' id='cat' class='postform'>
+	<option value='-1'>Select Category</option>
+	<option class="level-0" value="383982">Amish</option>
+	<option class="level-0" value="15002008">Beautiful Birds</option>
+	<option class="level-0" value="7726548">Boomer Dating</option>
+	<option class="level-0" value="34935183">Diet</option>
+	<option class="level-0" value="1722">Favorites</option>
+	<option class="level-0" value="34940988">Home Improvement</option>
+	<option class="level-0" value="1858942">Humor</option>
+	<option class="level-0" value="289854695">Infinite Loop Solutions</option>
+	<option class="level-0" value="148180">License Plates</option>
+	<option class="level-0" value="502902436">Little Donald</option>
+	<option class="level-0" value="2813">Math</option>
+	<option class="level-0" value="47697">My Favorites</option>
+	<option class="level-0" value="412657">NaBloPoMo</option>
+	<option class="level-0" value="20865">NaNo</option>
+	<option class="level-0" value="2359">NaNoWriMo</option>
+	<option class="level-0" value="894576">NaPoWriMo</option>
+	<option class="level-0" value="2323083">Not Humor</option>
+	<option class="level-0" value="195150992">Pearls Before Swine</option>
+	<option class="level-0" value="659997">Photography</option>
+	<option class="level-0" value="398">politics</option>
+	<option class="level-0" value="166395793">The Betta Fish</option>
+	<option class="level-0" value="177120">The Lake</option>
+	<option class="level-0" value="6856375">The Other Ones</option>
+	<option class="level-0" value="1">Uncategorized</option>
+	<option class="level-0" value="349">Writing</option>
+	<option class="level-0" value="583927">Your Favorites</option>
+</select>
+</form><script type="text/javascript">
+/* <![CDATA[ */
+
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			dropdown.parentNode.submit();
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+
+/* ]]> */
+</script>
+</aside><aside id="search-2" class="sidebar-widget widget_search"><h1 class="widget-title">Or Pick Something &#8230; Any Thing</h1>
+<form method="get" action="https://happyhollyproject.com//" >
+	<div>
+		<label for="s" class="assistive-text">Search:</label>
+		<input type="text" value="Search&hellip;" name="s" id="s" onfocus="this.value=''" />
+		<input type="submit" name="search" value="Go" />
+	</div>
+</form>
+</aside><aside id="media_image-6" class="sidebar-widget widget_media_image"><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><a href="https://happyhollyproject.com/wp-content/uploads/2015/01/10614304_10152797385136904_7731438440532436282_n.jpg"><img width="200" height="200" src="../../../../../../../wp-content/uploads/2015/01/10614304_10152797385136904_7731438440532436282_n.jpg@w=200" class="image wp-image-10651 aligncenter attachment-200x200 size-200x200" alt="" decoding="async" loading="lazy" style="max-width: 100%; height: auto;" srcset="../../../../wp-content/uploads/2015/01/10614304_10152797385136904_7731438440532436282_n.jpg@w=200 200w, ../../../../wp-content/uploads/2015/01/10614304_10152797385136904_7731438440532436282_n.jpg@w=400 400w, ../../../../wp-content/uploads/2015/01/10614304_10152797385136904_7731438440532436282_n.jpg@w=150 150w, ../../../../wp-content/uploads/2015/01/10614304_10152797385136904_7731438440532436282_n.jpg@w=300 300w" sizes="(max-width: 200px) 100vw, 200px" data-attachment-id="10651" data-permalink="https://happyhollyproject.com/10614304_10152797385136904_7731438440532436282_n/" data-orig-file="https://happyhollyproject.com/wp-content/uploads/2015/01/10614304_10152797385136904_7731438440532436282_n.jpg" data-orig-size="406,406" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="10614304_10152797385136904_7731438440532436282_n" data-image-description="" data-image-caption="" data-medium-file="https://happyhollyproject.com/wp-content/uploads/2015/01/10614304_10152797385136904_7731438440532436282_n.jpg?w=300" data-large-file="https://happyhollyproject.com/wp-content/uploads/2015/01/10614304_10152797385136904_7731438440532436282_n.jpg?w=406" /></a></aside><aside id="blog_subscription-3" class="sidebar-widget widget_blog_subscription jetpack_subscription_widget"><h1 class="widget-title"><label for="subscribe-field">Follow Me On WordPress ... </label></h1>
+
+			<div class="wp-block-jetpack-subscriptions__container">
+			<form
+				action="https://subscribe.wordpress.com"
+				method="post"
+				accept-charset="utf-8"
+				data-blog="37570255"
+				data-post_access_level="everybody"
+				id="subscribe-blog"
+			>
+								<p id="subscribe-email">
+					<label
+						id="subscribe-field-label"
+						for="subscribe-field"
+						class="screen-reader-text"
+					>
+						Email Address:					</label>
+
+					<input
+							type="email"
+							name="email"
+							autocomplete="email"
+							
+							style="width: 95%; padding: 1px 10px"
+							placeholder="Email Address"
+							value=""
+							id="subscribe-field"
+							required
+						/>				</p>
+
+				<p id="subscribe-submit"
+									>
+					<input type="hidden" name="action" value="subscribe"/>
+					<input type="hidden" name="blog_id" value="37570255"/>
+					<input type="hidden" name="source" value="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/"/>
+					<input type="hidden" name="sub-type" value="widget"/>
+					<input type="hidden" name="redirect_fragment" value="subscribe-blog"/>
+					<input type="hidden" id="_wpnonce" name="_wpnonce" value="ebbe224522" />					<button type="submit"
+													class="wp-block-button__link"
+																	>
+						Follow Me, Follow Me					</button>
+				</p>
+			</form>
+							<div class="wp-block-jetpack-subscriptions__subscount">
+					Join 611 other subscribers				</div>
+						</div>
+			
+</aside><aside id="facebook-likebox-2" class="sidebar-widget widget_facebook_likebox"><h1 class="widget-title"><a href="https://www.facebook.com/HappyHollyProject">Like Me On Facebook &#8230;</a></h1>		<div id="fb-root"></div>
+		<div class="fb-page" data-href="https://www.facebook.com/HappyHollyProject" data-width="200"  data-height="351" data-hide-cover="false" data-show-facepile="true" data-tabs="false" data-hide-cta="false" data-small-header="false">
+		<div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/HappyHollyProject"><a href="https://www.facebook.com/HappyHollyProject">Like Me On Facebook &#8230;</a></blockquote></div>
+		</div>
+		</aside><aside id="text-7" class="sidebar-widget widget_text"><h1 class="widget-title">EPIC FAIL !! LOLOL</h1>			<div class="textwidget"><a href="http://www.nablopomo.com"><img src="https://www.blogher.com/files/NaBloPoMo_2015.jpg" alt="NaBloPoMo November 2015" height="150" width="150"></a></div>
+		</aside><aside id="text-8" class="sidebar-widget widget_text"><h1 class="widget-title">Year Number Five</h1>			<div class="textwidget"><img src="../../../../../../../nanowrimo.org/widget/LiveParticipant/hollygetz.png.html" /></div>
+		</aside><aside id="media_image-4" class="sidebar-widget widget_media_image"><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><a href="http://dailypost.wordpress.com/postaday/"><img width="154" height="30" src="../../../../../../../wp-content/uploads/2015/08/pad2013sm.png" class="image wp-image-11058 aligncenter attachment-full size-full" alt="I am part of Postaday 2013" decoding="async" loading="lazy" style="max-width: 100%; height: auto;" srcset="../../../../wp-content/uploads/2015/08/pad2013sm.png 154w, ../../../../wp-content/uploads/2015/08/pad2013sm.png@w=150&amp;h=29h=29 150w" sizes="(max-width: 154px) 100vw, 154px" data-attachment-id="11058" data-permalink="https://happyhollyproject.com/2015/08/02/death-blogging-and-the-correlation-thereof/pad2013sm/" data-orig-file="https://happyhollyproject.com/wp-content/uploads/2015/08/pad2013sm.png" data-orig-size="154,30" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="pad2013sm" data-image-description="" data-image-caption="" data-medium-file="https://happyhollyproject.com/wp-content/uploads/2015/08/pad2013sm.png?w=154" data-large-file="https://happyhollyproject.com/wp-content/uploads/2015/08/pad2013sm.png?w=154" /></a></aside><aside id="media_image-7" class="sidebar-widget widget_media_image"><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><div style="width: 110px" class="wp-caption alignnone"><a href="../../../../../../../wp-content/uploads/2013/02/liebster-award.jpg"><img width="100" height="95" src="../../../../../../../wp-content/uploads/2013/02/liebster-award.jpg@w=100" class="image wp-image-4328 aligncenter attachment-100x100 size-100x100" alt="" decoding="async" loading="lazy" style="max-width: 100%; height: auto;" srcset="../../../../wp-content/uploads/2013/02/liebster-award.jpg@w=100 100w, ../../../../wp-content/uploads/2013/02/liebster-award.jpg 200w, ../../../../wp-content/uploads/2013/02/liebster-award.jpg@w=150 150w" sizes="(max-width: 100px) 100vw, 100px" data-attachment-id="4328" data-permalink="https://happyhollyproject.com/2013/02/22/id-like-to-thank-the-academy-and/liebster-award/" data-orig-file="https://happyhollyproject.com/wp-content/uploads/2013/02/liebster-award.jpg" data-orig-size="200,190" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="liebster award" data-image-description="" data-image-caption="" data-medium-file="https://happyhollyproject.com/wp-content/uploads/2013/02/liebster-award.jpg?w=200" data-large-file="https://happyhollyproject.com/wp-content/uploads/2013/02/liebster-award.jpg?w=200" /></a><p class="wp-caption-text">(3 times)</p></div></aside><aside id="media_image-8" class="sidebar-widget widget_media_image"><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><div style="width: 85px" class="wp-caption alignnone"><a href="http://kriskkaria.podbean.com/"><img width="56" height="75" src="../../../../../../../wp-content/uploads/2012/12/krisasrhinemaidenlogowebsites.jpg@w=56" class="image wp-image-2775 aligncenter attachment-75x75 size-75x75" alt="" decoding="async" loading="lazy" style="max-width: 100%; height: auto;" srcset="../../../../wp-content/uploads/2012/12/krisasrhinemaidenlogowebsites.jpg@w=56 56w, ../../../../wp-content/uploads/2012/12/krisasrhinemaidenlogowebsites.jpg@w=112 112w" sizes="(max-width: 56px) 100vw, 56px" data-attachment-id="2775" data-permalink="https://happyhollyproject.com/2012/12/13/im-a-podcast-im-a-podcast/krisasrhinemaidenlogowebsites/" data-orig-file="https://happyhollyproject.com/wp-content/uploads/2012/12/krisasrhinemaidenlogowebsites.jpg" data-orig-size="240,320" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="KrisasRhinemaidenLogowebsites" data-image-description="" data-image-caption="" data-medium-file="https://happyhollyproject.com/wp-content/uploads/2012/12/krisasrhinemaidenlogowebsites.jpg?w=225" data-large-file="https://happyhollyproject.com/wp-content/uploads/2012/12/krisasrhinemaidenlogowebsites.jpg?w=240" /></a><p class="wp-caption-text">Featured Podcast (4 times)</p></div></aside><aside id="media_image-9" class="sidebar-widget widget_media_image"><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><div style="width: 110px" class="wp-caption alignnone"><a href="http://somedayiwilllearn.wordpress.com/2014/01/12/zero-to-hero-new-blogs-to-like/"><img class="image aligncenter" src="../../../../../../../dailypost.files.wordpress.com/2013/12/zero-to-hero-square.gif@w=150&amp;h=132" alt="" width="100" height="100" /></a><p class="wp-caption-text">"Zero to Hero: New Blogs To Like" </p></div></aside><aside id="media_image-10" class="sidebar-widget widget_media_image"><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><div style="width: 110px" class="wp-caption alignnone"><a href="http://friendlyfairytales.com/2013/11/25/awarded-blog-of-the-year-among-other-blessings/"><img class="image aligncenter" src="../../../../../../../friendlyfairytales.files.wordpress.com/2013/08/image216.jpg@w=150&amp;h=150" alt="" width="100" height="100" /></a><p class="wp-caption-text">From Friendly Fairy Tales</p></div></aside><aside id="media_image-11" class="sidebar-widget widget_media_image"><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><div style="width: 160px" class="wp-caption alignnone"><a href="https://belsbror.wordpress.com/2014/04/02/chemistry/"><img class="image aligncenter" src="../../../../../../../belsbror.files.wordpress.com/2014/02/abc-award-1.jpg@w=640" alt="" width="150" height="150" /></a><p class="wp-caption-text">Thanks to belsbror</p></div></aside>
+	</div><!-- #secondary .widget-area -->
+
+
+		</div><!-- end #main -->
+	</div><!-- end #page-inner -->
+
+	<footer id="colophon" role="contentinfo">
+		<div id="footer">
+			<div id="footer-inner">
+				<div id="footer-inner-inner">
+					
+
+<div id="footer-widgets-holder">
+	<div id="footer-widgets" class="clear-fix">
+		<div class="footer-widget-item">
+					</div>
+		<div class="footer-widget-item">
+			<aside id="calendar-2" class="footer-widget widget_calendar"><h1>A calendar of blog entries</h1><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar" class="wp-calendar-table">
+	<caption>February 2014</caption>
+	<thead>
+	<tr>
+		<th scope="col" aria-label="Sunday">S</th>
+		<th scope="col" aria-label="Monday">M</th>
+		<th scope="col" aria-label="Tuesday">T</th>
+		<th scope="col" aria-label="Wednesday">W</th>
+		<th scope="col" aria-label="Thursday">T</th>
+		<th scope="col" aria-label="Friday">F</th>
+		<th scope="col" aria-label="Saturday">S</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td colspan="6" class="pad">&nbsp;</td><td><a href="https://happyhollyproject.com/2014/02/01/" aria-label="Posts published on February 1, 2014">1</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://happyhollyproject.com/2014/02/02/" aria-label="Posts published on February 2, 2014">2</a></td><td>3</td><td><a href="https://happyhollyproject.com/2014/02/04/" aria-label="Posts published on February 4, 2014">4</a></td><td><a href="https://happyhollyproject.com/2014/02/05/" aria-label="Posts published on February 5, 2014">5</a></td><td><a href="https://happyhollyproject.com/2014/02/06/" aria-label="Posts published on February 6, 2014">6</a></td><td>7</td><td><a href="https://happyhollyproject.com/2014/02/08/" aria-label="Posts published on February 8, 2014">8</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://happyhollyproject.com/2014/02/09/" aria-label="Posts published on February 9, 2014">9</a></td><td>10</td><td>11</td><td><a href="https://happyhollyproject.com/2014/02/12/" aria-label="Posts published on February 12, 2014">12</a></td><td><a href="https://happyhollyproject.com/2014/02/13/" aria-label="Posts published on February 13, 2014">13</a></td><td><a href="https://happyhollyproject.com/2014/02/14/" aria-label="Posts published on February 14, 2014">14</a></td><td><a href="https://happyhollyproject.com/2014/02/15/" aria-label="Posts published on February 15, 2014">15</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://happyhollyproject.com/2014/02/16/" aria-label="Posts published on February 16, 2014">16</a></td><td><a href="https://happyhollyproject.com/2014/02/17/" aria-label="Posts published on February 17, 2014">17</a></td><td><a href="https://happyhollyproject.com/2014/02/18/" aria-label="Posts published on February 18, 2014">18</a></td><td><a href="https://happyhollyproject.com/2014/02/19/" aria-label="Posts published on February 19, 2014">19</a></td><td><a href="https://happyhollyproject.com/2014/02/20/" aria-label="Posts published on February 20, 2014">20</a></td><td><a href="https://happyhollyproject.com/2014/02/21/" aria-label="Posts published on February 21, 2014">21</a></td><td><a href="https://happyhollyproject.com/2014/02/22/" aria-label="Posts published on February 22, 2014">22</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://happyhollyproject.com/2014/02/23/" aria-label="Posts published on February 23, 2014">23</a></td><td><a href="https://happyhollyproject.com/2014/02/24/" aria-label="Posts published on February 24, 2014">24</a></td><td><a href="https://happyhollyproject.com/2014/02/25/" aria-label="Posts published on February 25, 2014">25</a></td><td>26</td><td><a href="https://happyhollyproject.com/2014/02/27/" aria-label="Posts published on February 27, 2014">27</a></td><td>28</td>
+		<td class="pad" colspan="1">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table><nav aria-label="Previous and next months" class="wp-calendar-nav">
+		<span class="wp-calendar-nav-prev"><a href="https://happyhollyproject.com/2014/01/">&laquo; Jan</a></span>
+		<span class="pad">&nbsp;</span>
+		<span class="wp-calendar-nav-next"><a href="https://happyhollyproject.com/2014/03/">Mar &raquo;</a></span>
+	</nav></div></aside>		</div>
+		<div class="footer-widget-item">
+			<aside id="text-4" class="footer-widget widget_text"><h1>Thanks for reading &#8230;.</h1>			<div class="textwidget"><a href="http://www4.clustrmaps.com/user/2dd104300"><img src="../../../../../../../i0.wp.com/www4.clustrmaps.com/stats/maps-no_clusters/happyhollyproject.com-thumb.jpg" alt="Locations of visitors to this page" />
+</a>
+
+<div id="Layer1" style="left:px;position:absolute;top:1px;visibility:hidden;z-index:1;">
+
+  <!-- Begin WebCounter code -->
+
+
+var rn=Math.random();
+document.write('<a href="http://www.webcounter.co.za/sample.asp?WCid=1000002418" target="new" rel="noopener">');
+document.write('</a>');
+
+
+<a href="http://www.webcounter.co.za/sample.asp?WCid=1000002418" target="new" rel="noopener">
+<img src="http://www.webcounter.co.za/fastcount.asp?WCid=1000002418&amp;NoJavaScript=1"> border="0" alt="WebCounter hit counter"&gt;</a>
+
+<br />
+<a href="http://www.netdentity.net/webcounter" style="font-size:9px;color:black;">Powered by NETdentity</a>
+<!-- End WebCounter code -->
+  
+</div>
+</div>
+		</aside><aside id="media_image-5" class="footer-widget widget_media_image"><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><img width="529" height="426" src="../../../../../../../wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png" class="image wp-image-10027 aligncenter attachment-full size-full" alt="Here we go again ... Worth a try, no?" decoding="async" loading="lazy" style="max-width: 100%; height: auto;" srcset="../../../../wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png@w=529&amp;h=426=426 52../../../../wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png@w=1058&amp;h=852mp;h=852../../../../wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png@w=150&amp;h=12150&amp;../../../../wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png@w=300&amp;h=242?w=300&../../../../wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png@w=768&amp;h=619.png?w=../../../../wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png@w=1024&amp;h=825e-2.png?w=1024&amp;h=825 1024w" sizes="(max-width: 529px) 100vw, 529px" data-attachment-id="10027" data-permalink="https://happyhollyproject.com/writing-101-june-2014-class-badge-2/" data-orig-file="https://happyhollyproject.com/wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png" data-orig-size="2354,1896" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="writing-101-june-2014-class-badge-2" data-image-description="" data-image-caption="" data-medium-file="https://happyhollyproject.com/wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png?w=300" data-large-file="https://happyhollyproject.com/wp-content/uploads/2014/06/writing-101-june-2014-class-badge-2.png?w=529" /></aside>		</div>
+		<div class="footer-widget-item">
+			<aside id="milestone_widget-2" class="footer-widget milestone-widget"><h1>Countdown to the end of the Happy Holly Project</h1><div id="milestone_widget-2-content" class="milestone-content"><div class="milestone-header"><strong class="event">The Big Day</strong><span class="date">June 24, 2013</span></div><div class="milestone-message">The big day is here.</div></div><!--milestone-content--></aside><aside id="text-5" class="footer-widget widget_text"><h1>Made It &#8230; and now for the rest of the story</h1>			<div class="textwidget"><div id="statcounter_image" style="display:inline;visibility:hidden;"><a title="wordpress com stats plugin" href="http://statcounter.com/wordpress.com/" class="statcounter"><img src="../../../../../../../c.statcounter.com/9095477/0/129b324e/1/index.html" alt="wordpress com stats plugin" style="border:none;" /></a></div></div>
+		</aside>		</div>
+	</div><!-- end #footer-widgets -->
+</div><!-- end #footer-widgets-holder -->
+				</div><!-- end #footer-inner-inner -->
+			</div><!-- end #footer-inner -->
+		</div>
+		<div id="copyright">
+			<div id="copyright-inner">
+					<div id="copyright-inner-inner">
+					<p>
+						<a href="https://wordpress.com/?ref=footer_website" rel="nofollow">Create a free website or blog at WordPress.com.</a>
+							</p>
+				</div><!-- end #copyright-inner-inner -->
+			</div><!-- end #copyright-inner -->
+		</div><!-- end #copyright -->
+	</footer><!-- end #footer -->
+
+	<!--  -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/files\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/pub\/chateau\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript" src="../../../../../../../0.gravatar.com/js/hovercards/hovercards.min.js@ver=202546924dcd77a86c6f1d3698ec27fc5da92b28585ddad3ee636c0397cf312193b2a1" id="grofiles-cards-js"></script>
+<script type="text/javascript" id="wpgroho-js-extra">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../wp-content/mu-plugins/gravatar-hovercards/wpgroho.js@m=1610363240i'></script>
+
+	<script>
+		// Initialize and attach hovercards to all gravatars
+		( function() {
+			function init() {
+				if ( typeof Gravatar === 'undefined' ) {
+					return;
+				}
+
+				if ( typeof Gravatar.init !== 'function' ) {
+					return;
+				}
+
+				Gravatar.profile_cb = function ( hash, id ) {
+					WPGroHo.syncProfileData( hash, id );
+				};
+
+				Gravatar.my_hash = WPGroHo.my_hash;
+				Gravatar.init(
+					'body',
+					'#wp-admin-bar-my-account',
+					{
+						i18n: {
+							'Edit your profile →': 'Edit your profile →',
+							'View profile →': 'View profile →',
+							'Contact': 'Contact',
+							'Send money': 'Send money',
+							'Sorry, we are unable to load this Gravatar profile.': 'Sorry, we are unable to load this Gravatar profile.',
+							'Gravatar not found.': 'Gravatar not found.',
+							'Too Many Requests.': 'Too Many Requests.',
+							'Internal Server Error.': 'Internal Server Error.',
+							'Is this you?': 'Is this you?',
+							'Claim your free profile.': 'Claim your free profile.',
+							'Email': 'Email',
+							'Home Phone': 'Home Phone',
+							'Work Phone': 'Work Phone',
+							'Cell Phone': 'Cell Phone',
+							'Contact Form': 'Contact Form',
+							'Calendar': 'Calendar',
+						},
+					}
+				);
+			}
+
+			if ( document.readyState !== 'loading' ) {
+				init();
+			} else {
+				document.addEventListener( 'DOMContentLoaded', init );
+			}
+		} )();
+	</script>
+
+		<div style="display:none">
+	</div>
+		<!-- CCPA [start] -->
+		<script type="text/javascript">
+			( function () {
+
+				var setupPrivacy = function() {
+
+					// Minimal Mozilla Cookie library
+					// https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie/Simple_document.cookie_framework
+					var cookieLib = window.cookieLib = {getItem:function(e){return e&&decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*"+encodeURIComponent(e).replace(/[\-\.\+\*]/g,"\\$&")+"\\s*\\=\\s*([^;]*).*$)|^.*$"),"$1"))||null},setItem:function(e,o,n,t,r,i){if(!e||/^(?:expires|max\-age|path|domain|secure)$/i.test(e))return!1;var c="";if(n)switch(n.constructor){case Number:c=n===1/0?"; expires=Fri, 31 Dec 9999 23:59:59 GMT":"; max-age="+n;break;case String:c="; expires="+n;break;case Date:c="; expires="+n.toUTCString()}return"rootDomain"!==r&&".rootDomain"!==r||(r=(".rootDomain"===r?".":"")+document.location.hostname.split(".").slice(-2).join(".")),document.cookie=encodeURIComponent(e)+"="+encodeURIComponent(o)+c+(r?"; domain="+r:"")+(t?"; path="+t:"")+(i?"; secure":""),!0}};
+
+					// Implement IAB USP API.
+					window.__uspapi = function( command, version, callback ) {
+
+						// Validate callback.
+						if ( typeof callback !== 'function' ) {
+							return;
+						}
+
+						// Validate the given command.
+						if ( command !== 'getUSPData' || version !== 1 ) {
+							callback( null, false );
+							return;
+						}
+
+						// Check for GPC. If set, override any stored cookie.
+						if ( navigator.globalPrivacyControl ) {
+							callback( { version: 1, uspString: '1YYN' }, true );
+							return;
+						}
+
+						// Check for cookie.
+						var consent = cookieLib.getItem( 'usprivacy' );
+
+						// Invalid cookie.
+						if ( null === consent ) {
+							callback( null, false );
+							return;
+						}
+
+						// Everything checks out. Fire the provided callback with the consent data.
+						callback( { version: 1, uspString: consent }, true );
+					};
+
+					// Initialization.
+					document.addEventListener( 'DOMContentLoaded', function() {
+
+						// Internal functions.
+						var setDefaultOptInCookie = function() {
+							var value = '1YNN';
+							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
+							cookieLib.setItem( 'usprivacy', value, 365 * 24 * 60 * 60, '/', domain );
+						};
+
+						var setDefaultOptOutCookie = function() {
+							var value = '1YYN';
+							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
+							cookieLib.setItem( 'usprivacy', value, 24 * 60 * 60, '/', domain );
+						};
+
+						var setDefaultNotApplicableCookie = function() {
+							var value = '1---';
+							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
+							cookieLib.setItem( 'usprivacy', value, 24 * 60 * 60, '/', domain );
+						};
+
+						var setCcpaAppliesCookie = function( applies ) {
+							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
+							cookieLib.setItem( 'ccpa_applies', applies, 24 * 60 * 60, '/', domain );
+						}
+
+						var maybeCallDoNotSellCallback = function() {
+							if ( 'function' === typeof window.doNotSellCallback ) {
+								return window.doNotSellCallback();
+							}
+
+							return false;
+						}
+
+						// Look for usprivacy cookie first.
+						var usprivacyCookie = cookieLib.getItem( 'usprivacy' );
+
+						// Found a usprivacy cookie.
+						if ( null !== usprivacyCookie ) {
+
+							// If the cookie indicates that CCPA does not apply, then bail.
+							if ( '1---' === usprivacyCookie ) {
+								return;
+							}
+
+							// CCPA applies, so call our callback to add Do Not Sell link to the page.
+							maybeCallDoNotSellCallback();
+
+							// We're all done, no more processing needed.
+							return;
+						}
+
+						// We don't have a usprivacy cookie, so check to see if we have a CCPA applies cookie.
+						var ccpaCookie = cookieLib.getItem( 'ccpa_applies' );
+
+						// No CCPA applies cookie found, so we'll need to geolocate if this visitor is from California.
+						// This needs to happen client side because we do not have region geo data in our $SERVER headers,
+						// only country data -- therefore we can't vary cache on the region.
+						if ( null === ccpaCookie ) {
+
+							var request = new XMLHttpRequest();
+							request.open( 'GET', 'https://public-api.wordpress.com/geo/', true );
+
+							request.onreadystatechange = function () {
+								if ( 4 === this.readyState ) {
+									if ( 200 === this.status ) {
+
+										// Got a geo response. Parse out the region data.
+										var data = JSON.parse( this.response );
+										var region      = data.region ? data.region.toLowerCase() : '';
+										var ccpa_applies = ['california', 'colorado', 'connecticut', 'delaware', 'indiana', 'iowa', 'montana', 'new jersey', 'oregon', 'tennessee', 'texas', 'utah', 'virginia'].indexOf( region ) > -1;
+										// Set CCPA applies cookie. This keeps us from having to make a geo request too frequently.
+										setCcpaAppliesCookie( ccpa_applies );
+
+										// Check if CCPA applies to set the proper usprivacy cookie.
+										if ( ccpa_applies ) {
+											if ( maybeCallDoNotSellCallback() ) {
+												// Do Not Sell link added, so set default opt-in.
+												setDefaultOptInCookie();
+											} else {
+												// Failed showing Do Not Sell link as required, so default to opt-OUT just to be safe.
+												setDefaultOptOutCookie();
+											}
+										} else {
+											// CCPA does not apply.
+											setDefaultNotApplicableCookie();
+										}
+									} else {
+										// Could not geo, so let's assume for now that CCPA applies to be safe.
+										setCcpaAppliesCookie( true );
+										if ( maybeCallDoNotSellCallback() ) {
+											// Do Not Sell link added, so set default opt-in.
+											setDefaultOptInCookie();
+										} else {
+											// Failed showing Do Not Sell link as required, so default to opt-OUT just to be safe.
+											setDefaultOptOutCookie();
+										}
+									}
+								}
+							};
+
+							// Send the geo request.
+							request.send();
+						} else {
+							// We found a CCPA applies cookie.
+							if ( ccpaCookie === 'true' ) {
+								if ( maybeCallDoNotSellCallback() ) {
+									// Do Not Sell link added, so set default opt-in.
+									setDefaultOptInCookie();
+								} else {
+									// Failed showing Do Not Sell link as required, so default to opt-OUT just to be safe.
+									setDefaultOptOutCookie();
+								}
+							} else {
+								// CCPA does not apply.
+								setDefaultNotApplicableCookie();
+							}
+						}
+					} );
+				};
+
+				// Kickoff initialization.
+				if ( window.defQueue && defQueue.isLOHP && defQueue.isLOHP === 2020 ) {
+					defQueue.items.push( setupPrivacy );
+				} else {
+					setupPrivacy();
+				}
+
+			} )();
+		</script>
+
+		<!-- CCPA [end] -->
+		<div class="widget widget_eu_cookie_law_widget">
+<div
+	class="hide-on-button ads-active"
+	data-hide-timeout="30"
+	data-consent-expiration="180"
+	id="eu-cookie-law"
+	style="display: none"
+>
+	<form method="post">
+		<input type="submit" value="Close and accept" class="accept" />
+
+		Privacy &amp; Cookies: This site uses cookies. By continuing to use this website, you agree to their use. <br />
+To find out more, including how to control cookies, see here:
+				<a href="https://automattic.com/cookies/" rel="nofollow">
+			Cookie Policy		</a>
+ </form>
+</div>
+</div>		<div id="actionbar" dir="ltr" style="display: none;"
+			class="actnbr-pub-chateau actnbr-has-follow actnbr-has-actions">
+		<ul>
+								<li class="actnbr-btn actnbr-hidden">
+						<a class="actnbr-action actnbr-actn-comment" href="index.html#comments">
+							<svg class="gridicon gridicons-comment" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M12 16l-5 5v-5H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2h-7z"/></g></svg>							<span>Comment						</span>
+						</a>
+					</li>
+									<li class="actnbr-btn actnbr-hidden">
+						<a class="actnbr-action actnbr-actn-reblog" href="index.html">
+							<svg class="gridicon gridicons-reblog" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M22.086 9.914L20 7.828V18c0 1.105-.895 2-2 2h-7v-2h7V7.828l-2.086 2.086L14.5 8.5 19 4l4.5 4.5-1.414 1.414zM6 16.172V6h7V4H6c-1.105 0-2 .895-2 2v10.172l-2.086-2.086L.5 15.5 5 20l4.5-4.5-1.414-1.414L6 16.172z"/></g></svg><span>Reblog</span>
+						</a>
+					</li>
+									<li class="actnbr-btn actnbr-hidden">
+								<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+							<div class="actnbr-popover tip tip-top-left actnbr-notice" id="follow-bubble">
+							<div class="tip-arrow"></div>
+							<div class="tip-inner actnbr-follow-bubble">
+															<ul>
+											<li class="actnbr-sitename">
+			<a href="https://happyhollyproject.com">
+				<img loading='lazy' alt='' src='../../../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png' srcset='../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnge.png../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=75&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-white.../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=100&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-gray../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=150&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pngwpcom../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=200&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnggo%2Fwpcom-gray-white.png 4x' class='avatar avatar-50' height='50' width='50' />				Happy Holly Project			</a>
+		</li>
+										<div class="actnbr-message no-display"></div>
+									<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" style="display: none;">
+																						<div class="actnbr-follow-count">Join 516 other subscribers</div>
+																					<div>
+										<input type="email" name="email" placeholder="Enter your email address" class="actnbr-email-field" aria-label="Enter your email address" />
+										</div>
+										<input type="hidden" name="action" value="subscribe" />
+										<input type="hidden" name="blog_id" value="37570255" />
+										<input type="hidden" name="source" value="https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/" />
+										<input type="hidden" name="sub-type" value="actionbar-follow" />
+										<input type="hidden" id="_wpnonce" name="_wpnonce" value="ebbe224522" />										<div class="actnbr-button-wrap">
+											<button type="submit" value="Sign me up">
+												Sign me up											</button>
+										</div>
+									</form>
+									<li class="actnbr-login-nudge">
+										<div>
+											Already have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fhappyhollyproject.com%252F2014%252F02%252F13%252Fvalentines-day-tomorrow-again%252F">Log in now.</a>										</div>
+									</li>
+								</ul>
+															</div>
+						</div>
+					</li>
+							<li class="actnbr-ellipsis actnbr-hidden">
+				<svg class="gridicon gridicons-ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M7 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm12-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-7 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"/></g></svg>				<div class="actnbr-popover tip tip-top-left actnbr-more">
+					<div class="tip-arrow"></div>
+					<div class="tip-inner">
+						<ul>
+								<li class="actnbr-sitename">
+			<a href="https://happyhollyproject.com">
+				<img loading='lazy' alt='' src='../../../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png' srcset='../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=50&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnge.png../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=75&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-white.../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=100&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.png-gray../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=150&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pngwpcom../../../../../secure.gravatar.com/blavatar/ff98c0deee08e80c6948f25b012dc4a398a010f739a558ba91c40130daa7d713@s=200&amp;d=https%253A%252F%252Fs2.wp.com%252Fi%252Flogo%252Fwpcom-gray-white.pnggo%2Fwpcom-gray-white.png 4x' class='avatar avatar-50' height='50' width='50' />				Happy Holly Project			</a>
+		</li>
+								<li class="actnbr-folded-follow">
+										<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+								</li>
+														<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign up</a></li>
+							<li class="actnbr-login"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fhappyhollyproject.com%252F2014%252F02%252F13%252Fvalentines-day-tomorrow-again%252F">Log in</a></li>
+																<li class="actnbr-shortlink">
+										<a href="https://wp.me/p2xDJR-2lC">
+											<span class="actnbr-shortlink__text">Copy shortlink</span>
+											<span class="actnbr-shortlink__icon"><svg class="gridicon gridicons-checkmark" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M9 19.414l-6.707-6.707 1.414-1.414L9 16.586 20.293 5.293l1.414 1.414"/></g></svg></span>
+										</a>
+									</li>
+																<li class="flb-report">
+									<a href="https://wordpress.com/abuse/?report_url=https://happyhollyproject.com/2014/02/13/valentines-day-tomorrow-again/" target="_blank" rel="noopener noreferrer">
+										Report this content									</a>
+								</li>
+															<li class="actnbr-reader">
+									<a href="https://wordpress.com/reader/blogs/37570255/posts/9028">
+										View post in Reader									</a>
+								</li>
+															<li class="actnbr-subs">
+									<a href="https://subscribe.wordpress.com/">Manage subscriptions</a>
+								</li>
+																<li class="actnbr-fold"><a href="index.html">Collapse this bar</a></li>
+														</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+<script>
+window.addEventListener( "DOMContentLoaded", function( event ) {
+	var link = document.createElement( "link" );
+	link.href = "/wp-content/mu-plugins/actionbar/actionbar.css?v=20250116";
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	document.head.appendChild( link );
+
+	var script = document.createElement( "script" );
+	script.src = "/wp-content/mu-plugins/actionbar/actionbar.js?v=20250204";
+	document.body.appendChild( script );
+} );
+</script>
+
+			<div id="jp-carousel-loading-overlay">
+			<div id="jp-carousel-loading-wrapper">
+				<span id="jp-carousel-library-loading">&nbsp;</span>
+			</div>
+		</div>
+		<div class="jp-carousel-overlay" style="display: none;">
+
+		<div class="jp-carousel-container">
+			<!-- The Carousel Swiper -->
+			<div
+				class="jp-carousel-wrap swiper jp-carousel-swiper-container jp-carousel-transitions"
+				itemscope
+				itemtype="https://schema.org/ImageGallery">
+				<div class="jp-carousel swiper-wrapper"></div>
+				<div class="jp-swiper-button-prev swiper-button-prev">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskPrev" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="9" height="12">
+							<path d="M16.2072 16.59L11.6496 12L16.2072 7.41L14.8041 6L8.8335 12L14.8041 18L16.2072 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskPrev)">
+							<rect x="0.579102" width="23.8823" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+				<div class="jp-swiper-button-next swiper-button-next">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskNext" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="8" height="12">
+							<path d="M8.59814 16.59L13.1557 12L8.59814 7.41L10.0012 6L15.9718 12L10.0012 18L8.59814 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskNext)">
+							<rect x="0.34375" width="23.8822" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+			</div>
+			<!-- The main close buton -->
+			<div class="jp-carousel-close-hint">
+				<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<mask id="maskClose" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="15" height="14">
+						<path d="M19.3166 6.41L17.9135 5L12.3509 10.59L6.78834 5L5.38525 6.41L10.9478 12L5.38525 17.59L6.78834 19L12.3509 13.41L17.9135 19L19.3166 17.59L13.754 12L19.3166 6.41Z" fill="white"/>
+					</mask>
+					<g mask="url(#maskClose)">
+						<rect x="0.409668" width="23.8823" height="24" fill="#FFFFFF"/>
+					</g>
+				</svg>
+			</div>
+			<!-- Image info, comments and meta -->
+			<div class="jp-carousel-info">
+				<div class="jp-carousel-info-footer">
+					<div class="jp-carousel-pagination-container">
+						<div class="jp-swiper-pagination swiper-pagination"></div>
+						<div class="jp-carousel-pagination"></div>
+					</div>
+					<div class="jp-carousel-photo-title-container">
+						<h2 class="jp-carousel-photo-caption"></h2>
+					</div>
+					<div class="jp-carousel-photo-icons-container">
+						<a href="index.html#" class="jp-carousel-icon-btn jp-carousel-icon-info" aria-label="Toggle photo metadata visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskInfo" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M12.7537 2C7.26076 2 2.80273 6.48 2.80273 12C2.80273 17.52 7.26076 22 12.7537 22C18.2466 22 22.7046 17.52 22.7046 12C22.7046 6.48 18.2466 2 12.7537 2ZM11.7586 7V9H13.7488V7H11.7586ZM11.7586 11V17H13.7488V11H11.7586ZM4.79292 12C4.79292 16.41 8.36531 20 12.7537 20C17.142 20 20.7144 16.41 20.7144 12C20.7144 7.59 17.142 4 12.7537 4C8.36531 4 4.79292 7.59 4.79292 12Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskInfo)">
+										<rect x="0.8125" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+							</span>
+						</a>
+												<a href="index.html#" class="jp-carousel-icon-btn jp-carousel-icon-comments" aria-label="Toggle photo comments visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskComments" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M4.3271 2H20.2486C21.3432 2 22.2388 2.9 22.2388 4V16C22.2388 17.1 21.3432 18 20.2486 18H6.31729L2.33691 22V4C2.33691 2.9 3.2325 2 4.3271 2ZM6.31729 16H20.2486V4H4.3271V18L6.31729 16Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskComments)">
+										<rect x="0.34668" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+
+								<span class="jp-carousel-has-comments-indicator" aria-label="This image has comments."></span>
+							</span>
+						</a>
+											</div>
+				</div>
+				<div class="jp-carousel-info-extra">
+					<div class="jp-carousel-info-content-wrapper">
+						<div class="jp-carousel-photo-title-container">
+							<h2 class="jp-carousel-photo-title"></h2>
+						</div>
+						<div class="jp-carousel-comments-wrapper">
+															<div id="jp-carousel-comments-loading">
+									<span>Loading Comments...</span>
+								</div>
+								<div class="jp-carousel-comments"></div>
+								<div id="jp-carousel-comment-form-container">
+									<span id="jp-carousel-comment-form-spinner">&nbsp;</span>
+									<div id="jp-carousel-comment-post-results"></div>
+																														<form id="jp-carousel-comment-form">
+												<label for="jp-carousel-comment-form-comment-field" class="screen-reader-text">Write a Comment...</label>
+												<textarea
+													name="comment"
+													class="jp-carousel-comment-form-field jp-carousel-comment-form-textarea"
+													id="jp-carousel-comment-form-comment-field"
+													placeholder="Write a Comment..."
+												></textarea>
+												<div id="jp-carousel-comment-form-submit-and-info-wrapper">
+													<div id="jp-carousel-comment-form-commenting-as">
+																													<fieldset>
+																<label for="jp-carousel-comment-form-email-field">Email</label>
+																<input type="text" name="email" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-email-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-author-field">Name</label>
+																<input type="text" name="author" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-author-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-url-field">Website</label>
+																<input type="text" name="url" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-url-field" />
+															</fieldset>
+																											</div>
+													<input
+														type="submit"
+														name="submit"
+														class="jp-carousel-comment-form-button"
+														id="jp-carousel-comment-form-button-submit"
+														value="Post Comment" />
+												</div>
+											</form>
+																											</div>
+													</div>
+						<div class="jp-carousel-image-meta">
+							<div class="jp-carousel-title-and-caption">
+								<div class="jp-carousel-photo-info">
+									<h3 class="jp-carousel-caption" itemprop="caption description"></h3>
+								</div>
+
+								<div class="jp-carousel-photo-description"></div>
+							</div>
+							<ul class="jp-carousel-image-exif" style="display: none;"></ul>
+							<a class="jp-carousel-image-download" href="index.html#" target="_blank" style="display: none;">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="19" height="18">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.84615 5V19H19.7775V12H21.7677V19C21.7677 20.1 20.8721 21 19.7775 21H5.84615C4.74159 21 3.85596 20.1 3.85596 19V5C3.85596 3.9 4.74159 3 5.84615 3H12.8118V5H5.84615ZM14.802 5V3H21.7677V10H19.7775V6.41L9.99569 16.24L8.59261 14.83L18.3744 5H14.802Z" fill="white"/>
+									</mask>
+									<g mask="url(#mask0)">
+										<rect x="0.870605" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+								<span class="jp-carousel-download-text"></span>
+							</a>
+							<div class="jp-carousel-image-map" style="display: none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/happyhollyproject.com\/2014\/02\/13\/valentines-day-tomorrow-again\/":9028};
+	</script>
+						<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-2' href='../../../../../../../_static/index.html@%253F-eJydjt0OgjAMhV9IaJAo8cL4KAa6hhS2dlm38Ppi8CfeqXf9ek6+HFhihSqZJEMoVfRlZDGYKMce5wdDUBW4siAMXnE2sIUjpRrNdvC9IagrngywT1qM%252FKv0fPwq3CYV9g6sDIaJY2Zdyx9UB5Z%252Fpy7sRsoGgVfKKvS+qi27my%252Fh3HSH9tQd22Y%252F3QDXUIEf&amp;cssminify=yes.css' type='text/css' media='all' />
+<script type="text/javascript" id="verbum-settings-js-before">
+/* <![CDATA[ */
+window.VerbumComments = {"Log in or provide your name and email to leave a reply.":"Log in or provide your name and email to leave a reply.","Log in or provide your name and email to leave a comment.":"Log in or provide your name and email to leave a comment.","Receive web and mobile notifications for posts on this site.":"Receive web and mobile notifications for posts on this site.","Name":"Name","Email (address never made public)":"Email (address never made public)","Website (optional)":"Website (optional)","Leave a reply. (log in optional)":"Leave a reply. (log in optional)","Leave a comment. (log in optional)":"Leave a comment. (log in optional)","Log in to leave a reply.":"Log in to leave a reply.","Log in to leave a comment.":"Log in to leave a comment.","Logged in via %s":"Logged in via %s","Log out":"Log out","Email":"Email","(Address never made public)":"(Address never made public)","Instantly":"Instantly","Daily":"Daily","Reply":"Reply","Comment":"Comment","WordPress":"WordPress","Weekly":"Weekly","Notify me of new posts":"Notify me of new posts","Email me new posts":"Email me new posts","Email me new comments":"Email me new comments","Cancel":"Cancel","Write a comment...":"Write a comment...","Write a reply...":"Write a reply...","Website":"Website","Optional":"Optional","We'll keep you in the loop!":"We'll keep you in the loop!","Loading your comment...":"Loading your comment...","Discover more from":"Discover more from Happy Holly Project","Subscribe now to keep reading and get access to the full archive.":"Subscribe now to keep reading and get access to the full archive.","Continue reading":"Continue reading","Never miss a beat!":"Never miss a beat!","Interested in getting blog post updates? Simply click the button below to stay in the loop!":"Interested in getting blog post updates? Simply click the button below to stay in the loop!","Enter your email address":"Enter your email address","Subscribe":"Subscribe","Comment sent successfully":"Comment sent successfully","Save my name, email, and website in this browser for the next time I comment.":"Save my name, email, and website in this browser for the next time I comment.","hovercardi18n":{"Edit your profile \u2192":"Edit your profile \u2192","View profile \u2192":"View profile \u2192","Contact":"Contact","Send money":"Send money","Profile not found.":"Profile not found.","Too Many Requests.":"Too Many Requests.","Internal Server Error.":"Internal Server Error.","Sorry, we are unable to load this Gravatar profile.":"Sorry, we are unable to load this Gravatar profile."},"siteId":37570255,"postId":9028,"mustLogIn":false,"requireNameEmail":false,"commentRegistration":false,"connectURL":"https:\/\/happyhollyproject.wordpress.com\/public.api\/connect\/?action=request&domain=happyhollyproject.com","logoutURL":"https:\/\/happyhollyproject.wordpress.com\/wp-login.php?action=logout&_wpnonce=b7ee65f4f5","homeURL":"https:\/\/happyhollyproject.com\/","subscribeToBlog":true,"subscribeToComment":true,"isJetpackCommentsLoggedIn":false,"jetpackUsername":"","jetpackUserId":0,"jetpackSignature":"","jetpackAvatar":"https:\/\/0.gravatar.com\/avatar\/ad516503a11cd5ca435acc9bb6523536?s=96","enableBlocks":true,"enableSubscriptionModal":true,"currentLocale":"en","isJetpackComments":false,"allowedBlocks":["core\/paragraph","core\/list","core\/code","core\/list-item","core\/quote","core\/image","core\/embed","core\/quote","core\/code"],"embedNonce":"5e5a767ac9","verbumBundleUrl":"\/wp-content\/mu-plugins\/jetpack-mu-wpcom-plugin\/moon\/jetpack_vendor\/automattic\/jetpack-mu-wpcom\/src\/features\/verbum-comments\/dist\/index.js","isRTL":false,"vbeCacheBuster":1738686361,"iframeUniqueId":0,"colorScheme":false}
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../_static/index.html@%253F-eJx9jEsOwjAMBS9EcIuqdoU4i2msNKnzoXbI9ckO1AXbeTMPWjFrTkpJ4cnZmcLV+STQ8mHRilkZRUggdITK5n27BrnATxbrN%252FLWkQpQ7WvePRnGBkqxMCqd+J8f9nu3X5UqbZgs09HlR7yPyzxM0zyMS%252FgAPatD8g=='></script>
+<script type="text/javascript" src="../../../../../../../wp-content/mu-plugins/jetpack-mu-wpcom-plugin/moon/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/verbum-comments/assets/dynamic-loader.js@m=1755005491i&amp;minify=false&amp;ver=adc3e7b923a66edb437b" id="verbum-dynamic-loader-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" id="comment-like-js-extra">
+/* <![CDATA[ */
+var comment_like_text = {"loading":"Loading...","swipeUrl":"https:\/\/s2.wp.com\/wp-content\/mu-plugins\/comment-likes\/js\/lib\/swipe.js?ver=20131008"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="jetpack-facebook-embed-js-extra">
+/* <![CDATA[ */
+var jpfbembed = {"appid":"249643311490","locale":"en_US"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="milestone-js-extra">
+/* <![CDATA[ */
+var MilestoneConfig = {"instances":[{"id":"milestone_widget-2","message":"<div class=\"milestone-message\">The big day is here.<\/div>","refresh":0,"content_id":"milestone_widget-2-content"}],"api_root":"https:\/\/public-api.wordpress.com\/"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="jetpack-carousel-js-extra">
+/* <![CDATA[ */
+var jetpackSwiperLibraryPath = {"url":"\/wp-content\/mu-plugins\/jetpack-plugin\/moon\/_inc\/blocks\/swiper.js"};
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/happyhollyproject.com\/wp-admin\/admin-ajax.php","nonce":"ca0f4882ac","display_exif":"1","display_comments":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","image_label":"Open image in full-screen.","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"0","login_url":"https:\/\/happyhollyproject.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fhappyhollyproject.com%2F2014%2F02%2F13%2Fvalentines-day-tomorrow-again%2F","blog_id":"37570255","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"stats_query_args":"blog=37570255&v=wpcom&tz=-4&user_id=0&subd=happyhollyproject","is_public":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="sharing-js-js-extra">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="jetpack-script-data-js-before">
+/* <![CDATA[ */
+window.JetpackScriptData = {"site":{"host":"wpcom","is_wpcom_platform":true}};
+/* ]]> */
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='../../../../../../../_static/index.html@%253F-eJydUFtOw0AMvBBbUyFa+oE4SuXsusHJvrT2EvX2hCYpaoUA5c8ej2c8hiEbm6JSVAjVZF9bjgI2hTBCxnNPAt0dsOnkAcZFjtZXd0solP15EzgupB%252FUO9KMtp97CClFOI5icEJLTUq9odCQW6PQVPYOBnYtqUBgT6Ip0nf1z9NGaMhjphuHeXj8oOhSAayaAqqyva6hyJfvdMUCii2c1ThUXB'></script>
+<script type="text/javascript" id="sharing-js-js-after">
+/* <![CDATA[ */
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-facebook' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-facebook' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-twitter' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-twitter' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-tumblr' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-tumblr' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-pocket' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-pocket' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcompocket', 'menubar=1,resizable=1,width=450,height=450' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-linkedin' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-linkedin' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+						return false;
+					}
+				} );
+			} )();
+/* ]]> */
+</script>
+
+	<script type="text/javascript">
+		(function () {
+			var wpcom_reblog = {
+				source: 'toolbar',
+
+				toggle_reblog_box_flair: function (obj_id, post_id) {
+
+					// Go to site selector. This will redirect to their blog if they only have one.
+					const postEndpoint = `https://wordpress.com/post`;
+
+					// Ideally we would use the permalink here, but fortunately this will be replaced with the 
+					// post permalink in the editor.
+					const originalURL = `${ document.location.href }?page_id=${ post_id }`; 
+					
+					const url =
+						postEndpoint +
+						'?url=' +
+						encodeURIComponent( originalURL ) +
+						'&is_post_share=true' +
+						'&v=5';
+
+					const redirect = function () {
+						if (
+							! window.open( url, '_blank' )
+						) {
+							location.href = url;
+						}
+					};
+
+					if ( /Firefox/.test( navigator.userAgent ) ) {
+						setTimeout( redirect, 0 );
+					} else {
+						redirect();
+					}
+				},
+			};
+
+			window.wpcom_reblog = wpcom_reblog;
+		})();
+	</script>
+	<iframe src='../../../../../../../widgets.wp.com/likes/master.html@ver=20251111.html#ver=20251111' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+	<div id='likes-other-gravatars' role="dialog" aria-hidden="true" tabindex="-1"><div class="likes-text"><span>%d</span></div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+	<script src="https://stats.wp.com/w.js?68" defer></script> <script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'37570255','blog_tz':'-4','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'37570255','v':'wpcom','tz':'-4','user_id':'0','post':'9028','subd':'happyhollyproject'}]);
+_stq.push(['extra', {'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdWtpP0NsWnVkPS9sL0ViLndld3BuVT01Uj14Ti1yYTBnX3xuYUQ3Qz1oblZbVHV3MTZoVXFwTTVDK2wuPT1KWzJNV19iQk9bTmF0PUUlUlYzbW1nYyxHTnlKQiUsT0hKb2tYK09aZkN6LzJmYVtxMGpoLT9rJnJRJXg4Mj1+WWlBYVk/eUM5bkRsQV8yRU56dlVvVjlXMXRxX2NFck5oZXdiLExxbCsyTC9UZmZbRzU0d0xUR0FbUXFVOWVLaDJiVl94M08rJndtdl12K3l8d1VoNzNdX2JZWVlmTGJNOG9TdmpsP0drdUh5NHorTS5LQm5FNjZ8UmdZRXJbUkdlb09bJVctaCwuWU5UaGRSJW55fi1zb2p8NkNFPVFkVVRRfnhfVzJhTGpiUV1jZF01aS5Id0EvWjJibDhheXZrNDRdSmtZUkdFfjEwT0hMNyVfUzRIP00tVTc1Wn4ya01GQzB5VHN8S1Byfi9jTmNZbllWLk5qRltkblAzTmw='}]);
+_stq.push([ 'clickTrackerInit', '37570255', '9028' ]);
+</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+<meta id="bilmur" property="bilmur:data" content="" data-provider="wordpress.com" data-service="simple" data-site-tz="America/New_York" data-custom-props="{&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;pub\/chateau&quot;,&quot;wptheme_is_block&quot;:&quot;0&quot;}"  >
+		<script defer src="../../../../../../../wp-content/js/bilmur.min.js@i=17&amp;m=202546"></script> 	
+<script>
+(function() {
+	'use strict';
+
+	const fetches = {};
+	const promises = {};
+	const urls = {
+		'wp-polyfill': '/wp-includes/js/dist/vendor/wp-polyfill.min.js?m=1744646400i&ver=3.15.0',
+		'verbum': '/wp-content/mu-plugins/jetpack-mu-wpcom-plugin/moon/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/verbum-comments/verbum-comments.js?m=1762887016i&minify=false&ver=8799c3f5dbd9f6da98e4'
+	};
+	const loaders = {
+		'verbum': () => {
+			fetchExternalScript('wp-polyfill');
+			fetchExternalScript('verbum');
+			promises['wp-polyfill'] = promises['wp-polyfill'] || loadWPScript('wp-polyfill');
+			promises['verbum'] = promises['verbum'] || promises['wp-polyfill'].then( () => loadWPScript('verbum') );
+			return promises['verbum'];
+		},
+		
+	};
+	const scriptExtras = {
+		
+	};
+
+	window.WP_Enqueue_Dynamic_Script = {
+		loadScript: (handle) => {
+			if (!loaders[handle]) {
+				console.error('WP_Enqueue_Dynamic_Script: unregistered script `' + handle + '`.');
+			}
+			return loaders[handle]();
+		}
+	};
+
+	function fetchExternalScript(handle) {
+		if (!urls[handle]) {
+			return Promise.resolve();
+		}
+
+		fetches[handle] = fetches[handle] || fetch(urls[handle], { mode: 'no-cors' });
+		return fetches[handle];
+	}
+
+	function runExtraScript(handle, type, index) {
+		const id = 'wp-enqueue-dynamic-script:' + handle + ':' + type + ':' + (index + 1);
+		const template = document.getElementById(id);
+		if (!template) {
+			return Promise.reject();
+		}
+
+		const script = document.createElement( 'script' );
+		script.innerHTML = template.innerHTML;
+		document.body.appendChild( script );
+		return Promise.resolve();
+	}
+
+	function loadExternalScript(handle) {
+		if (!urls[handle]) {
+			return Promise.resolve();
+		}
+
+		return fetches[handle].then(() => {
+			return new Promise((resolve, reject) => {
+				const script = document.createElement('script');
+				script.onload = () => resolve();
+				script.onerror = (e) => reject(e);
+				script.src = urls[handle];
+				document.body.appendChild(script);
+			});
+		});
+	}
+
+	function loadExtra(handle, pos) {
+		const count = (scriptExtras[handle] && scriptExtras[handle][pos]) || 0;
+		let promise = Promise.resolve();
+
+		for (let i = 0; i < count; i++) {
+			promise = promise.then(() => runExtraScript(handle, pos, i));
+		}
+
+		return promise;
+	}
+
+	function loadWPScript(handle) {
+		// Core loads scripts in this order. See: https://github.com/WordPress/WordPress/blob/a59eb9d39c4fcba834b70c9e8dfd64feeec10ba6/wp-includes/class-wp-scripts.php#L428.
+		return loadExtra(handle, 'translations')
+			.then(() => loadExtra(handle, 'before'))
+			.then(() => loadExternalScript(handle))
+			.then(() => loadExtra(handle, 'after'));
+	}
+} )();
+</script>
+</div><!-- end #page -->
+</body>
+</html>

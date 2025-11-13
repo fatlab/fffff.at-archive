@@ -1,0 +1,21 @@
+User-agent: *
+Disallow: /api
+Disallow: /cart
+Disallow: /s3
+Disallow: /search
+Crawl-Delay: 5
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://www.domainmarket.com/sitemap_index.xml
+Sitemap: https://www.domainmarket.com/llm.txt

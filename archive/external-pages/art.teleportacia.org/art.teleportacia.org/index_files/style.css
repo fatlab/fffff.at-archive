@@ -1,0 +1,47 @@
+body {
+    font-size: 16px;
+    line-height: 18px;
+    font-family: "Times New Roman", serif;
+    background: url(128.gif);
+    color: #fff;
+}
+
+#SkipIntro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 42;
+}
+
+a img {
+    border: 0;
+}
+
+    #Teleportation, #View {
+        position: absolute;
+        bottom: 10%;
+        right: 10%;
+    }
+    
+    #View {
+        position: fixed;
+        display: none;
+    }
+    
+#CenterOfTheUniverse {
+    position: absolute;
+    width: 640px;
+}
+
+#Updates {
+    position: absolute;
+}
+
+#Books {
+    position: absolute;
+    left: 1332px;
+    top: 100px;
+}
+

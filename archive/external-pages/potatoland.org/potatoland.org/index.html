@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=400">
+<title>potatoland</title>
+<link href="../fonts.googleapis.com/css@family=Open+Sans%253A300,400,400i,700.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="potatoland_icon.png">
+<link href="potatoland.css" rel="stylesheet">
+<style type="text/css">
+	@media only screen and (max-width: 700px) {
+		#main-image {
+			width: 90%;
+			margin-left: 5%;
+		}
+		div#menu-button {
+			display: inline-block;
+		}
+		#site-links {
+			display: none;
+		}
+	}
+	#main-image img {
+		border: 2px solid #daa;
+	}
+</style>
+<script>
+	var framed = (top != self);
+	if (framed) {
+		top.location.href = 'index.html';
+	}
+
+	function showHide(elementID) {
+		var style = document.getElementById(elementID).style;
+		var setTo = 'none';
+		if (style.display === 'none' || style.display === '') {
+			setTo = 'block';
+		}
+		else {
+			setTo = 'none';
+		}
+		style.display = setTo;
+	}
+
+	function show(elementID) {
+		document.getElementById(elementID).style.display = 'block';
+	}
+
+	function hide(elementID) {
+		document.getElementById(elementID).style.display = 'none';
+	}
+
+	function openW(url) {
+		var sw = 800;
+		var sh = 570;
+		var win = window.open(url,"potatoland","width=" +sw+ ",height=" +sh+ ",resizable=yes,top=50,left=50");
+		win.focus();
+	}
+
+	function toggleSiteLinks() {
+		showHide("site-links");
+	}
+</script>
+</head>
+
+<body>
+
+<div id="site-title">
+	<div id="menu-button">
+		<div class="bars"></div>
+	</div>
+	<div id="title-text">potatoland</div>
+</div>
+
+<div id="main-image">
+	<A href="https://potatoland.org/theking/index.html"><img src="Thing-power_suit_6-html-20181103-233612_1541301139961.jpg" alt="The King of the Internet" title="The King of the Internet - A Portrait of Donald Trump"></a>
+</div>
+
+<div id="site-links">
+	<div class="teasers">
+		<p><a href="https://potatoland.org/arc/">Arc</a></p>
+		<p><a href="https://potatoland.org/theking/" target="_new">The King of The Internet <br><span class="desc" style="font-size:12px">A portrait of Donald Trump</span></a></p>
+	</div>
+
+	<div class="block">
+		<div class="block-title">net.art</div>
+		<div class="block-items">
+			<a href="https://potatoland.org/riot" target="new">RIOT</a>
+			<a href="https://potatoland.org/shredder" target="new">shredder</a>
+			<a href="http://netflag.guggenheim.org" rel="nofollow" target="new">net.flag</a>
+			<a href="https://potatoland.org/feed" target="new">FEED</a>
+			<a href="https://potatoland.org/landfill" target="new">digital landfill</a>
+		</div>
+	</div>
+
+	<div class="block">
+		<div class="block-title">Generative artwork and prints</div>
+		<div class="block-items">
+			<a href="https://potatoland.org/PAM_On_Sofa" title="PAM attempts to recline (napier 2009)">PAM On Sofa</a>
+			<a href="https://potatoland.org/PAM_Standing" title="Venus by way of Frankenstein (napier 2009)">PAM Standing</a>
+			<a href="https://potatoland.org/PAM_draft1" title="first attempt to recreate Pamela Anderson from parts found online (napier 2009)">PAM Draft 1</a>
+			<a href="https://potatoland.org/cyclops" title="Images and videos from the Cyclops Series">The Cyclops Series</a>
+		</div>
+	</div>
+
+	<div class="block">
+		<div class="block-title">Selected shows</div>
+		<div class="block-items">
+			<a href="https://potatoland.org/berlin_2009" title="Solo show at DAM Berlin, december 2009">DAM berlin: solo show dec 2009</a>
+			<a href="https://potatoland.org/berlin_2007" title="John Simon and Mark Napier at [DAM] Berlin, sept-oct 2007">DAM berlin: sept 27 - oct 27 2007</a>
+			<a href="https://potatoland.org/april2007" title="bitforms april 2007">bitforms april 2007</a>
+			<a href="https://potatoland.org/waitingroom" title="the 'waiting room' - generative artwork at bitforms april 2002">bitforms april 2002 - "waiting room" </a>
+		</div>
+	</div>
+
+	<div class="block">
+		<div class="block-title">1995-96</div>
+		<div class="block-items">
+			<a href="https://potatoland.org/napier_homepage" onclick="openW('/napier_homepage'); return false;">napier homepage</a>
+			<a href="https://potatoland.org/napier_homepage/barbie" onclick="openW('/napier_homepage/barbie'); return false;">The Distorted Barbie</a>
+			<a href="https://potatoland.org/studio/faces/loadfmix.htm" onclick="openW('/studio/faces/loadfmix.htm'); return false;">heroes</a>
+		</div>
+	</div>
+
+	<div class="block">
+		<div class="block-title">Contact</div>
+		<div class="block-items">
+			<a href="mailto:napier@potatoland.org">napier@potatoland.org</a>
+			<a href="http://marknapier.com" target="new" rel="nofollow">marknapier.com</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	var el = document.getElementById("menu-button");
+	el.addEventListener("click", toggleSiteLinks);
+</script>
+</body>
+</html>

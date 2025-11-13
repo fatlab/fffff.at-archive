@@ -1,0 +1,31 @@
+
+/*---------------------------------------------------------*/
+/* Universal Buy Button                                    */
+/*---------------------------------------------------------*/
+
+.mbt-book-buybuttons .mbt-universal-buybutton,
+.mbt-book-buybuttons .mbt-universal-buybutton:link,
+.mbt-book-buybuttons .mbt-universal-buybutton:visited,
+.mbt-book-buybuttons .mbt-universal-buybutton:hover,
+.mbt-book-buybuttons .mbt-universal-buybutton:active {
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff !important;
+	text-align: center;
+	text-decoration: none;
+
+	border: 1px solid #E6E6E6;
+	border-radius: 5px;
+
+	background: #298BC5;
+}
+
+/*---------------------------------------------------------*/
+/* Button Styling                                          */
+/*---------------------------------------------------------*/
+
+.mbt-book .mbt-primary-button,
+.mbt-book .mbt-primary-button:link,
+.mbt-book .mbt-primary-button:visited {
+	background-color: #298BC5;
+}

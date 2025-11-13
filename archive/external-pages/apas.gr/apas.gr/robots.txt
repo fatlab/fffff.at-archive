@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /apc/
+
+User-agent: ia_archiver
+Disallow: /
+
+Sitemap: http://apas.gr/sitemap.xml.gz

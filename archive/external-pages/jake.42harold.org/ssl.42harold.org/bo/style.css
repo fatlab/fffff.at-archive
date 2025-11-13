@@ -1,0 +1,140 @@
+body {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+	line-height: 1.25;
+	border-top: 3px solid #515151;
+}
+
+ul li { list-style-type: disc; }
+ol li { list-style-type: decimal; }
+
+li { list-style-position: outside; }
+
+p, ul, ol {
+	margin-top: 1.25em;
+	margin-bottom: 1.25em;
+}
+
+a:link { color: #515151; }
+a:visited { color: #999; }
+
+strong { font-weight: bold; }
+em { font-style: italic; }
+del { text-decoration: line-through; }
+
+.content {
+	width: 40em;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: visible;
+}
+
+#nav { text-align: center; }
+
+#footer {
+	margin-top: 2.5em;
+	border-top: 1px solid #515151;
+	background-color: #e6e6e6;
+	padding-top: 1.25em;
+	padding-bottom: 1.25em;
+}
+
+#bureau-logo {
+	float: right;
+	margin-left: 10px;
+}
+
+#special {
+	font-size: 123.1%;
+	width: 32.5em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: right;
+	margin-top: -1.3125em;
+}
+
+#head h1 { 
+	padding-top: 1.354166666666667em; 
+	font-size: 138.5%; 
+	width: 31.777777777777777em; 
+	margin-left: auto; margin-right: auto; 
+	color: #fff; 
+}
+#head a {
+	text-decoration: none; color: #fff;
+	padding: 1.354166666666667em 0.444444444444444em 0.451388888888889em;
+	background: #515151;
+}
+
+.post {
+	margin-top: 2.5em;
+	margin-bottom: 2.5em;
+}
+
+.post h3 { 
+	color: #515151; 
+	font-size: 123.1%; 
+	margin-left: -1em; 
+}
+
+.post h4 {
+	font-size: 108%;
+	margin-top: 1.160714285714286em;
+	margin-bottom: 1.160714285714286em;
+}
+
+.post.text blockquote,
+.post.link blockquote,
+.post.photo blockquote,
+.post.audio blockquote,
+.post.video blockquote {
+	padding-left: 1.25em;
+	border-left: 2px solid #e6e6e6;
+}
+
+
+.post.quote blockquote { font-size: 123.1%; quotes: "\201C" "\201D"; }
+.post.quote blockquote:before { content: open-quote; font-size: 197%; margin-left: -0.85em; }
+.post.quote blockquote p:first-child { margin-top: -2em; }
+
+.post.quote .source { margin-top: 1.25em; }
+.post.quote .source:before { content: "\2014\00a0"; }
+
+.post.chat ul.conv li {
+	list-style-type: none;
+	margin-top: 1.25em;
+	margin-bottom: 1.25em;
+}
+
+.post.text ul { margin-left: 1.5em; }
+
+.post a:hover { text-decoration: none; background: #515151; color: #fff; }
+
+.info { font-size: 85%; text-align: right; }
+.info, .info .permalink a,
+.post.quote .source, .post.quote .source a { 
+	color: #aaa; 
+}
+.info .permalink a:hover { text-decoration: underline; background: #fff; color: #aaa; }
+
+.text img { max-width: 100%; }
+
+table.d th { font-weight: bold; }
+table.d td,
+table.d th {
+	vertical-align: top;
+}
+
+ol.notes li { list-style-type: none; }
+
+ol.notes li.with_commentary blockquote {
+	margin: 1.25em 0;
+	padding-left: 1.25em;
+}
+
+.custompage.strong-towns-chat img { float: right; margin-left: 1em; }
+.custompage.strong-towns-chat #error-box { display: none; border: 1px solid #900; background: #AC2E2E; color :#fff; padding: 1em; }
+.custompage.strong-towns-chat #success-box { display: none; border: 1px solid #090; background: #46B546; color :#fff; padding: 1em; }
+
+.custompage.strong-towns-chat label { display: block; width: 150px; float: left; padding-left: 1em; }
+.custompage.strong-towns-chat input[type=submit] { margin-left: 1em; }
+.custompage.strong-towns-chat .required-label { margin-left: 1em; font-size: 85%; color: #aaa; }

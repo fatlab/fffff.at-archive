@@ -1,0 +1,106 @@
+
+/* reset - good but breaks lists
+* { margin:0; padding:0; }
+*/
+
+
+body { font-family: 'Open Sans', sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-size: 120% }
+h4 { margin: 0.9rem 0 }
+h4 a, h4 a:link, h4 a:hover, h4 a:visited { color: #292b2c; text-decoration: none }
+img { border: 0; }
+
+
+
+
+/* bootstrap fixes */
+
+.navbar { padding-left: 0px; }
+.navbar-brand { font-family:Georgia, "Times New Roman", Times, serif; font-size: 1.8rem; }
+.navbar-light { background-color: #fff; }
+
+
+
+
+/* tag_cloud */
+
+#cloud { margin:0 0 20px 0; clear:both; }
+#cloud a { color:#4972A4; text-decoration:none; }
+#cloud a.current { color:#aaa; text-decoration:none; }
+.tag_cloud { padding: 0 0.7rem 0 0; text-decoration: none; }
+
+
+
+/* thumbnails */
+
+.thumbnail { border:none; margin: 5px 0; }
+.lightbox_thumbnails, .work_thumb_img {
+	border: none;
+	margin: 0;
+
+    /* 
+    fit thumbnails
+    https://stackoverflow.com/a/17183996/441878
+     */
+    display: block;
+	/* max-height: 500px; */
+    width: 100%;
+    height: auto;
+}
+.caption { font-size: 85%; margin: 5px 0 25px 0; color: #666 }
+
+.work_thumb_wrapper { border:none; }
+.work_thumb_wrapper img { margin: 3px 0; border:none; }
+.work_thumb_txt_wrapper { display:block; padding:0; margin:0 0 7px 0; font-size: 85%; }
+.work_thumb_wrapper a, .work_thumb_wrapper a:hover { text-decoration:none; color: #525252; border:none; }
+.work_thumb_title { margin: 0; color: #333; }
+.work_thumb_txt { display:block; }
+
+
+
+
+.project-downloads {
+    font-size: 1.25rem;
+    margin: 40px 0;
+}
+.project-downloads a {
+    text-decoration: none;
+}
+.project-downloads .download-badge {
+    max-height: 3rem;
+    height: 3rem;
+    margin: 0 4px;
+}
+
+
+
+
+
+
+
+/* TEXT SIZE AND POSITION
+-------------------------------------------------- */
+
+.twoColumns{
+    column-count: 1;
+}
+
+/* >= large devices */
+@media (min-width: 992px) {
+    .twoColumns{
+        column-gap: 30px;
+        column-count: 2;
+    }
+}
+
+.footer { margin: 55px 0 }
+
+
+
+
+
+.metaContent {
+    margin-top: 3rem;
+    border-top: 1px solid #ccc;
+    padding-top: 1rem;
+}

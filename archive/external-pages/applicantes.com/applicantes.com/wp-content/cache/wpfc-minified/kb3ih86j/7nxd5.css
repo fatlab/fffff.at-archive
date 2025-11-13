@@ -1,0 +1,45 @@
+@import url("../../../../../fonts.googleapis.com/css@family=Noticia+Text%253A400,400italic,700,700italic%257CAnton.css");
+body {
+font-family: 'Noticia Text',georgia,serif;
+font-size: 16px;
+line-height: 1.55em;
+color:#555;
+}
+#contentright,
+#comments,
+#footer-widgets,
+#sidebar-narrow,
+table {
+font-size:14px;
+line-height: 1.5em;
+}
+h1,h2,h3,h4,h5,h6,h7,
+#sitetitle .title,
+#searchform #submitbutton,
+p.email-form .subbutton,
+#commentform input#submit,
+#topnav,
+#catnav {
+font-family: 'Anton',arial,helvetica,sans-serif;
+text-transform:none;
+}
+#topnav {
+font-weight:normal;
+font-size: 16pt;
+}
+#topnav ul ul {
+font-weight:normal;
+font-size: 14px;
+}
+#catnav {
+font-weight:normal;
+font-size: 16px;
+}
+#catnav ul ul {
+font-size: 14px;
+}
+h1,h2,h3,h4,h5,h6,h7,
+#sitetitle .title {
+font-family: 'Anton',arial,helvetica,sans-serif;
+text-transform:none;
+}

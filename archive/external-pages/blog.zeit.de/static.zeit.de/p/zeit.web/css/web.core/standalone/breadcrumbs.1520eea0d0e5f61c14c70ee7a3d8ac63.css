@@ -1,0 +1,1 @@
+.breadcrumbs{color:var(--z-ds-color-text-55)}.breadcrumbs__list{margin:0;padding:1em 0}.breadcrumbs__item{color:var(--z-ds-color-text-55);display:inline}.breadcrumbs__item:not(:last-child)::after{content:" / ";margin:0 .25em}.breadcrumbs__link{color:inherit}.breadcrumbs__link:hover,.breadcrumbs__link:active,.breadcrumbs__link:focus{color:var(--z-ds-color-text-100)}

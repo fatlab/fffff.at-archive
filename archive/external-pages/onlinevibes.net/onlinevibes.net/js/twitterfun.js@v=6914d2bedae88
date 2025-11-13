@@ -1,0 +1,72 @@
+
+
+
+var prepareVibe = function() {
+  $('#vibe p').each(function () {
+    var text = $(this).text();
+
+    // youtube
+    var match = text.match(/https?:\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-]{11})(?:[?&]\S*)?/)
+    if (match) {
+      var id = match[1];
+      $(this).empty().append('<iframe allow="autoplay" height="400" frameborder="0" width="100%" class="youtube-frame" src="https://www.youtube.com/embed/' + id + '?autoplay=1"></iframe>');
+    }
+
+    // soundcloud
+    if (text.match(/^https?:\/\/soundcloud\.com/)) {
+      var $container = $(this);
+      $container.empty().append(' <iframe allow="autoplay" width="100%" height="100%" scrolling="no" frameBorder="no" src="https://w.soundcloud.com/player/?url=' + encodeURI(text) + '&color=ff6600&auto_play=true&show_artwork=true"></iframe>'
+      );
+    }
+  });
+}
+
+
+var polling = function() {
+  var $container = $('#vibe');
+  var socket = io('https://bot.onlinevibes.net', {transports: ['websocket'], upgrade: false});
+
+  socket.on('vibe', function(vibe) {
+
+    vibe = JSON.parse(vibe);
+    console.log(vibe);
+    var $vibe = $('<p>' + vibe.vibe + '</p>');
+    var $meta = $('<p>Posted by: ' + vibe.user + ', ' + vibe.human + '.</p>');
+    $container.empty().append($vibe).append($meta);
+    prepareVibe();
+  });
+};
+
+
+window.addEventListener("load", () => {
+  if ($('.front-active').length > 0) {
+    if ($('#vibe').length) {
+      prepareVibe();
+      polling();
+    }
+
+    username = $('#converse-username').data('username');
+
+    converse.initialize({
+      jid: username + '@chat.onlinevibes.net',
+      bosh_service_url: 'https://chat.' + WEB_ROOT + '/http-bind',
+      keepalive: true,
+      authentication: 'prebind',
+      prebind_url: 'https://' + WEB_ROOT + '/front/session',
+      allow_logout: true,
+      show_controlbox_by_default: true,
+      roster_groups: true,
+      hide_muc_server: true,
+      auto_login: true,
+      allow_registration: false,
+      auto_list_rooms: true,
+      auto_reconnect: true,
+      muc_nickname_from_jid: true,
+      view_mode: 'overlayed',
+      debug: true,
+      play_sounds: true,
+      auto_join_rooms: [{'jid': 'welcome@conference.chat.onlinevibes.net', 'nick': username, 'minimized': false}]
+    });
+  }
+});
+

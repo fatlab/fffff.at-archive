@@ -1,0 +1,230 @@
+/*
+File:			custom.css
+Description:	Custom styles for Thesis
+http://www.foldedspace.org/
+BASIC USAGE:
+
+If you have enabled the custom stylesheet in the Thesis options panel, the <body> tag 
+will be appended with the "custom" class, like so: <body class="custom">. You can use 
+the "custom" class to override *any* CSS declarations contained in the style.css file.
+
+For example, if you wish to change the default link color to green, you would add the 
+following declarations to this file:
+
+	.custom a, .custom a:visited { color: #090; }	<--- This makes links green
+	.custom a:hover { color: #00f; }				<--- This makes links blue when you mouse over them
+
+WHY THIS WORKS:
+
+By using the "custom" class, you are creating more specific CSS declarations for HTML
+elements. CSS styling is applied through rules of specificity, and because declarations
+prepended with .custom are more specific, they get applied when the page is rendered!
+
+More information about styling your Thesis installation using this file can be found
+in the User's Guide:
+	http://diythemes.com/thesis/rtfm/customizing-thesis-with-customcss/
+*/
+
+/*---:[ Attempting to recover Foldedspace background properties ]:---*/
+
+body.custom 
+{ 
+  	background-color: #a2b09d; /* #666; */
+  	background-image: url(http://awesomepeople.com/images/backgrounds/rotate.php);
+	background-repeat: repeat;
+	background-position: top left;
+}
+	
+.custom #container 
+{ 
+	margin-top: 2em; 
+	margin-bottom: 2em; 
+	padding: 0.3em;
+	background: /* #222; */ #f8f8f0; /* #33332f; */
+	border: solid /* #d2382c */ #eee6b7 1.0em;
+}
+
+.custom #page 
+{ 
+	background: #f8f8f0; /* #fff; */
+	padding-top: 0px;
+}
+		
+/*---:[ end background ]:---*/
+
+/*---:[ Attempting to use Foldedspace font properties ]:---*/
+
+.custom .format_text a
+{
+	text-decoration: none;
+	color: #119;
+}
+
+.custom a:hover, a:active
+{
+	text-decoration: underline;
+	color: #119;
+}
+
+.custom .format_text 
+{ 
+	font-size: 1.4em; 
+	line-height: 1.2em; /* was 1.571em, but that puts an ocean of space -- 1.2em 		might actually cause woe because it's lower than font size... */
+}
+
+.custom .format_text p
+{ 
+	margin-bottom: 1em;  /* added to remove the gulf of space between paragraphs */
+}
+
+
+.custom .headline_area h1, .headline_area h2 
+{
+	font-weight: bold;
+}
+
+.custom .format_text h2, .format_text h2 /* in-post section headers */
+{
+	font-size: 1.0em; 
+	line-height: 1.0em;
+	font-style: italic;
+	font-weight:bold;
+	margin: 0;
+}
+
+.custom .teaser h2    /* bottom of main page headlines */
+{ 
+	font-weight: bold;
+}
+
+.custom .format_text ul
+{
+	margin-left: 3em;
+	margin-right: 3em;
+}
+
+.custom .format_text ol
+{
+	margin-left: 3em;
+	margin-right: 3em;
+}
+
+
+.custom .format_text li
+{
+	margin-bottom: 0.5em;
+}
+
+/*---:[ end typography ]:---*/
+
+/*---:[ Attempting to use Foldedspace sidebar properties ]:---*/
+
+.custom .sidebar a
+{
+	text-decoration: none;
+	color: #119;
+}
+
+.custom .sidebar a:hover, a:active
+{
+	text-decoration: underline;
+	color: #119;
+}
+
+.custom .sidebar h3   /* sidebar section headings */
+{ 
+	font-weight: bold;
+}
+
+.custom #welcome
+{ 
+	font-size: 1.0em; 
+	line-height: 1.2em; 
+	margin-bottom: 1.909em; 
+}
+
+
+.custom li.widget 
+{ 
+	font-size: 1.0em; 
+	line-height: 0.8em; 
+	margin-bottom: 1.909em; 
+}
+
+.custom #twitter_update_list
+{ 
+	font-size: 1.0em; 
+	line-height: 1.2em; 
+	margin-bottom: 1.909em; 
+}
+
+.custom #feeds
+{ 
+	font-size: 1.0em; 
+	line-height: 1.2em; 
+	margin-bottom: 1.0em; 
+}
+
+.custom #get_recent_comments_wrap
+{ 
+	font-size: 1.0em; 
+	line-height: 1.2em;
+}
+
+.custom li.delicious-post
+{ 
+	font-size: 1.0em; 
+	line-height: 1.2em; 
+	margin-bottom: 1.0em; 
+}
+
+/*---:[ end sidebar ]:---*/
+
+
+
+/*---:[ Attempting to use Foldedspace header properties ]:---*/
+
+/* This line sets up our clickable background image based on the site title's link */
+/* DIY: Adjust the height & width attributes to reflect the actual size of your image */
+/* DIY: Change the filename of your image to reflect the actual header's file name */
+.custom #header #logo a { display: block; height: 10px; width: 0px; background: url('http://awesomepeople.com/images/successdaily.jpg') no-repeat; outline: none;}
+
+/* This line gets rid of the site title & tagline by casting them out to far left field */
+.custom #header #logo, .custom #header #tagline { text-indent: -9999px;}
+
+/* This line collapses the vertical space of the tagline so that there isn't unnecessary white space after the header image */
+
+/* This is a bit of a kludge, but it seems to work. */
+.custom #header #tagline { height: 0; }
+
+/* This line removes the padding from the header so that the background image sits close to the nav menu, the bottom border of the header, and the sides of the content */
+.custom #header { padding: 0; border: none; }
+
+/*---:[ end header ]:---*/
+
+/* rounding corners */
+.custom #tab
+{
+	border-left:0;
+}
+
+.custom #tab li
+{ 
+	-moz-border-radius-topleft: 5em;
+	-moz-border-radius-topright: 5em;
+	-webkit-border-top-left-radius: 5em;
+	-webkit-border-top-right-radius: 5em;
+}
+
+/* highlighting certain sections */
+.custom div.highlight
+{
+	background			: #A2B09D; /*#efefef; */
+    color				: black;
+    margin				: 15px 45px 15px 45px;
+	padding				: 5px;
+}
+
+/*---:[ author comment and alternating comment colors ]:---*/
+dl#comment_list .even { background: #eee6b7; }
+dl#comment_list .odd { background: #f8f8f0; } */

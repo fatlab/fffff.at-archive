@@ -1,0 +1,403 @@
+:root {
+  --footer-height: 2em;
+  --padding: 1em;
+  --max-width: 1285px;
+
+  --color-text: #ccc;
+  --color-1: #0b0835ff;
+  --color-2: #2e134aff;
+  --color-3: #901005ff;
+  --color-4: #c1340aff;
+  --color-5: #f2570fff;
+  --color-6: #f2710fff;
+  --color-7: #f28c0fff;
+  --color-8: #f4a039ff;
+}
+
+/* CSS RESET */
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+figure {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* CONTENT */
+
+a {
+  text-decoration: none;
+  color: var(--color-6);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+body {
+  background-color: var(--color-2);
+  font-family: "Source Sans 3", Arial, Helvetica, sans-serif;
+  font-size: 16pt;
+  min-width: 300px;
+  color: var(--color-text);
+}
+
+header {
+  font-family: "Work Sans", Arial, Helvetica, sans-serif;
+  position: relative;
+  width: 100%;
+  height: 26vw;
+  padding: 3em;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+header>.heading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+header>.playpause {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  width: 1.5em;
+  height: 1.5em;
+  font-size: 10pt;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+header:hover>.playpause {
+  visibility: visible;
+}
+
+header>.playpause>.playsymbol {
+  display: none;
+}
+
+header video {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+header h1 {
+  font-size: 50pt;
+  color: yellow;
+  font-weight: bold;
+}
+
+header h2 {
+  font-size: 20pt;
+  color: yellow;
+  font-weight: bold;
+  width: 10em;
+  line-height: 1;
+}
+
+header>.reducedmotion {
+  display: none;
+}
+
+.status-flexbox {
+  display: grid;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  gap: 10px;
+}
+
+.door-overlay, .labstatus-overlay {
+  background-color: var(--color-1);
+  font-size: 14pt;
+  padding: 0.5em;
+  box-shadow: 0 0 3px black;
+  cursor: help;
+  justify-self: end;
+}
+
+.door-overlay.failed, .labstatus-overlay.failed {
+  display: none;
+}
+
+#door, #labstatus {
+  padding: 0.1em;
+}
+
+.door-overlay>.open, .labstatus-overlay>.open {
+  background-color: var(--color-8);
+  color: var(--color-2);
+}
+
+.door-overlay>.closed, .labstatus-overlay>.closed {
+  background-color: var(--color-3);
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-5);
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 3px 3px black;
+}
+
+nav>ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  padding: 0.5em 1em;
+  width: 100%;
+  max-width: var(--max-width);
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color-1);
+  padding: 0.2em 0.4em;
+  margin: 0.3em 0.1em;
+  background-color: transparent;
+  transition: background-color ease-in-out 0.2s;
+  border-radius: 1em;
+}
+
+nav a:hover {
+  background-color: var(--color-8);
+}
+
+nav a.active {
+  background-color: var(--color-7);
+}
+
+nav li {
+  flex-grow: 0;
+  color: var(--color-1);
+}
+
+nav li.atomic {
+  line-height: 0;
+  padding: 0 0.5em 0 0;
+}
+
+nav li.atomic img {
+  height: 1.5em;
+}
+
+nav .spacer {
+  flex-grow: 1;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  --max-column-width: calc(var(--max-width) / 2 - 2em);
+}
+
+section {
+  display: grid;
+  grid:
+    "heading image" auto "text image" 1fr / min(50%, var(--max-column-width)) min(50%, var(--max-column-width));
+  gap: 1em 2em;
+  padding: 2em;
+  justify-content: center;
+}
+
+section:nth-child(even) {
+  grid:
+    "image heading" auto "image text" 1fr / min(50%, var(--max-column-width)) min(50%, var(--max-column-width));
+  background-color: var(--color-1);
+}
+
+section>h3 {
+  grid-area: heading;
+  font-size: 30pt;
+}
+
+section>img,
+section>figure {
+  grid-area: image;
+  width: 100%;
+}
+
+.transparent {
+  background-color: var(--color-7);
+  border-radius: 2px;
+}
+
+.calendar-content {
+  margin-bottom: 0.3em;
+}
+
+.calendar-content>ul {
+  background-color: var(--color-6);
+  padding: 0.1em;
+  list-style: none;
+  border-radius: 2px;
+  box-shadow: 0 0 4px black;
+}
+
+.calendar-content ul>li .event {
+  margin: 0.1em;
+  padding: 0.2em;
+  background-color: var(--color-2);
+}
+
+.calendar-content ul>li:nth-child(even) .event {
+  background-color: var(--color-1);
+}
+
+.calendar-content ul>li .event>span:not(:last-child):after,
+.calendar-content ul>li .event>span:last-child:before {
+  content: "|";
+  padding: 0 0.1em;
+}
+
+figure>iframe {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 4px black;
+}
+
+figure>figcaption {
+  font-size: 10pt;
+}
+
+figure>video {
+  width: 100%;
+  box-shadow: 0 0 4px black;
+}
+
+section>.text {
+  grid-area: text;
+}
+
+section>.text p:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+section>.text ul {
+  list-style: disc;
+  margin-left: 1em;
+}
+
+footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 3em;
+  font-size: 10pt;
+  background-color: var(--color-5);
+  color: var(--color-1);
+  padding: 0.3em;
+}
+
+footer a {
+  color: var(--color-3);
+}
+
+@media screen and (max-width: 850px) {
+  section {
+    grid: "heading" auto "text" auto "image" auto / 1fr;
+  }
+
+  section:nth-child(even) {
+    grid: "heading" auto "text" auto "image" auto / 1fr;
+  }
+
+  header h1 {
+    font-size: 30pt;
+  }
+
+  header h2 {
+    font-size: 16pt;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  video {
+    display: none !important;
+  }
+
+  header {
+    background-color: black;
+    cursor: auto;
+  }
+
+  header>.heading.reducedmotion {
+    display: block;
+    width: 100%;
+  }
+
+  header>.playpause {
+    display: none;
+  }
+}

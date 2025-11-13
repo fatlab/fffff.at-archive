@@ -1,0 +1,1 @@
+(()=>{"use strict";const i=window.wp.coreData,s=window.wp.data,a=window.wp.i18n;(0,s.dispatch)(i.store).addEntities([{name:"subscription",kind:"givewp",baseURL:"/givewp/v3/subscriptions",baseURLParams:{_embed:!0,includeSensitiveData:!0},plural:"subscriptions",label:(0,a.__)("Subscription","give"),supportsPagination:!0}])})();

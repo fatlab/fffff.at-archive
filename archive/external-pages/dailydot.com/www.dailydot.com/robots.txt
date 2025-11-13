@@ -1,0 +1,19 @@
+
+User-Agent: *
+
+Allow: /ads.txt
+Disallow: *?s=*
+
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+
+
+
+#Google News Sitemap
+Sitemap: https://www.dailydot.com/news-sitemap.xml
+
+#Site Sitemap
+Sitemap: https://www.dailydot.com/sitemap_index.xml
+
+

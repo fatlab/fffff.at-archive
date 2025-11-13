@@ -1,0 +1,4 @@
+//tealium universal tag - utag.sync ut4.0.202511051623, Copyright 2025 Tealium.com Inc. All Rights Reserved.
+try{try{try{if(document.domain&&document.domain.match(/(www\.nar\.realtor)|(ioi\.realtor)|(realtors\.auth0\.com)|(firsttimebuyer\.realtor)|(nar-git-main-chapter-three\.vercel\.app)/gi)){window._S_T||function(s)
+{s.async=true;s.src='//counter.personyze.com/stat-track-lib.js';s.onload=function()
+{_S_T.async=true;_S_T.setup(7482,"*");};(document.querySelector('head')||document.documentElement).appendChild(s);}(document.createElement('script'))}}catch(e){}}catch(e){console.log(e)}}catch(e){console.log(e);}

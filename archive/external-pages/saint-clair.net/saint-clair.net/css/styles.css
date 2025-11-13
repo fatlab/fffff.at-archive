@@ -1,0 +1,39 @@
+:root {
+    --border-size: 0px;
+    --font-color: #ffffff;
+    --c1: rgba(127, 200, 32, 0.3);
+    --c2: rgba(212, 20, 32, 0.3);
+    --c3: rgba(21, 60, 32, 0.3);
+    --c4: rgba(21, 60, 232, 0.3);
+    --magic-number: 0.09719; /* tan(11°)/2 */
+}
+
+body {
+    margin: 0 auto;
+    font-family: 'Aldrich', sans-serif;
+    color: var(--font-color);
+    background-color: #000000;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--font-color);
+}
+
+#main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: baseline;
+    font-size: 10vw;
+}
+
+#content {
+    display: flex;
+    margin-bottom: 10vh;
+}

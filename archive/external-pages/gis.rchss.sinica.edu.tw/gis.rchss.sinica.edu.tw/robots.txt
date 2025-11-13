@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+Sitemap: https://gis.rchss.sinica.edu.tw/sitemap.xml
+Sitemap: https://gis.rchss.sinica.edu.tw/sitemap.html

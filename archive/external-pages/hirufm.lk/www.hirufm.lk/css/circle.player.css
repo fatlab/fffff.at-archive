@@ -1,0 +1,51 @@
+body
+ {
+	margin: 0px;
+	padding: 0px;	 
+ }
+.cp-container {
+	width: 52px;
+	height: 52px;
+	
+	margin: 0px;
+}
+
+.cp-controls {
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+.cp-controls li{
+	list-style-type: none;
+	margin:0;
+}
+.cp-controls li a{
+	position: absolute;
+	display: block;
+	width: 50px;
+	height: 50px;
+	text-indent: -9999px;
+	z-index: 1;
+	cursor: pointer;
+	left: 0px;
+	top: 0px;
+	outline:none;
+}
+.cp-play {
+	background-image: url(../images/controls.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	margin:0;
+}
+
+.cp-play:hover {
+	background:url(../images/controls.png) -50px 0 no-repeat;
+}
+
+.cp-pause {
+	background:url(../images/controls.png) 0 -50px no-repeat;
+}
+
+.cp-pause:hover {
+	background:url(../images/controls.png) -50px -50px no-repeat;
+}

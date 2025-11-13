@@ -1,0 +1,50 @@
+#popup-content {
+   font-size: 12px;
+   width: 380px
+}
+
+#popup-content input[type=text] {
+   width: 97%;
+}
+
+/*dialog buttons*/
+span.ui-button-text {
+   font-size: 12px;
+}
+
+/*dialog title*/
+span.ui-dialog-title {
+   font-size: 13px;
+}
+
+div.ui-widget-overlay {
+   opacity: 0.5;
+   filter: alpha(opacity=50);
+   background-image: none;
+   background-color: #ccc;
+}
+
+.dialog-button img, img.dialog-button {
+   width: 28px;
+   margin: 7px 0px 0px 6px;
+   cursor: pointer;
+   border: none;
+}
+
+.hidden {
+   display: none;
+}
+
+#popup-side-button {
+   background-color: #ffa000;
+   border: 1px solid #ddd;
+   border-left: none;
+   cursor: pointer;
+
+   width: 42px;
+   height: 150px;
+   
+   position: fixed;
+   top: 0px;
+   left: 0px;
+}

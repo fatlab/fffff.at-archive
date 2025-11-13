@@ -1,0 +1,15 @@
+User-Agent: *
+Allow: /
+Disallow: /account/
+Allow: /account/login
+Allow: /account/signup
+Allow: /account/welcome
+Disallow: /admin/
+Disallow: /checkout/
+Disallow: /new-cutlength-calculator
+Disallow: /partner-campaign
+Disallow: /price/
+
+
+
+Sitemap: https://www.ponoko.com/sitemapv2.xml

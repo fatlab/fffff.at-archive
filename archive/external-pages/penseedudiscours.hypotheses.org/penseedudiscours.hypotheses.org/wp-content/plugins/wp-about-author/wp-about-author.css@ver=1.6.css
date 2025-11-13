@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+.wp-about-author-container {
+	display: flex;
+	clear: both;
+	gap: 2rem;
+	box-sizing: border-box;
+}
+
+/* Default layout */
+.wp-about-author-layout-default {
+	justify-content: space-evenly;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+	.wp-about-author-layout-default {
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+/* Right-aligned layout */
+.wp-about-author-layout-right {
+	justify-content: space-evenly;
+	flex-direction: row-reverse;
+	align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+	.wp-about-author-layout-right {
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+/* Centered image layout */
+.wp-about-author-layout-center-image {
+	justify-content: space-evenly;
+	flex-direction: column;
+	align-items: center;
+}
+
+@media (max-width: 768px) {
+	.wp-about-author-layout-center-image {
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+/* Centered text layout */
+.wp-about-author-layout-center-text {
+	justify-content: space-evenly;
+	flex-direction: column-reverse;
+	align-items: center;
+}
+
+@media (max-width: 768px) {
+	.wp-about-author-layout-center-text {
+		justify-content: center;
+		flex-direction: column-reverse;
+		align-items: center;
+	}
+}
+
+.wp-about-author-container-top {
+	border-top: 4px solid var(--wp-about-author-accent, #000);
+	margin-top: 2rem;
+	padding: 2rem 0;
+}
+
+.wp-about-author-container-around {
+	border: 1px solid var(--wp-about-author-accent, #000);
+	margin-top: 2rem;
+	padding: 2rem;
+}
+
+.wp-about-author-container-none {
+	border-top: none;
+}
+
+.wp-about-author-container-stripe {
+	border-left: 4px solid var(--wp-about-author-accent, #000);
+	padding: 20px;
+}
+.wp-about-author-container.wau-has-bg {
+	padding: 2rem;
+}
+
+.wp-about-author-container .wp-about-author-pic {
+	background: #fff;
+	border: 1px solid #e7e7e7;
+	padding: 10px;
+	font-size: 0;
+}
+
+.wp-about-author-container .wp-about-author-pic.wp-about-author-circle {
+	border-radius: 50%;
+}
+
+.wp-about-author-container .wp-about-author-pic.wp-about-author-circle img {
+	border-radius: 50%;
+}
+
+.wp-about-author-container .contact-svgs {
+	display: flex;
+	gap: .5rem;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	line-height: 1;
+	margin-top: 2rem;
+}
+
+.wp-about-author-container .wp-about-author-text>h3 {
+	margin-top: 0;
+}

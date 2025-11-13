@@ -1,0 +1,1 @@
+const abtestingPages = {pages: ["\/hosting\/wordpress-hosting","\/hosting\/wordpress-hosting","\/websites\/website-builder"]};

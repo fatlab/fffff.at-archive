@@ -1,0 +1,12 @@
+/*
+ * Settings of the sticky menu
+ */
+
+jQuery(document).ready(function(){
+   var wpAdminBar = jQuery('#wpadminbar');
+   if (wpAdminBar.length) {
+      jQuery(".header-default #nv-menu-wrap,.header-layout1 #nv-menu-wrap,.header-layout3 #nv-menu-wrap,.header-layout2 #masthead").sticky({topSpacing:wpAdminBar.height()});
+   } else {
+      jQuery(".header-default #nv-menu-wrap,.header-layout1 #nv-menu-wrap,.header-layout3 #nv-menu-wrap,.header-layout2 #masthead").sticky({topSpacing:0});
+   }
+});

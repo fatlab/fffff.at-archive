@@ -1,0 +1,1203 @@
+/*
+Theme Name: Blog Sphere
+Theme URI: https://cawpthemes.com/blog-sphere-free-wordpress-theme/
+Author: CA WP Themes
+Author URI: https://cawpthemes.com/
+Description: Blog Sphere is a free WordPress theme designed specifically for bloggers who want a clean, modern, and professional layout for their personal blogs. With its minimalist design, Blog Sphere ensures your content remains the focus, while its responsive and mobile-friendly structure guarantees a seamless experience on all devices. The theme offers customizable layouts, typography options, and widget-ready areas, allowing you to tailor the design to your unique style. Perfect for beginners and seasoned bloggers alike, Blog Sphere simplifies the blogging process while providing a polished, user-friendly interface. Whether you're sharing stories, tips, or ideas, Blog Sphere makes your blog shine.
+Version: 1.0.4
+Tested up to: 6.6
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: blog-sphere
+Copyright (c) 2025 CA WP Themes. All rights reserved.
+Tags: one-column, two-columns, three-columns, four-columns, grid-layout , custom-background, custom-logo, custom-menu, custom-header, editor-style, featured-images, footer-widgets, sticky-post, full-width-template, theme-options, translation-ready, threaded-comments, blog, photography
+*/
+/* Reset */
+html {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: system-ui;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+	font-family: sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1 {
+    color: #000;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin: 0 0 20px;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #000;
+}
+
+ul{
+    text-align: left;
+}
+
+.post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.post-list li {
+    margin-bottom: 20px;
+}
+
+.comments {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+time {
+    color: #000;
+}
+
+.comment {
+    margin-bottom: 20px;
+}
+
+.comment-avatar {
+    float: left;
+    margin-right: 20px;
+}
+
+.comment-body {
+    overflow: hidden;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin: 0;
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.comment-content {
+    margin: 10px 0;
+}
+
+.comment-reply {
+    margin-left: 50px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table th {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Style links within post content */
+.entry-content a {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Style links within comment content */
+.comment-content a {
+  color: red;
+  text-decoration: underline;
+}
+
+/* Style links within text widgets */
+.widget_text a {
+  color: green;
+  text-decoration: underline;
+}
+
+/* Accessibility */
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  clip-path: none;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  right: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+  outline: 0;
+}
+
+/*--------Comments-----------*/
+
+/* Style the comments section */
+.comments-area {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-top: 30px;
+    border: 1px solid #ddd;
+}
+
+/* Style the comment form */
+.comment-form {
+    margin-top: 30px;
+}
+
+/* Style the comment form fields */
+.comment-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.comment-form input[type="text"], 
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Style the comment list */
+.comment-list {
+    margin-top: 30px;
+}
+
+.comment {
+    margin-bottom: 30px;
+}
+
+.comment-author {
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.comment-author a{
+    color: #000;
+}
+
+.comment-meta {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.comment-content {
+    margin-bottom: 10px;
+}
+
+.comment-reply-link {
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+.comment-reply-link:hover {
+    color: #f00;
+}
+
+/* Style the comment navigation links */
+.comment-navigation {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-nav-prev,
+.comment-nav-next {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.comment-nav-prev a,
+.comment-nav-next a {
+    text-decoration: none;
+    color: #333;
+}
+
+.comment-nav-prev:hover,
+.comment-nav-next:hover {
+    background-color: #ddd;
+}
+
+/*-------404 Page--------*/
+
+section.error-404.not-found {
+    text-align: center;
+    padding: 30px;
+}
+
+section.error-404.not-found h1 {
+    color: #000;
+}
+
+section.error-404.not-found input.search-submit {
+    padding: 10px;
+}
+
+section.error-404.not-found input.search-field {
+    padding: 10px;
+}
+
+.go-home {
+    margin-top: 10px;
+}
+
+.go-home a {
+    color: red;
+    font-size: 20px;
+}
+
+/*----------------sidebar---------------------*/
+
+
+.class-sidebar .widget {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 18px 14px 31px 0px rgba(74, 59, 101, 0.1);
+}
+
+#sidebar {
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.wp-block-search .wp-block-search__label {
+    font-weight: 700;
+    color: #fff;
+}
+
+.no-comments.wp-block-latest-comments {
+    text-align: center;
+    color: #000;
+}
+
+span.required-field-message {
+    color: #000;
+}
+    
+p.logged-in-as a {
+    color: #000;
+}
+
+div#sidebar li {
+    text-align: center;
+    list-style: none;
+    padding: 5px;
+    margin: 10px;
+    color: #000;
+    font-weight: 500;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Sidebar widgets */
+#sidebar .widget {
+  margin-bottom: 30px;
+}
+
+/* Sidebar widget title */
+#sidebar .widget-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #625011;
+}
+
+div#sidebar h2 {
+    text-align: center;
+    color: #625011;
+}
+
+.wp-block-calendar table th {
+    color: #fff;
+    font-weight: 600;
+    background: #625011;
+}
+
+.wp-block-calendar tbody td, .wp-block-calendar th {
+    padding: 0.25em;
+    border: 1px solid #625011;
+}
+
+.singlepost-category a:hover{
+    color: #fff;
+}
+
+h2.post-title a:hover, .display_only a:hover {
+    color: #625011;
+}
+
+/* Sidebar widget links */
+#sidebar a {
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* Sidebar widget links on hover */
+#sidebar a:hover , h2.post-title:hover {
+  color: #625011;
+}
+
+.main-single-post-page .entry-content {
+    margin-top: 30px;
+}
+
+/*----------Recommended CSS-------*/
+
+.wp-caption {
+  font-size: 14px;
+  color: #666;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+.wp-caption-text {
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+}
+
+.gallery-caption {
+  font-size: 14px;
+  color: #666;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+.bypostauthor {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.alignright {
+  float: right;
+  margin-left: 10px;
+}
+
+.alignleft {
+  float: left;
+  margin-right: 10px;
+}
+
+.aligncenter {
+  display: block;
+  margin: 0 auto;
+}
+
+/*-----------button--------*/
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+}
+
+.button:hover {
+    background-color: #625011;
+}
+
+/*--------------pagination----------*/
+
+.nav-links {
+    display: -webkit-inline-box;
+    padding: 10px;
+}
+
+.pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a {
+    display: inline;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    color: #fff;
+    background-color: #325a21;
+}
+
+.pagination .current {
+    position: relative;
+    top: 0px;
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+    margin: 10px;
+   padding: 5px 10px;
+   border-radius: 5px;
+}
+
+/*-------------------------------------Header CSS-------------------------------*/
+
+/* Layout */
+
+.date-time-file {
+    background-color: #fff;
+    padding: 6px 0;
+    color: #000;
+    text-align: center;
+}
+
+span.topbar-date-head {
+    display: inline-flex;
+    font-weight: 600;
+}
+
+span.topbar-date-head p {
+    margin: 0px 10px;
+}
+
+.header {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.header-border {
+    border-bottom: 0.5px solid #ccc;
+}
+
+.site-title {
+    position: relative;
+    top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.display_only h1 a:hover{
+color: #625011;
+
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+.content {
+    flex: 2;
+    margin-right: 20px;
+}
+
+p.site-description {
+    margin-top: 14px;
+    font-size: 14px;
+    color: #000;
+}
+
+h1.site-title a {
+    color: #625011;
+}
+
+h1.site-title a:hover {
+    text-decoration: none;
+}
+
+
+.display_only {
+    text-align: center;
+    padding: 30px;
+}
+
+.display_only p {
+    color: #000;
+}
+
+.display_only h1 {
+    font-size: 22px;
+}
+
+.site-logo img {
+   max-width: 100%;
+   height: auto;
+}
+.site-title, .site-description {
+    margin: 0;
+}
+
+.site-header .site-logo h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.site-header .site-logo img {
+  max-height: 50px;
+}
+
+/*------------------------------------Index.php--------------------------*/
+
+.content-area {
+    margin-top: 50px;
+}
+
+.main-index {
+    margin-right: 0px;
+    padding: 20px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 18px 14px 31px 0px rgba(74, 59, 101, 0.1);
+}
+
+span.cat-links a {
+    color: #fff;
+    background-color: #625011;
+    font-size: 20px;
+    padding: 6px;
+}
+
+.class-category {
+    margin-bottom: 15px;
+}
+
+h2.entry-title {
+    font-size: 38px;
+}
+
+h2.entry-title a{
+    color: #625011;
+}
+
+
+/* Content Styles */
+.entry-content {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-top: 30px;
+}
+
+.entry-title {
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.entry-meta {
+  font-size: 14px;
+}
+
+.entry-meta a {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.entry-meta a:hover {
+  color: #625011;
+}
+
+.entry-footer {
+  margin-top: 1.5em;
+}
+
+.page-links {
+    margin-top: 20px;
+    clear: both;
+}
+
+.tags-list {
+    margin-bottom: 10px;
+}
+
+.read-more-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.read-more-link:hover {
+    background-color: #625011;
+}
+
+.single-post .post-thumbnail {
+    padding: 0px 0px 40px 0px;
+}
+
+.single-post header.entry-header h1 {
+    font-size: 36px;
+    padding: 10px 0px;
+}
+
+.singlepost-category {
+    padding: 20px 0px 0px 0px;
+}
+
+.singlepost-category a {
+    background: #625011;
+    padding: 3px 15px;
+    margin: 2px;
+}
+
+.page-container {
+    margin-top: 40px;
+}
+
+.card-body a{
+    color: #000;
+    background-color: #fff !important;
+    border: none;
+}
+
+.card-body a:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.main-single-post-page {
+    padding: 40px 0px 0px 40px;
+}
+
+h2.entry-title {
+    padding: 0px;
+    font-size: 34px;
+    color: #000;
+}
+
+.main-single-post-page h2.entry-title{
+padding: 10px 0px;
+}
+
+.entry-meta {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    padding: 0px 0px 0px 0px;
+    background: #fff;
+}
+
+.card-body h5 {
+    color: #000;
+    font-size: 20px;
+    padding: 0px 0px 0px 0px;
+}
+
+.cat-meta {
+    padding: 10px 0px 10px 0px;
+}
+
+.cat-meta a {
+    background: transparent !important;
+}
+
+.archive .page-container {
+    margin-top: 30px;
+}
+
+
+/*-----------------Section-----------------------*/
+
+/* Style for section */
+
+/* Style for section heading */
+section h2 {
+  font-size: 36px;
+  color: #000;
+}
+
+.section-main-title {
+    text-align: center;
+    padding: 20px 0px;
+    margin-bottom: 20px;
+}
+
+
+.section-main-title h2 {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 42px;
+    color: #444444;
+}
+
+.section-main-title h2::before,
+.section-main-title h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    max-width: 200px;
+    background: #000;
+    margin: 0 10px; /* Adjust spacing */
+}
+
+
+/* Style for section content */
+section p {
+  font-size: 18px;
+  color: #000;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+header.entry-header h1 {
+    padding: 40px 0px;
+}
+
+/*-----------------Latest Post---------*/
+
+.latest-outer {
+    text-align: center;
+}
+
+h2.latest-title a {
+    font-size: 20px;
+    color: #625011;
+
+}
+
+h2.latest-title {
+    text-align: center;
+    line-height: 20px;
+    margin-bottom: 7px;
+}
+
+.class-latest-cat {
+    position: relative;
+    bottom: 35px;
+    text-align: center;
+    padding: 0px;
+    background: #fff;
+}
+
+.class-latest-cat a {
+    color: #625011;
+}
+
+section#latest-post {
+    margin-bottom: 80px;
+}
+
+/*------------Single Post Section----*/
+
+section#single-post {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+section#single-post h2.post-title a {
+    color: #625011;
+    font-size: 45px;
+    font-weight: 500;
+}
+
+section#single-post .latest-content p {
+    font-size: 22px;
+    color: #8d8d8d;
+    margin-bottom: 10px;
+}
+
+section#single-post .main-single-box {
+    position: relative;
+    top: 60px;
+    text-align: left;
+}
+
+section#single-post .read-more a {
+    background: #625011;
+    padding: 10px;
+    color: #fff;
+}
+
+section#single-post .read-more {
+    position: relative;
+    top: 10px;
+}
+
+.class-categories h3 {
+    text-transform: uppercase;
+    font-size: 42px;
+    color: #444444;
+}
+
+/*-----------Section One-------------*/
+
+section#section1 {
+    padding: 0px 0px 40px 0px;
+}
+
+.main-post-box-hm {
+    transition: 0.25s ease-out;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    display: block;
+    position: relative;
+    box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
+}
+
+.readmore-latest {
+    padding: 10px;
+}
+
+section#section1 .latest-content {
+    max-height: 8.5em;
+    line-height: 1.5em;
+    overflow: hidden;
+}
+
+section#section1 .latest-content p {
+    font-size: 18px;
+    padding: 0px 10px;
+}
+
+section#section1 h2.post-title {
+    font-size: 28px;
+    padding: 20px 10px 10px 10px;
+    margin:0px;
+}
+
+section#section1 h2.post-title a{
+    color: #625011;
+}
+
+.section-heading-main h3 {
+    text-align: center;
+    padding: 50px 0px 30px 0px;
+    font-size: 50px;
+}
+
+
+section#section1 .sec2-meta {
+    max-width: 80%;
+    border-top: 1px solid #ccc;
+    padding: 10px 0px 0px 10px;
+    margin-top: 20px;
+}
+
+
+.class-categories a {
+    color: #625011;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/*-------------------Post Nav-----------*/
+
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 0;
+}
+
+.nav-previous a, .nav-next a {
+    width: 300px;
+    display: inline-block;
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.nav-previous a:hover, .nav-next a:hover {
+   
+    color: #625011;
+   
+}
+
+.nav-previous a {
+    border-radius: 5px 0 0 5px;
+}
+
+.nav-next a {
+    border-radius: 0 5px 5px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .post-navigation {
+        flex-direction: column;
+    }
+    
+    .nav-previous a, .nav-next a {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 1em;
+    }
+}
+
+/*-------------------Woocommerce---------------*/
+
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit.alt, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button.alt, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button.alt {
+    background-color: #000000;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+.woocommerce ul.products li.product a {
+    text-decoration: none;
+    color: #fff;
+    background: #000000;
+}
+
+.woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product p.price, .woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product span.price {
+    color: #000000;
+    font-size: 1.25em;
+}
+
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt:hover, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt:hover, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt:hover, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt:hover, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit.alt:hover, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt:hover, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button.alt:hover, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button.alt:hover {
+    background-color: #000000;
+    color: #fff;
+}
+
+
+/*-----------------Footer--------------------*/
+
+
+/* Footer styles */
+.Main-footer footer {
+    margin-top: 60px;
+    background-color: #625011;
+    color: #fff;
+    padding: 80px 0px 0px 0px;
+    font-size: 14px;
+}
+
+article footer {
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+.footer-inside p {
+    font-size: 18px;
+    color: #000 !important;
+}
+
+.footer-inside a {
+    color: #000;
+}
+
+.footer-inside {
+    padding: 40px 20px;
+}
+
+.wp-block-latest-posts.wp-block-latest-posts__list li {
+    color: #000;
+    clear: both;
+    overflow-wrap: break-word;
+}
+
+.wp-block-latest-posts.wp-block-latest-posts__list {
+    list-style: initial;
+    padding-left: 0px;
+    font-size: 18px;
+}
+
+.widget_text p {
+    font-size: 16px;
+}  
+
+h2.wp-block-heading {
+    color: #000;
+} 
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #ccc;
+}
+
+/* Copyright styles */
+.copyright {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #777;
+}
+
+
+.footer-copyright {
+    text-align: center;
+    background: #625011;
+    padding: 10px;
+    color: #fff;
+}
+
+/*-------------Back to Top--*/
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #000; /* Customize as needed */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  display: none; /* Initially hidden */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.back-to-top:hover {
+  background-color: #000;
+  transform: scale(1.1);
+}
+
+
+/*-----------------------MOBILE Media*/
+
+@media only screen and (max-width: 768px) {
+
+    .site-title {
+    position: relative;
+    top: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.latest-outer {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.main-post-box-hm {
+    transition: 0.25s ease-out;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 20px;
+    display: block;
+    position: relative;
+    box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
+}
+
+    p.site-description {
+    font-size: 14px;
+    color: #000;
+    }
+
+
+    .site-branding {
+    padding: 10px;
+    text-align: center;
+    }
+
+
+    h1.site-title a {
+        font-size: 20px;
+        color: #625011;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}
+
+/*------------Hover Effect---*/
+
+ .fade-in-text {
+    animation: fadeIn 3s;
+    -webkit-animation-duration: 3s;
+    /* animation-duration: 1s; */
+    -webkit-animation-fill-mode: both;
+}
+
+ .post img:hover , .latset-post-img img:hover{
+        -webkit-transform: scale(1.3);
+        transform: scale(0.9);
+}
+

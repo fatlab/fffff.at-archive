@@ -1,0 +1,105 @@
+/*
+
+jQuery(document).ready(function ($) {
+    
+    $(".et_pb_events article .event-content-wrapper .show-post-content").on('click', function () {
+        freezeWebsite();
+        $(this).siblings('.post-content-full').fadeIn();
+    });
+
+    
+    $(".close").on('click', function () {
+        unfreezeWebsite();
+        $(this).parents('.post-content-full').fadeOut();
+    });
+    
+});
+
+function freezeWebsite(){
+    // Hide Menu
+    $('.et-fixed-header').css('transform', 'translateY(-80px)');
+    // Prevent page in background from scrolling
+    $('#main-content').css('position','fixed');
+}
+
+function unfreezeWebsite(){
+    // Hide Menu
+    $('.et-fixed-header').css('transform', 'translateY(0)');
+    // Prevent page in background from scrolling
+    $('#main-content').css('position','inherit');
+}
+
+*/
+
+var $jq = jQuery.noConflict();
+
+function freezeWebsite() {
+    // Hide Menu
+    $jq('#main-header').toggleClass('et-fixed-header');
+    
+    // Prevent future event dates from showing on top of overlay
+    $jq('.et_pb_column').css('z-index', 'auto');
+        
+    // Prevent page in background from scrolling
+    document.documentElement.style.overflow = 'hidden';
+    document.body.scroll = "no";
+    
+}
+
+function unfreezeWebsite() {
+    // Show Menu
+    $jq('#main-header').toggleClass('et-fixed-header');
+    
+    // Restore original setting
+    $jq('.et_pb_column').css('z-index', '9');
+    
+    // Restore original setting
+    document.documentElement.style.overflow = 'scroll';
+    document.body.scroll = "yes";
+}
+
+$jq(document).ready(function () {
+      
+    $jq(".et_pb_events article .event-content-wrapper .show-post-content").on('click', function () {
+        freezeWebsite();
+        $jq(this).siblings('.post-content-full').fadeIn();
+    });
+
+    
+    $jq(".close").on('click', function () {
+        unfreezeWebsite();
+        $jq(this).parents('.post-content-full').fadeOut();
+        console.log('Close pressed');
+    });
+    
+    $jq(window).on('popstate', function() {
+        event.preventDefault();
+        console.log('Back pressed');
+    });
+    
+});
+
+//window.onhashchange = function() {
+//    event.preventDefault();
+//    console.log('Back pressed');
+//}
+
+//window.addEventListener('popstate', function(event) {
+//    // The popstate event is fired each time when the current history entry changes.
+//
+//    var r = confirm("You pressed a Back button! Are you sure?!");
+//
+//    if (r == true) {
+//        // Call Back button programmatically as per user confirmation.
+//        history.back();
+//        // Uncomment below line to redirect to the previous page instead.
+//        // window.location = document.referrer // Note: IE11 is not supporting this.
+//    } else {
+//        // Stay on the current page.
+//        history.pushState(null, null, window.location.pathname);
+//    }
+//
+//    history.pushState(null, null, window.location.pathname);
+//
+//}, false);
+//

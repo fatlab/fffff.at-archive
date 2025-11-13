@@ -1,0 +1,32 @@
+/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "^_" }] */
+(($) => {
+  $(document).ready(() => {
+    const gtag = window && window.gtag;
+
+    function handleRawClick() {
+      const $form = $(this);
+      gtag('event', 'newsletter_raw_signup_click', { location: $form.attr('id') });
+      // Remove only this event listener to prevent multiple submissions
+      $form.off('submit.rawClick');
+    }
+
+    // Listen for the frmBeforeFormRedirect event to send a GTM event
+    // https://formidableforms.com/knowledgebase/javascript-examples/javascript-after-form-submit/#kb-before-redirect
+    function setupBeforeFormRedirectListener() {
+      $(document).on('frmBeforeFormRedirect', (_event, object, _response) => {
+        // After form submission, send the GTM event
+        const formElement = object instanceof Element ? object : document.querySelector(object);
+
+        if (formElement) {
+          const formID = formElement.id;
+          gtag('event', 'newsletter_signup_click', { location: formID });
+        }
+      });
+    }
+
+    setupBeforeFormRedirectListener();
+
+    // Submit event listener for tracking raw clicks
+    $('.frm_forms form').on('submit.rawClick', handleRawClick);
+  });
+})(jQuery);

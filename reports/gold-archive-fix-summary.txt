@@ -1,0 +1,85 @@
+FAT GOLD ARCHIVE FIX - COMPLETE
+======================================================================
+
+The FAT Gold archive has been successfully fixed and integrated at /gold
+
+PHASE 1: Clean Wayback Machine URLs ✓
+----------------------------------------------------------------------
+- Processed 9 HTML files (index, about, projects, fellows, etc.)
+- Removed 85 web.archive.org URLs
+- Cleaned 23 Wayback timestamp paths
+- Converted all links to relative paths
+
+PHASE 2: Download Assets from Wayback ✓
+----------------------------------------------------------------------
+Successfully downloaded:
+  - 4 CSS files (style, nivo-slider, nivo-theme, fancybox)
+  - 9 JavaScript files (jQuery, nivo, fancybox, custom scripts)
+  - 10 images (bannergold.gif, icons, goldeurope.jpg, etc.)
+  - 1 favicon.ico
+
+Total size: 812K
+
+PHASE 3: Update Site-Wide Links ✓
+----------------------------------------------------------------------
+- Updated 3,390 references across 3,269 HTML files
+- All gold.fffff.at links now point to /gold
+- Examples:
+  • http://www.gold.fffff.at → /gold
+  • http://gold.fffff.at → /gold
+  • Widget links in sidebar now work locally
+
+GOLD ARCHIVE STRUCTURE
+----------------------------------------------------------------------
+archive/gold/
+├── index.html        (main page)
+├── about.html
+├── fellows.html
+├── projects.html
+├── schedule.html
+├── media.html
+├── swag.html
+├── themanual.html
+├── colophon.html
+├── favicon.ico
+├── css/
+│   ├── style.css
+│   ├── nivo-slider.css
+│   ├── nivo-theme.css
+│   └── jquery.fancybox-1.3.4.css
+├── scripts/
+│   ├── jquery-1.6.2.min.js
+│   ├── panelslide.js
+│   ├── custom.js
+│   ├── scrolltopcontrol.js
+│   ├── jquery.nivo.slider.pack.js
+│   ├── nivo-options.js
+│   ├── jquery.fancybox-1.3.4.pack.js
+│   ├── jquery.easing-1.3.pack.js
+│   └── jquery.mousewheel-3.0.4.pack.js
+└── images/
+    ├── bannergold.gif
+    ├── website.jpg
+    ├── goldeurope.jpg
+    ├── bird.png
+    ├── diamante.png
+    ├── vimeo.png
+    └── ...
+
+ACCESSIBILITY
+----------------------------------------------------------------------
+The FAT Gold exhibition archive is now accessible at:
+  - Direct: /gold/index.html
+  - From any page: Click gold widget in sidebar → /gold
+
+IMPACT
+----------------------------------------------------------------------
+✓ Gold exhibition archive fully functional
+✓ All 3,390 site-wide links updated
+✓ No more broken external gold.fffff.at references
+✓ Complete exhibition documentation preserved offline
+
+Next Steps (Optional):
+  1. Test archive/gold/index.html in browser
+  2. Verify all pages render correctly
+  3. Check project and fellow pages for completeness

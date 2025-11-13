@@ -1,0 +1,18 @@
+/**
+ * Transposer Frontend Styles
+ */
+.trp-loading {
+	width: 20px !important;
+	height: 20px !important;
+	margin-left: -3px;
+	margin-top: -3px;
+	border: 5px solid #fff;
+}
+
+.trp-caption {
+   display:flex;
+}
+
+#trp-language-selector {
+	display:none;
+}

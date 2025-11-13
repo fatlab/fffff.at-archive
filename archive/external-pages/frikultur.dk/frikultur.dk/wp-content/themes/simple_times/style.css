@@ -1,0 +1,806 @@
+/*   
+Theme Name: Simple Times
+Theme URI: http://journalism.nyu.edu/publishing/simple-times
+Description: Full-featured HTML5 Wordpress Theme designed with a focus on readability and useability.   The theme only uses javascript to correct poor behavior in older versions of IE, otherwise there is no javascript and pure CSS drop-menus.  Additionally supports Widgets, Menus, Header and Background Images, Custom CSS, Social Media Buttons, Custom Category Pages, Custom Category for Home Page, Author (Contributor) Index Pages, Google Analytics and Twitter Feeds.
+Author: NYU Journalism
+Author URI: http://journalism.nyu.edu/publishing/simple-times
+Version: 1.0
+Tags: journalism, white, fixed-width, two-column, one-column, custom-background, custom-sidebar, threaded-comments, sticky-post, custom-menu, twitter, twitter-widget, widget, widgets, readable, useable, facebook, social media, google analytics, html5
+.
+.
+*/
+
+/*-------------------------------------------------------
+		RESET BROWSER DEFAULTS 
+   
+		Based on work by Eric Meyer:
+		http://meyerweb.com/eric/tools/css/reset/index.html
+		v2.0 | 20110126
+		License: none (public domain)
+   
+		Modifications: removed h styles and list styles from reset
+-------------------------------------------------------*/
+
+html, body, div, span, applet, object, iframe,
+p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section { display: block; }
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: none; }
+
+table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*-----------------------------------
+		STRUCTURE 
+-----------------------------------*/
+
+body { font: 75% helvetica,arial,sans-serif; color: #666; }
+
+#container
+{
+	margin: 10px auto;
+	width: 980px;
+	background: #fff;
+}
+
+header
+{
+	width: 980px;
+	text-align: left;
+	padding: 25px 0px 5px 0px;
+/*	border: #CCC solid;
+	border-width: 1px 1px 0px 1px;*/
+	overflow: hidden;
+	background-color: #FFF;
+}
+
+#content-container
+{
+	float: left;
+	width: 980px;
+	background: #fff;
+/*	border: solid #CCC;http://theme.wordpress.com/themes/styles/minimal/
+	border-width: 0px 1px 0px 1px;*/
+	min-height: 700px;
+}
+
+#content
+{
+	clear: left;
+	float: left;
+	width: 690px;
+	padding: 10px 10px 0px 0px;
+	margin: 0 0 0 10px;
+	display: inline;
+	min-height: 600px;
+	/*	border-right: 1px dotted #CCC; */
+	overflow: hidden;
+}
+
+aside
+{
+	float: right;
+	width: 225px;
+	text-decoration: none;
+	line-height: 1.7em
+	padding: 10px 10px 0px 10px;
+	margin: 0 20px 0 0;
+	display: inline;
+	min-height: 600px;
+}
+
+footer
+{
+	width: 980px;
+	clear: left;
+	text-align: left;
+	text-decoration: none;
+	line-height: 1.7em
+	padding: 20px 0px 20px 0px;
+/*	border: 1px solid #CCC;*/
+	background-color: #FFF;
+}
+
+/*-----------------------------------
+		HEADER STYLES
+-----------------------------------*/
+
+header h1 { margin: 0; }
+
+#blog-title
+{
+	font-size: 10em;
+	font-weight: bold;
+	line-height: 0.7em;
+	background: #FFF;
+/*	text-shadow: -1px -1px #DDD;*/
+}
+
+#blog-title a
+{
+	color: #FF6600;
+	text-decoration: none;
+}
+
+#blog-title a:hover
+{
+	background-color: #FF6600;
+	color: #FFF;
+}
+
+#blog-title a:active
+{
+	background-color: #FF6600;
+	color: #FFF;
+}
+
+#blog-description
+{
+	color: #666;
+	text-align: right;
+	font-size: 1.7em;
+/*	font-style: italic;*/
+}
+
+/*-----------------------------------
+		HEADINGS
+-----------------------------------*/
+
+.content-title
+{
+	padding: 10px 0px 10px 0px;
+	font-size: 2em;
+/*	text-shadow: 1px 1px #EEE;*/
+	margin: 0;
+	font-weight: bold;
+}
+
+.content-title-list
+{
+	padding: 5px 0px 5px 0px;
+	font-size: 1.25em;
+/*	text-shadow: 0px;*/
+	margin: 0px;
+}
+
+.content-title a { text-decoration: none; }
+aside h3 { margin: 0; }
+
+/*-----------------------------------
+		POST STYLES
+-----------------------------------*/
+
+.post
+{
+	padding: 5px 10px 5px 10px;
+	margin: 0px;
+	overflow: hidden;
+}
+
+/*.index-post:hover { background: #FFFFCF; }*/
+
+.sticky
+{
+/*	background: #fafcf2;*/
+	border-bottom: 1px dashed #333;
+	border-top: 1px dashed #333;
+}
+
+.postmetadata
+{
+	font-size: .9em;
+	text-decoration: none;
+	line-height: 1.7em
+	padding: 0px 0px 10px 0px;
+}
+
+.excerpt { font: 1em helvetica,arial,sans-serif; }
+.entry { font: 1.25em helvetica,arial,sans-serif; line-height: 1.7em; }
+.entry a, .page-entry a { color: #FF6600; font-weight: bold; text-decoration: none; }
+.index-post .entry { padding: 10px 10px 0px 10px; }
+
+.post-author
+{
+	font: .9em helvetica,arial,sans-serif;
+	margin-bottom: 6px;
+}
+
+/* keep author hidden by default, theme option overrides */
+.show-author { visibility: hidden; }
+
+.navigation
+{
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 60px;
+}
+
+.gallery-thumb img { border: 10px dashed #DDD; }
+.image-attachment { text-align: center; }
+
+.alignright .attachment-thumbnail, .alignleft .attachment-thumbnail
+{
+	width: 50px;
+	height: 50px;
+}
+
+/*-----------------------------------
+		PAGE STYLES
+-----------------------------------*/
+
+.page
+{
+	padding: 0px 10px 10px 10px;
+	margin: 0px;
+}
+
+.page-entry
+{
+	font: 1.25em helvetica,arial,sans-serif;
+	padding: 10px;
+}
+
+/*-----------------------------------
+	CONTRIBUTOR PAGE STYLES
+-----------------------------------*/
+
+.contrib_bio
+{
+	padding: 5px;
+	margin-bottom: 10px;
+	line-height: 1.5em;
+}
+
+.contrib_bio h1
+{
+	font-size: 2.5em;
+	padding: 10px 0px 15px 0px;
+}
+
+.contrib_bio-index:hover { background: #FFC; }
+
+.contrib_bio h3
+{
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 0px 0px 10px 0px;
+	margin: 0px;
+}
+
+.contrib_bio img
+{
+	border: 1px solid #000;
+	margin: 0px 10px 0px 0px;
+	float: left;
+	width: 75;
+	height: 75;
+}
+
+/*-----------------------------------
+		WIDGET SYTLES 
+-----------------------------------*/
+
+#sidebar
+{
+	list-style: none;
+	margin: 0px;
+}
+
+#sidebar ul li ul { list-style: square; }
+
+.widget
+{
+	margin: 10px;
+	padding: 5px;
+	background: #FFF;
+	border-bottom: 2px solid #666;
+/*	border: 1px solid #CCC;*/
+}
+
+.widget .textwidget
+{
+	padding-bottom: .8em;
+	line-height: 18px;
+	font-family: helvetica, sans-serif;
+}
+
+.widgettitle
+{
+	padding: 0px 0px 8px 0px;
+	font-weight: bold;
+/*	text-transform: uppercase;*/
+	margin: 0px;
+	font-size: 1.7em;
+	text-decoration: none;
+/*	text-shadow: -1px -1px #DDD;*/
+}
+
+.widget li
+{
+	padding: 0;
+}
+
+.widget li a
+{
+	padding: 0.6em 3px;
+	border-top: 1px solid #ccc;
+	display: block;
+	margin: 0px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.widget li a:hover
+{
+	background-color: #ff6600;
+	color: #fff;
+}
+
+/*-----------------------------------
+		COMMENT STYLES 
+-----------------------------------*/
+
+#comments-title
+{
+	font-size: 1.5em;
+	padding: 10px 0px 10px 0px;
+	border-bottom: 1px dotted #555;
+	text-shadow: 1px 1px #DDD;
+	margin: 0px;
+	font-weight: bold;
+}
+
+.commentlist { margin: 0px; }
+
+.comment, .pingback, .trackback
+{
+	padding: 15px 0px 15px 10px;
+	min-height: 100px;
+	border-bottom: 1px dotted #555;
+}
+
+/*
+.bypostauthor{
+	background-color: #F00;
+}
+*/
+
+.comment p { font: 1.2em helvetica,arial,sans-serif; }
+.comment:hover, .pingback:hover, .trackback:hover { background: #FFFFEE; }
+
+.comment-meta
+{
+	font-size: .9em;
+	padding: 0px 0px 10px 0px;
+}
+
+.comment-author
+{
+	font-size: 1em;
+	text-transform: uppercase;
+	padding: 0px 0px 5px 0px;
+}
+
+.comment-author img
+{
+	float: left;
+	border: 1px solid #000;
+	margin: 0px 10px 0px 0px;
+}
+
+#respond
+{
+	margin: 5px 0px 5px 0px;
+	padding: 0px 0px 0px 12px;
+}
+
+#commentform { margin: 5px 0px 0px 0px; }
+#commentform label { display: block; }
+
+#reply-title
+{
+	font-size: 1.45em;
+	margin: 10px 0px 0px 0px;
+}
+
+.logged-in-as
+{
+	font-size: .8em;
+	font-style: italic;
+}
+
+.form-allowed-tags
+{
+	width: 400px;
+	line-height: 1.25em;
+}
+
+.form-allowed-tags code
+{
+	background-color: #EEE;
+	color: #00F;
+	text-shadow: 1px 0px 0px #CCC;
+	display: block;
+}
+
+.reply { padding: 5px 0px 0px 0px; }
+
+.comment-reply-link
+{
+	padding: 5px;
+	border: 1px solid #CCC;
+	font: .9em helvetica,arial,sans-serif;
+	background-color: #EEE;
+}
+
+.commentlist { list-style-type: none; }
+
+.commentlist .children li
+{
+	padding-left: 5px;
+	list-style-type: none;
+	border-left: 1px dotted #555;
+}
+
+.says { display: none; }
+
+.fn
+{
+	font-style: normal;
+	font-weight: bold;
+	text-shadow: -1px -1px #EEE;
+}
+
+/*-----------------------------------
+		FORM STYLES
+-----------------------------------*/
+
+input:focus, textarea:focus { background: #FFC; }
+
+/*-----------------------------------
+		MAIN MENU 
+-----------------------------------*/
+
+nav
+{
+	width: 990px;
+	text-transform: uppercase;
+	border: #666 solid 1px;
+	background-color: #666;
+	list-style: none;
+	float: left;
+}
+
+nav ul
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li
+{
+	border-right: 1px solid #666;
+	float: left;
+	position: relative;
+}
+
+nav ul a
+{
+	display: block;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+	background-color: #666;
+	color: #FFF;
+	font-size: .92em;
+}
+
+nav ul a:hover { font-weight: bold; background-color: #FF6600; color: #FFF; }
+nav ul li ul a { display: block; }
+
+/* sub menus  */
+nav ul ul
+{
+	margin: 0px 0px 0px -1px;
+	padding: 0;
+	width: 150px;
+	position: absolute;
+	z-index: 500;
+	background-color: #666;
+	border: 1px solid #666;
+}
+
+nav ul ul li
+{
+	border: none;
+	background: #666;
+}
+
+nav ul ul ul
+{
+	left: 100%;
+	top: 0px;
+	margin: 0px;
+}
+
+nav ul ul ul
+{
+	top: 0;
+	left: 100%;
+	margin: -1px 0px 0px 0px;
+}
+
+nav ul ul li { float: none; }
+
+/* hide all the submenus */
+nav ul ul,
+nav ul li:hover ul ul,
+nav ul ul li:hover ul ul { display: none; }
+
+/* display the submenus only when li are hovered */
+nav ul li:hover ul,
+nav ul ul li:hover ul ,
+nav ul ul li ul li:hover ul { display: block; }
+
+
+/*-----------------------------------
+		GLOBAL ELEMENTS
+-----------------------------------*/
+
+a
+{
+	color: #FF6600;
+	background-color: #FFF;
+/*	text-decoration: underline;*/
+}
+
+a:hover
+{
+	color: #FFF;
+	background-color: #FF6600;
+	text-decoration: none;
+}
+
+p { margin-bottom: 1em; }
+
+blockquote
+{
+	margin-left: 30px;
+	padding: 6px;
+	font-style: italic;
+}
+
+blockquote cite { font-style: normal; }
+
+/* image floats */
+.aligncenter
+{
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alignright
+{
+	display: inline;
+	float: right;
+	margin-left: 24px;
+	margin-top: 4px;
+}
+
+.alignleft
+{
+	display: inline;
+	float: left;
+	margin-right: 24px;
+	margin-top: 4px;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0 0 20px; }
+dt { font-weight: bold; }
+dd { margin: 0px 0px 0px 5px; }
+
+.wp-caption
+{
+	background: #EEE;
+	margin-bottom: 10px;
+	padding: 4px;
+	text-align: center;
+}
+
+.wp-caption-text, .caption, .gallery-caption
+{
+	font: .75em helvetica,arial,sans-serif;
+	color: #333;
+	padding: 5px 0px 0px 0px;
+}
+
+ins { background-color: #FFC; }
+em { font-style: italic; }
+s { text-decoration: line-through; }
+
+code, tt, kbd, pre
+{
+	font-family: monospace;
+	background-color: #333;
+	color: #0F0;
+	padding: 1px;
+}
+
+pre
+{
+	padding: 10px;
+	border: 1px solid #000;
+	margin: 5px 0px 5px 0px;
+}
+
+address
+{
+	font-style: italic;
+	padding: 10px;
+}
+
+q:before { content: '“'; }
+q:after { content: '”'; }
+.clear { clear: both; }
+
+.widget_recent_entries ul
+{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+hr
+{
+	background-color: #e7e7e7;
+	border: 0;
+	clear: both;
+	height: 1px;
+	margin-bottom: 18px;
+}
+
+ul
+{
+	list-style: square;
+	margin: 0 0 18px 1.5em;
+}
+
+ol
+{
+	list-style: decimal;
+	margin: 0 0 18px 1.5em;
+}
+
+ol ol { list-style: upper-alpha; }
+ol ol ol { list-style: lower-roman; }
+ol ol ol ol { list-style: lower-alpha; }
+ul ul,
+ol ol,
+ul ol,
+ol ul { margin-bottom: 0; }
+dl { margin: 0 0 24px 0; }
+dt { font-weight: bold; }
+dd { margin-bottom: 18px; }
+strong { font-weight: bold; }
+cite,
+em,
+i { font-style: italic; }
+big { font-size: 131.25%; }
+
+ins
+{
+	background: #ffc;
+	text-decoration: none;
+}
+
+blockquote
+{
+	font-style: italic;
+	padding: 0 3em;
+}
+
+blockquote cite,
+blockquote em,
+blockquote i { font-style: normal; }
+
+abbr,
+acronym
+{
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+
+sup,
+sub
+{
+	height: 0;
+	line-height: 1;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup { bottom: 1ex; }
+sub { top: .5ex; }
+
+#content table
+{
+	border: 1px solid #e7e7e7;
+	margin: 0 -1px 24px 0;
+	text-align: left;
+	width: 100%;
+}
+
+#content tr th,
+#content thead th
+{
+	color: #888;
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 18px;
+	padding: 9px 24px;
+}
+
+#content tr td
+{
+	border-top: 1px solid #e7e7e7;
+	padding: 6px 24px;
+}
+
+#content tr.odd td { background: #f2f7fc; }
+
+
+/*-----------------------------------
+		RANDOM STUFF
+-----------------------------------*/
+
+/* old browser warning */
+#oldbrowser
+{
+	background-color: #FEE;
+	color: #000;
+	border: 2px solid #000;
+	padding: 20px;
+	margin: 20px;
+}
+
+/* remove the ugly twitter branding (sorry guys!) */
+.twtr-hd, .twtr-ft { display: none; }

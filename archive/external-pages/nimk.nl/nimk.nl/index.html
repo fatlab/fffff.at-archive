@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="google-site-verification" content="HI10tdB2Zv5XQCrUxDP150IgTCXhlqLrx5msiQt4tIo" />
+<meta name="google-site-verification" content="pOGI7u7rUGzAUX1e5dITy-cmDepmvS9BUMAySQJjgBo" />
+<title>
+
+NIMk</title>
+
+<link rel="stylesheet" href="site/style/style.css" media="screen,projection" type="text/css" />
+
+
+
+<link rel="stylesheet" href="http://nimk.nl/_lib/autocompleter/Autocompleter.css" media="screen,projection" type="text/css" />
+<script type="text/javascript" src="http://nimk.nl/_lib/mootools/mootools-core-1.4.0-full-compat.js" ></script>
+<script type="text/javascript" src="http://nimk.nl/_lib/mootools/more.js" ></script>
+<script type="text/javascript" src="http://nimk.nl/_lib/autocompleter/Autocompleter.js" ></script>
+<script type="text/javascript" src="http://nimk.nl/_lib/autocompleter/Autocompleter.Request.js" ></script>
+<script type="text/javascript" src="http://nimk.nl/_lib/autocompleter/Observer.js" ></script>
+<script type="text/javascript" src="http://nimk.nl/_lib/nieuwsbrief/nieuwsbrief.js"></script>
+<script type="text/javascript" src="http://nimk.nl/_lib/player/swfobject.js"></script>
+<script type="text/javascript" src="site/lb/lb.js" ></script>
+
+<script type="text/javascript" src="site/js/anchor.js" ></script>
+<script type="text/javascript" src="site/js/panel.js" ></script>
+<script type="text/javascript" src="site/js/button.js" ></script>
+<script type="text/javascript" src="site/js/buttons.js" ></script>
+<script type="text/javascript" src="site/js/agendaWidget.js" ></script>
+<script type="text/javascript" src="site/js/controller.js" ></script>
+<script type="text/javascript">
+
+var PATH = {};
+var VO = {};
+var CONTROLLER;
+var LB;
+var QSEARCH;
+var archive = false;
+
+PATH.root = '/';
+PATH.site = 'site/';
+PATH.lib = '_lib/';
+
+VO.l = 'NL';
+VO.page = 'home';
+VO.itemID = '';
+VO.mkmPlaylistID = '';
+VO.mkmOffset = '';
+
+
+window.addEvent('domready', function() 
+{ 
+	CONTROLLER = new Controller();
+	if(archive)
+	{
+		CONTROLLER.doAction('setArchiveCookieValues');	
+	}
+	
+	//window.scrollTo(0,31); 
+});
+
+
+
+
+</script>
+<!--[if IE]>
+
+   <style type="text/css">
+
+   .clusterHeader, .clusterItemCalendarOverlay, .clusterDarkBlue {
+       background:transparent;
+       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc5b8dc7,endColorstr=#cc5b8dc7);
+       zoom: 1;
+    } 
+	
+	.clusterItemHeader {
+       background:transparent;
+       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#aaffffff,endColorstr=#aaffffff);
+       zoom: 1;
+    } 
+
+	#stamp{
+		height:24px;
+		
+	}
+    </style>
+
+<![endif]-->
+
+</head>
+<body>
+<div style="background:white">
+<iframe id="stamp" src="stamp/stamp.php@s=nimk&amp;w=960&amp;a=center&amp;l=NL.html" height="40" width="100%" frameborder="0" style="border:none;background:white;padding-bottom:20px;"></iframe>
+
+<div id="lb"></div>
+
+<div style="min-height:1000px;width:974;background:white">
+<table width="944" border="0" cellspacing="0" cellpadding="0" align="center" class="center" style=";">
+  <tr>
+    <td width="694" valign="top">
+	<div id="nav" style="padding:0 0 20px 0;"><!-- padding: 0 0 0 15px;-->
+        
+
+<div><div style="margin:0 0 10px;">
+<span class="h1"><a href="http://nimk.nl/nl/"><img src="site/img/nimk.jpg" style="vertical-align:middle; margin-right:40px; padding:0 0 3px;"/></a></span><h2 style="display:inline; margin-right:40px;"><a href="http://nimk.nl/nl/archief/" class="navTopRow">archief</a></h2> </div>
+<div style="padding-bottom:10px;">
+<div style="display:block; float:left; width:192px;"><a href="http://nimk.nl/nl/tentoonstellingen/" class="h3" style="line-height:17px">Tentoonstellingen</a></div>
+<div style="display:block; float:left; width:192px;"><a href="http://nimk.nl/nl/collectie/" class="h3" style="line-height:17px">collectie</a></div>
+<div style="display:block; float:left; width:192px;"><a href="http://nimk.nl/nl/distributie/" class="h3" style="line-height:17px">Distributie</a></div>
+<div class="clear"></div>
+<div style="display:block; float:left; width:192px;"><a href="http://nimk.nl/nl/artist-in-residence/" class="h3" style="line-height:17px">Artist in Residence</a></div>
+<div style="display:block; float:left; width:192px;"><a href="http://nimk.nl/nl/onderzoek/" class="h3" style="line-height:17px">onderzoek</a></div>
+<div style="display:block; float:left; width:192px;"><a href="http://nimk.nl/nl/conservering/" class="h3" style="line-height:17px">conservering</a></div>
+<div class="clear"></div>
+<div style="display:block; float:left; width:192px;"><a href="http://nimk.nl/nl/educatie/" class="h3" style="line-height:17px">Educatie</a></div>
+<div style="display:block; float:left; width:192px;"><a href="http://nimk.nl/nl/faciliteiten/" class="h3" style="line-height:17px">faciliteiten</a></div>
+<div style="display:block; float:left; width:192px;"><a href="http://nimk.nl/nl/organisatie/" class="h3" style="line-height:17px">organisatie</a></div>
+<div class="clear"></div>
+</div>
+</div>
+      </div>
+     <!-- <div id="{colorClass:'whitePanel'}" style="padding:10px 8px 20px 12px;" class="panel"> -->
+        <table id="content" width="694" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td valign="top"><div id="pageHeader" class="group line"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td width="71%" valign="top" align="left" ></td><td width="25%" valign="top" align="right"></td></tr></table></div><div class="group"><a href="http://nimk.nl/nl/nimk-niet-meer-open-voor-publiek" class="noLink"><div class="group line"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="background:url('http://nimk.nl/_covers/694x300/item/cover/2545.jpg') no-repeat 0px -10px"><tr><td valign="top" width="452"><p><a href="http://nimk.nl/nl/nimk-niet-meer-open-voor-publiek"><div style="width:452px;height:290px;"></div></a></p></td><td valign="top" width="32">&nbsp;</td><td valign="top" width="210" ><div style="padding:10px;"><p><a href="http://nimk.nl/nl/nimk-niet-meer-open-voor-publiek" class="h1" style="color:black;">NIMK niet meer open voor publiek</a></p><p>                                         <a href="http://nimk.nl/nl/nimk-niet-meer-open-voor-publiek">lees meer</a></p></div></td></tr></table></div></a><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td valign="top" width="210"></td><td valign="top" width="32">&nbsp;</td><td valign="top" width="210"></td><td valign="top" width="32">&nbsp;</td><td valign="top" width="210"></td></tr></table></div>
+
+            </td>
+          </tr>
+          
+        </table>
+      <!--</div>--></td>
+    <td width="40"  valign="top"></td>
+    <td width="210" valign="top"><div id="related" >
+        <div class="group line"><div style="margin:7px 0 9px;">
+<h3><span class="h3" style="color:#999;">NL / <a href="http://nimk.nl/eng/">ENG</a></span></h3></div><div style="min-height:96px">
+<h3><a href="http://nimk.nl/nl/sitemap" class="h3">sitemap</a></h3><h3><a href="http://nimk.nl/nl/publicaties/" class="h3">Publicaties</a></h3><h3><a href="http://nimk.nl/nl/contact-informatie/" class="h3">Contact informatie</a></h3></div></div><div class="group line"><p class="h3">zoeken</p><form id="autocompleterForm" action="http://nimk.nl/nl/zoeken" method="get" style="padding-bottom:8px;"><input type="text" name="autocompleter" id="autocompleter"/><a href="javascript:void(0)" onclick="javascript:$('autocompleterForm').submit();" style="padding-left:10px;" class="h3">zoek</a></form></div><div class="group "><p class="h3">links</p><a href="http://www.flickr.com/photos/nimk/" target="_blank" style="padding-right:7px;"><img src="site/img/flickr.gif" style="vertical-align:middle; width:32px; height:32px;" alt="Flickr" /></a> <a href="http://www.youtube.com/user/NIMkartchannel" target="_blank" style="padding-right:7px;"><img src="site/img/youtube.gif" style="vertical-align:middle; width:32px; height:32px;" alt="YouTube" /></a> <a href="http://nimk.nl/nl/nieuwsbrief/"  style="padding-right:7px;"><img src="site/img/newsletter.png" style="vertical-align:middle; width:32px; height:32px;" alt="nieuwsbrief" /></a> </div>      </div></td>
+  </tr>
+</table>
+</div>
+</div>
+<script type="text/javascript">
+	// =w= 2018-10-12 script replaced by hard code bedause of:
+	// A parser-blocking, cross site (i.e. different eTLD+1) script, http://www.google-analytics.com/ga.js, is invoked via document.write.
+	// var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	// document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!--script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script-->
+<script src='../../../www.google-analytics.com/ga.js' type='text/javascript'></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12704931-1");
+pageTracker._setDomainName(".nimk.nl");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

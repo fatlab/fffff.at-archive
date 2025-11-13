@@ -1,0 +1,4 @@
+document.addEventListener("DOMContentLoaded",(event)=>{let openMenu=document.querySelector(".burger_btn");let closeMenu=document.querySelector(".burger-menu .left-part");let burgerMenu=document.querySelector(".burger-menu");let li_nav=document.querySelectorAll(".burger-menu li.menu-item a");let body_wrap=document.querySelector("body");function openBurger(){if(openMenu){openMenu.addEventListener("click",()=>{burgerMenu.classList.toggle("active");openMenu.classList.toggle("active");body_wrap.classList.toggle("lock")})}
+if(closeMenu){closeMenu.addEventListener("click",()=>{burgerMenu.classList.remove("active");openMenu.classList.remove("active");body_wrap.classList.remove("lock")})}
+if(closeMenu){li_nav.forEach((li)=>{li.addEventListener("click",()=>{burgerMenu.classList.remove("active");openMenu.classList.remove("active");body_wrap.classList.remove("lock")})})}}
+if(openMenu){openBurger()}})

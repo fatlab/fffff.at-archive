@@ -1,0 +1,1877 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icons/icomoon.eot');
+  src: url('../fonts/icons/icomoon.eot') format('embedded-opentype'), url('../fonts/icons/icomoon.woff') format('woff'), url('../fonts/icons/icomoon.ttf') format('truetype'), url('../fonts/icons/icomoon.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+  font-family: 'icomoon';
+  content: attr(data-icon);
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-twitter,
+.icon-facebook,
+.icon-mail {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+.icon-twitter:before {
+  content: "\61";
+}
+.icon-facebook:before {
+  content: "\62";
+}
+.icon-mail:before {
+  content: "\63";
+}
+@font-face {
+  font-family: 'COLFAX';
+  src: url('../fonts/ColfaxWebMedium_EOT/ColfaxWebMedium.eot');
+  src: url('../fonts/ColfaxWebMedium_EOT/ColfaxWebMedium.eot') format('embedded-opentype'), url('../fonts/ColfaxWebMedium_WOFF/ColfaxWebMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+dfn,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+tt,
+var,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: 'COLFAX';
+}
+html,
+body {
+  height: 100%;
+}
+html.black,
+body.black {
+  background-color: black;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'COLFAX';
+  line-height: 20px;
+  color: black;
+  text-rendering: optimizelegibility;
+  text-transform: uppercase;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  font-family: 'COLFAX';
+  color: #5000ff;
+}
+h1 a:visited,
+h2 a:visited,
+h3 a:visited,
+h4 a:visited,
+h5 a:visited,
+h6 a:visited {
+  color: #5000ff;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+  color: black;
+}
+p {
+  color: black;
+}
+h1 {
+  font-size: 50px;
+  line-height: 52px;
+}
+h2 {
+  font-size: 36px;
+  line-height: 38px;
+  letter-spacing: .03em;
+}
+h3 {
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: .06em;
+}
+h4 {
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+}
+ul,
+li {
+  list-style: none;
+}
+a,
+u {
+  text-decoration: none;
+}
+.black-link a {
+  color: black;
+}
+.black-link a:visited {
+  color: black;
+}
+i {
+  font-style: normal;
+  font-family: "icomoon";
+}
+p {
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+}
+p a {
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.basic-colfax {
+  font-family: "COLFAX";
+  font-size: 13px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+input:focus {
+  outline: none !important;
+}
+a:hover {
+  background-color: transparent;
+  color: black;
+}
+/* MISC */
+.remove-bottom {
+  margin-bottom: 0 !important;
+}
+.half-bottom {
+  margin-bottom: 10px !important;
+}
+.add-bottom {
+  margin-bottom: 20px !important;
+}
+.no-display {
+  display: none;
+}
+.half-display {
+  opacity: 0.2;
+}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.invisible {
+  visibility: hidden;
+}
+.space {
+  height: 150px;
+  width: 100%;
+}
+.top-margin {
+  margin-top: 120px;
+}
+table {
+  border-collapse: collapse;
+}
+table tr {
+  border-bottom: 20px solid white;
+}
+/*
+* Skeleton V1.2
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 6/20/2012
+*/
+/* Table of Contents
+==================================================
+    #Base 960 Grid
+    #Tablet (Portrait)
+    #Mobile (Portrait)
+    #Mobile (Landscape)
+    #Clearing */
+/* #Base 960 Grid
+================================================== */
+.container {
+  position: relative;
+  width: 1020px;
+  margin: 0 auto;
+  padding: 0;
+}
+.container .column,
+.container .columns {
+  float: left;
+  display: inline;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.row {
+  margin-bottom: 20px;
+}
+/* Nested Column Classes */
+.column.alpha,
+.columns.alpha {
+  margin-left: 0;
+}
+.column.omega,
+.columns.omega {
+  margin-right: 0;
+}
+/* Base Grid */
+/*    .container .one.column,
+    .container .one.columns                     { width: 40px;  }
+    .container .two.columns                     { width: 100px; }
+    .container .three.columns                   { width: 160px; }
+    .container .four.columns                    { width: 220px; }
+    .container .five.columns                    { width: 280px; }
+    .container .six.columns                     { width: 340px; }
+    .container .seven.columns                   { width: 400px; }
+    .container .eight.columns                   { width: 460px; }
+    .container .nine.columns                    { width: 520px; }
+    .container .ten.columns                     { width: 580px; }
+    .container .eleven.columns                  { width: 640px; }
+    .container .twelve.columns                  { width: 700px; }
+    .container .thirteen.columns                { width: 760px; }
+    .container .fourteen.columns                { width: 820px; }
+    .container .fifteen.columns                 { width: 880px; }*/
+.container .sixteen.columns {
+  width: 980px;
+}
+.container .one-third.column {
+  width: 300px;
+}
+.container .two-thirds.column {
+  width: 640px;
+}
+/* Offsets */
+.container .offset-by-one {
+  padding-left: 60px;
+}
+.container .offset-by-two {
+  padding-left: 120px;
+}
+.container .offset-by-three {
+  padding-left: 180px;
+}
+.container .offset-by-four {
+  padding-left: 240px;
+}
+.container .offset-by-five {
+  padding-left: 300px;
+}
+.container .offset-by-six {
+  padding-left: 360px;
+}
+.container .offset-by-seven {
+  padding-left: 420px;
+}
+.container .offset-by-eight {
+  padding-left: 480px;
+}
+.container .offset-by-nine {
+  padding-left: 540px;
+}
+.container .offset-by-ten {
+  padding-left: 600px;
+}
+.container .offset-by-eleven {
+  padding-left: 660px;
+}
+.container .offset-by-twelve {
+  padding-left: 720px;
+}
+.container .offset-by-thirteen {
+  padding-left: 780px;
+}
+.container .offset-by-fourteen {
+  padding-left: 840px;
+}
+.container .offset-by-fifteen {
+  padding-left: 900px;
+}
+/* #Tablet (Portrait)
+================================================== */
+/* Note: Design for a width of 768px */
+@media only screen and (min-width: 768px) and (max-width: 1019px) {
+  .container {
+    width: 768px;
+  }
+  .container .column,
+  .container .columns {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .column.alpha,
+  .columns.alpha {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+  .column.omega,
+  .columns.omega {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+  .alpha.omega {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .container .one.column,
+  .container .one.columns {
+    width: 28px;
+  }
+  .container .two.columns {
+    width: 76px;
+  }
+  .container .three.columns {
+    width: 124px;
+  }
+  .container .four.columns {
+    width: 172px;
+  }
+  .container .five.columns {
+    width: 220px;
+  }
+  .container .six.columns {
+    width: 268px;
+  }
+  .container .seven.columns {
+    width: 316px;
+  }
+  .container .eight.columns {
+    width: 364px;
+  }
+  .container .nine.columns {
+    width: 412px;
+  }
+  .container .ten.columns {
+    width: 460px;
+  }
+  .container .eleven.columns {
+    width: 508px;
+  }
+  .container .twelve.columns {
+    width: 556px;
+  }
+  .container .thirteen.columns {
+    width: 604px;
+  }
+  .container .fourteen.columns {
+    width: 652px;
+  }
+  .container .fifteen.columns {
+    width: 700px;
+  }
+  .container .sixteen.columns {
+    width: 748px;
+  }
+  .container .one-third.column {
+    width: 236px;
+  }
+  .container .two-thirds.column {
+    width: 492px;
+  }
+  /* Offsets */
+  .container .offset-by-one {
+    padding-left: 48px;
+  }
+  .container .offset-by-two {
+    padding-left: 96px;
+  }
+  .container .offset-by-three {
+    padding-left: 144px;
+  }
+  .container .offset-by-four {
+    padding-left: 192px;
+  }
+  .container .offset-by-five {
+    padding-left: 240px;
+  }
+  .container .offset-by-six {
+    padding-left: 288px;
+  }
+  .container .offset-by-seven {
+    padding-left: 336px;
+  }
+  .container .offset-by-eight {
+    padding-left: 384px;
+  }
+  .container .offset-by-nine {
+    padding-left: 432px;
+  }
+  .container .offset-by-ten {
+    padding-left: 480px;
+  }
+  .container .offset-by-eleven {
+    padding-left: 528px;
+  }
+  .container .offset-by-twelve {
+    padding-left: 576px;
+  }
+  .container .offset-by-thirteen {
+    padding-left: 624px;
+  }
+  .container .offset-by-fourteen {
+    padding-left: 672px;
+  }
+  .container .offset-by-fifteen {
+    padding-left: 720px;
+  }
+}
+/*  #Mobile (Portrait)
+================================================== */
+/* Note: Design for a width of 320px */
+@media only screen and (max-width: 767px) {
+  .container {
+    width: 300px;
+  }
+  .container .columns,
+  .container .column {
+    margin: 0;
+  }
+  .container .one.column,
+  .container .one.columns,
+  .container .two.columns,
+  .container .three.columns,
+  .container .four.columns,
+  .container .five.columns,
+  .container .six.columns,
+  .container .seven.columns,
+  .container .eight.columns,
+  .container .nine.columns,
+  .container .ten.columns,
+  .container .eleven.columns,
+  .container .twelve.columns,
+  .container .thirteen.columns,
+  .container .fourteen.columns,
+  .container .fifteen.columns,
+  .container .sixteen.columns,
+  .container .one-third.column,
+  .container .two-thirds.column {
+    width: 300px;
+  }
+  /* Offsets */
+  .container .offset-by-one,
+  .container .offset-by-two,
+  .container .offset-by-three,
+  .container .offset-by-four,
+  .container .offset-by-five,
+  .container .offset-by-six,
+  .container .offset-by-seven,
+  .container .offset-by-eight,
+  .container .offset-by-nine,
+  .container .offset-by-ten,
+  .container .offset-by-eleven,
+  .container .offset-by-twelve,
+  .container .offset-by-thirteen,
+  .container .offset-by-fourteen,
+  .container .offset-by-fifteen {
+    padding-left: 0;
+  }
+}
+/* #Mobile (Landscape)
+================================================== */
+/* Note: Design for a width of 480px */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .container {
+    width: 420px;
+  }
+  .container .columns,
+  .container .column {
+    margin: 0;
+  }
+  .container .one.column,
+  .container .one.columns,
+  .container .two.columns,
+  .container .three.columns,
+  .container .four.columns,
+  .container .five.columns,
+  .container .six.columns,
+  .container .seven.columns,
+  .container .eight.columns,
+  .container .nine.columns,
+  .container .ten.columns,
+  .container .eleven.columns,
+  .container .twelve.columns,
+  .container .thirteen.columns,
+  .container .fourteen.columns,
+  .container .fifteen.columns,
+  .container .sixteen.columns,
+  .container .one-third.column,
+  .container .two-thirds.column {
+    width: 420px;
+  }
+}
+/* #Clearing
+================================================== */
+/* Self Clearing Goodness */
+.container:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* Use clearfix class on parent to clear nested columns,
+    or wrap each row of columns in a <div class="row"> */
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.row:after,
+.clearfix:after {
+  clear: both;
+}
+.row,
+.clearfix {
+  zoom: 1;
+}
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.vjs-big-play-button {
+  visibility: hidden;
+}
+a {
+  color: #5000ff;
+  font-family: 'COLFAX';
+}
+body.black {
+  background-color: black;
+}
+.nav {
+  height: 98px;
+  width: 100%;
+  top: 0px;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  z-index: 5;
+  text-transform: uppercase;
+}
+.nav.not-top {
+  background-color: black;
+}
+.nav#nav-main {
+  height: 98px;
+  position: absolute;
+}
+.nav#nav-main .nav-left img {
+  width: 68px;
+  height: 65px;
+}
+.nav#nav-main.black-on-white ul li a {
+  color: black;
+}
+.nav .back-to-top {
+  cursor: pointer;
+}
+.nav .back-to-top img {
+  height: 10px;
+  margin-top: 4px;
+}
+.nav .nav-left {
+  margin: 25px;
+  color: white;
+  font-size: 12px;
+  float: left;
+}
+.nav .nav-left img {
+  margin-right: 25px;
+  position: relative;
+  top: -2px;
+}
+.nav .nav-left a {
+  background-color: transparent;
+}
+.nav .nav-right {
+  margin: 18px 25px 0px 0px;
+  float: right;
+}
+.nav .nav-right.dark ul li a {
+  color: black;
+}
+.nav .nav-right.dark ul li:hover {
+  border-bottom: 1px solid black;
+}
+.nav .nav-right ul.about .about {
+  border-bottom: 1px solid white;
+}
+.nav .nav-right ul.events .events {
+  border-bottom: 1px solid white;
+}
+.nav .nav-right ul.contact .contact {
+  border-bottom: 1px solid white;
+}
+.nav .nav-right ul li {
+  display: inline-block;
+  margin-left: 16px;
+}
+.nav .nav-right ul li a {
+  color: white;
+}
+.nav .nav-right ul li:hover {
+  border-bottom: 1px solid white;
+}
+.nav#nav-drop {
+  height: 40px;
+  background-color: black;
+  position: fixed;
+}
+.nav#nav-drop .nav-right {
+  margin: 10px 25px 0px 0px;
+}
+.nav#nav-drop .nav-left {
+  margin: 12px 0px 0px 25px;
+  width: 125px;
+}
+#hero {
+  font-size: 60px;
+}
+.section#location-section iframe {
+  height: 400px;
+}
+.section .social-section {
+  float: left;
+}
+.section .social-section li {
+  float: left;
+  font-size: 20px;
+  margin-left: 20px;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.section .social-section li a {
+  color: white;
+}
+.section .social-section li a:hover {
+  color: #5000ff;
+}
+.section .social-section li a svg {
+  height: 20px;
+  width: 20px;
+}
+.section#footer {
+  color: white;
+  font-family: 'COLFAX';
+  margin-top: 200px;
+}
+.section#footer #footer-top {
+  height: 55px;
+  border-top: 1px solid gray;
+  background-color: black;
+  height: 90px;
+}
+.section#footer #footer-top .pull-left {
+  margin-top: 35px;
+}
+.section#footer #footer-top #newsletter-signup {
+  float: left;
+  font-family: 'COLFAX';
+  margin-left: 25px;
+  font-size: 13px;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.section#footer #footer-top #newsletter-signup:hover {
+  color: #5000ff;
+}
+.section#footer #footer-top #newsletter-signup #signup {
+  margin-top: 2px;
+  cursor: pointer;
+  color: white;
+}
+.section#footer #footer-top #newsletter-signup #signup:hover {
+  color: #5000ff;
+}
+.section#footer #footer-top #newsletter-signup #signup-input {
+  display: none;
+  position: relative;
+  top: -7px;
+}
+.section#footer #footer-top #newsletter-signup #signup-input input {
+  border: 1px solid white;
+  background-color: black;
+  height: 28px;
+  width: 200px;
+  color: white;
+}
+.section#footer #footer-top #newsletter-signup #signup-input button {
+  height: 32px;
+  border: 1px solid white;
+  background-color: white;
+  margin-left: -5px;
+  font-family: 'COLFAX';
+  font-size: 13px;
+  padding: 0px 20px;
+  cursor: pointer;
+}
+.section#footer #footer-top #main-sponsors {
+  margin-top: 35px;
+}
+.section#footer #footer-top #main-sponsors a,
+.section#footer #footer-top #main-sponsors h4 {
+  float: right;
+  font-size: 13px;
+}
+.section#footer #footer-top #main-sponsors h4 {
+  color: white;
+  margin-right: 25px;
+}
+.section#footer #footer-top #main-sponsors a {
+  margin-top: -10px;
+}
+.section#footer #footer-top #main-sponsors img {
+  width: 175px;
+}
+.section#footer #footer-bottom {
+  height: 30px;
+  background-color: #5000ff;
+  text-align: left;
+  padding-top: 9px;
+  padding-bottom: 9px;
+
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.section#footer #footer-bottom #organized-by {
+  font-size: 11px;
+  color: white;
+  letter-spacing: .06em;
+}
+.section#footer #footer-bottom #organized-by a {
+  display: inline-block;
+}
+.section#footer #footer-bottom #organized-by a:hover {
+  color: black;
+}
+.section#footer #footer-bottom a {
+  color: white;
+}
+.section#about-page .controls-wrapper .title {
+  display: none;
+}
+.section#about-page .container.about-what-section {
+  margin: 75px auto;
+}
+.section#about-page .container.about-what-section .one-third img {
+  width: 100%;
+}
+.section#about-page .container.about-what-section .two-thirds .section-header {
+  margin-top: -3px;
+}
+.section#about-page .container.about-partner-venue {
+  margin-top: 150px;
+}
+.section#about-page .container.about-partner-venue .partner-container {
+  height: 427px;
+}
+.section#about-page .container.about-partner-venue .partner-container .section-header {
+  margin-top: -3px;
+}
+.section#about-page .container.about-partner-venue .partner-container p {
+  margin-bottom: 20px;
+}
+.section#about-page .container.about-partner-venue .partner-container ul li a {
+  color: black;
+}
+.section#about-page .container.about-partner-venue .partner-container button {
+  color: #ffffff;
+  background-color: black;
+  border-radius: 0px;
+  border: none;
+  font-family: 'COLFAX';
+  font-size: 13px;
+  position: absolute;
+  bottom: 3px;
+  padding: 7px 60px;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.section#about-page .container.about-partner-venue .partner-container button:hover {
+  background-color: #5000ff;
+}
+.section#about-page .container.about-partner-venue .two-thirds img {
+  width: 100%;
+}
+.section#about-page .container.about-press {
+  margin: 150px auto;
+}
+.section#about-page .container.about-faq p {
+  margin-bottom:20px;
+}
+.section#about-page .container.about-faq span.q {
+  font-weight:bold;
+}
+.section#about-page .container.about-sponsors .sponsor-space {
+  height: 50px;
+}
+.section#about-page .container.about-sponsors .about-sponsor {
+  background-color: #121112;
+  margin-bottom: 40px;
+  height: 200px;
+}
+.section#about-page .container.about-sponsors .sponsor-us a div {
+  border: 1px solid black;
+  text-align: center;
+  padding: 35px 0px 30px 0px;
+  color: black;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-size: 35px;
+}
+.section#about-page .container.about-sponsors .sponsor-us a:hover div {
+  color: #ffffff;
+  background-color: #5000ff;
+  border-color: #5000ff;
+}
+.section .third-blurb {
+  position: relative;
+  height: 190px;
+  margin-bottom: 40px;
+}
+.section .third-blurb a {
+  color: #121112;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.section .third-blurb a > div {
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border: 1px solid black;
+  width: 100%;
+  position: absolute;
+  display: table;
+  height: 190px;
+}
+.section .third-blurb a > div > * {
+  padding: 0px 20px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.section .third-blurb a > div > * .section-header {
+  margin-bottom: 20px;
+}
+.section .third-blurb a > div img {
+  max-width: 100%;
+}
+.section .third-blurb a.hover:hover {
+  color: #ffffff;
+}
+.section .third-blurb a.hover:hover > div {
+  color: #ffffff;
+  border-color: #5000ff;
+  background-color: #5000ff;
+}
+.section .third-blurb a.hover:hover > div .section-header,
+.section .third-blurb a.hover:hover > div p {
+  color: white;
+}
+.section#landing-header {
+  overflow: hidden;
+}
+.section#landing-header iframe {
+  position: absolute;
+}
+.section#landing-header #about-video-container .big-play {
+  height: 90px;
+  width: 78px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  margin-left: -39px;
+  margin-top: -45px;
+  cursor: pointer;
+}
+.section#landing-header #about-video-container #about-video {
+  height: 100%;
+}
+.section#landing-header #about-video-container #about-video.playing {
+  cursor: pointer;
+}
+.section#landing-header #about-video-container #about-video .vjs-poster {
+  background-size: cover;
+}
+.section#landing-header,
+.section#header {
+  height: 500px;
+  color: white;
+  position: relative;
+  background-color: black;
+}
+.section#landing-header.tiled-header,
+.section#header.tiled-header {
+  background-repeat: repeat;
+}
+.section#landing-header.dark,
+.section#header.dark {
+  background-color: white;
+}
+.section#landing-header.centered-header,
+.section#header.centered-header {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+.section#landing-header a,
+.section#header a {
+  color: white;
+}
+.section#landing-header .event-callout,
+.section#header .event-callout {
+  text-align: center;
+  font-family: 'COLFAX';
+  text-transform: uppercase;
+  color: white;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 2px 2px 3px rgb(0,0,0, .2);
+}
+.section#landing-header .event-callout #sub-hero,
+.section#header .event-callout #sub-hero {
+  font-size: 21px;
+  margin-top: 0;
+  text-shadow: 2px 2px 1px rgb(0,0,0, .2);
+}
+
+.section#landing-header .event-callout #sub-hero {
+  padding-top: .5rem;
+  padding-bottom: .375rem;
+}
+
+.section#landing-header .event-callout #sub-hero h3 {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.section#landing-header .event-callout #sub-hero h2,
+.section#header .event-callout #sub-hero h2,
+.section#landing-header .event-callout #sub-hero h3,
+.section#header .event-callout #sub-hero h3,
+.section#landing-header .event-callout #sub-hero h4,
+.section#header .event-callout #sub-hero h4, 
+.section#landing-header #header-credit a,
+.section#header #header-credit a,
+.section#landing-header #header-next-event h4 a {
+  color: white;
+}
+.section#landing-header .event-callout.dark #hero,
+.section#header .event-callout.dark #hero,
+.section#landing-header .event-callout.dark #sub-hero,
+.section#header .event-callout.dark #sub-hero, 
+.section#landing-header #header-credit.dark a,
+.section#header #header-credit.dark a,
+.section#landing-header #header-next-event.dark h4 a {
+  color: black;
+}
+.section#landing-header #header-credit,
+.section#header #header-credit {
+  position: absolute;
+  bottom: 20px;
+  margin-left: 25px;
+}
+.section#landing-header #header-next-event {
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+  text-align: right;
+}
+/* {
+  color: white;
+}
+ {
+  color: black;
+}*/
+.section#project-page {
+  background-color: white;
+}
+.section#project-page #project {
+  padding-top: 150px;
+}
+.section#project-page #project #project-description h2 {
+  margin-bottom: 2px;
+  margin-top: 0px;
+  top: -8px;
+  position: relative;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  /* Non standard for webkit */
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+.section#project-page #project #project-description p {
+  margin: 30px 0px;
+}
+.section#project-page #project #project-description a > p {
+  margin: 0px;
+}
+.section#project-page #project #project-description a > p:hover {
+  color: #5000ff;
+}
+.section#project-page #project #project-description .section-header {
+  margin: 30px 0px;
+}
+.section#project-page #project #project-description .project-contributor {
+  margin-bottom: 30px;
+}
+.section#project-page #project #project-description .project-contributor img,
+.section#project-page #project #project-description .project-contributor div {
+  display: inline-block;
+  vertical-align: middle;
+}
+.section#project-page #project #project-description .project-contributor img,
+.section#project-page #project #project-description .project-contributor .blank {
+  height:48px;
+  width:48px;
+  margin-right: 10px;
+}
+.section#project-page #project #project-description .project-contributor p {
+  margin: 0px;
+  color: #5000ff;
+}
+.section#project-page #project #project-description .project-contributor p a {
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.section#project-page #project #project-contents .project-item {
+  margin-bottom: 40px;
+}
+.section#project-page #project #project-contents .project-item img {
+  width: 100%;
+}
+.section#project-page #project #project-contents .project-item .no-project-photo {
+  display:block;
+  width:100%;
+  height:400px;
+  background-color:#5000ff;
+}
+.section#events-page #events {
+  margin-top: 50px;
+}
+.section #events {
+  background-color: white;
+  height: 100%;
+}
+.section #events li {
+  height: 30px;
+  padding: 25px;
+  margin: 40px 0px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.section #events li:hover {
+  background-color: #5000ff;
+  border-color: #5000ff;
+  color: white;
+}
+.section #events li:hover a {
+  color: white;
+}
+.section #events li:hover h4,
+.section #events li:hover h2,
+.section #events li:hover h3 {
+  color: white;
+}
+.section #events li .left-event {
+  float: left;
+  text-transform: uppercase;
+}
+.section #events li .right-event {
+  float: right;
+  text-transform: uppercase;
+}
+.section #events li .right-event div {
+  top: -2px;
+  position: relative;
+  float: right;
+  clear: both;
+}
+.section #events li:first-child {
+  margin-top: 0px;
+}
+.section#contact-page {
+  background-color: black;
+  padding-top: 150px;
+  color: white;
+}
+.section#contact-page .section-header, .section#contact-page p {
+  color: white;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.section#contact-page p {
+  margin-bottom: 18px;
+}
+
+.section#contact-page .one-third ul li {
+  margin-bottom: 30px;
+}
+.section#contact-page .one-third ul li a {
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.section#contact-page #new_message {
+  display: none;
+}
+
+.section#contact-page .one-third ul li a:hover {
+  color: #5000ff;
+}
+.section#contact-page .one-third ul li h4 {
+  color: white;
+}
+.section#contact-page .one-third ul li p {
+  color: white;
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+}
+.section#contact-page .one-third ul li p a {
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+}
+.section#contact-page .one-third .social-section li {
+  margin-left: 0px;
+  margin-right: 20px;
+}
+.section#contact-page .two-thirds textarea {
+  height: 200px;
+}
+.section#contact-page .two-thirds input,
+.section#contact-page .two-thirds textarea {
+  border: 1px solid white;
+  background-color: black;
+  padding: 6px;
+  padding-right: 0px;
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  margin-bottom: 30px;
+  color: white;
+  width: 98%;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+.section#contact-page .two-thirds .contact-submit {
+  width: 300px;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.section#contact-page .two-thirds .contact-submit:hover {
+  background-color: #5000ff;
+  border-color: #5000ff;
+  color: white;
+  cursor: pointer;
+}
+.section#contact-page .two-thirds button {
+  border: 1px solid white;
+  background: none;
+  color: white;
+  padding: 10px 40px;
+  font-family: 'COLFAX';
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+}
+.section#contact-page .two-thirds button:hover {
+  color: black;
+  background-color: white;
+}
+.section#header {
+  height: 65%;
+  background-color: black;
+  color: #ffffff;
+}
+.section#header.dark {
+  background-color: white;
+}
+.section#event-about {
+  margin: 75px 0px;
+}
+.section#event-about h2 {
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.section#event-about .about-event-section h4 {
+  margin-bottom: 25px;
+}
+.section#event-about .about-event-section p {
+  color: black;
+}
+.section#event-about .about-event-right img {
+  width: 100%;
+}
+.section#event-about .about-event-right .border-container {
+  width: 100%;
+  border: 2px solid #5000ff;
+}
+.section#event-about .about-event-right .border-container > div {
+  margin: 20px;
+}
+.section#event-about .about-event-right .border-container .pre-about button {
+  cursor: pointer;
+  height: 32px;
+  padding: 0px 20px;
+  background-color: black;
+  font-family: 'COLFAX';
+  color: white;
+  border: none;
+  font-size: 13px;
+  margin: 15px 0px;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.section#event-about .about-event-right .border-container .pre-about button:hover {
+  background-color: #5000ff;
+}
+.section#press-partners #press-container .border-container {
+  border: 1px solid black;
+  width: 100%;
+}
+.section#press-partners #press-container .press {
+  margin: 20px;
+}
+.section#press-partners #press-container .press a {
+  color: #5000ff;
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.section#press-partners #press-container .press a:hover {
+  color: black;
+}
+.section#press-partners .partner {
+  background-color: #eee;
+  height: 186px;
+  margin-bottom: 40px;
+}
+.section#press-partners .partner a img {
+  border: 1px solid black;
+}
+.section#press-partners .partner:nth-child(even) {
+  margin-right: 0px;
+}
+.section#press-partners .partner:nth-child(odd) {
+  margin-left: 0px;
+}
+.section#participants {
+  margin-top: 100px;
+}
+
+.section#participants #cta {
+  line-height: 26px;
+}
+.section#participants #participants-container h2 {
+  margin: 50px 0px 20px 0px;
+}
+.section#participants #participants-container .participant {
+  margin-bottom: 6px;
+}
+.section#participants #participants-container .participant .name {
+  cursor: pointer;
+}
+.section#participants #participants-container .participant .name .avatar-image {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+}
+.avatar-image.blank {
+  background-color: #5000ff;
+}
+.section#participants #participants-container .participant .name .name-area {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 15px;
+}
+.section#participants #participants-container .participant .name .name-area a {
+  color: #5000ff;
+}
+.section#participants #participants-container .participant .name .name-area a p {
+  display: none;
+  color: #5000ff;
+}
+.section#participants #participants-container .participant .name:hover {
+  color: #5000ff;
+}
+.section#participants #participants-container .participant .name:hover svg {
+  opacity: 1;
+}
+.section#participants #participants-container .participant .name svg {
+  vertical-align: top;
+  display: inline-block;
+  margin-left: 10px;
+  opacity: 0;
+  position: relative;
+  top: -1px;
+  float: right;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+  margin-top: 8px;
+}
+.section#participants #participants-container .participant .name.selected {
+  color: #5000ff;
+}
+.section#participants #participants-container .participant .name.selected .avatar-image {
+  width: 70px;
+  height: 70px;
+}
+.section#participants #participants-container .participant .name.selected .name-area {
+  width: 65%;
+}
+.section#participants #participants-container .participant .name.selected .name-area a p {
+  display: block;
+}
+.section#participants #participants-container .participant .name.selected:hover {
+  color: black;
+}
+.section#participants #participants-container .participant .name.selected:hover svg {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.section#participants #participants-container .participant .participant-additional {
+  margin: 10px 0px;
+  display: none;
+  border-bottom: 1px solid black;
+}
+.section#participants #participants-container .participant .participant-additional img,
+.section#participants #participants-container .participant .participant-additional div {
+  display: inline-block;
+  vertical-align: middle;
+}
+.section#participants #participants-container .participant .participant-additional img {
+  margin-right: 10px;
+}
+.section#participants #participants-container .participant .participant-additional a:hover {
+  color: black;
+}
+.section#participants #participants-container .participant .participant-top {
+  margin-top: 10px;
+  width: 100%;
+}
+.section#participants #participants-container .participant .participant-bottom {
+  padding: 20px 0px;
+}
+.section#participants #participants-container .participant .participant-bottom a p {
+  color: #5000ff;
+}
+.section#projects .projects .project {
+  position: relative;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+.section#projects .projects .project img {
+  width: 100%;
+  display: block;
+}
+.section#projects .projects .project > div {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+.section#projects .projects .project .project-info {
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  opacity: 0;
+  background-color: #5000ff;
+  color: white;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.section#projects .projects .project .project-info .project-wrapper {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+}
+.section#projects .projects .project .project-info .project-wrapper > div {
+  margin-top: -30px;
+}
+.section#projects .projects .project .project-info .project-wrapper > div .basic-colfax {
+  margin-bottom: 20px;
+  padding: 0px 15px;
+  color: white;
+}
+.section#projects .projects .project .project-info .project-wrapper > div p {
+  padding: 0px 10px;
+  color: white;
+}
+.section#projects .projects .project:hover .project-info {
+  opacity: 1;
+}
+.section .container {
+  margin: 0px auto;
+}
+.section .container .section-header {
+  margin-bottom: 35px;
+}
+.section .container .about-paragraph {
+  font-size: 20px;
+  padding: 0px 20px;
+}
+.section .container #events-homepage .event-homepage .event-display {
+  height: 200px;
+  width: 100%;
+  background-color: gray;
+}
+.section .container #events-homepage .event-homepage .event-title {
+  margin-top: 35px;
+}
+.section .container #events-homepage .event-homepage .event-title a {
+  font-family: 'COLFAX';
+  color: black;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.section .container #events-homepage .event-homepage .event-title a:hover {
+  color: #5000ff;
+}
+.section .container #events-homepage .event-homepage .event-short-about {
+  margin-top: 35px;
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  height: 53px;
+  /* Fallback for non-webkit */
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 17px;
+}
+.section .container #events-homepage .event-homepage .event-short-more {
+  font-size: 13px;
+  position: relative;
+  bottom: 16px;
+  background-color: white;
+  float: right;
+  padding-left: 5px;
+  -webkit-box-shadow: -5px 0px 5px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: -5px 0px 5px rgba(255, 255, 255, 0.75);
+  box-shadow: -5px 0px 5px rgba(255, 255, 255, 0.75);
+}
+.section .container #events-homepage .event-homepage .event-short-more a {
+  color: black;
+  font-family: 'COLFAX';
+}
+.section .container #events-homepage .event-homepage .event-short-more a:hover {
+  color: #5000ff;
+}
+.code-of-conduct p {
+  margin-bottom: 20px;
+}
+.code-of-conduct li {
+  font-family: "Inconsolata", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  list-style-type: square;
+  margin-bottom: 10px;
+  font-style: italic;
+  margin-left: 15px;
+}
+.code-of-conduct ul {
+  margin: 30px 0px;
+}
+.code-of-conduct .column {
+  margin: 0px auto;
+  display: block;
+  float: none;
+}
+/*
+* Skeleton V1.2
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 6/20/2012
+*/
+/* Table of Content
+==================================================
+	#Site Styles
+	#Page Styles
+	#Media Queries
+	#Font-Face */
+/* #Site Styles
+================================================== */
+/* #Page Styles
+================================================== */
+/* #Media Queries
+================================================== */
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+  .section#header {
+    height: 100%;
+  }
+}
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+  h2 {
+    font-size: 21px;
+    line-height: 25px;
+  }
+  h3 {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  .top-margin {
+    margin-top: 60px;
+  }
+  .section #events li {
+    height: 60px;
+    padding: 20px;
+  }
+  .section #events li .left-event {
+    width: 100%;
+  }
+  .section #events li .right-event {
+    margin-top: 5px;
+    float: left;
+  }
+  .section #events li .right-event div {
+    float: left;
+  }
+  .section#footer #footer-top {
+    height: 175px;
+  }
+  .section#footer #footer-top #main-sponsors div {
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+  }
+  .section#footer #footer-bottom {
+    height: 40px;
+  }
+  .section#footer #footer-top #main-sponsors img {
+    position: relative;
+    left: -50%;
+    margin-left: -50px;
+  }
+  .section#footer {
+    margin-top: 0px;
+  }
+  .section#participants #participants-container {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+  .container .column.about-event-right {
+    margin-top: 20px;
+  }
+  .section#contact-page .two-third input,
+  .section#contact-page .two-third textarea {
+    width: 278px;
+  }
+  #press-container {
+    margin-bottom: 60px;
+  }
+  .section#location-section iframe {
+    height: 200px;
+  }
+  .section#press-partners #partners-container .partner a img {
+    width: 298px;
+  }
+  .section#header {
+    height: 100%;
+  }
+  .section#footer #footer-top #main-sponsors h4 {
+    margin-right: 0px;
+    width: 100%;
+    text-align: center;
+  }
+}
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+.animated {
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: .25s;
+  -moz-animation-duration: .25s;
+  -ms-animation-duration: .25s;
+  -o-animation-duration: .25s;
+  animation-duration: .25s;
+}
+.animated.hinge {
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+}
+@-webkit-keyframes slideUp {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+  }
+}
+@-moz-keyframes slideUp {
+  0% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -moz-transform: translateY(-20px);
+  }
+}
+@-o-keyframes slideUp {
+  0% {
+    opacity: 1;
+    -o-transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -o-transform: translateY(-20px);
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+.slideUp {
+  -webkit-animation-name: slideUp;
+  -moz-animation-name: slideUp;
+  -o-animation-name: slideUp;
+  animation-name: slideUp;
+}
+@-webkit-keyframes slideDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@-moz-keyframes slideDown {
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+}
+@-o-keyframes slideDown {
+  0% {
+    opacity: 0;
+    -o-transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    -o-transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.slideDown {
+  -webkit-animation-name: slideDown;
+  -moz-animation-name: slideDown;
+  -o-animation-name: slideDown;
+  animation-name: slideDown;
+}

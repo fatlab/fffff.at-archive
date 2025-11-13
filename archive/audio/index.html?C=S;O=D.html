@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!--
+     Pleasant Apache directory listings courtesy of Indices:
+     http://antisleep.com/software/indices
+-->
+<?php
+    //=======================================================================
+    // A few configuration values.  Change these as you see fit.
+    //=======================================================================
+
+    // use_js
+    //   If true, does a DHTML thing to cruise the DOM of Apache's
+    //   HTML output, injecting useful class names throughout.
+    //   This allows for a simple CSS file.
+    //     + looks better (directories only bold, no trailing slash on dirs, etc)
+    //     + works on IE
+    //     - you'll get less styling if you have javascript disabled
+    //
+    //   If false, uses a more sophisticated CSS (some CSS2 stuff)
+    //   to style Apache's output.
+    //     + no javascript, which makes it less delicate
+    //     - looks a bit worse
+    //     - IE6 doesn't do CSS2, so you'll miss out on some styling, in particular
+    //       hidden "description" column and "parent directory" row
+    $use_js = true;
+
+    // show_readme
+    //   If true, the contents of an (optional) readme.html file will appear before
+    //   the directory listing.  This file should be an HTML snippet; no head/body/etc
+    //   tags.  You can do paragraph tags or whatever.
+    $show_readme = true;
+
+    // titleformat
+    //   How to format the <title> tag.  %DIR is replaced with the directory path.
+    // for instance:
+    //   $titleformat = "antisleep: %DIR";
+    $titleformat = "F.A.T. -- index of %DIR";
+
+    // logoimageurl, logolink
+    //   If these are provided, the provided logo URL will be inserted as an <img/> tag
+    //   at the top of the directory listing.  If logolink is non-empty, the logo image
+    //   will link to the provided URL.
+    // for instance:
+    //  $logoimageurl = "/images/titlebar-small.gif";
+    //  $logolink     = "http://antisleep.com/";
+    $logoimageurl = "http://fffff.at/images/fffffat_banner_2.jpg";
+    $logolink     = "http://fffff.at/";
+
+    //=======================================================================
+    // (end of config)
+    //=======================================================================
+
+    if ($use_js) {
+        $cssfile  = "style-js.css";
+        $jstext   = file_get_contents("script.js");
+        $pcjstext = "document.getElementById('pagecontainer').style.display = 'none';\n";
+    } else {
+        $cssfile = "style-nojs.css";
+        $jstext  = "";
+        $pcjstext = "";
+    }
+    $csstext = file_get_contents($cssfile);
+
+    $uri = urldecode($_SERVER['REQUEST_URI']);
+    $uri = preg_replace("/\/ *$/", "", $uri);
+    $uri = preg_replace("/\?.*$/", "", $uri);
+
+    $titletext = str_replace("%DIR", $uri, $titleformat);
+
+    $logohtml = "";
+    if ($logoimageurl != "") {
+        $logohtml = "<img alt="" src='../" . $logoimageurl . "'/>";
+
+        if ($logolink != "") {
+            $logohtml = "<a href='../" . $logolink . "'>" . $logohtml . "</a>";
+        }
+
+        $logohtml = "<div class="logohtml">$logohtml</div>";
+    }
+
+    // this is hacky, but in almost every situation there's no real harm.
+    // it just might fail if you're doing something funky with directory mappings.
+    $readmetext = "";
+    $pathtext = "";
+    $readmefile = $_SERVER["DOCUMENT_ROOT"] . $uri . "/readme.html";
+    if ($show_readme &amp;&amp; file_exists($readmefile)) {
+        $readmetext = "<div class="readme">" . file_get_contents($readmefile) . "</div>";
+    } else {
+        // If no readme, show URI.
+	$pathtext = "<div class="path">$uri</div>";
+    }
+?&gt;
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>&lt;?=$titletext?&gt;</title>
+<style type="text/css">
+    <!--
+        <?=$csstext?>
+    -->
+    </style>
+<script type="text/javascript">
+    <!--
+        <?=$jstext?>
+    -->
+    </script>
+</head>
+<body>
+<div id="pagecontainer">
+<script>
+        <!--
+        <?=$pcjstext?>
+        -->
+        </script>
+<div class="header">
+<?=$logohtml?>
+<?=$pathtext?>
+<?=$readmetext?>
+</div>
+<table>
+<tr><th valign="top"><img alt="[ICO]" height="16" src="../indices/icons/blank.gif" width="16"/></th><th><a href="../index.html%3FC=N%3BO=A.html">Name</a></th><th><a href="../index.html%3FC=M%3BO=A.html">Last modified</a></th><th><a href="../index.html%3FC=S%3BO=A.html">Size</a></th></tr>
+<tr><td valign="top"><img alt="[PARENTDIR]" height="16" src="../indices/icons/back.png" width="16"/></td><td><a href="../index.html">Parent Directory</a></td><td> </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../The%202%20Live%20Review/index.html">The 2 Live Review/</a></td><td align="right">2009-01-22 08:13  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../SB%208.28.08/index.html">SB 8.28.08/</a></td><td align="right">2008-09-15 17:51  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../SB%206.9.08/index.html">SB 6.9.08/</a></td><td align="right">2008-06-11 10:25  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../SB%206.25.08/index.html">SB 6.25.08/</a></td><td align="right">2008-07-02 12:36  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../Savalas3.27.08/index.html">Savalas3.27.08/</a></td><td align="right">2008-04-02 15:54  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../Savalas2.28.08/index.html">Savalas2.28.08/</a></td><td align="right">2008-03-24 00:21  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../Savalas1.31.07/index.html">Savalas1.31.07/</a></td><td align="right">2008-03-24 16:11  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../Savalas1.04.08/index.html">Savalas1.04.08/</a></td><td align="right">2008-01-26 12:49  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../Savalas%205.29.08/index.html">Savalas 5.29.08/</a></td><td align="right">2008-06-03 09:27  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../RuffSqwad-RareInstrumentals/index.html">RuffSqwad-RareInstrumentals/</a></td><td align="right">2007-12-10 17:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../JAMawards/index.html">JAMawards/</a></td><td align="right">2007-12-03 18:54  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../GRL_SPEAKS/index.html">GRL_SPEAKS/</a></td><td align="right">2008-01-11 14:45  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[DIR]" height="16" src="../indices/icons/dir.png" width="16"/></td><td><a href="../2007_MIXES/index.html">2007_MIXES/</a></td><td align="right">2007-12-26 05:36  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../BorderJerryLeslie.mp3">BorderJerryLeslie.mp3</a></td><td align="right">2007-11-04 19:26  </td><td align="right">115M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../LargeProLive.mp3">LargeProLive.mp3</a></td><td align="right">2007-11-04 20:11  </td><td align="right">110M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../BorderBennett1.mp3">BorderBennett1.mp3</a></td><td align="right">2007-11-04 18:28  </td><td align="right">109M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../savalas_2008-12-06.mp3">savalas_2008-12-06.mp3</a></td><td align="right">2008-12-08 06:57  </td><td align="right">107M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../StreetBeat.mp3">StreetBeat.mp3</a></td><td align="right">2007-11-18 00:15  </td><td align="right">102M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/compressed.png" width="16"/></td><td><a href="../Paul_Wall_-_Heart_Of_A_Champion_(2010).zip">Paul_Wall_-_Heart_Of_A_Champion_(2010).zip</a></td><td align="right">2010-07-22 16:21  </td><td align="right"> 86M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/compressed.png" width="16"/></td><td><a href="../x-mix-2008.zip">x-mix-2008.zip</a></td><td align="right">2008-12-29 06:10  </td><td align="right"> 84M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../JamieDubsLive.mp3">JamieDubsLive.mp3</a></td><td align="right">2007-11-04 17:47  </td><td align="right"> 83M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../Histeria_de_la_ripley.mp3">Histeria_de_la_ripley.mp3</a></td><td align="right">2007-11-07 13:51  </td><td align="right"> 79M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../BorderBennett2.mp3">BorderBennett2.mp3</a></td><td align="right">2007-11-04 18:51  </td><td align="right"> 78M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../Insensible.mp3">Insensible.mp3</a></td><td align="right">2007-11-07 14:10  </td><td align="right"> 67M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/compressed.png" width="16"/></td><td><a href="../RuffSqwad-RareInstrumentals.zip">RuffSqwad-RareInstrumentals.zip</a></td><td align="right">2007-12-10 16:19  </td><td align="right"> 47M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/compressed.png" width="16"/></td><td><a href="../VOICEOVER.zip">VOICEOVER.zip</a></td><td align="right">2007-12-14 17:44  </td><td align="right"> 47M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../PBWolf.mp3">PBWolf.mp3</a></td><td align="right">2007-11-14 15:40  </td><td align="right"> 45M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/compressed.png" width="16"/></td><td><a href="../top10_rap_4_white_people.zip">top10_rap_4_white_people.zip</a></td><td align="right">2008-02-17 13:08  </td><td align="right"> 42M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../JakDanielzLive.mp3">JakDanielzLive.mp3</a></td><td align="right">2007-11-04 19:38  </td><td align="right"> 40M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../FAT_CALL_VLA2.mp3">FAT_CALL_VLA2.mp3</a></td><td align="right">2007-11-07 13:28  </td><td align="right"> 16M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../Senegal.mp3">Senegal.mp3</a></td><td align="right">2009-01-25 13:15  </td><td align="right">9.0M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../FAT_CALL_VLA4.mp3">FAT_CALL_VLA4.mp3</a></td><td align="right">2007-11-07 13:23  </td><td align="right">8.0M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../DAM_Instrumental3.mp3">DAM_Instrumental3.mp3</a></td><td align="right">2008-02-07 02:31  </td><td align="right">6.0M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../Rockwell%20-%20Somebody's%20Watching%20Me.mp3">Rockwell - Somebody's Watching Me.mp3</a></td><td align="right">2010-02-12 09:48  </td><td align="right">5.6M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../02-bring-the-noise.mp3">02-bring-the-noise.mp3</a></td><td align="right">2008-05-07 21:03  </td><td align="right">5.2M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../BeatFreakz%20-%20Somebody's%20Watching%20Me.mp3">BeatFreakz - Somebody's Watching Me.mp3</a></td><td align="right">2010-02-12 09:48  </td><td align="right">5.0M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../reggaetonClasico.mp3">reggaetonClasico.mp3</a></td><td align="right">2007-11-13 20:30  </td><td align="right">4.5M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../reggaetonCatchy.mp3">reggaetonCatchy.mp3</a></td><td align="right">2007-11-13 20:31  </td><td align="right">3.8M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../FAT_CALL_VLA.mp3">FAT_CALL_VLA.mp3</a></td><td align="right">2007-11-07 13:21  </td><td align="right">3.8M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../LMF-HumGaLing.mp3">LMF-HumGaLing.mp3</a></td><td align="right">2007-12-05 12:14  </td><td align="right">3.7M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../reggaetonKids.mp3">reggaetonKids.mp3</a></td><td align="right">2007-11-13 20:32  </td><td align="right">3.4M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../GNR_SlashSolo_Godfather_Theme.mp3">GNR_SlashSolo_Godfather_Theme.mp3</a></td><td align="right">2007-12-04 08:22  </td><td align="right">3.0M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../Graffiti4Kidz.mp3">Graffiti4Kidz.mp3</a></td><td align="right">2007-12-06 22:13  </td><td align="right">3.0M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../reggaetonGlitchy.mp3">reggaetonGlitchy.mp3</a></td><td align="right">2007-11-13 20:29  </td><td align="right">2.5M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../FAT_CALL_VLA3.mp3">FAT_CALL_VLA3.mp3</a></td><td align="right">2007-11-07 14:11  </td><td align="right">2.1M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../encores.mp3">encores.mp3</a></td><td align="right">2007-10-25 08:42  </td><td align="right">1.9M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../er_voice_mail.mp3">er_voice_mail.mp3</a></td><td align="right">2008-02-23 16:35  </td><td align="right">1.3M</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../wait_till_i_get_my_money_slow.mp3">wait_till_i_get_my_money_slow.mp3</a></td><td align="right">2007-11-04 18:00  </td><td align="right">299K</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../yonoquieroperderte.mp3">yonoquieroperderte.mp3</a></td><td align="right">2007-11-04 16:40  </td><td align="right">169K</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../sonideros.mp3">sonideros.mp3</a></td><td align="right">2007-11-01 21:57  </td><td align="right">169K</td></tr>
+<tr><td valign="top"><img alt="[   ]" height="16" src="../indices/icons/sound.png" width="16"/></td><td><a href="../FuckYahoo2.mp3">FuckYahoo2.mp3</a></td><td align="right">2010-02-08 06:46  </td><td align="right">158K</td></tr>
+</table>
+<div class="credits">
+<a href="http://antisleep.com/software/indices">Indices</a> 1.0
+    </div>
+</div>
+</body>
+</html>

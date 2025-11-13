@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+User-agent: LinkedInBot
+Allow: /public/messages/view-online

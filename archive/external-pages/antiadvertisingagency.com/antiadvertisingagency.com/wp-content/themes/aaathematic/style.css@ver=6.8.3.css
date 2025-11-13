@@ -1,0 +1,640 @@
+/* @override http://antiadvertisingagency.com/wp-content/themes/aaathematic/style.css */
+
+/*   
+Theme Name: AAA-thematic
+Theme URI: 
+Description: AAA Thematic Dev Theme
+Author: Steve Lambert
+Author URI: http://visitsteve.com
+Template: thematic
+Version: 0.1
+Tags: Thematic
+.
+Thematic is © Ian Stewart http://themeshaper.com/
+.
+*/
+
+/* Reset browser defaults */
+@import url('../thematic/library/styles/reset.css');
+
+/* line height */
+@import url('../thematic/library/styles/18px.css');
+
+/* Apply basic typography styles */
+@import url('../thematic/library/styles/typography.css');
+
+/* Apply a basic layout */
+@import url('../thematic/library/layouts/2c-r-fixed.css');
+
+/* Apply basic image styles */
+@import url('../thematic/library/styles/images.css');
+
+/* Apply default theme styles and colors */
+/* It's better to actually copy over default.css into this file (or link to a copy in your child theme) if you're going to do anything outrageous */
+@import url('../thematic/library/styles/default.css');
+
+/* Prepare theme for plugins */
+@import url('../thematic/library/styles/plugins.css');
+
+//body #wrapper{
+	background: url(../thematic/library/grids/960_grid_12_col_18px_height.gif) repeat-y -32px 0;
+}
+
+/* @group typography */
+
+h3.widgettitle, #project-wrapper h3, #news-wrapper h3 {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+letter-spacing:.2em;
+color:white;
+font-weight:normal;
+text-transform:uppercase;
+font-size:1em;
+	font-style: normal;
+}
+
+.entry-title  {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	color: #ec1c24;
+	width: 100%;
+	border-bottom: 1px solid #000;
+
+}
+.entry-title a{
+	font-style: italic;
+	color: #ec1c24;
+}
+.entry-content h2 {
+	font-weight: bold;
+	font-style: normal;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+strong {
+	font-style: italic;
+}
+
+.entry-meta {
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* @end */
+
+#wrapper {
+	width: 960px;
+	margin: auto;
+}
+a:hover {
+	color: #ec1c24;
+}
+a:active, a:visited {
+	font-weight: inherit;
+	font-style: inherit;
+}
+
+.entry-contest a:visited {
+	text-decoration: none;
+	color: #660000;
+	font-weight: inherit;
+	font-style: inherit;
+}
+
+#comments a:link, .entry-content a:link, .entry-content a:hover, .entry-content a:visited {
+	text-decoration: none;
+	color: #ec1c24;
+}
+
+#comments a:hover, .entry-content a:hover {
+	color: #ec1c24;
+	text-decoration: underline;
+}
+
+#main {
+	padding-top: 32px;
+}
+
+/* @group header */
+
+#branding {
+	background: url(images/aaa-word-255x50.png) no-repeat;
+	height: 50px;
+	padding-bottom: 0;
+	padding-top: 0;
+	margin-bottom: 1em;
+	margin-top: 0;
+	margin-left: 9px;
+	float: left;
+	width: 960px;
+}
+
+#header {
+	padding-top: 1em;
+}
+
+#rss-button {
+	float: right;
+	padding-right: 15px;
+	padding-top: 25px;
+}
+
+#blog-description, #blog-title {
+	position: fixed;
+	right: -9999px;
+}
+
+/* @group searchform */
+
+#header #access-search {
+	position: absolute;
+	right: 0;
+}
+
+//.menu:after {
+	content: "☞";
+	color: #FFF;
+	font-size: 2em;
+	line-height: 30px;
+	margin-left: 20px;
+}
+
+#header #searchform input#s {
+	margin: 0px 0px 0px;
+	padding: 2px 10px 2px 0;
+
+	width: 134px;
+	height: 28px;
+	color: #fff;
+	float: right;
+	border-width: 0px 0px 0px 1px;
+	border-color: #FFF;
+	border-style: solid;
+	background: #5a5a5a;
+	text-align: right;
+	font: italic .9em Georgia, "Times New Roman", Times, serif;
+}
+
+#header #searchsubmit {
+	display: none;
+}
+
+/* @end */
+
+/* @end */
+
+/* @group Menu */
+
+#access {
+	border-bottom: 1px #FFF solid;
+	border-top: 1px #FFF solid;
+	width: 960px;
+	background-color: black;
+	clear: both;
+}
+.menu {
+	float:left;
+	text-transform: uppercase;
+	width: 800px;
+}
+
+.sf-menu a:visited {
+	color: #cbcbcb;
+}
+
+.sf-menu a:hover {
+	background-color: #000;
+	color: #ec1c24;
+}
+
+.sf-menu a {
+	background-color: #000;
+	color: white;
+	border-top: none;
+	border-bottom: none;
+	font: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: .2em;
+	border-left:1px solid #fff;
+	border-right:none;
+}
+
+.sf-menu a, .sf-menu ul li a {
+	background-color: #000;
+	color: white;
+	font: .9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: .2em;
+	border-bottom: none;
+}
+.sf-menu ul li a {
+	border-top: 1px solid #fff;
+}
+/* @end */
+
+/* @group asides */
+
+.aside {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+.aside ul ul {
+	margin-left: 0px;
+	list-style-type: none;
+}
+
+.aside ul ul li {
+	padding: 3px;
+	border-bottom: 1px solid #b3b3b3;
+}
+
+.aside ul ul li:last-of-type {
+	padding: 3px;
+	border-bottom: 0px solid #b3b3b3;
+}
+
+.aside a {
+	text-decoration: none;
+	color: #000;
+}
+
+ 
+#primary .xoxo {
+padding:0px;
+}
+.widgetcontainer {
+	padding: 0px 20px 18px;
+}
+
+h3.widgettitle {
+background: #f0f0f0;
+color: black;
+border: black solid;
+border-width: 1px 0 1px;
+padding:5px 20px 5px 20px;
+margin-left:-20px;
+margin-right:-20px;
+margin-bottom:9px;
+}
+
+#secondary, #primary {
+	padding:0px;
+	border: #000 solid;
+	border-width: 0px 1px 1px;
+}
+
+.st-tag-cloud {
+font-family:Georgia,"Times New Roman",Times,serif;
+margin-bottom:18px;
+}
+
+.aside ol {
+	list-style-position: outside;
+	margin-left: 1.5em;
+	color: #000;
+	margin-bottom: 0;
+}
+/* @end */
+
+/* @group footer */
+
+#footer {
+	background-color: black;
+	color: #FFF;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+#footer a:hover {
+	color: #ec1c24;
+}
+
+#footer a {
+	color: #fff;
+	font-weight: bold;
+}
+
+#subsidiary {
+	padding-top: 18px;
+}
+
+#subsidiary .aside {
+	color: #fff;
+}
+
+#subsidiary h3.widgettitle {
+	color: #FFF;
+	background-color: #000;
+	border-top: 1px #fff solid;
+	border-bottom: 1px #fff solid;
+	margin-bottom: 9px;
+}
+
+#siteinfo {
+	color: #FFF;
+	padding: 1em;
+	text-align: center;
+}
+
+#siteinfo a {
+	color: #FFF;
+	text-decoration: none;
+}
+
+/* @end */
+
+/* @group homepage */
+
+.slug-home #container {
+	width: 940px;
+}
+.slug-home #content {
+	width: 940px;
+	padding: 0px 10px;
+	margin: 0px;
+}
+.slug-home #secondary, .slug-home #primary, .slug-home .entry-title, .slug-home .addthis_container, .slug-home #comments, .slug-home .edit-link {
+	display: none;
+}
+.slug-home #main {
+	padding: 0px;
+}
+.slug-home blockquote {
+	font-size: .9em;
+	width: 600px;
+	margin: auto;
+	font-weight: normal;
+	font-style: normal;
+	color: black;
+}
+.slug-home blockquote em {
+	font-style: italic;
+	font-size: 1.2em;
+}
+#project-wrapper {
+	padding-bottom: 18px;
+}
+#news-wrapper h3, #project-wrapper h3 {
+	background-color: black;
+	border-top: 1px #fff solid;
+	border-bottom: 1px #fff solid;
+	margin: 0 -20px 9px;
+	padding: 5px 20px;
+	font-size: .8em;
+}
+.project-list {
+	background-color: #fff;
+	margin: -10px;
+	margin-top: 18px;
+	padding-bottom: 0;
+	padding-left: 10px;
+}
+.project-list li {
+	display: -moz-inline-box;
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	margin: 0 14px 15px 0;
+}
+/*  Moz: NO border qui altrimenti difficolta' con width, table altrimenti problemi a text resize (risolubili con refresh) */
+.project-list li>div {
+	display: table;
+	width: 300px;
+}
+.project-list a {
+	display: block;
+	text-decoration: none;
+	color: #FFF;
+	background-color: #000;
+	cursor: pointer;
+}
+.project-list>li .project-item {
+	display: table-cell;
+	vertical-align: middle;
+	width: 290px;
+	height: 230px;
+	padding: 0px 0px 0px 9px;
+}
+.project-list img {
+	vertical-align: middle;
+}
+.project-list a:hover {
+	background-color: #222;
+	color:#ec1c24
+}
+
+* html .project-list li .project-item {
+	display: block;
+	font-size: 1px;
+}
+* html .project-list .project-item span {
+	display: inline-block;
+	vertical-align: middle;
+	height: 310px;
+	width: 1px;
+}
+/**/
+.project-list .caption p{
+	margin: 0px;
+}
+.project-list .caption {
+	display: block;
+	border-top: 1px solid #ccc;
+	width: 290px;
+	text-align: center;
+	font: .8em/1.4em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	text-transform: uppercase;
+	padding: 1.3em 5px 1px;
+	letter-spacing:.2em;
+	min-height: 2.5em;
+}
+/* top ib e hover Op < 9.5 */
+@media all and (min-width: 0px) {
+	html:first-child .project-list a {
+		display: inline-block;
+		vertical-align: top;
+	}
+	html:first-child .project-list {
+		border-collapse: collapse;
+		display: inline-block; /* non deve avere margin */
+	}
+}
+
+ul.news-list {
+	list-style-type: none;
+	margin: 0;
+	padding-top: 0px;
+}
+ul.news-list li p, ul.news-list li a{
+	display: inline;
+	font: .9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+ul.news-list li p {
+	font-size: .8em;
+} 
+	
+/* @end */
+
+/* @group comments */
+
+a.comment-reply-link {
+	color: #ec1c24;
+	padding: .7em .7em .9em .7em;
+	border: 1px solid #000;
+	font-weight: bold;
+}
+a#cancel-comment-reply-link {
+	color: #ec1c24;
+	padding: .3em .3em .4em .3em;
+	border: 1px solid #FFF;
+	top: 6px;
+	position: relative;
+	right: 10px;
+	font-style: italic;
+	font-weight: bold;
+}
+
+#comments ol li, #comments ol {
+	border-color: #000;
+	}
+#recaptcha_widget_div {
+	float: left;
+}
+#commentform input#submit {
+	color: #ec1c24;
+	background: none;
+	padding: .7em .7em .9em .7em;
+	border: 1px solid #000;
+	padding: .5em;
+	font-weight: bold;
+	font-style: italic;
+}
+#comments h3 {
+	background: #000;
+	color: #FFF;
+	padding: 5px 80px;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 1em;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	margin-bottom: 9px;
+}
+
+#comments div.comment-meta a {
+	color: #000;
+}
+
+/* @group Comments Show/Hide */
+
+#comments-list h3, #trackbacks-list h3, #respond h3 {
+	cursor: pointer;
+}
+#comments-list h3:hover, #trackbacks-list h3:hover, #respond h3:hover {
+	cursor: pointer;
+	color: #ec1c24;
+}
+#comments-list ol, #trackbacks-list ol, #respond form#commentform {
+display: none;
+}
+#comments-nav-below {
+	padding-bottom: 0;
+}
+
+/* @end */
+/* @end */
+
+/* @group project page */
+
+.project .entry-title {color: #000;}
+
+#project-banner{
+	background-color: #f8f8f8;
+	margin-bottom: 32px;
+	display: none;
+	position: relative;
+}
+#project-banner object, #project-banner img {
+	margin: 0;
+}
+
+#project-banner img.aligncenter {
+	margin: auto;
+}
+
+/* #single-project #container{
+width:960px;} 
+#single-project #container #content{
+width:940px;
+margin-right:10px;}
+#single-project #container #content .project {
+	width:940px;
+	float: left;
+} */
+#secondary.aside ul{
+	padding: 0px;
+	margin: 0px;
+}
+
+/* this gets rid of author info */
+.project .meta-prep, .project span.author, .project .meta-sep {
+	display: none;
+}
+
+.type-project abbr.published {
+	float: right;
+}
+
+/* @end */
+
+/* @group general */
+.center{
+text-align:center;}
+blockquote{
+	margin-bottom: 18px;
+}
+
+object {
+	margin: 0px 0px 18px;
+}
+/* @end */
+
+/* @group gallery */
+
+.gallery .gallery-item {
+	padding-bottom: 0;
+}
+.gallery {
+	padding: 0px;
+}
+
+/* @end */
+
+/* @group edit-link styles */
+a.post-edit-link:before{
+	content:"✎ ";
+	font-size: 1.3em;
+}
+a.post-edit-link{
+	background-color: #FF0;
+	font-size: 12px;
+	font-weight: normal;
+	padding: .5em .8em 2px .5em;
+	color: #000;
+}
+/* @end */
+
+/* @group contact-form */
+
+textarea#contact-form-comment-13-message{
+	width: 90%;
+}
+
+/* @end */
+
+.addthis_container {
+color: #000;
+text-decoration: none;
+font-size: 1em;
+line-height: 1.2em;
+	font-style: italic;
+	margin: .5em 0em;
+}

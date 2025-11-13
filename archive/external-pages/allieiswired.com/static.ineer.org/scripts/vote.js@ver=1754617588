@@ -1,0 +1,202 @@
+var matchId = jQuery('#match').attr('data-fid');
+var sport = jQuery('#match').attr('data-sport-name');
+var sportType = ['lol', 'dota2', 'csgo'].includes(sport) ? 'esports' : sport;
+var totalVote = {
+	1: 0,
+	2: 0
+};
+var vote = {
+	1: {
+		count: 0,
+		type: 1,
+		title: 'Tài'
+	},
+	// 2: {
+	//     count: 0,
+	//     type: 1,
+	//     title: 'Hòa'
+	// },
+	3: {
+		count: 0,
+		type: 1,
+		title: 'Xỉu'
+	},
+	4: {
+		count: 0,
+		type: 2,
+		title: 'Chủ nhà'
+	},
+	5: {
+		count: 0,
+		type: 2,
+		title: 'Hòa'
+	},
+	6: {
+		count: 0,
+		type: 2,
+		title: 'Đội Khách'
+	},
+}
+
+// hàm tính % tổng Kết quả làm tròn của tất cả option, tổng sẽ là 100%
+function calculateRoundedPercentages(votes) {
+	// Tính tổng số phiếu
+	const totalVotes = votes.reduce((sum, vote) => sum + vote, 0);
+
+	// Kiểm tra nếu tổng số phiếu là 0 để tránh lỗi NaN
+	if (totalVotes === 0) {
+		return votes.map(() => 0);
+	}
+
+	// Tính phần trăm chưa làm tròn và phần trăm đã làm tròn
+	let percentages = votes.map(vote => (vote / totalVotes) * 100);
+	let roundedPercentages = percentages.map(Math.round);
+
+	// Tính chênh lệch
+	let totalRounded = roundedPercentages.reduce((sum, perc) => sum + perc, 0);
+	let difference = totalRounded - 100;
+
+	// Phân bổ chênh lệch
+	while (difference !== 0) {
+		for (let i = 0; i < roundedPercentages.length && difference !== 0; i++) {
+			if (difference > 0 && roundedPercentages[i] > 0) {
+				roundedPercentages[i]--;
+				difference--;
+			} else if (difference < 0) {
+				roundedPercentages[i]++;
+				difference++;
+			}
+		}
+	}
+
+	return roundedPercentages;
+}
+
+function setVoteText() {
+	// xử lý fix lỗi tổng số % vote của các option lớn hơn 100%
+	const votes = {
+		1: [],
+		2: [],
+	}; // Tổng số phiếu bầu cho từng option vf type
+	for (const [key, item] of Object.entries(vote)) {
+		votes[item.type].push(item.count);
+	}
+	const percentageType1 = calculateRoundedPercentages(votes[1]);
+	const percentageType2 = calculateRoundedPercentages(votes[2]);
+	const percentages = {
+		1: {
+			1: percentageType1[0],
+			3: percentageType1[1],
+		},
+		2: {
+			4: percentageType2[0],
+			5: percentageType2[1],
+			6: percentageType2[2],
+		},
+	};
+
+	for (const [key, item] of Object.entries(vote)) {
+		jQuery(`#vote-btn-${key} span`).html(`${item.title} ${percentages[item.type][key]}%`);
+	}
+}
+
+let voteValue_1 = localStorage.getItem(`vote_${matchId}_1`);
+if(voteValue_1) {
+	jQuery(`.vote-btn-1 svg`).addClass('d-none')
+	jQuery(`#vote-btn-${voteValue_1} svg`).removeClass('d-none')
+	jQuery(`#vote-btn-${voteValue_1} use`).attr('xlink:href', '#vote-bg-active');
+}
+
+let voteValue_2 = localStorage.getItem(`vote_${matchId}_2`);
+if(voteValue_2) {
+	jQuery(`.vote-btn-2 svg`).addClass('d-none')
+	jQuery(`#vote-btn-${voteValue_2} svg`).removeClass('d-none')
+	jQuery(`#vote-btn-${voteValue_2} use`).attr('xlink:href', '#vote-bg-active');
+}
+
+function getVote() {
+	if(!sport || !sport_data[sportType]) {
+		return;
+	}
+	var apiUrl = sport_data[sportType].api;
+	jQuery.get(`${apiUrl}/vote/${matchId}/match`, {}, function(res) {
+		jQuery(`.vote-btn`).removeAttr('disabled');
+		vote = res.vote;
+		totalVote = res.totalVote;
+		const clientVote = res.clientVote;
+
+		if(clientVote) {
+			for (const [type, val] of Object.entries(clientVote)) {
+				localStorage.setItem(`vote_${matchId}_${type}`, val);
+				jQuery(`#vote-btn-${val}`).addClass('active');
+
+				jQuery(`.vote-btn-${type} svg`).addClass('d-none')
+				jQuery(`#vote-btn-${val} svg`).removeClass('d-none');
+				jQuery(`#vote-btn-${val} use`).attr('xlink:href', '#vote-bg-active');
+				jQuery(`.vote-btn-${type}`).attr('disabled', 'disabled');
+			}
+		}
+
+		if((!clientVote || !clientVote[1]) && voteValue_1) {
+			clientVote[1] = voteValue_1;
+			vote[voteValue_1].count++;
+			totalVote[1]++;
+		}
+		if((!clientVote || !clientVote[2]) && voteValue_2) {
+			clientVote[2] = voteValue_2;
+			vote[voteValue_2].count++;
+			totalVote[2]++;
+		}
+
+		// if(totalVote[1] > 0 || totalVote[2] > 0) {
+			setVoteText();
+		// }
+
+		setTimeout(() => {
+			getVote();
+		}, 22000);
+	});
+}
+
+getVote();
+
+jQuery('.vote-btn').on('click', function () {
+	var matchStatus = jQuery('#match').attr('data-status');
+	if(matchStatus != 1) {
+		console.log('Voting time is over', matchStatus);
+		return;
+	}
+
+	const value = jQuery(this).attr('data-value');
+	const type = jQuery(this).attr('data-type');
+	if(type == 1) {
+		voteValue_1 = value;
+	}
+	if(type == 2) {
+		voteValue_2 = value;
+	}
+	if(localStorage.getItem(`vote_${matchId}_${type}`)) {
+		console.log('voted');
+		return;
+	}
+	jQuery(`.vote-btn-${type}`).attr('disabled','disabled');
+
+	jQuery(`.vote-btn-${type} svg`).addClass('d-none')
+	jQuery(`#vote-btn-${value} svg`).removeClass('d-none');
+	jQuery(`#vote-btn-${value} use`).attr('xlink:href', '#vote-bg-active');
+
+	jQuery(this).addClass('active')
+
+	vote[value].count++;
+	totalVote[type]++;
+	setVoteText();
+
+	var apiUrl = sport_data[sportType].api;
+	jQuery.post(`${apiUrl}/vote`, {
+		match_id: matchId,
+		value,
+		type
+	}, function() {
+		localStorage.setItem(`vote_${matchId}_${type}`, value);
+	});
+});

@@ -1,0 +1,197 @@
+# New York Times content is made available for your personal, non-commercial
+# use subject to our Terms of Service here:
+# https://help.nytimes.com/hc/en-us/articles/115014893428-Terms-of-Service.
+# Use of any device, tool, or process designed to data mine or scrape the content
+# using automated means is prohibited without prior written permission from
+# The New York Times Company.  Prohibited uses include but are not limited to:
+# (1) text and data mining activities under Art. 4 of the EU Directive on Copyright in
+# the Digital Single Market;
+# (2) the development of any software, machine learning, artificial intelligence (AI),
+# and/or large language models (LLMs);
+# (3) creating or providing archived or cached data sets containing our content to others; and/or
+# (4) any commercial purposes.
+# Contact https://nytlicensing.com/contact/ for assistance.
+
+# Disallow Rules
+
+User-agent: AliyunSecBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: archive.org_bot
+Disallow: /
+
+User-agent: AudigentAdBot
+Disallow: /
+
+User-agent: AwarioRssBot
+User-agent: AwarioSmartBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+
+User-agent: Claude-User
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: DuckAssistBot
+Disallow: /
+
+User-agent: EchoboxBot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: FriendlyCrawler
+Disallow: /
+
+User-agent: Google-CloudVertexBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: Jetslide
+Disallow: /
+
+User-agent: magpie-crawler
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+User-agent: meta-externalfetcher
+Disallow: /
+
+User-agent: MyCentralAIScraperBot
+Disallow: /
+
+User-agent: NewsNow
+Disallow: /
+
+User-agent: news-please
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: peer39_crawler
+User-agent: peer39_crawler/1.0
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+User-agent: Poseidon Research Crawler
+Disallow: /
+
+User-agent: quillbot.com
+Disallow: /
+
+User-agent: Quora-Bot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: SeekrBot
+Disallow: /
+
+User-agent: SeznamHomepageCrawler
+Disallow: /
+
+User-agent: TaraGroup Intelligent Bot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: ViennaTinyBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+# Other Bot Rules
+
+User-agent: *
+Disallow: /pages/college/
+Disallow: /college/
+Disallow: /library/
+Disallow: /learning/
+Disallow: /aponline/
+Disallow: /reuters/
+Disallow: /cnet/
+Disallow: /partners/
+Disallow: /archives/
+Disallow: /indexes/
+Disallow: /adx/bin/
+Disallow: /thestreet/
+Disallow: /nytimes-partners/
+Disallow: /financialtimes/
+Disallow: /email-content/
+Disallow: /images/*.jpg?*noindex=1*
+Allow: /pages/
+Allow: /2003/
+Allow: /2004/
+Allow: /2005/
+Allow: /top/
+Allow: /ref/
+Allow: /services/xml/
+
+User-agent: Mediapartners-Google*
+Disallow:
+

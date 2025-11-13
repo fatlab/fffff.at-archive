@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /terms/
+Disallow: /signup/
+Disallow: /bank/
+Disallow: /myCollection/
+User-agent:  *
+Crawl-delay:  5

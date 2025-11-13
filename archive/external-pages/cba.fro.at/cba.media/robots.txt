@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+User-agent: SemrushBot
+Disallow: /
+
+Sitemap: https://cba.media/sitemap.xml
+
+

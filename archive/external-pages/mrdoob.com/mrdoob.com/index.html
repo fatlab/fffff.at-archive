@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Mr.doob</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover">
+		<meta name="flattr:id" content="mr0e0m">
+		<meta name="p:domain_verify" content="a040a41246656909b9e2de9ecf83005d"/>
+		<meta name="theme-color" content="#000000">
+		<meta name="twitter:title" content="Mr.doob">
+		<meta name="twitter:description" content="Collection of digital toys and experiments.">
+		<meta name="twitter:image" content="https://mrdoob.com/files/icon.png">
+		<meta name="twitter:creator" content="@mrdoob">
+		<meta property="og:title" content="Mr.doob">
+		<meta property="og:description" content="Collection of digital toys and experiments.">
+		<meta property="og:url" content="https://mrdoob.com/">
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="https://mrdoob.com/files/icon.png">
+		<style>
+			html {
+				height: 100%;
+			}
+
+			body {
+				margin: 0;
+				height: 100%;
+				font-family: Helvetica, Arial, sans-serif;
+				background-color: #000000;
+				overflow: hidden;
+			}
+
+			#nav {
+				display: flex;
+				background: linear-gradient(to bottom, #000000 50%,#1d1d1d 97%,#333333 97%);
+				width: 100%;
+				height: 61px;
+			}
+
+			#logo {
+				height: 61px;
+			}
+
+			#wrapper {
+				flex-grow:1;
+				height: 61px;
+				overflow-x: auto;
+				overflow-y: hidden;
+			}
+
+			/* Hide scrollbar for Chrome, Safari and Opera */
+			#wrapper::-webkit-scrollbar {
+				width: 2px;
+				height: 2px;
+				background-color: transparent;
+			}
+
+			#wrapper::-webkit-scrollbar-thumb {
+				background-color: #666;
+			}
+
+			#projects {
+				min-width: fit-content;
+				display: flex;
+				flex-wrap: nowrap;
+			}
+
+				.project {
+					transition: width 1s cubic-bezier(0.250, 0.460, 0.450, 0.940); /* easeOutQuad */
+
+					position: relative;
+
+					width: 25px;
+					height: 61px;
+
+					float: left;
+					cursor: pointer;
+
+					overflow: hidden;
+				}
+
+				.project:last-child {
+
+						width: 45px;
+
+				}
+
+				.project .image {
+					position: absolute;
+					top: 12px;
+					border: 2px solid #ffffff;
+					width: 32px;
+					height: 32px;
+					background-color: #000000;
+					background-image: url('files/projects/thumbnails.png');
+					image-rendering: pixelated;
+				}
+
+				.project div {
+					position: absolute;
+
+					left: 46px;
+					top: 18px;
+					width: 132px;
+
+					color: #ffffff;
+					font-weight: bold;
+					font-size: 9px;
+					line-height: 13px;
+
+					text-transform: uppercase;
+				}
+
+				.project .link {
+
+					position: absolute;
+					right: 12px;
+					top: 8px;
+					image-rendering: pixelated;
+
+				}
+
+				.project:hover {
+					transition: width 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+					width: 45px;
+				}
+
+				.project.selected {
+					transition: width 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+					width: 180px;
+				}
+
+				.project.selected:hover {
+					width: 180px;
+				}
+
+			#viewer {
+				position: absolute;
+				width: 100%;
+				top: 61px;
+				bottom: 0px;
+			}
+
+			/* Mobile hamburger menu */
+			#mobile-menu-btn {
+				display: none;
+				position: absolute;
+				right: 12px;
+				top: 14px;
+				width: 32px;
+				height: 32px;
+				cursor: pointer;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 5px;
+				z-index: 1000;
+			}
+
+			#mobile-menu-btn span {
+				width: 22px;
+				height: 2px;
+				background-color: #808080;
+			}
+
+			#mobile-menu-btn.active span:nth-child(1) {
+				transform: rotate(45deg) translate(5px, 5px);
+			}
+
+			#mobile-menu-btn.active span:nth-child(2) {
+				opacity: 0;
+			}
+
+			#mobile-menu-btn.active span:nth-child(3) {
+				transform: rotate(-45deg) translate(5px, -5px);
+			}
+
+			/* Mobile overlay */
+			#mobile-overlay {
+				display: none;
+				position: fixed;
+				top: 61px;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: rgba(0, 0, 0, 0.95);
+				z-index: 999;
+				overflow-y: auto;
+				padding: 20px;
+			}
+
+			#mobile-overlay.active {
+				display: block;
+			}
+
+			#mobile-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+				gap: 12px;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			.mobile-project-item {
+				cursor: pointer;
+			}
+
+			.mobile-project-item:active {
+				opacity: 0.7;
+			}
+
+			.mobile-project-item .image {
+				display: block;
+				border: 2px solid #ffffff;
+				width: 32px;
+				height: 32px;
+				background-color: #000000;
+				background-image: url('files/projects/thumbnails.png');
+				image-rendering: pixelated;
+			}
+
+			/* Mobile styles */
+			@media (max-width: 768px) {
+				#mobile-menu-btn {
+					display: flex;
+				}
+
+				#wrapper {
+					overflow: hidden;
+				}
+
+				#projects {
+					min-width: auto;
+				}
+
+				.project {
+					display: none;
+				}
+
+				.project.selected {
+					display: block;
+					width: calc(100% - 60px) !important;
+					pointer-events: none;
+				}
+
+				.project.selected:hover {
+					width: calc(100% - 60px) !important;
+				}
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<script defer src="../../../web3dsurvey.com/collector.js"></script>
+
+		<div id="nav">
+			<div id="logo">
+				<map name="logo">
+					<area shape="rect" href="index.html" coords="12,13,91,32" alt="Mr.doob" />
+					<area shape="rect" href="https://ricardocabello.com" coords="12,32,44,46" alt="Blog" />
+					<area shape="rect" href="https://x.com/mrdoob" coords="47,32,88,46" alt="Twitter" />
+				</map>
+				<img src="files/showcase/logo.svg" alt="logo" width="105" usemap="#logo" />
+			</div>
+			<div id="wrapper">
+				<div id="projects"></div>
+			</div>
+			<div id="mobile-menu-btn">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<!-- <a href="/blog"><img src="files/showcase/more.png" width="60" style="float:left" /></a> -->
+		</div>
+
+		<div id="mobile-overlay">
+			<div id="mobile-grid"></div>
+		</div>
+
+		<div id="viewer">
+			<iframe id="iframe" style="border:0;width:100%;height:100%" allow="fullscreen; screen-wake-lock"></iframe>
+		</div>
+
+		<script>
+
+			var data = [
+				/*
+				{
+					"id": 159,
+					"name": "Jumpy Dot",
+					"timestamp": "2021 / 03 / 18",
+					"link": "https://www.hicetnunc.xyz/objkt/7577"
+				},
+				*/
+				{
+					"id": 125,
+					"name": "Shared Canvas",
+					"timestamp": "2020 / 04 / 15",
+					"link": "https://mrdoob.com/projects/synergy/"
+				},
+
+				{
+					"id": 158,
+					"name": "Three.js Sketches",
+					"timestamp": "2016 / 02 / 12",
+					"link": "https://mrdoob.neocities.org/"
+				},
+
+				{
+					"id": 157,
+					"name": "Spin Painter",
+					"timestamp": "2015 / 05 / 10",
+					"link": "/lab/javascript/spinpainter/"
+				},
+
+				{
+					"id": 156,
+					"name": "Dataworld",
+					"timestamp": "2015 / 03 / 05",
+					"link": "https://xplsv.github.io/dataworld/"
+				},
+
+				/*
+				{
+					"id": 155,
+					"name": "Texgen.js",
+					"timestamp": "2015 / 01 / 26",
+					"link": "http://texgenjs.org/"
+				},
+
+				{
+					"id": 154,
+					"name": "Kinecdysis Writer",
+					"timestamp": "2014 / 04 / 23",
+					"link": "http://kinecdysis.sougwen.com/"
+				},
+				*/
+
+				{
+					"id": 153,
+					"name": "Sporel",
+					"timestamp": "2013 / 12 / 24",
+					"link": "https://mrdoob.github.io/sporel/"
+				},
+
+				{
+					"id": 152,
+					"name": "Obsidian",
+					"timestamp": "2013 / 07 / 28",
+					"link": "https://xplsv.github.io/obsidian/"
+				},
+				/*
+				{
+					"id": 151,
+					"name": "Translucent Network",
+					"timestamp": "2013 / 05 / 28",
+					"link": "http://www.thebeautybehindit.com/secure/"
+				},
+				*/
+				{
+					"id": 150,
+					"name": "Beach Balls",
+					"timestamp": "2013 / 03 / 24",
+					"link": "/lab/javascript/beachballs/"
+				},
+
+				/*
+				{
+					"id": 149,
+					"name": "Just Vined",
+					"timestamp": "2013 / 01 / 27",
+					"link": "http://justvined.com"
+
+				},
+
+				{
+					"id": 148,
+					"name": "Aaronetrope",
+					"timestamp": "2012 / 10 / 15",
+					"link": "http://www.aaronkoblin.com/Aaronetrope/",
+					"link_info": "https://plus.google.com/113862800338869870683/posts/Q3KrZwohayB"
+				},
+				*/
+
+				{
+					"id": 147,
+					"name": "Google Space",
+					"timestamp": "2012 / 10 / 15",
+					"link": "/projects/chromeexperiments/google-space/"
+				},
+				/*
+				{
+					"id": 146,
+					"name": "HTML Editor",
+					"timestamp": "2012 / 09 / 02",
+					"link": "/projects/htmleditor/"
+				},
+				*/
+				{
+					"id": 145,
+					"name": "Webcam Displacement",
+					"timestamp": "2012 / 08 / 25",
+					"link": "/lab/javascript/webcam/displace/"
+				},
+				/*
+				{
+					"id": 144,
+					"name": "Magic dust",
+					"timestamp": "2012 / 07 / 31",
+					"link": "/lab/javascript/webgl/particles/magicdust.html"
+				},
+
+				{
+					"id": 143,
+					"name": "DAT particles (thanks zz85)",
+					"timestamp": "2012 / 07 / 31",
+					"link": "/lab/javascript/webgl/particles/particles_zz85_1m.html"
+				},
+				*/
+				{
+					"id": 142,
+					"name": "Winning Solitaire",
+					"timestamp": "2012 / 05 / 07",
+					"link": "/lab/javascript/effects/solitaire/"
+				},
+				/*
+				{
+					"id": 141,
+					"name": "IE with WebGL",
+					"timestamp": "2012 / 05 / 03",
+					"link": "/lab/javascript/webgl/ie/"
+				},
+
+				{
+					"id": 140,
+					"name": "The Single Lane Superhighway",
+					"timestamp": "2011 / 12 / 07",
+					"link": "http://thesinglelanesuperhighway.com/"
+				},
+				*/
+				{
+					"id": 139,
+					"name": "GLSL Sandbox",
+					"timestamp": "2011 / 11 / 09",
+					// "link": "/projects/glsl_sandbox/"
+					"link": "https://glslsandbox.com/"
+				},
+				/*
+				{
+					"id": 138,
+					"name": "Kinect",
+					"timestamp": "2011 / 10 / 30",
+					"link": "/lab/javascript/webgl/kinect/"
+				},
+				*/
+				{
+					"id": 137,
+					"name": "Voxels liquid",
+					"timestamp": "2011 / 10 / 17",
+					"link": "/lab/javascript/webgl/voxels_liquid/"
+				},
+
+				{
+					"id": 135,
+					"name": "Sphere",
+					"timestamp": "2011 / 08 / 16",
+					"link": "/lab/javascript/webgl/sphere/"
+				},
+				/*
+				{
+					"id": 134,
+					"name": "Comments Audio Visualiser",
+					"timestamp": "2011 / 06 / 17",
+					"link": "/lab/javascript/commentsvisualiser/"
+				},
+    				*/
+				{
+					"id": 133,
+					"name": "3 Dreams of Black",
+					"timestamp": "2011 / 05 / 12",
+					"link": "https://rome.mrdoob.com/"
+				},
+				/*
+				{
+					"id": 132,
+					"name": "WebGL Globe",
+					"timestamp": "2011 / 05 / 05",
+					"link": "/projects/google/globe/redirect/"
+				},
+				*/
+				{
+					"id": 131,
+					"name": "Clouds",
+					"timestamp": "2011 / 03 / 25",
+					"link": "/lab/javascript/webgl/clouds/"
+				},
+
+				{
+					"id": 130,
+					"name": "Disturb",
+					"timestamp": "2010 / 12 / 11",
+					"link": "/lab/javascript/effects/disturb/"
+				},
+
+				{
+					"id": 129,
+					"name": "Voxels",
+					"timestamp": "2010 / 11 / 06",
+					"link": "/projects/voxels/#A/bnciaTraheakhacTSiahfaotaiafUscierhoShahfShahfafiWheSheUeWSfafhchhefffchhWffahherhpfXTbdUhUhUhVihShaffahfahhcfhYhaffYhahhaeeUhahhahhcdfShYhYhafhUheffdafhcjhShYfYfahfYfahfYfafhcjhYeahfShShWhfVbfdjjhaffaffaffafhafhafhahhahhahhahfahfeehhahfahfaffaffafhafhahhWhfahhWhfWffahhefXhUhehffahiaddbnfffYhcmfrfsaaiU"
+				},
+
+				{
+					"id": 128,
+					"name": "Internet Explorer 6",
+					"timestamp": "2010 / 10 / 07",
+					"link": "/lab/javascript/effects/ie6/"
+				},
+				/*
+    				// Doesn't work because it's not https
+				{
+					"id": 127,
+					"name": "The Wilderness Downtown",
+					"timestamp": "2010 / 08 / 30",
+					"link": "http://www.thewildernessdowntown.com/"
+				},
+				*/
+				{
+					"id": 126,
+					"name": "Or so they say...",
+					"timestamp": "2010 / 07 / 25",
+					"link": "https://xplsv.com/prods/demos/xplsv_orsotheysay/",
+					"link_info": "/blog/post/702"
+				},
+				/*
+				{
+					"id": 125,
+					"name": "Multiuser Sketchpad",
+					"timestamp": "2010 / 07 / 7",
+					"link": "/projects/multiuserpad/",
+					"link_info": "/blog/post/701"
+				},
+				*/
+				{
+					"id": 124,
+					"name": "Plane Deformations",
+					"timestamp": "2010 / 06 / 12",
+					"link": "/lab/javascript/effects/plane_deformations/",
+					"link_info": "/blog/post/699"
+				},
+
+				{
+					"id": 123,
+					"name": "Water Type",
+					"timestamp": "2010 / 06 / 4",
+					"link": "/lab/javascript/effects/water/02/",
+					"link_info": "/blog/post/696"
+				},
+
+				{
+					"id": 122,
+					"name": "Three.js",
+					"timestamp": "2010 / 04 / 23",
+					"link": "https://threejs.org/",
+					"link_info": "/blog/post/693"
+				},
+
+				{
+					"id": 120,
+					"name": "Harmony",
+					"timestamp": "2010 / 03 / 08",
+					"link": "https://mrdoob.github.io/harmony/",
+					"link_info": "/blog/post/689"
+				},
+
+				{
+					"id": 119,
+					"name": "Zoom blur",
+					"timestamp": "2010 / 03 / 08",
+					"link": "/lab/javascript/effects/zoomblur/03/"
+				},
+
+				{
+					"id": 118,
+					"name": "Rotozoomer",
+					"timestamp": "2010 / 02 / 26",
+					"link": "/lab/javascript/effects/rotozoomer/00/"
+				},
+
+				{
+					"id": 117,
+					"name": "Fire",
+					"timestamp": "2010 / 02 / 15",
+					"link": "/lab/javascript/effects/fire/01/"
+				},
+
+				{
+					"id": 116,
+					"name": "Water Remix",
+					"timestamp": "2010 / 02 / 11",
+					"link": "/lab/javascript/effects/water/01/"
+				},
+
+				{
+					"id": 115,
+					"name": "Water",
+					"timestamp": "2010 / 02 / 11",
+					"link": "/lab/javascript/effects/water/00/"
+				},
+
+				/*
+				{
+					"id": 99,
+					"name": "Branching",
+					"timestamp": "2009 / 11 / 29",
+					"link": "/lab/javascript/effects/branching/02/",
+					"link_info": "/blog/post/680"
+				},
+				*/
+
+				{
+					"id": 112,
+					"name": "Branching",
+					"timestamp": "2009 / 11 / 29",
+					"link": "/lab/javascript/effects/branching/01_spite_mrdoob/",
+					"link_info": "/blog/post/680"
+				},
+
+				{
+					"id": 111,
+					"name": "Branching",
+					"timestamp": "2009 / 11 / 29",
+					"link": "/lab/javascript/effects/branching/01/",
+					"link_info": "/blog/post/680"
+				},
+
+				{
+					"id": 110,
+					"name": "Branching",
+					"timestamp": "2009 / 11 / 29",
+					"link": "/lab/javascript/effects/branching/00/",
+					"link_info": "/blog/post/680"
+				},
+
+				{
+					"id": 98,
+					"name": "3D Waveform",
+					"timestamp": "2009 / 11 / 09",
+					"link": "/lab/javascript/waveform/",
+					"link_info": "/blog/post/677"
+				},
+				/*
+				{
+					"id": 107,
+					"name": "Strange Attractor",
+					"timestamp": "2009 / 11 / 04",
+					"link": "/lab/javascript/strangeattractor/"
+				},
+				*/
+				{
+					"id": 106,
+					"name": "Checkbox Painter",
+					"timestamp": "2009 / 11 / 04",
+					"link": "/lab/javascript/checkbox_painter/"
+				},
+
+				{
+					"id": 105,
+					"name": "Checkboxes Ball",
+					"timestamp": "2009 / 11 / 04",
+					"link": "/lab/javascript/checkboxes/"
+				},
+				/*
+				{
+					"id": 103,
+					"name": "60fps",
+					"timestamp": "2009 / 09 / 10",
+					"link": "http://60fps.com"
+				},
+
+				{
+					"id": 97,
+					"name": "Depth of Field",
+					"timestamp": "2009 / 06 / 10",
+					"link": "/projects/chromeexperiments/depth_of_field/"
+				},
+				*/
+
+				{
+					"id": 96,
+					"name": "Google Sphere",
+					"timestamp": "2009 / 05 / 28",
+					"link": "/projects/chromeexperiments/google-sphere/"
+				},
+
+				{
+					"id": 92,
+					"name": "Google Gravity",
+					"timestamp": "2009 / 03 / 18",
+					"link": "/projects/chromeexperiments/google-gravity/",
+					"link_info": "/blog/post/644"
+				},
+
+				{
+					"id": 91,
+					"name": "Ball Pool",
+					"timestamp": "2009 / 02 / 12",
+					"link": "/projects/chromeexperiments/ball-pool/",
+					"link_info": "/blog/post/644"
+				},
+				/*
+				{
+					"id": 83,
+					"name": "Youtube, now in Super HD!",
+					"timestamp": "2008 / 09 / 30",
+					"link": "/lab/youtube/superHD/",
+					"link_info": "/blog/post/597"
+				},
+				*/
+				{
+					"id": 32,
+					"name": "Slit Scan",
+					"timestamp": "2020 / 06 / 17",
+					"link": "/lab/javascript/webcam/slitscan/"
+				}
+
+			];
+
+			var wrapper = document.getElementById( 'wrapper' );
+			var projects = document.getElementById( 'projects' );
+			var viewer = document.getElementById( 'viewer' );
+			var iframe = document.getElementById( 'iframe' );
+			var mobileMenuBtn = document.getElementById( 'mobile-menu-btn' );
+			var mobileOverlay = document.getElementById( 'mobile-overlay' );
+			var mobileGrid = document.getElementById( 'mobile-grid' );
+
+			// iOS iframe auto-resize workaround
+
+			if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+				iframe.style.width = getComputedStyle( iframe ).width;
+				iframe.style.height = getComputedStyle( iframe ).height;
+			}
+
+			// Firefox
+
+			if ( /firefox/i.test( navigator.userAgent ) ) {
+
+				wrapper.style.scrollbarWidth = 'none';
+
+			}
+
+			var selected, divs = {};
+
+			init();
+
+			function init () {
+
+				buildList( data );
+				buildMobileGrid( data );
+
+				if ( window.location.hash ) {
+
+					var hash = window.location.hash.substr( 1 );
+
+					var id = hash.split( '/' )[ 1 ];
+
+					for ( var i in data ) {
+
+						if ( data[ i ].id == id ) {
+
+							loadProject( data[ i ] );
+							break;
+
+						}
+
+					}
+
+				} else {
+
+					loadProject( data[ 0 ] );
+
+				}
+
+				window.addEventListener( 'popstate', function ( event ) {
+
+					if ( event.state != null ) loadProject( event.state );
+
+				}, false );
+
+				// Mobile menu toggle
+				mobileMenuBtn.addEventListener( 'click', function () {
+
+					mobileMenuBtn.classList.toggle( 'active' );
+					mobileOverlay.classList.toggle( 'active' );
+
+				}, false );
+
+				// Close overlay when clicking outside grid
+				mobileOverlay.addEventListener( 'click', function ( event ) {
+
+					if ( event.target === mobileOverlay ) {
+
+						closeMobileMenu();
+
+					}
+
+				}, false );
+
+				// Handle viewport resize - close mobile menu when switching to desktop
+				var mediaQuery = window.matchMedia( '(max-width: 768px)' );
+
+				function handleViewportChange( e ) {
+
+					if ( ! e.matches ) {
+
+						closeMobileMenu();
+
+					}
+
+				}
+
+				if ( mediaQuery.addEventListener ) {
+
+					mediaQuery.addEventListener( 'change', handleViewportChange );
+
+				} else {
+
+					mediaQuery.addListener( handleViewportChange );
+
+				}
+
+			};
+
+			// Helper functions
+
+			function closeMobileMenu() {
+
+				mobileMenuBtn.classList.remove( 'active' );
+				mobileOverlay.classList.remove( 'active' );
+
+			}
+
+			function getSpritePosition( data ) {
+
+				var id = data.id - 1;
+				var x = id % 32;
+				var y = Math.floor( id / 32 );
+				return '-' + ( x * 32 ) + 'px -' + ( y * 32 ) + 'px';
+
+			}
+
+			function getProjectHash( data ) {
+
+				return '/' + data.id + '/' + data.name.toLowerCase().replace( /\ /gi, '_' ).replace( /[:.,\'()%]/gi, '' );
+
+			}
+
+			function createProjectImage( data ) {
+
+				var span = document.createElement( 'span' );
+				span.className = 'image';
+				span.style.backgroundPosition = getSpritePosition( data );
+				return span;
+
+			}
+
+			function buildList( items ) {
+
+				for ( var i in items ) {
+
+					projects.appendChild( buildProject( items[ i ] ) );
+
+				}
+
+			}
+
+			function buildMobileGrid( items ) {
+
+				for ( var i in items ) {
+
+					mobileGrid.appendChild( buildMobileProjectItem( items[ i ] ) );
+
+				}
+
+			}
+
+			function buildMobileProjectItem( data ) {
+
+				var div = document.createElement( 'div' );
+				div.className = 'mobile-project-item';
+				div.addEventListener( 'click', function ( event ) {
+
+					loadProject( data );
+					window.location.hash = getProjectHash( data );
+					closeMobileMenu();
+
+				}, false );
+
+				div.appendChild( createProjectImage( data ) );
+
+				return div;
+
+			}
+
+			function buildProject( data ) {
+
+				var div = document.createElement( 'div' );
+				div.className = 'project';
+				div.addEventListener( 'click', function ( event ) {
+
+					loadProject( data );
+					window.location.hash = getProjectHash( data );
+
+				}, false );
+
+				div.appendChild( createProjectImage( data ) );
+
+				var text = document.createElement( 'div' );
+				text.innerHTML = data.name + '<br>';
+				text.innerHTML += '<span style="color:#606060">' + data.timestamp + '</span><br>';
+				text.innerHTML += '<a class="link" href="https://mrdoob.com/'&#32;+&#32;data.link&#32;+&#32;'" target="_blank"><img src="files/link.png" style="margin-top:1px"></a>'; // ' + data.link.replace( /http:\/\//gi, '' ) +
+				div.appendChild( text );
+
+				divs[ data.id ] = div;
+
+				return div;
+
+			}
+
+			function loadProject( data ) {
+
+				if ( selected ) {
+
+					selected.className = 'project';
+
+				}
+
+				selected = divs[ data.id ];
+				selected.className = 'project selected';
+
+				document.title = 'Mr.doob | ' + data.name;
+				iframe.src = data.link;
+
+			}
+
+		</script>
+	</body>
+</html>

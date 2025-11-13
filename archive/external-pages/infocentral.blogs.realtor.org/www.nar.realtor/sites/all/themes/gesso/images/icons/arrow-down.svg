@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="46" height="24" viewBox="0 0 46 24">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+    <filter id="filter" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#fff"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1_copy_копия_2" data-name="Group 1 copy копия 2" class="cls-1">
+    <path class="cls-2" d="M22.036,24.1L0.428,2.487A1.389,1.389,0,1,1,2.392.523L24,22.132A1.389,1.389,0,1,1,22.036,24.1Z"/>
+    <path id="Rectangle_1_copy" data-name="Rectangle 1 copy" class="cls-2" d="M22.487,22.127L44.094,0.519a1.389,1.389,0,0,1,1.964,1.965L24.451,24.091A1.389,1.389,0,0,1,22.487,22.127Z"/>
+  </g>
+</svg>

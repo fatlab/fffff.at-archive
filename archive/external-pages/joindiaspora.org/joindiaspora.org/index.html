@@ -1,0 +1,765 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<style type="text/css">
+body {text-align:center; font-family:Fixedsys; background:#000}
+@media only screen and (min-width : 768px) {
+/*and (min-width : 1224px) {*/
+.small-only{display:none;}
+.rounded-corners {border-radius:5px;}
+.rounded-corners3 {-moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px; border-radius: 5px;}
+
+#outer_container {width:1010px; margin:0 auto; text-align:left; border:red groove 0px; position:relative;}
+#handshake {width:8px; height:8px; position:absolute; right:0px;}
+#top_social_bar {float:right; margin:0 20px 0 0; position:relative; top:3px; z-index:999;}
+#top_nav_container {width:1000px; position:relative;  margin-top:7px; z-index:99; text-align:center; border:red groove 0px;}
+#mega_nav {float:left; /*position:relative;  font-size:12px;*/}
+#top_drop_nav {float:left;}
+
+#main_container {clear:both; width:998px; 
+background:#ccc; background-position:top; border:#ccc groove 1px;}
+
+#top {width:998px; margin-bottom:10px; -moz-border-radius-topleft:5px 5px; -moz-border-radius-topright:5px 5px; -webkit-border-top-left-radius:5px 5px; -webkit-border-top-right-radius:5px 5px; border-top-left-radius:5px 5px; border-top-right-radius:5px 5px; border:red groove 0px;}
+#logo_container {float:left; border:#ccc groove 0px;}
+#logo_text {padding:10px 10px 5px 20px; margin:20px 0 0 20px; font-size:36px;}
+#logo2_text {font-style:italic; font-size:14px; text-align:center;}
+#banner_link {float:left; width:400px; border:#ccc groove 0px; display:block;}
+#top_right_container {float:right; width:475px; text-align:right; border:#ccc groove 0px;}
+#search_box {clear:right; float:right; width:200px; margin:5px 20px 0 0; border:blue groove 0px;}
+.logout_container {float:right; margin-top:5px;}
+#upper_right_signup {clear:right; float:right; width:250px; font-size:12px; padding:7px 20px 0px 0; color:#333; border:blue groove 0px;}
+#xtra_link{ float:right; font-size:12px; text-decoration:none; margin:0px 20px 0 0;}
+#xtra_fields{ clear:both; display:none; position:relative; left:100px; width:300px; margin:25px 20px 0 20px; padding:10px; font-size:12px; text-align:center; background:#F2EFEF; border-radius:10px; border:#ccc groove 1px; }
+label.error {float:left; width:75px; font-weight:normal; color:red; }
+.hideifbig {display:none;}
+.hideifsmall {}
+.formfont {font-size:10px;}
+.forme {font-size:12px; width:100px;}
+.formp {font-size:12px; width:60px}
+.cart_button_font {font-size:10px; border-radius:5px;}
+
+#header_center_top {float:right; position:relative; left:75px; color:red; text-align:center; z-index:1; border:blue groove 0px;}
+#center_top {font-size:20px; font-weight:bold; padding-top:25px; text-align:center; border:red groove 0px;}
+
+#top_hor_nav {clear:left; width:998px; padding:5px 0; margin-top:10px; font-size:12px; text-align:center; background:#fff; border-top:#ccc solid 1px; border-bottom:#ccc solid 1px;}
+#bottom_hor_nav {display:none; clear:both; width:998px; padding:5px 0; font-size:12px; text-align:center; background:#fff; border-top:#ccc solid 1px; border-bottom:#ccc solid 1px;}
+
+#mobile {display:none;}
+
+#dev_frags_top {position:relative; top:15px; text-align:center;}
+#dev_frags_left {float:left; margin:15px 15px 0 0; background-color:transparent; text-align:center; width:230;}
+#dev_frags_right {float:right; margin:15px 0 0 15px; background-color:transparent; text-align:center; width:; border:red groove 0px;}
+
+#frags_left_container {float:left; margin:0 15px 0 0; background-color:transparent; text-align:center; width:230;}
+#frags_right_container {float:right; margin:0 0 0 15px; background-color:transparent; text-align:center; width:;}
+.frag_l {clear:left; float:left; margin:0 15px 0px 0; width:;}
+.frag_r {clear:right; float:right; margin:0 0 0px 15px; width:;}
+
+.frag {}
+
+#left-nav-wrapper {float:left; width:230px; border:#ccc groove 0px;}
+#left-nav {margin:15px 15px 15px 15px; padding:15px; font-size:12px; border-radius:20px; background:#fafafa; border:#ccc groove 1px;}
+#below-nav {margin:15px; padding:15px 15px 0 15px; font-size:13px; border-radius:20px; ; border:#ccc groove 1px;}
+#page_views {text-align:center; color:#ccc; border:red groove 0px;}
+
+#content_container_wrapper {margin-top:20px; float:left; width:968px; ; border-left:#ccc groove 0px; position:relative; left:15px; }
+#content_container {font-size:14px; line-height:18px; margin:15px 0; padding:15px; border-radius:5px;   background:#fff; }
+
+#sitewide_robot_nav {width:900px; margin:10px auto; padding:10px; font-size:11px; line-height:12px; color:#838383; text-align:justify; border:red groove 0px;}
+
+#prod-h1-container {width:70%; margin:0 auto; line-height:24px; border:red groove 0px;}
+}
+
+
+/*@media only screen and (max-width : 360px) {*/
+@media only screen and (max-device-width : 767px) {
+/*and (max-device-width : 480px) {*/
+
+.big-only{display:none;}
+#outer_container {width:100%; margin:0 auto; text-align:left; border:red groove 0px; position:relative;}
+#handshake { display:none; width:8px; height:8px; background:#333; position:absolute; right:0px;}
+#top_social_bar { display:none; float:right; margin:0 20px 0 0; position:relative; top:3px; z-index:999;}
+#top_nav_container { display:none; width:px; position:relative;  margin-top:7px; z-index:99; text-align:center; border:red groove 0px;}
+#mega_nav {float:left; position:relative;  font-size:12px;}
+#top_drop_nav {float:left;}
+
+#main_container {clear:both; background:#ccc; background-position:top;}
+
+#top {text-align:center; margin-bottom:10px; border:red groove 0px;}
+#logo_container {border:#ccc groove 0px;}
+#logo_text {padding:10px 10px 5px 20px; font-size:30px;}
+#logo2_text {font-style:italic; font-size:18px; text-align:center;}
+#banner_link {float:left; width:100%; border:#ccc groove 0px; display:block;}
+
+#top_right_container {/*display:none; float:right; width:475px; text-align:right; border:#ccc groove 0px;*/}
+#search_box { display:none; clear:right; float:right; width:200px; margin:5px 20px 0 0; border:blue groove 0px;}
+.logout_container {float:left; padding:0 0 10px 10px; margin:5px 0px 0 0; border:red solid 0px;}
+#cart_button {font-size:16px; position:relative; top:-5px;}
+#upper_right_signup { display:none; clear:right; float:right; width:250px; font-size:16px; padding:7px 20px 0px 0; color:#333; border:blue groove 0px;}
+#xtra_link{ float:left; font-size:16px; text-decoration:none; padding-bottom:10px; margin:0px 8px;}
+#xtra_fields{ clear:both; display:none; width:100%; margin:20px 0; padding:10px 0; font-size:16px; text-align:center; background:#F2EFEF; border:#ccc groove 1px; }
+label.error {float:left; width:75px; font-weight:normal; color:red; }
+.hideifbig {}
+.hideifsmall {display:none;}
+.formfont {float:right; font-size:16px; margin-right:50px;}
+.forme {font-size:16px; width:150px;}
+.formp {font-size:16px; width:60px}
+.cart_button_font {font-size:16px;}
+
+#header_center_top {color:red; text-align:center; z-index:1; border:blue groove 0px;}
+#center_top {clear:both; font-size:20px; font-weight:bold; text-align:center; border:red groove 0px;}
+
+#top_hor_nav {clear:left; width:-22px; /*padding:5px 20px;*/ padding:20px 0 20px 20px; margin:10px 0; font-size:24px; line-height:35px; text-align:center; background:#fff; border-top:#ccc solid 1px; border-bottom:#ccc solid 1px;}
+#bottom_hor_nav {clear:both; width:-22px; /*padding:5px 20px;*/ padding:20px 0 20px 20px; font-size:24px; line-height:35px; text-align:center; background:#fff; border-top:#ccc solid 1px; border-bottom:#ccc solid 1px;}
+
+#mobile {text-align:center;}
+
+#dev_frags_top {font-size:24px;}
+#left-nav-wrapper { display:none; float:left; width:230px; border:#ccc groove 0px;}
+#left-nav {display:none; margin:15px 15px 15px 15px; padding:15px; font-size:12px; border-radius:20px; background:#fafafa; border:#ccc groove 1px;}
+#below-nav {margin:15px; padding:15px 15px 0 15px; font-size:13px; border-radius:20px; ; border:#ccc groove 1px;}
+#page_views {text-align:center; color:#ccc; border:red groove 0px;}
+
+#content_container_wrapper {float:left; margin-top:-50px; width:100%; overflow:hidden; ; border-left:#ccc groove 0px; }
+#content_container {font-size:16px; line-height:18px; padding:5px 15px 15px 15px; margin:50px 0 15px 0; /*padding:15px; border-radius:20px;*/   background:#fff;}
+
+#content_container img {float:none !important; width:90% !important; height:90% !important;}
+
+#sitewide_robot_nav {margin:10px auto; padding:10px; font-size:11px; line-height:12px; color:#838383; text-align:justify; border:red groove 0px;}
+
+/*h1{position:relative; top:-5px;}*/
+#prod-h1-container {width:50%; margin:0 auto 5px auto; line-height:24px; border:red groove 0px;}
+
+}
+
+
+#content-wrapper {padding:0 15px 5px 15px;}
+
+#rss_container {margin:-10px 20px 0 20px;}
+
+#page_footer {clear:both; margin-top:10px; text-align:center; font-size:12px; line-height:18px; border-radius:10px; padding:1px; border:green groove 0px;}
+#site_footer {clear:both; margin:15px 0; text-align:center; font-size:12px; line-height:18px; border:green groove 0px;}
+
+h1{font-size:20px; padding:10px 0; line-height:24px;}
+h2{font-size:16px; margin:0 0 3px 0;}
+h3{font-size:14px; margin:0 0 5px 0;}
+
+a.logo:link, a.logo:visited {color:#000; text-decoration: none;}
+a.logo:hover, a.logo:active {color:#fff;}
+a.hor:link, a.hor:visited {font-family:Arial,Helvetica,sans-serif; color:#3C779F; text-decoration: none;}
+a.hor:hover, a.hor:active {color:red;}
+a.nav:link, a.nav:visited {font-family:Arial,Helvetica,sans-serif; color:#3C779F; text-decoration: none;}
+a.nav:hover, a.nav:active {color:red;}
+
+.indent{margin-left:10px;} .bold{font-weight:bold;} .bold-indent{margin-left:10px; font-weight:bold;} .center{width:100%; text-align:center; border:#red groove 1px;} .bold-center{font-weight:bold; width:100%; text-align:center; border:#red groove 1px;}
+
+.rev-bm{position:relative; top:-30px;}
+.clear {clear:both;}
+
+.px12{font-size:12px;}
+.px10{font-size:10px;}
+
+
+</style>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/ie.css" media="screen" />
+    <![endif]-->
+    <link rel="stylesheet" href="../../../www.joindiaspora.org/css/style.css@v=1.3.css" media="all" />
+	<script src="../../../code.jquery.com/jquery-1.9.1.min.js"></script>
+	
+	<script src="../../../www.joindiaspora.org/js/main.js"></script>
+	
+	
+	<script src="../../../www.joindiaspora.org/js/jquery.slider.js" ></script>
+		<script src="../../../www.joindiaspora.org/js/validate.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#loginform").validate();
+  });
+  </script>
+
+
+
+<title>Join Diaspora</title>
+
+
+<meta name="description" content="Welcome to JoinDiaspora* Diaspora* doesnâ€™t use your data for any purpose other than allowing you to connect and share with others. Content is from the site's 2012-2014 archived pages." />
+
+<meta name="robots" content="index, follow, noodp, noydir" />
+<link rel="canonical" href="index.html" />
+
+
+</head>
+<body class="homepage">
+<a name="top"></a>
+<!--outer container-->
+<div id="outer_container">
+
+<div id="handshake"><a href="https://www.JoinDiaspora.org/index.php?id=1&reveal=yes&view_only=yes" style="width:100%; height:100%; display:block;"></a></div>
+
+<!--main container-->
+<div id="main_container" class="rounded-corners">
+
+<!--top-->
+
+<div id="top"  style="height:216px; background-image:url('../www.joindiaspora.org/images/site-images/banner-home-page.jpg');">
+
+<!-- logo link home either text or display block link -->
+<div id="logo_container">
+<div id="logo_text"><a href="index.html" class="logo" title="Home">JoinDiaspora.org<div id="logo2_text"></div></a>
+</div>
+</div>
+
+<!--center_top container-->
+<div id="header_center_top">
+</div>
+<!--close center_top container-->
+
+<div class="clear"></div></div>
+<!--close top-->
+
+<!--hor nav-->
+<!--close hor nav-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--content-->
+<div id="content_container_wrapper">
+<div id="content_container">
+
+
+
+
+
+
+
+
+
+
+<h1 class="page_title" align="center">JoinDiaspora: The Online Social World Where You are in Control</h1>
+
+<p style="text-align: center;">Content is from the site&#39;s 2012-2014 archived pages.</p>
+
+<div align="center">
+<h2>Welcome to JoinDiaspora*</h2>
+</div>
+
+<div>
+<div>
+<div>
+<h3>Own your own data</h3>
+Many networks use your data to make money by analysing your interactions and using this information to advertise things to you. diaspora* doesn&rsquo;t use your data for any purpose other than allowing you to connect and share with others.</div>
+</div>
+
+<div>
+<div>
+<h3>Choose your audience</h3>
+diaspora*&rsquo;s aspects allow you to share with just those people you want to. You can be as public or as private as you like. Share a funny photo with the whole world, or a deep secret just with your closest friends. You&rsquo;re in control.</div>
+</div>
+
+<div>
+<div>
+<h3>Be who you want to be</h3>
+A lot of networks insist that you use your real identity. Not diaspora*. Here you can choose who you want to be, and share as much or as little about yourself as you want. It really is up to you how you want to interact with other people.</div>
+</div>
+</div>
+
+<div>
+<div>
+<div>
+<h3>Decentralization</h3>
+Diaspora* is completely decentralized, and any person from any pod can communicate with one another! You can register at any of these&nbsp;other pods&nbsp;as well. You can also choose to&nbsp;set up your own pod&nbsp;if you&#39;d like.</div>
+</div>
+
+<div>
+<div>
+<h3>Make a contribution!</h3>
+
+<p>Make Diaspora even better! Fork the project on&nbsp;Github make some changes, and submit a pull request.</p>
+</div>
+</div>
+
+<div>
+<div>
+<h3>Tor .onion Service</h3>
+Tor makes it possible for users to hide their locations while offering various kinds of services, such as web publishing or an instant messaging server:diasporaaqmjixh5.onion</div>
+</div>
+</div>
+
+<p>&nbsp;</p>
+
+<p align="center">+++</p>
+
+<h2 align="center">diaspora* celebrates one year as a community project.</h2>
+
+<h2 align="center">27 August 2013</h2>
+
+<p>diaspora*, the privacy-aware, decentralized social network which puts users in control of their data security and was touted by the media as a &quot;Facebook killer,&quot; celebrates its first anniversary as a community-run project on 27 August.</p>
+
+<p>The project was started by four young programmers from NYU&rsquo;s Courant Institute in 2010, and raised a record $200,000 via Kickstarter. It broke new ground in establishing a social network which respects users&#39; privacy and helps them to own their data by giving them the power to decide where their data are stored.</p>
+
+<p>Related: We were told that these four <span style="font-size: 13px;">entrepreneurs</span> celebrated the success by buying 4 silver rings and engraving on the inside bands a code which is significant to only themselves. Several of us who saw the rings but initially didn&#39;t recognize the significance asked where the rings were bought. I was especially interested in the rings labeled Heartbeat Sterling Silver Rings. Turns out they were from an online site that sells a variety of different types of jewelry including bracelets, necklaces, earrings, and sterling silver rings by sterlingforever.com. But sterling silver rings are their forte and you can see that by just looking at <a href="http://www.sterlingforever.com/collections/sterling-silver-rings" style="color:#000; text-decoration:none;">their sterling silver rings page</a>. I bought my own simple sterling silver promise ring and then I bought my future wife&#39;s CZ engagement ring there. I couldn&#39;t afford a real diamond at the time, but their look-alike CZ rings were perfect. Over the last couple of years I have purchased other pieces of jewelry for my wife. So thanks guys for the tip, even though we had different agendas for buying at this e commerce store. LOL.</p>
+
+<p>Through many trials and tribulations, including finding workable solutions to technical issues which had never been solved before, difficulty in raising funding and the tragic death of one of the founders, the project kept growing.</p>
+
+<p>On 27 August 2012, the remaining founders handed over the diaspora* project to its community. So what has happened since then?</p>
+
+<h2>The last year in diaspora*</h2>
+
+<p>Community manager&nbsp;Sean Tilley&nbsp;and core developers Jonne Ha&szlig;&nbsp;and&nbsp;Florian Staudacher&nbsp;took over the reins and got diaspora* galloping once again.</p>
+
+<p>In that time the community has:</p>
+
+<ul>
+	<li>Adopted&nbsp;Loomio&nbsp;as a central hub for consensus-based decision making. Anyone in our community is&nbsp;welcome to voice their opinions, ideas, and plans&nbsp;on how to take the project further.</li>
+	<li>adopted a semantic versioning system for software releases;</li>
+	<li>released several major software updates, including significant performance and architecture improvements and many features;</li>
+	<li>developed numerous improvements in terms of designs, making the user experience in Diaspora even better than ever before.</li>
+	<li>launched a new project site, diasporafoundation.org, as a hub for the project;</li>
+	<li>launched a wiki at&nbsp;wiki.diasporafoundation.org&nbsp;as a hub for help for everyone from new users to developers;</li>
+	<li>done a lot of work on packaging the installation of diaspora* for different operating systems, to make it easier for people to set up their own server.</li>
+</ul>
+
+<h2>Diaspora&#39;s project infrastructure evolves</h2>
+
+<p>As development has shifted over to a community infrastructure, so too has the structure supporting the project itself. Since the beginning of the project, much of the principal development was done largely by Diaspora, Inc, a small for-profit start-up dedicated to coding the decentralized social communication platform.</p>
+
+<p>Times change, and the project has grown and matured beyond what a start-up could provide. In a collaboration with&nbsp;Eben Moglen&nbsp;of the&nbsp;Software Freedom Law Center, the Diaspora project now officially runs under a non-profit infrastructure under the&nbsp;Free Software Support Network. The FSSN will act as a 501c3 non-profit collaborator, and will provide the following for the community:</p>
+
+<ol>
+	<li>
+	<p>A respected place to hold all of the assets of Diaspora; the trademarks, the code copyright, JoinDiaspora and our money. It is a transparent organization which acts in the interest of the project and the community. If we decide we want to spend money doing code bounties or give swag to our top contributors, FSSN will work together with us to decide and put forth a course of action.</p>
+	</li>
+	<li>
+	<p>Take tax-free donations. FSSN is a 501c3 charity. Money that is donated to FSSN in Diaspora&rsquo;s name will go to help our project. This is huge in keeping the &lsquo;back room&rsquo; of Diaspora clear, and means hackers can focus on being hackers without being bogged down by legal paperwork.</p>
+	</li>
+	<li>
+	<p>A partner that shares our values. Together, we hope to take the project to the next level in terms of what our community can do together.</p>
+	</li>
+</ol>
+
+<h2>Where now for diaspora*?</h2>
+
+<p>The next steps for the project are:</p>
+
+<ul>
+	<li>separate the code which governs inter-server communication into its own layer to make our code base more stable;</li>
+	<li>create an API so diaspora* can communicate with other apps and platforms;</li>
+	<li>try to develop a standard protocol in collaboration with other decentralized social networks;</li>
+	<li>build more features into the software to attract more users.</li>
+</ul>
+
+<p>The good news is that the diaspora* network is healthy and growing in the hands of its community. There is now a thriving but small community of volunteer developers contributing to the project. New developers are joining all the time, and progress is speeding up exponentially. However, we can always do with new people to help out. If you think you can contribute to the diaspora* project, we&#39;d love to hear from you!</p>
+
+<p>&nbsp;</p>
+
+<h2 align="center"><em>In 2014 this notice appeared on the JoinDiaspora.com website.</em></h2>
+
+<div>
+<h4>JoinDiaspora.com Registrations are closed</h4>
+Diaspora is Decentralized! But don&#39;t worry! There are lots of&nbsp;other pods&nbsp;you can register at. You can also choose to&nbsp;set up your own pod&nbsp;if you&#39;d like. Thanks to decentralized social networking, any person from any pod can communicate with one another!</div>
+
+<div id="masthead">
+<h2>Diaspora goes Non-Profit</h2>
+
+<h3>Help support our mission of decentralizing the social web!</h3>
+
+<h2>&nbsp;</h2>
+</div>
+
+<form action="https://web.archive.org/web/20140913040418/https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input name="submit" type="submit" value="Donate to the FSSN" /> &nbsp;<img alt="" border="0" height="1" src="../../../web.archive.org/web/20140913040418im_/https%253A/www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" /></form>
+
+<p>Since August 27th, 2012, all of Diaspora&#39;s development has been done entirely by volunteers out in the open. This has allowed the project to grow in remarkable ways. New features, designs, and improvements have made their way into Diaspora&#39;s code, and as such, the project has evolved far beyond what its original founders could have ever expected.</p>
+
+<p>Our community-driven project is now supported and backed by the&nbsp;Free Software Support Network&nbsp;a project by&nbsp;Eben Moglen&nbsp;and the&nbsp;Software Freedom Law Center</p>
+
+<p>By Agreement, FSSN is collaborating with Diaspora to provide support for management of branding, finances and legal assets. By donating to our project, you&#39;re helping support the goals and visions of our community. We&#39;re working hard to make the social web a better place, and together, we believe that we can make&nbsp;</p>
+
+<p>Diaspora goes Non-Profit</p>
+
+<p>&nbsp;</p>
+
+<h2 align="center">FAQ for Pod Maintainers</h2>
+
+<h2><span id="Installation">Installation</span></h2>
+
+<h3><span id="What_are_the_general_system_requirements.3F">What are the general system requirements?</span></h3>
+
+<p>Running diaspora* requires resources depending on how many users use the installation and how much traffic the installation receives from other pods. Generally it is recommended that at least 1 Gig of memory should be available for even small instances.</p>
+
+<p>For pods with more users the amount of memory available to diaspora* and the background jobs it needs is higher depending on the amount of users actively using the instance. As the database grows, more memory will be needed to compensate.</p>
+
+<p>Since diaspora* requires quite a lot of different components to be installed, generally shared hosting servers are not sufficient. Any VPS or dedicated server with a suitable amount of memory will suffice.</p>
+
+<h3><span id="Do_you_have_a_detailed_installation_guide.3F">Do you have a detailed installation guide?</span></h3>
+
+<p>Yes.&nbsp;Check it out!&nbsp;It will probably be more up-to-date than this page, in general.</p>
+
+<h3><span id="What_ports_does_diaspora.2A_need_open_for_communication.3F">What ports does diaspora* need open for communication?</span></h3>
+
+<p>Since we recommend running on HTTPS you should only need to open the standard port for it: 443. You should have a reverse proxy listening there that forwards the requests to the application server that diaspora* starts, on port 3000 by default. You can use your existing Nginx or Apache to do that. While we don&#39;t recommend it, you can run on plain HTTP with its standard port 80 too. Just never let diaspora* listen on these ports directly. You don&#39;t need to open the application server port, 3000, it&#39;s for internal communication only.</p>
+
+<h3><span id="Can_I_use_Apache_to_run_diaspora.2A.3F">Can I use Apache to run diaspora*?</span></h3>
+
+<p>Yes: diaspora* is a standard Rails application, so you can run it with&nbsp;Passenger, or doing the more common setup which is to use a reverse proxy configuration. Check&nbsp;this example&nbsp;on how to configure that setup.</p>
+
+<h3><span id="I_installed_diaspora.2A_on_my_machine.2C_went_to_http:.2F.2Flocalhost:3000_and_signed_up._But_my_friends_can.27t_add_me.21">I installed diaspora* on my machine, went to http://localhost:3000 and signed up. But my friends can&#39;t add me!</span></h3>
+
+<p>You set &quot;localhost&quot; as your address, but this is not a valid external address. You first need an externally accessible address - either a domain name or an IP address. Once you have that working, you need to clear your database (`$ bundle exec rake db:drop db:create db:schema:load`) and re-register, coming in via the external URL. Note that if your externally accessible address changes, you need to start over. diaspora* is designed as a server application to run all day and night.</p>
+
+<h3><span id="I_get_.27command_not_found.27_if_I_run_bundle_install">I get &#39;command not found&#39; if I run bundle install</span></h3>
+
+<p>Make sure RVM is loaded and the correct Ruby version and gemset are activated. The output of the&nbsp;rvm info&nbsp;and&nbsp;gem env&nbsp;commands can be helpful in that. Run&nbsp;gem install bundler&nbsp;to reassure bundler is actually installed.</p>
+
+<p>If you don&#39;t use RVM, a common issue is that Debian-based distributions, including Ubuntu, don&#39;t add gem executables to the search path. Read up on the&nbsp;PATHenvironment variable on how to solve that.</p>
+
+<h3><span id="How_do_I_get_past_the_sign-in_page_to_create_a_new_account.3F">How do I get past the sign-in page to create a new account?</span></h3>
+
+<p>To create a new account, go to http://yourdiasporainstance.tld/users/sign_up (replacing&nbsp;<em>yourdiasporainstance.tld</em>&nbsp;with the host name of your pod).</p>
+
+<h3><span id="I_installed_diaspora.2A_on_my_machine.2C_but_when_I_load_the_site_there_are_no_images_and_the_layout_looks_horrible.21">I installed diaspora* on my machine, but when I load the site there are no images and the layout looks horrible!</span></h3>
+
+<p>You most likely started diaspora* in production mode and accessed the application server directly and not through your reverse proxy. In production mode we expect your reverse proxy to serve the static content since it does the job way better than anything else. If you did access diaspora* through a reverse proxy, make sure it has no configuration issues, has the&nbsp;public/&nbsp;directory as document root and is set to look up if requested files are found there before directing the request to the application server.</p>
+
+<p>Also make sure you ran&nbsp;bundle exec rake assets:precompile.</p>
+
+<p>If you need to work around this requirement you can turn&nbsp;environment.assets.serve&nbsp;to&nbsp;true&nbsp;in&nbsp;config/diaspora.yml.</p>
+
+<h3><span id="There_are_no_uploaded_images_on_my_pod">There are no uploaded images on my pod</span></h3>
+
+<p>First make sure other static content is working, as described in the previous section. We embed uploaded images with their full URL, this has to do with the way diaspora* makes sure your images can be seen by users on other pods. A common problem here is that&nbsp;environment.url&nbsp;in&nbsp;config/diaspora.yml, from which diaspora* constructs the full URL, is set to an incorrect value.</p>
+
+<h3><span id="Do_I_need_a_commercial_SSL_certificate.3F_.2F_Can_I_use_CAcert_certificates.3F">Do I need a commercial SSL certificate? / Can I use CAcert certificates?</span></h3>
+
+<p>If you plan on running your pod over HTTPS (yes,&nbsp;you should!) then yes you will need a valid commercial SSL certificate. By design, federation will not work with pods that have self-signed or invalid SSL certs installed. We do this to ensure that all users in the network are able to use diaspora* without suffering from constant security warnings related to &#39;invalid&#39; certs.</p>
+
+<p>For more information see&nbsp;this&nbsp;and&nbsp;this&nbsp;discussion.</p>
+
+<p>There&nbsp;<strong>are</strong>&nbsp;free commercial certificates around - check&nbsp;Let&#39;s Encrypt&nbsp;or&nbsp;StartSSL&nbsp;for example.</p>
+
+<h3><span id="I_can.27t_find_anybody_on_another_pod_.2F_I_am_receiving_posts_but_nobody_is_receiving_mine">I can&#39;t find anybody on another pod / I am receiving posts but nobody is receiving mine</span></h3>
+
+<p>If you&#39;re having problems, make sure to search for people by their full diaspora* ID. Check that your Sidekiq worker is running. Check Sidekiq&#39;s retry queue for error messages. Check that the&nbsp;environement.certificate_authorities&nbsp;setting is correct.</p>
+
+<h3><span id="I_can.27t_find_myself_from_another_pod_.2F_I_am_not_receiving_any_posts_but_everybody_is_receiving_mine">I can&#39;t find myself from another pod / I am not receiving any posts but everybody is receiving mine</span></h3>
+
+<p>Check that your SSL setup is correct, use&nbsp;sslshopper,&nbsp;ssllabs&nbsp;or&nbsp;High-Tech Bridge&nbsp;to test your configuration. Make sure it&#39;s all green, no yellow, no red.</p>
+
+<h3><span id="I.27m_getting_the_warning_.22..._in_production_without_Sidekiq_workers.22">I&#39;m getting the warning &quot;... in production without Sidekiq workers&quot;</span></h3>
+
+<p>Sidekiq&nbsp;is the backend we use for processing background jobs. Normally, Sidekiq is spawned as a separate process, but in this case you have configured diaspora* to run the jobs in the same process as the application. This is normally used for development or testing purposes, but if used in production, it can bring major performance penalties. Thus you should always run Sidekiq in its own process, by setting&nbsp;environment.single_process_mode&nbsp;to&nbsp;false&nbsp;in your&nbsp;config/diaspora.yml&nbsp;and starting the Sidekiq process with</p>
+
+<div dir="ltr">
+<div>
+<pre>
+RAILS_ENV=production bundle exec sidekiq</pre>
+</div>
+</div>
+
+<p>In case you are using&nbsp;script/server&nbsp;to start diaspora*, then you don&#39;t have to manually start the workers! This is already done by the script.</p>
+
+<h3><span id="How_can_I_troubleshoot_my_email_configuration.3F">How can I troubleshoot my email configuration?</span></h3>
+
+<p>Use the following command to send an email and get the exceptions right on your console:</p>
+
+<div dir="ltr">
+<div>
+<pre>
+RAILS_ENV=production rails runner &#39;Notifier.admin(&quot;test message&quot;, User.where(username: &quot;your_username&quot;)).each(&amp;:deliver)&#39;</pre>
+</div>
+</div>
+
+<p>Make sure to restart diaspora* once you successfully receive the test message.</p>
+
+<h3><span id="I.27m_getting_a_500_error_page">I&#39;m getting a 500 error page</span></h3>
+
+<p>Oh noes, you might have hit a bug in diaspora*! But this can also be caused by setup issues, like a incorrectly setup custom landing page, an old Redis version or database connectivity issue.</p>
+
+<ol>
+	<li>Make sure you found a reliable way to reproduce the issue.</li>
+	<li>Run&nbsp;tail -f log/production.log. Watch the output closely as you reproduce the issue.</li>
+	<li>If you can&#39;t make sense out of the actual error message, reach out to us, see&nbsp;How we communicate. When doing so provide the steps you have taken to produce the error page as well as the full output from the log while reproducing it.</li>
+	<li>If told to open an issue, go to&nbsp;https://github.com/diaspora/diaspora/issues. Again make sure to provide the steps to reproduce the problem as well as the log output.</li>
+</ol>
+
+<h3><span id="How_can_I_run_multiple_load-balanced_instances_of_diaspora.2A.3F">How can I run multiple load-balanced instances of diaspora*?</span></h3>
+
+<p>Multiple diaspora* instances for the same &quot;pod&quot; must share SQL and Redis databases, and&nbsp;<em>public/uploads</em>&nbsp;directories. There are many possible ways to accomplish this, but perhaps the most classical scenario would be to configure all the nodes to point at a central database server for MySQL/Postgres and Redis, and share the uploads directory from a file server via NFS. To avoid problems with schema changes, it would be desirable to keep all of the instances running the same version of diaspora* at all times.</p>
+
+<p>Load-balancing of the instances can be accomplished with any TCP load balancer that supports session stickiness (such as&nbsp;Apache&nbsp;or&nbsp;nginx, among others).</p>
+
+<h2><span id="Upgrading">Upgrading</span></h2>
+
+<h3><span id="Is_there_anything_I_should_do_before_upgrading_my_installation.3F">Is there anything I should do before upgrading my installation?</span></h3>
+
+<p>Yes, read our&nbsp;notes for updating.</p>
+
+<h3><span id="How_do_I_roll_back_my_installation_if_an_update_breaks_it.3F">How do I roll back my installation if an update breaks it?</span></h3>
+
+<p>First, try to fix your installation; as always our&nbsp;IRC channel&nbsp;should be helpful for getting help with this.</p>
+
+<p>To roll back, just do:&nbsp;git checkout ref&nbsp;Where&nbsp;<em>ref</em>&nbsp;is the identifier of the commit to go back to. It&#39;s a long string of letters and numbers. You can find the&nbsp;<em>ref</em>&nbsp;by doing a&nbsp;git log, eyeballing the commit dates, and figuring out where you were before you pulled. Of course it&#39;s best if you keep track of that&nbsp;<em>ref</em>&nbsp;before you update.</p>
+
+<p>You can also checkout a particular version with&nbsp;git checkout v0.3.0.1, replacing the version of course.</p>
+
+<p>After that just follow the same procedure that you would to update your installation.</p>
+
+<h3><span id="What_if_there_were_database_migrations_in_the_code_I_am_rolling_back.3F">What if there were database migrations in the code I am rolling back?</span></h3>
+
+<p>Then you also need to roll those back separately. You need to do this&nbsp;<strong>before</strong>&nbsp;you roll back the code. Look in the&nbsp;db/migrate&nbsp;directory and figure out which files are new since the last time you pulled - i.e., which migration your database should be on. They are in timestamp order in that directory. Then do:&nbsp;bundle exec rake db:rollback&nbsp;and look at the output. It will tell you which migration you are now on. It rolls back one each time you run it. Run it until you&#39;re on the right migration and then roll back the code as described above.</p>
+
+<p>Also be aware that database rollbacks can fail - they depend on the migration author writing the correct code to roll back. So in this case it&#39;s generally much easier to seek help to fix your current setup than to roll it back.</p>
+
+<h2><span id="General">General</span></h2>
+
+<h3><span id="Am_I_alone_here.3F_.28Establish_connections_with_other_pods.29">Am I alone here? (Establish connections with other pods)</span></h3>
+
+<p>Once you set up your pod, you should add some contacts to start receiving content from other pods. It&#39;s a good idea to add some active diaspora* people to your contacts, because they almost all run their own pod, so your pod will be known by them and you will be easily findable from there.</p>
+
+<p>Here is a small list:</p>
+
+<ul>
+	<li>Official account of the project: diasporahq[at]joindiaspora.com</li>
+	<li>Sean Tilley: deadsuperhero[at]joindiaspora.com</li>
+	<li>Jonne Ha&szlig;: mrzyx[at]social.mrzyx.de</li>
+	<li>Florian Staudacher: raven24[at]pod.fulll.name</li>
+	<li>Jason Robinson: jaywink[at]iliketoast.net</li>
+	<li>The Geraspora team: team[at]pod.geraspora.de</li>
+	<li>Fla: fla[at]diaspora-fr.org</li>
+	<li>Diaspora*UK: podmin[at]joindiaspora.co.uk</li>
+</ul>
+
+<p>After you added a few contacts it&#39;s a good idea to make a&nbsp;<strong>public</strong>&nbsp;post containing the&nbsp;#newhere&nbsp;tag, announcing your new pod, to get even more contacts.</p>
+
+<h3><span id="Can_I_make_my_pod_private.2Fisolated.2Fnot_communicate_with_other_pods.3F">Can I make my pod private/isolated/not communicate with other pods?</span></h3>
+
+<p>No. diaspora* is built around the idea of a distributed social network. We want to build one network, not enable special interest communities or companies to host their own social network (We do welcome you on diaspora* though!). A large amount of the development effort goes into making that one network possible and the whole user experience is designed around it. This not only means that other existing solutions often have feature-sets way better suited to that usecase, but also that if we did implement a switch to turn off communication with other pods, there would be many broken ends in the user interface, which would lead to a bad user experience.</p>
+
+<h3><span id="Can_I_modify_the_code.3F">Can I modify the code?</span></h3>
+
+<p>Yes. But keep in mind that diaspora* is licensed under the AGPLv3, that means you must make the currently running source code available to your users. For legal advice beyond that, please contact your lawyer.</p>
+
+<h3><span id="Will_a_pod_eventually_receive_federated_posts_that_it_misses_while_being_offline.2Fdown.3F">Will a pod eventually receive federated posts that it misses while being offline/down?</span></h3>
+
+<p>Possibly. We retry the delivery three times at one hour intervals.</p>
+
+<h3><span id="I.27ve_got_my_pod_running._How_do_I_disable_outside_logins.3F">I&#39;ve got my pod running. How do I disable outside logins?</span></h3>
+
+<p>Set&nbsp;settings.enable_registrations&nbsp;to&nbsp;false&nbsp;in your&nbsp;config/diaspora.yml&nbsp;and then restart diaspora*.</p>
+
+<h3><span id="How_do_I_back_up_my_pod.3F">How do I back up my pod?</span></h3>
+
+<p>You should do backups of all user data, that is the whole database and uploaded images. For the images just make copies of the&nbsp;public/uploads&nbsp;directory. Then just dump all&nbsp;Diaspora_&nbsp;databases from your database server. A web search should get you the information you need on how to do that. Make sure to store the backups on a different server, or at least on a different hard drive.</p>
+
+<h3><span id="I_am_on_PPC_.28e.g._old_iMac.29_and_want_to_use_it_for_serving_diaspora.2A.2C_but_there_is_no_ExecJS_compatible_JS_runtime">I am on PPC (e.g. old iMac) and want to use it for serving diaspora*, but there is no ExecJS compatible JS runtime</span></h3>
+
+<p>One thing you could do, assuming you have another PC that will run Node: Precompile your assets on that machine (using&nbsp;bundle exec rake assets:precompile) and then check them into git before you deploy to the PPC box, or just copy over the contents of&nbsp;public/assets. The Javascript runtime is only really needed for precompiling assets and shouldn&#39;t be loaded at all in the actual production environment. You may need to use&nbsp;git add public/assets -f&nbsp;to force git to check them in, since I think that directory is in .gitignore.</p>
+
+<h3><span id="What_are_roles_and_how_do_I_use_them.3F_.2F_Make_yourself_an_admin_or_assign_moderators">What are roles and how do I use them? / Make yourself an admin or assign moderators</span></h3>
+
+<p>We have a role system that allows to make some accounts &#39;special&#39; during runtime, without restarting the server.</p>
+
+<p>Currently you can manage the community spotlight, the moderators and the admins through this system. If you are using PostgreSQL, ensure you have set the environment variable&nbsp;DB=&#39;postgres&#39;&nbsp;or you will get a very misleading error from bundler and if you follow it, accidentally install the MySQL adapter.</p>
+
+<p>Start by starting a Rails console:</p>
+
+<div dir="ltr">
+<div>
+<pre>
+RAILS_ENV=production bundle exec rails console</pre>
+</div>
+</div>
+
+<p>You&#39;ll get a new shell where you can enter Ruby code. To exit it just press&nbsp;Ctrl+D&nbsp;or type&nbsp;exit&nbsp;or&nbsp;quit. Here are some examples to manage the roles, replace&nbsp;<em>the_username</em>&nbsp;with the user&#39;s username, not their full diaspora* ID:</p>
+
+<div dir="ltr">
+<div>
+<pre>
+Role.add_admin User.where(username: &quot;the_username&quot;).first.person           # Add an user as admin by username Role.add_admin User.where(email: &quot;the_email&quot;).first.person                 # Add an user as admin by email Role.add_moderator User.where(username: &quot;the_username&quot;).first.person       # Add an user as moderator by username Role.add_moderator User.where(email: &quot;the_email&quot;).first.person             # Add an user as moderator by email Role.add_spotlight User.where(username: &quot;the_username&quot;).first.person       # Add an user to the &#39;community spotlight&#39; by username Role.add_spotlight User.where(email: &quot;the_email&quot;).first.person             # Add an user to the &#39;community spotlight&#39; by email Role.add_spotlight Person.where(diaspora_handle: &quot;<a href="https://www.joindiaspora.org/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f88d8b9d8a9699959db888979cd68c949c">[email&#160;protected]</a>&quot;).first # Add an user to the &#39;community spotlight&#39; by diaspora handle (other pod), make sure that at least one user of your pod follows that account</pre>
+</div>
+</div>
+
+<p>For admins; your user profile should now have an &quot;Admin&quot; link added to the mouse hover list. This gives you stuff like user search and stats for your pod. For intense detail on the operational aspects of your pod, go to the location /admin_panel For moderators: The moderator should now have an &quot;Moderator&quot; link added to the mouse hover list. Moderators have access to the report section of the admin panel and can review reported posts and comments. Moderators also get emails when a new comment or post is reported.</p>
+
+<h3><span id="Followed_tags_don.27t_work_on_my_pod">Followed tags don&#39;t work on my pod</span></h3>
+
+<p>There is no synchronization in diaspora*. This means your pod only knows about posts it has received for a purpose. These purposes are, of course: the author is local, someone on your pod is following the post&#39;s author, or the post&#39;s author is following someone on your pod. Another reason is that the post got reshared by someone whom one of the users on your pod follows. Tags are not federated to all pods: the #Followed Tags stream displays only posts your pod knows about through one of the previous scenarios.</p>
+
+<h3><span id="My_log_files_are_getting_huge.2C_help.21">My log files are getting huge, help!</span></h3>
+
+<p>Configure yourself a log rotation solution. For example, on Linux distros, do this with&nbsp;<em>logrotate</em>, something like the following (change the paths where needed) in&nbsp;<em>/etc/logrotate.d/diaspora</em>:</p>
+
+<pre>
+/home/diaspora/diaspora/log/*.log {    notifempty    copytruncate    missingok    compress    monthly    delaycompress    rotate 5 }</pre>
+
+<p>Once you&#39;ve added the file to &quot;/etc/logrotate.d/&quot; run</p>
+
+<pre>
+sudo logrotate -f /etc/logrotate.conf</pre>
+
+<h3><span id="How_can_I_send_an_email_to_a_user_.2F_a_group_of_users.3F">How can I send an email to a user / a group of users?</span></h3>
+
+<p>You need a working email configuration. There are two ways for triggering the emails.</p>
+
+<h4><span id="Ruby_console">Ruby console</span></h4>
+
+<p>Fire up your rails console with&nbsp;rails console production, then follow one of the examples or make up your own:</p>
+
+<div dir="ltr">
+<div>
+<pre>
+Notifier.admin(&quot;important message&quot;, User.where(username: &quot;someuser&quot;)).each(&amp;:deliver)                 
+# Send a message to someuser Notifier.admin(&quot;important message&quot;, User.where(username: [&quot;someuser&quot;, &quot;anotheruser&quot;])).each(&amp;:deliver) 
+# Send a message to a group of users Notifier.admin(&quot;important message&quot;, User.yearly_actives).each(&amp;:deliver)                              
+# Send a message to all active users</pre>
+</div>
+</div>
+
+<h4><span id="Rake_task">Rake task</span></h4>
+
+<p>There is a Rake task&nbsp;podmin:admin_mail&nbsp;available to allow podmins to easily send news and notices to users. The rake task triggers emails via the normal diaspora mailer mechanism (so they are embedded in the standard template) and takes the following parameters:</p>
+
+<pre>
+ 1) Users definition all - all users in the database (except deleted) active_yearly - users logged in within the last year active_monthly - users logged in within the last month
+active_halfyear - users logged in within the last 6 months  2) Path to message file. Give here a path to a HTML or plain text file that contains the message.  3) Subject    
+A subject for the email </pre>
+
+<p>Example shell command (depending on your environment)</p>
+
+<div dir="ltr">
+<div>
+<pre>
+RAILS_ENV=production bundle exec rake podmin:admin_mail[&#39;active_monthly&#39;,&#39;./message.html&#39;,&#39;Important message from pod&#39;]</pre>
+</div>
+</div>
+
+<p>Read more about&nbsp;specifying arguments to Rake tasks.</p>
+
+<h3><span id="Can_I_add_advertisements_to_my_pod.3F">Can I add advertisements to my pod?</span></h3>
+
+<p>Sure, we have no rules that you cannot add advertisements to your diaspora* installation.</p>
+
+<h3><span id="How_do_I_define_a_Terms_of_Service_document_for_signing_up_to_my_pod.3F">How do I define a Terms of Service document for signing up to my pod?</span></h3>
+
+<p>That feature is built in and we have a generic template that you are welcome to use. Of course, you can also edit it or create your own set of terms.</p>
+
+<p>This feature is built in but not enabled by default. If you want to enable it, please add under settings in&nbsp;config/diaspora.yml&nbsp;the following and restart diaspora. If in doubt see&nbsp;config/diaspora.yml.example:</p>
+
+<pre>
+  terms:     enable: true </pre>
+
+<p>When enabled, the footer and sidebar will have a link to terms page, and signup will have a disclaimer indicating that creating an account means the user accepts the terms of use.</p>
+
+<p>While the project itself doesn&#39;t restrict what kind of terms pods run on, we realize not all podmins want to spend time writing them from scratch. Thus there is a basic ToS template included that will be used unless a custom one available.</p>
+
+<p>To modify (or completely rewrite) the terms template, create a file called&nbsp;app/views/terms/terms.haml&nbsp;or&nbsp;app/views/terms/terms.erb&nbsp;and it will automatically replace the default template, which you can find at&nbsp;app/views/terms/default.haml.</p>
+
+<p>There are also two configuration settings to customize the terms (when using the default template). These are optional.</p>
+
+<ul>
+	<li>settings.terms.jurisdiction&nbsp;- indicate here in which country or state any legal disputes are handled.</li>
+	<li>settings.terms.minimum_age&nbsp;- indicate here if you want to show a minimum required age for creating an account.</li>
+</ul>
+
+<h3><span id="How_do_I_modify_the_pod_landing_page.3F">How do I modify the pod landing page?</span></h3>
+
+<p>Please see&nbsp;Custom_splash_page.</p>
+
+<h2><span id="Errors_and_problems">Errors and problems</span></h2>
+
+<h3><span id="What_do_I_do_about_all_these_PGErrors.2C_like_disconnects_and_SSL_problems.3F">What do I do about all these PGErrors, like disconnects and SSL problems?</span></h3>
+
+<p>If you are running diaspora* with PostgreSQL, beware that having&nbsp;the SSL setting&nbsp;turned on in the PostgreSQL config has been causing problems for several people. We recommend turning it off unless you know what you&#39;re doing.</p>
+
+<h3><span id="My_sidekiq_is_crashing.2C_help.21">My sidekiq is crashing, help!</span></h3>
+
+<h4><span id="Check_your_curl_version">Check your&nbsp;curl&nbsp;version</span></h4>
+
+<pre>
+   /usr/bin/curl --version </pre>
+
+<p>Make sure you see&nbsp;AsynchDNS&nbsp;in the output. If this does not happen, check&nbsp;this issue on how to upgrade curl.</p>
+
+<h4><span id="Check_database_connection_pool">Check database connection pool</span></h4>
+
+<p>Make sure you have enough database pool connections to top your&nbsp;environment.sidekiq.concurrency. Search&nbsp;logs/sidekiq.log&nbsp;for errors relating to database connection not being available if unsure if you are running out. You can edit the&nbsp;pool&nbsp;setting in&nbsp;config/database.yml&nbsp;if needed and then restart. Make it sufficiently larger than your&nbsp;sidekiq concurrency*sidekiq workers, 1.5x is a safe rule here.</p>
+
+<h4><span id="Check_for_out_of_open_files_errors">Check for out of open files errors</span></h4>
+
+<p>In the diaspora* app folder, do&nbsp;grep &quot;Too many open files&quot; log/sidekiq.log&nbsp;and check for results relating to the system user running the diaspora server running out of open files. If you get any errors, it is possible sidekiq can be brought down by the same problem. Follow for example&nbsp;this guide&nbsp;to increase the limit of open files available to the user running diaspora*.</p>
+
+<h4><span id="Make_sure_memory_is_not_running_out">Make sure memory is not running out</span></h4>
+
+<p>If the server runs out of memory, it is likely sidekiq will be the first to be killed. Check for&nbsp;Cannot allocate memory&nbsp;text in the&nbsp;./script/server&nbsp;output, or use monitoring to see when memory goes critical.&nbsp;Increase the amount of swap available&nbsp;to make sure the application does not die (swap should be at least the same as RAM).</p>
+
+<p>To make sure sidekiq doesn&#39;t use too much memory, make sure you are not running with too many Sidekiq workers or concurrency. On a small pod, you can safely but both values to 1 in&nbsp;config/diaspora.yml. Then restart and watch the Sidekiq admin panel and if a queue starts to build up, increase the&nbsp;concurrency&nbsp;in small increments until Sidekiq can handle the queue. There is&nbsp;<strong>NO</strong>&nbsp;need to run more Sidekiq concurrent threads than is needed to process the queue - you just use more memory this way!</p>
+
+
+
+
+
+
+
+
+
+
+
+<div /*id="page_footer"*/ style="font-size:24px; padding:20px; text-align:center;">JoinDiaspora.org</div>
+
+<div style="clear:both;"></div></div>
+</div>
+<!--close content-->
+
+
+
+
+
+
+
+
+
+
+<!--hor nav-->
+<!--close hor nav-->
+
+
+
+<!--footer-->
+
+
+
+<!--close footer-->
+
+<div style="clear:left;"></div></div>
+<!--close main container-->
+
+
+
+
+
+
+
+</div>
+<!--outer container-->
+
+
+
+<script data-cfasync="false" src="../../../www.joindiaspora.org/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

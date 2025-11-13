@@ -1,0 +1,48 @@
+/* BEGIN css-protection script */
+	*:not(input):not(textarea):not(text):not([contenteditable="true"]):not([contenteditable="true"] *):not([contenteditable]):not([contenteditable] *):not(code):not(code *):not(codeblock_wccp):not(codeblock_wccp *),
+	*::after,
+	*::backdrop,
+	*::before,
+	*::cue,
+	*::marker,
+	*::placeholder
+	{
+		/*-webkit-touch-callout: none;*/
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	*:not(input):not(textarea):not(text):not([contenteditable="true"]):not([contenteditable="true"] *):not([contenteditable]):not([contenteditable] *):not(code):not(code *)::selection { background: transparent; }
+	*:not(input):not(textarea):not(text):not([contenteditable="true"]):not([contenteditable="true"] *):not([contenteditable]):not([contenteditable] *):not(code):not(code *)::-moz-selection { background: transparent; }
+
+
+	.cover-container {
+		   border: 1px solid #DDDDDD;
+		   width: 100%;
+		   height: 100%;
+		   position: relative;
+		}
+	.glass-cover {
+	   float: left;
+	   position: relative;
+	   left: 0px;
+	   top: 0px;
+	   z-index: 1000;
+	   background-color: #92AD40;
+	   padding: 5px;
+	   color: #FFFFFF;
+	   font-weight: bold;
+	}
+	.unselectable
+	{
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	-khtml-user-select: none;
+	user-select: none;
+	cursor: default;
+	}
+/* END css-protection script */
+

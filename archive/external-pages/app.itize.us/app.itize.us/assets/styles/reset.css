@@ -1,0 +1,65 @@
+// RESET
+html {
+    font-size 100%;
+}
+body, form, fieldset, p, h1, h2, h3, h4, h5, h6, ol, ul, dl, dt, dd,
+pre, blockquote, th, td, address, input, textarea {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+}
+ol, ul {
+    list-style-type: none;
+}
+img, fieldset {
+    border-width: 0;
+}
+table {
+    border-collapse: collapse;
+}
+hr {
+    display: none;
+}
+sup {
+    vertical-align: top;
+}
+input {
+    -webkit-appearance: none;
+}
+input[type=checkbox],
+input[type=radio] {
+    cursor: pointer;
+}
+input[type=text],
+input[type=email] {
+    border-width: 0;
+}
+input[type=submit] {
+    border-width: 0;
+}
+input:focus, textarea:focus {
+    outline: none;
+}
+
+// Remove grey highlight on tap
+body {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+// Mozilla dotted-border fix
+:focus {
+    -moz-outline-style: none;
+    outline: 0;
+}
+
+// HTML5 Init
+header, footer, section, article {
+    display: block;
+}
+
+// Border-box is way easier to work with than the W3C default box model.
+*, *:before, *:after {
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}

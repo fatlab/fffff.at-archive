@@ -1,0 +1,358 @@
+/*   
+Theme Name: Blue-Pix
+Theme URI: http://www.livetr.org/
+Description: A Clean, Simple, Professional Wordpress Theme with power of Blue colour's.
+Author: Emexci
+Author URI: http://www.livetr.org/
+Version: 1.0
+*/
+
+/*
+More info at Theme Page (www.livetr.org/blue-pix/)
+*/
+/*
+	1- General 
+	2- Page + Header
+	3- Main + RightSide
+	4. Post
+	5. Comments
+	6. Pagebar
+	7. Footer
+*/
+
+* {padding: 0; margin: 0}
+
+body {
+	color: #494949; 
+	background: #fff url(images/back_page.png) repeat-x;
+	font: 12px/1.5em Verdana, Arial, sans-serif
+}
+
+/* --1-- General */
+a{color: #2759AD; text-decoration: none}
+a:hover{color: #2759AD; text-decoration: underline}
+a img{border: 0}
+p {margin: 0 0 20px 0}
+h1 {font: bold 1.8em Verdana, Arial, Sans-Serif; padding: 0; margin: 0}
+h2 {font: bold 12px/1.5em Verdana, Arial, sans-serif; padding: 0; margin: 0}
+h3 {font: bold 1.4em Verdana, Arial, Sans-Serif; padding: 0; margin: 0}
+blockquote {font: 12px/1.5em Verdana, Arial, sans-serif; margin: 0; padding: 0; padding: 7px 8px 0 8px; background-color: #fafafa; border-left: 3px #CFD1D6 solid}
+blockquote p{padding-bottom: 7px}
+div.error{padding: 10px}
+
+/* --2-- Page + Header */
+div#page {margin: 0 auto; width: 740px; background-color: #fff}
+div#page div#header{margin: 0; height: 69px; line-height: 45px;  background: url(images/light_bg.jpg) repeat-x; padding: 0 5px 2px 30px}
+div#page div#header a{font: normal 20px Tahoma, sans-serif; color: #336699}
+div#page div#header span#span{font: normal 12px Tahoma, sans-serif; color: #888; line-height: 21px}
+/* div#page div#header #searchform{float: right; margin: 0; padding: 0; height: 50px; line-height: 50px; background: none}
+div#page div#header #searchform .search-box{background: none; font: normal 12px Verdana, Arial, Helvetica, sans-serif; border: #B6C9D3 solid; border-width: 1px 0 1px 1px; width: 185px; height: 16px; padding:2px 0 2px 5px; margin:0}
+div#page div#header #searchform .search-button{background:url(images/search-button.gif) no-repeat; border: 0; width:23px; height: 23px; padding:-1px 0 0 0; margin:0} */
+div#page div#header #search2{float: right; margin: 17px 8px 0 0}
+div#page div#header .text_s{margin: 12px 0 0 0}
+* html div#page div#header #searchform .search-button{padding:0; margin:0}
+div#amsearch {background: url(images/search-bg.gif) no-repeat; font: normal 12px Verdana, Arial, Helvetica, sans-serif; border: #B6C9D3 solid; border-width: 1px 0 1px 1px; width: 150px; height: 16px; padding:3px 0 2px 5px; margin:0}
+
+div#page div#menu{background: #E0E8EE url(images/back_menu.png) repeat-x; border-top: 1px #BCCAD6 solid; border-bottom: 1px #BCCAD6 solid; height: 36px; width: 100%; overflow: hidden}
+div#page div#menu ul{margin:0; padding:9px}
+div#page div#menu ul li{display: inline}
+div#page div#menu ul li a{padding: 4px 7px 4px 7px; background:#F0F3F7; color: #555}
+div#page div#menu ul li a:hover{background: #fff; color: #000; text-decoration: none}
+div#page div#menu ul li.current_page_item a, div#page div#menu ul li.current_page_item a:hover{background: #fff; color: #333}
+
+
+/* --3-- Main + RightSide */
+div#page div#main {margin: 10px 0 15px 0; padding: 0 0 0 5px}
+div#page div#main div#rightside {width: 190px; margin:0 0 0 540px}
+div#page div#main div#rightside div.box{padding:0; margin: 0 0 5px 0}
+div#page div#main div#rightside div.box p{padding: 4px; margin:0}
+div#page div#main div#rightside div.box h2{padding: 4px; color: #494949; background-color: #E3E7EE; margin: 2px}
+div#page div#main div#rightside div.box ul{margin:0; padding:0}
+div#page div#main div#rightside div.box ul li{list-style: none; margin:0; width: 175px; overflow: hidden}
+div#page div#main div#rightside div.box ul li a{background: #F5F6F9; display: block; width: 175px; color: #494949; padding: 2px 0px 4px 4px;}
+div#page div#main div#rightside div.box ul li a:hover{background-color: #fff; text-decoration: none}
+div#page div#main div#rightside div.box ul li.current_page_item a, div#page div#main div#rightside div.box ul li.current_page_item a:hover{background-color: #E3E7EE; color: #555}
+div#page div#main div#rightside div.box ul li.current-cat a, div#page div#main div#rightside div.box ul li.current-cat a:hover{background-color: #E3E7EE; color: #555}
+div#page div#main div#dealleft {float: left; display: inline; width: 180px; margin:0 0 0 10px}
+div#page div#main div#dealleft img {padding:5px}
+* html div#page div#main div#rightside {width: 176px}
+* html div#page div#main div#rightside div.box ul li a {width: 168px}
+
+/* --4-- Post */
+div#page div#main div#leftside {float: left; background-color:#ffffff; border-right: 1px #F3F3F3 solid;color: #444; width: 530px; padding-right: 10px; margin-right:10px;}
+div#page div#main div#leftsidefull {background-color:#ffffff;color: #444; padding:0; margin: 0 1px 0 0;}
+div#page div#main div#leftside div.post{background: url(images/post.gif) 0 25px no-repeat; padding: 0 0 7px 1px; margin: 0 0 10px 0;}
+div#page div#main div#leftside div.object{display: block; margin: auto;}
+div#page div#main div#leftside div.post div.entry{margin-top: 12px; font: 12px/1.5 Verdana, Arial, sans-serif; color: #414852; overflow: hidden; padding: 2px 0 0 0}
+div#page div#main div#leftside div.post div.entry img{padding:2px; margin:3px; background: none; border: 1px #E7E9EB solid; background-color: #FCFCFC}
+div#page div#main div#leftside div.post div.entry span.spoilers {color: #000000 !important; background-color: #000000 !important}
+div#page div#main div#leftside div.post div.entry span.spoilers:hover {color: #444 !important; background-color: #ffffff !important}
+div#page div#main div#leftside div.post div.entry div.prodlist {border-top: 1px solid #F3F3F3; margin-top:10px; padding-top:5px}
+div#page div#main div#leftside div.post div.entry div.prodlist img{padding: 0; border: 0; margin: 0}
+div#page div#main div#leftside div.post div.entry a:hover{color: #000; text-decoration:none}
+div#page div#main div#leftside div.post h1{margin:0;padding:2px 3px 2px 0; font: bold 120%/18px Verdana, Arial,sans-serif;}
+div#page div#main div#leftside div.post h1 a{color: #0F56AC; text-decoration: none}
+div#page div#main div#leftside div.post h1 a:hover{color: #000; text-decoration: none}
+div#page div#main div#leftside div.post h1 small{float:right; font: normal 10px Verdana; color: #999; padding: 4px}
+div#page div#main div#leftside div.post div.entry ul{margin: 10px 0 10px 0; font: normal 11px/17px Tahoma, sans-serif}
+div#page div#main div#leftside div.post div.entry ul li{list-style: inside disc none; margin:0; padding:0 0 0 10px}
+div#page div#main div#leftside div.post div.entry ol{list-style-type: decimal; margin: 10px 0 5px 20px; clear: both; font: normal 11px/17px Tahoma, sans-serif; padding: 4px 8px 4px 8px; background: #fafafa}
+div#page div#main div#leftside div.post div.entry ol li{padding:0; margin:0}
+div#page div#main div#leftside div.post .info{padding:2px 0 2px 0px; border-top:1px solid #F7F7F7; color:#888; font-size: 10px}
+div#page div#main div#leftside div.post .info a{color: #888}
+div#page div#main div#leftside div.post .info span{color: #ccc}
+div.previousimg { float: left; margin: 0 10px 10px 10px; }
+div.nextimg { float: right; margin: 0 10px 10px 10px; }
+
+div#page div#main div#leftside div.post div.entry ul.st-related-posts li {
+list-style: inside square none;
+font-weight: bold;
+margin: 0 0 0 4px;
+}
+div#page div#main div#leftsidefull div.post div.entry ul.st-related-posts li {
+list-style: inside square none;
+font-weight: bold;
+margin: 0 0 0 4px;
+}
+#page_children ul {
+padding:0;
+margin:0;
+display:inline;
+}
+#page_children li {
+display:inline;
+padding: 0 10px 0 10px;
+font-weight: bold;
+}
+#page_children li a:hover {
+background-color:#f0f3f7;
+}
+div#smap_posts {
+float:left;
+}
+#smap_posts ol {
+padding:0 0 20px 20px;
+}
+#smap_posts li {
+margin: 0 0 0 10px;
+}
+#smap_pages ul li {
+
+}
+.page_item li {
+list-style-type:none;
+}
+div#page div#main div#store div.post div.entry img.thumbnail {
+float: left;
+padding: 5px;
+}
+div#page div#main div#store div.post div.entry span.current_price {
+color: #ee0000;
+}
+div#page div#main div#store div.post div.entry .ppstk {
+text-decoration: line-through;
+}
+div#page div#main div#store div.post div.entry div.wrap{margin: 10px; font: 12px/1.5 Verdana, Arial, sans-serif; color: #414852; overflow: hidden;}
+#productlist ul
+{
+padding:0;
+margin:0;
+display:inline;
+float:left;
+}
+#product-list-gridz {
+height:220px; width:210px; margin: 0 0 0 10px; padding: 15px 10px 10px 10px; border-right: 1px solid #cccccc; border-bottom: 1px solid #cccccc; overflow: hidden; text-align:center;
+}
+#product-list-gridz img {
+padding: 0;
+background-color: #ffffff;
+}
+#productlistv ul
+{
+padding:0;
+margin:0;
+float:left;
+list-style-type: none;
+}
+
+#productlistvr ul
+{
+padding:0;
+margin:0;
+list-style-type: none;
+
+}
+#productlist li {
+display:inline;
+float:left;
+list-style-type: none;
+}
+#producttablebotborder { border-bottom: 2px solid #F3F3F3; height:280px; width:350px; margin: 8px; overflow: hidden; }
+#producttablecell { text-align: center; }
+#entertainlist ul {
+padding:0;
+margin:0;
+display:inline;
+float:left;
+}
+#entertainlist li {
+display:inline;
+list-style-type: none;
+padding: 10px 0px 10px 30px;
+width: 145px;
+float: left;
+}
+div#ytvidlist {
+height: 115px !important;
+width: 700px !important;
+white-space: nowrap !important;
+overflow-x: scroll !important;
+margin: 4px auto !important;
+}
+#ytvidlist ul li {
+list-style-type: none !important;
+display:inline !important;
+margin: 0px !important;
+padding: 0px !important;
+white-space: nowrap !important;
+}
+#ytvidlist li {
+list-style-type: none !important;
+display:inline !important;
+padding: 0px !important;
+margin: 0px !important;
+}
+#ytvidlist img {
+padding: 0px 1px 0px 0px !important;
+margin: 0px 1px 0px 0px !important
+border: none !important
+}
+div#ytvidsearch {
+white-space: nowrap !important;
+margin: 4px auto !important;
+}
+div#entertainernews { border: 2px solid #F3F3F3; width:325px; float: right; margin: 20px 25px 20px 0; overflow-y: auto; height: 684px; }
+
+table#Search_Search1_dlListings {
+border-top: 1px solid #efefef;
+border-left-style: none;
+border-right-style: none;
+border-bottom-style: none;
+}
+#Search_Search1_dlListings table td {
+border-style: none;
+padding-top: 3px;
+padding: 2px;
+}
+
+/** WORDPRESS CSS */
+
+
+
+
+.aligncenter,
+div.aligncenter {
+   display: block !important;
+
+
+
+   margin-left: auto !important;
+   margin-right: auto !important;
+}
+
+.alignleft {
+   float: left;
+}
+
+
+.alignright {
+   float: right;
+}
+
+.wp-caption {
+   border: 1px solid #ccc;
+   text-align: center;
+   background-color: #ffffff;
+   padding: 2px;
+   margin: 10px;
+}
+
+.wp-caption img {
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+   font-size: 11px;
+   line-height: 17px;
+   padding: 4px;
+   margin: 0;
+}
+
+
+/* --5-- Comments */
+div#page div#main div#leftside div#leftsidefull div#store #commentform {margin:5px 0; padding:5px; background:#f9fcfc; border-top: #DEEFEF 1px solid; border-bottom: #DEEFEF 1px solid}
+div#page div#main div#leftside div#leftsidefull div#store #commentform small{font: normal 10px Verdana, Tahoma, sans-serif}
+div#page div#main div#leftside div#leftsidefull div#store h3 {font: bold 1.4em Verdana, Arial, Sans-Serif; padding: 0; margin: 0}
+div#page div#main div#store ul {list-style-type:none}
+div#page div#main div#leftside div#leftsidefull div#store h3#respond{margin: 2em 0 10px 5px; padding:0; font: bold 13px Tahoma}
+.commentlist {margin: 0; padding: 0;}
+.commentlist li {margin: 3px 0 3px 0; list-style:none; padding: 0.5em; border-top: #eee 1px solid; border-bottom: #eee 1px solid; overflow:hidden;}
+
+div#page div#main div#leftside div#leftsidefull div#store .commentlist li.alt{background:#FCFCFC}
+.commentlist li.author {background: #F5F6F9; margin: 3px 0 3px 0; list-style:none; padding: 0.5em; border-bottom: #eee 1px solid; border-top: #eee 1px solid;}
+
+
+div#page div#main div#leftside div#leftsidefull div#store input.textbox{padding:4px; width:150px; border: 1px #EBEBEB solid; font: normal 11px Verdana, Tahoma, sans-serif}
+div#page div#main div#leftside div#store textarea#comment{padding:5px; font:1em Verdana, Arial, Serif; border: 1px #C9E3E4 solid; width: 450px}
+
+div#page div#main div#leftside div#leftsidefull div#store input#submit{background: #F9FCFC;border: 1px #C9E3E4 solid; font-size: 11px; font-family: Verdana; padding: 4px;}
+div#page div#main div#leftside div#leftsidefull div#store div.mycomment{color: #888; padding: 3px 0 3px 0;line-height: 1.5em; overflow: hidden}
+div#page div#main div#leftside div#leftsidefull div#store div.mycomment div.com span.author{font: bold 12px Tahoma;}
+div#page div#main div#leftside div#leftsidefull div#store div.mycomment div.com{padding: 0 0 5px 0}
+div#page div#main div#leftside div#leftsidefull div#store div.mycomment div.com small{font-size:10px}
+div#page div#main div#leftside div#leftsidefull div#store div.mycomment div.com small a{font-size:10px; color: #888}
+div#page div#main div#leftside div#leftsidefull div#store div.mycomment div.comment-in{color: #666; padding: 2px 0 0 0}
+div#page div#main div#leftside div#leftsidefull div#store div.mycomment div.comment-in p{margin: 5px 0 0 0}
+div#page div#main div#leftside div#leftsidefull div#store .gravatar{background: url(http://geek.thinkunique.org/wp-content/themes/blue-pix/images/bg-avatar.gif);padding: 3px; margin: -2px 5px 0 0; width: 30px; height: 30px}
+img.wavatar {
+float: left;
+padding: 3px;
+background: #ffffff;
+margin: 5px;
+border: #cfd1d6 solid 1px;
+}
+img.avatar {
+float: left;
+padding: 3px;
+background: #ffffff;
+margin: 5px;
+border: #cfd1d6 solid 1px;
+}
+img.avatar-150 {
+float: none !important;
+padding: 3px;
+background: #ffffff;
+margin: 5px;
+border: #cfd1d6 solid 1px;
+}
+
+/* --6-- Pagebar */
+div#page div#main div.pagebar{text-align: center; background: #fff url(images/bg-pgbar.gif) center no-repeat; font-size: 10px; padding: 11px 0 11px 0; color: #020202}
+div#page div#main div.pagebar a{padding: 2px 0 3px 6px; text-decoration: none; color: black; background: #d3d9db url(images/pgbr.gif) left top no-repeat}
+div#page div#main div.pagebar a strong{padding: 2px 6px 3px 0; color: #000; text-decoration: none; font-weight: normal; background: #d3d9db url(images/pgbr.gif) right top no-repeat; background-position:100% -34px; }
+div#page div#main div.pagebar a:hover, div#page div#main div.pagebar a.this{color: #000; background:#bbc8cd url(images/pgbr.gif) left bottom no-repeat}
+div#page div#main div.pagebar a:hover strong, div#page div#main div.pagebar a.this strong{color: #000; background:#bbc8cd url(images/pgbr.gif) right top no-repeat; background-position:100% -17px;}
+/* For IE */
+* html div#page div#main div.pagebar a{padding: 0 0 0 6px;}
+* html div#page div#main div.pagebar a strong{padding: 2px 6px 3px 0}
+
+/* --7-- Footer */
+
+div#page div#footer {border-top: 1px #F3F5F4 solid; clear: both; font-size: 11px; color: #666; padding: 5px 5px 6px 5px}
+div#page div#footer .rside {text-align: center; padding: 0; margin:0}
+div#page div#footer .mid {align: center; padding: 0; margin:0}
+div#page div#footer span.ac{color: #ddd; padding:0; padding:0}
+div#page div#footer a{color: #336699}
+div#page div#footer a:hover{text-decoration: none; border-bottom: 1px #000 dashed; color: #000}

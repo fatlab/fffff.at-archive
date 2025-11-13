@@ -1,0 +1,11 @@
+#menu li { padding-left: 16px; padding-right: 10px; }
+#menu a { word-spacing: -1px; }
+#project-list .stats-link { padding-right: 0.3em; }
+#project-list th.spaced { width: auto; }
+#project-list td { padding-top: 1em; padding-bottom: 1em;}
+#project-list td[align="right"], #project-list th[align="right"] { padding-right:16px; }
+.flush-left #user-controls { left: 345px; right: auto; }
+#user-controls .current-time {display: none; }
+.non-mobile { display: none !important; }
+.mobile-only { display: block; }
+td.mobile-only th.mobile-only { display: table-cell; }

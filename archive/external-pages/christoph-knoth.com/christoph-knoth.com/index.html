@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Christoph Knoth</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        p, li {
+            width: 630px;
+            max-width: 100%;
+        }
+
+        * { box-sizing: border-box; }
+
+        #strike {
+            position: fixed;
+            left: 50vw;
+            top: 40vh;
+            transform: translate(-50%);
+            z-index: 100;
+            cursor: pointer;
+            display: none;
+        }
+        .scene {
+          margin: 0px 0;
+          position: relative;
+          width: 140px;
+          height: 140px;
+          margin: 0px auto;
+          perspective: 1000px;
+        }
+
+        .carousel {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          transform: translateZ(0px);
+          transform-style: preserve-3d;
+          transition: transform 1s;
+        }
+
+        .carousel__cell {
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          left: 0px;
+          top: 0px;
+          line-height: 120px;
+          font-size: 120px;
+          font-weight: bold;
+          color: white;
+          text-align: center;
+          transition: transform 1s, opacity 1s;
+        }
+
+
+        .carousel__cell:nth-child(1) { transform: rotateY(  0deg) translateZ(0px); }
+        .carousel__cell:nth-child(2) { transform: rotateY( 120deg) translateZ(0px); }
+        .carousel__cell:nth-child(3) { transform: rotateY( 240deg) translateZ(0px); }
+
+
+
+
+        .carousel-options {
+          text-align: center;
+          position: relative;
+          z-index: 2;
+          background: hsla(0, 0%, 100%, 0.8);
+        }
+
+        a {
+            text-decoration: underline;
+        }
+
+        #content {
+            /*opacity: 0.5;
+            cursor: not-allowed;*/
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="strike">
+        <div class="scene">
+                <div class="carousel">
+                    <a href="https://globalclimatestrike.net/"><div class="carousel__cell">🌎</div></a>
+                    <a href="https://globalclimatestrike.net/"><div class="carousel__cell">🌍</div></a>
+                    <a href="https://globalclimatestrike.net/"><div class="carousel__cell">🌏</div></a>
+                </div>
+        </div>
+
+        <div class="carousel-options" style="display: none;">
+          <p>
+            <button class="previous-button">Previous</button>
+            <button class="next-button">Next</button>
+          </p>
+        </div>
+    </div>
+
+	<div id="content">
+		<h1>Hi, I am Christoph Knoth and this is my website.</h1>
+
+		<p>Together with Konrad Renner I share a <a href="http://knoth-renner.com/">virtual studio</a>. We work on visual strategies, identities and websites. I also <a href="https://www.hfbk-hamburg.de/en/namenregister/christoph-knoth/">teach</a> with Konrad at the HFBK — the University of Fine Arts of Hamburg in the class <a href="http://digitale-grafik.com/">Digitale Grafik</a>.</p>
+		<p>Follow me on <a href="https://twitter.com/christoph_knoth">Twitter</a>, <a href="http://instagram.com/christophknoth">Instagram</a> or send me an <a href="mailto:write-whatever-you-like@christoph-knoth.com">E-Mail</a></h2>
+		</p>
+
+		<h2><br>Projects that I worked on</h2>
+
+		<ul>
+
+
+            <li><a href="https://graduates.hfbk.net">Graduates 2024</a>, website, HFBK Hamburg (2024)
+                </li>
+                <li><a href="https://2024.sonicacts.com/">Sonic Acts Biennial — The Spell of the Sensuous</a>, identity and website, with Anja Kaiser (2024)
+                </li>
+                <li><a href="https://tank-oder-teller.werkleitz.de/">Werkleitz Festival 2024</a>, identity and website (2024)
+
+                </li><li><a href="https://simondenny.net/">Simon Denny</a>, website (2024)
+                </li>
+                <li><a href="https://bauhaus-dessau.de/">Stiftung Bauhaus Dessau</a>, website, with Systemantics (2023)
+                </li>
+                <li><a href="https://wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a>, website (2023)
+                </li>
+                <li><a href="https://mein-schatz.werkleitz.de/">Werkleitz Festival 2023</a>, identity and website (2023)
+                </li>
+                <li><a href="http://werkleitz.de/">Werkleitz — Center for Media Art</a>, website, with Jonas Holfeld (2023)</li>
+                <li><a href="https://yctm.e-flux.com/">You Can’t Trust Music</a>, website for e-flux, curated by Xenia Benivolski, with Jonas Holfeld (2022)
+                </li>
+                <li><a href="https://kunstverein-leipzig.org/">Kunstverein Leipzig</a>, website, with Katharina Köhler (2021)
+                </li>
+                <li><a href="https://archplus.net/">ARCH+ Magazine</a>, website and online reader, with Lamm &amp; Kirch (2021)
+                </li>
+                <li><a href="https://epfl-pavilions.ch">EPFL Pavilions</a>, identity and website with <br>Lamm &amp; Kirch (2020)
+                </li>
+                <li><a href="https://virtual-factory.co.uk/">Virtual Factory</a>, website for Manchester International Festival (2020)
+                </li>
+
+
+			<li>Website for the <a href="https://sternberg-press.com">Sternberg Press</a> together with <a href="http://konradrenner.com/">Konrad Renner</a>, <a href="https://www.wkshps.com/">Wkshps</a> and <a href="https://www.systemantics.net/">Systemantics</a></li>
+
+			<!--<li>At the moment we are doing little interventions on the website of <a href="https://thelimited.kunstverein-leipzig.de">Kunstverein Leipzig</a></li>-->
+
+			<li>Website for the festival <a href="http://modell-und-ruine.werkleitz.de">Modell und Ruine</a> organized by <a href="http://werkleitz.de">Werkleitz</a> together with <a href="http://konradrenner.com/">Konrad Renner</a></li>
+
+			<li>Website for <a href="https://www.hgb-leipzig.de/">HGB – Hochschule für Grafik und Buchkunst Leipzig</a> together with <a href="http://lamm-kirch.com/">Lamm & Kirch</a> and <a href="https://twitter.com/TThiemich">Thomas Thiemich</a>.</li>
+
+			<li>Website for the festival <a href="http://hub.werkleitz.de">Holen und Bringen</a> organized by <a href="http://werkleitz.de">Werkleitz</a> together with <a href="http://www.anjakaiser.info/">Anja Kaiser</a></li>
+
+            <li>Website <a href="http://www.k-komma.de">K,</a> for A Year with P. Krishnamurthy with KW Berlin</li>
+
+            <li><a href="http://www.bauhaus-imaginista.org/">Bauhaus Imaginista</a>, Online journal with Systemantics, (2018)</li>
+
+    		<li><a href="https://0b673cce.xyz/">CryptoRave #5 – Alexiety</a> with !Mediengruppe Bitnik and Omsk Social Club</li>
+
+    		<li><a href="https://vfmk.org/de/shop/alert-mediengruppe-bitnik">Book &lt;script&gt;alert("!Mediengruppe Bitnik");&lt;/script&gt;</a> for !Mediengruppe Bitnik</li>
+
+    		<li><a href="http://schloss-ghost.com/2/">Schlossghost #2</a></li>
+
+			<li>Website for the journal <a href="http://journal2017.werkleitz.de/">Nicht Mehr Noch Nicht</a> with <a href="http://werkleitz.de">Werkleitz</a></li>
+
+			<li>Website for the festival <a href="http://nicht-mehr-noch-nicht.werkleitz.de">Nicht Mehr Noch Nicht</a> organized by <a href="http://werkleitz.de">Werkleitz</a></li>
+
+			<li><a href="http://www.archplus.net/reader/home/ausgabe/229/">Reader</a> for the architecture magazine Arch+</li>
+
+			<li>Website for the <a href="https://kunstvereine.de">ADKV – Arbeitsgemeinschaft Deutscher Kunstvereine</a> representing almost 300&nbsp;Kunstvereine in Germany, Austria and Luxembourg</li>
+
+			<!-- <li>Online shop for the publisher <a href="http://spectorbooks.com">Spector Books</a></li> -->
+
+			<li>Website for the <a href="http://trans-positionen.werkleitz.de/">Trans-Positionen festival</a> organized by <a href="http://werkleitz.de">Werkleitz</a></li>
+
+    		<li>Website for the album <a href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/schiiwerfer/1/">Schiiwerfer</a> by Göldin and <a href="http://bit-tuner.net/">Bit-Tuner</a> together with <a href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a></li>
+
+    		<li>Website for <a href="http://holzerkobler.com">Holzer Kobler Architekturen</a> with <a href="http://www.projectprojects.com/">Project Projects</a></li>
+
+    		<li>Website for artist <a href="http://simondenny.net/">Simon Denny</a></li>
+
+    		<li>Website for the <a href="http://ic16.imaginary.org/">conference IC16</a> – shaping the future of mathematics communication</li>
+
+			<li>Website for the exhibition <a href="http://transparencies.de/en">Transparencies</a> by <a href="http://www.bielefelder-kunstverein.de/">Bielefelder Kunstverein</a> and <a href="http://kunstvereinnuernberg.de/">Kunstverein Nürnberg</a>; logos by <a href="http://metahaven.net">Metahaven</a></li>
+
+			<li>Website for the <a href="http://move-on.werkleitz.de/">.move ON festival</a> organized by <a href="http://werkleitz.de">Werkleitz</a></li>
+
+    		<!-- <li>Website for the <a href="http://kunsthallezurich.ch">Kunsthalle Zürich</a> in collaboration with  <a href="http://dansolbach.ch/">Dan Solbach</a>; Typeface by <a href="http://dinamo.us/">Dinamo.us</a></li> -->
+
+    		<li>Website for the <a href="http://archiv.deutscher-pavillon.org/2015/">German Pavillon at the Venice Biennale 2015</a>, representing Jasmina Metwaly / Philip Rizk, Olaf Nicolai, Hito Steyerl and Tobias Zielony, curated by Florian Ebner; Website together with graphic designers: <a href="http://www.fabianbremer.com/">Fabian Bremer</a>, Nicola Reiter, <a href="http://studiostorz.ch/">Pascal Storz</a>, Helmut Völter; Typeface by <a href="http://dinamo.us/">Dinamo.us</a></li>
+    		<li>Website for Simon Denny’s project <a href="http://simondennysecretpower.com/">Secret Power</a> for the New Zealand Pavilion at the Venice Biennale together with <a href="http://colophon.info/">David Bennewith</a></li>
+			<li>Website for <a href="http://luther-trip.de/">Luther Trip</a> a contemporary view on the Mansfelder Land in the form of a travel.</li>
+			<li>Website redesign for <a href="http://emare.eu/">EMAN#EMARE – European Media Network</a></li>
+			<li>Website redesign for <a href="http://werkleitz.de/">Werkleitz – Centre for Media Art</a> together with <a href="http://konradrenner.com/">Konrad Renner</a></li>
+			<!-- <li>Website for fashion designer <a href="http://magdalena-stark.com">Magdalena Stark</a></li> -->
+			<li>Website for the <a href="http://utopien.werkleitz.de/">Utopien Vermeiden Festival</a> organized by <a href="http://werkleitz.de">Werkleitz</a></li>
+		    <li>Website for <a href="http://christoph-knoth.com/schauspiel-stuttgart">Schauspiel Stuttgart</a> together with <a href="http://spectorbureau.com">Spector Bureau</a> and <a href="http://www.ktell.de/">Katharina Köhler</a> (archived version)</li>
+    		<li>Website for <a href="http://missingbooks.ch">Die vergessenen Bücher</a> together with <a href="http://rolandfrueh.com/">Roland Früh</a> and Corina Neuenschwander</li>
+			<li>Website for Leipzig based artist <a href="http://stefanie-leinhos.de">Stefanie Leinhos</a></li>
+			<li>Website for the Berlin based illustrators <a href="http://golden-cosmos.com">Golden Cosmos</a></li>
+			<!-- <li>Website for the <a href="http://werkleitz.de/moveforward">Move Forward Festival</a> organized by <a href="http://werkleitz.de">Werkleitz</a></li> -->
+			<li><a href="http://matandme.com">Blog</a> and <a href="http://matyldakrzykowski.com/">portfolio</a> website of Matylda Krzykowski</a></li>
+			<li>Website for photographer <a href="http://nikolausbrade.de/">Nikolaus Brade</a> (together with <a href="http://nickel-berlin.com">Nickel Berlin</a>)</li>
+    		<li>Planing, design and setup for <a href="https://imaginary.org">imaginary.org</a>, one of biggest communities for maths and arts</li>
+			<!-- <li>Website for photographer <a href="http://olgacafiero.com">Olga Cafiero</a></li> -->
+			<li>Website for book artist <a href="http://friederike-von-hellermann.com">Friederike von Hellermann</a></li>
+			<!-- <li>Website for photographer <a href="http://www.matthieulavanchy.com">Matthieu Lavanchy</a></li> -->
+			<!-- <li>Website for curators <a href="http://prelude.ch">Prelude</a></li> -->
+			<li>Website for artist <a href="http://corinna-rotert.de">Corinna Rotert</a></li>
+			<li>Website for <a href="http://aleksandartodorovic.nl/">Aleksandar Todorović</a></li>
+			<li>My <a href="https://vimeo.com/60651938">parametric type design program</a> that I developed in my research Project <i><a href="http://christoph-knoth.com/shared/computed_type_-_christoph_knoth.pdf">Computed Type (pdf)</a></i>. (Feel free to follow my <a href="https://twitter.com/computedtype">computedtype twitter</a>.)</li>
+		</ul>
+	</div>
+	<div>
+        <h2>Articles, Research and Lectures</h2>
+    	<ul>
+        	<li>Lecture about my portfolio and screenshots at the Kunsthochschule Kassel.</li> <!-- 8.Februar 2017 // 16.00 Uhr -->
+        	<li>Lecture about screenshots at the <a href="http://www.itsabook.de/">It’s a book, it’s a chance, it’s a times new romance</a> at the Independent Publishing Fair Leipzig, 19th of March, 2016 at the HGB Leipzig.</li>
+        	<li>Lecture about screenshots with Konrad Renner at <a href="http://www.easy-lessoning.com/">Easy Lessoning 6</a> in New York.</li> <!-- Friday, March 11, 2016; 7 to 8:30 pm; 20 Jay Street; Brooklyn, NY 11201 -->
+        	<li>I am a <a href="http://www.akademie-solitude.de/en/news-press/news/new-fellowship-holders-for-the-generation-20152017-have-been-selected~no3732/">fellow at Akademie Schloß Solitude</a> for the period 2015–2017.
+        	<li><a href="https://web.archive.org/web/20160409073820/http://www.grafik.net/category/screenshot/screen-age">Article about screenshots</a> for Grafik.net</li>
+        	<li>Lecture at <em>Schau der Gestaltung VI</em> about screenshots</li> <!-- 25.06.2015 -->
+            <li>Lecture at a conference about research in graphic design: <em>Tarptautinė konferencija. TIRIU, VADINASI MATAU</em> in Vilnius, Lithuania</li> <!-- 25. Mai. 2013 -->
+            <li>Lecture at the conference <i>Schrift im 21. Jahrhundert</i> at the <a href="http://www.typotage.de/">Typotage Leipzig</a> at the Museum für Druckkunst, Leipzig, Germany<!-- 27. April 2013 --></li>
+            <li>Lecture at <a href="http://mzin.de">Mzin project space for graphics and art</a>, Leipzig, Germany <!-- 19.07.2012 / 19:00 (vortrag) --></li>
+            <li>Lecture at the <a href="http://www.janvaneyck.nl">Jan van Eyck Academy</a> opening week 2012</li>
+        	<li>For the whole year of 2012 I was a design researcher at the <a href="http://www.janvaneyck.nl/">Jan van Eyck Akademie</a> with my project <a href="http://www.janvaneyck.nl/post/14612249881/christoph-knoth">Computed Type</a></li> <!-- The history of computed type 18.01.2012, 13:30 bis 14:30  -->
+            <li><a href="http://www.atypi.org/past-conferences/2011-reykjavik/programme/activity?a=55">Lecture</a> at the <a href="http://www.atypi.org/past-conferences/2011-reykjavik">ATypI in Reykjavík, Iceland</a></li> <!-- Computed type Thu 15 Sep 2011  16:50 -->
+            <li>The short version of my <a href="http://christoph-knoth.com/shared/computed_type_-_christoph_knoth.pdf">master’s thesis Computed Type (pdf)</a></li>
+    	</ul>
+
+        <!-- I should add dates here -->
+
+        <h2>Teaching and Workshops</h2>
+        <ul>
+            <!--
+
+                Das widerständige Internet
+                Freitag, 20. Nov. 2020
+                20.00 - 20.45 Uhr
+                https://www.sprengel-readymades.de/programm/das-widerstaendige-internet/
+
+                8. Apr 2019
+                Beckmans College
+                Harald-Peter Ström
+
+
+                Swiss Interactive Media Design Day, 2019
+                7. - 9.11.
+
+
+                4. Sep 2018
+                Yale
+                Laurel Schwulst
+
+
+                April 2018
+
+                Muthesius Kunsthochschule Kiel
+                Kurs von Gastprof. Matylda Krzykowski Methoden und Formate
+                Workshop und Vortrag
+
+                https://muthesius-kunsthochschule.de/veranstaltungen/the-best-way-to-predict-the-future-is-to-vent-it/?fbclid=IwAR2cWqbo28GQoVLN5WaC8ioInibhxYqkgJ5ngG7EDC_59-xkRpCv0g-w8A0
+
+
+
+                26. Januar
+                Akademie Schloss Solitude
+                Vortrag und Gespräch mit Rosa Menkman
+
+
+                März
+                Engaging with Histories: An Everyday Life Practice – Akademie Schloss Solitude
+                Vortrag
+                Datum: Fr, Mrz 23, 2018 10:00 Uhr
+
+
+
+
+                Samstag, 20.1.2018
+                Berliner Festspiele
+                Into Worlds — Das Handwerk der Entgrenzung
+                Konferenz, Martin Gropius Bau Berlin
+                https://www.berlinerfestspiele.de/de/berliner-festspiele/programm/bfs-gesamtprogramm/programmdetail_241685.html
+
+
+
+                8. Dezember 2017
+                2. Faculty Day
+                Vortrag, HGB Leipzig
+
+
+                Kassel Vortrag
+                8. Feb 2017
+
+                parallel school Lausanne
+
+                Junge Akademie Moderation
+
+            -->
+
+            <li>One day workshop and lecture as part of <a href="http://ntu.ccasingapore.org/exhibitions/the-making-of-an-institution/">The Making of an Institution</a> at NTU Centre for Contemporary Art Singapore.</li>
+            <li>One day workshop about parametric type with Anja Kaiser in the class of Franziska Morlok in the communication design department of the FH Potsdam University of Applied Sciences.</li>
+            <li>One week workshop about temporary websites at the <a href="http://kd.hfg-karlsruhe.de/">graphic design department</a> of the HfG Karlsruhe.</li> <!-- 17. to 20.05.2016 -->
+            <li>In the summer semester 2016 I gave a workshop in the graphic design department of the University for Art and Design Burg Giebichenstein called <em>Big Blind Data</em> which ended with a small workshop and lecture series organized by the students called <a href="https://www.facebook.com/events/1127136707338111/"><em>How to be invisible</em></a>.</li>
+            <li>For the year 2016 Konrad Renner and I are guest researchers at Bauhaus University Weimar teaching a class on <a href="https://www.instagram.com/digitaltypography/">Digital Typography</a>.</li>
+            <li>One day workshop about the poster as website in the interactive design class of <a href="http://lukearcher.co.uk/">Luke Archer</a> in the Graphic Design Department at Yale University School of Art in New Haven</li>
+            <li>For the winter semester 2015 I was a guest professor at the <a href="http://www.burg-halle.de/design/kommunikationsdesign/kommunikationsdesign/">graphic design department</a> of the Burg Giebichenstein University of Art and Design Halle</li>
+            <li>One week workshop entitled Fonts by Command for the design bachelor students at the Burg Giebichenstein University of Art and Design Halle together with <a href="http://www.anjakaiser.info/">Anja Kaiser</a></li> <!-- 13.4.2015-->
+            <li>One week Workshop entitled <i>Fast Fonts</i> for the <a href="https://www.facebook.com/EKAgraafilinedisain?fref=ts">graphic design students of the EKA</a> in Tallin, Estonia</li> <!-- 14-19.10.2013 -->
+            <li>One day workshop about <i>Computed Type</i> for the design master students at the Sandberg Institute, Amsterdam together with <a href="http://performativitaet.tumblr.com/">Anja Kaiser</a></li> <!-- 15.3.2013 -->
+            <li>One week workshop about skeletons for the design bachelor students at the Burg Giebichenstein University of Art and Design Halle</li> <!-- 4.6.2012 -->
+            <li>5 day workshop about programming fonts for the graphic design bachelor students at the ECAL (L’École cantonale d’art de Lausanne)</li> <!-- 2011/10? -->
+            <li>Afternoon workshop at the SDN Junior Research Conference 2010 with the topic The Future of Magazines</li>
+        </ul>
+
+    	<h2>Exhibitions</h2>
+        <ul>
+            <li><a href="http://localnonoffline.de/">LocalNonOffLine</a> Cologne, Germany organized by <a href="http://christoph-knoth.com/floriankuhlmann.com">Florian Kuhlmann</a> at <a href="http://www.boutique-koeln.de/">Boutique</a>, <a href="http://www.bruchunddallas.de/">Bruch&Dallas</a> and <a href="http://goldundbeton.de/wordpress/">Gold&Beton</a></li>
+            <li><a href="http://www.imprintimprint.de">IMPRINT Fair 2013</a>, Mainz, Germany</li>
+            <li>Schrift im 21. Jahrhundert at the Museum für Druckkunst, Leipzig, Germany</li>
+            <li><a href="http://www.cascoprojects.org/?entryid=493">*Latent Stare*</a> by David Bennewith at Casco in Utrecht, The Netherlands</li>
+        </ul>
+
+    </div>
+
+    <p><em>Last Updated 17.07.2025</em> – <a href="http://christoph-knoth.com/privacy-policy.html">Privacy Policy</a></p>
+
+    <script type="text/javascript">
+        var carousel = document.querySelector('.carousel');
+        var cells = carousel.querySelectorAll('.carousel__cell');
+        var cellCount = 3; // cellCount set from cells-range input value
+        var selectedIndex = 0;
+        var cellWidth = carousel.offsetWidth;
+        var cellHeight = carousel.offsetHeight;
+        var isHorizontal = true;
+        var rotateFn = isHorizontal ? 'rotateY' : 'rotateX';
+        var radius, theta;
+        // console.log( cellWidth, cellHeight );
+
+        function rotateCarousel() {
+          var angle = theta * selectedIndex * -1;
+          carousel.style.transform = 'translateZ(' + -radius + 'px) ' +
+            rotateFn + '(' + angle + 'deg)';
+        }
+
+        var prevButton = document.querySelector('.previous-button');
+        prevButton.addEventListener( 'click', function() {
+          selectedIndex--;
+          rotateCarousel();
+        });
+
+        setInterval(function(){
+          selectedIndex--;
+          rotateCarousel();
+        }, 1300);
+
+        var nextButton = document.querySelector('.next-button');
+        nextButton.addEventListener( 'click', function() {
+          selectedIndex++;
+          rotateCarousel();
+        });
+
+        function changeCarousel() {
+          theta = 360 / cellCount;
+          var cellSize = isHorizontal ? cellWidth : cellHeight;
+          radius = Math.round( ( cellSize / 2) / Math.tan( Math.PI / cellCount ) )*0.8;
+          for ( var i=0; i < cells.length; i++ ) {
+            var cell = cells[i];
+            if ( i < cellCount ) {
+              // visible cell
+              cell.style.opacity = 1;
+              var cellAngle = theta * i;
+              cell.style.transform = rotateFn + '(' + cellAngle + 'deg) translateZ(' + radius + 'px)';
+            } else {
+              // hidden cell
+              cell.style.opacity = 0;
+              cell.style.transform = 'none';
+            }
+          }
+
+          rotateCarousel();
+        }
+
+        changeCarousel();
+    </script>
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//analytics.ntrnt.me/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="http://analytics.ntrnt.me/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+
+</body>
+</html>

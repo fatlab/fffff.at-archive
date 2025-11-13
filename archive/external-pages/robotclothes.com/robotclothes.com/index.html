@@ -1,0 +1,744 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium Domain Names For Sale</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="../fonts.googleapis.com/css2@family=Share+Tech+Mono&amp;family=Orbitron%253Awght@500%3B700%3B900&amp;display=swap.css" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    
+    :root{
+      --maxw: 1600px;
+      --cyan: #00ffff;
+      --cyan-dark: #00cccc;
+      --orange: #ff6600;
+      --green: #00ff00;
+      --red: #ff0000;
+      --yellow: #ffff00;
+      --blue: #0088ff;
+      --purple: #bb00ff;
+    }
+
+    body{
+      font-family: "Share Tech Mono", monospace;
+      color: var(--cyan);
+      background: #000;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Advanced grid system */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        repeating-linear-gradient(0deg, rgba(0, 255, 255, 0.05) 0px, transparent 1px, transparent 2px, rgba(0, 255, 255, 0.05) 3px),
+        repeating-linear-gradient(90deg, rgba(0, 255, 255, 0.05) 0px, transparent 1px, transparent 2px, rgba(0, 255, 255, 0.05) 3px),
+        repeating-linear-gradient(0deg, rgba(0, 255, 255, 0.03) 0px, transparent 1px, transparent 10px, rgba(0, 255, 255, 0.03) 11px),
+        repeating-linear-gradient(90deg, rgba(0, 255, 255, 0.03) 0px, transparent 1px, transparent 10px, rgba(0, 255, 255, 0.03) 11px);
+      background-size: 3px 3px, 3px 3px, 60px 60px, 60px 60px;
+      z-index: -2;
+      animation: gridPulse 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* Radar sweep */
+    .radar-sweep {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      margin: -300px 0 0 -300px;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .radar-sweep::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+      transform-origin: left center;
+      animation: radarSweep 4s linear infinite;
+    }
+
+    @keyframes radarSweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Data streams */
+    .data-stream {
+      position: fixed;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, var(--cyan), transparent);
+      opacity: 0.3;
+      animation: dataFlow 3s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .data-stream:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .data-stream:nth-child(2) { left: 30%; animation-delay: 1s; }
+    .data-stream:nth-child(3) { left: 50%; animation-delay: 0.5s; }
+    .data-stream:nth-child(4) { left: 70%; animation-delay: 1.5s; }
+    .data-stream:nth-child(5) { left: 90%; animation-delay: 0.8s; }
+
+    @keyframes dataFlow {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* HUD overlay */
+    .hud-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    .hud-corner {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 2px solid var(--cyan);
+    }
+
+    .hud-corner.tl {
+      top: 20px;
+      left: 20px;
+      border-right: none;
+      border-bottom: none;
+      box-shadow: -5px -5px 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .hud-corner.tr {
+      top: 20px;
+      right: 20px;
+      border-left: none;
+      border-bottom: none;
+      box-shadow: 5px -5px 20px rgba(255, 102, 0, 0.3);
+      border-color: var(--orange);
+    }
+
+    .hud-corner.bl {
+      bottom: 20px;
+      left: 20px;
+      border-right: none;
+      border-top: none;
+      box-shadow: -5px 5px 20px rgba(0, 255, 0, 0.3);
+      border-color: var(--green);
+    }
+
+    .hud-corner.br {
+      bottom: 20px;
+      right: 20px;
+      border-left: none;
+      border-top: none;
+      box-shadow: 5px 5px 20px rgba(187, 0, 255, 0.3);
+      border-color: var(--purple);
+    }
+
+    .skip-link{
+      position:absolute; left:-999px; top:auto;
+      width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      left: 1rem; top: 1rem; width:auto; height:auto;
+      background: var(--cyan); color: #000; padding:.5rem .75rem; 
+      border: 2px solid var(--cyan); z-index:1000; 
+      box-shadow: 0 0 20px var(--cyan);
+      font-weight: 700;
+    }
+
+    .container{ 
+      width: min(100% - 4rem, var(--maxw)); 
+      margin-inline:auto; 
+      position: relative;
+    }
+
+    /* Terminal window */
+    .terminal-window {
+      background: rgba(0, 0, 0, 0.95);
+      border: 2px solid var(--cyan);
+      padding: 0;
+      margin: 60px 0;
+      box-shadow: 
+        0 0 40px rgba(0, 255, 255, 0.4),
+        inset 0 0 40px rgba(0, 255, 255, 0.05);
+      position: relative;
+    }
+
+    .terminal-header {
+      background: linear-gradient(180deg, rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 0.05));
+      border-bottom: 1px solid var(--cyan);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-title {
+      font-family: "Orbitron", monospace;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      text-shadow: 0 0 10px var(--cyan);
+    }
+
+    .terminal-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .terminal-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid;
+    }
+
+    .terminal-btn.close { background: var(--red); border-color: var(--red); box-shadow: 0 0 8px var(--red); }
+    .terminal-btn.minimize { background: var(--yellow); border-color: var(--yellow); box-shadow: 0 0 8px var(--yellow); }
+    .terminal-btn.maximize { background: var(--green); border-color: var(--green); box-shadow: 0 0 8px var(--green); }
+
+    .terminal-content {
+      padding: 40px;
+    }
+
+    /* Header */
+    .header-main{
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 100px 0 60px;
+    }
+
+    .header-container{ 
+      display: grid; 
+      gap: 30px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Glitch title */
+    h1{
+      font: 900 clamp(2.5rem, 2rem + 4vw, 6.5rem) "Orbitron", system-ui, sans-serif;
+      margin: 0;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .gradient-text{
+      background: linear-gradient(90deg, var(--cyan) 0%, var(--orange) 25%, var(--cyan) 50%, var(--purple) 75%, var(--cyan) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+      animation: neonFlow 4s linear infinite;
+      display: inline-block;
+      filter: drop-shadow(0 0 20px var(--cyan));
+      position: relative;
+    }
+
+    @keyframes neonFlow {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .gradient-text::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--orange), var(--purple));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: glitchShift 5s infinite;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    @keyframes glitchShift {
+      0%, 90%, 100% { transform: translate(0, 0); opacity: 0; }
+      92% { transform: translate(-3px, 2px); opacity: 0.8; }
+      94% { transform: translate(2px, -2px); opacity: 0.8; }
+      96% { transform: translate(-2px, 1px); opacity: 0.8; }
+    }
+
+    h2.tagline{
+      margin: 20px auto 0;
+      font-weight: 500;
+      font-size: clamp(0.9rem, 0.85rem + 0.4vw, 1.2rem);
+      color: var(--cyan);
+      max-width: 1100px;
+      line-height: 2;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      position: relative;
+      padding: 20px 0;
+    }
+
+    h2.tagline::before {
+      content: '';
+      display: block;
+      color: var(--orange);
+      font-size: 0.75em;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px var(--orange);
+    }
+
+    h2.tagline::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    /* Command prompt style contact */
+    .contact-terminal {
+      position: relative;
+      margin: 40px auto;
+      max-width: 800px;
+      background: rgba(0, 0, 0, 0.95);
+      border: 2px solid var(--green);
+      box-shadow: 
+        0 0 40px rgba(0, 255, 0, 0.4),
+        inset 0 0 40px rgba(0, 255, 0, 0.05);
+      padding: 30px;
+    }
+
+    .contact-terminal::before {
+      content: '> ;
+      position: absolute;
+      top: -12px;
+      left: 30px;
+      background: #000;
+      padding: 0 15px;
+      color: var(--green);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 10px var(--green);
+    }
+
+    .contact-terminal::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--green), var(--cyan), var(--green));
+      background-size: 400% 400%;
+      animation: borderPulse 3s ease infinite;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .contact-terminal:hover::after {
+      opacity: 0.5;
+    }
+
+    @keyframes borderPulse {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .prompt-line {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--green);
+      font-size: clamp(1rem, 0.9rem + 0.3vw, 1.3rem);
+    }
+
+    .prompt-symbol {
+      color: var(--cyan);
+      font-weight: 700;
+      text-shadow: 0 0 10px var(--cyan);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 12px;
+      height: 20px;
+      background: var(--green);
+      animation: cursorBlink 1s infinite;
+      margin-left: 5px;
+      box-shadow: 0 0 10px var(--green);
+    }
+
+    @keyframes cursorBlink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .contact-info {
+      margin: 0;
+    }
+
+    .contact-info a{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: all 0.3s;
+      text-shadow: 0 0 5px var(--green);
+    }
+
+    .contact-info a:hover {
+      color: var(--cyan);
+      text-shadow: 0 0 15px var(--cyan);
+      transform: translateX(5px);
+    }
+
+    .icon { 
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+      transition: all 0.3s;
+    }
+
+    .contact-info a:hover .icon {
+      filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--cyan));
+      transform: rotate(360deg);
+    }
+
+    a{ color: var(--cyan); text-underline-offset: 3px; text-decoration: none; }
+    a:where(:focus-visible){ 
+      outline: 2px solid var(--cyan); 
+      outline-offset: 3px; 
+      box-shadow: 0 0 15px var(--cyan);
+    }
+
+    /* System log style legal note */
+    .legal-note{
+      font-size: 13px;
+      color: rgba(0, 255, 255, 0.7);
+      margin: 40px auto 0;
+      max-width: 900px;
+      padding: 25px 30px;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-left: 4px solid var(--orange);
+      position: relative;
+      box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);
+      line-height: 1.8;
+    }
+
+    .legal-note::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 30px;
+      background: #000;
+      padding: 0 15px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 10px var(--orange);
+    }
+
+    .legal-note strong {
+      color: var(--orange);
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 8px var(--orange);
+    }
+
+    /* Data panels */
+    .disclosure-section{
+      margin: 80px 0;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
+
+    .footer-links{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .footer-links a{
+      padding: 20px 25px;
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      font-size: 13px;
+    }
+
+    .footer-links a::before {
+      content: '>';
+      position: absolute;
+      left: 15px;
+      opacity: 0;
+      transition: all 0.3s;
+      color: var(--orange);
+      text-shadow: 0 0 10px var(--orange);
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .footer-links a:hover::after {
+      left: 100%;
+    }
+
+    .footer-links a:hover::before {
+      opacity: 1;
+      left: 10px;
+    }
+
+    .footer-links a:hover{
+      background: rgba(0, 255, 255, 0.1);
+      border-color: var(--orange);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 40px rgba(0, 255, 255, 0.5);
+      color: var(--orange);
+      text-shadow: 0 0 10px var(--orange);
+      padding-left: 35px;
+    }
+
+    /* Footer */
+    .footer-main{
+      border-top: 2px solid var(--cyan);
+      background: rgba(0, 0, 0, 0.95);
+      margin-top: 80px;
+      position: relative;
+      box-shadow: 0 -5px 30px rgba(0, 255, 255, 0.3);
+    }
+
+    .footer-content{ 
+      padding: 40px 0; 
+      text-align: center;
+    }
+
+    .copyright{ 
+      color: rgba(0, 255, 255, 0.7); 
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      letter-spacing: 0.1em;
+    }
+
+    .copyright::before {
+      content: '[ ';
+      color: var(--cyan);
+    }
+
+    .copyright::after {
+      content: ' ]';
+      color: var(--cyan);
+    }
+
+    .copyright a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cyan);
+      text-decoration: none;
+      transition: all 0.2s;
+      text-shadow: 0 0 5px var(--cyan);
+    }
+
+    .copyright a:hover {
+      color: var(--orange);
+      text-shadow: 0 0 15px var(--orange);
+    }
+
+    @media (max-width: 768px){
+      .container { width: min(100% - 2rem, var(--maxw)); }
+      .header-main { min-height: 70vh; padding: 80px 0 40px; }
+      .terminal-content { padding: 25px; }
+      .contact-terminal { padding: 20px; }
+      .footer-links { grid-template-columns: 1fr; gap: 15px; }
+      .footer-links a { padding: 18px 20px; font-size: 12px; }
+      .legal-note { font-size: 12px; padding: 20px 20px; }
+      .hud-corner { width: 80px; height: 80px; }
+      .data-stream { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="radar-sweep"></div>
+  <div class="data-stream"></div>
+  <div class="data-stream"></div>
+  <div class="data-stream"></div>
+  <div class="data-stream"></div>
+  <div class="data-stream"></div>
+  
+  <div class="hud-overlay">
+    <div class="hud-corner tl"></div>
+    <div class="hud-corner tr"></div>
+    <div class="hud-corner bl"></div>
+    <div class="hud-corner br"></div>
+  </div>
+
+  <a class="skip-link" href="index.html#main">Skip to content</a>
+
+  <header class="header-main">
+    <div class="container header-container">
+      <h1>
+        <a href="index.html" class="gradient-text" data-text="Premium Domain Names For Sale!">Premium Domain Names For Sale!</a>
+      </h1>
+
+      <h2 class="tagline">
+        BEFORE YOU SCROLL AWAY…
+WHAT IF YOUR COMPETITOR GETS YOUR DREAM DOMAIN TOMORROW?
+HOW WOULD THAT FEEL? 
+SECURE IT. Email Before You Lose It.
+      </h2>
+
+      <div class="contact-terminal">
+        <div class="prompt-line">
+          
+          <p class="contact-info">
+            <a href="mailto:domains@robotbuying.com">
+             
+              <span>Act Now! Get Pricing Now: domains@robotbuying.com</span>
+            </a>
+          </p>
+          <span class="cursor"></span>
+        </div>
+      </div>
+
+      <p class="legal-note">
+        <strong>&gt;_ Ownership Disclosure</strong>
+        I am the owner of the domain names listed for sale and reviewed on this website. Any reviews,
+        recommendations, or information provided about these domain names reflect my personal opinions
+        and may be influenced by my ownership interest. I may financially benefit from the sale or transfer of these domain names.
+      </p>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <section class="disclosure-section" aria-labelledby="site-policies-heading">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-title"></span>
+          <div class="terminal-controls">
+            <span class="terminal-btn close"></span>
+            <span class="terminal-btn minimize"></span>
+            <span class="terminal-btn maximize"></span>
+          </div>
+        </div>
+        <div class="terminal-content">
+          <h2 id="site-policies-heading" class="visually-hidden">Site Policies</h2>
+          <nav class="footer-links" aria-label="Site policies">
+            <a href="https://www.robotbuying.com/terms-and-conditions.html" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>
+            <a href="https://www.robotbuying.com/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            <a href="https://www.robotbuying.com/disclaimer.html" target="_blank" rel="noopener noreferrer">Disclaimer</a>
+            <a href="https://www.robotbuying.com/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-main" role="contentinfo">
+    <div class="container footer-content">
+      <p class="copyright">
+        &copy; <span id="current-year">2024</span> robotbuying.com |
+        Get Pricing Now:
+        <a href="mailto:domains@robotbuying.com">
+        
+          <span>domains@robotbuying.com</span>
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+ <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    (function(w,d,s,u,o){
+      w._cyA11yConfig={"iconId":"default","position":{"mobile":"bottom-right","desktop":"bottom-right"},"language":{"default":"en","selected":[]}};
+      var js=d.createElement(s),fjs=d.getElementsByTagName(s)[0];
+      js.src=u;js.async=true;fjs.parentNode.insertBefore(js,fjs);
+    })(window,document,"script","https://cdn-cookieyes.com/widgets/accessibility.js?id=898bd2b9-7ee4-49d2-84f8-c4630a7a30a4");
+  </script>
+</body>
+</html>

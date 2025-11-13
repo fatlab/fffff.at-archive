@@ -1,0 +1,25 @@
+/*
+Theme Name: Hueman Hypotheses
+Template: hueman
+Theme URI: http://presscustomizr.com/hueman/
+Version: 2.2 (child of hueman 3.2.9)
+Description: Hueman Hypotheses  is a mobile friendly WordPress theme for blogs, magazines and business websites. It's been designed to beautifully display pictures and text content, and engineered to be easy to use and fast. The Hueman theme helps you attract and retain more visitors, that's why it's already used by 70K+ active websites in the world and has received hundreds of five stars ratings.
+Author: nikeo
+Author URI: http://presscustomizr.com
+Tags: light, one-column, two-columns, three-columns, right-sidebar, left-sidebar, fluid-layout, fixed-layout, responsive-layout, custom-colors, custom-menu, featured-images, flexible-header, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
+Text Domain: hueman
+Copyright: (c) 2015-2016 Nicolas GUILLAUME (nikeo), 2013-2015 Alexander "Alx" Agnarson
+License: GNU General Public License v3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+.entry.excerpt {color: #222;}
+.aligncenter {display: block;}
+.entry li {margin: 0 0 0 15px;}
+body, .widget, .widget a {color:#111;}
+
+@media print {
+  .post-nav,.post-tags,.sidebar,.s1,.s2,.single article ~ *,li.comments {display: none !important;}
+  * {color:black !important;background: none !important;	}
+  body {font-size: 10pt;}
+  .main-inner{padding-left:0 !important;padding-right:0 !important;}
+}

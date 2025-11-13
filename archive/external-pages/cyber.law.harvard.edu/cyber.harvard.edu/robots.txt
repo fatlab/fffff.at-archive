@@ -1,0 +1,32 @@
+User-agent: *
+Disallow: /team
+Disallow: /lists
+Disallow: /msdoj/discuss/
+Disallow: /zittrain/
+Disallow: /cite/
+Disallow: /opengovernment
+Disallow: /blogs
+
+# Spiders + MediaWiki = Bad
+User-agent: *
+Disallow: /blogsupport
+Disallow: /brooklaw
+Disallow: /cyberlaw2005/wiki
+Disallow: /cyberone/wiki
+Disallow: /h2owiki
+Disallow: /ipc
+Disallow: /iptheory
+Disallow: /jamaicavoices
+Disallow: /netizenship
+Disallow: /ocs_global
+Disallow: /ocs_intranet
+Disallow: /oni-RAs
+Disallow: /practical_lawyering
+Disallow: /projectrvm
+Disallow: /publicmediaforge
+Disallow: /techwiki
+
+#allow cyber-search to get there
+User-agent: htdig/3.1.5 (wendy@eon.law.harvard.edu)
+Disallow: 
+Disallow: /msdoj/discuss/

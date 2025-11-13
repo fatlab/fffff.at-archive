@@ -1,0 +1,69 @@
+User-Agent: *
+Allow: /
+Disallow: /oauth/
+Disallow: /short/
+Disallow: /pigeon/
+Disallow: /blog/wp-json/
+Disallow: /blog/?rest_route=
+
+Sitemap: https://sitemaps.mixcloud.com/sitemap_userprofile_index.xml
+Sitemap: https://sitemaps.mixcloud.com/sitemap_cloudcast_index.xml
+Sitemap: https://sitemaps.mixcloud.com/sitemap_tag_index.xml
+Sitemap: https://sitemaps.mixcloud.com/sitemap_playlist_index.xml
+Sitemap: https://www.mixcloud.com/blog/sitemap_index.xml
+
+# Block OpenAI
+User-agent: GPTBot
+User-agent: ChatGPT-User
+
+# Block Common Crawl
+User-agent: CCBot
+
+# Block Perplexity
+User-agent: PerplexityBot
+
+# Block Webz.io
+User-agent: omgili
+User-agent: Omgilibot
+
+# Block Google Extended
+User-agent: GoogleExtended
+
+# Block Anthropic Anthropic
+User-agent: anthropic-ai
+User-agent: Claude-Web
+User-agent: ClaudeBot
+
+# Block Cohere AI
+User-agent: cohere-ai
+
+# Block Google-AI see https://blog.google/technology/ai/an-update-on-web-publisher-controls/
+User-agent: Google-Extended
+User-agent: Google-CloudVertexBot
+
+# Facebook LLM see https://developers.facebook.com/docs/sharing/bot
+User-Agent: FacebookBot
+User-agent: Meta-ExternalAgent
+
+# Amazon Alexa see https://developer.amazon.com/amazonbot
+User-Agent: AmazonBot
+
+# Tiktok / ByteDance
+User-agent: Bytespider
+
+# Apple
+User-agent: Applebot-Extended
+
+# imagesift.com
+User-agent: ImagesiftBot
+
+# diffbot.com
+User-agent: Diffbot
+
+# https://timpi.io/
+User-agent: Timpibot
+
+Allow: /blog/
+Disallow: /
+Disallow: /blog/wp-json/
+Disallow: /blog/?rest_route=

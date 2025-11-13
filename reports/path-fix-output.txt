@@ -1,0 +1,43 @@
+======================================================================
+FIX RELATIVE PATHS - ARCHIVE-WIDE
+======================================================================
+
+Found 4,840 HTML files
+
+Sample file depths:
+  index.html: depth 0 (needs no ../)
+  about/index.html: depth 1 (needs ../)
+  category/projects/index.html: depth 2 (needs ../../)
+  category/upcomingshows/index.html: depth 2 (needs ../../)
+
+Processing files...
+(This may take a few minutes...)
+  Processed 500/4,840 files...
+  Processed 1,000/4,840 files...
+  Processed 1,500/4,840 files...
+  Processed 2,000/4,840 files...
+  Processed 2,500/4,840 files...
+  Processed 3,000/4,840 files...
+  Processed 3,500/4,840 files...
+  Processed 4,000/4,840 files...
+  Processed 4,500/4,840 files...
+
+  Completed 4,840 files
+
+======================================================================
+FIX COMPLETE
+======================================================================
+
+Files modified: 4,034
+Total path fixes: 331,471
+
+Sample fixes by file depth:
+  Depth 1: maddy-varner/index.html (68 fixes)
+  Depth 2: cnc-mill/cnc_mill/index.html (73 fixes)
+  Depth 3: audio/The 2 Live Review/The 2 Live Review/index.html?C=S;O=D.html (12 fixes)
+  Depth 4: tag/fi5e/page/3/index.html (122 fixes)
+  Depth 5: external-pages/gekogeek.com/gekogeek.com/hacks/connecting-toy-blocks-with-a-universal-construction-set/index.html (1 fixes)
+
+Verification...
+✓ Sample check passed - no excessive ../ paths found
+

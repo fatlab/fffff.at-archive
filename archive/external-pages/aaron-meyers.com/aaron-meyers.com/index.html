@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>A A R O N  📺 M E Y E R S</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="minimal-ui, width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="msapplication-tap-highlight" content="no" />
+		<meta content='True' name='HandheldFriendly' />
+		<link rel="preconnect" href="https://fonts.gstatic.com"> 
+		<link href="../../../fonts.googleapis.com/css2@family=Oswald&amp;display=swap.css" rel="stylesheet">
+		<!-- <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'> -->
+		<style>
+			body {
+				font-family: Oswald;
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			a {
+				font-style: bold;
+				color: black;
+			}
+
+			#title_text {
+				font-size: 10vh;
+				color: white;
+				width: 100%;
+				position: absolute;
+				text-align: center;
+				z-index: 1000;
+				pointer-events: none;
+				top: 20px;
+			}
+
+			#loadStatus {
+				font-size: 46px;
+				color: black;
+				width: 200px;
+				height: 100px;
+				text-align: center;
+				/*margin-top: 1px;*/
+			}
+
+			#loadInfo {
+				font-size: 20px;
+				font-style: normal;
+				top: -20px;
+				position: relative;
+			}
+
+			#three_webgl {
+				position: absolute;
+				z-index: 1;
+				/*pointer-events:none;*/
+				overflow:hidden;
+			}
+
+			#three_css3d {
+				position: absolute;
+				z-index: 10;
+				pointer-events: none;
+				overflow: hidden;
+			}
+
+			#reticle {
+				display: none;
+			}
+
+			#reticle img {
+				width: 64px;
+				opacity: .5;
+			}
+
+			#overlay {
+				z-index: 100;
+				position: absolute;
+				color: white;
+				right: 0px;
+				/*bottom: 0px;*/
+			}
+			#orientationWarning {
+				position: absolute;
+				z-index: 1000;
+				color: white;
+				background: black;
+				text-align: center;
+			}
+			#orientationDevice {
+				-webkit-animation: animWebkit 2s ease-in-out infinite;
+				animation: anim 2s ease-in-out infinite;
+				/*margin-top: -100px;*/
+				vertical-align: 0%;
+				font-size: 200px;
+				line-height: 0;
+			}
+			#orientationText {
+				font-size: 24px;
+			}
+
+			@-webkit-keyframes animWebkit {
+				0% { -webkit-transform: rotate( 0deg ); }
+				20% { -webkit-transform: rotate( 90deg ); }
+				80% { -webkit-transform: rotate( 90deg ); }
+				100% { -webkit-transform: rotate( 0deg ); }
+			}
+			@keyframes anim {
+				0% { transform: rotate( 0deg ); }
+				20% { transform: rotate( 90deg ); }
+				80% { transform: rotate( 90deg ); }
+				100% { transform: rotate( 0deg ); }
+			}
+
+			#muteButtonContainer {
+				width: 20px;
+				cursor: pointer;
+				margin: 10px;
+			}
+			#muteButton {
+				opacity: .5;
+			}
+
+			#whatever {
+				background: rgba( 255,255,255,.75 );
+				width: 700px;
+				height: 545px;
+				overflow-y: auto;
+				border: 1px black solid;
+				display: none;
+			}
+			.imageThumbs {
+				line-height: 0px;
+			}
+			.imageThumbs img {
+				border: 1px black solid;
+				/*height: 96px;*/
+				/*margin-right: 5px;*/
+				margin-bottom: 15px;
+			}
+			.spacer {
+				border: 0px !important;
+				width: 15px;
+			}
+
+			.vidThumb {
+				width: 96px;
+				height: 96px;
+			}
+
+			.vidThumb:before {
+			    position: absolute;
+			    content: '';
+			    background: red;
+			    width: 96px;
+			    height: 96px;
+			    pointer-events: none;
+			}
+			.horizontalBreak {
+				background: black;
+				height: 2px;
+				width: 100%;
+				/*top:-10px;*/
+				/*position: relative;*/
+				margin-bottom: 10px;
+			}
+
+			.contents {
+				padding: 10px;
+				font-size: 24px;
+			}
+
+			.projectTitle {
+				font-size: 64px;
+				font-style: italic;
+				line-height: 70px;
+			}
+		</style>
+		<link rel="stylesheet" href="!/stylesheets/jquery.fancybox.css">
+		<link href="../../../maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	<body>
+
+		<script src="!/javascripts/libs/jquery-2.1.0.min.js"></script>
+		<!-- // <script src="./javascripts/libs/three.min.js"></script> -->
+		<script src="!/javascripts/libs/three.js"></script>
+		<script src="!/javascripts/libs/hammer.min.js"></script>
+		<script src="!/javascripts/libs/tween.min.js"></script>
+		<script src="!/javascripts/libs/async.js"></script>
+		<script src="!/javascripts/libs/jquery.fancybox.pack.js"></script>
+		<script src="!/javascripts/libs/jquery.fancybox-media.js"></script>
+		<script src="!/javascripts/libs/stats.min.js"></script>
+
+		<script src="!/javascripts/three_utils/ColladaLoader.js"></script>
+		<script src="!/javascripts/three_utils/CSS3DRenderer.js"></script>
+
+		<script src="!/javascripts/ctm/lzma.js"></script>
+		<script src="!/javascripts/ctm/ctm.js"></script>
+		<script src="!/javascripts/ctm/CTMLoader.js"></script>
+
+		<!-- // <script src="../../../three.js/examples/js/libs/stats.min.js"></script> -->
+
+		<script src="!/javascripts/main/outlines.js"></script>
+		<script src="!/javascripts/main/textures.js"></script>
+		<script src="!/javascripts/main/main.js"></script>
+		<script src="!/javascripts/main/mouse.js"></script>
+		<script src="!/javascripts/main/touch.js"></script>
+		<script src="!/javascripts/main/idlemode.js"></script>
+		<script src="!/javascripts/main/sound.js"></script>
+
+
+		<script>
+
+
+
+		</script>
+
+
+		<div id="three_webgl"></div>
+		<div id="three_css3d">
+
+			<div id="loadStatus">
+				Loading:
+				<span id="loadInfo"></span>
+			</div>
+
+			<div id="reticle">
+				<img src="!/textures/reticle.png">
+			</div>
+
+			<div id="whatever" class="scrollable">
+				<div class="contents">
+					<div class="projectTitle">
+						Hello, Future
+					</div>
+					<div class="horizontalBreak"></div>
+					<div class="imageThumbs">
+
+					</div>
+					<div class="projectDescription">
+						<p>Ethical sustainable irony messenger bag crucifix. Brooklyn meh craft beer Thundercats selfies. DIY farm-to-table fanny pack, cornhole distillery Truffaut meh blog direct trade hoodie banjo messenger bag you probably haven't heard of them Williamsburg gastropub. Jean shorts lomo tousled keffiyeh seitan. Skateboard food truck occupy 8-bit chambray. Chambray Thundercats skateboard plaid. Raw denim umami banh mi, gastropub twee 90's squid cliche slow-carb typewriter.</p>
+						<p>Marfa butcher High Life ethnic disrupt. IPhone squid McSweeney's, typewriter gastropub selfies twee. Small batch wayfarers shabby chic narwhal. Tumblr hoodie farm-to-table seitan tote bag readymade. DIY chia selfies retro quinoa squid, fingerstache Godard letterpress mumblecore. Pour-over kitsch dreamcatcher Pinterest. Try-hard letterpress Blue Bottle hashtag narwhal.</p>
+						<p>Pinterest Odd Future actually High Life Tonx cornhole occupy crucifix, paleo biodiesel vinyl 8-bit Banksy Blue Bottle kogi. Craft beer PBR fixie, PBR&B mixtape art party readymade leggings ennui typewriter semiotics freegan. Viral asymmetrical Portland, keffiyeh blog wayfarers yr Neutra single-origin coffee selvage Truffaut vinyl. Next level cornhole normcore pickled. Organic direct trade cornhole cliche, vegan wolf skateboard. Keffiyeh authentic fap forage, XOXO single-origin coffee seitan Tonx freegan meh Intelligentsia Marfa Banksy. Chambray craft beer organic, next level Portland Godard squid flannel Brooklyn mustache ethical Tonx.</p>
+						<p>Lo-fi brunch American Apparel polaroid. Williamsburg leggings typewriter, gluten-free forage disrupt twee pop-up VHS High Life. Lo-fi Kickstarter pug kitsch 3 wolf moon gentrify. Carles readymade occupy Vice, Truffaut sustainable before they sold out food truck viral YOLO XOXO bespoke chambray. Photo booth typewriter pour-over ethical, blog literally farm-to-table irony flannel actually. Mumblecore Shoreditch keffiyeh kitsch Truffaut. Pickled roof party Portland Godard, next level sartorial artisan mixtape retro tousled hashtag.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="overlay">
+			<div id="muteButtonContainer">
+				<i id="muteButton" class="fa fa-volume-up fa-lg"></i>
+			</div>
+		</div>
+		<div id="orientationWarning" style="display:none">
+			<div id="orientationText">
+				<i id="orientationDevice" class="fa fa-mobile fa-lg"></i><br/>
+				<span id="orientationMessage">Turn your device 90°</span><br/>
+			</div>
+		</div>
+
+		<div id="title_text"></div>
+
+	</body>
+</html>

@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: */cache/cachify/
+
+User-agent: *
+Disallow: /wp-content/uploads/wpo/wpo-plugins-tables-list.json
+
+# START YOAST BLOCK
+# ---------------------------
+User-agent: *
+Disallow:
+
+Sitemap: https://www.ja-gut-aber.de/sitemap_index.xml
+# ---------------------------
+# END YOAST BLOCK

@@ -1,0 +1,41 @@
+User-agent: *
+Disallow: /search
+Disallow: /between
+Disallow: /login
+Disallow: /shakeit.php
+Disallow: /index.php
+Disallow: /profile.php
+Disallow: /between.php
+Disallow: /login.php
+Disallow: /submit.php
+Disallow: /trackback.php
+Disallow: /editlink.php
+Disallow: /backend/
+Allow: /backend/media/
+Disallow: /api/
+Disallow: /index.php
+Disallow: /comments_rss2.php
+Disallow: /rss2.php?
+Disallow: /javascript:
+Disallow: /comments_rss2.php
+Disallow: /link_bookmark.php
+Disallow: /search.php
+Allow: /m/*/*
+Disallow: /m/*/*/*#c-*$
+Disallow: /c/*$
+Disallow: /story/*/*#c-*$
+Allow: /notame
+Disallow: /notame/*
+Allow: /notame/$
+Allow: /sneak
+Disallow: /sneak/*
+Allow: /sneak/$
+Disallow: /build
+Disallow: /switch-old-version*
+Disallow: /no-cookies
+Disallow: /checkout
+
+Sitemap: http://www.meneame.net/sitemap
+
+User-agent: Mediapartners-Google
+Disallow:

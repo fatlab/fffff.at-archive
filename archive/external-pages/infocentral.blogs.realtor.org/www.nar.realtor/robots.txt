@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /api/*
+Sitemap: https://www.nar.realtor/sitemap.xml
+
+
+
+Disallow: /*.pdf$
+Disallow: /*.doc$
+Disallow: /*.docx$
+Disallow: /*.ppt$
+Disallow: /*.pptx$
+Disallow: /*.xls$
+Disallow: /*.xlsx$

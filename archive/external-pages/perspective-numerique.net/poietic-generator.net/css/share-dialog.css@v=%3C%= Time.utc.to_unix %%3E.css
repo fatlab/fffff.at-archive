@@ -1,0 +1,102 @@
+.share-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+}
+
+.dialog-content {
+    background: rgba(40, 40, 40, 0.95);
+    padding: 2em;
+    border-radius: 8px;
+    min-width: 300px;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    font-size: 1.2em;
+    color: white;
+}
+
+.option-group {
+    margin: 1em 0;
+}
+
+.option-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: white;
+}
+
+.option-group select {
+    width: 100%;
+    padding: 0.5em;
+    background: rgba(60, 60, 60, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 4px;
+}
+
+.progress-container {
+    margin: 1.5em 0;
+    background: rgba(0, 0, 0, 0.3);
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: white;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.status {
+    text-align: center;
+    margin: 1em 0;
+    min-height: 1.5em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.start-export {
+    width: 100%;
+    padding: 0.8em;
+    background: white;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+.start-export:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Style spécifique pour les options */
+select option {
+    background: rgb(40, 40, 40);
+    color: white;
+} 

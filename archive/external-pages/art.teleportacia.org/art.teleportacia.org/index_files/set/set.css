@@ -1,0 +1,198 @@
+#CenterOfTheUniverse a:link {color: blue;}
+#CenterOfTheUniverse a:visited {color: purple;}
+#CenterOfTheUniverse a:active {color: red;}
+
+/******************************/
+
+#Updates {
+    background: #fe6;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fe6), to(#fa3)); 
+    background-image: -webkit-linear-gradient(top, #fe6, #fa3); 
+    background-image:    -moz-linear-gradient(top, #fe6, #fa3); 
+    background-image:     -ms-linear-gradient(top, #fe6, #fa3); 
+    background-image:      -o-linear-gradient(top, #fe6, #fa3);
+    
+
+    border-radius: 8px;
+    color: #333;
+    text-shadow: 0 1px #fe6;
+    
+    font: 12px/15px Helvetica Neue,Arial,"Lucida Grande",Sans-serif;
+        
+    box-shadow:
+        0 1px 3px #fa3 inset,
+        0 0 8px #999;
+    padding: 4px 12px 12px 12px;
+    
+    position: absolute;
+    left: 553px;
+    top: 12px;
+    width: 250px;
+
+}
+
+/******************************/
+
+#Books {
+    /* background-color: #cab298;
+    background-image: url(shellbg.jpg);
+    color: #633221; */
+    text-align: center;
+    width: 512px;
+    padding: 32px 32px 40px 116px;
+    /* text-shadow: 1px 1px #f3e5d8; */
+    /* font-size: 125%; */
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+}
+
+    #Books h2 {
+        font-family: serif;
+        font-size: 150%;
+    }
+
+    #Books a:link {
+        color: #99f;
+    }
+    #Books a:visited {
+        color: #f6f;
+    }
+
+    #Books div.divider {
+        width: 436px;
+        height: 33px;
+        background: url(bjewelbar.gif) no-repeat 50% 50%; /* apbbar2.gif */
+        margin: 0 auto 32px;
+    }
+
+
+/******************************/
+#Observation {
+    width: 360px;
+    padding: 48px 60px 32px 140px;
+    background-color: #5079cb;
+    background-image: url(bluegembg2.jpg);
+    color: #ABBCFF;
+    font-style: italic;
+    font-size: 18px;
+    border-radius: 12px;
+    position: absolute;
+    left: 786px;
+    top: 320px;
+}
+
+    #Observation ul {
+        list-style: none;
+    }
+    #Observation li {
+        position: relative;
+        padding-bottom: 16px;
+    }
+    
+    #Observation li:before {
+        content: url(bluegembull.jpg);
+        position: absolute;
+        left: -40px;
+        top: -6px;
+        
+    }
+    
+    #Next {
+        display: block;
+        float: right;
+        width: 160px;
+        height: 76px;
+        background: url(bluegemnextbut.jpg);
+        text-indent: -9999px;
+    }
+
+/******************************/
+
+#HomePage h2,
+#HomePage p,
+#HomePage ul {
+    text-shadow: 1px 1px #eee;
+}
+
+a {
+    text-shadow: none;
+}
+
+#CenterOfTheUniverse {
+
+}
+
+#Teleportation, #View, #EMail {
+    display: block;
+    width: 165px;
+    height: 71px;
+    background: url(wphomebut.jpg);
+    text-indent: -9999px;
+}
+
+    #View {
+        background: url(wpviewbut.jpg);
+    }
+    
+    #EMail {
+        background: url(wpmailbut.jpg);
+        margin: 0 auto;
+    }
+
+    #GraphicsBy {
+        display: block;
+        margin: 0 auto;
+        width: 165px;
+        height: 76px;
+        background: url(wpgraphbut.jpg) no-repeat;
+        text-indent: -9999px;
+    }
+
+#TeleportationBack {
+    display: block;
+    width: 165px;
+    height: 71px;
+    background: url(wpbackbut.jpg);
+    text-indent: -9999px;
+    margin: 0 auto;
+}
+
+
+#HomePage {
+    background-color: #c6d2de;
+    background-image: url(wpbg.jpg);
+    color: #957181;
+    text-align: center;
+    width: 480px;
+    padding: 32px 32px 40px 152px;
+}
+
+    #HomePage ul {
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        font-style: italic;
+        list-style: none;
+    }
+    #HomePage li {
+        margin: 0;
+        padding: 0;
+    }
+
+    #Welcome {
+        margin: 0 auto;
+        padding: 0;
+        width: 282px;
+        height: 140px;
+        background: url(wpwel.jpg);
+        text-indent: -9999px;
+    }
+
+    #HomePage div.divider {
+        width: 390px;
+        height: 80px;
+        background: url(wpbar.jpg) no-repeat 50% 50%;
+        margin: 0 auto;
+    }
+
+

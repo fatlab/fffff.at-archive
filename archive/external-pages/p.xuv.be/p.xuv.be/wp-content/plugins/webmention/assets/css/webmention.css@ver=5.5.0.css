@@ -1,0 +1,48 @@
+.reaction-list ul {
+	border-style: solid;
+}
+
+.reaction-list li {
+	display: inline-block;
+	list-style: none;
+	vertical-align: top;
+	margin-left: 3px;
+	position: relative;
+}
+
+.avatar-only .comment-body {
+	float: left;
+	display: inline-block;
+	position: relative;
+	margin: 0 5px 10px 0;
+}
+
+.comment-body .emoji-overlay {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.hide-name {
+	display: none;
+}
+
+.reaction-list details summary {
+	cursor: pointer;
+}
+
+.reaction-list summary::marker {
+	content: none;
+}
+
+.reaction-list summary::after {
+	content: '+';
+	font-size: 2em;
+	height: 0;
+}
+
+.reaction-list [open] summary::after {
+	content: '-';
+	width: .75em;
+	height: 0;
+}

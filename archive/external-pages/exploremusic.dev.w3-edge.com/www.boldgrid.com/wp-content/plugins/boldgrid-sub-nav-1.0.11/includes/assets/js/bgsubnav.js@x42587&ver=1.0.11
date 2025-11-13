@@ -1,0 +1,94 @@
+/**
+ * BoldGrid Sub Nav.
+ *
+ * @summary This file handles sub navs.
+ *
+ * @since 1.0.0
+ */
+
+/* global jQuery */
+
+var BOLDGRID = BOLDGRID || {};
+
+( function( $ ) {
+	'use strict';
+
+	var self;
+
+	/**
+	 * Logs.
+	 *
+	 * @since 1.12.5
+	 */
+	BOLDGRID.Subnav = {
+		/**
+		 * Init.
+		 *
+		 * @since 1.0.0
+		 */
+		init: function() {
+			self._onReady();
+		},
+
+		/**
+		 *
+		 */
+		onClickDoc: function( e ) {
+			$( '.bgsubnav li.bgsubnav-expanded' ).removeClass( 'bgsubnav-expanded' );
+		},
+
+		/**
+		 * Steps to take when a top level nav item is clicked.
+		 *
+		 * @since 1.0.0
+		 */
+		onClickNav: function( e ) {
+			var $li = $( this ),
+				expand = ! $li.hasClass( 'bgsubnav-expanded' ),
+				width = $( window ).width(),
+				$target = $( e.target ),
+				in_dropdown = 1 === $target.closest( 'ul.dropdown' ).length;
+
+			// On smaller screens, avoid more than one top level being dropped at a time.
+			self.onClickDoc();
+
+			/*
+			 * We're only supposed to be listening to top level items. If the user is clicking on a
+			 * link in a dropdown, proceed as usual.
+			 */
+			if ( in_dropdown ) {
+				return;
+			}
+
+			/*
+			 * On larger screens, take no action on click. On hover, the drop down nav will show. 770
+			 * screensize definved in bgsubnav.css.
+			 */
+			if ( width >= 993 ) {
+				return false;
+			}
+
+			$li.closest( 'ul' ).children().removeClass( 'bgsubnav-expanded' );
+
+			expand ? $li.addClass( 'bgsubnav-expanded' ) : $li.removeClass( 'bgsubnav-expanded' );
+
+			return false;
+		},
+
+		/**
+		 * On ready.
+		 *
+		 * @since 1.0.0
+		 */
+		_onReady: function() {
+			$( function() {
+				$( '.bgsubnav nav > ol > li' ).on( 'click', self.onClickNav );
+				$( document ).on( 'click', self.onClickDoc );
+			} );
+		}
+	};
+
+	self = BOLDGRID.Subnav;
+} )( jQuery );
+
+BOLDGRID.Subnav.init();

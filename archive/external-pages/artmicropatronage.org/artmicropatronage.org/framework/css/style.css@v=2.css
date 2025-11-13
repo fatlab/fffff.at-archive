@@ -1,0 +1,2369 @@
+/**
+ * HTML5 ✰ Boilerplate
+ *
+ * style.css contains a reset, font normalization and some base styles.
+ *
+ * Credit is left where credit is due.
+ * Much inspiration was taken from these projects:
+ * - yui.yahooapis.com/2.8.1/build/base/base.css
+ * - camendesign.com/design/
+ * - praegnanz.de/weblog/htmlcssjs-kickstart
+ */
+
+
+/**
+ * html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+ * v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
+ * html5doctor.com/html-5-reset-stylesheet/
+ */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+blockquote, q { quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content: ""; content: none; }
+
+ins { background-color: #ff9; color: #000; text-decoration: none; }
+
+mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+input, select { vertical-align: middle; }
+
+
+/**
+ * Font normalization inspired by YUI Library's fonts.css: developer.yahoo.com/yui/
+ */
+
+body { font:13px/1.231 sans-serif; *font-size:small; } /* Hack retained to preserve specificity */
+select, input, textarea, button { font:99% sans-serif; }
+
+/* Normalize monospace sizing:
+   en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+
+/**
+ * Minimal base styles.
+ */
+
+/* Always force a scrollbar in non-IE */
+html { overflow-y: scroll; }
+
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: none; }
+
+ul, ol { margin-left: 2em; }
+ol { list-style-type: decimal; }
+
+/* Remove margins for navigation lists */
+nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
+
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+
+td { vertical-align: top; }
+
+/* Set sub, sup without affecting line-height: gist.github.com/413930 */
+sub, sup { font-size: 75%; line-height: 0; position: relative; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+pre {
+  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+  white-space: pre; white-space: pre-wrap; word-wrap: break-word;
+  padding: 15px;
+}
+
+textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+
+.ie6 legend, .ie7 legend { margin-left: -7px; } 
+
+/* Align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+
+/* Hand cursor on clickable input elements */
+label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea { margin: 0; }
+
+/* Colors for form validity */
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid {
+   border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red;
+}
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+
+/* These selection declarations have to be separate
+   No text-shadow: twitter.com/miketaylr/status/12228805301
+   Also: hot pink! */
+::-moz-selection{ background:#DCDCDC; color:#121212; text-shadow: none; }
+::selection { background:#DCDCDC; color:#121212; text-shadow: none; }
+input::-moz-selection{ background:#fff; color:#666; text-shadow: none; }
+input::selection { background:#fff; color:#666; text-shadow: none; }
+
+
+/* j.mp/webkit-tap-highlight-color */
+a:link { -webkit-tap-highlight-color: #DCDCDC; }
+
+/* Make buttons play nice in IE:
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button {  width: auto; overflow: visible; }
+
+/* Bicubic resizing for non-native sized IMG:
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+/**
+ * You might tweak these..
+ */
+
+body, select, input, textarea {
+  color: #121212;
+  font-family: Helvetica, Arial, sans-serif;
+  vertical-align: middle;
+}
+
+/* Headers (h1, h2, etc) have no default font-size or margin; define those yourself */
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+
+a, a:active, a:visited { color: #121212; }
+a:hover, a.nav-item.selected, #left a, #left a:active, #left a:visited, div.form p.small-bottom a:hover
+{ color: #DC0A0A; text-decoration: none; }
+
+
+/**
+ * Primary styles
+ *
+ * Author: Burning House
+ */
+ 
+
+@font-face {
+    font-family: 'Whitman-BoldLFRegular';
+    src: url('../fonts/whitmblf-webfont.eot');
+    src: url('../fonts/whitmblf-webfont.eot@') format('embedded-opentype'),
+         url('../fonts/whitmblf-webfont.woff') format('woff'),
+         url('../fonts/whitmblf-webfont.ttf') format('truetype'),
+         url('../fonts/whitmblf-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Whitman-ItalicOsFRegular';
+    src: url('../fonts/whitmiof-webfont.eot');
+    src: url('../fonts/whitmiof-webfont.eot@') format('embedded-opentype'),
+         url('../fonts/whitmiof-webfont.woff') format('woff'),
+         url('../fonts/whitmiof-webfont.ttf') format('truetype'),
+         url('../fonts/whitmiof-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Whitman-RomanLFRegular';
+    src: url('../fonts/whitmrlf-webfont.eot');
+    src: url('../fonts/whitmrlf-webfont.eot@') format('embedded-opentype'),
+         url('../fonts/whitmrlf-webfont.woff') format('woff'),
+         url('../fonts/whitmrlf-webfont.ttf') format('truetype'),
+         url('../fonts/whitmrlf-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+	/*background: url(http://assets.artmicropatronage.org/artmicropatronage/site/img/amp-grid.png) repeat-y top left;*/
+	border-top: 12px solid #EDEDED;
+}
+
+/* General typography */
+b, strong {
+ 	font-weight: bold;
+}
+i, em {
+	font-style: italic;
+}
+hr {
+	width: 100%;
+	background: #121212;
+	height: 1px;
+	border: none;
+	color: #121212;
+}
+
+/* Fixed elements */
+
+header a img.amp {
+	position: absolute;
+	top: 0px;
+	left: 38px;
+	height: 79px;
+	width: 64px;
+	z-index: 994;
+}
+header #menubar {
+	background: #EDEDED;
+	width: 220px;
+	height: 36px;
+	top: 0px;
+	right: 40px;
+	position: absolute;
+	-webkit-border-bottom-right-radius: 2px;
+	-webkit-border-bottom-left-radius: 2px;
+	-moz-border-radius-bottomright: 2px;
+	-moz-border-radius-bottomleft: 2px;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+	-webkit-background-clip: padding-box;
+	vertical-align: middle;
+	z-index: 994;
+}
+footer #pledgebar {
+	width: 100%;
+	height: 48px;
+	background: #EDEDED;
+	border-top: 1px solid #DCDCDC;
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	overflow: hidden;
+}
+
+/* Navigation */
+
+ul#access {
+	list-style: none;
+	margin: 20px 0px 0px 140px;
+	padding: 0px;
+	position:absolute;
+	z-index:994;
+}
+ul#access li {
+	float: left;
+	padding: 0px;
+	margin-right: 56px;
+}
+ul#access li a {
+	display: block;
+	float: left;
+	text-transform: uppercase;
+	color: #121212;
+	font-size: 12px;
+	text-decoration: none;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+}
+ul#access li a:hover, ul#access li a.selected {
+	color: #DC0A0A;
+	-moz-text-shadow: 1px 1px 3px #EDEDED;
+	-webkit-text-shadow: 1px 1px 3px #EDEDED;
+	text-shadow: 1px 1px 3px #EDEDED;
+}
+ul#access li ul li a {
+	text-transform: capitalize !important;
+}
+/*** SUPERFISH STYLES ***/
+.sf-menu, .sf-menu * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.sf-menu {
+	line-height:	1.0;
+}
+.sf-menu ul {
+	position:		absolute;
+	top:			-999em;
+}
+.sf-menu ul li {
+	width:			100%;
+}
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu li {
+	float:			left;
+	position:		relative;
+}
+.sf-menu a {
+	display:		block;
+	position:		relative;
+}
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	left:			-5px;
+	top:			13px; /* match top ul list item height */
+	z-index:		99;
+	margin-left: -32px;
+}
+
+.sf-menu li:hover ul.about,
+.sf-menu li.sfHover ul.about {
+	margin-left: -36px;
+}
+
+.sf-menu li:hover ul.exhibitions,
+.sf-menu li.sfHover ul.exhibitions {
+	margin-left: -23px;
+}
+
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			0em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+ul#access ul ul {
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/ulBg.gif) center top repeat-x;
+	line-height: 14px;
+	text-align: center;
+	padding: 0px 9px 7px 9px;
+	min-width: 100px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-background-clip: padding-box;
+	-moz-box-shadow: 0px 2px 4px #666;
+	-webkit-box-shadow: 0px 2px 4px #666;
+	box-shadow: 0px 2px 4px #666;
+}
+ul#access ul.subWrap {
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/navTop.png) center 0px no-repeat;
+	padding: 0px;
+	min-width: 130px;
+}
+ul#access ul.subWrap ul.subnav {
+	position: relative;
+	margin-left: 0px !important;
+}
+ul#access ul ul li {
+	text-align: center;
+	letter-spacing: .05em;
+	display: block;
+	width: 100%;
+	float: none;
+	margin: 0px !important;
+}
+ul#access ul ul li a {
+	color: #EDEDED;
+	float: none;
+	display: block;
+	padding: 7px 0px;
+}
+ul#access ul ul li a:hover {
+	color: #FFF;
+	-moz-text-shadow: none;
+	-webkit-text-shadow: none;
+	text-shadow: none;
+}
+
+/* Menu bar */
+
+div.loginfo {
+	float: left;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	color: #666;
+	margin: 16px 12px 0px 6px;
+	vertical-align: middle;
+}
+div.loginfo a {
+	color: #666;
+}
+div.loginfo a:hover {
+	color: #121212;
+}
+div.cart {
+	float: right;
+	vertical-align: middle;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	color: #666;
+	padding-top: 6px;
+	min-width:76px;
+}
+div.cart span.pledged a {
+	display: block;
+	background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/pledged.gif) center no-repeat;
+	padding: 7px 4px 7px 0px;
+	width: 24px;
+	vertical-align: middle;
+	float: left;
+	margin-right: 4px;
+	text-align: center;
+	color: #666;
+	text-decoration: none;
+	line-height: 10px;
+}
+div.cart span.pledged a:hover {
+	color: #DC0A0A;
+}
+div.cart span.banked a {
+	display: block;
+	background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/banked.gif) center no-repeat;
+	padding: 7px 0px 7px 2px;
+	width: 37px;
+	vertical-align: middle;
+	float: left;
+	text-align: center;
+	color: #FFF;
+	text-decoration: none;
+	margin-right: 6px;
+	line-height: 10px;
+}
+div.cart span.banked a:hover {
+	color: #00CC00;
+}
+
+/* Tooltips */
+
+.tooltip {
+  position: relative;
+}
+.tooltip span.tip {
+  margin-left: -999em;
+  position: absolute;
+}
+.tooltip:hover span {
+  position: absolute;
+  left: -50%;
+  top: 21px;
+  z-index: 99;
+  margin-left: 0;
+  background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/tooltip.png) no-repeat top center;
+  padding: 13px 6px 6px 6px;
+  color: #FFF !important;
+  font-weight: normal !important;
+  text-align: left;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* Pledge Bar */
+
+div#pledgebar button,div#member_bar, #exhibition_title {
+	border: none;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #666;
+	text-align: center;
+	letter-spacing: .05em;
+	-moz-text-shadow: 0px 1px 0px #F9F9F9;
+	-webkit-text-shadow: 0px 1px 0px #F9F9F9;
+	text-shadow: 0px 1px 0px #F9F9F9;
+}
+#exhibition_title h1{
+/*	font-size: 12px;*/
+/*	text-decoration:none;*/
+/*	color:#121212;*/
+	text-transform: uppercase;
+}
+#exhibition_title{
+	float:left;
+	padding:10px 0px 0px 10px;
+	text-align: left;
+}
+div#pledgebar button:hover {
+	color: #EDEDED;
+	-moz-text-shadow: 0px 1px 0px #666;
+	-webkit-text-shadow: 0px 1px 0px #666;
+	text-shadow: 0px 1px 0px #666;
+}
+
+div#pledgebar button.backBtn,button.backBtn {
+	width: 61px;
+	height: 36px;
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/backBtn.gif) left top no-repeat;
+	float: left;
+	margin-left: 6px;
+	margin-top: 6px;
+	padding-left: 18px;
+}
+
+div#pledgebar button.backBtn:hover {
+	background-position: 0px -36px;
+}
+div#pledgebar button.nextBtn {
+	width: 61px;
+	height: 36px;
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/nextBtn.gif) left top no-repeat;
+	float: right;
+	margin-right: 6px;
+	margin-top: 6px;
+	padding-right: 18px;
+}
+div#pledgebar button.nextBtn:hover {
+	background-position: 0px -36px;
+}
+div#mainBtns {
+	width: 700px;
+	margin: 0px auto;
+	float: none;
+	position:relative;
+}
+div#pledgeBtns{
+	margin-left: 58px;
+}
+div#member_bar{
+	height:35px;
+	width:335px;
+	float:left;
+	padding: 14px 0px 0px 0px;
+	margin-left: 78px;
+	font-size: 12pt;
+	font-weight: normal;
+	text-align: right;
+}
+div#pledgebar button.info {
+	float: left;
+	height: 35px;
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/buttonBg.gif) left top repeat-x;
+	margin-top: 6px;
+/*	margin-right: 78px;*/
+	margin-left: 60px;
+	-moz-box-shadow: 0px 1px 0px #F9F9F9;
+	-webkit-box-shadow: 0px 1px 0px #F9F9F9;
+	box-shadow: 0px 1px 0px #F9F9F9;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-background-clip: padding-box;
+	border: 1px solid #A9A9A9;
+}
+div#pledgebar button.info:hover, div#pledgebar button.info.active {
+	background-color: #D7D7D7;
+	background-position: 0px -33px;
+}
+button.info span.info {
+	text-indent: -999em;
+	background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/info.png) no-repeat center;
+	display: block;
+	width: 26px;
+	height: 26px;
+	padding: 0px 4px;
+}
+div#pledgebar button.pledge {
+	float: left;
+	height: 35px;
+	width: 60px;
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/buttonBg.gif) left top repeat-x;
+	margin-top: 6px;
+	margin-left: -1px;
+	-moz-box-shadow: 0px 1px 0px #F9F9F9;
+	-webkit-box-shadow: 0px 1px 0px #F9F9F9;
+	box-shadow: 0px 1px 0px #F9F9F9;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-background-clip: padding-box;
+	border: 1px solid #A9A9A9;
+	font-size: 18px;
+	font-weight: bold;
+}
+div#pledgebar button.pledge:hover, div#pledgebar button.pledged, div#pledgebar button.help:hover, div#pledgebar button.help.on {
+	background-color: #D7D7D7;
+	background-position: 0px -33px;
+	border: 1px solid #8B8B8B;
+	color: #EDEDED;
+	-moz-text-shadow: 0px 1px 0px #666;
+	-webkit-text-shadow: 0px 1px 0px #666;
+	text-shadow: 0px 1px 0px #666;
+}
+div#pledgebar button.share, #form input.subscribe {
+	float: left;
+	height: 35px;
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/buttonBg.gif) left top repeat-x;
+	margin-top: 6px;
+	margin-left: 60px;
+	-moz-box-shadow: 0px 1px 0px #F9F9F9;
+	-webkit-box-shadow: 0px 1px 0px #F9F9F9;
+	box-shadow: 0px 1px 0px #F9F9F9;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-background-clip: padding-box;
+	border: 1px solid #A9A9A9;
+}
+div#pledgebar button.share:hover, #form input.submit:hover {
+	background-color: #D7D7D7;
+	background-position: 0px -33px;
+}
+div#pledgebar button.help{
+	font-size: 18px;
+	font-weight: bold;
+	width:35px;
+	float:left;
+	cursor:help;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	
+}
+button.share span.share {
+	text-indent: -999em;
+	background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/share.png) no-repeat center 0px;
+	display: block;
+	width: 30px;
+	height: 26px;
+	padding: 0px 4px;
+}
+button.share:hover span.share {
+	background-position: center -24px;
+}
+div#pledgebar button.leftmost {
+	-webkit-border-radius: 6px;
+	-webkit-border-top-right-radius: 2px;
+	-webkit-border-bottom-right-radius: 2px;
+	-moz-border-radius: 6px;
+	-moz-border-radius-topright: 2px;
+	-moz-border-radius-bottomright: 2px;
+	border-radius: 6px;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+div#pledgebar button.rightmost {
+	-webkit-border-radius: 6px;
+	-webkit-border-top-left-radius: 2px;
+	-webkit-border-bottom-left-radius: 2px;
+	-moz-border-radius: 6px;
+	-moz-border-radius-topleft: 2px;
+	-moz-border-radius-bottomleft: 2px;
+	border-radius: 6px;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+div#pledgeBtns span {
+	display: block;
+	float: left;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #666;
+	text-align: center;
+	letter-spacing: .05em;
+	-moz-text-shadow: 0px 1px 0px #F9F9F9;
+	-webkit-text-shadow: 0px 1px 0px #F9F9F9;
+	text-shadow: 0px 1px 0px #F9F9F9;
+	margin-top: 17px;
+	margin-right: 2px;
+}
+div#pledgeBtns img {
+	float: left;
+	margin-top: 6px;
+	margin-right: 8px;
+}
+
+/* Main content*/
+
+#main {
+	clear: both;
+	width: 100%;
+	text-align: center;
+/*	margin-top: 25px;*/
+}
+#main div.title {
+/*	float: right;*/
+/*	margin: 12px 40px 12px 0px;*/
+	position:fixed;
+	top:45px;
+	right:50px;
+	z-index:999;
+}
+#main div.title h3 {
+	color: #121212;
+	font-size: 14px;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	text-transform: uppercase;
+	padding-right: 6px;
+	float: left;
+	padding-top: 2px;
+}
+#main div.title a {
+	color: #121212;
+	text-decoration: none;
+}
+#main div.title a:hover {
+	color: #DC0A0A;
+}
+#main div.title div.curator {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	text-transform: none;
+	display: block;
+	float: right;
+	border-left: 1px solid #121212;
+	padding-left: 6px;
+	line-height: normal;
+}
+#main div.content {
+/*	width: 940px; /* this should automatically be whatever the image dimensions are... */
+	float: none;
+	clear: both;
+	position: relative;
+	margin: 0px auto;
+}
+#main div.content img {
+	margin: 0px auto;
+	margin-top:-16px;
+}
+#main div.content img.wrapping-images {
+	margin-top:-4px;
+}
+
+/* Info Box */
+
+div#infoBox {
+	position: fixed;
+	top: 49px;
+	right: 100px;
+	background: #FFF;
+	filter:alpha(opacity=97);
+  	opacity:0.97;
+	width: 388px;
+	padding: 12px;
+	-moz-box-shadow: 0px 2px 8px #666;
+  	-webkit-box-shadow: 0px 2px 8px #666;
+  	box-shadow: 0px 2px 8px #666;
+	z-index:99;
+} 
+div#infoBox img#closeBtn {
+	position: absolute;
+	top: -14px;
+	right: -14px;
+	width: 30px;
+	height: 30px;
+	z-index: 999;
+} 
+
+div#infoBox div.infoBoxInterior {
+	padding: 12px 12px 0px 12px;
+	border: 2px solid #121212;
+	text-align: left;
+} 
+div.infoBoxInterior h1 {
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+	padding-bottom: 4px;
+	border-bottom: 2px solid #121212;
+	line-height: 32px;
+	margin-bottom: 8px;
+}
+div.infoBoxInterior h1 span {
+	font-family: 'Whitman-ItalicOsFRegular', Georgia, Times, serif;
+}
+div.infoBoxInterior div.caption {
+	font-size: 10px;
+	margin-bottom: 24px;
+}
+div.infoBoxInterior div.caption span {
+	padding-right: 24px;
+}
+div.infoBoxInterior div.details p {
+	margin-bottom: 24px;
+	font-size: 14px;
+	line-height: 24px;
+}
+div.infoBoxInterior div.details {
+	border-bottom: 2px solid #121212;
+	padding-bottom:24px;
+	overflow:auto;
+}
+div.total-pledged {
+	float: left;
+	border-right: 2px solid #121212;
+	padding: 6px 12px 7px 0px;
+	width: 160px;
+}
+div.average-pledge {
+	float: left;
+	border-right: 2px solid #121212;
+	border-top: 2px solid #121212;
+	padding: 6px 12px 9px 0px;
+	clear: left;
+	width: 160px;	
+}
+
+div.top-sponsors {
+	float: right;
+	width: 160px;
+	padding: 6px 12px 12px 0px;
+	clear: none;	
+}
+div.total-pledged, div.average-pledge {
+	font-size: 24px;
+	color: #339900; 
+}
+div.average-pledge .patrons{
+	font-size: 17px;
+	font-family: 'Whitman-ItalicOsFRegular', Georgia, Times, serif;
+	height:42px;
+}
+
+div.total-pledged span.label, div.average-pledge span.label, div.top-sponsors span.label {
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: .075em;
+	display: block;
+	margin-bottom: 6px;
+	color: #121212;
+}
+
+
+/* Text pages */
+
+div.text {
+	width: 940px !important;
+	float: left;
+	text-align: left !important;
+	margin-left: 40px;
+}
+div.text div.textContent {
+	width: 940px;
+	padding: 0px 5px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 24px;
+	margin: 76px 0px;
+}
+div.text div.textContent h1, div.text div.cart h1  {
+	margin-bottom: 24px;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+	width: 570px;
+	float: left;
+	clear: both;
+}
+div.textContent h2, div.textContent h3, div.textContent h4 {
+	width: 570px;
+	float: left;
+	clear: left;
+}
+div.text div.textContent p {
+	margin-bottom: 24px;
+	width: 570px;
+	float: left;
+	color: #222;
+}
+div.text div.textContent p.aside {
+	width: 220px;
+	float: left;
+	font-size: 10px;
+	color: #999;
+	line-height: 16px;
+	margin-left: 40px;
+	margin-top: 4px;
+	letter-spacing: .05em;
+}
+div.text div.textContent p.bold-aside {
+	background: #EDEDED;
+	padding: 15px 20px 20px 20px;
+	clear: none;
+	color: #666;
+	border: 1px dotted #dcdcdc;
+	
+}
+div.text ul {
+	padding: 0px;
+	margin: 0px;
+	width: 570px;
+	float: left;
+}
+div.text ul li {
+	margin: 0px;
+	padding: 0px;
+	list-style-position: outside;
+}
+
+/* Exhibitions */
+
+div.exhibitions {
+	width: 940px !important;
+	float: left;
+	text-align: left !important;
+	margin-left: 40px;
+}
+div.exhibitions-wide{
+	width: 1200px !important;
+	float: left;
+	text-align: left !important;
+	margin-left: 40px;
+	
+}
+div.exhibitions div.gallery, div.exhibitions-wide div.gallery-wide {
+	width: 940px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 24px;
+	margin: 76px 0px;
+}
+div.exhibitions-wide div.gallery-wide {
+	width:1200px;
+}
+
+div.exhibitions div.gallery h1, div.exhibitions-wide div.gallery-wide h1 {
+	margin-bottom: 12px;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+	width: 570px;
+	float: left;
+	clear: both;
+}
+div.exhibitions-wide div.gallery-wide h1.nothing{
+	width:100%;
+	float:none;
+	clear:none;
+}
+div.exhibitions div.current, div.exhibitions-wide div.exhibition {
+	margin-bottom: 40px;
+}
+
+div.exhibitions-wide div.exhibition {
+	width:1200px;
+	height:408px;
+	position:relative;
+}
+div.exhibitions-wide div.exhibition div.image-holder{
+	width:940px;
+	height:408px;
+	float:left;
+}
+div.exhibition div.intro {
+	background: #FFF;
+	filter:alpha(opacity=80);
+  	opacity:0.80;
+  	width: 900px;
+  	margin-top: 230px;
+  	margin-right: 0px;
+  	padding: 24px 20px 0px 20px;
+  	height: 130px;
+	position:absolute;
+/*  	-moz-box-shadow: 0px 2px 8px #666;*/
+/*  	-webkit-box-shadow: 0px 2px 8px #666;*/
+/*  	box-shadow: 0px 2px 8px #666;*/
+}
+div.exhibition div.rightColumn {
+	width: 210px;
+	height:382px;
+	float: left;
+	margin-left: 13px;
+	background: #EDEDED;
+	padding: 13px 18px;
+	color: #666;
+	overflow:hidden;
+	position:relative;
+/*	top : -372px;*/
+/*	left: 943px;*/
+}
+
+div.exhibition div.rightColumn p, div.exhibition div.rightColumn {
+	font-size: 13px;
+	line-height: 20px;
+}
+
+div.exhibition div.read-more {
+	color: #666;
+	font-size: 13px;
+	position:absolute;
+	bottom:0px;
+	right:5px;
+	z-index:20;
+	background: #EDEDED;
+	cursor:pointer;
+	overflow:hidden;
+	width:75px;
+	height:27px;
+}
+div.exhibition div.read-more a.read-more{
+	color:red;
+	font-style:italic;
+}
+div.current div.intro {
+	background: #FFF;
+	filter:alpha(opacity=97);
+  	opacity:0.97;
+  	width: 530px;
+  	float: right;
+  	margin-top: -256px;
+  	margin-right: 24px;
+  	padding: 15px 20px 10px 20px;
+/*  	height: 200px;*/
+  	-moz-box-shadow: 0px 2px 8px #666;
+  	-webkit-box-shadow: 0px 2px 8px #666;
+  	box-shadow: 0px 2px 8px #666;
+}
+div.intro h3 {
+	margin-bottom: 12px;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 36px;
+	font-weight: normal;
+}
+div.intro h3 span.verlagLight, div.intro h4.verlagLight {
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	font-size: 16pt;
+}
+div.intro p {
+	margin-bottom: 12px;
+}
+div.previous {
+	width: 960px;
+	margin-left: -20px;
+}
+div.previous h2 {
+	margin-left: 20px;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+	margin-bottom: 12px;
+}
+div.previous div.thumb {
+	width: 220px;
+	margin-left: 20px;
+	float: left;
+	margin-bottom: 18px;
+}
+div.thumb h3 {
+	text-align: center;
+}
+div.thumb h3 a, div.intro h3 a {
+	color: #121212;
+	text-decoration: none;
+}
+div.thumb h3 a:hover, div.intro h3 a:hover, a.black-arrow:hover {
+	color: #DC0A0A;
+}
+div.enter a, a.arrow, a.black-arrow {
+	display: block;
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/enterBg.gif) right top no-repeat;
+	color: #FFF;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	height: 12px;
+	padding: 6px 24px;
+	float: right;
+	text-transform: uppercase;
+	text-decoration: none;
+	line-height: 12px;
+	letter-spacing: .1em;
+}
+div.form a.black-arrow{
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/blackarrow.dk.1.png) right top no-repeat;
+	padding: 11px 20px 16px 10px;
+	float:left;
+	width:200px;
+	font-size: 14px;
+}
+a.arrow{
+	float:left;
+}
+div.enter a:hover, a.arrow:hover, div.enter a.hovered {
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/enterBg.gif) right -25px no-repeat;
+}
+
+/* Patrons */
+
+div.text div.patrons {
+	width: 580px !important;
+	float: left;
+}
+
+ul.patrons {
+	float: none;
+	width: 570px;
+	list-style: none;
+}
+ul.patrons li {
+	float: left;
+	width: 280px;
+	min-height:115px;
+	list-style: none;
+	overflow: auto;
+}
+div.text div.textContent ul.patrons p.smallThumb, div.detail p.smallThumb {
+	float: left;
+	width: 88px;
+	height: 88px;
+	margin-right: 10px;
+}
+div.text div.textContent ul.patrons p.details, div.detail p.details {
+	float: right;
+	width: 180px;
+	font-size: 12px;
+	line-height: 18px;
+}
+div.text div.textContent hr {
+	width: 570px !important;
+	clear: left;
+	margin: 12px 0px;
+}
+div.patrons h2 {
+	margin: 24px 0px 12px 0px;
+}
+div.sidebar {
+	float: right;
+	width: 340px;
+	overflow: hidden;
+	margin: 76px 0px 0px 0px;
+}
+div.sidebar h2 {
+	margin-bottom: 26px;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+}
+
+/* Info Footer */
+
+footer.info {
+	background: #EDEDED;
+	border-top: 1px solid #DCDCDC;
+	overflow: auto;
+	position: relative;
+	width: 100%;
+	clear: both;
+	padding: 12px 0px;
+}
+footer.info p {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	color: #666;
+	margin-left: 40px;
+}
+footer.info p a {
+	color: #666;
+	text-decoration: none;
+	border-bottom: 1px solid #DCDCDC;
+}
+footer.info p a:hover {
+	color: #DC0A0A;
+}
+
+
+/**
+ * Non-semantic helper classes: please define your styles before this section.
+ */
+
+/* For image replacement */
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+
+/* Hide for both screenreaders and browsers:
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display: none; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: by Jon Neal.
+  www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638 */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements.
+   j.mp/bestclearfix */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix { zoom: 1; }
+
+
+
+/**
+ * Media queries for responsive design.
+ *
+ * These follow after primary styles so they will successfully override.
+ */
+
+@media all and (orientation:portrait) {
+  /* Style adjustments for portrait mode goes here */
+
+}
+
+@media all and (orientation:landscape) {
+  /* Style adjustments for landscape mode goes here */
+
+}
+
+/* Grade-A Mobile Browsers (Opera Mobile, Mobile Safari, Android Chrome)
+   consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+
+
+  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you: j.mp/textsizeadjust */
+  /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+}
+
+
+/**
+ * Print styles.
+ *
+ * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+ */
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important;
+  -ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+
+/* hello, this is all the new stuff */
+
+
+/* special styles for black background */
+
+body.black {
+	background: #000;
+}
+body.black ul#access li a {
+	color: #CCC;
+}
+body.black ul#access li a:hover, body.black ul#access li a.selected {
+	color: #DC0A0A;
+	-moz-text-shadow: 0px 0px 0px #000;
+	-webkit-text-shadow: 0px 0px 0px #000;
+	text-shadow: 0px 0px 0px #000;
+}
+body.black ul#access ul ul {
+	-moz-box-shadow: 0px 0px 0px #000;
+	-webkit-box-shadow: 0px 0px 0px #000;
+	box-shadow: 0px 0px 0px #000;
+}
+
+/* Cart amount updated to stretch */
+
+div.cart div.pledged {
+	min-width: 24px;
+	float: left;
+	margin-right: 4px;
+	padding-top: 2px;
+}
+div.cart div.pledged div.pledgedLeft {
+	display: block;
+	background: #F3F3F3;
+	border: 1px solid #AEAEAE;
+	border-right: none;
+	padding: 5px 4px 5px 4px;
+	min-height: 10px;
+	vertical-align: middle;
+	float: left;
+	text-align: center;
+	line-height: 10px;
+}
+div.cart div.pledged div.pledgedRight {
+	display: block;
+	background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/pledged-right.gif) top left no-repeat;
+	width: 6px;
+	height: 21px;
+	float: left;
+}
+div.cart div.pledged div.pledgedLeft a {
+	color: #666;
+	text-decoration: none;
+}
+div.cart div.pledged div.pledgedLeft a:hover {
+	color: #DC0A0A;
+}
+
+/* Updated overlay and ribbon */
+
+#overlay_cover {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: #FFF;
+	filter: alpha(opacity=85);
+	opacity: 0.85;
+	padding: 50px;
+	z-index: 995;
+}
+#ribbon {
+	position: absolute;
+	width: 100%;
+	top: 114px;
+	left: 0px;
+	z-index: 996;
+	min-width: 1030px !important;
+}
+#title, div.red-title {
+	position: absolute;
+	top: 0px;
+	width: 20%;
+	left: 0px;
+	height: 12px;
+	background: #DC0A0A;
+	color: #FFF;
+	text-transform: uppercase;
+	font-size: 12px;
+	text-align: right;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	letter-spacing: .1em;
+	padding: 5px 12px 6px 0px;
+	line-height: 12px;
+}
+div.red-title{
+	top:-12px;
+}
+#mainRibbon {
+	float: right;
+	width: 63%;
+	height: 264px;
+	background: #222 url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/corner.jpg) left bottom no-repeat;
+	margin-top: 38px;
+	min-width: 640px;
+	margin-left: -60px;
+	z-index: 101 !important;
+	padding-right: 60px;
+	-moz-box-shadow: 1px 1px 12px #000;
+	-webkit-box-shadow: 1px 1px 12px #000;
+	box-shadow: 2px 1px 12px #000;
+	color: #FFF;
+}
+#intro {
+	float: left;
+	width: 37%;
+	height: 264px;
+	background: #222;
+	min-width: 380px;
+	z-index: 106 !important;
+	-moz-box-shadow: 2px 1px 12px #000;
+	-webkit-box-shadow: 2px 1px 12px #000;
+	box-shadow: 2px 1px 12px #000;
+	margin-top: 12px;
+	color: #EEE;
+}
+div.form  {
+	font-family: Helvetica, Arial;
+	font-size: 14px;
+	font-weight: normal;
+	letter-spacing: .05em;
+	color:#333;
+}
+#mainRibbon div.form  {
+	width: 528px;
+	height: 172px;
+	padding: 18px 24px 24px 84px;
+	float: left;
+	color: #EEE;
+}
+#intro div.copy {
+	padding: 36px 24px 24px 24px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 24px;
+	letter-spacing: .05em;
+}
+#intro div.copy h2 {
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 24px;
+	line-height: normal;
+	letter-spacing: .05em;
+	margin-bottom: 4px;
+}
+div.form p {
+	overflow: auto;
+	margin-bottom: 8px;
+	clear: both;
+}
+div.form label {
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	float: left;
+	width: 100px;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	text-align: right;
+	margin-right: 12px;
+	margin-top: 8px;
+}
+div.form label.longer {
+	width:160px;
+	text-align:left;
+}
+div.form input {
+	float: left;
+	background: #CCC;
+	border: 1px solid #000;
+	font-size: 18px;
+	padding: 4px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-background-clip: padding-box;
+	width: 220px;
+}
+div.form input:focus, div.form input.error {
+	border: 1px solid #DC0A0A !important;
+	background: #DDD;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+div.form p.submitRow {
+	text-align: right !important;
+	width: 342px;
+	margin-top: 9px;
+}
+
+div.form input.btn {
+	background: #1b1b1b url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/blackButtonbg.gif) repeat-x;
+/*	background: #1b1b1b repeat-x;*/
+	box-shadow:none;
+	color: #FFF;
+	width: 72px;
+	border: 2px solid #151515;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-background-clip: padding-box;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	font-size: 14px;
+	padding: 6px 12px;
+	float: none;
+}
+div.form input.btn:hover {
+	background: #000;
+	color: #DC0A0A;
+}
+
+div.form a {
+	color: #CCC;
+	font-size: 12px;
+}
+div.form a.close {
+/*	margin: 0px 6px 0px 295px;*/
+	display: block;
+    margin: 0 6px 0 295px;
+    position: absolute;
+    right: 8px;
+    top: 50px;
+}
+div.form a img {
+	margin-bottom: -6px;
+}
+
+/* Exhibition page thumbnails */
+
+div.previous {
+	margin-bottom: 24px;
+	overflow: auto;
+}
+
+div.previous div.doubleThumb {
+	width: 460px;
+	margin-left: 20px;
+	float: left;
+	margin-bottom: 18px;
+}
+div.previous div.doubleThumb a img {
+	display: block;
+}
+div.doubleThumb h3 {
+	text-align: left;
+}
+div.doubleThumb h3 a, div.intro h3 a {
+	color: #121212;
+	text-decoration: none;
+}
+div.doubleThumb h3 a:hover, div.intro h3 a:hover {
+	color: #DC0A0A;
+}
+div.doubleThumb p a {
+	color: #DC0A0A;
+	text-decoration: none;
+}
+div.doubleThumb p a:hover {
+	text-decoration: underline;
+}
+.underline{
+	text-decoration: underline;	
+}
+span.curated {
+	font-weight: normal;
+}
+
+/* Alert Message */
+
+div.alert {
+	background: #121212 url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/alertBg.gif) repeat-x;
+	padding: 12px;
+	color: #EEE;
+	-moz-box-shadow: 0px 1px 4px #333;
+	-webkit-box-shadow: 0px 1px 4px #333;
+	box-shadow: 0px 1px 4px #333;
+	text-align: center;
+	position: fixed;
+	top: 0px;
+	left: 50%;
+	z-index: 9999;
+	-webkit-border-bottom-right-radius: 2px;
+	-webkit-border-bottom-left-radius: 2px;
+	-moz-border-radius-bottomright: 2px;
+	-moz-border-radius-bottomleft: 2px;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+/* these two may need to be set via javascript for extra long alerts */
+	width: 440px;
+	margin-left: -220px; /* Half the width */
+	
+}
+div.red-alert {
+	background: #DC0A0A;
+	color: #FFF;
+}
+
+/* Page with sidebar */
+
+div.text div.leftColumn, div.gallery div.leftColumn {
+	width: 560px;
+	padding: 0px 5px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 24px;
+	margin: 76px 0px;
+	float: left;
+}
+div.text div.leftColumn h1, div.gallery div.leftColumn h1 {
+	margin-bottom: 24px;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+}
+div.leftColumn h2, div.leftColumn h3, div.leftColumn h4 {
+}
+div.text div.leftColumn p, div.gallery div.leftColumn p {
+	margin-bottom: 24px;
+}
+div.text div.rightColumn, div.gallery div.rightColumn, div.greyBox {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 56px;
+	background: #F6F6F6;
+	padding: 15px 20px 20px 20px;
+	clear: none;
+	color: #666;
+	border: 1px dotted #EDEDED;
+}
+div.text div.rightColumn div.greyBox {
+	margin-left: 0px;
+	margin-top:20px;
+}
+div.text div.rightColumn div.greyBox p{
+	width:100%;
+	font-size: 12px;
+	line-height: 17px;
+	color:#666;
+}
+div.text div.rightColumn.home{
+	background: url('../../../assets.thepresentgroup.com/artmicropatronage/site/img/patronofthearts_grycoin.png') #fff no-repeat;
+	padding-top:310px;
+	margin-top:-90px;
+/*	margin-left:0px;*/
+	border:none;
+}
+div.rightColumn p, div.gallery div.rightColumn {
+	font-size: 14px;
+	line-height: 24px;
+	margin-bottom: 24px;
+}
+div.rightColumn h2, div.rightColumn h3, div.rightColumn h4, .bold-text {
+	margin-bottom: -1px;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+	line-height: normal;
+}
+
+/* Just Gallery page */
+
+div.gallery div.leftColumn {
+	margin-top: 0px;
+}
+div.gallery div.rightColumn {
+	margin-top: -18px
+}
+p.bio {
+	color: #666;
+	font-size: 12px;
+}
+div.intro div.total-donated {
+	font-weight: bold;
+	float: left;
+	width: 33%;
+	color: #00CC00;
+}
+div.intro div.share-links {
+	width: 33%;
+	float: left;
+	text-align: center;
+}
+div.intro div.enter {
+	width: 33%;
+	float: right;
+}
+div.gallery div.rightColumn img.left {
+	margin-top: 6px;
+}
+span.total {
+	font-weight: bold;
+}
+div.rightColumn hr {
+	width: 100%;
+	background: #DDD;
+	height: 1px;
+	border: none;
+	color: #DDD;
+}
+div.rightColumn a {
+	color: #666;
+}
+div.rightColumn a:hover {
+	color: #DC0A0A;
+}
+
+/* Help or info boxes */
+a.help{
+}
+a.help.on{
+	color:#DC0A0A;
+	font-weight: bold;
+}
+
+div.info, div.question {
+	position: absolute;
+	z-index: 9999 !important;
+	display: table-cell;
+	font-size: 13px;
+	font-weight: normal;
+}
+div.question{
+	z-index: 9998 !important;
+	width:32px;
+	height:32px;
+	font-size: 32px;
+	text-align: center;
+	cursor:help;
+	font-family: Futura,Verdana,Helvetica,Arial,sans-serif;
+	font-weight: bold;
+	color:#DC0A0A;
+	-moz-text-shadow: 2px 1px 1px #666;
+	-webkit-text-shadow: 2px 1px 1px #666;
+	text-shadow: 2px 1px 1px #666;
+	
+/*	background: url('/framework/img/question-mark.png');*/
+}
+div.info p {
+	background: #121212;
+	padding: 11px;
+	color: #EEE;
+	-moz-text-shadow: 0px 1px 0px #000;
+	-webkit-text-shadow: 0px 1px 0px #000;
+	text-shadow: 0px 1px 0px #000;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-background-clip: padding-box;
+	min-height: 20px;
+}
+div.info p.left {
+	float: left;
+	margin: 0px;
+}
+div.info p.right {
+	float: left;
+	margin: 0px;
+}
+div.info p.up {
+	float: none;
+	margin: 0px;
+}
+div.info p.down {
+	float: none;
+	margin: 0px;
+}
+div.info p.pointUp {
+	background: transparent url(../img/upPointer.png) center top no-repeat;
+	-moz-text-shadow: none
+	-webkit-text-shadow: none;
+	text-shadow: none;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-background-clip: padding-box;
+	display: block;
+	width: 100%;
+	height: 23px;
+	margin: 0px;
+	padding: 0px;
+}
+div.info p.pointDown {
+	background: transparent url(../img/downPointer.png) center top no-repeat;
+	-moz-text-shadow: none
+	-webkit-text-shadow: none;
+	text-shadow: none;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-background-clip: padding-box;
+	display: block;
+	width: 100%;
+	height: 23px;
+	margin: 0px;
+	padding: 0px;
+}
+div.info p.pointLeft {
+	background: transparent url(../img/leftPointer.png) left center no-repeat;
+	-moz-text-shadow: none
+	-webkit-text-shadow: none;
+	text-shadow: none;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-background-clip: padding-box;
+	float: left;
+	width: 23px;
+	margin: 0px;
+	padding: 20px 0px 20px 0px;
+}
+div.info p.pointRight {
+	background: transparent url(../img/rightPointer.png) left center no-repeat;
+	-moz-text-shadow: none
+	-webkit-text-shadow: none;
+	text-shadow: none;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-background-clip: padding-box;
+	float: right;
+	width: 23px;
+	margin: 0px;
+	padding: 20px 0px 20px 0px;
+}
+
+/* Generic */
+
+img.left {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+/* Button styles */
+
+input.submit {
+	background: #1b1b1b url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/blackButtonbg.gif) repeat-x;
+	color: #FFF;
+	border: 2px solid #151515;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-background-clip: padding-box;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	font-size: 14px;
+	padding: 6px 12px;
+	float: none;
+	-moz-box-shadow: 0px 1px 4px #DDD;
+	-webkit-box-shadow: 0px 1px 4px #DDD;
+	box-shadow: 0px 1px 4px #DDD;
+	-moz-text-shadow: 0px -1px 0px #000;
+	-webkit-text-shadow: 0px -1px 0px #000;
+	text-shadow: 0px -1px 0px #000;
+}
+input.submit:hover {
+	background: #000;
+	color: #DC0A0A;
+}
+input.submitRed {
+	background: #DC0A0A url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/redButtonBg.png) repeat-x;
+	color: #FFF;
+	border: 2px solid #DC0A0A;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-background-clip: padding-box;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	font-size: 14px;
+	padding: 6px 12px;
+	float: none;
+	-moz-box-shadow: 0px 1px 4px #DDD;
+	-webkit-box-shadow: 0px 1px 4px #DDD;
+	box-shadow: 0px 1px 4px #DDD;
+	-moz-text-shadow: 0px -1px 0px #910808;
+	-webkit-text-shadow: 0px -1px 0px #910808;
+	text-shadow: 0px -1px 0px #910808;
+}
+input.submitRed:hover {
+	background: #1b1b1b url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/blackButtonbg.gif) repeat-x;
+	color: #FFF;
+	border-color: #121212;
+	-moz-text-shadow: 0px -1px 0px #000;
+	-webkit-text-shadow: 0px -1px 0px #000;
+	text-shadow: 0px -1px 0px #000;
+}
+input.submitGray, div.form input.submitGray {
+	background: #EDEDED url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/grayButtonBg.png) repeat-x;
+	color: #666;
+	border: 1px solid #CCC;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-background-clip: padding-box;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	font-size: 14px;
+	padding: 6px 12px;
+	float: none;
+	-moz-box-shadow: 0px 1px 4px #666;
+	-webkit-box-shadow: 0px 1px 4px #666;
+	box-shadow: 0px 1px 4px #666;
+	-moz-text-shadow: 0px 1px 0px #FFF;
+	-webkit-text-shadow: 0px 1px 0px #FFF;
+	text-shadow: 0px 1px 0px #FFF;
+}
+input.submitGray:hover, div.form input.submitGray:hover {
+	background: #1b1b1b url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/blackButtonbg.gif) repeat-x;
+	color: #FFF;
+	border-color: #121212;
+	-moz-text-shadow: 0px -1px 0px #000;
+	-webkit-text-shadow: 0px -1px 0px #000;
+	text-shadow: 0px -1px 0px #000;
+}
+
+/* Oliver Sucks at this */
+
+.pointer{
+	cursor:pointer;
+}
+#stage{
+	overflow:hidden;
+}
+img.clean{
+	margin:0 !important;
+}
+#cart_page_holder{
+/*	padding:100px;*/
+}
+div.patron-nav{
+	text-align: right;
+	font-size: 12px;
+}
+div.form a.facebook img{
+	margin-bottom: -13px;
+	margin-right: 6px;
+}
+p.small-bottom, p.small-bottom a{
+	font-size: 11px;
+	padding: 6px 94px 0px 0px;
+	text-align: right;
+	color:#CCCCCC;
+/*	margin-top:35px;*/
+}
+p.terms.error{
+	color:red;
+	font-weight: bold;
+}
+div.form a.forgot{
+	font-size: 11px;
+/*	color: #DC0A0A;*/
+}
+#form {
+/*	width: 356px;*/
+/*	background: #FFF url(img/whiteBg.jpg) no-repeat top center;*/
+/*	height: 100%;*/
+/*	float: right;*/
+/*	margin-right: 60px;*/
+/*	padding: 335px 22px 320px 22px;*/
+	padding-top: 17px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	color: #333;
+	line-height: 14px;
+}
+
+#form label {
+	display: block;
+	margin-bottom: 6px;
+}
+#form input.textinput, #public_profile_form input.textinput, #account_form input.textinput, #change_password input.textinput, input.textinput.email {
+	width: 290px;
+	padding: 6px;
+	height: 20px;
+	background: #DDD;
+	margin-bottom: 20px;
+	border:none;
+}
+
+#form input.submit{
+	float:right;
+}
+#form input.submit:hover {
+	color: #DC0A0A;
+	cursor: pointer;
+}
+div.read-more div.content p{
+	padding: 4px 0px;
+}
+#image_form{
+	width:100px;
+	margin-right:8px;
+	float:left;
+}
+
+div.form input.radio{
+	width:none;
+	float:none;
+	width:25px;
+} 
+#public_profile_form, #account_form, #change_password{
+	width:450px;
+	float:right;
+}
+#public_profile_form label, #account_form label, #change_password label{
+	width:150px;
+	margin-top: 4px;
+}
+#public_profile_form p,#account_form p, #change_password p{
+	margin-bottom: 5px;
+}
+#public_profile_form input.submitGray, #account_form input.submitGray, #change_password input.submitGray{
+	width:85px;
+	float:right;
+	margin-right:7px;
+}
+#public_profile_form input.textinput, #account_form input.textinput, #change_password input.textinput {
+	width:270px;
+}
+/* Cart Page */
+.clear{
+	clear:both;
+}
+div.text div.cart h1{
+	margin-bottom:0px;
+}
+#cart_page{
+/*	padding-top:50px;*/
+}
+#your_pledge{
+	float:left;
+	text-align: right;
+	font-size: 13px;
+	color:#000;
+	font-weight: normal;
+	font-family: Futura,Verdana,Helvetica,Arial,sans-serif;
+	position:relative;
+	top:32px;
+}
+div.cart-item{
+	width:100%;
+	height:120px;
+}
+div.cart-item.unpledged{
+	height:74px;
+}
+div.piece-image{
+	float:left;
+	width:160px;
+	margin-right:17px;
+}
+div.cart-item img{
+	width:160px;
+	height:120px;
+}
+div.piece-image.unpledged{
+	width:99px;
+	margin-right: 13px;
+	filter:alpha(opacity=60);
+  	opacity:0.60;
+	
+}
+div.unpledged img{
+	width:99px;
+	height:74px;
+}
+
+div.cart-item div.piece-info{
+	float:left;
+	width:330px;
+}
+div.cart h1{
+	color:black;
+}
+div.cart-item.texted, div.texted{
+	height:32px;
+	line-height:29px;
+	padding-right: 8px;
+	text-align: right;
+	font-size: 21px;
+	width:647px;
+}
+div.cart-item.subtotal, div.texted.subtotal,.verlag-lt{
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;	
+}
+.verlag-bold{
+	font-family: Futura,Verdana,Helvetica,Arial,sans-serif;
+	
+}
+.verlag-lt{
+	font-size: 12pt;
+}
+div.cart-item.total{
+	font-family: Futura,Verdana,Helvetica,Arial,sans-serif;
+	background-color:#ededed;
+	
+}
+div.textContent div.piece-info h3{
+	font-weight: normal;
+	color:#000;
+	font-size: 16px;
+}
+div.textContent div.piece-info.unpledged h3, div.textContent div.piece-info.unpledged h4{
+	color:#999;
+	font-size: 12px;
+}
+div.textContent div.piece-info h4{
+	font-style: italic;
+	font-weight: normal;
+	font-size: 14px;
+}
+div.text div.textContent hr.cart {
+	width: 655px !important;
+}
+
+div.pledge-menu{
+	padding:1px;
+	border:1px solid #ccc;
+	background-color:#ededed;
+	float:right;
+	margin-right: 298px;
+/*	width:80px;*/
+	text-align: center;
+	font-weight: bold;
+}
+
+div.cart-item a.up-pledge, div.cart-item a.up-pledge:hover{
+	color:green;
+	font-size: 20px;
+	padding:0px 3px;
+}
+div.cart-item a.down-pledge{
+	color:red;
+	font-size: 20px;
+	padding:0px 3px;
+}
+div.cart-item.unpledged a.up-pledge, div.cart-item.unpledged a.down-pledge,div.cart-item.unpledged{
+	color:#999;
+}
+#twitter,#facebook{
+	width:161px;
+	height:23px;
+}
+#twitter{
+	padding:0px 0px 7px;
+}
+.no-show{
+	display:none;
+}
+.red{
+	color:red;
+}
+div.text div.textContent p.bio{
+	font-size: 11px;
+	color: #999;
+	line-height: 16px;
+	letter-spacing: .05em;
+}
+div.text div.textContent p.bio a{
+	color:#999;
+}
+div.form-left{
+	float:left;
+	width:290px;
+}
+#subscribe_form input.textinput{
+	width:270px;
+	margin-bottom: 10px;
+}
+#piece{
+	position:absolute;
+	top:0px;
+}
+#jw_container{
+	padding:30px 0px 10px 0px;
+}
+#become_a_patron{
+	position:relative;
+	top:-44px;
+	left:33px;
+}
+.splash{
+    font-size: 19px;
+    line-height: 26px;
+    width: 430px;
+}
+.splash-options{
+	width:250px;
+	position:relative;
+	top:-39px;
+	left:425px;
+}
+
+#logout {
+    background: url("../../../assets.artmicropatronage.org/artmicropatronage/site/img/logout-sm.png") repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 12px;
+    margin-left: 4px;
+    position: relative;
+    width: 12px;
+	filter:alpha(opacity=60);
+  	opacity:0.60;
+}
+#logout:hover{
+	filter:alpha(opacity=80);
+  	opacity:0.80;
+}
+#piece_description{
+	overflow:hidden;
+}
+#piece_description img.full{
+	width:300px;
+}
+.artist-talk-list{
+	color:red;
+	padding:0px;
+	font-style:italic;
+	font-size: 11px;
+}
+div.artist-talk-list.posd{
+	position:relative;
+	top:-6px;
+	height:19px;
+}
+#talk_video_holder{
+	width:608px;
+	float:left;
+}
+#talk_video_holder textarea{
+	width:608px;
+	height:150px;
+	background-color:#eee;
+	border:none;
+	margin-bottom:5px;
+	padding:5px;
+	font-size: 11pt;
+}
+#tweet_holder{
+	width:250px;
+	float:left;
+	margin-left:16px;
+}
+#tweets{
+	padding:3px;
+	height:530px;
+	overflow:auto;
+}
+#tweets div.tweet{
+	padding: 5px 5px 10px 5px;
+	font-size: 9pt;
+	background-color:#ddd;
+	color:#333;
+	line-height: 16px;
+}
+div.tweet a{
+	text-decoration:none;
+	color:#999;
+}
+div.exhibition-nav{
+/*	overflow:hidden;*/
+}
+#notification{
+	position:absolute;
+	top:-1px;
+	left:0px;
+	background: transparent url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/artisttalkbanner_end.png) right top no-repeat;
+	padding:0px 20px 0px 0px;
+	z-index:20;
+	height:26px;
+}
+#notification_text{
+	background-color:#ed1c24;
+	color:#fff;
+	padding: 5px 20px 0px 450px;
+	height:21px;
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+}
+#notification_text a{
+	color:#fff;
+}
+div.show-list-description {
+	font-family: Futura, Verdana, Helvetica, Arial, sans-serif;
+	font-size:17pt;
+	background: #FFF;
+	filter:alpha(opacity=97);
+  	opacity:0.97;
+  	margin-top: -100px;
+  	padding: 10px 5px;
+  	height: 28px;
+  	-moz-box-shadow: 0px 2px 8px #666;
+  	-webkit-box-shadow: 0px 2px 8px #666;
+  	box-shadow: 0px 2px 8px #666;
+}
+div.show-list-description a{
+	text-decoration:none;
+}
+div.show-list{
+	margin-bottom:70px;
+}
+div#cursor{
+	cursor: none;
+     width: 16px;
+     height: 16px;
+     position: absolute;
+     display: none;
+     top: 0;
+     left: 0;
+     z-index: 10000;
+}
+.cursor-magnify-plus{
+	background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/magnify-plus.png);
+}
+.cursor-magnify-minus{
+	background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/magnify-minus.png);
+}
+#image_chooser{
+	text-align: right;
+	position:relative;
+	top:-30px;
+	padding-right:7px;
+}
+#image_chooser a.image-choose{
+/*	display:block;*/
+	padding:4px 7px;
+	color:#333;
+	background-color:#eee;
+	border:1px solid #ddd;
+}
+#image_chooser a.image-choose.active, #image_chooser a.image-choose:hover{
+	background-color:#bbb;
+}
+#download_wrapper, #download_wrapper_back{
+	background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/downloadtab_1pxgradient.png);
+	height:90px;
+	width:64px;
+	position:absolute;
+	bottom:90px;
+	left:0px;
+	color:#fff;
+	-webkit-border-radius: 0px 2px 2px 0px;
+	-moz-border-radius: 0px 2px 2px 0px;
+	border-radius: 0px 2px 2px 0px;
+	z-index:5;
+	display:block;
+/*	-webkit-box-shadow: 0 2px 5px 2px rgba(94,94,94,0.59);
+	-moz-box-shadow: 0 2px 5px 2px rgba(94,94,94,0.59);
+	box-shadow: 0 2px 5px 2px rgba(94,94,94,0.59);
+*/
+}
+#download_wrapper_back{
+	z-index:4;
+	width:260px;
+	left:-196px;
+}
+.download-title{
+	width:110px;
+	margin: 0px 4px;
+	padding:6px;
+	float:left;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size:10px;
+}
+.download-thumb{
+	cursor:pointer;
+	width:120px;
+	height:80px;
+	background-color:#fff;
+	float:left;
+	margin:5px;
+}
+#download_icon{
+	background: url(../../../assets.artmicropatronage.org/artmicropatronage/site/img/download_image_words.png);
+	background-position:-33px -21px;
+	width:100px;
+	height:90px;
+}

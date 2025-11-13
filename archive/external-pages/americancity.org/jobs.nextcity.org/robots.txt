@@ -1,0 +1,49 @@
+Sitemap: https://jobs.nextcity.org/sitemap.xml
+
+User-agent: *
+Disallow: /xml_feed/
+Disallow: /xml-feed/
+Disallow: /search/
+Disallow: /job_agent/
+Disallow: /apply-for-job/
+Disallow: /saved_jobs/
+Disallow: /saved-jobs/
+Disallow: /save/
+Disallow: /index/
+Disallow: /index.php?page=search&action=advanced_search*
+Disallow: /index.php?page=xml_feed*
+Disallow: /index.php?page=search&action=run_search*
+Disallow: /jobtype/*/do_clear_searches/
+Disallow: /jobtype/*/job_title_filter/
+Disallow: /jobtype/*/req_experience_filter/
+Disallow: /*/*/req_experience_filter/
+Disallow: /*/iowa/req_experience_filter/
+Disallow: /*/direction
+Disallow: /jobtype/*
+Disallow: /api/documentation/
+
+User-agent: BLEXBot
+Disallow: /
+
+user-agent: AhrefsBot
+disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: EasouSpider
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
+
+User-agent: facebookexternalhit
+Allow: /job/*
+Allow: /jobs
+Allow: /events/*
+Allow: /career-resources/*
+
+

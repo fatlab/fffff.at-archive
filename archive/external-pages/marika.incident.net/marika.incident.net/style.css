@@ -1,0 +1,100 @@
+
+#general {
+border:2px solid #eee;
+padding:20px;
+
+}
+
+
+a {
+	color: #000000;
+	text-decoration: none;
+	background-color: #eee;
+}
+a:hover {
+	color: #000000;
+	text-decoration: none;
+	background-color: #FF0000;
+}
+
+body {
+background-color: #dddddd;
+font-family: georgia;
+font: georgia, sans-serif;
+font-size:12px;
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 50px;
+}
+
+.text {
+	font-size: 13px;
+	color: #444;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: bold;
+	color: #000;
+}
+.uptitle {
+	font-size: 30px;
+	font-weight: bold;
+}
+.small{
+font-size: 10px}
+
+.clicform {
+background-color:#fff;	
+border:1px solid #ccc;
+
+}
+
+
+p {
+margin:0px 0;
+padding: 0 0 5px 0;
+border-bottom:1px solid #999;
+}
+
+input {
+border:1px solid #999;
+display:block;
+
+}
+
+select {
+border:1px solid #999;
+display:block;
+
+}
+
+
+.item {
+padding:2px;
+width:40px;	
+}
+
+
+#resultat {
+position:absolute;
+top:200px;
+left:200px;
+width:200px;
+border:4px solid #666;
+background-color:#fff;
+}	
+
+
+.validbutton {
+font-size:12px;	
+}
+
+.thisone {
+border:1px solid red;
+background-color:#eee;
+}
+
+.done {
+border:2px solid green;	
+}

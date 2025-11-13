@@ -1,0 +1,85 @@
+/*
+Theme Name: Wine Child
+Description: A <a href='http://codex.wordpress.org/Child_Themes'>Child Theme</a> for the Wine Wordpress Theme. If you plan to do a lot of file modifications we recommend to use this Theme instead of the original Theme. Updating wil be much easier then.
+Version: 1.2
+Template: wine-wp
+Author: An-Themes
+Author URI: http://www.anthemes.net/
+Tags: black, white, yellow
+License: GNU General Public License version 3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+body{
+background:none!important;
+background-color: #E5E5E5!important;
+}
+
+.wrap {
+    width: 1060px;
+}
+
+.single-content, .page-content {
+    width: 650px;
+    height: auto;
+    float: left;
+    margin-top: 5px;
+}
+
+.sidebar {
+	width:320px;
+}
+
+.logo {
+    margin-top: -25px;
+    margin-bottom: 10px!important;
+    margin-left: -10px;
+}
+
+.sub-header {
+background: none!important;
+}
+.sub-header.firstmenu {
+    background-color:#3AC7FF!important;
+}
+.popular-words a {
+    color:#333333!important;
+}
+ul.top-social a {
+    color: #333333!important;
+}
+
+a.author-nrposts {
+    width: 45px;
+}
+
+h1 {
+    font-size: 20px;
+    text-decoration: none!important;
+}
+
+.entry strong {
+    text-decoration: none;
+}
+
+.entry h1 {
+    margin-top: 10px;
+}
+
+.entry-top {
+    padding: 0;
+}
+
+.wrap-content {
+    margin: -10px 0 0 20px;
+
+}
+
+/*provvisorio da integrare nel javascript di hype*/
+.HYPE_scene {
+background-color: transparent!important;
+}
+

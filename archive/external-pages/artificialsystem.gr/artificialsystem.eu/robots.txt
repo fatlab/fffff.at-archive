@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /wp-login.php
+Disallow: /*?p=*
+Disallow: /?p=*
+Allow: /wp-content/uploads/
+Allow: /wp-content/cache/
+Allow: /wp-includes/js/
+Allow: /wp-admin/admin-ajax.php
+Sitemap: https://artificialsystem.eu/sitemap_index.xml

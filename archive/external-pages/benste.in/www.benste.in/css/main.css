@@ -1,0 +1,233 @@
+body{margin: 8px;background-color: #ffffff;color: #000000;font-family : Verdana, Arial, Helvetica, sans-serif;font-weight:normal;color:#435d6f;text-decoration:none;}
+ol, ul { list-style: none outside none;}
+ul { border: 0 none;font: inherit;margin: 0;padding: 0;vertical-align: baseline;}
+
+.c{margin: 0 auto;width: 860px;}
+.l{margin-top: 35px;text-align: center;}
+
+.sinf {background: url('../images/parking-background.jpg') no-repeat;background-position: 25px;margin: 50px auto;height: 198px;}
+
+.sinf p {color: #717171;padding: 65px 40px 0 60px;text-align: center; font-size: 1.1em;letter-spacing: 1.5px;}
+.sinf p span.dN {color:#ff6400;}
+.tC {font-size:12px; padding: 0 5px;}
+.tC > p {width: 90%;margin: 10px 0 10px 75px;color: #717171; font-size: 1em;}
+.tC > p > .link {color: #0085c8;text-decoration:none;}
+.fLinks {
+	margin: 0 0 0 80px;
+	font-size: 0.6em;
+	color:#717171;
+}
+.fLinks > .no-link {color:#717171; text-decoration:none;}
+
+
+.footer-links {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : normal;
+	color : rgb(123, 123, 121);
+	text-decoration : none;
+}
+
+.footer-links a {
+	color : rgb(123, 123, 121);
+	text-decoration : none;
+}
+
+.footer-links a:hover {
+	color : rgb(123, 123, 121);
+	text-decoration : underline;
+}
+
+/**
+ * DOMAINCHECK NEW: 27.03.2012 MS
+ **/
+ .dc { margin: 35px 0 120px 85px;}
+ .dc a {text-decoration:none;}
+ .dc input, .dc select, .dc textarea {font-family: Verdana,Arial,Helvetica,sans-serif;}
+ 
+ .domaincheck.control {
+  position: relative;
+  height: 145px; }
+  .domaincheck.control > .type {
+    position: absolute;
+    left: 10px;
+    width: 500px; }
+    .domaincheck.control > .type > li {
+      float: left;
+      margin-right: 10px; }
+      .domaincheck.control > .type > li > a {
+        color: #888888;
+        text-decoration: none;
+        font-size: 12px; }
+      .domaincheck.control > .type > li.active > a {
+        color: #333333;
+        font-size: 12px; }
+  .domaincheck.control > form {
+    position: absolute;
+    top: 75px;
+    left: 94px; }
+    .domaincheck.control > form > .name {
+      z-index: 101;
+      background-color: white;
+      position: absolute;
+      top: 10px;
+      overflow: hidden;
+      width: 316px; }
+      .domaincheck.control > form > .name.multi {
+        box-shadow: 1px 1px 0 #ccd1d7;
+        -moz-border-radius-bottomleft: 6px;
+        -webkit-border-bottom-left-radius: 6px;
+        -ms-border-bottom-left-radius: 6px;
+        -o-border-bottom-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        -moz-border-radius-bottomright: 6px;
+        -webkit-border-bottom-right-radius: 6px;
+        -ms-border-bottom-right-radius: 6px;
+        -o-border-bottom-right-radius: 6px;
+        border-bottom-right-radius: 6px; }
+      .domaincheck.control > form > .name > a.clear {
+        position: absolute;
+        right: 7px;
+        top: 4px; }
+      .domaincheck.control > form > .name > textarea {
+        background: transparent;
+        border: 0 none;
+        height: 25px;
+        padding-left: 6px;
+        font-size: 16px;
+        line-height: 20px;
+        width: 310px; }
+    .domaincheck.control > form > .dropdown {
+      position: absolute;
+      padding-left: 8px;
+      width: 95px;
+      left: 318px;
+      top: 1px; }
+      .domaincheck.control > form > .dropdown > a {
+        display: inline-block;
+        text-decoration: none;
+        width: 100%;
+        color: black;
+        font-size: 12px;
+        line-height: 40px;
+        height: 40px; }
+        .domaincheck.control > form > .dropdown > a > .sprite {
+          position: absolute;
+          right: 4px;
+          top: 10px; }
+      .domaincheck.control > form > .dropdown > ul {
+        background-color: #ecf0f1;
+        display: none;
+        position: absolute;
+        left: 0px;
+        top: 36px;
+        width: 102px;
+        z-index: 200;
+        box-shadow: 1px 1px 0 #b9bec2;
+        -moz-border-radius-bottomleft: 6px;
+        -webkit-border-bottom-left-radius: 6px;
+        -ms-border-bottom-left-radius: 6px;
+        -o-border-bottom-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        -moz-border-radius-bottomright: 6px;
+        -webkit-border-bottom-right-radius: 6px;
+        -ms-border-bottom-right-radius: 6px;
+        -o-border-bottom-right-radius: 6px;
+        border-bottom-right-radius: 6px; }
+        .domaincheck.control > form > .dropdown > ul > li {
+          font-size: 12px;
+          margin-bottom: 2px; }
+          .domaincheck.control > form > .dropdown > ul > li > a {
+            display: block;
+            padding: 4px;
+            padding-left: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #595E62; }
+            .domaincheck.control > form > .dropdown > ul > li > a:hover {
+              background-color: #80EB44;
+              color: #595E62;
+              -webkit-border-radius: 4px;
+              -moz-border-radius: 4px;
+              -ms-border-radius: 4px;
+              -o-border-radius: 4px;
+              border-radius: 4px; }
+          .domaincheck.control > form > .dropdown > ul > li.selected > a {
+            color: #00B9FE; }
+    .domaincheck.control > form > .go-button {
+      position: absolute;
+      left: 430px; }
+        
+  .domaincheck.control.bar {
+    background: url("../images/bg-bar.jpg") no-repeat;
+    width: 100%;
+    height: 69px; }
+    .domaincheck.control.bar > ul.type {
+      display: none; }
+    .domaincheck.control.bar > form {
+      left: 148px;
+      top: 19px; }
+      .domaincheck.control.bar > form > .name {
+        top: 4px; }
+        .domaincheck.control.bar > form > .name > textarea {
+          color: #42647f;
+          font-size: 15px; }
+          .domaincheck.control.bar > form > .name > textarea:focus {
+            border: 0;
+            outline: 0; }
+      .domaincheck.control.bar > form > .dropdown {
+        top: -3px; }
+    .domaincheck.control.bar > span {
+      position: absolute;
+      font-size: 14px;
+      color: #FFF;
+      font-weight: bold;
+      top: 26px;
+      left: 90px; }
+
+.sprite {
+  display: inline-block;
+  vertical-align: middle; }
+.sprite.form {
+    background: transparent url("../images/form.png"); }
+.sprite.form.clear {
+      background-position: -32px 0;
+      height: 15px;
+      width: 15px; }
+      
+.sprite.form.select {
+      width: 19px;
+      height: 20px;
+      background-position: 0 -17px; }
+      .sprite.form.select.selected, .sprite.form.select.active {
+        background-position: -20px -17px; }
+        
+button.sprite {
+  border: 0 none;
+  padding: 0;
+  cursor: pointer; }
+
+button.sprite::-moz-focus-inner {
+  border: 0 none;
+  padding: 0; }
+  
+.sprite.form.go-button {
+      width: 49px;
+      height: 41px;
+      background-position: 0 -80px; }
+      .sprite.form.go-button.grey, .sprite.form.go-button.gray {
+        background-position: 0 -38px; }
+        .sprite.form.go-button.grey.small, .sprite.form.go-button.gray.small {
+          background-position: -50px 0;
+          width: 38px;
+          height: 32px; }
+          .sprite.form.go-button.grey.small:hover, .sprite.form.go-button.grey.small.hover, .sprite.form.go-button.gray.small:hover, .sprite.form.go-button.gray.small.hover {
+            background-position: -50px -33px; }
+      .sprite.form.go-button.green:hover, .sprite.form.go-button.green.hover, .sprite.form.go-button:hover, .sprite.form.go-button.hover {
+        background-position: 0 -122px; }
+      .sprite.form.go-button.small {
+        background-position: 0 -164px;
+        height: 33px;
+        width: 40px; }
+      .sprite.form.go-button.small:hover, .sprite.form.go-button.small.hover {
+        background-position: 0 -198px; }

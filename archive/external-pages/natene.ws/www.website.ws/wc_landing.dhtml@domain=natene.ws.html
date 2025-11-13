@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta name="google-site-verification" content="z_2xbIRP6xDxMmMLsraKl6ox0fwPuQlytJv5E7heTOs" />
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>WebSite.ws &ndash; Your Internet Address for Life</title>
+
+<!--[if IE 8]>
+        <link rel="stylesheet" type="text/css" media="screen" href="/newnav/css/ie8.css" />
+<![endif]-->
+<![if !(IE 8)]>
+        <link rel="stylesheet" type="text/css" media="screen" href="newnav/css/layout.css" />
+<![endif]>
+            <link rel="canonical" href="../../../natene.ws/index.html" />
+            <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <script>
+            // Break frames
+            (function(){top.location==location||(top.location=location)();}());
+        </script>
+        <script src="js/jquery-3.5.0.min.js" type="text/javascript"></script>
+        <script src="js/jquery-migrate-3.0.0.js" type="text/javascript"></script>
+        <script src="newnav/js/cufon-yui.js" type="text/javascript"></script>
+        <script src="newnav/js/Rockwell_400.font.js" type="text/javascript"></script>
+        <script src="newnav/js/roboto.cufonfonts.js" type="text/javascript"></script>
+        <!--
+        <script src="/newnav/js/Frutiger_CE_45_Light_700.font.js" type="text/javascript"></script>
+        -->
+        <script src="newnav/js/iepngfix_tilebg.js" type="text/javascript"></script>
+        <script src="newnav/js/thickbox.js" type="text/javascript"></script>
+        <link href="css/emoji.css" rel="stylesheet" type="text/css" />
+        <script src="js/emoji.min.js" type="text/javascript"></script>
+        <script src="js/emoji.js" type="text/javascript"></script>
+        <script src="newnav/js/jquery.md5.js" type="text/javascript"></script>
+        <script language="javascript" type="text/javascript" src="newdesign/menu.js"></script>
+        <script type="text/javascript">
+             Cufon.replace('h2,h4:not(.no-cufon)', { fontFamily: 'Rockwell' });
+              Cufon.replace('h3:not(.no-cufon)', { fontFamily: 'Roboto Medium' });
+          </script>
+        </head>
+    <body id="domain-registration">
+        <div id="header-wrapper">
+            <div id="header">
+                <a id="logo" accesskey="1" href="https://www.website.ws/">
+                    <img src="newnav/images/main-logo.png" alt="" width="334" height="59"/>
+                </a>
+                <ul id="sub-nav">
+                    <li class="nav-login"><a href="https://www.website.ws/login" id="loginbtn">Login</a></li>
+                    <li class="nav-whois"><a href="https://www.website.ws/whois.dhtml">Whois</a></li>
+                </ul>
+                <h1 id="h-motto">Your Internet Address for Life</h1>
+                <ul id="global-nav">
+                    <li class="nav-home"><a href="https://www.website.ws/" >Home</a></li>
+                    <li class="nav-the-ws-story"><a href="https://www.website.ws/about.dhtml" >The .WS Story</a></li>
+                    <li class="nav-for-registrars"><a href="https://www.website.ws/registrars.dhtml" >For Registrars</a></li>
+                    <li class="nav-premium-domains"><a href="https://www.website.ws/released.dhtml" >Premium Domains</a></li>
+                    <li class="nav-faq"><a href="https://www.website.ws/faq/" >FAQ</a></li>
+                    <li class="nav-pricing"><a href="https://www.website.ws/faq/pricing.dhtml" >Pricing</a></li>
+                    <li class="nav-pricing"><a href="https://www.website.ws/emoji.dhtml" >I❤Emoji</a></li>
+                </ul>
+            </div>
+        </div>
+				<div id="wrapper">
+				
+					<div class="content">
+						<div class="content-header"></div>
+<form method="post" action="https://www.website.ws/whois.dhtml" id="mylookup">
+  <input type="hidden" name="g-recaptcha-response">
+  <div id="form-q-search" style="position:relative;">
+    <fieldset disabled>
+      <h2>Register Your Own .WS Domain</h2>
+      <input class="emoji-input" name="domain"/>
+      <span>.WS</span>
+      <input type="hidden" name="tld" value="WS"/>
+      <button id="btn-q-search" type="submit">Search</button>
+    </fieldset>
+  </div>
+</form>
+
+<script>
+  function reCaptchaReady() {
+    $('#mylookup fieldset').prop('disabled', false);
+    $('#mylookup2 fieldset').prop('disabled', false); // for register-taken.tmpl
+
+    if ($('#mylookup2').length && location.search.match(/^\?domain=/)) {
+        grecaptcha.execute('6LfNKaUUAAAAAIZF-V7eiNWFduuDR-obhXbXPNQs', { action: 'whois' }).then(function (token) {
+          $('[name="g-recaptcha-response"]').val(token);
+          $('#mylookup2').submit();
+        });
+    }
+
+    $('#mylookup,#mylookup2').submit(function(e) {
+      e.preventDefault();
+
+      var form = this;
+      grecaptcha.execute('6LfNKaUUAAAAAIZF-V7eiNWFduuDR-obhXbXPNQs', { action: 'whois' }).then(function (token) {
+        $('[name="g-recaptcha-response"]').val(token);
+        form.submit();
+      });
+    })
+  };
+</script>
+<script src="js/js-loader.js#https%3A//www.google.com/recaptcha/api.js%3Frender%3D6LfNKaUUAAAAAIZF-V7eiNWFduuDR-obhXbXPNQs%26onload%3DreCaptchaReady"></script>
+                        <h2 style="margin-left: 70px; width: 850px">Domain Lookup Service</h2>
+
+
+
+
+
+                            <div class="content-inn-xl" style="background-image:none">
+
+                                <div class="content-inn-xl-header"></div>
+
+
+                        <h3>Congratulations!</h3>
+                                                    <h4>natene.ws</h4>
+                                                <h3 style="margin-top: 20px; margin-bottom: 30px">Is available to register</h3>
+                        <span style="margin-bottom: 30px; text-align: center; display: block;"><strong>$35.00</strong> first year<br /> <strong>$35.00</strong> each additional year</span>
+
+<!-- login form -->
+<form method="post"  action="https://www.website.ws/whois.dhtml" id="mylogin">
+  <div class="inline-win" style="margin-left: 100px">
+    <div class="inline-win-right">
+      <h4 style="font-size:20px; margin-top: 30px; margin-bottom:20px">Current .WS Customers</h4>
+      <ul>
+        <li id="top-field-login">
+          <span>Username:</span>
+          <div>
+            <input type="text" name="userid" value="" />
+            <input type="hidden" name="domain" value="natene.ws">
+            <input type="hidden" name="islogin" value="1">
+          </div>
+        </li>
+        <li id="top-field-password">
+          <span>Password:</span>
+          <div>
+            <input type="password" name="pw"/>
+          </div>
+          <button type="submit">Login</button>
+        </li>
+      </ul>
+      <a href="https://www.website.ws/newnav/password-reminder.dhtml?height=266&amp;width=475&amp;modal=false" class="btn-sec thickbox" style="margin-left:73px">
+        <span>Password Reminder</span>
+      </a>
+    </div>
+  </div>
+</form>
+<!-- /login form -->
+
+                        <div class="inline-win" style="margin-left: 30px; width: 320px; margin-bottom:50px">
+                            <div class="inline-win-right">
+                                <h4 style="font-size:20px; margin-top: 30px; margin-bottom:20px">New .WS Customers</h4>
+                                <p style="text-align:center">Create an account in 30 seconds, and you may continue with the registration of <strong><span class="emoji-span">natene.ws</span></strong>.</p>
+                                <a id="btn-create-acc-sm" href="https://www.website.ws/register/?dom=natene.ws">Create Account</a>
+                            </div>
+                        </div>
+                                <div class="content-inn-xl-footer"></div>
+                            </div>
+                        <div class="content-footer-empty">
+                            <div class="bottom-logo"></div>
+                        </div>
+                    </div>
+        <!-- footer -->
+  <ul id="footer">
+    <li id="copyright">Copyright &copy; 2025 by Global Domains International, Inc. <br />All Rights Reserved.</li>
+        <li><a href="https://www.website.ws/" >Home</a></li>
+    <li><a href="https://www.website.ws/about.dhtml" >The .WS Story</a></li>
+    <li><a href="https://www.website.ws/registrars.dhtml" >For Registrars</a></li>
+    <li><a href="https://www.website.ws/released.dhtml" >Premium Domains</a></li>
+    <li><a href="https://www.website.ws/faq/" >FAQ</a></li>
+    <li><a href="https://www.website.ws/faq/pricing.dhtml" >Pricing</a></li>
+    <li><a href="wc_landing.dhtml@domain=natene.ws.html#TB_inline?width=600&height=550&inlineId=tosmodal" class="thickbox">Terms of Service</a></li>
+    <li><a href="https://www.website.ws/contact.dhtml" >Contact Us</a></li>
+      </ul>
+  <!-- /footer -->
+</div>
+<!-- Cookie alert -->
+<style>
+  #cookie-alert {
+    background: #ddedd2;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    padding-top: 1em;
+  }
+
+  #cookie-alert button {
+    margin-left: 5em;
+  }
+</style>
+<div id="cookie-alert" style="display: none;">
+  <p><strong>Notice:</strong> This site uses cookies to enhance your experience. Read our <a href="wc_landing.dhtml@domain=natene.ws.html#TB_inline?width=600&height=550&inlineId=tosmodal" class="thickbox">Privacy Policy</a> for more information. <button>Dismiss</button></p>
+</div>
+<!-- ToS Modal -->
+<style>
+#tosmodal-interior {
+  background: #f6f6f6;
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
+}
+</style>
+<div id="tosmodal" style="display:none">
+  <div id="tosmodal-interior" style="background: #f6f6f6; border-radius: 5px; padding: 20px;">
+    <a class="btn-win-close" style="margin-top:0" onclick="tb_remove()">Close</a>
+    <h2>GDI Documentation</h2>
+    <ul>
+      <li><a href="https://www.website.ws/newdesign/documents/Anti-Spam%20Policy.pdf" target="_blank" rel="noopener">Anti-Spam Policy</a></li>
+      <li><a href="https://www.website.ws/newdesign/documents/California%20Privacy%20Rights.pdf" target="_blank" rel="noopener">California Privacy Rights</a></li>
+      <li><a href="https://www.website.ws/newdesign/documents/Compensation%20Plan.pdf" target="_blank" rel="noopener">Compensation Plan</a></li>
+      <li><a href="https://www.website.ws/newdesign/documents/Independent%20Affiliate%20Agreement%20Terms%20and%20Conditions.pdf" target="_blank" rel="noopener">Independent Affiliate Agreement to Terms and Conditions</a></li>
+      <li><a href="https://www.website.ws/newdesign/documents/Independent%20Affiliate%20Policies%20and%20Procedures.pdf" target="_blank" rel="noopener">Independent Affiliate Policies and Procedures</a></li>
+      <li><a href="https://www.website.ws/newdesign/documents/Privacy%20Policy.pdf" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><a href="https://www.website.ws/newdesign/documents/Terms%20and%20Documentation.pdf" target="_blank" rel="noopener">Terms and Documentation</a></li>
+      <li><a href="https://www.website.ws/newdesign/documents/Terms%20of%20Service.pdf" target="_blank" rel="noopener">Terms of Service</a></li>
+      <li><a href="https://www.website.ws/newdesign/documents/Terms%20of%20Use.pdf" target="_blank" rel="noopener">Terms of Use</a></li>
+      <li><a href="https://www.website.ws/newdesign/documents/Domain%20Name%20Registration%20Agreement.pdf" target="_blank" rel="noopener">Domain Registration Agreement</a></li>
+      <li><a href="http://www.icann.org/en/registrars/registrant-rights-responsibilities-en.htm" target="_blank" rel="noopener">Registrant Rights and Responsibilities</a></li>
+      <li><a href="https://www.icann.org/resources/pages/educational-2012-02-25-en" target="_blank" rel="noopener">ICANN Registrant Educational Materials</a></li>
+      <li><a href="http://www.icann.org/en/udrp/udrp.htm" target="_blank" rel="noopener" rel="noopener">Name Dispute Resolution Policy</a></li>
+      <li><a href="https://www.icann.org/resources/pages/transfer-policy-2015-09-24-en" target="_blank" rel="noopener">Transfer Policy</a></li>
+      <li><a href="http://www.icann.org/en/registrars/registrant-rights-responsibilities-en.htm" target="_blank" rel="noopener" rel="noopener">Registrant Rights and Responsibilities (Non-.WS Domains)</a></li>
+    </ul>
+  </div>
+</div>
+<!-- .ToS Modal -->
+<!-- Emoji picker -->
+<link media="screen" rel="stylesheet" href="idn-orderflow/css/jquery.emojipicker.css" />
+<script type="text/javascript" src="js/jquery.emojipicker.js"></script>
+<link media="screen" rel="stylesheet" href="idn-orderflow/css/jquery.emojipicker.a.css" />
+<script type="text/javascript" src="js/jquery.emojis.js"></script>
+<!-- /Emoji picker -->
+<script type="text/javascript" src="js/cookie-alert.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.emoji-input').emojiPicker({
+    height: '300px',
+    width: '450px'
+  });
+
+  $('#form-q-search .emojiPickerIcon').css('height', '21px').css('width', '25px');
+});
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script src="js/js-loader.js#https%3A//www.googletagmanager.com/gtag/js%3Fid%3DUA-2716805-14"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('set', {cookie_flags: 'SameSite=None;Secure;HttpOnly'});
+  gtag('config', 'UA-2716805-14', { cookieFlags: 'SameSite=None;Secure;HttpOnly'});
+</script>
+
+
+<script>
+(function() {
+  for (var form of Array.from(document.forms)) {
+    try {
+    let action = form.getAttribute('action') || form.attributes.action.value || document.location.href;
+
+    if ( ! action.match(new RegExp(`https?://[\\w\\-\\.]?${document.location.host}/`))
+      && ! action.match(new RegExp('^/'))
+    ) {
+      continue;
+    }
+
+    let token = document.createElement('input');
+    token.type = 'hidden';
+    token.name = 'csrf_token';
+    token.value = 'f27c66729c2b7f94e5b84c2a67918b36';
+
+    form.appendChild(token);
+    } catch(e) {}
+  };
+})();
+</script></body>
+
+</html>

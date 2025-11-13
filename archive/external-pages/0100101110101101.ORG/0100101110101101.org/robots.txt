@@ -1,0 +1,11 @@
+User-Agent: *
+Disallow: /blog/wp-content/plugins/
+Disallow: /blog/wp-admin/
+Disallow: /blog/readme.html
+Disallow: /blog/wp-includes/
+Disallow: *download*
+Disallow: /download*
+Disallow: /sitemap/
+Disallow: /?s=*
+Disallow: /tag*
+Disallow: /category*

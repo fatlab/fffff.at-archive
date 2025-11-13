@@ -1,0 +1,694 @@
+/*
+ Theme Name:   Twenty Twenty Child
+ Description:  Twenty Twenty Child Theme
+ Author:       Alice Giordani
+ Template:     twentytwenty
+ Version:      0.0
+ Text Domain:  twentytwentychild
+*/
+
+@font-face {
+	font-family: 'VG5000 Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: local('VG5000 Regular'), url('font/VG5000-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'GlacialIndifference Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: local('GlacialIndifference Regular'), url('font/GlacialIndifference-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Glacial Indifference Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Glacial Indifference Bold'), url('https://www.martindebie.com/wp-content/themes/twentytwenty-child/GlacialIndifference-Bold.woff') format('woff');
+}
+
+body {
+	font-family: 'GlacialIndifference Regular';
+}
+
+body:not(.overlay-header) .primary-menu > li > a, body:not(.overlay-header) .primary-menu > li > .icon, .modal-menu a, .footer-menu a, .footer-widgets a, #site-footer .wp-block-button.is-style-outline, .wp-block-pullquote::before, .singular:not(.overlay-header) .entry-header a, .archive-header a, .header-footer-group .color-accent, .header-footer-group .color-accent-hover:hover {
+    color: #000 !important;
+}
+
+.color-accent, .color-accent-hover:hover, .color-accent-hover:focus, :root .has-accent-color, .has-drop-cap:not(:focus):first-letter, .wp-block-button.is-style-outline, #site-content a {
+    color: #000000 !important;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, .faux-heading, .entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4, .entry-content h5, .entry-content h6 {
+	font-family: 'VG5000 Regular';
+	text-transform: uppercase;
+}
+
+h1, .heading-size-1 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 2;
+}
+
+h2 {
+	font-size: 14px;
+}
+
+h3 {
+	font-family: 'GlacialIndifference Regular';
+	font-weight: bold;
+	font-size: 14px;
+}
+
+p {
+	font-family: 'GlacialIndifference Regular';
+	font-size: 14px;
+	text-align: justify;
+}
+
+figcaption, .entry-content figcaption {
+	font-family: 'GlacialIndifference Regular';
+	font-size: 14px;
+	color: #000000 !important;
+}
+
+button:not(.toggle), .button, .faux-button, .wp-block-button__link, .wp-block-file .wp-block-file__button, input[type="button"], input[type="reset"], input[type="submit"], .bg-accent, .bg-accent-hover:hover, .bg-accent-hover:focus, :root .has-accent-background-color, .comment-reply-link {
+    background-color: #000000 !important;
+}
+
+.widget_text p, .widget_text ol, .widget_text ul, .widget_text dl, .widget_text dt, .widget-content .rssSummary {
+	font-family: 'VG5000 Regular';
+}
+
+.with-sidebar #site-content, .entry-content > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide), .section-inner.medium {
+	max-width: 90rem !important;
+}
+
+
+#site-header {
+	width: 100%;
+	position: fixed;
+}
+
+.header-inner {
+    padding: 5rem 0;
+}
+
+.site-title {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.site-title a, .primary-menu > li, .primary-menu > li > a {
+	font-family:'VG5000 Regular';
+}
+
+.site-title a {
+	font-size: 60px;
+	font-weight: normal;
+}
+
+.site-title a:hover, .site-title a:focus {
+    text-decoration: none;
+}
+
+body:not(.overlay-header) .primary-menu > li > a {
+	text-transform: uppercase;
+	color: #000000 !important;
+	font-size: 26px;
+}
+
+#side ul {
+	list-style-type: '-';
+	margin: 0 5px;
+}
+
+#side li {
+	margin: 0;
+}
+
+#side, #side h3 {
+	font-family: 'VG5000 Regular';
+}
+
+
+/* Animation Menu */
+
+.primary-menu > li > a {
+	display: inline-block;
+	text-decoration: none;
+	color:black;
+	position: relative;
+}
+
+.primary-menu > li > a::after {
+	content: '';
+	position: absolute;
+	top:50%;
+	transform:translateY(-50%);
+	width: 0;
+	right: 0;
+	height: 5%;
+	background: currentColor;
+	transition:width 0.25s ease;
+	text-decoration: none;
+}
+
+.primary-menu > li > a:hover::after, .primary-menu .current_page_ancestor::after, .primary-menu li.current-menu-item > a::after, .primary-menu li.current-menu-item > .link-icon-wrapper > a::after {
+	width: 100%;
+	text-decoration: none;
+}
+
+.primary-menu a:hover, .primary-menu a:focus, .primary-menu .current_page_ancestor, .primary-menu li.current-menu-item > a, .primary-menu li.current-menu-item > .link-icon-wrapper > a {
+	text-decoration: none;
+}
+
+.primary-menu > li.sep {
+	margin: 1.2rem 0 0 1.6rem;
+}
+
+/*Project Grid*/
+
+@media only screen and (min-width:60em) {
+.post-type-archive-project > .container {
+ 	width: 85%;
+ 	max-width: none; 
+ 	text-align: center;
+ }
+}
+
+.row {
+	margin: 2%;
+}
+
+.title-post-grid, a .title-post-grid{
+	text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: initial;
+    margin: 2rem 0 0 0;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+
+.post-type-archive-project > #site-content {
+	padding: 185px 0 0 0;
+}
+
+.post-type-archive-project article {
+	vertical-align: middle;
+	float: none !important;
+	display: table-cell;
+	padding: 3%;
+}
+
+.project > h2 {
+	display: inline-block;
+	text-decoration: none;
+	color:black;
+	position: relative;
+}
+
+.project > h2::after {
+	content: '';
+	position: absolute;
+	top:50%;
+	transform:translateY(-50%);
+	width: 0;
+	right: 0;
+	height: 5%;
+	background: currentColor;
+	transition:width 0.25s ease;
+	text-decoration: none;
+}
+
+.project > h2:hover::after {
+	width: 100%;
+	text-decoration: none;
+}
+
+.project > h2:hover, .project > h2:focus {
+	text-decoration: none;
+}
+
+/* Education Grid */
+
+.with-sidebar {
+	padding: 200px 0 0 0;
+}
+
+.with-sidebar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.with-sidebar #site-content {
+	float: left;
+	width: 75%;
+}
+
+.with-sidebar .container {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.with-sidebar .row [class^=col] {
+    margin: .5rem 0.6%;
+}
+
+.title-post-grid-edu, a .title-post-grid-edu {
+	text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: initial;
+    margin: 0rem 0 0 0;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    opacity: 0;
+}
+
+.post-type-archive-hybrid_process #site-content, .post-type-archive-collaboration #site-content, .post-type-archive-anecdote #site-content, .tax-annee #site-content, .tax-genre #site-content, .tax-edu_category #site-content{
+	max-width: 74.5% !important;
+	margin: auto;
+
+}
+
+.page-template-template-education #side li {
+	list-style: none;
+}
+
+/* Conteneur principal */
+.overlay-image {
+	position: relative;
+	width: 100%;
+}
+/* Image originale */
+.overlay-image .image {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.overlay-image .title-post-grid-edu {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+ 	transition: .5s ease;
+}
+
+.overlay-image:hover .title-post-grid-edu {
+	opacity: 1;
+}
+
+.overlay-image:hover img {
+	opacity: 0.5;
+}
+
+
+.with-sidebar #side {
+	top:20%;
+	float: left;
+	width: 25%;
+	padding: 32px 12rem;
+	font-family: 'VG5000 Regular';
+	position: -webkit-sticky;
+  	position: sticky;
+}
+
+.with-sidebar #side a {
+	display: inline-block;
+	text-decoration: none;
+	color:black;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.with-sidebar #side a::after {
+	content: '';
+	position: absolute;
+	top:50%;
+	transform:translateY(-50%);
+	width: 0;
+	right: 0;
+	height: 5%;
+	background: currentColor;
+	transition:width 0.25s ease;
+	text-decoration: none;
+}
+
+.with-sidebar #side a:hover::after, .with-sidebar #side .active::after, .with-sidebar #side li.active > a::after {
+	width: 100%;
+	text-decoration: none;
+}
+
+#side .widget-title {
+	text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: initial;
+    margin: 0;
+}
+
+#side h4 {
+	font-size: 2rem;
+    font-weight: normal;
+}
+
+.with-sidebar h1.entry-title {
+    clear: both;
+    margin: 0;
+    margin: 30px 0px 30px -20px;
+	position: fixed;
+}
+
+.with-sidebar .entry-content {
+	margin-top: 70px;
+}
+
+/* Singular */
+
+h1.entry-title {
+    margin: 225px 0 0 0;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 20px;
+    position: fixed;
+    background: white;
+    z-index: 1;
+    width: 90rem;
+}
+
+.entry-content p, .entry-content ol, .entry-content ul, .entry-content dl, .entry-content dt {
+    font-family: 'GlacialIndifference Regular';
+    letter-spacing: normal;
+}
+
+.entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
+    max-width: 100rem;
+    width: calc(100% - 4rem);
+}
+
+.reduced-spacing.missing-post-thumbnail .post-inner, .post-inner {
+    padding-top: 5rem;
+}
+
+.entry-content {
+    font-size: 14px;
+    margin-top: 275px;
+}
+
+
+
+
+/*Ajustements*/
+/* Edu*/
+#post-92 .entry-title {
+	display: none;
+}
+
+#post-92 .reduced-spacing.missing-post-thumbnail .post-inner, #post-92 .post-inner, #post-8 .reduced-spacing.missing-post-thumbnail .post-inner, #post-8 .post-inner {
+    padding-top: 0rem;
+}
+
+#post-92 .entry-content {
+	margin-top: 3.5%;
+}
+
+/* About*/ 
+#post-8 .entry-title {
+	position: initial;
+}
+
+#post-8 .entry-content {
+    margin-top: 60px;
+}
+
+.contactmail {
+	text-transform: lowercase !important;
+}
+
+/* Research Page */
+
+.post-104 .entry-content {
+	margin-top: 9%;
+}
+
+
+/* Collab Page */
+
+.post-type-archive-collaboration #site-content {
+	overflow: visible;
+}
+
+.post-type-archive-collaboration .entry-content {
+	margin-top: 150px;
+}
+
+.vignette {
+	top:0;
+	left:0;
+	list-style: none;
+}
+
+.post-type-archive-collaboration .draggable {
+	width: 30%;
+	float: left;
+}
+
+/* Anecdoctes Page */
+
+.post-type-archive-anecdote #side li, .archive.tax-genre #side li, .single-anecdote #side li {
+	list-style: none;
+	line-height: 1;
+	font-size: 2rem;
+}
+
+
+/* Footer */
+
+.reduced-spacing.footer-top-visible .footer-nav-widgets-wrapper, .reduced-spacing.footer-top-hidden #site-footer {
+    border-top-width: 0rem;
+}
+
+/* Carousels */
+.jp-carousel-info h2 {
+	text-align: center !important;
+}
+
+.jp-carousel-left-column-wrapper {
+	display: none !important;
+}
+
+.jp-carousel-image-meta {
+	display: none;
+	padding: 0;
+}
+
+/* Flickr embed frame */
+
+.flickr-embed-frame, .flickr-embed {
+	margin: 2.5% !important;
+}
+
+
+/* RESPONSIVE DETAILS */
+
+#handheld-menu {
+	display: none;
+}
+
+#handheld-menu h4 {
+	font-size: 2rem;
+	font-weight: normal;
+}
+
+#handheld-menu a {
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	position: relative;
+	text-transform: uppercase;
+	font-family: 'VG5000 Regular'
+}
+
+
+#handheld-menu .widget-title {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: initial;
+    margin: 0;
+    font-family: 'VG5000 Regular';
+}
+
+.modal-menu .sep {
+	display: none;
+}
+
+.modal-menu a {
+	text-transform: uppercase;
+}
+
+/*petits écrans*/
+@media ( max-width: 700px ) { 
+
+	.singular .entry-header {
+		display: none;
+	}
+
+	.site-title {
+	    width: 150px;
+	}
+
+	.site-title a {
+		font-size: 40px;
+	}
+
+	#site-header {
+	    z-index: 1;
+	}
+
+	/*.with-sidebar #side {
+	    float: left;
+	    width: 100%;
+	    padding: 10%;
+	    position: initial;
+	}*/
+
+	.with-sidebar #side {
+		display: none;
+	}
+
+	.post-type-archive-collaboration .draggable, .post-type-archive-hybrid_process #site-content, .post-type-archive-collaboration #site-content, .post-type-archive-anecdote #site-content, .tax-annee #site-content, .tax-genre #site-content, .tax-edu_category #site-content {
+		width: 100%;
+		max-width: 100% !important;
+	}
+
+	.post-type-archive-collaboration .draggable, .post-type-archive-collaboration .draggable a img {
+		margin: auto;
+	}
+
+	/*retirer les mots clés anecdotes */
+	.post-type-archive-anecdote .with-sidebar #side {
+		display: none;
+	}
+
+	#handheld-menu {
+		display: block;
+		float: left;
+	    width: 100%;
+	    padding: 10%;
+	    position: initial;
+	}
+
+	.with-sidebar #site-content {
+		width: 100%;
+	}
+
+	.entry-content, .post-104 .entry-content {
+    	margin-top: 35%;
+	}
+
+	.post-type-archive-project article {
+		float: left !important;
+	}
+
+	.with-sidebar .entry-content, #post-8 .entry-content {
+    	margin-top: 0;
+	}
+
+	.post-inner {
+		padding-top: 0;
+	}
+
+}
+
+
+
+/* écrans intermédiaires */
+@media ( min-width:700px ) and ( max-width: 1000px ) {
+
+	#handheld-menu {
+		display: block;
+	    float: left;
+	    width: 100%;
+	    padding: 10%;
+	    position: initial;
+	    font-family: 'VG5000 Regular';
+		text-transform: uppercase;
+		
+	}
+
+	.site-title a {
+		font-size: 40px;
+	}
+
+	.site-title {
+	    width: 150px;
+	}
+
+	.with-sidebar #site-content {
+		width: 100%;
+	}
+
+	.with-sidebar #side {
+		display: none;
+	}
+
+	.post-type-archive-anecdote .with-sidebar #side {
+		display: none;
+	}
+
+}
+
+/* cas spécifiques */
+
+@media ( min-width: 700px ) and ( max-width: 720px ) {
+	.post-type-archive-project article {
+		float: left !important;
+	}
+}
+
+@media ( min-width: 1000px ) and ( max-width: 1520px ) {
+
+	.site-title a {
+		font-size: 40px;
+	}
+
+	.site-title {
+	    width: 150px;
+	}
+
+	body:not(.overlay-header) .primary-menu > li > a {
+    	font-size: 15px;
+	}
+	.with-sidebar #side {
+    	top: 20%;
+    	float: left;
+    	width: 25%;
+    	padding: 23px 4rem;
+    	font-family: 'VG5000 Regular';
+    	position: -webkit-sticky;
+    	position: sticky;
+	}
+
+
+}
+
+@media ( min-width: 700px ) {
+
+	.post-inner {
+  	  padding-top: 5rem;
+	}
+
+	.singular .entry-header {
+    	padding: 0rem 0;
+	}
+
+}

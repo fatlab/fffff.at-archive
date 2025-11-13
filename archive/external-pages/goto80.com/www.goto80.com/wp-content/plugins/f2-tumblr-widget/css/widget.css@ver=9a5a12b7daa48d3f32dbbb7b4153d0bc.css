@@ -1,0 +1,45 @@
+/* Styles to space things out sensibly */
+.f2-tumblr-post {
+  margin-bottom: 10px;
+}
+
+.f2-tumblr-post h3 {
+  margin-bottom: 5px;
+  clear: both;
+}
+
+.f2-tumblr-post p {
+  margin-bottom: 5px;
+}
+
+.f2-tumblr-post img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/* Styles to handle the slideshow version */
+.f2-tumblr-slideshow {
+  position: relative;
+}
+
+.f2-tumblr-slideshow .f2-tumblr-post {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.f2-tumblr-horizontal {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: top;
+}
+
+/* Styles to cope with fully-clickable posts. */
+.f2-tumblr-post-link {
+  display: block;
+}
+
+.f2-tumblr-post-link .f2-tumblr-post-clickable {
+  display: inline-block;
+}

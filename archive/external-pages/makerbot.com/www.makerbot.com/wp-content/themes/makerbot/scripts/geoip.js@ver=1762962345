@@ -1,0 +1,37 @@
+jQuery(document).ready(function($) {
+    jQuery.ajax({
+        url: geoipAjax.ajax_url,
+        type: 'post',
+        data: {
+            action: 'get_geoip_data'
+        },
+        success: function(response) {
+            if (response.success) {
+                var country = response.data.toLowerCase();
+				
+				if(country=='us' || country=='ca'){
+					var uselements = document.getElementsByClassName('show-us-content');
+					for (var i = 0; i < uselements.length; i++) {
+						uselements[i].style.display = 'inline';
+					}
+				}else{
+					var uselements = document.getElementsByClassName('show-us-content');
+					for (var i = 0; i < uselements.length; i++) {
+						uselements[i].style.display = 'none';
+					}
+				}
+
+                // Now you can use the country variable in your JavaScript code
+                console.log('Country Name: ' + country);
+				
+				
+
+            } else {
+                console.log('Failed to fetch country data.');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log('AJAX error: ' + error);
+        }
+    });
+});

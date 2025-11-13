@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /typo3/
+Disallow: /typo3_src/
+Allow: /typo3/sysext/frontend/Resources/Public/*
+Disallow: /typo3conf/
+Disallow: /fileadmin/application-submission/
+Allow: /typo3conf/ext/site/Resources/Public/Icons/

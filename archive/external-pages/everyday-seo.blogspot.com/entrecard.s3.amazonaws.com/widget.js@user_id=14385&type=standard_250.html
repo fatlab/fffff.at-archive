@@ -1,0 +1,111 @@
+/*
+ Entrecard widget render script
+ 
+ Will be loaded/included by a script containing the below params, which
+ is published whenever the ecard to display changes.
+ 
+ Inputs
+    user_id -> used for getting the ecard html (published under /ecard/user_id)
+                also used for drop target and button.
+
+ Resources
+    standard images
+    card image
+    ecard stylesheet
+    
+    
+ Button script notes:
+    cookie to track whether they're a user is "entrecard"
+    drop can jump to our server, then be redirected back to set a cookie for
+        last dropped, to prevent dropping client-side. Time til end of day can
+        be passed as param
+ 
+*/
+
+var url = "http://entrecard.com/static/amazon";
+
+function ecard_widget_new_127(user_id) {
+    document.write('<iframe hspace="0" vspace="0" width="125px" style="border: 1px solid #444444;" frameborder="0" scrolling="no" src="http://entrecard.s3.amazonaws.com/'+&#32;url&#32;+'/widget/127_standard.html?user_id='&#32;+&#32;user_id&#32;+&#32;'&amp;nocache='+(Math.round(10000*Math.random()))+'" height="148px"></iframe>');
+}
+
+function ecard_widget_new_200(user_id) {
+    document.write('<iframe hspace="0" vspace="0" width="200px" style="border: 1px solid #444444;" frameborder="0" scrolling="no" src="http://entrecard.s3.amazonaws.com/'+&#32;url&#32;+'/widget/200_standard.html?user_id='&#32;+&#32;user_id&#32;+&#32;'&amp;nocache='+(Math.round(10000*Math.random()))+'" height="125px"></iframe>');
+}
+
+function ecard_widget_new_250(user_id) {
+    document.write('<iframe hspace="0" vspace="0" width="250px" style="border: 1px solid #444444;" frameborder="0" scrolling="no" src="http://entrecard.s3.amazonaws.com/'+&#32;url&#32;+'/widget/250_standard.html?user_id='&#32;+&#32;user_id&#32;+&#32;'&amp;nocache='+(Math.round(10000*Math.random()))+'" height="125px"></iframe>');
+}
+
+/* and for 200 and 250 */
+
+function ecard_widget_render(type, user_id) {
+    /* Write out widget */
+    /* Select appropriate type and call */
+    /*
+    if (type == "standard_127") {
+        ecard_widget_standard_127(user_id);
+    }
+    if (type == "standard_200") {
+        ecard_widget_standard_200(user_id);
+    }
+    if (type == "standard_250") {
+        ecard_widget_standard_250(user_id);
+    }
+    */
+    if (type == "standard_127") {
+        ecard_widget_new_127(user_id);
+    }
+    if (type == "standard_200") {
+        ecard_widget_new_200(user_id);
+    }
+    if (type == "standard_250") {
+        ecard_widget_new_250(user_id);
+    }
+    if (type == "new_127") {
+        ecard_widget_new_127(user_id);
+    }
+    if (type == "new_200") {
+        ecard_widget_new_200(user_id);
+    }
+    if (type == "new_250") {
+        ecard_widget_new_250(user_id);
+    }
+}
+
+function get_param(url_path, name) {
+    /* Get named parameter from query string */
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url_path );
+    
+    if( results == null )
+        return "";
+    else
+        return results[1];
+}
+
+if (typeof ( ecard_type ) == "undefined") {
+    var rand_id = "entrecard_" + Math.round(10000 * Math.random());
+    document.write('<span id='+ rand_id + '></span>');
+    var url_path = document.getElementById(rand_id).previousSibling.src;
+    ecard_type = get_param(url_path, "type");
+    ecard_user_id = get_param(url_path, "user_id");
+}
+
+function check_bans() {
+    bans = ['http://borzack.com/','memhub.com','peas.in','coolninja.com','ipih.net','extremedropping.com','http://entrecards.blogspot.com','http://drop-e-drop.blogspot.com','entrecard.urgrps.com','chitgoks.com','ecdropper.googlepages.com','hyperdrop.co.cc','xyberlog'];
+    for (var i=0; i<bans.length; i++) {
+        if (document.location.href.match(bans[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+if (check_bans()) {
+    document.write("");
+} else {
+    ecard_widget_render(ecard_type, ecard_user_id);
+}

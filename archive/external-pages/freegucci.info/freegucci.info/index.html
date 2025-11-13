@@ -1,0 +1,282 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Freegucci.info</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="http://freegucci.info/common/default.css" rel="stylesheet" type="text/css" />
+<script src="../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../../ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<style type="text/css">
+.images {bottom:0%;}
+
+.box {
+  background-color: transparent;
+  background-image: url('patern.png');
+  border-color: black;
+  border-style: dotted;
+  border-width: 1px;
+  padding: 0px;
+  position: absolute;
+  font-size: 10px;
+  box-shadow: 6.5px 8px 4px #A1A1A1;
+}
+
+.boxx {
+  background-color: transparent;
+  border-color: black;
+  border-style: dotted;
+  border-width: 1px;
+  padding: 0px;
+  position: absolute;
+  font-size: 10px;
+  box-shadow: 6.5px 8px 4px #A1A1A1;
+}
+
+.bar {
+  background-color: gray;
+  color: #ffffff;
+  cursor: move;
+  font-weight: bold;
+  padding: 2px 1em 2px 1em;
+  box-shadow: 6.5px 0px 4px #A1A1A1;
+}
+
+.content {
+  padding: 1em;
+}
+
+.img {
+	border-style: none;
+}
+
+</style>
+<script type="text/javascript">
+//<![CDATA[
+//*****************************************************************************
+// Do not remove this notice.
+//
+// Copyright 2001 by Mike Hall.
+// See http://www.brainjar.com for terms of use.
+//*****************************************************************************
+
+// Determine browser and version.
+
+function Browser() {
+
+  var ua, s, i;
+
+  this.isIE    = false;
+  this.isNS    = false;
+  this.version = null;
+
+  ua = navigator.userAgent;
+
+  s = "MSIE";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isIE = true;
+    this.version = parseFloat(ua.substr(i + s.length));
+    return;
+  }
+
+  s = "Netscape6/";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isNS = true;
+    this.version = parseFloat(ua.substr(i + s.length));
+    return;
+  }
+
+  // Treat any other "Gecko" browser as NS 6.1.
+
+  s = "Gecko";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isNS = true;
+    this.version = 6.1;
+    return;
+  }
+}
+
+var browser = new Browser();
+
+// Global object to hold drag information.
+
+var dragObj = new Object();
+dragObj.zIndex = 0;
+
+function dragStart(event, id) {
+
+  var el;
+  var x, y;
+
+  // If an element id was given, find it. Otherwise use the element being
+  // clicked on.
+
+  if (id)
+    dragObj.elNode = document.getElementById(id);
+  else {
+    if (browser.isIE)
+      dragObj.elNode = window.event.srcElement;
+    if (browser.isNS)
+      dragObj.elNode = event.target;
+
+    // If this is a text node, use its parent element.
+
+    if (dragObj.elNode.nodeType == 3)
+      dragObj.elNode = dragObj.elNode.parentNode;
+  }
+
+  // Get cursor position with respect to the page.
+
+  if (browser.isIE) {
+    x = window.event.clientX + document.documentElement.scrollLeft
+      + document.body.scrollLeft;
+    y = window.event.clientY + document.documentElement.scrollTop
+      + document.body.scrollTop;
+  }
+  if (browser.isNS) {
+    x = event.clientX + window.scrollX;
+    y = event.clientY + window.scrollY;
+  }
+
+  // Save starting positions of cursor and element.
+
+  dragObj.cursorStartX = x;
+  dragObj.cursorStartY = y;
+  dragObj.elStartLeft  = parseInt(dragObj.elNode.style.left, 10);
+  dragObj.elStartTop   = parseInt(dragObj.elNode.style.top,  10);
+
+  if (isNaN(dragObj.elStartLeft)) dragObj.elStartLeft = 0;
+  if (isNaN(dragObj.elStartTop))  dragObj.elStartTop  = 0;
+
+  // Update element's z-index.
+
+  dragObj.elNode.style.zIndex = ++dragObj.zIndex;
+
+  // Capture mousemove and mouseup events on the page.
+
+  if (browser.isIE) {
+    document.attachEvent("onmousemove", dragGo);
+    document.attachEvent("onmouseup",   dragStop);
+    window.event.cancelBubble = true;
+    window.event.returnValue = false;
+  }
+  if (browser.isNS) {
+    document.addEventListener("mousemove", dragGo,   true);
+    document.addEventListener("mouseup",   dragStop, true);
+    event.preventDefault();
+  }
+}
+
+function dragGo(event) {
+
+  var x, y;
+
+  // Get cursor position with respect to the page.
+
+  if (browser.isIE) {
+    x = window.event.clientX + document.documentElement.scrollLeft
+      + document.body.scrollLeft;
+    y = window.event.clientY + document.documentElement.scrollTop
+      + document.body.scrollTop;
+  }
+  if (browser.isNS) {
+    x = event.clientX + window.scrollX;
+    y = event.clientY + window.scrollY;
+  }
+
+  // Move drag element by the same amount the cursor has moved.
+
+  dragObj.elNode.style.left = (dragObj.elStartLeft + x - dragObj.cursorStartX) + "px";
+  dragObj.elNode.style.top  = (dragObj.elStartTop  + y - dragObj.cursorStartY) + "px";
+
+  if (browser.isIE) {
+    window.event.cancelBubble = true;
+    window.event.returnValue = false;
+  }
+  if (browser.isNS)
+    event.preventDefault();
+}
+
+function dragStop(event) {
+
+  // Stop capturing mousemove and mouseup events.
+
+  if (browser.isIE) {
+    document.detachEvent("onmousemove", dragGo);
+    document.detachEvent("onmouseup",   dragStop);
+  }
+  if (browser.isNS) {
+    document.removeEventListener("mousemove", dragGo,   true);
+    document.removeEventListener("mouseup",   dragStop, true);
+  }
+}
+
+//]]></script>
+</head>
+
+<body>
+
+<!-- Normal page content. -->
+
+
+<div id="boxB" class="box" style="left:75px;top:50px;">
+  <div class="bar" style="width:350px;"
+       onmousedown="dragStart(event, 'boxB')"><center>Welcome</center></div>
+  <div class="content" style="width:350px;"><center>
+  <img src="http://www.animated-gifs.eu/website-welcome/0095.gif"><br><br>
+  freegucci.info<br><hr> …is the home webpage of Douglas Schatz. Douglas lives in Burlington, VT is a graduate of Hampshire College, and spends his free time making net-objects and waxing poetic about the politics of copyright.<br><br>Douglas can be found around the web using names <b>GucciSoFlosy</b>, <b>Whenthennow</b>, <b>pdsc</b>, and <b>@Thuglas4Life</b><hr>If you'd like to see some work, please click on the images below.<br> <b>the oversized diamonds</b> will take you to the Whenthennow tumblr /vvork page which has the most recent creations.<br> <b>The big flashing rainbow Gucci logo</b> will take you to the old FreeGucci pages which are mostly silly gifs arranged in silly ways. Due to a recent host change, some of the archived pages will be incomplete.<br> <br><b>the vintageKeyboard over the futureTriangle</b> will take you to a series of oversized paintings and animated gifs.<br><br><hr><img src="http://www.animated-gifs.eu/website-thanks/0004.gif"></div>
+</div>
+
+<div id="boxB1" class="box" style="left:970px;top:100px;">
+  <div class="bar" style="width:100px;"
+       onmousedown="dragStart(event, 'boxB1')"><center>LINKS!!!</center></div>
+  <div class="content" style="width:100px;"><center>
+   <a href="http://whenthennow.tumblr.com">BLOG</a><br>
+   <a href="https://twitter.com/#!/Thuglas4Life">TWITTER<br>
+  <a href="http://dump.fm/guccisoflosy">dump.fm account</a><br>
+  <a href="http://flavors.me/guccisoflossy">things I made on flavors</a><br>
+  <a href="http://gifpumper.com/profile/GucciSoFlosy">GifPumper creations</a>
+  <hr>
+  <a href="http://tightartists.com/guccisoflosy"><img src="tightartists3ddrop.gif" width="100px"><br></a>part of the <b>T</b>ight.<b>A</b>rtists.<b>N</b>et.<b>G</b>ang. CurateThemAll<br>web circle.<br>
+ <hr>
+  <a href="mailto:pdschatz@gmail.com"><img src="http://www.animated-gifs.eu/website-email/0138.gif" width="100"></a>
+  <hr>
+  <span style="font-size:9px;">hat-tip to<br>
+  <a href="http://www.brainjar.com/">brainJar</a><br> for this window code</span>
+  </center>
+  </div>
+</div>
+
+<div id="boxB2" class="box" style="left:100px;top:500px;">
+  <div class="bar" style="width:200px;"
+       onmousedown="dragStart(event, 'boxB2')"><center>Cee.Vee.</center></div>
+  <div class="content" style="width:200px; cursor:url(/hand6.cur;"><center>
+  <list>
+  <li><b>2011</b> - <i><a href="http://eyebeam.org/events/project-space-gifpumper-group-show">Gifpumper Groupshow</a></i>, Eyebeam Center, NY</li>
+  <li><b>2012</b> - <i><a href="http://tightartists.com/trurl-documentation">TANG - TRU_RL</a> groupshow</i>, Studio620, St. Pete's FL</li>
+  <li><b>2012</b> - <i><a href="http://www.artslant.com/ew/events/show/202658-bondi-age-sry-no-beige">Bondi-age: Sorry no beige</a> groupshow</i>, RISD, RI</li>
+  <li><b>2012</b> - <i><a href="http://deathbomb.tumblr.com/post/18018613055/welcome-to-the-new-and-improved-deathbomb-arc">Resident GIF artist for DeathBomb ARC records tumblr</a></i>, Digital Work</li>
+  <li><b>2012</b> - <a href="http://www.usn.org/podium/default.aspx?t=204&nid=616015&bl=%2Fpodium%2Fpush%2Fdefault.aspx%3Fs%3D392%26i%3D15538&rc=0"><i>USN Emerging Alumni Artists</a> groupshow</i>, Nashville, TN</li>
+  <li><b>2012</b> - <i><a href="http://movingthestill.paddle8.com/tagged/nicola-formichetti">Moving The Still: a GIF Exhibition</a> selected work</i>, Miami Art Week, FL.</li>
+  <li><b>2013</b> - <i><a href="http://www.bam.org/visualart/2013/a-gif-festival">Moving the Still: a GIF Festival</a> - selected work</i>, Brooklyn Academy of Music, NYC.</li>
+  <li><b>2013</b> - <i><a href="https://www.facebook.com/events/134385656745667/">DeathBombArc Records showcase</a> groupshow</i>, synchronicity space LA, CA.</li>
+  <li><b>2013</b> - <i><a href="http://fifteenstars.com/2.html">Fifteen Stars</a> comissioned work</i>, The New Museum, NYC.</li>
+  <li><b>2014</b> - <i><a href="index.html#">USN Alumni Art Show: Tibbott Center 10th Anniversery</a> groupshow</i></li>, Nashville, TN <span style="color:red; text-shadow:2px 2px 2px black;">OPENING APRIL 11th</span></li>
+  <li><b>2014</b> - <i><a href="http://centerfordigitalart.com/we-stay-connected-workshop-and-exhibition-by-american-net-artists/">We Stay Connected</a> groupshow</i></li>, Center for Digital Arts, Brattleboro, VT <span style="color:red; text-shadow:2px 2px 2px black;">OPENING APRIL 12th</span></li>
+
+  </list>
+  </center>
+  </div>
+</div>
+
+
+
+
+<div class="images">
+<center>
+<a href="http://freegucci.info/painting11.2"><img src="keyboard.gif" height="300px"></a><br><br><br><br>
+<a href="http://whenthennow.tumblr.com/work"><img src="diamondgood.gif" height="400px"></a>
+<a href="http://freegucci.info/ipod"><iframe src="../../../csh.bz/gifmelter/melt.html@http%253A%252F%252Fdumpfm.s3.amazonaws.com%252Fimages%252F20120619%252F1340159818764-dumpfm-GucciSoFlosy-guccismokelofi.gif.html" style="width:575px; height:525px;" frameborder="0"></iframe></a >
+<a href="http://whenthennow.tumblr.com/work"><img src="diamondgood.gif" height="400px"></a>
+</center>
+</div>
+</body>
+</html>

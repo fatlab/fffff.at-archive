@@ -1,0 +1,20 @@
+User-agent: *
+Disallow: /feeds/
+Disallow: /redirects/
+Disallow: /inappfailed
+Disallow: /dash_share
+Disallow: /dash_upgrade
+Disallow: /apple_draft
+Disallow: /dash_subscribe
+Disallow: /dash_manage
+Disallow: /dash_activate
+Disallow: /subscriptions/
+
+# Allow important resources
+Allow: /css/
+Allow: /js/
+Allow: /img/
+Allow: /cheat_sheets/
+
+# Sitemap location
+Sitemap: https://kapeli.com/sitemap.xml

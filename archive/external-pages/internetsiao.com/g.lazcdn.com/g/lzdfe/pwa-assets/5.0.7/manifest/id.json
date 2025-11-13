@@ -1,0 +1,52 @@
+{
+  "name": "Lazada Progressive Web Application",
+  "short_name": "Lazada",
+  "gcm_sender_id": "332173969373",
+  "icons": [
+    {
+      "src": "https://laz-img-cdn.alicdn.com/tfs/TB1WgUXk9_I8KJjy0FoXXaFnVXa-16-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "https://laz-img-cdn.alicdn.com/tfs/TB1YwUXk9_I8KJjy0FoXXaFnVXa-32-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "https://laz-img-cdn.alicdn.com/tfs/TB14yopk4rI8KJjy0FpXXb5hVXa-180-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "https://laz-img-cdn.alicdn.com/tfs/TB1iwI5kY_I8KJjy1XaXXbsxpXa-192-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://laz-img-cdn.alicdn.com/tfs/TB155opk4rI8KJjy0FpXXb5hVXa-512-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.lazada.android",
+      "id": "com.lazada.android"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://itunes.apple.com/app/id785385147?mt=8"
+    },
+    {
+      "platform": "webapp",
+      "url": "https://m.lazada.co.id/basic-biz/manifest/manifest.json"
+    }
+  ],
+  "start_url": "https://www.lazada.co.id",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F36F20",
+  "theme_color": "#003E52"
+}

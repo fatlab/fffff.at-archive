@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /*.js$
+Allow: /*.js?*$
+Allow: /*/js$
+Allow: /*/js?*$
+Allow: /*.html$
+Allow: /*.html?*$
+Disallow: /

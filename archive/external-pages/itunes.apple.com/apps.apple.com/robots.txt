@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /WebObjects/*
+Disallow: /api/*
+Disallow: /includes/*
+Disallow: /v1/*
+Disallow: */search?*
+
+Sitemap: https://apps.apple.com/sitemaps_apps_index_chart_1.xml
+Sitemap: https://apps.apple.com/sitemaps_apps_index_app_1.xml
+Sitemap: https://apps.apple.com/sitemaps_apps_index_new-app_1.xml
+Sitemap: https://apps.apple.com/sitemaps_apps_index_story_1.xml
+Sitemap: https://apps.apple.com/sitemaps_apps_index_grouping_1.xml
+Sitemap: https://apps.apple.com/sitemaps_apps_index_static-url_1.xml

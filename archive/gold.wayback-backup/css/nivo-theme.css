@@ -1,0 +1,87 @@
+/*
+Skin Name: EFFE Nivo Slider Skin
+Skin URI: http://92five.net
+Skin Type: flexible
+Description: effe Nivo Slider Skin
+Version: 1.0
+Author: 92five
+Author URI: http://92five.net
+*/
+
+.theme-effe .nivoSlider {
+	width: 720px;
+	height: 320px;
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	background:#fff url(/web/20170705122637im_/http://www.gold.fffff.at/images/loading.gif) no-repeat 50% 50%;
+}
+.theme-effe .nivo-caption {
+	height: 0px;
+}
+.theme-effe .nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.theme-effe .nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.theme-effe .nivo-controlNav {
+	position: absolute;
+	left: 310px;
+	bottom: 5px;
+}
+.theme-effe .nivo-controlNav a {
+	display:block;
+	width:22px;
+	height:22px;
+	background:url(/web/20170705122637im_/http://www.gold.fffff.at/images/bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin-right:3px;
+	float:left;
+}
+.theme-effe .nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+.theme-effe .nivo-directionNav a {
+	display:block;
+	width:30px;
+	height:30px;
+	background:url(/web/20170705122637im_/http://www.gold.fffff.at/images/arrows.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+}
+.theme-effe a.nivo-nextNav {
+	background-position:-30px 0;
+	right:15px;
+}
+.theme-effe a.nivo-prevNav {
+	left:15px;
+}
+/*
+     FILE ARCHIVED ON 12:26:37 Jul 05, 2017 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:48:56 Nov 12, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 0.947
+  exclusion.robots: 0.063
+  exclusion.robots.policy: 0.046
+  esindex: 0.015
+  cdx.remote: 10.769
+  LoadShardBlock: 87.274 (3)
+  PetaboxLoader3.datanode: 125.154 (5)
+  load_resource: 229.644 (2)
+  PetaboxLoader3.resolve: 101.353 (2)
+*/

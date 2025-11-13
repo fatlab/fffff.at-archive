@@ -1,0 +1,144 @@
+@media (max-width: 768px) {
+  .wp-block-search.hide-on-mobile .background,
+  .wp-block-search.collapse-always .background {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    background: #d0d0d0;
+    padding: 10px 5px;
+  }
+
+  .wp-block-search.hide-on-mobile .wp-block-search__inside-wrapper:not(.show),
+  .wp-block-search.collapse-always .wp-block-search__inside-wrapper:not(.show) {
+    background: none !important;
+  }
+  .wp-block-search.hide-on-mobile .wp-block-search__input:not(.show),
+  .wp-block-search.collapse-always .wp-block-search__input:not(.show) {
+    display: none !important;
+  }
+
+  .wp-block-search.hide-on-mobile .wp-block-search__input.show::placeholder,
+  .wp-block-search.collapse-always .wp-block-search__input.show::placeholder {
+    color: white;
+  }
+  .wp-block-search.hide-on-mobile .wp-block-search__input.show,
+  .wp-block-search.collapse-always .wp-block-search__input.show {
+    border: none;
+    max-width: calc(100% - 20px);
+    /* This goes agains accesibility */
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid white;
+  }
+  /* Style for the inline SVG search icon */
+  .wp-block-search.hide-on-mobile .background + .search-icon,
+  .wp-block-search.collapse-always .background + .search-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    top: 114%;
+    width: 25px; /* Adjust based on SVG size */
+    height: 25px;
+    fill: currentColor; /* Ensures the icon inherits the text color */
+    z-index: 9999;
+  }
+
+  .wp-block-search.white input {
+    color: var(--wp--preset--color--primary) !important;
+  }
+
+  .wp-block-search.white button {
+    color: var(--wp--preset--color--primary) !important;
+  }
+
+  .wp-block-search.white input::placeholder {
+    color: var(--wp--preset--color--primary);
+    font-size: larger;
+  }
+
+  .wp-block-search.white .wp-block-search__inside-wrapper {
+    background: linear-gradient(
+      to bottom,
+      var(--wp--preset--color--transparent) 0%,
+      var(--wp--preset--color--transparent) 95%,
+      var(--wp--preset--color--primary) 100%
+    );
+  }
+
+  header .wp-block-search:not(.white) input {
+    color: white;
+  }
+
+  .wp-block-search:not(.white) input::placeholder {
+    color: white;
+  }
+
+  .wp-block-search:not(.white) .wp-block-search__inside-wrapper {
+    background: linear-gradient(
+      to bottom,
+      var(--wp--preset--color--transparent) 0%,
+      var(--wp--preset--color--transparent) 95%,
+      white 100%
+    );
+  }
+}
+
+@media (min-width: 768px) {
+  /* Style for the inline SVG search icon */
+  header .wp-block-search .wp-block-search__button {
+    width: 20px; /* Adjust based on SVG size */
+    height: 20px;
+  }
+
+  /* Styles for collapse-always on desktop */
+  .wp-block-search.collapse-always .background {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    background: #d0d0d0;
+    padding: 10px 5px;
+  }
+
+  .wp-block-search.collapse-always .wp-block-search__inside-wrapper:not(.show) {
+    background: none !important;
+  }
+  
+  .wp-block-search.collapse-always .wp-block-search__input:not(.show) {
+    display: none !important;
+  }
+
+  .wp-block-search.collapse-always .wp-block-search__input.show::placeholder {
+    color: white;
+  }
+  
+  .wp-block-search.collapse-always .wp-block-search__input.show {
+    border: none;
+    max-width: calc(100% - 20px);
+    /* This goes agains accesibility */
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid white;
+  }
+  
+  /* Style for the inline SVG search icon on desktop */
+  .wp-block-search.collapse-always .background + .search-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    top: 114%;
+    width: 25px; /* Adjust based on SVG size */
+    height: 25px;
+    fill: currentColor; /* Ensures the icon inherits the text color */
+    z-index: 9999;
+  }
+}

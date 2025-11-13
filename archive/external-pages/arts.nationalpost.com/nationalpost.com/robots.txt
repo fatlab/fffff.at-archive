@@ -1,0 +1,27 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /*?
+Allow: /wp-admin/admin-ajax.php
+Allow: /sitemap-story.xml?
+Allow: /sitemap-wired-video.xml?
+Allow: /sitemap-exclusive-video.xml?
+Allow: /*?r
+Allow: /*?amu
+
+User-agent: Googlebot-News
+Disallow: /category/sponsored/
+Disallow: /sponsored/
+Disallow: /category/uncategorized/
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+Sitemap: https://nationalpost.com/sitemap.xml
+Sitemap: https://nationalpost.com/sitemap-news.xml
+Sitemap: https://nationalpost.com/sitemap-category.xml
+Sitemap: https://nationalpost.com/sitemap-video.xml
+Sitemap: https://nationalpost.com/sitemap-old.xml
+Sitemap: https://nationalpost.com/sitemap-static.xml

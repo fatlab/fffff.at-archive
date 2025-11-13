@@ -1,0 +1,5 @@
+Sitemap: https://ascii.textfiles.com/sitemap.xml
+Sitemap: https://ascii.textfiles.com/news-sitemap.xml
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php

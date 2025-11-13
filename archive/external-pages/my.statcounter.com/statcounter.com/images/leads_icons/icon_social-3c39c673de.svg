@@ -1,0 +1,31 @@
+<svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Slice</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-715 368)">
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M -56 -816L 1304 -816L 1304 504L -56 504L -56 -816Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Leads" clip-path="url(#clip-0)">
+<path d="M -56 -816L 1304 -816L 1304 504L -56 504L -56 -816Z" fill="#E7EFF5"/>
+<g id="Subtract">
+<use xlink:href="#path0_fill" transform="matrix(-1 0 0 1 1283 -642)" fill="#FCFDFE"/>
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="matrix(-1 0 0 1 1283 -642)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="matrix(-1 0 0 1 1283 -642)" fill="#AEC4DB"/>
+</g>
+</g>
+<g id="Icon &#226;&#128;&#148; Speech">
+<g id="Icon &#226;&#128;&#148; Speech">
+<use xlink:href="#path2_fill" transform="translate(717 -367)" fill="#064685"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 665 1015L 665 0L 4 0C 1.79089 0 0 1.79083 0 4L 0 1011C 0 1013.21 1.79089 1015 4 1015L 665 1015Z"/>
+<path id="path1_stroke_2x" d="M 665 1015L 665 1016L 666 1016L 666 1015L 665 1015ZM 665 0L 666 0L 666 -1L 665 -1L 665 0ZM 666 1015L 666 0L 664 0L 664 1015L 666 1015ZM 4 1L 665 1L 665 -1L 4 -1L 4 1ZM 1 4C 1 2.34313 2.34317 1 4 1L 4 -1C 1.23862 -1 -1 1.23854 -1 4L 1 4ZM 1 1011L 1 4L -1 4L -1 1011L 1 1011ZM 4 1014C 2.34317 1014 1 1012.66 1 1011L -1 1011C -1 1013.76 1.23861 1016 4 1016L 4 1014ZM 665 1014L 4 1014L 4 1016L 665 1016L 665 1014Z"/>
+<path id="path2_fill" d="M 2.3353 5.74319C 2.3353 3.98139 4.1833 2.55251 6.47 2.55251C 8.7693 2.55251 10.63 3.98139 10.63 5.74319C 10.63 7.50419 8.7693 8.9337 6.47 8.9337C 4.1833 8.9337 2.3353 7.50419 2.3353 5.74319ZM 0 5.7169C 0 8.8826 2.9034 11.4475 6.4942 11.4475C 6.5764 11.4475 6.6481 11.422 6.7314 11.422C 8.5436 13.5532 11.8856 14 11.8856 14C 10.6532 13.2473 10.6172 11.4861 10.6647 10.0822C 12.0753 9.0353 13 7.4785 13 5.7169C 13 2.5649 10.0839 0 6.4942 0C 2.9034 0 0 2.5649 0 5.7169Z"/>
+</defs>
+</svg>

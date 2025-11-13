@@ -1,0 +1,6 @@
+BODY { font-family: Verdana; font-size: 13px; line-height: 1.3; }
+
+.page { background-color: #FFFFFF; width: 100%; }
+
+/* Blocs non affichés */
+.page_name, .wiki_name, .header, .footer, .commentsheader, .commentform, .copyright { display: none; }

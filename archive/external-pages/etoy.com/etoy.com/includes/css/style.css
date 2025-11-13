@@ -1,0 +1,399 @@
+@import url("particles-grid.css");
+
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900');
+@import url("../font/font-awesome/css/font-awesome.min.css"); */
+
+@import url('../../../fonts.googleapis.com/css2@family=Open+Sans%253Awght@300%3B400%3B600%3B700%3B800&display=swap.css');
+
+html {    
+    display: block;
+    font-size:100%;
+    height: 100%;
+}
+body {
+    font-size: 0.95rem;
+    /* font-family: 'Roboto', sans-serif;
+background: #000; */
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: block;
+}
+/* ---------------- background ---------------- */
+
+.startseite{
+    background: url(../../files/images/site/bg/tanks-img-8157.jpg) no-repeat top left fixed;
+    background-size: cover;
+}
+.about{
+    background: url(../../files/images/site/bg/grubenstr-198.jpg) no-repeat top left fixed;
+    background-size: cover;
+}
+.fundamentals{
+    background: url(../../files/images/site/bg/tanks-017-mob863_1096881214.jpg) no-repeat top left fixed;
+    background-size: cover;}
+
+.art-shows{
+    background: url(../../files/images/site/bg/img-0687.jpg) no-repeat top left fixed;
+    background-size: cover;
+}
+.etoy-share{
+    background: url(../../files/images/site/bg/share-dscn0131.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.hologram{
+    background: url(../../files/images/site/bg/tanks-img-8149.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.publications{
+    background: url(../../files/images/site/bg/2011-etoy-tanks-zh-binz-42.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.info-sheets{
+    background: url(../../files/images/site/bg/etoy-tanks-binz-08.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.presspictures{
+    background: url(../../files/images/site/bg/tank-img-8153.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.selected-press{
+    background: url(../../files/images/site/bg/mission-eternity-img-0723-1.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.etoy-identity{
+    background: url(../../files/images/site/bg/tanks-img-8149.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.crew-and-credits{
+    background: url(../../files/images/site/bg/tanks-img-4852.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.alliances{
+    background: url(../../files/images/site/bg/grubenstr-153.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.projects{
+    background: url(../../files/images/site/bg/mission-eternity-florence-img-3667.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.mission-eternity{
+    background: url(../../files/images/site/bg/2008-m221e-sacophagus.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.brood{
+    background: url(../../files/images/site/bg/mission-eteernity-brood-P1010298.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.manifesta7{
+    background: url(../../files/images/site/bg/img-5925.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.china-mission{
+    background: url(../../files/images/site/bg/etoy_synthetictimes-040-bg.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.open-source{
+    background: url(../../files/images/site/bg/britney.png) no-repeat top left fixed;
+    background-size: cover;    
+}
+.daycare{
+    background: url(../../files/images/site/bg/daycare.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.toywar{
+    background: url(../../files/images/site/bg/scull2.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.etoy-tanks{
+    background: url(../../files/images/site/bg/grubenstr-195.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+.timezone{
+    background: url(../../files/images/site/bg/timezone.jpg) no-repeat top right fixed;
+    background-size: cover;    
+}
+.hijack{
+    background: url(../../files/images/site/bg/nica.jpg) no-repeat top right fixed;
+    background-size: cover;    
+}
+.contact{
+    background: url(../../files/images/site/bg/011-protected_by_etoy.jpg) no-repeat top left fixed;
+    background-size: cover;    
+}
+
+/* ----- basic styles ----- */
+.container {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .88) 80%, transparent);
+    min-height: 100%
+}
+header {
+margin: 0 0 30px;
+}
+
+footer {
+    color: #aaa;
+    padding-top: 20px;
+    margin-top: 50px;
+    border-top: 1px solid #232323;
+}
+
+footer hr{
+    margin:7px 0;  
+    border-top: solid 1px #232323;
+}
+.main{
+    margin-top: 50px;
+}
+a,
+a:visited {
+    text-decoration: none;
+    color: #ff6600;
+}
+
+a:hover,
+a:active {
+    color: #fff;
+}
+p, h1, h2, h3, h4, h5 {
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+	}
+p {
+    line-height:180%;
+    margin: 0 0 20px;
+	}
+h1{
+    font-size: 1.8rem;
+	font-weight: 600;
+	line-height:130%;
+      margin-top:0 ;
+	}
+h2{
+    font-size: 1.6rem;
+	font-weight: 600;
+	line-height:150%;
+      margin-top:0 ;
+	}
+h3 {
+	font-size: 1.4rem;
+	line-height:150%;
+        font-weight: 600;
+      margin-top:0 ;
+
+ 	}
+h4{
+    font-size: 1.05rem;
+    line-height:150%;
+     font-weight: 600;
+      margin:0 ;
+} 	
+
+hr {
+    border: 0;
+    margin: 20px 0;  
+    border-top: solid 1px #656565;
+}
+ul.nobullet {
+margin: 0 0 20px -20px;
+}
+ul.nobullet li {
+    list-style-type: none !important;
+}
+
+ul.nobullet li:before {
+    content: "– ";
+    display: inline-block;
+    width: 20px;
+    margin: 0 0 0 -20px;
+    padding: 0;
+}
+
+.disclaimer {
+    border: 1px solid #656565;
+    font-size: 11px;
+    color: #656565;
+    padding: 5px;
+    margin:30px 0 15px;
+}
+
+.border {
+    border: 1px solid #ff6600;
+    padding: 10px;
+    background: black;
+}
+
+/* LIST */
+ol {
+    padding: 0 0 0 25px;
+}
+ol li{
+    padding-bottom: 15px;
+}
+
+li {
+    line-height: 160%;
+}
+/* funfamentals - year-list */
+ul.year-list {
+    border-top: 1px solid #333;
+    list-style-type: none;
+    padding: 0;
+}
+ul.year-list li {
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+    line-height: 160%;
+}
+
+span.year,
+span {
+    display: block;
+}
+
+@media screen and (min-width : 600px) {
+span.year, span {
+        display: table-cell;
+    }
+    span.year {
+        width: 100px;
+    }
+}
+	
+/* ---------------- text-align ---------------- */
+.center{
+	text-align: center;
+	}
+.left-text{
+	text-align: left;
+	}
+.right-text{
+	text-align: right;
+	}
+.valign-text{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	justify-content: space-around;
+  align-items: center;
+	min-height:100px;  
+	}	
+/* ---------------- video-images ---------------- */
+img.responsive{
+	max-width: 100%;
+	height:auto;
+	}
+.video-container {
+   position: relative;
+   padding-bottom: 56.25%;
+   padding-top: 30px;
+   height: 0;
+   overflow: hidden;
+    margin: 0 0 20px;
+   }
+.video-container iframe,
+.video-container object,
+.video-container embed {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   } 
+
+
+/* -------------- navi und sub navigation------------- */
+#mainnav {
+    margin-bottom: 10px;
+}
+#mainnav ul, #subnav ul {
+	margin: 0;
+    padding: 0;
+	}
+
+#mainnav li {
+	display: inline-block;
+	}
+#mainnav a {
+	padding: 0 15px 0 0;
+	text-transform:uppercase;
+	font-size:1.2em;
+	transition: all 0.3s linear;
+	}
+
+#mainnav li a.selected{
+	color: #ffffff;
+	}
+
+#subnav {
+    margin: 0;
+}
+#subnav li {
+    display: inline-block;
+    background: #232323;
+    padding: 5px 8px;
+    margin: 0 5px 5px 0;
+}
+#subnav a,
+#subnav a:visited {
+    color: #656565;
+    color: #b5b5b5;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.03rem;
+}
+
+#subnav li a.selected,
+#subnav li a:hover{
+	color: #fff;
+	}
+
+.hidden {
+    display: none;
+}
+
+/* -------------- Contact Form ------------- */
+.contactform {
+    min-height: 300px;
+}
+
+input, 
+textarea {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    border: 1px solid #656565;
+    background: rgba(255, 255, 255, 0.85);
+}
+input:invalid, 
+textarea:invalid {
+    border: 2px solid red;
+}
+textarea{
+    min-height: 150px;
+}
+input[type='reset'], input[type='submit'] {
+    border: none; 
+    width: 120px;
+}
+input[type='reset']{
+    margin-right: 15px;
+    background: #656565;
+    color: #fff; 
+}
+input[type='submit']{
+    margin-right: 10px;
+    background: #ff6600;
+    color: #fff; 
+}

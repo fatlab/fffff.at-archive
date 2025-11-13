@@ -1,0 +1,454 @@
+/*
+  960 Grid System ~ Text CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+
+body {
+  font: 13px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+  @import url(../../fonts.googleapis.com/css@family=Yellowtail.css);
+}
+
+pre,
+code {
+  font-family: 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+}
+
+hr {
+  border: 0 #ccc solid;
+  border-top-width: 1px;
+  clear: both;
+  height: 0;
+}
+
+/* `Headings
+----------------------------------------------------------------------------------------------------*/
+
+h1 {
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 23px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+h4 {
+  font-size: 19px;
+}
+
+h5 {
+  font-size: 17px;
+}
+
+h6 {
+  font-size: 15px;
+}
+
+/* `Spacing
+----------------------------------------------------------------------------------------------------*/
+
+ol {
+  list-style: decimal;
+}
+
+ul {
+  list-style: disc;
+}
+
+li {
+  margin-left: 30px;
+}
+
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset,
+figure {
+  margin-bottom: 20px;
+}
+
+
+
+p.copyright{
+	opacity:0;
+	font-family: 'Yellowtail', cursive;
+	}
+
+
+p.copyright:hover{
+	color: white;
+	opacity:1;
+	font-family: 'Yellowtail', cursive;
+	font-size:16px;
+	}
+
+span.copyright{
+	color: #696969;
+	background-color: #696969;
+	opacity:1;
+	font-family: 'Yellowtail', cursive;
+	font-size:12px;
+	}
+
+span.copyright:hover{
+	color: white;
+	background-color: transparent;
+	opacity:1;
+	font-family: 'Yellowtail', cursive;
+	font-size:12px;
+	}
+
+.tr
+	{body: width=2000;}
+	
+#button{
+	position: static;
+	z-index: 3;
+	margin-bottom:20px;
+	margin-top:20px;
+	}
+#button1{
+	position: static;
+	z-index: 3;
+	margin-bottom:20px;
+	margin-top:50px;
+	}
+#button2{
+	position: absolute;
+	z-index: 3;
+	margin-bottom:20px;
+	margin-top:50px;
+	}
+    
+#z1 {
+    position:static;
+    border:none;
+    margin-top:14px;
+    margin-bottom:14px;
+    margin-right:auto;
+    margin-left:auto;
+    width:1024px;
+    z-index=-1;
+    }
+    
+#z2 {
+    position:absolute;
+    border:none;
+    margin-right:none;
+    margin-left:none;
+    width:1024px;
+    z-index=1;
+    }
+    
+#vid{
+    position:static;
+	margin-bottom:10px;
+	margin-top:10px;
+	z-index=-2;
+	}
+
+#vidp{
+    position:static;
+	margin-bottom:10px;
+	margin-top:20px;
+	z-index=-2;
+	}
+
+#vidq{
+    position:static;
+	margin-top:50px;
+	z-index=-2;
+	}
+
+#vidr{
+    position:static;
+	margin-top:-50px;
+	z-index=-2;
+	}
+
+#vidrr{
+    position:static;
+	margin-top:-20px;
+	z-index=-2;
+	}
+
+#vid2{
+    position:static;
+	margin-top:50px;
+	z-index=-1;
+	}
+
+#vid2a{
+    position:static;
+	margin-top:190px;
+	z-index=-1;
+	}
+
+#vid2b{
+    position:static;
+	margin-top:85px;
+	z-index=-1;
+	}
+
+#vid2c{
+    position:static;
+	margin-bottom:10px;
+	margin-top:10px;
+	z-index=-2;
+	}
+
+#vid2d{
+    position:absolute;
+	margin-top:50px;
+	z-index=-1;
+	}
+	
+#vid3{
+    position:absolute;
+	margin-top:300px;
+	z-index=1;
+	}
+
+#vid3a{
+    position:absolute;
+	margin-top:200px;
+	z-index=2;
+	}
+
+#vid3b{
+    position:absolute;
+	margin-top:-200px;
+	z-index=-22;
+	}
+    
+#vid3c{
+    position:absolute;
+	margin-top:-100px;
+	z-index=2;
+	}
+	
+#vid4{
+    position:absolute;
+	margin-top:170px;
+	z-index=2;
+	}
+
+#vid5{
+    position:absolute;
+    margin-top:10px;
+	z-index=2;
+	}
+
+#vid5a{
+    position:absolute;
+    margin-top:10px;
+	z-index= -3;
+	}
+    
+#vid5b{
+    position:static;
+    margin-top:10px;
+	z-index=2;
+	}
+    
+#vid6{
+    position:static;
+    margin-top:-100px;
+	z-index= -22;
+	}
+    
+#vid7{
+    position:static;
+	margin-bottom:50px;
+	margin-top:50px;
+	z-index=-2;
+	}
+
+#vid8{
+    position:static;
+	margin-bottom:100px;
+	margin-top:100px;
+	z-index=-2;
+	}
+    
+#flou{
+    position:absolute;
+	margin-top:430px;
+	z-index=4;
+	}
+    
+#vidA{
+	position:absolute;
+	z-index=-2;
+	margin-top:140px;
+	}
+
+#vidB{
+	position:absolute;
+	z-index=-3;
+	margin-top: 640px;
+	}
+
+#vidC{
+	position:absolute;
+	z-index=-4;
+	margin-top: 480px;
+	}
+
+#vidD{
+	position:absolute;
+	z-index=-5;
+	margin-top: 320px;
+	}
+
+#vidE{
+	position:absolute;
+	z-index=-6;
+	margin-top: 160px;
+	}
+	
+#vidF{
+	position:absolute;
+	z-index=-7;
+	}
+
+#b1{
+	position:fixed; 
+	z-index:-20;
+	}
+
+#b2{
+	position:absolute;
+	z-index:-19; 
+	margin-top:10px;
+    	margin-bottom:10px;
+	}
+	
+#b3{
+	position:absolute;
+	z-index:-18;
+	margin-top:50px;
+	}
+
+.lg{
+	z-index=-41;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	position:absolute;
+	}
+
+.lg2{
+	z-index=-42;
+	position:fixed;
+	width=2200px;
+	}
+	
+.marb{
+	margin-top: 25px;
+	margin-bottom: 25px;
+	margin-left: 150px;
+	}
+	
+.marbcon1{
+	z-index:50;
+	position: relative;
+	}
+	
+.marbcon2{
+	z-index:-50;
+	margin-top: 75px;
+	position:absolute;
+	}
+
+.marbcon3{
+	z-index:-75;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	position:absolute;
+	}
+
+#curt_f{
+	z-index:77;
+	position: relative;
+		margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	}
+
+#curt_b{
+	z-index:-77;
+	position: absolute;
+		margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	}
+
+#b4{position:absolute;z-index:-17;margin-top:80px;}
+#b41{position:absolute;z-index:-15;margin-top:160px;}
+#b5{position:absolute;z-index:-16;margin-top:160px;}
+#b51{position:absolute;z-index:-16;margin-top:340px;}
+#b52{position:absolute;z-index:-16;margin-top:420px;}
+#b6{position:absolute;z-index:-15;margin-top:500px;}
+#b61{position:absolute;z-index:-15;margin-top:560px;}
+#b7{position:absolute;z-index:-16;margin-top:620px;}
+#b8{position:absolute;z-index:-13; margin-top:700px; }
+#b9{position:absolute;z-index:-11;margin-top:700px;}
+#b10{position:absolute;z-index:-11;}
+#1b{z-index:-22; position:absolute;}
+
+
+#phot{
+    margin-top: 80px;
+    margin-left: 80px;
+    margin-right: auto;
+    display:block;
+    position:static;
+    }
+
+#primarycare{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 160px;
+    margin-right: auto;
+    display:block;
+    position:static;
+    }
+    
+#dump{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 80px;
+    margin-right: auto;
+    display:block;
+    position:static;
+    }
+
+#like{
+	position: absolute;
+	z-index: 1;
+	margin-top: 60px;
+	}
+
+.this{
+	float: left;
+	position: fixed;
+	margin: 20px;
+	z-index:6000;
+	}

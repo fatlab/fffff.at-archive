@@ -1,0 +1,657 @@
+/*
+Theme Name: ReadNote
+Description: Markup by <a href="http://dimox.name/">Dimox</a>, <a href="http://blogoart.ru/">Blogoart.ru</a>
+Author: Dimox
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font: 12px/18px Tahoma, Arial, Verdana, sans-serif;
+	color: #4C4C4C;
+	background: #FFF;
+}
+a {
+	color: #0085AA;
+	outline: none;
+}
+a:hover {
+	color: #DD5800;
+}
+p {margin: 0 0 18px}
+img {border: none}
+input {vertical-align: middle}
+input:focus,
+select:focus,
+textarea:focus {outline: none}
+blockquote {
+	margin: 0 0 18px 20px;
+	padding: 1px 12px;
+	background: #F4F4F4;
+	border-left: 3px solid #E5E5E5;
+}
+blockquote p {
+	padding: 8px 0;
+	margin: 0;
+}
+.clear {
+	clear: both;
+	height: 0;
+	overflow: hidden;
+}
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.alignleft {float: left}
+img.alignleft {margin: 5px 15px 5px 0}
+.alignright {float: right}
+img.alignright {margin: 5px 0 5px 15px}
+
+#wrapper {
+	width: 990px;
+	margin: 0 auto;
+	position: relative;
+  background: url(i/header.png) 3px 22px no-repeat;
+	padding: 122px 0 35px;
+}
+
+
+/* Header
+-----------------------------------------------------------------------------*/
+#logo {
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	width: 230px;
+	height: 25px;
+	padding: 54px 0 0 96px;
+	font-size: 11px;
+  font-weight: normal;
+	text-decoration: none;
+	color: #80919E;
+}
+#logo span {
+	display: none;
+}
+
+#nav {
+	position: absolute;
+	top: 58px;
+	right: 0;
+	list-style: none;
+  font-size: 11px;
+}
+#nav li {
+	float: left;
+  border-left: 1px solid #B2B2B2;
+	height: 9px;
+	line-height: 9px;
+	padding: 0 10px;
+}
+#nav li#n1 {
+	border: none;
+}
+#nav a {
+	float: left;
+	color: #000;
+	position: relative;
+	top: -1px;
+  padding: 0 0 2px 13px;
+}
+#nav a:hover {
+	color: #DD5800;
+}
+#n1 a {background: url(i/nav.gif) 0 2px no-repeat}
+#n2 a {
+  background: url(i/nav.gif) 0 -20px no-repeat;
+  padding-left: 14px;
+}
+#n3 a {background: url(i/nav.gif) 0 -41px no-repeat}
+#n1 a:hover {background-position: 0 -58px}
+#n2 a:hover {background-position: 0 -80px}
+#n3 a:hover {background-position: 0 -101px}
+
+#search {
+	position: absolute;
+	top: 46px;
+	left: 377px;
+	width: 254px;
+	height: 29px;
+}
+#search input {
+  font: italic 11px Georgia, "Times New Roman", Times;
+	color: #707070;
+	float: left;
+	border: none;
+	background: none;
+}
+#search input.search {
+	width: 207px;
+	padding: 8px 4px 8px 11px;
+}
+#search input.go {
+	cursor: pointer;
+	width: 32px;
+	height: 29px;
+}
+
+#sections {
+  background: #E96D09 url(i/section.png) 0 100% no-repeat;
+	padding: 0 0 20px;
+	margin: 0 0 32px;
+}
+#secbg {
+  background: url(i/section.png) no-repeat;
+	min-height: 93px;
+  font-size: 11px;
+  line-height: 16px;
+	color: #FFF;
+	padding: 14px 0 0 23px;
+	overflow: hidden;
+	height: 1%;
+}
+#sections .caption {
+  font-weight: bold;
+	color: #FFF79A;
+	margin: 0 0 10px;
+}
+#sections li {
+	list-style: none;
+}
+#sections a {
+	color: #FFF;
+  text-decoration: none;
+}
+#sections a:hover {
+  text-decoration: underline;
+}
+#section1 {
+	float: left;
+	width: 228px;
+	padding: 0 29px 0 0;
+}
+#section1 ul {
+	width: 100%;
+	overflow: hidden;
+  background: url(i/line1.gif) 0 16px no-repeat;
+}
+* html #section1 ul {background-position: 0 17px}
+*+html #section1 ul {background-position: 0 17px}
+#section1 li {
+	float: left;
+	width: 104px;
+	padding: 0 10px 0 0;
+}
+#section1 a {
+  background: url(i/bullet1.gif) 0 5px no-repeat;
+	padding: 0 0 0 9px;
+}
+#section2 {
+	float: left;
+	width: 380px;
+	padding: 0 29px 0 0;
+}
+#section2 ul {
+	width: 100%;
+	overflow: hidden;
+  background: url(i/line2.gif) 0 16px no-repeat;
+}
+* html #section2 ul {background-position: 0 17px}
+*+html #section2 ul {background-position: 0 17px}
+#section2 li {
+	float: left;
+	width: 170px;
+	padding: 0 20px 0 0;
+}
+#section2 a {
+  background: url(i/bullet1.gif) 0 5px no-repeat;
+  /*background: url(i/bullet2.gif) 0 2px no-repeat;*/
+	padding: 0 0 0 9px;
+	/*padding: 0 0 0 15px;*/
+}
+#section2 a.man {
+  background: url(i/bullet2.gif) -191px 2px no-repeat;
+}
+#section3 {
+	float: left;
+	width: 290px;
+}
+#section3 .caption {
+	margin-left: 10px;
+}
+#rss {
+	float: left;
+	width: 42px;
+	height: 42px;
+  background: url(i/subscribes.gif) no-repeat;
+  text-indent: -9999px;
+	padding: 0 16px 0 0;
+}
+#subscribes {
+	padding: 5px 0 0;
+  line-height: 14px;
+	overflow: hidden;
+	height: 1%;
+}
+#section3 a {
+  text-decoration: underline;
+}
+#section3 a:hover {
+  text-decoration: none;
+}
+#subscribes ul {
+	width: 100%;
+	overflow: hidden;
+	margin: 9px 0 0;
+	padding: 7px 0 3px;
+  background: url(i/line3.gif) no-repeat;
+}
+#subscribes li {
+	float: left;
+  padding-right: 14px;
+}
+#subscribes ul a {
+	color: #FFF79A;
+	position: relative;
+}
+a#rss2mail {
+	padding: 0 0 4px 25px;
+  background: url(i/subscribes.gif) 0 -46px no-repeat;
+}
+a#twitter {
+	padding: 0 0 1px 19px;
+  background: url(i/subscribes.gif) 0 -66px no-repeat;
+}
+
+.advs {
+	width: 968px;
+	overflow: hidden;
+	margin: -23px 0 32px;
+	padding: 0 0 0 22px;
+}
+.advs .adv {
+	float: left;
+	padding: 0 10px 10px 0;
+}
+
+
+/* Middle
+-----------------------------------------------------------------------------*/
+#middle {
+	width: 100%;
+	overflow: hidden;
+	height: 1%;
+}
+.column {
+	float: left;
+	display: inline;
+	width: 479px;
+  border-right: 3px solid #F0F0F0;
+	padding: 0 14px 0 0;
+}
+#right {
+  border-right: none;
+  border-left: 3px solid #F0F0F0;
+  margin-left: -3px;
+	padding: 0 0 0 14px;
+}
+
+.post {
+	margin: 0 0 40px;
+}
+.phead {
+	padding: 0 0 0 48px;
+	overflow: hidden;
+	height: 1%;
+	margin: 0 0 18px;
+}
+.pdate {
+	float: left;
+	display: inline;
+	margin: 3px 0 0 -48px;
+  font-size: 11px;
+  line-height: 12px;
+	width: 39px;
+	height: 34px;
+	padding: 5px 0 0;
+  background: #E9872D url(i/date.gif) no-repeat;
+  text-align: center;
+	color: #FFF;
+}
+.pdate span {
+	display: block;
+  font-weight: bold;
+}
+#middle h2 {
+	font: 20px/22px Arial, Tahoma, sans-serif;
+	margin: 0 0 18px;
+}
+#middle .phead h2 {
+	margin: 0;
+}
+#middle h2 a {
+	color: #000;
+}
+#middle h2 a:hover {
+	text-decoration: none;
+}
+.pmeta {
+	font-size: 11px;
+	margin: 2px 0 0;
+	color: #3B3B3B;
+}
+.pauthor {
+  margin-right: 2px;
+  background: url(i/author.gif) 0 2px no-repeat;
+	padding: 0 0 0 13px;
+}
+.pauthor span {
+	color: #DD5800;
+}
+.pcat {
+  margin-left: 2px;
+}
+.entry {
+	width: 100%;
+	overflow: hidden;
+}
+#middle .entry h2,
+#middle .entry h3,
+#middle .entry h4,
+#middle .entry h5,
+#middle .entry h6 {
+	font: 20px/22px Arial, Tahoma, sans-serif;
+	margin: 25px 0 18px;
+}
+#middle .entry h3 {font-size: 18px}
+#middle .entry h4 {font-size: 17px}
+#middle .entry h5 {font-size: 16px}
+#middle .entry h6 {font-size: 15px}
+.post ul,
+.post ol {
+	margin: 0 0 18px 30px;
+}
+.post li ul, .post li ol {
+	margin: 0;
+}
+.post li li {
+	margin-left: 18px;
+}
+.pmeta2 {
+  font-size: 11px;
+	height: 27px;
+	overflow: hidden;
+	line-height: 25px;
+  background: #F6F7F6 url(i/pmeta2.gif) no-repeat;
+  padding-left: 4px;
+	color: #575859;
+}
+.pmbg {
+	height: 27px;
+  background: url(i/pmeta2.gif) 100% 0 no-repeat;
+	padding: 0 2px 0 0;
+}
+.comments {
+	float: right;
+	height: 23px;
+	line-height: 21px;
+	margin: 2px 0 0;
+  background: #DDE2E5 url(i/comments.gif) no-repeat;
+  padding-left: 31px;
+}
+.cmtbg {
+	float: left;
+	height: 23px;
+  background: url(i/comments.gif) 100% 0 no-repeat;
+  padding-right: 7px;
+}
+.ptags a {
+	color: #000;
+}
+.ptags a:hover {
+	color: #DD5800;
+}
+.go2blog {
+	float: left;
+	width: 92px;
+	height: 23px;
+	line-height: 21px;
+	margin: 2px 5px 0 -2px;
+	padding: 0 0 0 6px;
+	color: #000;
+  background: url(i/go2blog.gif) no-repeat;
+	position: relative;
+}
+
+#middle h3 {
+	font-size: 14px;
+	margin: 0 0 10px;
+}
+div.pagetitle {
+	margin: 0 0 40px;
+	padding: 0 0 9px;
+	text-align: center;
+	font-size: 17px;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.commentlist {
+	margin: 20px 0 5px;
+}
+.commentlist li {
+	padding: 3px 0 10px;
+	list-style: none;
+}
+.commentlist ul.children {
+	margin: 0 0 -3px;
+}
+.commentlist ul.children li {
+	padding: 12px 0 5px 25px;
+}
+.avatar {
+	float: left;
+	display: inline;
+	border: 1px solid #DDD;
+	padding: 2px;
+	margin: -2px 7px 0 0;
+	background: #FFF;
+}
+.fn {
+	font-style: normal;
+	font-weight: bold;
+}
+.commentmetadata {
+	font-size: 11px;
+	color: #888;
+	margin: 0 0 12px;
+}
+.commentmetadata a {
+	text-decoration: none;
+	color: #888;
+}
+.commentmetadata a:hover {
+	text-decoration: underline;
+}
+.reply {
+	margin: -10px 0 10px;
+	font-size: 11px;
+}
+#respond h3 {
+	margin: 30px 0 16px;
+}
+#cancel-comment-reply {
+	margin: 0 0 12px;
+}
+
+#commentform p {
+	margin: 0 0 8px;
+}
+#author, #email, #url, #comment, #submit {
+	font: 12px Arial, Tahoma;
+	padding: 4px 5px;
+	width: 190px;
+	border: 1px solid #BBB;
+}
+#comment {
+	width: 450px;
+	height: 150px;
+}
+#submit {
+	width: 160px;
+	height: 25px;
+	padding: 0;
+	background: #ECECEC;
+	cursor: pointer;
+	overflow: visible;
+}
+
+/*.navigation {
+	clear: both;
+	width: 100%;
+	overflow: hidden;
+	font-size: 11px;
+	font-weight: bold;
+	background: #FFF;
+	position: relative;
+}
+.navigation a {
+	color: #000;
+	float: left;
+	width: 141px;
+	height: 21px;
+	line-height: 19px;
+	padding: 0 0 0 35px;
+  background: #E8EEEF url(i/navigation.gif) no-repeat;
+}
+.navigation .alignright a {
+	background-position: 0 100%;
+	width: 153px;
+	padding: 0 0 0 23px;
+}
+.navigation a:hover {
+  text-decoration: none;
+}
+.navigation.comm {
+	padding: 0;
+	margin: -10px 0 10px;
+}
+*/
+
+/* Footer
+-----------------------------------------------------------------------------*/
+#footer {
+  border-top: 1px solid #E1E1E1;
+}
+#foot {
+	width: 990px;
+	margin: 0 auto;
+  font-size: 11px;
+	padding: 11px 0 40px;
+	overflow: hidden;
+	height: 1%;
+}
+#copyright {
+	float: left;
+	width: 325px;
+}
+#design {
+	float: right;
+	width: 325px;
+  text-align: right;
+}
+#design a {
+  font-weight: bold;
+}
+#counters {
+  text-align: center;
+}
+
+
+/*Kara-fix*/
+
+/*navigation*/
+.navigation {
+    font: bold 11px/18px Verdana,Arial,Tahoma,sans-serif;
+    overflow: hidden;
+    padding: 0 0 10px;
+    width: 100%;
+}
+.navigation span.pages {
+    text-transform: uppercase;
+}
+.navigation a, .navigation span {
+    padding: 0 2px;
+    text-decoration: none;
+}
+.navigation span.current {
+    color: #D21E00;
+    font-size: 14px;
+}
+
+.retweet {
+    float: right;
+    margin: -41px 0 0 0;
+    padding: 0;
+}
+
+/*subscribe*/
+#mc-embedded-subscribe {
+	background: url("../../../img/button.png")
+ no-repeat;
+	width: 165px;
+	height: 37px;
+	border: 0;
+	color: white;
+	font-family: Calibri;
+	font-size: 23px;
+	font-weight: bold;
+	font-style: normal;
+	text-shadow: #222 1px 1px 0;
+}
+.mc-field-group > input {
+	width: 159px;
+	height: 22px;
+}
+.post .mc-field-group {
+	display: inline;
+}
+.post #mce-responses {
+	display: inline;
+}
+.post .wrap-bttn {
+	display: inline;
+}
+.post .mc-field-group {
+	padding-right: 16px;
+}
+.post .wrap-bttn {
+	padding-left: 16px;
+}
+.post .subscribe_wrap {
+	margin: 0 0 10px 0;
+}
+.post .subscribe {
+	background: #F9FBFB;
+	border-radius: 3px;
+	font: 11px/12px Tahoma, Arial, sans-serif;
+	border: 1px solid green;
+	margin: auto;
+	max-width: 568px;
+}
+.post .subscribe p {
+	padding: 10px;
+}
+.post .subscribe #mc_embed_signup h3 {
+	margin: 0;
+}
+.post .subscribe #mc_embed_signup {
+	padding: 10px;
+}
+.post .subscribe #mc_embed_signup p {
+	margin: 0;
+}

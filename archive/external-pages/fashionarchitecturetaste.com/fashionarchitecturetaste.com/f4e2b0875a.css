@@ -1,0 +1,14 @@
+.links--container {
+    width: 100%;
+    max-width: 760px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+}
+
+.links--container ul {
+    column-count: 2;
+}

@@ -1,0 +1,83 @@
+﻿html, body {
+    font-size: 1vw;
+}
+
+#site_title {
+    position: fixed;
+}
+#site_minititle a, #site_minititle a:visited {
+    color: #fff;
+}
+.top_box, .sticky_box {
+    color: #fff;
+}
+
+
+
+#DitherStudiesRenders {
+    cursor: pointer;
+}
+
+
+.front_image_holder {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.front_image_desc {
+    /* position: -webkit-sticky; Required for Safari */
+    position: fixed;
+    right: 0;
+    top: 20%;
+    margin: 10px;
+    font-size: 3vw;
+    display: none;
+    text-align: right;
+    max-width: 60%;
+    background-color: rgba(0, 0, 0, 0.2);
+    font-family: 'Titillium Web', sans-serif;
+    line-height: 130%;
+    pointer-events: none;
+}
+
+.front_image_title {
+    font-size: 4vw;
+    font-family: 'Lato', sans-serif;
+}
+
+
+.front_image {
+    width: 100%;
+    height: auto;
+}
+
+
+/* from old stylesheet */
+
+@media screen and (min-width:850px) {
+    html, body {
+        font-size: 15px;
+    }
+    .front_image_desc {
+        /* position: -webkit-sticky; Required for Safari */
+        position: fixed;
+        right: 0;
+        top: 20%;
+        margin: 10px;
+        font-size: 4vw;
+        display: none;
+        text-align: right;
+        max-width: 60%;
+        background-color: rgba(0, 0, 0, 0.2);
+        font-family: 'Titillium Web', sans-serif;
+        line-height: 5vw;
+    }
+    .front_image_title {
+        font-size: 60px;
+        font-family: 'Lato', sans-serif;
+    }
+
+}

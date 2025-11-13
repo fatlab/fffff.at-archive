@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <title>gifmelter - chris shier / tim baker</title>
+  <!-- chris shier, noisia@gmail.com, http://csh.bz -->
+  <!-- tim baker, @timb -->
+  <meta name="description" content="melt animated gifs in ">
+  <!-- <link rel="stylesheet" type="text/css" href="./css/style.css"> -->
+  <link rel="icon" href="../../../../favicon.ico"/>
+  <link rel="image_src" href="https://csh.bz/gifmelter/img/1361557276411-dumpfm-GucciSoFlosy-Screen-shot-2013-02-22-at-1.21.00-PM.png"/>
+  <meta property="og:image" content="./img/1361557276411-dumpfm-GucciSoFlosy-Screen-shot-2013-02-22-at-1.21.00-PM.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style"\ content="black-translucent"/>
+  <meta name="apple-touch-fullscreen" content="yes"/>
+  <style type="text/css">
+    html, body, canvas, iframe, video {
+      margin: 0;
+      padding: 0;
+      border: 0; }
+
+    canvas iframe{
+      position: fixed; }
+
+    body, canvas {
+      background: black; 
+      cursor:crosshair;}
+    form:hover{
+      cursor:auto;
+    }
+    canvas{
+      cursor:none;
+    }
+    body{
+      background-color:black;
+      font-family: sans-serif;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+      text-shadow: 0px 0px 2px black, 0px 0px 1px black, 0px 0px 0px black;
+    }
+    a:hover {
+      text-shadow: 1px 1px 1px magenta;
+      color: rgba(0, 200, 200, 1);
+    }
+    #credit{
+      position: fixed;
+      top: 40px;
+      right: 10px;
+      padding: 0.25em 0.75em 0.5em 0.75em;
+      /*bottom: 10px;*/
+      /*right: 10px;*/
+      /*padding: 0.75em 1.5em 0.75em 1.5em;*/
+      background: hsla(0,0%,80%,0.5);
+      font-size: small;
+      border: 1px solid hsla(0,0%,50%,0.8);
+    }
+    #credit:hover {
+      border: 1px solid hsla(0,0%,88%,0.8);
+      background: rgba(0, 0, 0, 0.75);
+
+    }
+  </style>
+
+  <script src="script/gif.cc.js"></script>
+  <!--<script src="./script/gif.js"></script> -->
+
+</head>
+<body id="body" style="overflow:hidden; position:fixed;cursor:none;">
+  <canvas id="canvas" style="cursor:none;">this is a canvas tag</canvas>
+  <!--<p style="font-size:small;font-family:sans-serif;" >-->
+    <form style="font-size:small;font-family:sans-serif;top:10px;right:10px; position:fixed;opacity: 0.8" onsubmit="(function(){if (document.getElementById('urlInput').value) {window.location = 'http://csh.bz/gifmelter/melt.html?' + document.getElementById('urlInput').value} else{window.location = giveExample();}})(); return false" >
+        <input type="url" id="urlInput" style="text-align:right"; placeholder="paste a url here or just hit " style="width:18em;"/>
+        <input type="submit" style="border:2px outset buttonface;border-color:darkgrey" value="GO"/>
+    </form>
+  <!--</p>-->
+  <a href="http://csh.bz/"><div id="credit">by chris shier</div></a>
+</body>
+<script type="text/javascript" src="script/gifmelt.minify.js"></script>
+
+<!-- <script type="text/javascript" src="./script/window.js" id="windowScript"></script> -->
+<!-- <script type="text/javascript" src="./script/mouse.js" id="mouseScript"></script> -->
+<!-- <script type="text/javascript" src="./script/canvas.js" id="canvasScript"></script> -->
+<!-- <script type="text/javascript" src="./script/gifmelt-old.js" id="cafebar"></script> -->
+<!-- <script type="text/javascript" src="./script/examples.js"></script> -->
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-3889624-4']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</html>

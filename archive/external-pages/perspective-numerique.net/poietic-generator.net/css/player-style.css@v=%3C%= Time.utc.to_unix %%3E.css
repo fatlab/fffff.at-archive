@@ -1,0 +1,1316 @@
+/* =================================================
+   POIETIC GENERATOR PLAYER - CSS STYLES (REFACTORED)
+   ================================================= */
+
+/* ===== 1. RÉINITIALISATION GLOBALE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: black;
+    color: white;
+}
+
+/* ===== 2. STRUCTURE PRINCIPALE (FLEXBOX) ===== */
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overscroll-behavior: none;
+}
+
+/* ===== 3. PANNEAUX DE CONTRÔLE (GÉNÉRAL) ===== */
+.control-panel {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    box-sizing: border-box;
+}
+
+.panel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+/* ===== 4. ZONE CENTRALE (GRILLE) ===== */
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.main-zone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex: none;
+    position: relative;
+    background: black;
+    transition: background-color 0.3s ease;
+    z-index: 100;
+}
+
+#poietic-grid {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+    background: black;
+    z-index: 200;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#poietic-grid.active {
+    display: block !important; /* Forcer l'affichage quand active */
+}
+
+/* ===== STYLES DES CELLULES UTILISATEUR ===== */
+.user-cell {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.sub-cell {
+         width: 100%; 
+         height: 100%;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+/* ===== 5. STYLES DES ÉLÉMENTS DANS LES PANNEAUX ===== */
+
+.section-title {
+        text-align: center;
+    margin-bottom: 0.3rem;
+    font-size: 0.8rem;
+    color: #ccc;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.session-meta {
+        text-align: center;
+    font-size: 0.75rem;
+    color: white;
+        flex-shrink: 0;
+    line-height: 1.2;
+}
+
+.session-header {
+    display: flex;
+        align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    flex-shrink: 0;
+}
+
+.session-actions,
+.session-change {
+        display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+        align-items: center;
+    flex-shrink: 0;
+}
+
+.session-action {
+    display: block;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    user-select: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.session-action:hover:not(.inactive) { background: #444; }
+.session-action.inactive { background: #222; color: #666; cursor: not-allowed; border-color: #333; }
+
+.filters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.75rem;
+        width: 100%;
+    }
+
+.filter-row {
+        display: flex;
+        gap: 0.25rem;
+    align-items: center;
+}
+
+.filter-select {
+    flex: 1;
+    padding: 0.2rem 0.3rem;
+    background: #222;
+    color: white; 
+    border: 1px solid #444;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    min-width: 0;
+}
+.filter-select:focus { border-color: #666; outline: none; }
+
+.range-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.range-label {
+    font-size: 0.65rem;
+    color: #ccc;
+    text-align: left;
+    line-height: 1;
+    margin-bottom: 0.1rem;
+}
+
+.dual-range-wrapper {
+    position: relative;
+    height: 20px; /* Augmenté pour plus d'espace */
+    margin: 0.1rem 0;
+    padding: 2px 0; /* Padding pour éviter le clipping */
+}
+
+.dual-range-wrapper::before { 
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px; /* Légèrement plus épais */
+    background: #555;
+    transform: translateY(-50%);
+    z-index: 1;
+    border-radius: 1px;
+}
+
+.range-input {
+    position: absolute;
+        width: 100%;
+    height: 20px;
+    background: transparent;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    pointer-events: none;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.range-input::-webkit-slider-track {
+    background: transparent;
+    height: 20px;
+}
+
+.range-input::-moz-range-track {
+    background: transparent;
+    height: 20px;
+    border: none;
+}
+
+.range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; /* Plus grand */
+    height: 14px;
+    background: #666;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #888; /* Bordure plus épaisse */
+    pointer-events: all;
+    position: relative;
+    z-index: 2;
+    margin-top: -5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Ombre pour la visibilité */
+}
+
+.range-input::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: #666;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #888;
+    pointer-events: all;
+    position: relative;
+    z-index: 2;
+    margin-top: -5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.range-input.range-min::-webkit-slider-thumb { 
+    background: #555; 
+    border-color: #777;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+.range-input.range-max::-webkit-slider-thumb { 
+    background: #888; 
+    border-color: #aaa;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+.range-input.range-min::-moz-range-thumb { 
+    background: #555; 
+    border-color: #777;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+.range-input.range-max::-moz-range-thumb { 
+    background: #888; 
+    border-color: #aaa;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.filter-message {
+    background: #2a1810;
+    border: 1px solid #8b4513;
+    color: #ffa500;
+    padding: 0.3rem;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 1.2;
+    flex-shrink: 0;
+    margin-top: 0.3rem;
+}
+
+.pagination-controls {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+            align-items: center;
+    padding: 0.3rem 0;
+    font-size: 0.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.pagination-controls button { padding: 0.25rem 0.4rem; background: #333; color: white; border: 1px solid #555; border-radius: 3px; font-size: 0.65rem; cursor: pointer; transition: background 0.2s; }
+.pagination-controls button:hover:not(:disabled) { background: #444; }
+.pagination-controls button:disabled { background: #222; color: #666; cursor: not-allowed; border-color: #333; }
+.pagination-controls span { color: #ccc; font-size: 0.7rem; font-weight: normal; }
+
+
+/* ===== 6. CONTRÔLES DE LECTURE SPÉCIFIQUES (PANEL DROIT) ===== */
+#replay-playback-controls {
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    gap: 0;
+    padding: 0;
+}
+
+.playback-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.control-btn { padding: 0.4rem 0.9rem; font-size: 1.2rem; border: 1px solid #222; background: #111; color: white; border-radius: 4px; cursor: pointer; transition: all 0.2s ease; font-weight: bold; }
+.control-btn:hover { background: #333; }
+
+.progress-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    width: 100%;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.elapsed-time, .total-time {
+    color: #fff;
+    font-size: 0.75rem;
+    min-width: 3em;
+    text-align: center;
+    flex-shrink: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-row .progress {
+    flex: 1;
+    height: 2px;
+    background: #555;
+    border: none;
+    border-radius: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    direction: ltr;
+    transform: none;
+    margin: 0;
+}
+
+.progress-row .progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #888;
+    margin-top: -4px; 
+    position: relative;
+    z-index: 2;
+}
+
+.progress-row .progress::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #888;
+    margin-top: -4px;
+    position: relative;
+    z-index: 2;
+}
+
+.progress-row .progress::-webkit-slider-runnable-track { width: 100%; height: 2px; background: #555; border: none; border-radius: 0; }
+.progress-row .progress::-moz-range-track { width: 100%; height: 2px; background: #555; border: none; border-radius: 0; }
+
+.speed-control {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3em;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.speed-btn { background: none; border: none; color: #888; font-size: 0.9rem; font-weight: normal; padding: 0.2em 0.5em; border-radius: 3px; cursor: pointer; transition: color 0.2s, background 0.2s; }
+.speed-btn.selected { color: #fff; font-weight: bold; background: #222; }
+.speed-btn:not(.selected):hover { color: #bbb; }
+
+
+/* ===== 7. MEDIA QUERIES SPÉCIFIQUES ===== */
+
+/* Format paysage (layout de base) */
+@media (orientation: landscape) {
+    .container { flex-direction: row; }
+    .control-panel {
+        width: calc((100vw - 100vh) / 2);
+        min-width: 0;
+        max-width: 50vw;
+        height: 100vh;
+        overflow-y: auto;
+        padding: 1rem;
+    }
+    .grid-container { 
+        width: 100vh; 
+        height: 100vh; 
+    }
+    .main-zone { 
+        height: min(100vh, 66.66vw);
+        width: min(100vh, 66.66vw);
+        flex: 0 0 auto;
+        border-left: 1px solid #333; 
+        border-right: 1px solid #333; 
+    }
+    
+    .control-panel.left-panel .current-session-info .session-header {
+        flex-direction: column; /* Titre et meta sur lignes séparées */
+        align-items: center;
+        gap: 0.2rem;
+    }
+    .control-panel.left-panel .current-session-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    }
+    .control-panel.left-panel .session-change {
+        margin-top: auto; 
+    }
+    .control-panel.left-panel .session-change .session-action {
+    width: 100%;
+    }
+
+    .control-panel.right-panel #replay-playback-controls {
+        justify-content: flex-start; /* Grouper en haut */
+    }
+
+    /* Ajustements spécifiques pour le mode paysage - Sélection Session */
+    #session-selection-tools .filters-container .filter-row div,
+    #session-selection-tools .filters-container .filter-select {
+        font-size: 0.8rem; /* Augmentation de la taille de la police pour les filtres */
+    }
+
+    #session-selection-tools .pagination-controls button,
+    #session-selection-tools .pagination-controls span {
+        font-size: 0.75rem; /* Augmentation pour la pagination */
+    }
+
+    #session-selection-filters-right .filters-container .filter-row div,
+    #session-selection-filters-right .filters-container .range-label {
+        font-size: 0.8rem; /* Augmentation pour les labels de range */
+    }
+
+    /* Ajustements spécifiques pour le mode paysage - Lecture Session */
+    #replay-export-tools .current-session-info .section-title {
+        margin-bottom: 0.5rem; /* Espace au-dessus de EXPORT IMAGE */
+    }
+
+    #replay-export-tools .session-actions .session-action#export-video-action {
+        margin-bottom: 0.8rem; /* Espace entre EXPORT VIDEO et CHANGE SESSION (0.3rem gap + 0.5rem margin) */
+    }
+}
+
+/* Format portrait (tous types SAUF quasi-carré) */
+@media (orientation: portrait) and (max-aspect-ratio: 9/11) { /* Exclut les quasi-carrés */
+    .container { flex-direction: column; }
+    .control-panel {
+        width: 100vw;
+        height: calc((100vh - 100vw) / 2);
+        min-height: 60px; /* Augmenté pour plus d'espace */
+        max-height: 50vh;
+        padding: 0.6rem; /* Augmenté */
+        overflow-x: auto;
+        justify-content: space-evenly; 
+    }
+    .grid-container { 
+        width: 100vw; 
+        height: 100vw; 
+    }
+    .main-zone { 
+    width: 100%;
+        height: min(100vw, 66.66vh);
+        flex: 0 0 auto;
+        border-top: 1px solid #333; 
+        border-bottom: 1px solid #333;
+    }
+    
+    /* Forcer la grille carrée dans le container en portrait allongé */
+    .grid-container { 
+        width: 100vw; 
+        height: 100vw; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #poietic-grid {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100vw;
+        max-height: 100vw;
+    }
+
+    .control-panel .panel-section {
+        justify-content: space-evenly;
+        height: 100%;
+    }
+    
+    /* Ajustements spécifiques pour le mode portrait allongé - Sélection Session */
+    #session-selection-tools .filters-container {
+        gap: 0.4rem; /* Harmonisation espacement */
+    }
+    #session-selection-tools .filters-container .filter-row div,
+    #session-selection-tools .filters-container .filter-select {
+        font-size: 0.85rem; /* Augmentation de la taille de la police pour les filtres */
+    }
+    #session-selection-tools .filters-container .filter-select {
+        padding: 0.3rem 0.4rem; /* Plus de padding interne */
+    }
+
+    #session-selection-tools .pagination-controls {
+        margin-top: 0.6rem; /* Plus d'espace avant pagination */
+        padding: 0.4rem 0; /* Plus de padding vertical */
+    }
+    #session-selection-tools .pagination-controls button,
+    #session-selection-tools .pagination-controls span {
+        font-size: 0.8rem; /* Augmentation pour la pagination */
+    }
+    #session-selection-tools .pagination-controls button {
+        padding: 0.3rem 0.5rem; /* Plus de padding interne pour boutons */
+    }
+
+    #session-selection-filters-right .filters-container {
+        gap: 0.5rem; /* Harmonisation espacement */
+    }
+    #session-selection-filters-right .filters-container .filter-row div,
+    #session-selection-filters-right .filters-container .range-label {
+        font-size: 0.8rem; /* Augmentation pour les labels de range */
+    }
+    #session-selection-filters-right .filter-message {
+        font-size: 0.75rem;
+        padding: 0.4rem;
+    }
+
+    .control-panel.left-panel .panel-section {
+        justify-content: space-around;
+        align-items: stretch;
+        gap: 0.5rem; /* Augmenté */
+    }
+    
+    .control-panel.right-panel .panel-section {
+        justify-content: space-around;
+        align-items: center;
+        gap: 0.4rem; /* Augmenté */
+    }
+    .control-panel.left-panel .current-session-info .session-header {
+        flex-direction: row; 
+        justify-content: center;
+        gap: 0.5em;
+        align-items: baseline; /* Aligner sur la baseline */
+    }
+    .control-panel.left-panel .filters-container {
+        flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .control-panel.left-panel .pagination-controls {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row; /* Garder les boutons horizontaux */
+        justify-content: space-between;
+        align-items: center;
+    }
+    .control-panel.left-panel .filters-container .filter-row {
+        margin-bottom: 0.2rem;
+    }
+
+    .control-panel.right-panel #session-selection-filters-right .filters-container {
+        gap: 0.3rem;
+    }
+    
+    /* Spécifique au mode portrait allongé/medium */
+    .range-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.4rem;
+        width: 100%; /* Forcer la largeur complète */
+    }
+    .range-label { max-width: none; margin-bottom: 0; white-space:normal; text-align:left; }
+    .dual-range-wrapper { 
+        margin-right: 0; 
+        position: relative;
+        min-width: 120px; /* Largeur minimale pour éviter les collisions */
+        flex: 1; /* Prendre tout l'espace disponible */
+        width: 100%; /* Forcer la largeur complète */
+    }
+    .range-input { 
+        width: 100% !important; 
+    position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+    }
+    .range-input.range-max {
+        z-index: 2; /* Le max au-dessus du min */
+    }
+    
+    /* Amélioration spécifique pour Samsung Galaxy A51 et appareils similaires */
+    .range-input::-webkit-slider-thumb {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.5) !important; /* Ombre plus marquée */
+        border: 2px solid #fff !important; /* Bordure blanche pour contraste */
+    }
+    .range-input::-moz-range-thumb {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+        border: 2px solid #fff !important;
+    }
+    .range-input.range-min::-webkit-slider-thumb { 
+        background: #444 !important; 
+        border-color: #fff !important;
+        transform: scale(0.9); /* Légèrement plus petit pour différencier */
+    }
+    .range-input.range-max::-webkit-slider-thumb { 
+        background: #999 !important; 
+        border-color: #fff !important;
+        transform: scale(1.1); /* Légèrement plus grand pour différencier */
+    }
+    .range-input.range-min::-moz-range-thumb { 
+        background: #444 !important; 
+        border-color: #fff !important;
+        transform: scale(0.9);
+    }
+    .range-input.range-max::-moz-range-thumb { 
+        background: #999 !important; 
+        border-color: #fff !important;
+        transform: scale(1.1);
+    }
+
+    .control-panel.left-panel .session-header { flex-direction: row; gap: 0.3rem; align-items: baseline; }
+    .control-panel.left-panel .session-actions { gap: 0.1rem; }
+    .control-panel.left-panel .session-action { font-size: 0.65rem; padding: 0.2rem 0.4rem; }
+
+    .control-panel.right-panel .playback-controls { gap: 0.1rem; margin-bottom: 0.2rem; }
+    .control-panel.right-panel .progress-row { gap: 0.3em; margin-bottom: 0.2rem; }
+    .control-panel.right-panel .speed-control { gap: 0.3em; margin-top: 0; }
+}
+
+/* Format quasi-carré tablette - FORCER le mode portrait même si l'orientation est détectée comme landscape */
+@media (min-aspect-ratio: 9/11) and (max-aspect-ratio: 11/9) {
+    /* Forcer le layout en mode portrait pour les tablettes quasi-carrées */
+    .container { 
+        flex-direction: column !important; 
+    }
+    .grid-container { 
+        width: 100vw !important; 
+        height: 100vw !important; 
+    }
+    .main-zone { 
+        width: 100% !important;
+        height: min(100vw, 66.66vh) !important;
+        flex: 0 0 auto !important;
+        border-top: 1px solid #333 !important; 
+        border-bottom: 1px solid #333 !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+    .control-panel {
+        min-height: 50px;
+        max-height: 48vh;
+        padding: 0.4rem;
+        gap: 0.2rem;
+    }
+    .panel-section {
+        padding: 0.15rem;
+        gap: 0.15rem;
+        justify-content: flex-start;
+        height: 100%;
+    }
+    .section-title { 
+        display: block !important; 
+        font-size: 0.8rem !important;
+        margin-bottom: 0.15rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .filters-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 0.15rem;
+        justify-content: flex-start;
+        flex-grow: 1;
+    display: flex;
+        flex-direction: column;
+    }
+    .pagination-controls {
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 0.15rem;
+    justify-content: space-between;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+    align-items: center;
+        height: auto;
+        min-height: 28px;
+    }
+    .filter-row { gap: 0.15rem; margin:0; }
+    .filter-select { padding: 0.15rem 0.2rem; font-size: 0.7rem; }
+    .range-container { flex-direction: row; align-items: center; gap: 0.15rem; }
+    .range-label { font-size: 0.6rem; max-width: none; margin-bottom:0; white-space:normal; text-align:left; }
+    .dual-range-wrapper { height: 20px; margin: 0; flex: 1; width: 100%; }
+    .dual-range-wrapper::before { height: 4px; }
+    .range-input, .range-input::-webkit-slider-track, .range-input::-moz-range-track { height: 20px; width: 100%; }
+    .range-input::-webkit-slider-thumb, .range-input::-moz-range-thumb { width: 14px; height: 14px; margin-top: -5px; }
+    .pagination-controls button { padding: 0.15rem 0.25rem; font-size: 0.6rem; }
+    .pagination-controls span { font-size: 0.65rem; }
+    .filter-message { padding: 0.15rem; font-size: 0.6rem; margin: 0; }
+
+    .control-panel.left-panel .current-session-info .session-header {
+        flex-direction: row !important;
+        justify-content: center;
+        gap: 0.5em;
+        align-items: baseline;
+        font-size: 0.8rem;
+    }
+    .control-panel.left-panel .current-session-info .session-actions {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+        font-size: 0.8rem;
+    }
+    .control-panel.left-panel .current-session-info .session-action {
+        padding: 0.2rem 0.3rem;
+        font-size: 0.7rem;
+    width: 100%;
+        min-height: 28px;
+    }
+
+    .control-panel.right-panel .playback-controls { gap: 0.2rem; margin-bottom: 0.2rem; }
+    .control-panel.right-panel .playback-controls button { padding: 0.3rem 0.6rem; font-size: 1rem; min-height: 36px; }
+    .control-panel.right-panel .progress-row { flex-grow:1; margin: 0 4px; gap: 0.4em; }
+    .control-panel.right-panel .elapsed-time, .control-panel.right-panel .total-time { font-size: 0.8rem; min-width: 3em; }
+    .control-panel.right-panel .speed-control { gap: 0.2em; margin-top: 0; }
+    .control-panel.right-panel .speed-btn { font-size: 0.9rem; padding: 0.2em 0.3em; min-height: 28px; }
+
+    /* Ajustements spécifiques pour le mode portrait quasi-carré - Sélection Session */
+    #session-selection-tools .filters-container .filter-row:first-child div,
+    #session-selection-filters-right .filters-container .filter-row:first-child div {
+        display: none !important; /* Masquer les titres "Select date" et "Select duration..." avec !important */
+    }
+
+    #session-selection-tools .filters-container .filter-select {
+        font-size: 0.8rem; /* Augmenté */
+        padding: 0.25rem 0.35rem;
+    }
+    #session-selection-tools .pagination-controls button,
+    #session-selection-tools .pagination-controls span {
+        font-size: 0.75rem; /* Augmenté */
+    }
+    #session-selection-tools .pagination-controls button {
+        padding: 0.2rem 0.3rem;
+    }
+
+    #session-selection-filters-right .filters-container .range-label {
+        font-size: 0.75rem; /* Augmenté */
+    }
+    #session-selection-filters-right .filter-message {
+        font-size: 0.7rem; /* Augmenté */
+        padding: 0.2rem;
+    }
+
+    /* Ajustements spécifiques pour le mode portrait quasi-carré - Lecture Session */
+    #replay-export-tools .current-session-info .session-header {
+        flex-direction: row !important; /* Assurer que c'est en ligne */
+        align-items: baseline !important; /* Aligner sur la baseline */
+        justify-content: center !important;
+        gap: 0.4em !important; /* Espacement entre titre et meta */
+        margin-bottom: 0.3rem !important; /* Espace avant boutons réduit */
+    }
+    #replay-export-tools .current-session-info .section-title {
+        font-size: 0.8rem !important; /* Taille de police réduite pour le titre */
+        margin-bottom: 0 !important; /* Pas de marge en dessous du titre */
+    }
+    #replay-export-tools .current-session-info .session-meta {
+        font-size: 0.75rem !important; /* Taille de police réduite pour la meta */
+    }
+
+    /* Conteneurs des boutons d'action */
+    #replay-export-tools .session-actions,
+    #replay-export-tools .session-change {
+        gap: 0 !important; /* Supprimer l'espacement inter-boutons pour ce mode */
+        width: 100%; /* S'assurer qu'ils prennent toute la largeur disponible */
+    }
+
+    #replay-export-tools .session-actions .session-action,
+    #replay-export-tools .session-change .session-action {
+        font-size: 0.7rem !important; 
+        padding-top: 0.05rem !important; /* Padding vertical minimal */
+        padding-bottom: 0.05rem !important;
+        padding-left: 0.4rem !important;
+        padding-right: 0.4rem !important;
+        height: auto !important; /* Laisser la hauteur s'adapter au contenu et padding */
+        min-height: 0 !important; /* Pas de hauteur minimale héritée */
+        line-height: 1.3 !important; /* Ajuster pour un meilleur rendu de la police */
+        display: flex !important; 
+        align-items: center !important; 
+        justify-content: center !important; 
+        flex-shrink: 0 !important; 
+        box-sizing: border-box !important; 
+        overflow: hidden; 
+        width: 100%; /* Assurer que chaque bouton prend toute la largeur de son conteneur */
+        margin: 0.05rem 0 !important; /* Très petit espace vertical entre boutons si nécessaire, ou 0 */
+    }
+
+    /* Annuler la marge spécifique qui pourrait exister */
+    #replay-export-tools .session-actions .session-action#export-video-action {
+        margin-bottom: 0 !important; 
+    }
+
+    /* Réorganisation du panel de contrôle de lecture */
+    #replay-playback-controls {
+        flex-direction: column !important; /* Mettre les groupes en colonne: d'abord progress-row, puis playback-and-speed-row */
+        align-items: center !important; 
+        justify-content: center !important; 
+        gap: 0.15rem !important; /* Réduit: Diminuer distance entre bord inférieur main zone et track */
+    }
+    .playback-and-speed-row {
+    display: flex;
+        flex-direction: row !important; /* Boutons de lecture et vitesse en ligne */
+        align-items: center !important;
+        justify-content: center !important; /* Centrer horizontalement cette ligne de boutons */
+        gap: 0.8rem !important; /* Augmenté: Espacement horizontal entre groupe de contrôle et groupe de vitesse */
+        width: 100%;
+    }
+    #replay-playback-controls .playback-controls {
+        gap: 0.3rem !important; /* Espacement entre les boutons play/pause/reset */
+        margin-bottom: 0 !important;
+    }
+    #replay-playback-controls .control-btn {
+        padding: 0.3rem 0.6rem !important; 
+        font-size: 1rem !important;
+    }
+    #replay-playback-controls .speed-control {
+        gap: 0.2em !important; /* Espacement réduit entre boutons de vitesse */
+        margin-top: 0 !important;
+    }
+    #replay-playback-controls .speed-btn {
+        font-size: 0.8rem !important;  /* Augmenté */
+        padding: 0.2em 0.3em !important; /* Ajusté pour la nouvelle taille */
+    }
+    #replay-playback-controls .progress-row {
+        width: 95% !important; 
+        margin-bottom: 0 !important; 
+    }
+    #replay-playback-controls .elapsed-time,
+    #replay-playback-controls .total-time {
+        font-size: 0.75rem !important; /* Augmenté */
+    }
+
+    /* Ajustements spécifiques pour le mode portrait quasi-carré - Sélection Session */
+    #session-selection-tools .filters-container .filter-row:first-child div,
+    #session-selection-filters-right .filters-container .filter-row:first-child div {
+        display: none !important; /* Masquer les titres "Select date" et "Select duration..." avec !important */
+    }
+
+    #session-selection-tools .filters-container .filter-select {
+        font-size: 0.8rem; /* Augmenté */
+        padding: 0.25rem 0.35rem;
+    }
+    #session-selection-tools .pagination-controls button,
+    #session-selection-tools .pagination-controls span {
+        font-size: 0.75rem; /* Augmenté */
+    }
+    #session-selection-tools .pagination-controls button {
+        padding: 0.2rem 0.3rem;
+    }
+
+    #session-selection-filters-right .filters-container .range-label {
+        font-size: 0.75rem; /* Augmenté */
+    }
+    #session-selection-filters-right .filter-message {
+        font-size: 0.7rem; /* Augmenté */
+        padding: 0.2rem;
+    }
+
+    /* Ajustements spécifiques pour le mode portrait quasi-carré - Lecture Session */
+    #replay-export-tools .current-session-info .session-header {
+        flex-direction: row !important; /* Assurer que c'est en ligne */
+        align-items: baseline !important; /* Aligner sur la baseline */
+        justify-content: center !important;
+        gap: 0.4em !important; /* Espacement entre titre et meta */
+        margin-bottom: 0.3rem !important; /* Espace avant boutons réduit */
+    }
+    #replay-export-tools .current-session-info .section-title {
+        font-size: 0.8rem !important; /* Taille de police réduite pour le titre */
+        margin-bottom: 0 !important; /* Pas de marge en dessous du titre */
+    }
+    #replay-export-tools .current-session-info .session-meta {
+        font-size: 0.75rem !important; /* Taille de police réduite pour la meta */
+    }
+    #replay-export-tools .session-actions .session-action,
+    #replay-export-tools .session-change .session-action {
+        font-size: 0.7rem !important; /* Taille de police réduite pour les boutons */
+        padding-top: 0.05rem !important; /* Padding vertical encore réduit */
+        padding-bottom: 0.05rem !important;
+        padding-left: 0.4rem !important;
+        padding-right: 0.4rem !important;
+        height: auto !important; /* Laisser la hauteur s'adapter au contenu et padding */
+        min-height: 0 !important; /* Pas de hauteur minimale héritée */
+        line-height: 1.3 !important; /* Ajuster pour un meilleur rendu de la police */
+        display: flex !important; 
+        align-items: center !important; 
+        justify-content: center !important; 
+        flex-shrink: 0 !important; 
+        box-sizing: border-box !important; 
+    overflow: hidden;
+        width: 100%; /* Assurer que chaque bouton prend toute la largeur de son conteneur */
+        margin: 0.05rem 0 !important; /* Très petit espace vertical entre boutons si nécessaire, ou 0 */
+    }
+    #replay-export-tools .session-actions .session-action#export-video-action {
+        margin-bottom: 0 !important; /* Espacement réduit */
+    }
+
+    /* Ajuster les contrôles de lecture si nécessaire */
+    #replay-playback-controls .control-btn {
+        padding: 0.3rem 0.7rem !important; 
+        font-size: 1.1rem !important;
+    }
+    #replay-playback-controls .elapsed-time,
+    #replay-playback-controls .total-time {
+        font-size: 0.7rem !important; 
+    }
+    #replay-playback-controls .speed-btn {
+        font-size: 0.8rem !important; 
+        padding: 0.2em 0.4em !important;
+    }
+}
+
+/* Zone de transition précoce - commencer à réduire plus tôt */
+@media (min-aspect-ratio: 0.7/1) and (max-aspect-ratio: 0.9/1) {
+    .control-panel {
+        max-height: 20vh !important; 
+        min-height: 15px !important;
+        overflow: hidden !important;
+        padding: 0.2rem !important;
+    }
+    .panel-section {
+        gap: 0.1rem !important;
+        justify-content: space-around !important;
+    }
+    .session-action, .control-btn, .speed-btn {
+        font-size: 0.7rem !important;
+        padding: 0.2rem 0.4rem !important;
+    }
+    .main-zone {
+        width: 100vmin !important;
+        height: 100vmin !important;
+    }
+}
+
+/* Format carré et quasi-carré : masquer les panels complètement */
+@media (min-aspect-ratio: 0.9/1) and (max-aspect-ratio: 1.1/1) {
+    .control-panel { 
+        display: none !important; 
+    }
+    .container {
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .grid-container { 
+        width: 100vmin !important; 
+        height: 100vmin !important; 
+        padding: 0 !important;
+        margin: 0 !important;
+        flex-grow: 0 !important;
+        flex-shrink: 0 !important;
+    }
+    .main-zone {
+        width: 100vmin !important;
+        height: 100vmin !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+/* Styles des overlays, modales, etc. (Sections 9, 11-14) */
+
+/* ===== OVERLAYS ===== */
+#player-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 2000; display: none; font-family: Calibri, 'Trebuchet MS', sans-serif; opacity: 0; transition: opacity 0.3s ease-in-out; }
+#player-overlay.visible { display: block; opacity: 1; visibility: visible; }
+.player-overlay-title { position: absolute; top: 10px; left: 0; width: 100%; color: white; font-size: 18px; font-weight: bold; text-align: center; }
+.player-overlay-subtitle { position: absolute; top: 30px; left: 0; width: 100%; color: white; font-size: 28px; font-family: 'Edwardian Script ITC', 'Brush Script MT', cursive; text-align: center; }
+.player-overlay-message { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 30px; font-weight: bold; text-align: center; width: 100%; }
+.player-overlay-message-details { margin-top: 12px; font-size: 0.7em; font-weight: normal; }
+.player-overlay-message-details .replay-link, .player-overlay-message-details #btn-select-session-overlay { font-size: 1em !important; font-weight: normal !important; text-decoration: underline !important; line-height: 1.2 !important; display: inline !important; }
+.player-overlay-message-details .replay-link:hover, .player-overlay-message-details #btn-select-session-overlay:hover { text-decoration: none !important; }
+.player-overlay-footer { position: absolute; bottom: 10px; left: 0; width: 100%; color: white; font-size: 12px; text-align: center; font-family: Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; }
+.replay-link, #play-button { color: white; text-decoration: none; font-family: inherit; font-size: 30px; font-weight: bold; background: none; border: none; padding: 0; margin: 0; cursor: pointer; line-height: 1; }
+.replay-link:hover, #play-button:hover { text-decoration: underline; }
+
+ul#session-list-ul { list-style: none; padding: 0; margin: 0 0 0.5rem 0; overflow-y: auto; flex-grow: 1; }
+ul#session-list-ul.session-list-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); color: white; list-style: none; padding: 20px; margin: 0; overflow-y: auto; z-index: 1500; display: none; box-sizing: border-box; }
+ul#session-list-ul.session-list-overlay.visible { display: block; z-index: 1600; }
+ul#session-list-ul.session-list-overlay li { padding: 8px 10px; border-bottom: 1px solid #444; cursor: pointer; font-size: 0.85em; line-height: 1.4; display: flex; align-items: center; }
+ul#session-list-ul.session-list-overlay li:hover { background-color: #2a2a2a; }
+ul#session-list-ul.session-list-overlay li.selected { background-color: #007bff; color: white; }
+ul#session-list-ul.session-list-overlay li strong { font-weight: 600; }
+.session-image-placeholder { width: 20px !important; height: 20px !important; background-color: #666 !important; display: inline-block !important; margin-right: 8px !important; vertical-align: middle !important; flex-shrink: 0 !important; border-radius: 2px; border: 1px solid #888; }
+ul#session-list-ul.session-list-overlay li:hover .session-image-placeholder { background-color: #777; border-color: #999; }
+ul#session-list-ul.session-list-overlay li.selected .session-image-placeholder { background-color: #0056b3; border-color: #004085; }
+.control-panel.left-panel ul#session-list-ul { position: relative; z-index: auto; background-color: transparent; color: inherit; padding: 0; }
+
+/* ===== MODAL DE PARTAGE ===== */
+.share-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; }
+.modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.share-preview { background: #222; padding: 2rem; border-radius: 8px; position: relative; min-width: 300px; }
+.close-button { position: absolute; top: 10px; right: 10px; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+.share-config { color: white; font-family: Calibri, 'Trebuchet MS', sans-serif; }
+.share-config h3 { margin-bottom: 1rem; text-align: center; }
+.config-options { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+.config-options label { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.config-options select { padding: 0.3rem; border-radius: 4px; background: #333; color: white; border: 1px solid #666; }
+#start-export { width: 100%; padding: 0.5rem; background: #444; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.progress-bar { margin-top: 1rem; background: #333; height: 20px; border-radius: 10px; overflow: hidden; }
+.status { text-align: center; margin-top: 0.5rem; font-size: 0.9rem; }
+.warning-message { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 10px; margin-bottom: 15px; border-radius: 4px; }
+.export-buttons { display: flex; gap: 10px; margin-top: 15px; }
+.secondary-button { background: #6c757d; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
+.secondary-button:hover { background: #5a6268; }
+
+/* ===== BOUTONS ET ÉLÉMENTS DIVERS ===== */
+.share-button { margin-top: 0.5rem; display: flex; justify-content: center; cursor: pointer; }
+.share-icon { width: 24px; height: 24px; color: white; }
+.play-link { color: white; text-decoration: none; }
+.play-link:hover { text-decoration: underline; }
+.session-label { color: white; font-family: Calibri, 'Trebuchet MS', sans-serif; font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center; }
+.or-separator { color: #666; margin: 10px 0; text-align: center; font-style: italic; }
+
+/* ===== TIMER SESSION ===== */
+.session-timer-container { position: relative; width: 80%; height: 80%; display: flex; align-items: center; justify-content: center; }
+.session-timer-icon { width: 120%; height: 120%; display: block; z-index: 1; color: #fff; }
+.session-timer-label { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%); font-size: 0.55em; font-weight: bold; color: #fff; font-family: monospace; z-index: 2; pointer-events: none; white-space: nowrap; letter-spacing: 0.08em; text-shadow: 0 1px 2px rgba(0,0,0,0.10); text-transform: uppercase; }
+.session-minutes, .session-seconds { position: absolute; top: 50%; transform: translateY(-50%); font-size: 1.1em; font-weight: bold; color: #888; font-family: monospace; z-index: 2; background: none; pointer-events: none; white-space: nowrap; letter-spacing: 0.05em; }
+.session-minutes { left: 0.5%; text-align: right; }
+.session-seconds { right: 0.5%; text-align: left; }
+
+/* ===== MODE CLAIR ===== */
+body.light-mode .main-zone { border-color: #cccccc; }
+body.light-mode .session-timer-icon { color: #000; }
+body.light-mode .session-timer-label { color: #000; }
+
+/* Ajustements spécifiques pour le mode portrait allongé - Lecture Session */
+@media (orientation: portrait) and (max-aspect-ratio: 9/11) {
+    #replay-export-tools .current-session-info .section-title {
+        font-size: 0.9rem; /* Un peu plus grand */
+        margin-bottom: 0.2rem;
+    }
+    #replay-export-tools .current-session-info .session-meta {
+        font-size: 0.8rem; /* Un peu plus grand */
+    }
+    #replay-export-tools .current-session-info .session-header {
+        flex-direction: column; /* Titre et meta sur lignes séparées */
+        align-items: center;
+        gap: 0.1rem; /* Réduire le gap pour le format colonne */
+        margin-bottom: 0.5rem; /* Espace avant les boutons */
+    }
+    #replay-export-tools .session-actions .session-action,
+    #replay-export-tools .session-change .session-action {
+        font-size: 0.8rem; /* Plus grand */
+        padding: 0.4rem 0.6rem;
+    }
+    #replay-export-tools .session-actions .session-action#export-video-action {
+        margin-bottom: 0.6rem; /* Espace entre EXPORT VIDEO et CHANGE SESSION */
+    }
+
+    /* Agrandir les contrôles de lecture dans le panel inférieur */
+    #replay-playback-controls .control-btn {
+        padding: 0.5rem 1rem; /* Plus grand */
+        font-size: 1.3rem;
+    }
+    #replay-playback-controls .elapsed-time,
+    #replay-playback-controls .total-time {
+        font-size: 0.85rem; /* Plus grand */
+    }
+    #replay-playback-controls .speed-btn {
+        font-size: 1rem; /* Plus grand */
+        padding: 0.3em 0.6em;
+    }
+}
+
+/* --- Mode Portrait Medium à Quasi-Carré --- */
+@media (orientation: portrait) and (min-aspect-ratio: 7/10) and (max-aspect-ratio: 11/9) {
+    #replay-export-tools .current-session-info .session-header {
+        flex-direction: row !important; /* Titre et meta sur la même ligne */
+        align-items: baseline !important;
+        justify-content: center !important;
+        gap: 0.5em !important;
+        margin-bottom: 0.4rem !important;
+    }
+    #replay-export-tools .current-session-info .section-title {
+        font-size: 0.85rem !important;
+        margin-bottom: 0 !important;
+    }
+    #replay-export-tools .current-session-info .session-meta {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Ajustements spécifiques pour le mode portrait quasi-carré - Lecture Session */
+@media (orientation: portrait) and (min-aspect-ratio: 7/10) and (max-aspect-ratio: 11/9) {
+    #replay-export-tools .current-session-info .session-header {
+        /* Les styles sont maintenant dans la media query "Portrait Medium à Quasi-Carré" ci-dessus */
+        /* Ajustements additionnels spécifiques si besoin ici */
+        gap: 0.3em !important; /* Un peu moins d'espace pour le quasi-carré strict */
+    }
+    #replay-export-tools .current-session-info .section-title {
+        font-size: 0.8rem !important; 
+    }
+    #replay-export-tools .current-session-info .session-meta {
+        font-size: 0.75rem !important; 
+    }
+    #replay-export-tools .session-actions .session-action,
+    #replay-export-tools .session-change .session-action {
+        font-size: 0.7rem !important; 
+        padding: 0.1rem 0.4rem !important; /* Padding vertical encore réduit */
+        height: 26px !important; /* Hauteur fixe légèrement réduite */
+        min-height: 26px !important; /* Assurer une hauteur minimale aussi */
+        line-height: 1 !important; /* Pour un contrôle plus direct avec flex */
+        display: flex !important; 
+        align-items: center !important; 
+        justify-content: center !important; 
+        flex-shrink: 0 !important; 
+        box-sizing: border-box !important; /* Explicitement défini */
+        overflow: hidden; /* Cacher tout débordement potentiel */
+    }
+    #replay-export-tools .session-actions .session-action#export-video-action {
+        margin-bottom: 0.3rem !important; 
+    }
+
+    /* Réorganisation du panel de contrôle de lecture */
+    #replay-playback-controls {
+        flex-direction: column !important; /* Mettre les groupes en colonne: d'abord progress-row, puis playback-and-speed-row */
+        align-items: center !important; 
+        justify-content: center !important; 
+        gap: 0.15rem !important; /* Réduit: Diminuer distance entre bord inférieur main zone et track */
+    }
+    .playback-and-speed-row {
+        display: flex;
+        flex-direction: row !important; /* Boutons de lecture et vitesse en ligne */
+        align-items: center !important;
+        justify-content: center !important; /* Centrer horizontalement cette ligne de boutons */
+        gap: 0.8rem !important; /* Augmenté: Espacement horizontal entre groupe de contrôle et groupe de vitesse */
+        width: 100%;
+    }
+    #replay-playback-controls .playback-controls {
+        gap: 0.3rem !important; /* Espacement entre les boutons play/pause/reset */
+        margin-bottom: 0 !important;
+    }
+    #replay-playback-controls .control-btn {
+        padding: 0.3rem 0.6rem !important; 
+        font-size: 1rem !important;
+    }
+    #replay-playback-controls .speed-control {
+        gap: 0.2em !important; /* Espacement réduit entre boutons de vitesse */
+        margin-top: 0 !important;
+    }
+    #replay-playback-controls .speed-btn {
+        font-size: 0.8rem !important;  /* Augmenté */
+        padding: 0.2em 0.3em !important; /* Ajusté pour la nouvelle taille */
+    }
+    #replay-playback-controls .progress-row {
+        width: 95% !important; 
+        margin-bottom: 0 !important; 
+    }
+    #replay-playback-controls .elapsed-time,
+    #replay-playback-controls .total-time {
+        font-size: 0.75rem !important; /* Augmenté */
+    }
+
+    /* Ajustements spécifiques pour le mode portrait quasi-carré - Sélection Session */
+    #session-selection-tools .filters-container .filter-row:first-child div,
+    #session-selection-filters-right .filters-container .filter-row:first-child div {
+        display: none !important; /* Masquer les titres "Select date" et "Select duration..." avec !important */
+    }
+
+    #session-selection-tools .filters-container .filter-select {
+        font-size: 0.8rem; /* Augmenté */
+        padding: 0.25rem 0.35rem;
+    }
+    #session-selection-tools .pagination-controls button,
+    #session-selection-tools .pagination-controls span {
+        font-size: 0.75rem; /* Augmenté */
+    }
+    #session-selection-tools .pagination-controls button {
+        padding: 0.2rem 0.3rem;
+    }
+
+    #session-selection-filters-right .filters-container .range-label {
+        font-size: 0.75rem; /* Augmenté */
+    }
+    #session-selection-filters-right .filter-message {
+        font-size: 0.7rem; /* Augmenté */
+        padding: 0.2rem;
+    }
+
+    /* Ajustements spécifiques pour le mode portrait quasi-carré - Lecture Session */
+    #replay-export-tools .current-session-info .session-header {
+        flex-direction: row !important; /* Assurer que c'est en ligne */
+        align-items: baseline !important; /* Aligner sur la baseline */
+        justify-content: center !important;
+        gap: 0.4em !important; /* Espacement entre titre et meta */
+        margin-bottom: 0.3rem !important; /* Espace avant boutons réduit */
+    }
+    #replay-export-tools .current-session-info .section-title {
+        font-size: 0.8rem !important; /* Taille de police réduite pour le titre */
+        margin-bottom: 0 !important; /* Pas de marge en dessous du titre */
+    }
+    #replay-export-tools .current-session-info .session-meta {
+        font-size: 0.75rem !important; /* Taille de police réduite pour la meta */
+    }
+    #replay-export-tools .session-actions .session-action,
+    #replay-export-tools .session-change .session-action {
+        font-size: 0.7rem !important; /* Taille de police réduite pour les boutons */
+        padding-top: 0.05rem !important; /* Padding vertical encore réduit */
+        padding-bottom: 0.05rem !important;
+        padding-left: 0.4rem !important;
+        padding-right: 0.4rem !important;
+        height: auto !important; /* Laisser la hauteur s'adapter au contenu et padding */
+        min-height: 0 !important; /* Pas de hauteur minimale héritée */
+        line-height: 1.3 !important; /* Ajuster pour un meilleur rendu de la police */
+        display: flex !important; 
+        align-items: center !important; 
+        justify-content: center !important; 
+        flex-shrink: 0 !important; 
+        box-sizing: border-box !important; 
+        overflow: hidden; 
+        width: 100%; /* Assurer que chaque bouton prend toute la largeur de son conteneur */
+        margin: 0.05rem 0 !important; /* Très petit espace vertical entre boutons si nécessaire, ou 0 */
+    }
+    #replay-export-tools .session-actions .session-action#export-video-action {
+        margin-bottom: 0 !important; /* Espacement réduit */
+    }
+
+    /* Ajuster les contrôles de lecture si nécessaire */
+    #replay-playback-controls .control-btn {
+        padding: 0.3rem 0.7rem !important; 
+        font-size: 1.1rem !important;
+    }
+    #replay-playback-controls .elapsed-time,
+    #replay-playback-controls .total-time {
+        font-size: 0.7rem !important; 
+    }
+    #replay-playback-controls .speed-btn {
+        font-size: 0.8rem !important; 
+        padding: 0.2em 0.4em !important;
+    }
+}
+
+.session-minigrid-placeholder {
+    width: 24px; /* ou 30px, ou la taille que vous préférez */
+    height: 24px; /* idem */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Crée une grille 3x3 */
+    grid-template-rows: repeat(3, 1fr);
+    border: 1px solid #555;
+    margin-right: 8px;
+    vertical-align: middle; /* S'aligne bien avec le texte à côté */
+    flex-shrink: 0; /* Empêche le rétrécissement dans un conteneur flex */
+    background-color: #333; /* Fond si pas d'UUID ou erreur */
+    image-rendering: pixelated; /* Pour un look pixel art si les sous-pixels sont petits */
+}
+
+.session-minigrid-placeholder > div {
+    /* Les sous-pixels prendront 1/3 de la taille du parent grâce à la grille */
+    /* Leur couleur de fond est définie par JavaScript */
+}
+
+ul#session-list-ul li:hover .session-minigrid-placeholder {
+    border-color: #777; /* Effet de survol léger */
+}
+ul#session-list-ul li.selected .session-minigrid-placeholder {
+    border-color: #007bff; /* Effet de sélection */
+}

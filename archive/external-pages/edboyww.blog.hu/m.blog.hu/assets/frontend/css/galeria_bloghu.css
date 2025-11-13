@@ -1,0 +1,7 @@
+/* TODO: Remove this file when google plus has been removed */
+body > div.glr_container.glr_unselectable.fast.glr_normal > div.glr_text-unselectable.glr_controls.glr_transition.glr_clearafter > div.glr_vertical_line,
+body > div.glr_container.glr_unselectable.fast.glr_wide > div.glr_text-unselectable.glr_controls.glr_transition.glr_clearafter > div.glr_share > a.glr_glyph.gplus.glr_cntrl.glr_unselectable,
+body > div.glr_container.glr_unselectable.fast.glr_normal > div.glr_text-unselectable.glr_controls.glr_transition.glr_clearafter > div.glr_share > a.glr_glyph.gplus.glr_cntrl.glr_unselectable
+{
+    display: none;
+}

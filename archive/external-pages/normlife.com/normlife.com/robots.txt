@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Bear specific disallowed endpoints
+User-agent: *
+Disallow: /hit
+Disallow: /upvote
+Disallow: /email
+
+Sitemap: https://normlife.com/sitemap.xml

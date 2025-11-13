@@ -1,0 +1,220 @@
+* {box-sizing: border-box;}
+html, body {margin:0; padding:0;}
+html {
+    background:#eee;
+}
+a:link, a:visited {
+    color:#0080FF;
+}
+a:hover {text-decoration:none;}
+span {display:inline-block;}
+
+.gc {
+    display:grid;
+/*            border:1px solid red;*/
+}
+.gi {
+    display:grid-inline;
+/*            border:1px solid green;*/
+}
+
+/* For all phones and tablets in portrait: */
+.inhalt {
+    font:14px/1.7 Helvetica,sans-serif;
+}
+
+#head {
+    padding-bottom:14px;
+    text-align:center;
+    background:#EFF8FE;
+    border-bottom:2px solid #139BEA;
+}
+
+#nav-bg {
+    margin:0 0 40px;
+    padding:5px 0 10px;
+    background:rgba(255, 255, 255, 0.5);
+    border-bottom:2px solid white;
+}
+#nav .gi {
+    padding-top:10px;
+    text-align:center;
+    vertical-align:middle;
+    font:bold 16px Helvetica, Arial, sans-serif;
+}
+#nav a:link, #nav a:visited {
+    text-decoration:none;
+    color:black;
+}
+#nav a:hover {
+    color:#139BEA;
+}
+#small-icon {
+    display:none;
+}
+
+#large-icon-wrap {
+    margin:0 0 20px;
+}
+
+#tagline {
+    margin:0 0 20px;
+    font:bold 24px Helvetica, Arial, sans-serif;
+    text-align:center;
+    color:black;
+    text-shadow:1px 1px 3px rgba(255, 255, 255, 0.8);
+    color:#004080;
+}
+
+#dl-cell a:link, #dl-cell a:visited, #big-buy-button {
+    display:block;
+    margin:5px; padding:8px 12px;
+    border:2px solid #01a003;
+    border-radius:5px;
+    font:17px Helvetica, Arial, sans-serif;
+}
+
+#dl-cell a:link, #dl-cell a:visited {
+    background:transparent;
+    color:#004080;
+    text-decoration:none;
+}
+
+#dl-cell a:hover {
+    border:2px solid #139BEA;
+    color:#139BEA;
+}
+
+#big-buy-button {
+    width:97%; /* WHY */
+    background:#01a003;
+    color:white;
+    cursor:pointer; cursor:hand;
+}
+
+#big-buy-button:hover {
+    background:#139BEA;
+    border:2px solid #139BEA;
+}
+
+.vers {
+    font:12px/1.7 Helvetica,sans-serif;
+    color:#004080;
+}
+
+#body {
+    padding:40px 20px;
+    background:white;
+}
+#screencast {
+    float:right;
+}
+#dock-wrap {
+    text-align:center;
+}
+#dock {
+    max-width:100%;
+    margin:20px 0 0;
+    padding:10px;
+    border:1px solid #ccc;
+}
+
+#press {
+    border-top:2px solid #ccc;
+    border-bottom:2px solid #ccc;
+    text-align:center;
+    padding:20px 0 30px;
+    font:14px Helvetica, Arial, sans-serif;
+    background:white;
+    color:gray;
+}
+
+#foot {
+    text-align:center;
+    margin:10px 0 0;
+    padding:0 0 30px;
+    font:14px Helvetica, Arial, sans-serif;
+    color:gray;
+}
+
+#press a:link, #press a:visited,
+#foot a:link, #foot a:visited {
+    font-weight:bold;
+    color:gray;
+    text-decoration:none;    
+}
+
+#press a:hover,
+#foot a:hover {
+    text-decoration:underline;
+}
+
+#press .gi,
+#foot .gi {
+    padding:10px 0;
+}
+
+.tab {
+    display:table;
+    width:100%;
+}
+.cell {
+    display: table-cell;
+    height:35px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#press img {
+    max-width:100px;
+}
+
+/* For iphone 5/5s/SE */
+
+/* For iPhone 6, 6Plus, 7, 7Plus */
+@media only screen and (min-width: 400px) {
+}
+
+/* For phone in landscape, tablets in portrait: */
+@media only screen and (min-width: 500px) {
+    #nav-bg {
+        padding:5px 0 0;
+    }
+    #nav {
+        grid-template-columns:auto auto auto auto;
+        justify-content:space-evenly;
+    }
+    #nav .gi {
+        width:100px;
+    }
+    #small-icon {
+        display:inline;
+        position:relative;
+        float:left;
+        top:-6px;left:5px;
+    }
+    
+    #big-buttons {
+        grid-template-columns:auto auto;
+        justify-content:center;
+    }
+    
+    #press .gc {
+        grid-template-columns:100px 100px 100px 100px 100px;
+        justify-content:space-around;
+    }
+    
+    #foot .gc {
+        grid-template-columns:auto 80px 80px 80px 80px;
+        justify-content:space-around;
+    }
+}
+
+/* For tablets in landscape, desktop: */
+@media only screen and (min-width: 800px) {
+    .inhalt {
+        width:700px;
+        margin:0px auto;
+/*      border:1px solid lime;*/
+    }
+}
